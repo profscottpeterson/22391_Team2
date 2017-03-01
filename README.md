@@ -5,3 +5,5 @@ Please enter your name here to verify Pull Requests.
 Adam Smith
 
 Brian Lueskow
+
+Tim Durkee
