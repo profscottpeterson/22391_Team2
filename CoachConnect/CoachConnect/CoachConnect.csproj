@@ -81,6 +81,12 @@
     <Compile Include="Department.cs">
       <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FindCoachForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindCoachForm.Designer.cs">
+      <DependentUpon>FindCoachForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
