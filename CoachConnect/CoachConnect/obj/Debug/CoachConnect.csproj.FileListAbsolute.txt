@@ -1,2 +1,13 @@
 C:\Users\radar\documents\visual studio 2015\Projects\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.pdb
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.dll
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.xml
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
