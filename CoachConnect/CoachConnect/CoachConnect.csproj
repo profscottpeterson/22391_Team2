@@ -127,6 +127,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EntityDeploy Include="CoachConnectDataModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -160,6 +161,20 @@
       <DependentUpon>CoachConnectDataModel.edmx</DependentUpon>
       <LastGenOutput>CoachConnectDataModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\transportation-icon.png" />
+    <None Include="Resources\stem-icon.png" />
+    <None Include="Resources\public-safety-icon.png" />
+    <None Include="Resources\manufacturing-icon.png" />
+    <None Include="Resources\it-icon.png" />
+    <None Include="Resources\health-science-icon.png" />
+    <None Include="Resources\general-studies-icon.png" />
+    <None Include="Resources\energy-icon.png" />
+    <None Include="Resources\education-icon.png" />
+    <None Include="Resources\digital-arts-icon.png" />
+    <None Include="Resources\business-icon.png" />
+    <None Include="Resources\archi-icon.png" />
+    <None Include="Resources\agri-icon.png" />
+    <None Include="Resources\scottie.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
