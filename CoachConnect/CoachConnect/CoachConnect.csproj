@@ -116,6 +116,9 @@
     <Compile Include="UserCourse.cs">
       <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FindCoachForm.resx">
+      <DependentUpon>FindCoachForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
