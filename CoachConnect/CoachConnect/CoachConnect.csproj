@@ -58,28 +58,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Building.cs">
-      <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
+      <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="CoachConnectDataModel.Context.cs">
+    <Compile Include="CoachConnectDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CoachConnectDataModel.Context.tt</DependentUpon>
+      <DependentUpon>CoachConnectDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="CoachConnectDataModel.cs">
+    <Compile Include="CoachConnectDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
+      <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="CoachConnectDataModel.Designer.cs">
+    <Compile Include="CoachConnectDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CoachConnectDataModel.edmx</DependentUpon>
+      <DependentUpon>CoachConnectDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Course.cs">
-      <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
+      <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Department.cs">
-      <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
+      <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
     <Compile Include="FindCoachForm.cs">
       <SubType>Form</SubType>
@@ -96,25 +96,22 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs">
-      <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
+      <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Room.cs">
-      <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
+      <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Session.cs">
-      <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
+      <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
     <Compile Include="SessionRoster.cs">
-      <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
+      <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
+      <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
     <Compile Include="UserCourse.cs">
-      <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
+      <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FindCoachForm.resx">
       <DependentUpon>FindCoachForm.cs</DependentUpon>
@@ -129,12 +126,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="CoachConnectDataModel.edmx">
+    <EntityDeploy Include="CoachConnectDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CoachConnectDataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>CoachConnectDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="CoachConnectDataModel.edmx.diagram">
-      <DependentUpon>CoachConnectDataModel.edmx</DependentUpon>
+    <None Include="CoachConnectDB.edmx.diagram">
+      <DependentUpon>CoachConnectDB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -151,16 +148,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CoachConnectDataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CoachConnectDataModel.edmx</DependentUpon>
-      <LastGenOutput>CoachConnectDataModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="CoachConnectDataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CoachConnectDataModel.edmx</DependentUpon>
-      <LastGenOutput>CoachConnectDataModel.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\transportation-icon.png" />
     <None Include="Resources\stem-icon.png" />
     <None Include="Resources\public-safety-icon.png" />
@@ -178,6 +165,18 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CoachConnectDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CoachConnectDB.edmx</DependentUpon>
+      <LastGenOutput>CoachConnectDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="CoachConnectDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CoachConnectDB.edmx</DependentUpon>
+      <LastGenOutput>CoachConnectDB.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
