@@ -15,6 +15,17 @@ namespace CoachConnect
         public Form1()
         {
             InitializeComponent();
+
+            using (var context = new db_sft_2172Entities())
+            {
+                var L2EQuery = from bldg in context.Buildings
+                               select bldg;
+
+                var building = L2EQuery.FirstOrDefault<Building>();
+
+                MessageBox.Show(building.BuildingName.ToString());
+            }
+
         }
     }
 }
