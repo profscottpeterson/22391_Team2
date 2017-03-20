@@ -1,11 +1,11 @@
 # 22393_Team2
 
-Please enter your name here to verify Pull Requests.
+Here are the credentials to the SQL Server database.  The VS code is already updated and should be able to connect properly.
 
-Adam Smith
+Servername: bitweb3.nwtc.edu
+dbName: db_sft_2172
 
-Brian Lueskow
+Username: software2172
+Password: ssH^qQ64v
 
-Tim Durkee
-
-Pao Xiong
+ 
