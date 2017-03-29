@@ -81,17 +81,23 @@
     <Compile Include="Department.cs">
       <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="FindCoachForm.cs">
+    <Compile Include="frmFindCoach.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FindCoachForm.Designer.cs">
-      <DependentUpon>FindCoachForm.cs</DependentUpon>
+    <Compile Include="frmFindCoach.Designer.cs">
+      <DependentUpon>frmFindCoach.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInterest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInterest.Designer.cs">
+      <DependentUpon>frmInterest.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,8 +122,11 @@
     <Compile Include="UserCourse.cs">
       <DependentUpon>CoachConnectDataModel.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FindCoachForm.resx">
-      <DependentUpon>FindCoachForm.cs</DependentUpon>
+    <EmbeddedResource Include="frmFindCoach.resx">
+      <DependentUpon>frmFindCoach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInterest.resx">
+      <DependentUpon>frmInterest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -133,6 +142,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CoachConnectDataModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
     <None Include="CoachConnectDataModel.edmx.diagram">
       <DependentUpon>CoachConnectDataModel.edmx</DependentUpon>
     </None>
