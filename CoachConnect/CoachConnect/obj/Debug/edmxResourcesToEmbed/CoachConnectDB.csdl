@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="db_sft_2172Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Building">
+    <Key>
+      <PropertyRef Name="BuildingID" />
+    </Key>
+    <Property Name="BuildingID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="BuildingName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Rooms" Relationship="Self.FK_Room_Building" FromRole="Building" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="DepartmentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_Course_Department" FromRole="Course" ToRole="Department" />
+    <NavigationProperty Name="Sessions" Relationship="Self.FK_Session_Course" FromRole="Course" ToRole="Session" />
+    <NavigationProperty Name="UserCourses" Relationship="Self.FK_UserCourse_Course" FromRole="Course" ToRole="UserCourse" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Courses" Relationship="Self.FK_Course_Department" FromRole="Department" ToRole="Course" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="UserCourses" Relationship="Self.FK_UserCourse_Role" FromRole="Role" ToRole="UserCourse" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="RoomID" />
+    </Key>
+    <Property Name="RoomID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoomNumber" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OpenTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="CloseTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="BuildingID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Building" Relationship="Self.FK_Room_Building" FromRole="Room" ToRole="Building" />
+    <NavigationProperty Name="Sessions" Relationship="Self.FK_Session_Room" FromRole="Room" ToRole="Session" />
+  </EntityType>
+  <EntityType Name="Session">
+    <Key>
+      <PropertyRef Name="SessionID" />
+    </Key>
+    <Property Name="SessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="RoomID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Course" Relationship="Self.FK_Session_Course" FromRole="Session" ToRole="Course" />
+    <NavigationProperty Name="Room" Relationship="Self.FK_Session_Room" FromRole="Session" ToRole="Room" />
+    <NavigationProperty Name="SessionRosters" Relationship="Self.FK_SessionRoster_Session" FromRole="Session" ToRole="SessionRoster" />
+  </EntityType>
+  <EntityType Name="SessionRoster">
+    <Key>
+      <PropertyRef Name="SessionRosterID" />
+    </Key>
+    <Property Name="SessionRosterID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserCourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Session" Relationship="Self.FK_SessionRoster_Session" FromRole="SessionRoster" ToRole="Session" />
+    <NavigationProperty Name="UserCourse" Relationship="Self.FK_SessionRoster_UserCourse" FromRole="SessionRoster" ToRole="UserCourse" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="IsCoach" Type="Boolean" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="UserCourses" Relationship="Self.FK_UserCourse_User" FromRole="User" ToRole="UserCourse" />
+  </EntityType>
+  <EntityType Name="UserCourse">
+    <Key>
+      <PropertyRef Name="UserCourseID" />
+    </Key>
+    <Property Name="UserCourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Course" Relationship="Self.FK_UserCourse_Course" FromRole="UserCourse" ToRole="Course" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_UserCourse_Role" FromRole="UserCourse" ToRole="Role" />
+    <NavigationProperty Name="SessionRosters" Relationship="Self.FK_SessionRoster_UserCourse" FromRole="UserCourse" ToRole="SessionRoster" />
+    <NavigationProperty Name="User" Relationship="Self.FK_UserCourse_User" FromRole="UserCourse" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Room_Building">
+    <End Role="Building" Type="Self.Building" Multiplicity="1" />
+    <End Role="Room" Type="Self.Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Building">
+        <PropertyRef Name="BuildingID" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="BuildingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Course_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="1" />
+    <End Role="Course" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Session_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Session" Type="Self.Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="Session">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCourse_Course">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="UserCourse" Type="Self.UserCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="UserCourse">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCourse_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserCourse" Type="Self.UserCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="UserCourse">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Session_Room">
+    <End Role="Room" Type="Self.Room" Multiplicity="1" />
+    <End Role="Session" Type="Self.Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="RoomID" />
+      </Principal>
+      <Dependent Role="Session">
+        <PropertyRef Name="RoomID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SessionRoster_Session">
+    <End Role="Session" Type="Self.Session" Multiplicity="1" />
+    <End Role="SessionRoster" Type="Self.SessionRoster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Session">
+        <PropertyRef Name="SessionID" />
+      </Principal>
+      <Dependent Role="SessionRoster">
+        <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SessionRoster_UserCourse">
+    <End Role="UserCourse" Type="Self.UserCourse" Multiplicity="1" />
+    <End Role="SessionRoster" Type="Self.SessionRoster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserCourse">
+        <PropertyRef Name="UserCourseID" />
+      </Principal>
+      <Dependent Role="SessionRoster">
+        <PropertyRef Name="UserCourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCourse_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserCourse" Type="Self.UserCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserCourse">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="db_sft_2172Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Buildings" EntityType="Self.Building" />
+    <EntitySet Name="Courses" EntityType="Self.Course" />
+    <EntitySet Name="Departments" EntityType="Self.Department" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Rooms" EntityType="Self.Room" />
+    <EntitySet Name="Sessions" EntityType="Self.Session" />
+    <EntitySet Name="SessionRosters" EntityType="Self.SessionRoster" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserCourses" EntityType="Self.UserCourse" />
+    <AssociationSet Name="FK_Room_Building" Association="Self.FK_Room_Building">
+      <End Role="Building" EntitySet="Buildings" />
+      <End Role="Room" EntitySet="Rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Course_Department" Association="Self.FK_Course_Department">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Course" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Session_Course" Association="Self.FK_Session_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Session" EntitySet="Sessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCourse_Course" Association="Self.FK_UserCourse_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="UserCourse" EntitySet="UserCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCourse_Role" Association="Self.FK_UserCourse_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserCourse" EntitySet="UserCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Session_Room" Association="Self.FK_Session_Room">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="Session" EntitySet="Sessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SessionRoster_Session" Association="Self.FK_SessionRoster_Session">
+      <End Role="Session" EntitySet="Sessions" />
+      <End Role="SessionRoster" EntitySet="SessionRosters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SessionRoster_UserCourse" Association="Self.FK_SessionRoster_UserCourse">
+      <End Role="UserCourse" EntitySet="UserCourses" />
+      <End Role="SessionRoster" EntitySet="SessionRosters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCourse_User" Association="Self.FK_UserCourse_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserCourse" EntitySet="UserCourses" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
