@@ -1,0 +1,8 @@
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.dll
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.pdb
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.exe
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.pdb
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojResolveAssemblyReference.cache
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb
