@@ -75,6 +75,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CoachConnectDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="CoachInterestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoachInterestForm.Designer.cs">
+      <DependentUpon>CoachInterestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Course.cs">
       <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
@@ -113,6 +119,9 @@
     <Compile Include="UserCourse.cs">
       <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CoachInterestForm.resx">
+      <DependentUpon>CoachInterestForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FindCoachForm.resx">
       <DependentUpon>FindCoachForm.cs</DependentUpon>
     </EmbeddedResource>
