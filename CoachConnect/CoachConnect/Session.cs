@@ -25,12 +25,6 @@ namespace CoachConnect
         public System.TimeSpan EndTime { get; set; }
         public string RoomID { get; set; }
         public string CourseID { get; set; }
-        public string IsMonday { get; set; }
-        public Nullable<bool> IsTuesday { get; set; }
-        public Nullable<bool> IsWednesday { get; set; }
-        public Nullable<bool> IsThursday { get; set; }
-        public Nullable<bool> IsFriday { get; set; }
-        public Nullable<bool> IsSaturday { get; set; }
     
         public virtual Course Course { get; set; }
         public virtual Room Room { get; set; }
