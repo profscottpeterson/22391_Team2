@@ -32,7 +32,7 @@
           <Key>
             <PropertyRef Name="RoleID" />
           </Key>
-          <Property Name="RoleID" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="RoleID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Room">
@@ -54,79 +54,33 @@
           <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
           <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsMonday" Type="nvarchar" MaxLength="50" />
-          <Property Name="IsTuesday" Type="bit" />
-          <Property Name="IsWednesday" Type="bit" />
-          <Property Name="IsThursday" Type="bit" />
-          <Property Name="IsFriday" Type="bit" />
-          <Property Name="IsSaturday" Type="bit" />
         </EntityType>
         <EntityType Name="SessionRoster">
           <Key>
-            <PropertyRef Name="SessionID" />
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="SessionRosterID" />
           </Key>
+          <Property Name="SessionRosterID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SessionID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UserID" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="RoleID" Type="nchar" MaxLength="10" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="UserCourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="IsAdmin" Type="bit" Nullable="false" />
           <Property Name="IsCoach" Type="bit" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="IsAvailableSundayMorning" Type="bit" />
-          <Property Name="IsAvailableSundayMidday" Type="bit" />
-          <Property Name="IsAvailableSundayAfternoon" Type="bit" />
-          <Property Name="IsAvailableSundayEvening" Type="bit" />
-          <Property Name="IsAvailableMondayMorning" Type="bit" />
-          <Property Name="IsAvailableMondayMidday" Type="bit" />
-          <Property Name="IsAvailableMondayAfternoon" Type="bit" />
-          <Property Name="IsAvailableMondayEvening" Type="bit" />
-          <Property Name="IsAvailableTuesdayMorning" Type="bit" />
-          <Property Name="IsAvailableTuesdayMidday" Type="bit" />
-          <Property Name="IsAvailableTuesdayAfternoon" Type="bit" />
-          <Property Name="IsAvailableTuesdayEvening" Type="bit" />
-          <Property Name="IsAvailableWednesdayMorning" Type="bit" />
-          <Property Name="IsAvailableWednesdayMidday" Type="bit" />
-          <Property Name="IsAvailableWednesdayAfternoon" Type="bit" />
-          <Property Name="IsAvailableWednesdayEvening" Type="bit" />
-          <Property Name="IsAvailableThursdayMorning" Type="bit" />
-          <Property Name="IsAvailableThursdayMidday" Type="bit" />
-          <Property Name="IsAvailableThursdayAfternoon" Type="bit" />
-          <Property Name="IsAvailableThursdayEvening" Type="bit" />
-          <Property Name="IsAvailableFridayMorning" Type="bit" />
-          <Property Name="IsAvailableFridayMidday" Type="bit" />
-          <Property Name="IsAvailableFridayAfternoon" Type="bit" />
-          <Property Name="IsAvailableFridayEvening" Type="bit" />
-          <Property Name="IsAvailableSaturdayMorning" Type="bit" />
-          <Property Name="IsAvailableSaturdayMidday" Type="bit" />
-          <Property Name="IsAvailableSaturdayAfternoon" Type="bit" />
-          <Property Name="IsAvailableSaturdayEvening" Type="bit" />
         </EntityType>
         <EntityType Name="UserCourse">
           <Key>
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="UserCourseID" />
           </Key>
+          <Property Name="UserCourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="RoleID" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="RoleID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Course_Department">
@@ -189,6 +143,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SessionRoster_UserCourse">
+          <End Role="UserCourse" Type="Self.UserCourse" Multiplicity="1" />
+          <End Role="SessionRoster" Type="Self.SessionRoster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserCourse">
+              <PropertyRef Name="UserCourseID" />
+            </Principal>
+            <Dependent Role="SessionRoster">
+              <PropertyRef Name="UserCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserCourse_Course">
           <End Role="Course" Type="Self.Course" Multiplicity="1" />
           <End Role="UserCourse" Type="Self.UserCourse" Multiplicity="*" />
@@ -233,7 +199,6 @@
           <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SessionRoster" EntityType="Self.SessionRoster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCourse" EntityType="Self.UserCourse" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Course_Department" Association="Self.FK_Course_Department">
@@ -254,6 +219,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_SessionRoster_Session" Association="Self.FK_SessionRoster_Session">
             <End Role="Session" EntitySet="Session" />
+            <End Role="SessionRoster" EntitySet="SessionRoster" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SessionRoster_UserCourse" Association="Self.FK_SessionRoster_UserCourse">
+            <End Role="UserCourse" EntitySet="UserCourse" />
             <End Role="SessionRoster" EntitySet="SessionRoster" />
           </AssociationSet>
           <AssociationSet Name="FK_UserCourse_Course" Association="Self.FK_UserCourse_Course">
@@ -306,7 +275,7 @@
           <Key>
             <PropertyRef Name="RoleID" />
           </Key>
-          <Property Name="RoleID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="UserCourses" Relationship="Self.FK_UserCourse_Role" FromRole="Role" ToRole="UserCourse" />
         </EntityType>
@@ -331,87 +300,43 @@
           <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
           <Property Name="RoomID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsMonday" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsTuesday" Type="Boolean" />
-          <Property Name="IsWednesday" Type="Boolean" />
-          <Property Name="IsThursday" Type="Boolean" />
-          <Property Name="IsFriday" Type="Boolean" />
-          <Property Name="IsSaturday" Type="Boolean" />
           <NavigationProperty Name="Course" Relationship="Self.FK_Session_Course" FromRole="Session" ToRole="Course" />
           <NavigationProperty Name="Room" Relationship="Self.FK_Session_Room" FromRole="Session" ToRole="Room" />
           <NavigationProperty Name="SessionRosters" Relationship="Self.FK_SessionRoster_Session" FromRole="Session" ToRole="SessionRoster" />
         </EntityType>
         <EntityType Name="SessionRoster">
           <Key>
-            <PropertyRef Name="SessionID" />
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="SessionRosterID" />
           </Key>
+          <Property Name="SessionRosterID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="RoleID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="UserCourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Session" Relationship="Self.FK_SessionRoster_Session" FromRole="SessionRoster" ToRole="Session" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="UserCourse" Relationship="Self.FK_SessionRoster_UserCourse" FromRole="SessionRoster" ToRole="UserCourse" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
           <Property Name="IsCoach" Type="Boolean" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="IsAvailableSundayMorning" Type="Boolean" />
-          <Property Name="IsAvailableSundayMidday" Type="Boolean" />
-          <Property Name="IsAvailableSundayAfternoon" Type="Boolean" />
-          <Property Name="IsAvailableSundayEvening" Type="Boolean" />
-          <Property Name="IsAvailableMondayMorning" Type="Boolean" />
-          <Property Name="IsAvailableMondayMidday" Type="Boolean" />
-          <Property Name="IsAvailableMondayAfternoon" Type="Boolean" />
-          <Property Name="IsAvailableMondayEvening" Type="Boolean" />
-          <Property Name="IsAvailableTuesdayMorning" Type="Boolean" />
-          <Property Name="IsAvailableTuesdayMidday" Type="Boolean" />
-          <Property Name="IsAvailableTuesdayAfternoon" Type="Boolean" />
-          <Property Name="IsAvailableTuesdayEvening" Type="Boolean" />
-          <Property Name="IsAvailableWednesdayMorning" Type="Boolean" />
-          <Property Name="IsAvailableWednesdayMidday" Type="Boolean" />
-          <Property Name="IsAvailableWednesdayAfternoon" Type="Boolean" />
-          <Property Name="IsAvailableWednesdayEvening" Type="Boolean" />
-          <Property Name="IsAvailableThursdayMorning" Type="Boolean" />
-          <Property Name="IsAvailableThursdayMidday" Type="Boolean" />
-          <Property Name="IsAvailableThursdayAfternoon" Type="Boolean" />
-          <Property Name="IsAvailableThursdayEvening" Type="Boolean" />
-          <Property Name="IsAvailableFridayMorning" Type="Boolean" />
-          <Property Name="IsAvailableFridayMidday" Type="Boolean" />
-          <Property Name="IsAvailableFridayAfternoon" Type="Boolean" />
-          <Property Name="IsAvailableFridayEvening" Type="Boolean" />
-          <Property Name="IsAvailableSaturdayMorning" Type="Boolean" />
-          <Property Name="IsAvailableSaturdayMidday" Type="Boolean" />
-          <Property Name="IsAvailableSaturdayAfternoon" Type="Boolean" />
-          <Property Name="IsAvailableSaturdayEvening" Type="Boolean" />
           <NavigationProperty Name="UserCourses" Relationship="Self.FK_UserCourse_User" FromRole="User" ToRole="UserCourse" />
         </EntityType>
         <EntityType Name="UserCourse">
           <Key>
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="RoleID" />
+            <PropertyRef Name="UserCourseID" />
           </Key>
+          <Property Name="UserCourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RoleID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="CourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Course" Relationship="Self.FK_UserCourse_Course" FromRole="UserCourse" ToRole="Course" />
           <NavigationProperty Name="Role" Relationship="Self.FK_UserCourse_Role" FromRole="UserCourse" ToRole="Role" />
+          <NavigationProperty Name="SessionRosters" Relationship="Self.FK_SessionRoster_UserCourse" FromRole="UserCourse" ToRole="SessionRoster" />
           <NavigationProperty Name="User" Relationship="Self.FK_UserCourse_User" FromRole="UserCourse" ToRole="User" />
         </EntityType>
         <Association Name="FK_Room_Building">
@@ -498,6 +423,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SessionRoster_UserCourse">
+          <End Role="UserCourse" Type="Self.UserCourse" Multiplicity="1" />
+          <End Role="SessionRoster" Type="Self.SessionRoster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserCourse">
+              <PropertyRef Name="UserCourseID" />
+            </Principal>
+            <Dependent Role="SessionRoster">
+              <PropertyRef Name="UserCourseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserCourse_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="UserCourse" Type="Self.UserCourse" Multiplicity="*" />
@@ -518,7 +455,6 @@
           <EntitySet Name="Rooms" EntityType="Self.Room" />
           <EntitySet Name="Sessions" EntityType="Self.Session" />
           <EntitySet Name="SessionRosters" EntityType="Self.SessionRoster" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="UserCourses" EntityType="Self.UserCourse" />
           <AssociationSet Name="FK_Room_Building" Association="Self.FK_Room_Building">
@@ -547,6 +483,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_SessionRoster_Session" Association="Self.FK_SessionRoster_Session">
             <End Role="Session" EntitySet="Sessions" />
+            <End Role="SessionRoster" EntitySet="SessionRosters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SessionRoster_UserCourse" Association="Self.FK_SessionRoster_UserCourse">
+            <End Role="UserCourse" EntitySet="UserCourses" />
             <End Role="SessionRoster" EntitySet="SessionRosters" />
           </AssociationSet>
           <AssociationSet Name="FK_UserCourse_User" Association="Self.FK_UserCourse_User">
@@ -613,32 +553,15 @@
                 <ScalarProperty Name="EndTime" ColumnName="EndTime" />
                 <ScalarProperty Name="RoomID" ColumnName="RoomID" />
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
-                <ScalarProperty Name="IsMonday" ColumnName="IsMonday" />
-                <ScalarProperty Name="IsTuesday" ColumnName="IsTuesday" />
-                <ScalarProperty Name="IsWednesday" ColumnName="IsWednesday" />
-                <ScalarProperty Name="IsThursday" ColumnName="IsThursday" />
-                <ScalarProperty Name="IsFriday" ColumnName="IsFriday" />
-                <ScalarProperty Name="IsSaturday" ColumnName="IsSaturday" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SessionRosters">
             <EntityTypeMapping TypeName="db_sft_2172Model.SessionRoster">
               <MappingFragment StoreEntitySet="SessionRoster">
+                <ScalarProperty Name="SessionRosterID" ColumnName="SessionRosterID" />
                 <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="db_sft_2172Model.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="UserCourseID" ColumnName="UserCourseID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -651,40 +574,13 @@
                 <ScalarProperty Name="IsCoach" ColumnName="IsCoach" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="IsAvailableSundayMorning" ColumnName="IsAvailableSundayMorning" />
-                <ScalarProperty Name="IsAvailableSundayMidday" ColumnName="IsAvailableSundayMidday" />
-                <ScalarProperty Name="IsAvailableSundayAfternoon" ColumnName="IsAvailableSundayAfternoon" />
-                <ScalarProperty Name="IsAvailableSundayEvening" ColumnName="IsAvailableSundayEvening" />
-                <ScalarProperty Name="IsAvailableMondayMorning" ColumnName="IsAvailableMondayMorning" />
-                <ScalarProperty Name="IsAvailableMondayMidday" ColumnName="IsAvailableMondayMidday" />
-                <ScalarProperty Name="IsAvailableMondayAfternoon" ColumnName="IsAvailableMondayAfternoon" />
-                <ScalarProperty Name="IsAvailableMondayEvening" ColumnName="IsAvailableMondayEvening" />
-                <ScalarProperty Name="IsAvailableTuesdayMorning" ColumnName="IsAvailableTuesdayMorning" />
-                <ScalarProperty Name="IsAvailableTuesdayMidday" ColumnName="IsAvailableTuesdayMidday" />
-                <ScalarProperty Name="IsAvailableTuesdayAfternoon" ColumnName="IsAvailableTuesdayAfternoon" />
-                <ScalarProperty Name="IsAvailableTuesdayEvening" ColumnName="IsAvailableTuesdayEvening" />
-                <ScalarProperty Name="IsAvailableWednesdayMorning" ColumnName="IsAvailableWednesdayMorning" />
-                <ScalarProperty Name="IsAvailableWednesdayMidday" ColumnName="IsAvailableWednesdayMidday" />
-                <ScalarProperty Name="IsAvailableWednesdayAfternoon" ColumnName="IsAvailableWednesdayAfternoon" />
-                <ScalarProperty Name="IsAvailableWednesdayEvening" ColumnName="IsAvailableWednesdayEvening" />
-                <ScalarProperty Name="IsAvailableThursdayMorning" ColumnName="IsAvailableThursdayMorning" />
-                <ScalarProperty Name="IsAvailableThursdayMidday" ColumnName="IsAvailableThursdayMidday" />
-                <ScalarProperty Name="IsAvailableThursdayAfternoon" ColumnName="IsAvailableThursdayAfternoon" />
-                <ScalarProperty Name="IsAvailableThursdayEvening" ColumnName="IsAvailableThursdayEvening" />
-                <ScalarProperty Name="IsAvailableFridayMorning" ColumnName="IsAvailableFridayMorning" />
-                <ScalarProperty Name="IsAvailableFridayMidday" ColumnName="IsAvailableFridayMidday" />
-                <ScalarProperty Name="IsAvailableFridayAfternoon" ColumnName="IsAvailableFridayAfternoon" />
-                <ScalarProperty Name="IsAvailableFridayEvening" ColumnName="IsAvailableFridayEvening" />
-                <ScalarProperty Name="IsAvailableSaturdayMorning" ColumnName="IsAvailableSaturdayMorning" />
-                <ScalarProperty Name="IsAvailableSaturdayMidday" ColumnName="IsAvailableSaturdayMidday" />
-                <ScalarProperty Name="IsAvailableSaturdayAfternoon" ColumnName="IsAvailableSaturdayAfternoon" />
-                <ScalarProperty Name="IsAvailableSaturdayEvening" ColumnName="IsAvailableSaturdayEvening" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserCourses">
             <EntityTypeMapping TypeName="db_sft_2172Model.UserCourse">
               <MappingFragment StoreEntitySet="UserCourse">
+                <ScalarProperty Name="UserCourseID" ColumnName="UserCourseID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />

@@ -17,29 +17,77 @@ namespace CoachConnect
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void SelectedInterest(Image interest, string title)
         {
-
+            this.Hide();
+            frmCoachInterest frm2 = new frmCoachInterest(this, interest,title);
+            frm2.Show();
+            frm2.Location = this.Location;
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnAgri_Click(object sender, EventArgs e)
         {
-
+            SelectedInterest(btnAgri.BackgroundImage, lblAgri.Text);
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void btnArch_Click(object sender, EventArgs e)
         {
-
+            SelectedInterest(btnArch.BackgroundImage, lblArch.Text);
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void btnBusiness_Click(object sender, EventArgs e)
         {
-
+            SelectedInterest(btnBusiness.BackgroundImage,lblBusiness.Text);
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void btnDigital_Click(object sender, EventArgs e)
         {
+            SelectedInterest(btnDigital.BackgroundImage,lblDigital.Text);
+        }
 
+        private void btnEnergy_Click(object sender, EventArgs e)
+        {
+            SelectedInterest(btnEnergy.BackgroundImage,lblEnergy.Text);
+        }
+
+        private void btnGeneral_Click(object sender, EventArgs e)
+        {
+            SelectedInterest(btnGeneral.BackgroundImage,lblGeneral.Text);
+        }
+
+        private void bthHealth_Click(object sender, EventArgs e)
+        {
+            SelectedInterest(btnHealth.BackgroundImage,lblHealth.Text);
+        }
+
+        private void btnHuman_Click(object sender, EventArgs e)
+        {
+            SelectedInterest(btnHuman.BackgroundImage,lblHuman.Text);
+        }
+
+        private void btnIT_Click(object sender, EventArgs e)
+        {
+            SelectedInterest(btnIT.BackgroundImage, lblIT.Text);
+        }
+
+        private void btnLaw_Click(object sender, EventArgs e)
+        {
+            SelectedInterest(btnLaw.BackgroundImage,lblLaw.Text);
+        }
+
+        private void btnManu_Click(object sender, EventArgs e)
+        {
+            SelectedInterest(btnManu.BackgroundImage, lblManu.Text);
+        }
+
+        private void btnScience_Click(object sender, EventArgs e)
+        {
+            SelectedInterest(btnScience.BackgroundImage,lblScience.Text);
+        }
+
+        private void btnTransport_Click(object sender, EventArgs e)
+        {
+            SelectedInterest(btnTransport.BackgroundImage,lblTransport.Text);
         }
     }
 }
