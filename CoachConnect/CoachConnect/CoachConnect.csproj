@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Available Coarch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Available Coarch.Designer.cs">
+      <DependentUpon>Available Coarch.cs</DependentUpon>
+    </Compile>
     <Compile Include="Building.cs">
       <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
@@ -113,6 +119,9 @@
     <Compile Include="UserCourse.cs">
       <DependentUpon>CoachConnectDB.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Available Coarch.resx">
+      <DependentUpon>Available Coarch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FindCoachForm.resx">
       <DependentUpon>FindCoachForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -41,5 +41,10 @@ namespace CoachConnect
         {
 
         }
+
+        private void label39_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

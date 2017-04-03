@@ -25,3 +25,17 @@ C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\Coac
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Form1.resources
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.pdb
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.dll
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.dll
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.xml
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.xml
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FindCoachForm.resources
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Form1.resources
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
+D:\Spring Semester\team software\Coach\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
