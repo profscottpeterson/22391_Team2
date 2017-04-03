@@ -32,7 +32,7 @@
     <Key>
       <PropertyRef Name="RoleID" />
     </Key>
-    <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="UserCourses" Relationship="Self.FK_UserCourse_Role" FromRole="Role" ToRole="UserCourse" />
   </EntityType>
@@ -57,6 +57,12 @@
     <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
     <Property Name="RoomID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsMonday" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsTuesday" Type="Boolean" />
+    <Property Name="IsWednesday" Type="Boolean" />
+    <Property Name="IsThursday" Type="Boolean" />
+    <Property Name="IsFriday" Type="Boolean" />
+    <Property Name="IsSaturday" Type="Boolean" />
     <NavigationProperty Name="Course" Relationship="Self.FK_Session_Course" FromRole="Session" ToRole="Course" />
     <NavigationProperty Name="Room" Relationship="Self.FK_Session_Room" FromRole="Session" ToRole="Room" />
     <NavigationProperty Name="SessionRosters" Relationship="Self.FK_SessionRoster_Session" FromRole="Session" ToRole="SessionRoster" />
@@ -65,36 +71,73 @@
     <Key>
       <PropertyRef Name="SessionID" />
       <PropertyRef Name="UserID" />
-      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="RoleID" />
     </Key>
     <Property Name="SessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="RoleID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Session" Relationship="Self.FK_SessionRoster_Session" FromRole="SessionRoster" ToRole="Session" />
-    <Property Name="UserID" Type="String" Nullable="false" />
-    <Property Name="CourseID" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="UserID" />
     </Key>
     <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
     <Property Name="IsCoach" Type="Boolean" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsAvailableSundayMorning" Type="Boolean" />
+    <Property Name="IsAvailableSundayMidday" Type="Boolean" />
+    <Property Name="IsAvailableSundayAfternoon" Type="Boolean" />
+    <Property Name="IsAvailableSundayEvening" Type="Boolean" />
+    <Property Name="IsAvailableMondayMorning" Type="Boolean" />
+    <Property Name="IsAvailableMondayMidday" Type="Boolean" />
+    <Property Name="IsAvailableMondayAfternoon" Type="Boolean" />
+    <Property Name="IsAvailableMondayEvening" Type="Boolean" />
+    <Property Name="IsAvailableTuesdayMorning" Type="Boolean" />
+    <Property Name="IsAvailableTuesdayMidday" Type="Boolean" />
+    <Property Name="IsAvailableTuesdayAfternoon" Type="Boolean" />
+    <Property Name="IsAvailableTuesdayEvening" Type="Boolean" />
+    <Property Name="IsAvailableWednesdayMorning" Type="Boolean" />
+    <Property Name="IsAvailableWednesdayMidday" Type="Boolean" />
+    <Property Name="IsAvailableWednesdayAfternoon" Type="Boolean" />
+    <Property Name="IsAvailableWednesdayEvening" Type="Boolean" />
+    <Property Name="IsAvailableThursdayMorning" Type="Boolean" />
+    <Property Name="IsAvailableThursdayMidday" Type="Boolean" />
+    <Property Name="IsAvailableThursdayAfternoon" Type="Boolean" />
+    <Property Name="IsAvailableThursdayEvening" Type="Boolean" />
+    <Property Name="IsAvailableFridayMorning" Type="Boolean" />
+    <Property Name="IsAvailableFridayMidday" Type="Boolean" />
+    <Property Name="IsAvailableFridayAfternoon" Type="Boolean" />
+    <Property Name="IsAvailableFridayEvening" Type="Boolean" />
+    <Property Name="IsAvailableSaturdayMorning" Type="Boolean" />
+    <Property Name="IsAvailableSaturdayMidday" Type="Boolean" />
+    <Property Name="IsAvailableSaturdayAfternoon" Type="Boolean" />
+    <Property Name="IsAvailableSaturdayEvening" Type="Boolean" />
     <NavigationProperty Name="UserCourses" Relationship="Self.FK_UserCourse_User" FromRole="User" ToRole="UserCourse" />
   </EntityType>
   <EntityType Name="UserCourse">
     <Key>
-      <PropertyRef Name="CourseID" />
       <PropertyRef Name="UserID" />
+      <PropertyRef Name="RoleID" />
     </Key>
     <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="RoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RoleID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="CourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Course" Relationship="Self.FK_UserCourse_Course" FromRole="UserCourse" ToRole="Course" />
     <NavigationProperty Name="Role" Relationship="Self.FK_UserCourse_Role" FromRole="UserCourse" ToRole="Role" />
-    <NavigationProperty Name="SessionRosters" Relationship="Self.FK_SessionRoster_UserCourse" FromRole="UserCourse" ToRole="SessionRoster" />
     <NavigationProperty Name="User" Relationship="Self.FK_UserCourse_User" FromRole="UserCourse" ToRole="User" />
   </EntityType>
   <Association Name="FK_Room_Building">
@@ -181,20 +224,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_SessionRoster_UserCourse">
-    <End Role="UserCourse" Type="Self.UserCourse" Multiplicity="1" />
-    <End Role="SessionRoster" Type="Self.SessionRoster" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="UserCourse">
-        <PropertyRef Name="CourseID" />
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="SessionRoster">
-        <PropertyRef Name="CourseID" />
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_UserCourse_User">
     <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="UserCourse" Type="Self.UserCourse" Multiplicity="*" />
@@ -215,6 +244,7 @@
     <EntitySet Name="Rooms" EntityType="Self.Room" />
     <EntitySet Name="Sessions" EntityType="Self.Session" />
     <EntitySet Name="SessionRosters" EntityType="Self.SessionRoster" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Users" EntityType="Self.User" />
     <EntitySet Name="UserCourses" EntityType="Self.UserCourse" />
     <AssociationSet Name="FK_Room_Building" Association="Self.FK_Room_Building">
@@ -243,10 +273,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_SessionRoster_Session" Association="Self.FK_SessionRoster_Session">
       <End Role="Session" EntitySet="Sessions" />
-      <End Role="SessionRoster" EntitySet="SessionRosters" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SessionRoster_UserCourse" Association="Self.FK_SessionRoster_UserCourse">
-      <End Role="UserCourse" EntitySet="UserCourses" />
       <End Role="SessionRoster" EntitySet="SessionRosters" />
     </AssociationSet>
     <AssociationSet Name="FK_UserCourse_User" Association="Self.FK_UserCourse_User">

@@ -26,6 +26,34 @@ namespace CoachConnect
         public bool IsCoach { get; set; }
         public string Password { get; set; }
         public bool IsActive { get; set; }
+        public Nullable<bool> IsAvailableSundayMorning { get; set; }
+        public Nullable<bool> IsAvailableSundayMidday { get; set; }
+        public Nullable<bool> IsAvailableSundayAfternoon { get; set; }
+        public Nullable<bool> IsAvailableSundayEvening { get; set; }
+        public Nullable<bool> IsAvailableMondayMorning { get; set; }
+        public Nullable<bool> IsAvailableMondayMidday { get; set; }
+        public Nullable<bool> IsAvailableMondayAfternoon { get; set; }
+        public Nullable<bool> IsAvailableMondayEvening { get; set; }
+        public Nullable<bool> IsAvailableTuesdayMorning { get; set; }
+        public Nullable<bool> IsAvailableTuesdayMidday { get; set; }
+        public Nullable<bool> IsAvailableTuesdayAfternoon { get; set; }
+        public Nullable<bool> IsAvailableTuesdayEvening { get; set; }
+        public Nullable<bool> IsAvailableWednesdayMorning { get; set; }
+        public Nullable<bool> IsAvailableWednesdayMidday { get; set; }
+        public Nullable<bool> IsAvailableWednesdayAfternoon { get; set; }
+        public Nullable<bool> IsAvailableWednesdayEvening { get; set; }
+        public Nullable<bool> IsAvailableThursdayMorning { get; set; }
+        public Nullable<bool> IsAvailableThursdayMidday { get; set; }
+        public Nullable<bool> IsAvailableThursdayAfternoon { get; set; }
+        public Nullable<bool> IsAvailableThursdayEvening { get; set; }
+        public Nullable<bool> IsAvailableFridayMorning { get; set; }
+        public Nullable<bool> IsAvailableFridayMidday { get; set; }
+        public Nullable<bool> IsAvailableFridayAfternoon { get; set; }
+        public Nullable<bool> IsAvailableFridayEvening { get; set; }
+        public Nullable<bool> IsAvailableSaturdayMorning { get; set; }
+        public Nullable<bool> IsAvailableSaturdayMidday { get; set; }
+        public Nullable<bool> IsAvailableSaturdayAfternoon { get; set; }
+        public Nullable<bool> IsAvailableSaturdayEvening { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserCourse> UserCourses { get; set; }

@@ -32,6 +32,7 @@ namespace CoachConnect
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<Session> Sessions { get; set; }
         public virtual DbSet<SessionRoster> SessionRosters { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserCourse> UserCourses { get; set; }
     }
