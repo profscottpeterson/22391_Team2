@@ -14,11 +14,10 @@ namespace CoachConnect
     
     public partial class SessionRoster
     {
-        public string SessionRosterID { get; set; }
         public string SessionID { get; set; }
-        public string UserCourseID { get; set; }
+        public string UserID { get; set; }
+        public string RoleID { get; set; }
     
         public virtual Session Session { get; set; }
-        public virtual UserCourse UserCourse { get; set; }
     }
 }
