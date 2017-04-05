@@ -28,21 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Scotty Pipen",
-            "Sunday",
-            "Afternoon",
-            "Javascript"}, -1);
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbInterest = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.lstAvailableCoaches = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnInterestExit = new System.Windows.Forms.Button();
             this.dataGridAvailableCoaches = new System.Windows.Forms.DataGridView();
+            this.btnInterestExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbInterest)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAvailableCoaches)).BeginInit();
@@ -71,59 +61,12 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dataGridAvailableCoaches);
-            this.groupBox4.Controls.Add(this.lstAvailableCoaches);
             this.groupBox4.Location = new System.Drawing.Point(12, 167);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(536, 268);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Available Coaches";
-            // 
-            // lstAvailableCoaches
-            // 
-            this.lstAvailableCoaches.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.lstAvailableCoaches.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
-            this.lstAvailableCoaches.Location = new System.Drawing.Point(3, 142);
-            this.lstAvailableCoaches.Name = "lstAvailableCoaches";
-            this.lstAvailableCoaches.Size = new System.Drawing.Size(527, 120);
-            this.lstAvailableCoaches.TabIndex = 0;
-            this.lstAvailableCoaches.UseCompatibleStateImageBehavior = false;
-            this.lstAvailableCoaches.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Coach";
-            this.columnHeader1.Width = 122;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Day";
-            this.columnHeader2.Width = 82;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Time";
-            this.columnHeader3.Width = 93;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Subjects";
-            this.columnHeader4.Width = 84;
-            // 
-            // btnInterestExit
-            // 
-            this.btnInterestExit.Location = new System.Drawing.Point(214, 446);
-            this.btnInterestExit.Name = "btnInterestExit";
-            this.btnInterestExit.Size = new System.Drawing.Size(105, 23);
-            this.btnInterestExit.TabIndex = 5;
-            this.btnInterestExit.Text = "Back To Coaches";
-            this.btnInterestExit.UseVisualStyleBackColor = true;
-            this.btnInterestExit.Click += new System.EventHandler(this.btnInterestExit_Click);
             // 
             // dataGridAvailableCoaches
             // 
@@ -134,8 +77,18 @@
             this.dataGridAvailableCoaches.Location = new System.Drawing.Point(7, 20);
             this.dataGridAvailableCoaches.Name = "dataGridAvailableCoaches";
             this.dataGridAvailableCoaches.ReadOnly = true;
-            this.dataGridAvailableCoaches.Size = new System.Drawing.Size(523, 116);
+            this.dataGridAvailableCoaches.Size = new System.Drawing.Size(523, 242);
             this.dataGridAvailableCoaches.TabIndex = 1;
+            // 
+            // btnInterestExit
+            // 
+            this.btnInterestExit.Location = new System.Drawing.Point(214, 446);
+            this.btnInterestExit.Name = "btnInterestExit";
+            this.btnInterestExit.Size = new System.Drawing.Size(105, 23);
+            this.btnInterestExit.TabIndex = 5;
+            this.btnInterestExit.Text = "Back To Coaches";
+            this.btnInterestExit.UseVisualStyleBackColor = true;
+            this.btnInterestExit.Click += new System.EventHandler(this.btnInterestExit_Click);
             // 
             // frmCoachInterest
             // 
@@ -163,11 +116,6 @@
         private System.Windows.Forms.PictureBox pbInterest;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ListView lstAvailableCoaches;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button btnInterestExit;
         private System.Windows.Forms.DataGridView dataGridAvailableCoaches;
     }
