@@ -12,12 +12,14 @@ namespace CoachConnect
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class UserAvailability
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public string DayID { get; set; }
+        public string TimePeriodID { get; set; }
+        public string UserID { get; set; }
+    
+        public virtual Day Day { get; set; }
+        public virtual TimePeriod TimePeriod { get; set; }
+        public virtual User User { get; set; }
     }
 }

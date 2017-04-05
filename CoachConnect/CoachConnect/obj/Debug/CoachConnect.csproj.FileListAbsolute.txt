@@ -49,9 +49,9 @@ C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.xml
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachInterest.resources
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FindCoachForm.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Form1.resources
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.LoginForm.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache

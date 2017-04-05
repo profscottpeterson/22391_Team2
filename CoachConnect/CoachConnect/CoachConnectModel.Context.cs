@@ -27,13 +27,17 @@ namespace CoachConnect
     
         public virtual DbSet<Building> Buildings { get; set; }
         public virtual DbSet<Course> Courses { get; set; }
-        public virtual DbSet<Department> Departments { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Room> Rooms { get; set; }
         public virtual DbSet<Session> Sessions { get; set; }
         public virtual DbSet<SessionRoster> SessionRosters { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TimePeriod> TimePeriods { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<Interest> Interests { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Day> Days { get; set; }
+        public virtual DbSet<UserAvailability> UserAvailabilities { get; set; }
         public virtual DbSet<UserCourse> UserCourses { get; set; }
+        public virtual DbSet<CoachInterest> CoachInterests { get; set; }
     }
 }
