@@ -28,22 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Scotty Pipen",
-            "Sunday",
-            "Afternoon",
-            "Javascript"}, -1);
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbInterest = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.dataGridAvailableCoaches = new System.Windows.Forms.DataGridView();
             this.btnInterestExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbInterest)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridAvailableCoaches)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -68,7 +60,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.listView1);
+            this.groupBox4.Controls.Add(this.dataGridAvailableCoaches);
             this.groupBox4.Location = new System.Drawing.Point(12, 167);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(536, 268);
@@ -76,41 +68,17 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Available Coaches";
             // 
-            // listView1
+            // dataGridAvailableCoaches
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
-            this.listView1.Location = new System.Drawing.Point(3, 16);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(527, 246);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Coach";
-            this.columnHeader1.Width = 122;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Day";
-            this.columnHeader2.Width = 82;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Time";
-            this.columnHeader3.Width = 93;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Subjects";
-            this.columnHeader4.Width = 84;
+            this.dataGridAvailableCoaches.AllowUserToAddRows = false;
+            this.dataGridAvailableCoaches.AllowUserToDeleteRows = false;
+            this.dataGridAvailableCoaches.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridAvailableCoaches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridAvailableCoaches.Location = new System.Drawing.Point(7, 20);
+            this.dataGridAvailableCoaches.Name = "dataGridAvailableCoaches";
+            this.dataGridAvailableCoaches.ReadOnly = true;
+            this.dataGridAvailableCoaches.Size = new System.Drawing.Size(523, 242);
+            this.dataGridAvailableCoaches.TabIndex = 1;
             // 
             // btnInterestExit
             // 
@@ -138,6 +106,7 @@
             this.Text = "Find Coach By Interest";
             ((System.ComponentModel.ISupportInitialize)(this.pbInterest)).EndInit();
             this.groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridAvailableCoaches)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -147,11 +116,7 @@
         private System.Windows.Forms.PictureBox pbInterest;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button btnInterestExit;
+        private System.Windows.Forms.DataGridView dataGridAvailableCoaches;
     }
 }

@@ -16,25 +16,9 @@
     <Property Name="CourseName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <Property Name="DepartmentID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Department" Relationship="Self.FK_Course_Department" FromRole="Course" ToRole="Department" />
     <NavigationProperty Name="Sessions" Relationship="Self.FK_Session_Course" FromRole="Course" ToRole="Session" />
-    <NavigationProperty Name="UserCourses" Relationship="Self.FK_UserCourse_Course" FromRole="Course" ToRole="UserCourse" />
-  </EntityType>
-  <EntityType Name="Department">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Courses" Relationship="Self.FK_Course_Department" FromRole="Department" ToRole="Course" />
-  </EntityType>
-  <EntityType Name="Role">
-    <Key>
-      <PropertyRef Name="RoleID" />
-    </Key>
-    <Property Name="RoleID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="UserCourses" Relationship="Self.FK_UserCourse_Role" FromRole="Role" ToRole="UserCourse" />
+    <NavigationProperty Name="Department" Relationship="db_sft_2172Model.FK_Course_Department" FromRole="Course" ToRole="Department" />
+    <NavigationProperty Name="UserCourses" Relationship="db_sft_2172Model.FK_UserCourse_Course" FromRole="Course" ToRole="UserCourse" />
   </EntityType>
   <EntityType Name="Room">
     <Key>
@@ -78,68 +62,6 @@
     <Property Name="RoleID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Session" Relationship="Self.FK_SessionRoster_Session" FromRole="SessionRoster" ToRole="Session" />
   </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="UserID" />
-    </Key>
-    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
-    <Property Name="IsCoach" Type="Boolean" Nullable="false" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="IsAvailableSundayMorning" Type="Boolean" />
-    <Property Name="IsAvailableSundayMidday" Type="Boolean" />
-    <Property Name="IsAvailableSundayAfternoon" Type="Boolean" />
-    <Property Name="IsAvailableSundayEvening" Type="Boolean" />
-    <Property Name="IsAvailableMondayMorning" Type="Boolean" />
-    <Property Name="IsAvailableMondayMidday" Type="Boolean" />
-    <Property Name="IsAvailableMondayAfternoon" Type="Boolean" />
-    <Property Name="IsAvailableMondayEvening" Type="Boolean" />
-    <Property Name="IsAvailableTuesdayMorning" Type="Boolean" />
-    <Property Name="IsAvailableTuesdayMidday" Type="Boolean" />
-    <Property Name="IsAvailableTuesdayAfternoon" Type="Boolean" />
-    <Property Name="IsAvailableTuesdayEvening" Type="Boolean" />
-    <Property Name="IsAvailableWednesdayMorning" Type="Boolean" />
-    <Property Name="IsAvailableWednesdayMidday" Type="Boolean" />
-    <Property Name="IsAvailableWednesdayAfternoon" Type="Boolean" />
-    <Property Name="IsAvailableWednesdayEvening" Type="Boolean" />
-    <Property Name="IsAvailableThursdayMorning" Type="Boolean" />
-    <Property Name="IsAvailableThursdayMidday" Type="Boolean" />
-    <Property Name="IsAvailableThursdayAfternoon" Type="Boolean" />
-    <Property Name="IsAvailableThursdayEvening" Type="Boolean" />
-    <Property Name="IsAvailableFridayMorning" Type="Boolean" />
-    <Property Name="IsAvailableFridayMidday" Type="Boolean" />
-    <Property Name="IsAvailableFridayAfternoon" Type="Boolean" />
-    <Property Name="IsAvailableFridayEvening" Type="Boolean" />
-    <Property Name="IsAvailableSaturdayMorning" Type="Boolean" />
-    <Property Name="IsAvailableSaturdayMidday" Type="Boolean" />
-    <Property Name="IsAvailableSaturdayAfternoon" Type="Boolean" />
-    <Property Name="IsAvailableSaturdayEvening" Type="Boolean" />
-    <NavigationProperty Name="UserCourses" Relationship="Self.FK_UserCourse_User" FromRole="User" ToRole="UserCourse" />
-  </EntityType>
-  <EntityType Name="UserCourse">
-    <Key>
-      <PropertyRef Name="UserID" />
-      <PropertyRef Name="RoleID" />
-    </Key>
-    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="RoleID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Course" Relationship="Self.FK_UserCourse_Course" FromRole="UserCourse" ToRole="Course" />
-    <NavigationProperty Name="Role" Relationship="Self.FK_UserCourse_Role" FromRole="UserCourse" ToRole="Role" />
-    <NavigationProperty Name="User" Relationship="Self.FK_UserCourse_User" FromRole="UserCourse" ToRole="User" />
-  </EntityType>
   <Association Name="FK_Room_Building">
     <End Role="Building" Type="Self.Building" Multiplicity="1" />
     <End Role="Room" Type="Self.Room" Multiplicity="*" />
@@ -152,18 +74,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Course_Department">
-    <End Role="Department" Type="Self.Department" Multiplicity="1" />
-    <End Role="Course" Type="Self.Course" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Department">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="Course">
-        <PropertyRef Name="DepartmentID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Session_Course">
     <End Role="Course" Type="Self.Course" Multiplicity="1" />
     <End Role="Session" Type="Self.Session" Multiplicity="*" />
@@ -173,30 +83,6 @@
       </Principal>
       <Dependent Role="Session">
         <PropertyRef Name="CourseID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_UserCourse_Course">
-    <End Role="Course" Type="Self.Course" Multiplicity="1" />
-    <End Role="UserCourse" Type="Self.UserCourse" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Course">
-        <PropertyRef Name="CourseID" />
-      </Principal>
-      <Dependent Role="UserCourse">
-        <PropertyRef Name="CourseID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_UserCourse_Role">
-    <End Role="Role" Type="Self.Role" Multiplicity="1" />
-    <End Role="UserCourse" Type="Self.UserCourse" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Role">
-        <PropertyRef Name="RoleID" />
-      </Principal>
-      <Dependent Role="UserCourse">
-        <PropertyRef Name="RoleID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -224,48 +110,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_UserCourse_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="UserCourse" Type="Self.UserCourse" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="UserCourse">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="db_sft_2172Entities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Buildings" EntityType="Self.Building" />
     <EntitySet Name="Courses" EntityType="Self.Course" />
-    <EntitySet Name="Departments" EntityType="Self.Department" />
-    <EntitySet Name="Roles" EntityType="Self.Role" />
     <EntitySet Name="Rooms" EntityType="Self.Room" />
     <EntitySet Name="Sessions" EntityType="Self.Session" />
     <EntitySet Name="SessionRosters" EntityType="Self.SessionRoster" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-    <EntitySet Name="Users" EntityType="Self.User" />
-    <EntitySet Name="UserCourses" EntityType="Self.UserCourse" />
     <AssociationSet Name="FK_Room_Building" Association="Self.FK_Room_Building">
       <End Role="Building" EntitySet="Buildings" />
       <End Role="Room" EntitySet="Rooms" />
     </AssociationSet>
-    <AssociationSet Name="FK_Course_Department" Association="Self.FK_Course_Department">
-      <End Role="Department" EntitySet="Departments" />
-      <End Role="Course" EntitySet="Courses" />
-    </AssociationSet>
     <AssociationSet Name="FK_Session_Course" Association="Self.FK_Session_Course">
       <End Role="Course" EntitySet="Courses" />
       <End Role="Session" EntitySet="Sessions" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserCourse_Course" Association="Self.FK_UserCourse_Course">
-      <End Role="Course" EntitySet="Courses" />
-      <End Role="UserCourse" EntitySet="UserCourses" />
-    </AssociationSet>
-    <AssociationSet Name="FK_UserCourse_Role" Association="Self.FK_UserCourse_Role">
-      <End Role="Role" EntitySet="Roles" />
-      <End Role="UserCourse" EntitySet="UserCourses" />
     </AssociationSet>
     <AssociationSet Name="FK_Session_Room" Association="Self.FK_Session_Room">
       <End Role="Room" EntitySet="Rooms" />
@@ -275,9 +132,236 @@
       <End Role="Session" EntitySet="Sessions" />
       <End Role="SessionRoster" EntitySet="SessionRosters" />
     </AssociationSet>
-    <AssociationSet Name="FK_UserCourse_User" Association="Self.FK_UserCourse_User">
+    <EntitySet Name="TimePeriods" EntityType="db_sft_2172Model.TimePeriod" />
+    <EntitySet Name="Departments" EntityType="db_sft_2172Model.Department" />
+    <EntitySet Name="Interests" EntityType="db_sft_2172Model.Interest" />
+    <EntitySet Name="Roles" EntityType="db_sft_2172Model.Role" />
+    <AssociationSet Name="FK_Course_Department" Association="db_sft_2172Model.FK_Course_Department">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Course" EntitySet="Courses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Department_Interest" Association="db_sft_2172Model.FK_Department_Interest">
+      <End Role="Interest" EntitySet="Interests" />
+      <End Role="Department" EntitySet="Departments" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="db_sft_2172Model.User" />
+    <EntitySet Name="Days" EntityType="db_sft_2172Model.Day" />
+    <EntitySet Name="UserAvailabilities" EntityType="db_sft_2172Model.UserAvailability" />
+    <AssociationSet Name="FK_UserAvailability_Day" Association="db_sft_2172Model.FK_UserAvailability_Day">
+      <End Role="Day" EntitySet="Days" />
+      <End Role="UserAvailability" EntitySet="UserAvailabilities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAvailability_TimePeriod" Association="db_sft_2172Model.FK_UserAvailability_TimePeriod">
+      <End Role="TimePeriod" EntitySet="TimePeriods" />
+      <End Role="UserAvailability" EntitySet="UserAvailabilities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserAvailability_User" Association="db_sft_2172Model.FK_UserAvailability_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserAvailability" EntitySet="UserAvailabilities" />
+    </AssociationSet>
+    <EntitySet Name="UserCourses" EntityType="db_sft_2172Model.UserCourse" />
+    <EntitySet Name="CoachInterests" EntityType="db_sft_2172Model.CoachInterest" />
+    <AssociationSet Name="FK_UserCourse_Course" Association="db_sft_2172Model.FK_UserCourse_Course">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="UserCourse" EntitySet="UserCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCourse_Role" Association="db_sft_2172Model.FK_UserCourse_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserCourse" EntitySet="UserCourses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserCourse_User" Association="db_sft_2172Model.FK_UserCourse_User">
       <End Role="User" EntitySet="Users" />
       <End Role="UserCourse" EntitySet="UserCourses" />
     </AssociationSet>
   </EntityContainer>
+  <EntityType Name="TimePeriod">
+    <Key>
+      <PropertyRef Name="TimePeriodID" />
+    </Key>
+    <Property Name="TimePeriodID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TimePeriodName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserAvailabilities" Relationship="db_sft_2172Model.FK_UserAvailability_TimePeriod" FromRole="TimePeriod" ToRole="UserAvailability" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InterestID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Courses" Relationship="db_sft_2172Model.FK_Course_Department" FromRole="Department" ToRole="Course" />
+    <NavigationProperty Name="Interest" Relationship="db_sft_2172Model.FK_Department_Interest" FromRole="Department" ToRole="Interest" />
+  </EntityType>
+  <EntityType Name="Interest">
+    <Key>
+      <PropertyRef Name="InterestID" />
+    </Key>
+    <Property Name="InterestID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="InterestName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Departments" Relationship="db_sft_2172Model.FK_Department_Interest" FromRole="Interest" ToRole="Department" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserCourses" Relationship="db_sft_2172Model.FK_UserCourse_Role" FromRole="Role" ToRole="UserCourse" />
+  </EntityType>
+  <Association Name="FK_Course_Department">
+    <End Type="db_sft_2172Model.Department" Role="Department" Multiplicity="1" />
+    <End Type="db_sft_2172Model.Course" Role="Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Department_Interest">
+    <End Type="db_sft_2172Model.Interest" Role="Interest" Multiplicity="0..1" />
+    <End Type="db_sft_2172Model.Department" Role="Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Interest">
+        <PropertyRef Name="InterestID" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="InterestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="IsCoach" Type="Boolean" Nullable="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="UserAvailabilities" Relationship="db_sft_2172Model.FK_UserAvailability_User" FromRole="User" ToRole="UserAvailability" />
+    <NavigationProperty Name="UserCourses" Relationship="db_sft_2172Model.FK_UserCourse_User" FromRole="User" ToRole="UserCourse" />
+  </EntityType>
+  <EntityType Name="Day">
+    <Key>
+      <PropertyRef Name="DayID" />
+    </Key>
+    <Property Name="DayID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DayName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UserAvailabilities" Relationship="db_sft_2172Model.FK_UserAvailability_Day" FromRole="Day" ToRole="UserAvailability" />
+  </EntityType>
+  <EntityType Name="UserAvailability">
+    <Key>
+      <PropertyRef Name="DayID" />
+      <PropertyRef Name="TimePeriodID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="DayID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TimePeriodID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Day" Relationship="db_sft_2172Model.FK_UserAvailability_Day" FromRole="UserAvailability" ToRole="Day" />
+    <NavigationProperty Name="TimePeriod" Relationship="db_sft_2172Model.FK_UserAvailability_TimePeriod" FromRole="UserAvailability" ToRole="TimePeriod" />
+    <NavigationProperty Name="User" Relationship="db_sft_2172Model.FK_UserAvailability_User" FromRole="UserAvailability" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_UserAvailability_Day">
+    <End Type="db_sft_2172Model.Day" Role="Day" Multiplicity="1" />
+    <End Type="db_sft_2172Model.UserAvailability" Role="UserAvailability" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Day">
+        <PropertyRef Name="DayID" />
+      </Principal>
+      <Dependent Role="UserAvailability">
+        <PropertyRef Name="DayID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAvailability_TimePeriod">
+    <End Type="db_sft_2172Model.TimePeriod" Role="TimePeriod" Multiplicity="1" />
+    <End Type="db_sft_2172Model.UserAvailability" Role="UserAvailability" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TimePeriod">
+        <PropertyRef Name="TimePeriodID" />
+      </Principal>
+      <Dependent Role="UserAvailability">
+        <PropertyRef Name="TimePeriodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserAvailability_User">
+    <End Type="db_sft_2172Model.User" Role="User" Multiplicity="1" />
+    <End Type="db_sft_2172Model.UserAvailability" Role="UserAvailability" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserAvailability">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="UserCourse">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Course" Relationship="db_sft_2172Model.FK_UserCourse_Course" FromRole="UserCourse" ToRole="Course" />
+    <NavigationProperty Name="Role" Relationship="db_sft_2172Model.FK_UserCourse_Role" FromRole="UserCourse" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="db_sft_2172Model.FK_UserCourse_User" FromRole="UserCourse" ToRole="User" />
+  </EntityType>
+  <EntityType Name="CoachInterest">
+    <Key>
+      <PropertyRef Name="Coach" />
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="Subjects" />
+      <PropertyRef Name="Interest" />
+    </Key>
+    <Property Name="Coach" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Subjects" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Interest" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_UserCourse_Course">
+    <End Type="db_sft_2172Model.Course" Role="Course" Multiplicity="1" />
+    <End Type="db_sft_2172Model.UserCourse" Role="UserCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="UserCourse">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCourse_Role">
+    <End Type="db_sft_2172Model.Role" Role="Role" Multiplicity="1" />
+    <End Type="db_sft_2172Model.UserCourse" Role="UserCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="UserCourse">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserCourse_User">
+    <End Type="db_sft_2172Model.User" Role="User" Multiplicity="1" />
+    <End Type="db_sft_2172Model.UserCourse" Role="UserCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UserCourse">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

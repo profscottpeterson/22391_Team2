@@ -20,10 +20,12 @@ namespace CoachConnect
             this.Courses = new HashSet<Course>();
         }
     
-        public string ID { get; set; }
-        public string Name { get; set; }
+        public string DepartmentID { get; set; }
+        public string DepartmentName { get; set; }
+        public string InterestID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Courses { get; set; }
+        public virtual Interest Interest { get; set; }
     }
 }
