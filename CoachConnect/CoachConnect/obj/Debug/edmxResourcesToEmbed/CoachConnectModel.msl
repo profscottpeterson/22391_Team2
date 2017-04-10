@@ -92,6 +92,8 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="db_sft_2172Model.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+          <ScalarProperty Name="IsStudent" ColumnName="IsStudent" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="IsCoach" ColumnName="IsCoach" />

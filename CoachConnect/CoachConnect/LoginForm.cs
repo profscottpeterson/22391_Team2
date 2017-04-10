@@ -48,18 +48,39 @@ namespace CoachConnect
                         // If not, display message and set focus to password text box.
                         if (userResult.Password == password)
                         {
+                            // Update static variable containing User ID
                             Program.CurrentUser = userResult.UserID;
-                            Program.OpenUserHomepage();
+
+                            // If any of these three values are true, update static variables
+                            if (userResult.IsStudent)
+                                Program.IsStudent = true;
+
+                            if (userResult.IsAdmin)
+                                Program.IsAdmin = true;
+
+                            if (userResult.IsCoach)
+                                Program.IsCoach = true;
+
+                            // Call method from Program class to display Role Page
+                            Program.RolePage();
+
+                            // Hide window once Role Form loads (we cannot close this window or the program will close)
                             this.Hide();
                         }
                         else
                         {
-                            MessageBox.Show("Invalid login...please try again!");
+                            MessageBox.Show("Sorry, this password does not match the desired username...please try again!");
+                            txtPassword.Text = "";
                             txtPassword.Focus();
                         }
                     }
                     else
                     {
+                        MessageBox.Show("Sorry, username was not found.  Please enter a valid username.");
+                        txtUsername.Text = "";
+                        txtPassword.Text = "";
+                        txtUsername.Focus();
+
                         throw new Exception("Login Error: Username not in database");
                     }
                 }
