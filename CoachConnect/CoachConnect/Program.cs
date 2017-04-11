@@ -18,6 +18,7 @@ namespace CoachConnect
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
             Application.Run(new LoginForm());
+            //Application.Run(new frmCoachsSchedule());
         }
 
         public static void OpenUserHomepage()
@@ -35,6 +36,7 @@ namespace CoachConnect
                 if (userResult.IsCoach)
                 {
                     var newForm = new FindCoachForm();
+                    //var newForm = new frmCoachsSchedule();
                     newForm.Show();
                 }
                 else

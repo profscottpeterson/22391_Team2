@@ -20,7 +20,7 @@
         <EntityTypeShape EntityType="db_sft_2172Model.Role" Width="1.5" PointX="5.375" PointY="0.875" />
         <AssociationConnector Association="db_sft_2172Model.FK_Course_Department" />
         <AssociationConnector Association="db_sft_2172Model.FK_Department_Interest" />
-        <EntityTypeShape EntityType="db_sft_2172Model.User" Width="1.5" PointX="6" PointY="11" />
+        <EntityTypeShape EntityType="db_sft_2172Model.User" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
         <EntityTypeShape EntityType="db_sft_2172Model.Day" Width="1.5" PointX="10.25" PointY="15" />
         <EntityTypeShape EntityType="db_sft_2172Model.UserAvailability" Width="1.5" PointX="6.75" PointY="14.25" />
         <AssociationConnector Association="db_sft_2172Model.FK_UserAvailability_Day" />
@@ -31,6 +31,7 @@
         <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_Course" />
         <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_Role" />
         <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_User" />
+        <EntityTypeShape EntityType="db_sft_2172Model.sysdiagram" Width="1.5" PointX="9.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
