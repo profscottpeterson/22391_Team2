@@ -26,9 +26,24 @@ namespace CoachConnect
             int dayparts = dayPartCount();
             const int startX = 90;
             const int startY = 300;
-            //Program.CurrentUser = "345678901";
-            pbProfilePic.ImageLocation = FetchPic(Program.CurrentUser);
+            string[] dayNames = new string[7]{ "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
 
+            pbProfilePic.ImageLocation = FetchPic();
+            lblCoachName.Text = fetchCoach();
+            lblUsername.Text = Program.CurrentUser;
+            this.Text = fetchCoach();
+
+            for (int i = 0; i< days; i++)
+            {
+                Label lblDayTitle = new Label();
+                lblDayTitle.Size = new Size(WIDTH, HEIGHT);
+                lblDayTitle.Font = new Font(lblDayTitle.Font.FontFamily, 11);
+                lblDayTitle.TextAlign = ContentAlignment.MiddleCenter;
+                Point currentLocation = new Point(startX+(i*WIDTH), startY - HEIGHT);
+                lblDayTitle.Location = currentLocation;
+                lblDayTitle.Text = dayNames[i];
+                this.Controls.Add(lblDayTitle);
+            }
             for (int y = 0; y< dayparts;y++)
             {
                 for (int x = 0; x < days; x++)
@@ -69,21 +84,35 @@ namespace CoachConnect
                 return dayParts.Count();
             }
         }
-        public string FetchPic(String currentUser)
+        public string FetchPic()
         {
             String url = "http://imgur.com/X8XhA6M";
-            
-                using (var context = new db_sft_2172Entities())
-                {
-                    var userQuery = from u in context.Users
-                                    where u.UserID.Equals(currentUser)
-                                    select u;
-                    url= userQuery.First<User>().ProfilePic;
-                }
-                
-                return url;
-            
+            using (var context = new db_sft_2172Entities())
+            {
+                var userQuery = from u in context.Users
+                                where u.UserID.Equals(Program.CurrentUser)
+                                select u;
+                url= userQuery.First<User>().ProfilePic;
+            }
+            return url;
         }
 
+        public string fetchCoach()
+        {
+            string coach = "";
+            using (var context = new db_sft_2172Entities())
+            {
+              var coachResult = from u in context.Users
+                        where u.UserID.Equals(Program.CurrentUser)
+                        select u;
+                coach = coachResult.First<User>().Name;
+            }
+            return coach;
+        }
+
+        private void frmCoachsSchedule_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
