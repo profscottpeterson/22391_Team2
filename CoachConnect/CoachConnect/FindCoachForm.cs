@@ -89,5 +89,115 @@ namespace CoachConnect
         {
             SelectedInterest(btnTransport.BackgroundImage,lblTransport.Text);
         }
+
+        private void FindCoachForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.loginForm.logout();
+        }
+
+        private void btnSearchTime_Click(object sender, EventArgs e)
+        {
+            coachTimeQuery();
+        }
+
+        private void coachTimeQuery()
+        {
+            try
+            {
+                using (var context = new db_sft_2172Entities())
+                {
+                    // Access view and pull data
+                    var coachByTimeQuery =
+                        from coachTimes in context.CoachByTimes
+                        select coachTimes;
+
+                    var timeQuery = coachByTimeQuery.Where(t => t.Time == "None");
+
+                    if (this.chkMorning.Checked)
+                    {
+                        timeQuery = timeQuery.Union(coachByTimeQuery.Where(t => t.Time == "Morning"));
+                    }
+
+                    if (this.chkMidday.Checked)
+                    { 
+                        timeQuery = timeQuery.Union(coachByTimeQuery.Where(t => t.Time == "Midday"));
+                    }
+
+                    if (this.chkAfternoon.Checked)
+                    {
+                        timeQuery = timeQuery.Union(coachByTimeQuery.Where(t => t.Time == "Afternoon"));
+                    }
+
+                    if (this.chkEvening.Checked)
+                    {
+                        timeQuery = timeQuery.Union(coachByTimeQuery.Where(t => t.Time == "Evening"));
+                    }
+
+                    // Work through "day" query
+                    var dayQuery = coachByTimeQuery.Where(t => t.Day == "None");
+
+
+                    if (this.chkMon.Checked)
+                    {
+                        dayQuery = dayQuery.Union(coachByTimeQuery.Where(t => t.Day == "Monday"));
+                    }
+
+                    if (this.chkTue.Checked)
+                    {
+                        dayQuery = dayQuery.Union(coachByTimeQuery.Where(t => t.Day == "Tuesday"));
+                    }
+
+                    if (this.chkWed.Checked)
+                    {
+                        dayQuery = dayQuery.Union(coachByTimeQuery.Where(t => t.Day == "Wednesday"));
+                    }
+
+                    if (this.chkThu.Checked)
+                    {
+                        dayQuery = dayQuery.Union(coachByTimeQuery.Where(d => d.Day == "Thursday"));
+                    }
+
+                    if (this.chkFri.Checked)
+                    {
+                        dayQuery = dayQuery.Union(coachByTimeQuery.Where(d => d.Day == "Friday"));
+                    }
+
+                    if (this.chkSat.Checked)
+                    {
+                        dayQuery = dayQuery.Union(coachByTimeQuery.Where(d => d.Day == "Saturday"));
+                    }
+
+                    if (this.chkSun.Checked)
+                    {
+                        dayQuery = dayQuery.Union(coachByTimeQuery.Where(d => d.Day == "Sunday"));
+                    }
+
+
+                    // Add results to data grid view
+                    if ((this.chkSun.Checked || this.chkMon.Checked || this.chkTue.Checked ||
+                         this.chkWed.Checked || this.chkThu.Checked || this.chkFri.Checked || this.chkSat.Checked) &&
+                        (this.chkMorning.Checked || this.chkMidday.Checked || this.chkAfternoon.Checked || this.chkEvening.Checked))
+                    {
+                        dataGridCoachesByTime.DataSource = dayQuery.Intersect(timeQuery).ToList();
+                    }
+                    else if (this.chkSun.Checked || this.chkMon.Checked || this.chkTue.Checked ||
+                             this.chkWed.Checked || this.chkThu.Checked || this.chkFri.Checked || this.chkSat.Checked)
+                    {
+                        dataGridCoachesByTime.DataSource = dayQuery.ToList();
+                    }
+                    else if (this.chkMorning.Checked || this.chkMidday.Checked || this.chkAfternoon.Checked || this.chkEvening.Checked)
+                    {
+                        dataGridCoachesByTime.DataSource = timeQuery.ToList();
+                    }
+                    else // nothing should be selected
+                        dataGridCoachesByTime.DataSource = coachByTimeQuery.ToList();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+        }
     }
 }

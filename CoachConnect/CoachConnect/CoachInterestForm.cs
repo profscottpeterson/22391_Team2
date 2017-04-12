@@ -56,9 +56,6 @@ namespace CoachConnect
         /// </summary>
         private void getCoachesByInterest()
         {
-            MessageBox.Show("testing getCoachesByInterest()");
-
-            
             try
             {
                 using (var context = new db_sft_2172Entities())

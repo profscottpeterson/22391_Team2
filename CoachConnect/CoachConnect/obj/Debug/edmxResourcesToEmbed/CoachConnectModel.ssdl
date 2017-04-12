@@ -121,6 +121,20 @@
     <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.CoachByTime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CoachByTime">
+    <Key>
+      <PropertyRef Name="Coach" />
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="Subjects" />
+    </Key>
+    <Property Name="Coach" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Subjects" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="CoachInterest">
     <Key>
@@ -258,6 +272,14 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAvailability" EntityType="Self.UserAvailability" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserCourse" EntityType="Self.UserCourse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CoachByTime" EntityType="Self.CoachByTime" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CoachByTime].[Coach] AS [Coach], 
+    [CoachByTime].[Time] AS [Time], 
+    [CoachByTime].[Day] AS [Day], 
+    [CoachByTime].[Subjects] AS [Subjects]
+    FROM [dbo].[CoachByTime] AS [CoachByTime]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="CoachInterest" EntityType="Self.CoachInterest" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [CoachInterest].[Coach] AS [Coach], 

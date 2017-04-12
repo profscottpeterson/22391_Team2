@@ -63,19 +63,19 @@ namespace CoachConnect
 
                 var userResult = userQuery.FirstOrDefault<User>();
 
-                if (roleText == coachRoleName)
+                if (roleText == studentRoleName)
                 {
                     var newForm = new FindCoachForm();
                     newForm.Show();
                 }
-                else if (roleText == studentRoleName)
+                else if (roleText == coachRoleName)
                 {
-                    //var newForm = new FindStudentFom();
+                    //var newForm = new FindStudentForm();
                     //newForm.Show();
                 }
                 else if (roleText == adminRoleName)
                 {
-                    //var newForm = new FindStudentFom();
+                    //var newForm = new AdminForm();
                     //newForm.Show();
                 }
             }

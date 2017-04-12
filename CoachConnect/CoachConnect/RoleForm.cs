@@ -38,14 +38,7 @@ namespace CoachConnect
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            // Clear out all static variables related to user
-            Program.CurrentUser = null;
-            Program.IsStudent = false;
-            Program.IsCoach = false;
-            Program.IsAdmin = false;
-
-            // Show hidden login form
-            Program.loginForm.Show();
+            Program.loginForm.logout();
 
             // Close this window
             this.Close();

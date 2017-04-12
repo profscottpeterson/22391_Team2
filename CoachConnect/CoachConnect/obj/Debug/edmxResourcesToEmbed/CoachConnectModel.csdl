@@ -173,6 +173,7 @@
       <End Role="User" EntitySet="Users" />
       <End Role="UserCourse" EntitySet="UserCourses" />
     </AssociationSet>
+    <EntitySet Name="CoachByTimes" EntityType="db_sft_2172Model.CoachByTime" />
   </EntityContainer>
   <EntityType Name="TimePeriod">
     <Key>
@@ -366,4 +367,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="CoachByTime">
+    <Key>
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="Coach" />
+      <PropertyRef Name="Subjects" />
+    </Key>
+    <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Coach" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Subjects" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

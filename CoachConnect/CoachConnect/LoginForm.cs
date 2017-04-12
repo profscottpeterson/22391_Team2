@@ -27,7 +27,11 @@ namespace CoachConnect
             string usernameText = txtUsername.Text;
             string passwordText = txtPassword.Text;
 
+            btnLogin.Enabled = false;
+
             login(usernameText, passwordText);
+
+            btnLogin.Enabled = true;
         }
 
         private void login(string username, string password)
@@ -40,10 +44,10 @@ namespace CoachConnect
                                     where u.UserID.Equals(username)
                                     select u;
 
-                    var userResult = userQuery.FirstOrDefault<User>();
-
-                    if (userResult.UserID == username)
+                    if (userQuery.Count<User>() > 0)
                     {
+                        var userResult = userQuery.FirstOrDefault<User>();
+
                         // Check if password is correct.
                         // If not, display message and set focus to password text box.
                         if (userResult.Password == password)
@@ -81,7 +85,7 @@ namespace CoachConnect
                         txtPassword.Text = "";
                         txtUsername.Focus();
 
-                        throw new Exception("Login Error: Username not in database");
+                        //throw new Exception("Login Error: Username not in database");
                     }
                 }
             }
@@ -89,6 +93,18 @@ namespace CoachConnect
             {
                 ex.ToString();
             }
+        }
+
+        public void logout()
+        {
+            // Clear out all static variables related to user
+            Program.CurrentUser = null;
+            Program.IsStudent = false;
+            Program.IsCoach = false;
+            Program.IsAdmin = false;
+
+            // Show hidden login form
+            Program.loginForm.Show();
         }
 
     }
