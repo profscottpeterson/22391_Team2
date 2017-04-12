@@ -84,6 +84,12 @@
     <Compile Include="CoachInterestForm.Designer.cs">
       <DependentUpon>CoachInterestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CoachsSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoachsSchedule.Designer.cs">
+      <DependentUpon>CoachsSchedule.cs</DependentUpon>
+    </Compile>
     <Compile Include="Course.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -122,6 +128,9 @@
     <Compile Include="SessionRoster.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TimePeriod.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -136,6 +145,9 @@
     </Compile>
     <EmbeddedResource Include="CoachInterestForm.resx">
       <DependentUpon>CoachInterestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoachsSchedule.resx">
+      <DependentUpon>CoachsSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FindCoachForm.resx">
       <DependentUpon>FindCoachForm.cs</DependentUpon>
