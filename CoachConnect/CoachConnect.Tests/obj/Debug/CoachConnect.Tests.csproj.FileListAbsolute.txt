@@ -18,3 +18,13 @@ C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.dll
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.pdb
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.exe
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.dll
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.pdb
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.xml
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb

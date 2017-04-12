@@ -74,3 +74,4 @@ D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConne
 D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AvailableCoarches.resources
 D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditProfile.resources
 D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ResetPassword.resources
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
