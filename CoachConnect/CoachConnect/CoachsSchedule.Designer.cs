@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblCoachName = new System.Windows.Forms.Label();
             this.lblUsername = new System.Windows.Forms.Label();
+            this.lblScheduleTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilePic)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,11 +121,21 @@
             this.lblUsername.Text = "user";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // lblScheduleTitle
+            // 
+            this.lblScheduleTitle.AutoSize = true;
+            this.lblScheduleTitle.Location = new System.Drawing.Point(333, 80);
+            this.lblScheduleTitle.Name = "lblScheduleTitle";
+            this.lblScheduleTitle.Size = new System.Drawing.Size(42, 13);
+            this.lblScheduleTitle.TabIndex = 18;
+            this.lblScheduleTitle.Text = "hi there";
+            // 
             // frmCoachsSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 481);
+            this.Controls.Add(this.lblScheduleTitle);
             this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.lblCoachName);
             this.Controls.Add(this.label1);
@@ -135,9 +146,9 @@
             this.Controls.Add(this.label9);
             this.Name = "frmCoachsSchedule";
             this.Text = " Coaches Page";
-            this.Load += new System.EventHandler(this.frmCoachsSchedule_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbProfilePic)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -150,5 +161,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCoachName;
         private System.Windows.Forms.Label lblUsername;
+        private System.Windows.Forms.Label lblScheduleTitle;
     }
 }

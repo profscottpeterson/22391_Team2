@@ -11,6 +11,7 @@ namespace CoachConnect
 {
     public partial class frmCoachsSchedule : Form
     {
+        Label prevLabel;
         public frmCoachsSchedule()
         {
             InitializeComponent();
@@ -55,7 +56,7 @@ namespace CoachConnect
                     lblBlock.Size = new Size(WIDTH, HEIGHT);
                     lblBlock.Text = lblBlock.Name;
                     lblBlock.TextAlign = ContentAlignment.MiddleCenter;
-                    lblBlock.BackColor = Color.Red;
+                    lblBlock.BackColor = Color.LightPink;
                     lblBlock.Click += (s,ee) => { blockClicked(lblBlock); };
                     this.Controls.Add(lblBlock);
                 }
@@ -64,7 +65,16 @@ namespace CoachConnect
 
         public void blockClicked(Label block)
         {
-            MessageBox.Show(block.Text);
+            if (prevLabel!=null)
+            {
+                prevLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            }
+            prevLabel = block;
+            lblScheduleTitle.Text = block.Text;
+            block.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            
+            
+
         }
         public int dayCount()
         {
@@ -108,11 +118,6 @@ namespace CoachConnect
                 coach = coachResult.First<User>().Name;
             }
             return coach;
-        }
-
-        private void frmCoachsSchedule_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
