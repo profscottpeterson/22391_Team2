@@ -77,6 +77,7 @@
             this.lblAgri = new System.Windows.Forms.Label();
             this.btnAgri = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnScheduleAppointment = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnSearchTime = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -148,7 +149,7 @@
             this.tabControl1.Location = new System.Drawing.Point(19, 18);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(517, 430);
+            this.tabControl1.Size = new System.Drawing.Size(517, 451);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -157,7 +158,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(509, 404);
+            this.tabPage1.Size = new System.Drawing.Size(509, 425);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Home";
             // 
@@ -170,7 +171,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(509, 404);
+            this.tabPage2.Size = new System.Drawing.Size(509, 425);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Find Coach by Name";
             // 
@@ -380,7 +381,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(509, 404);
+            this.tabPage3.Size = new System.Drawing.Size(509, 425);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Find Coach By Interest";
             // 
@@ -651,6 +652,7 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage4.Controls.Add(this.btnScheduleAppointment);
             this.tabPage4.Controls.Add(this.groupBox4);
             this.tabPage4.Controls.Add(this.btnSearchTime);
             this.tabPage4.Controls.Add(this.groupBox3);
@@ -658,9 +660,19 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(509, 404);
+            this.tabPage4.Size = new System.Drawing.Size(509, 425);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Find Coach By Time";
+            // 
+            // btnScheduleAppointment
+            // 
+            this.btnScheduleAppointment.Location = new System.Drawing.Point(193, 396);
+            this.btnScheduleAppointment.Name = "btnScheduleAppointment";
+            this.btnScheduleAppointment.Size = new System.Drawing.Size(125, 23);
+            this.btnScheduleAppointment.TabIndex = 4;
+            this.btnScheduleAppointment.Text = "Schedule Appointment";
+            this.btnScheduleAppointment.UseVisualStyleBackColor = true;
+            this.btnScheduleAppointment.Click += new System.EventHandler(this.btnScheduleAppointment_Click);
             // 
             // groupBox4
             // 
@@ -898,6 +910,7 @@
             this.dataGridCoachesByTime.Location = new System.Drawing.Point(35, 303);
             this.dataGridCoachesByTime.Name = "dataGridCoachesByTime";
             this.dataGridCoachesByTime.ReadOnly = true;
+            this.dataGridCoachesByTime.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridCoachesByTime.Size = new System.Drawing.Size(485, 129);
             this.dataGridCoachesByTime.TabIndex = 4;
             // 
@@ -1005,5 +1018,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnSearchTime;
         private System.Windows.Forms.DataGridView dataGridCoachesByTime;
+        private System.Windows.Forms.Button btnScheduleAppointment;
     }
 }

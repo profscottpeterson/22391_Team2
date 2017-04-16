@@ -190,14 +190,92 @@ namespace CoachConnect
                         dataGridCoachesByTime.DataSource = timeQuery.ToList();
                     }
                     else // nothing should be selected
+                    {
                         dataGridCoachesByTime.DataSource = coachByTimeQuery.ToList();
+                    }
 
+                    dataGridCoachesByTime.Columns["UserID"].Visible = false;
+                    dataGridCoachesByTime.Columns["UserID"].DisplayIndex = 0;
+                    dataGridCoachesByTime.Columns["Coach"].DisplayIndex = 1;
+                    dataGridCoachesByTime.Columns["Time"].DisplayIndex = 2;
+                    dataGridCoachesByTime.Columns["Day"].DisplayIndex = 3;
+                    dataGridCoachesByTime.Columns["Subject"].DisplayIndex = 4;
                 }
             }
             catch (Exception ex)
             {
                 ex.ToString();
             }
+
+
+
+            return;
+        }
+
+        private void btnScheduleAppointment_Click(object sender, EventArgs e)
+        {
+            string selectedCoachID;
+            string selectedCoachName;
+            string selectedTime;
+            string selectedDay;
+            string selectedCourseID;
+            string selectedCourse;
+
+
+            if (dataGridCoachesByTime.SelectedRows == null)
+            {
+                MessageBox.Show("Please select a row before continuing");
+                return;
+            }
+            else
+            {
+                DataGridViewRow selectedRow = dataGridCoachesByTime.SelectedRows[0];
+                selectedCoachID = selectedRow.Cells[0].Value.ToString();
+                selectedCoachName = selectedRow.Cells[1].Value.ToString();
+                selectedTime = selectedRow.Cells[2].Value.ToString();
+                selectedDay = selectedRow.Cells[3].Value.ToString();
+                selectedCourseID = selectedRow.Cells[4].Value.ToString();
+                selectedCourse = selectedRow.Cells[5].Value.ToString();
+
+                DialogResult result = MessageBox.Show(
+                    "Are you sure you want to create this appointment?\n"
+                        + "Coach: " + selectedCoachName + "\n"
+                        + "Time: " + selectedTime + "\n"
+                        + "Day: " + selectedDay + "\n"
+                        + "Course ID: " + selectedCourseID + "\n"
+                        + "Selected Course: " + selectedCourse,
+                    "Confirmation",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+                else
+                {
+                    ///TODO: Stub to handle saving data to database (add linq query)
+                    SessionRoster sr = new SessionRoster()
+                    {
+                        SessionID = "WEB10152154MonAM",
+                        UserID = selectedCoachID,
+                        RoleID = "Student"
+                    };
+
+                    using (var context = new db_sft_2172Entities())
+                    {
+                        try
+                        {
+                            context.SessionRosters.Add(sr);
+                            context.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            ex.ToString();
+                        }
+                    }
+                }
+            }
+
+            return;
         }
     }
 }

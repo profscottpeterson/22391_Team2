@@ -324,10 +324,14 @@
       <PropertyRef Name="Time" />
       <PropertyRef Name="Subjects" />
       <PropertyRef Name="Interest" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="CourseID" />
     </Key>
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Coach" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Subjects" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Interest" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
@@ -369,14 +373,18 @@
   </Association>
   <EntityType Name="CoachByTime">
     <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Coach" />
       <PropertyRef Name="Time" />
       <PropertyRef Name="Day" />
-      <PropertyRef Name="Coach" />
-      <PropertyRef Name="Subjects" />
+      <PropertyRef Name="Subject" />
+      <PropertyRef Name="CourseID" />
     </Key>
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Coach" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Coach" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Subjects" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Subject" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

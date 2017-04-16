@@ -14,9 +14,11 @@ namespace CoachConnect
     
     public partial class CoachByTime
     {
+        public string UserID { get; set; }
+        public string Coach { get; set; }
         public string Time { get; set; }
         public string Day { get; set; }
-        public string Coach { get; set; }
-        public string Subjects { get; set; }
+        public string CourseID { get; set; }
+        public string Subject { get; set; }
     }
 }
