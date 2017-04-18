@@ -55,3 +55,6 @@ C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.LoginForm.resources
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
