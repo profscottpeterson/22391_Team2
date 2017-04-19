@@ -15,22 +15,22 @@ namespace CoachConnect
 using System;
     using System.Collections.Generic;
     
-public partial class CoachInterest
+public partial class CoachByName
 {
-
-    public string Coach { get; set; }
-
-    public string Day { get; set; }
-
-    public string Time { get; set; }
-
-    public string Subjects { get; set; }
-
-    public string Interest { get; set; }
 
     public string UserID { get; set; }
 
-    public string CourseID { get; set; }
+    public string LastName { get; set; }
+
+    public string FirstName { get; set; }
+
+    public bool IsCoach { get; set; }
+
+    public bool IsActive { get; set; }
+
+    public Nullable<System.DateTime> ActiveCoachSince { get; set; }
+
+    public string ProfilePic { get; set; }
 
 }
 
