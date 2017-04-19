@@ -98,11 +98,16 @@
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsStudent" Type="bit" Nullable="false" />
           <Property Name="IsAdmin" Type="bit" Nullable="false" />
           <Property Name="IsCoach" Type="bit" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ProfilePic" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActiveCoachSince" Type="date" />
         </EntityType>
         <EntityType Name="UserAvailability">
           <Key>
@@ -124,18 +129,56 @@
           <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.CoachByName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CoachByName">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="IsCoach" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsCoach" Type="bit" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="ActiveCoachSince" Type="date" />
+          <Property Name="ProfilePic" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.CoachByTime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CoachByTime">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="Day" />
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="Subject" />
+          </Key>
+          <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Coach" Type="nvarchar" MaxLength="201" />
+          <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CoachInterest">
           <Key>
-            <PropertyRef Name="Coach" />
+            <PropertyRef Name="UserID" />
             <PropertyRef Name="Day" />
             <PropertyRef Name="Time" />
+            <PropertyRef Name="CourseID" />
             <PropertyRef Name="Subjects" />
             <PropertyRef Name="Interest" />
+            <PropertyRef Name="Coach" />
           </Key>
-          <Property Name="Coach" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Coach" Type="nvarchar" MaxLength="201" Nullable="false" />
           <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Subjects" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Interest" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
@@ -261,11 +304,34 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAvailability" EntityType="Self.UserAvailability" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCourse" EntityType="Self.UserCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoachByName" EntityType="Self.CoachByName" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CoachByName].[UserID] AS [UserID], 
+    [CoachByName].[LastName] AS [LastName], 
+    [CoachByName].[FirstName] AS [FirstName], 
+    [CoachByName].[IsCoach] AS [IsCoach], 
+    [CoachByName].[IsActive] AS [IsActive], 
+    [CoachByName].[ActiveCoachSince] AS [ActiveCoachSince], 
+    [CoachByName].[ProfilePic] AS [ProfilePic]
+    FROM [dbo].[CoachByName] AS [CoachByName]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CoachByTime" EntityType="Self.CoachByTime" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CoachByTime].[UserID] AS [UserID], 
+    [CoachByTime].[Coach] AS [Coach], 
+    [CoachByTime].[Time] AS [Time], 
+    [CoachByTime].[Day] AS [Day], 
+    [CoachByTime].[CourseID] AS [CourseID], 
+    [CoachByTime].[Subject] AS [Subject]
+    FROM [dbo].[CoachByTime] AS [CoachByTime]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="CoachInterest" EntityType="Self.CoachInterest" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
+    [CoachInterest].[UserID] AS [UserID], 
     [CoachInterest].[Coach] AS [Coach], 
     [CoachInterest].[Day] AS [Day], 
     [CoachInterest].[Time] AS [Time], 
+    [CoachInterest].[CourseID] AS [CourseID], 
     [CoachInterest].[Subjects] AS [Subjects], 
     [CoachInterest].[Interest] AS [Interest]
     FROM [dbo].[CoachInterest] AS [CoachInterest]</DefiningQuery>
@@ -484,6 +550,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
             <End Role="User" EntitySet="Users" />
             <End Role="UserCourse" EntitySet="UserCourses" />
           </AssociationSet>
+          <EntitySet Name="CoachByNames" EntityType="db_sft_2172Model.CoachByName" />
+          <EntitySet Name="CoachByTimes" EntityType="db_sft_2172Model.CoachByTime" />
         </EntityContainer>
         <EntityType Name="TimePeriod">
           <Key>
@@ -548,13 +616,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
           <Property Name="IsCoach" Type="Boolean" Nullable="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="UserAvailabilities" Relationship="db_sft_2172Model.FK_UserAvailability_User" FromRole="User" ToRole="UserAvailability" />
           <NavigationProperty Name="UserCourses" Relationship="db_sft_2172Model.FK_UserCourse_User" FromRole="User" ToRole="UserCourse" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsStudent" Type="Boolean" Nullable="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProfilePic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveCoachSince" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Day">
           <Key>
@@ -632,12 +705,16 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
             <PropertyRef Name="Time" />
             <PropertyRef Name="Subjects" />
             <PropertyRef Name="Interest" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="CourseID" />
           </Key>
-          <Property Name="Coach" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Coach" Type="String" Nullable="false" MaxLength="201" FixedLength="false" Unicode="true" />
           <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="Subjects" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Interest" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_UserCourse_Course">
           <End Type="db_sft_2172Model.Course" Role="Course" Multiplicity="1" />
@@ -675,6 +752,36 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="CoachByName">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="IsCoach" />
+            <PropertyRef Name="IsActive" />
+          </Key>
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsCoach" Type="Boolean" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="ActiveCoachSince" Type="DateTime" Precision="0" />
+          <Property Name="ProfilePic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CoachByTime">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="Day" />
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="Subject" />
+          </Key>
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Coach" Type="String" MaxLength="201" FixedLength="false" Unicode="true" />
+          <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -772,11 +879,16 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="db_sft_2172Model.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="ActiveCoachSince" ColumnName="ActiveCoachSince" />
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="IsStudent" ColumnName="IsStudent" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="IsActive" ColumnName="IsActive" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="IsCoach" ColumnName="IsCoach" />
                 <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -810,11 +922,38 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <EntitySetMapping Name="CoachInterests">
             <EntityTypeMapping TypeName="db_sft_2172Model.CoachInterest">
               <MappingFragment StoreEntitySet="CoachInterest">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Interest" ColumnName="Interest" />
                 <ScalarProperty Name="Subjects" ColumnName="Subjects" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
                 <ScalarProperty Name="Coach" ColumnName="Coach" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoachByNames">
+            <EntityTypeMapping TypeName="db_sft_2172Model.CoachByName">
+              <MappingFragment StoreEntitySet="CoachByName">
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="ActiveCoachSince" ColumnName="ActiveCoachSince" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsCoach" ColumnName="IsCoach" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoachByTimes">
+            <EntityTypeMapping TypeName="db_sft_2172Model.CoachByTime">
+              <MappingFragment StoreEntitySet="CoachByTime">
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Coach" ColumnName="Coach" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

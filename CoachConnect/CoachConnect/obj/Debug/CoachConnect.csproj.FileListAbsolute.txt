@@ -55,3 +55,16 @@ C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.LoginForm.resources
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachInterest.resources
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.btnCreateC.resources
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.CreateStudent.resources
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.DeleteCoach.resources
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.DeleteStudent.resources
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FindCoachForm.resources
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AdminForm.resources
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.LoginForm.resources
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UpdateCoach.resources
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UpdateStudent.resources
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
+C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config

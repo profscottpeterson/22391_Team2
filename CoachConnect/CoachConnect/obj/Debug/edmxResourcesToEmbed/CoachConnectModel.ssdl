@@ -93,11 +93,15 @@
       <PropertyRef Name="UserID" />
     </Key>
     <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsStudent" Type="bit" Nullable="false" />
     <Property Name="IsAdmin" Type="bit" Nullable="false" />
     <Property Name="IsCoach" Type="bit" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ProfilePic" Type="nvarchar" MaxLength="50" />
+    <Property Name="ActiveCoachSince" Type="date" />
   </EntityType>
   <EntityType Name="UserAvailability">
     <Key>
@@ -119,18 +123,56 @@
     <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.CoachByName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CoachByName">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="IsCoach" />
+      <PropertyRef Name="IsActive" />
+    </Key>
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsCoach" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ActiveCoachSince" Type="date" />
+    <Property Name="ProfilePic" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.CoachByTime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CoachByTime">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="Subject" />
+    </Key>
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Coach" Type="nvarchar" MaxLength="201" />
+    <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="CoachInterest">
     <Key>
-      <PropertyRef Name="Coach" />
+      <PropertyRef Name="UserID" />
       <PropertyRef Name="Day" />
       <PropertyRef Name="Time" />
+      <PropertyRef Name="CourseID" />
       <PropertyRef Name="Subjects" />
       <PropertyRef Name="Interest" />
+      <PropertyRef Name="Coach" />
     </Key>
-    <Property Name="Coach" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Coach" Type="nvarchar" MaxLength="201" Nullable="false" />
     <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Subjects" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Interest" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
@@ -256,11 +298,34 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAvailability" EntityType="Self.UserAvailability" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserCourse" EntityType="Self.UserCourse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CoachByName" EntityType="Self.CoachByName" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CoachByName].[UserID] AS [UserID], 
+    [CoachByName].[LastName] AS [LastName], 
+    [CoachByName].[FirstName] AS [FirstName], 
+    [CoachByName].[IsCoach] AS [IsCoach], 
+    [CoachByName].[IsActive] AS [IsActive], 
+    [CoachByName].[ActiveCoachSince] AS [ActiveCoachSince], 
+    [CoachByName].[ProfilePic] AS [ProfilePic]
+    FROM [dbo].[CoachByName] AS [CoachByName]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CoachByTime" EntityType="Self.CoachByTime" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CoachByTime].[UserID] AS [UserID], 
+    [CoachByTime].[Coach] AS [Coach], 
+    [CoachByTime].[Time] AS [Time], 
+    [CoachByTime].[Day] AS [Day], 
+    [CoachByTime].[CourseID] AS [CourseID], 
+    [CoachByTime].[Subject] AS [Subject]
+    FROM [dbo].[CoachByTime] AS [CoachByTime]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="CoachInterest" EntityType="Self.CoachInterest" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
+    [CoachInterest].[UserID] AS [UserID], 
     [CoachInterest].[Coach] AS [Coach], 
     [CoachInterest].[Day] AS [Day], 
     [CoachInterest].[Time] AS [Time], 
+    [CoachInterest].[CourseID] AS [CourseID], 
     [CoachInterest].[Subjects] AS [Subjects], 
     [CoachInterest].[Interest] AS [Interest]
     FROM [dbo].[CoachInterest] AS [CoachInterest]</DefiningQuery>
