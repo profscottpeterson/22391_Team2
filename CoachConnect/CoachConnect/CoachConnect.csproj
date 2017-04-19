@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminForm4-19-2017.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForm4-19-2017.designer.cs">
+      <DependentUpon>AdminForm4-19-2017.cs</DependentUpon>
+    </Compile>
     <Compile Include="Building.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -146,6 +152,9 @@
     <Compile Include="UserCourse.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminForm4-19-2017.resx">
+      <DependentUpon>AdminForm4-19-2017.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CoachInterestForm.resx">
       <DependentUpon>CoachInterestForm.cs</DependentUpon>
     </EmbeddedResource>
