@@ -11,14 +11,15 @@ using System.Windows.Forms;
 
 namespace CoachConnect
 {
-    public partial class CoachViewForm : Form
+    public partial class frmCoachView : Form
     {
         public string OriginalPic;
-        public CoachViewForm()
+        public frmCoachView()
         {
             InitializeComponent();
             User coach = new User();
             coach = getCoach();
+            this.Text = coach.FirstName + " " + coach.LastName + " - " + coach.UserID;
             pbProfile.ImageLocation = coach.ProfilePic;
             pbEditPic.ImageLocation = coach.ProfilePic;
             lblCoachName.Text = coach.FirstName;

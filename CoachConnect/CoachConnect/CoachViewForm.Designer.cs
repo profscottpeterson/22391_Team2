@@ -1,6 +1,6 @@
 ﻿namespace CoachConnect
 {
-    partial class CoachViewForm
+    partial class frmCoachView
     {
         /// <summary>
         /// Required designer variable.
@@ -38,12 +38,12 @@
             this.pbProfile = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.pbEditPic = new System.Windows.Forms.PictureBox();
-            this.btnEditPic = new System.Windows.Forms.Button();
-            this.txtPicURL = new System.Windows.Forms.TextBox();
-            this.btnPreview = new System.Windows.Forms.Button();
-            this.btnPicSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnPicSubmit = new System.Windows.Forms.Button();
+            this.btnPreview = new System.Windows.Forms.Button();
+            this.txtPicURL = new System.Windows.Forms.TextBox();
+            this.btnEditPic = new System.Windows.Forms.Button();
+            this.pbEditPic = new System.Windows.Forms.PictureBox();
             this.tbForm.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).BeginInit();
@@ -161,44 +161,16 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Edit Profile";
             // 
-            // pbEditPic
+            // btnCancel
             // 
-            this.pbEditPic.Location = new System.Drawing.Point(26, 30);
-            this.pbEditPic.Name = "pbEditPic";
-            this.pbEditPic.Size = new System.Drawing.Size(150, 150);
-            this.pbEditPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbEditPic.TabIndex = 1;
-            this.pbEditPic.TabStop = false;
-            // 
-            // btnEditPic
-            // 
-            this.btnEditPic.Location = new System.Drawing.Point(182, 30);
-            this.btnEditPic.Name = "btnEditPic";
-            this.btnEditPic.Size = new System.Drawing.Size(75, 23);
-            this.btnEditPic.TabIndex = 2;
-            this.btnEditPic.Text = "Edit Pic";
-            this.btnEditPic.UseVisualStyleBackColor = true;
-            this.btnEditPic.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // txtPicURL
-            // 
-            this.txtPicURL.Enabled = false;
-            this.txtPicURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPicURL.Location = new System.Drawing.Point(182, 59);
-            this.txtPicURL.Name = "txtPicURL";
-            this.txtPicURL.Size = new System.Drawing.Size(342, 26);
-            this.txtPicURL.TabIndex = 3;
-            // 
-            // btnPreview
-            // 
-            this.btnPreview.Location = new System.Drawing.Point(182, 30);
-            this.btnPreview.Name = "btnPreview";
-            this.btnPreview.Size = new System.Drawing.Size(75, 23);
-            this.btnPreview.TabIndex = 4;
-            this.btnPreview.Text = "Preview";
-            this.btnPreview.UseVisualStyleBackColor = true;
-            this.btnPreview.Visible = false;
-            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
+            this.btnCancel.Location = new System.Drawing.Point(263, 30);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Visible = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnPicSubmit
             // 
@@ -211,18 +183,46 @@
             this.btnPicSubmit.Visible = false;
             this.btnPicSubmit.Click += new System.EventHandler(this.btnPicSubmit_Click);
             // 
-            // btnCancel
+            // btnPreview
             // 
-            this.btnCancel.Location = new System.Drawing.Point(263, 30);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 6;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Visible = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnPreview.Location = new System.Drawing.Point(182, 30);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(75, 23);
+            this.btnPreview.TabIndex = 4;
+            this.btnPreview.Text = "Preview";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Visible = false;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
-            // CoachViewForm
+            // txtPicURL
+            // 
+            this.txtPicURL.Enabled = false;
+            this.txtPicURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPicURL.Location = new System.Drawing.Point(182, 59);
+            this.txtPicURL.Name = "txtPicURL";
+            this.txtPicURL.Size = new System.Drawing.Size(342, 26);
+            this.txtPicURL.TabIndex = 3;
+            // 
+            // btnEditPic
+            // 
+            this.btnEditPic.Location = new System.Drawing.Point(182, 30);
+            this.btnEditPic.Name = "btnEditPic";
+            this.btnEditPic.Size = new System.Drawing.Size(75, 23);
+            this.btnEditPic.TabIndex = 2;
+            this.btnEditPic.Text = "Edit Pic";
+            this.btnEditPic.UseVisualStyleBackColor = true;
+            this.btnEditPic.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // pbEditPic
+            // 
+            this.pbEditPic.Location = new System.Drawing.Point(26, 30);
+            this.pbEditPic.Name = "pbEditPic";
+            this.pbEditPic.Size = new System.Drawing.Size(150, 150);
+            this.pbEditPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbEditPic.TabIndex = 1;
+            this.pbEditPic.TabStop = false;
+            // 
+            // frmCoachView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -231,7 +231,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CoachViewForm";
+            this.Name = "frmCoachView";
             this.Text = "CoachViewForm";
             this.tbForm.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
