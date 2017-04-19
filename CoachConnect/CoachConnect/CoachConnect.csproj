@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserAdminForm.designer.cs">
+      <DependentUpon>UserAdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Building.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -146,6 +152,9 @@
     <Compile Include="UserCourse.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserAdminForm.resx">
+      <DependentUpon>UserAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CoachInterestForm.resx">
       <DependentUpon>CoachInterestForm.cs</DependentUpon>
     </EmbeddedResource>
