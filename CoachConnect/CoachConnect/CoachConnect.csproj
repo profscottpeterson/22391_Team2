@@ -60,6 +60,9 @@
     <Compile Include="Building.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CoachByTime.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="CoachConnectModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,6 +86,12 @@
     </Compile>
     <Compile Include="CoachInterestForm.Designer.cs">
       <DependentUpon>CoachInterestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CoachViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoachViewForm.Designer.cs">
+      <DependentUpon>CoachViewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Course.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
@@ -122,6 +131,15 @@
     <Compile Include="SessionRoster.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TimePeriod.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -136,6 +154,9 @@
     </Compile>
     <EmbeddedResource Include="CoachInterestForm.resx">
       <DependentUpon>CoachInterestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoachViewForm.resx">
+      <DependentUpon>CoachViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FindCoachForm.resx">
       <DependentUpon>FindCoachForm.cs</DependentUpon>

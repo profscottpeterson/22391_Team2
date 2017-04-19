@@ -34,7 +34,8 @@ namespace CoachConnect
 
                 if (userResult.IsCoach)
                 {
-                    var newForm = new FindCoachForm();
+                    //var newForm = new FindCoachForm();
+                    var newForm = new CoachViewForm();
                     newForm.Show();
                 }
                 else

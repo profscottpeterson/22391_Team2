@@ -19,5 +19,7 @@ namespace CoachConnect
         public string Time { get; set; }
         public string Subjects { get; set; }
         public string Interest { get; set; }
+        public string UserID { get; set; }
+        public string CourseID { get; set; }
     }
 }
