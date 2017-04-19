@@ -29,26 +29,20 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Label label28;
-            System.Windows.Forms.ListBox listBox2;
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cbxCoachNames = new System.Windows.Forms.ComboBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.txtActiveCoachSince = new System.Windows.Forms.Label();
+            this.txtCoachName = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblActiveCoachSince = new System.Windows.Forms.Label();
+            this.lblCoachName = new System.Windows.Forms.Label();
+            this.imgCoachPic = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lblTransport = new System.Windows.Forms.Label();
             this.btnTransport = new System.Windows.Forms.Button();
@@ -77,7 +71,6 @@
             this.lblAgri = new System.Windows.Forms.Label();
             this.btnAgri = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.btnScheduleAppointment = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnSearchTime = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -101,18 +94,22 @@
             this.label29 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.dataGridCoachesByTime = new System.Windows.Forms.DataGridView();
+            this.dataGridCoachAvailability = new System.Windows.Forms.DataGridView();
+            this.btnScheduleAppointment = new System.Windows.Forms.Button();
+            this.btnScheduleApptName = new System.Windows.Forms.Button();
             label28 = new System.Windows.Forms.Label();
-            listBox2 = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCoachPic)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCoachesByTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCoachAvailability)).BeginInit();
             this.SuspendLayout();
             // 
             // label28
@@ -124,21 +121,6 @@
             label28.Size = new System.Drawing.Size(142, 20);
             label28.TabIndex = 4;
             label28.Text = "Select Your Coach";
-            // 
-            // listBox2
-            // 
-            listBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            listBox2.FormattingEnabled = true;
-            listBox2.ItemHeight = 20;
-            listBox2.Items.AddRange(new object[] {
-            "Pipen, Scotty",
-            "Bird, Larry",
-            "Uecker, Bob",
-            "Cecil, Chuck"});
-            listBox2.Location = new System.Drawing.Point(245, 37);
-            listBox2.Name = "listBox2";
-            listBox2.Size = new System.Drawing.Size(234, 24);
-            listBox2.TabIndex = 3;
             // 
             // tabControl1
             // 
@@ -165,9 +147,10 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage2.Controls.Add(this.btnScheduleApptName);
+            this.tabPage2.Controls.Add(this.cbxCoachNames);
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Controls.Add(label28);
-            this.tabPage2.Controls.Add(listBox2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -175,98 +158,42 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Find Coach by Name";
             // 
+            // cbxCoachNames
+            // 
+            this.cbxCoachNames.FormattingEnabled = true;
+            this.cbxCoachNames.Location = new System.Drawing.Point(245, 39);
+            this.cbxCoachNames.Name = "cbxCoachNames";
+            this.cbxCoachNames.Size = new System.Drawing.Size(203, 21);
+            this.cbxCoachNames.TabIndex = 6;
+            this.cbxCoachNames.SelectedIndexChanged += new System.EventHandler(this.cbxCoachNames_SelectedIndexChanged);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Controls.Add(this.label21);
-            this.panel2.Controls.Add(this.label22);
-            this.panel2.Controls.Add(this.label23);
+            this.panel2.Controls.Add(this.txtActiveCoachSince);
+            this.panel2.Controls.Add(this.txtCoachName);
             this.panel2.Controls.Add(this.label24);
             this.panel2.Controls.Add(this.label25);
-            this.panel2.Controls.Add(this.label26);
-            this.panel2.Controls.Add(this.label27);
-            this.panel2.Controls.Add(this.pictureBox2);
+            this.panel2.Controls.Add(this.lblActiveCoachSince);
+            this.panel2.Controls.Add(this.lblCoachName);
+            this.panel2.Controls.Add(this.imgCoachPic);
             this.panel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(36, 94);
+            this.panel2.Location = new System.Drawing.Point(12, 94);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(442, 254);
+            this.panel2.Size = new System.Drawing.Size(485, 292);
             this.panel2.TabIndex = 5;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.label19);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(23, 166);
+            this.groupBox2.Controls.Add(this.dataGridCoachAvailability);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(16, 166);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(403, 76);
+            this.groupBox2.Size = new System.Drawing.Size(455, 123);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Available Subjects";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(6, 51);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(52, 16);
-            this.label15.TabIndex = 5;
-            this.label15.Text = "mySQL";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(305, 26);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(68, 16);
-            this.label16.TabIndex = 4;
-            this.label16.Text = "Calculus II";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(305, 51);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(41, 16);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Excel";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(183, 26);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(24, 16);
-            this.label18.TabIndex = 2;
-            this.label18.Text = "C#";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(183, 51);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(72, 16);
-            this.label19.TabIndex = 1;
-            this.label19.Text = "JavaScript";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(8, 26);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(139, 16);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "Microsoft Visual Basic";
             // 
             // label21
             // 
@@ -274,35 +201,32 @@
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(317, 98);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(49, 18);
+            this.label21.Size = new System.Drawing.Size(0, 18);
             this.label21.TabIndex = 7;
-            this.label21.Text = "87.5%";
             // 
-            // label22
+            // txtActiveCoachSince
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(317, 60);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(86, 18);
-            this.label22.TabIndex = 6;
-            this.label22.Text = "March 2012";
+            this.txtActiveCoachSince.AutoSize = true;
+            this.txtActiveCoachSince.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtActiveCoachSince.Location = new System.Drawing.Point(317, 60);
+            this.txtActiveCoachSince.Name = "txtActiveCoachSince";
+            this.txtActiveCoachSince.Size = new System.Drawing.Size(0, 18);
+            this.txtActiveCoachSince.TabIndex = 6;
             // 
-            // label23
+            // txtCoachName
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(317, 23);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(91, 18);
-            this.label23.TabIndex = 5;
-            this.label23.Text = "Scotty Pipen";
+            this.txtCoachName.AutoSize = true;
+            this.txtCoachName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCoachName.Location = new System.Drawing.Point(317, 23);
+            this.txtCoachName.Name = "txtCoachName";
+            this.txtCoachName.Size = new System.Drawing.Size(0, 18);
+            this.txtCoachName.TabIndex = 5;
             // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(228, 131);
+            this.label24.Location = new System.Drawing.Point(256, 131);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(121, 18);
             this.label24.TabIndex = 4;
@@ -312,42 +236,41 @@
             // 
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(145, 98);
+            this.label25.Location = new System.Drawing.Point(187, 98);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(121, 18);
             this.label25.TabIndex = 3;
             this.label25.Text = "Average Rating";
             // 
-            // label26
+            // lblActiveCoachSince
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(145, 60);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(159, 18);
-            this.label26.TabIndex = 2;
-            this.label26.Text = "Active Coach Since:";
+            this.lblActiveCoachSince.AutoSize = true;
+            this.lblActiveCoachSince.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblActiveCoachSince.Location = new System.Drawing.Point(187, 60);
+            this.lblActiveCoachSince.Name = "lblActiveCoachSince";
+            this.lblActiveCoachSince.Size = new System.Drawing.Size(159, 18);
+            this.lblActiveCoachSince.TabIndex = 2;
+            this.lblActiveCoachSince.Text = "Active Coach Since:";
             // 
-            // label27
+            // lblCoachName
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(145, 23);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(124, 18);
-            this.label27.TabIndex = 1;
-            this.label27.Text = "Coaches Name";
+            this.lblCoachName.AutoSize = true;
+            this.lblCoachName.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCoachName.Location = new System.Drawing.Point(187, 24);
+            this.lblCoachName.Name = "lblCoachName";
+            this.lblCoachName.Size = new System.Drawing.Size(124, 18);
+            this.lblCoachName.TabIndex = 1;
+            this.lblCoachName.Text = "Coaches Name";
             // 
-            // pictureBox2
+            // imgCoachPic
             // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Image = global::CoachConnect.Properties.Resources.scottie;
-            this.pictureBox2.Location = new System.Drawing.Point(16, 19);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(119, 130);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.imgCoachPic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.imgCoachPic.Location = new System.Drawing.Point(16, 19);
+            this.imgCoachPic.Name = "imgCoachPic";
+            this.imgCoachPic.Size = new System.Drawing.Size(154, 130);
+            this.imgCoachPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgCoachPic.TabIndex = 0;
+            this.imgCoachPic.TabStop = false;
             // 
             // tabPage3
             // 
@@ -664,18 +587,9 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Find Coach By Time";
             // 
-            // btnScheduleAppointment
-            // 
-            this.btnScheduleAppointment.Location = new System.Drawing.Point(193, 396);
-            this.btnScheduleAppointment.Name = "btnScheduleAppointment";
-            this.btnScheduleAppointment.Size = new System.Drawing.Size(125, 23);
-            this.btnScheduleAppointment.TabIndex = 4;
-            this.btnScheduleAppointment.Text = "Schedule Appointment";
-            this.btnScheduleAppointment.UseVisualStyleBackColor = true;
-            this.btnScheduleAppointment.Click += new System.EventHandler(this.btnScheduleAppointment_Click);
-            // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.dataGridCoachesByTime);
             this.groupBox4.Location = new System.Drawing.Point(6, 244);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(497, 154);
@@ -907,19 +821,50 @@
             this.dataGridCoachesByTime.AllowUserToAddRows = false;
             this.dataGridCoachesByTime.AllowUserToDeleteRows = false;
             this.dataGridCoachesByTime.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridCoachesByTime.Location = new System.Drawing.Point(35, 303);
+            this.dataGridCoachesByTime.Location = new System.Drawing.Point(27, 14);
             this.dataGridCoachesByTime.Name = "dataGridCoachesByTime";
             this.dataGridCoachesByTime.ReadOnly = true;
             this.dataGridCoachesByTime.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridCoachesByTime.Size = new System.Drawing.Size(485, 129);
-            this.dataGridCoachesByTime.TabIndex = 4;
+            this.dataGridCoachesByTime.Size = new System.Drawing.Size(443, 127);
+            this.dataGridCoachesByTime.TabIndex = 9;
+            // 
+            // dataGridCoachAvailability
+            // 
+            this.dataGridCoachAvailability.AllowUserToAddRows = false;
+            this.dataGridCoachAvailability.AllowUserToDeleteRows = false;
+            this.dataGridCoachAvailability.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridCoachAvailability.Location = new System.Drawing.Point(6, 23);
+            this.dataGridCoachAvailability.Name = "dataGridCoachAvailability";
+            this.dataGridCoachAvailability.ReadOnly = true;
+            this.dataGridCoachAvailability.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridCoachAvailability.Size = new System.Drawing.Size(443, 102);
+            this.dataGridCoachAvailability.TabIndex = 9;
+            // 
+            // btnScheduleAppointment
+            // 
+            this.btnScheduleAppointment.Location = new System.Drawing.Point(193, 396);
+            this.btnScheduleAppointment.Name = "btnScheduleAppointment";
+            this.btnScheduleAppointment.Size = new System.Drawing.Size(125, 23);
+            this.btnScheduleAppointment.TabIndex = 4;
+            this.btnScheduleAppointment.Text = "Schedule Appointment";
+            this.btnScheduleAppointment.UseVisualStyleBackColor = true;
+            this.btnScheduleAppointment.Click += new System.EventHandler(this.btnScheduleAppointment_Click);
+            // 
+            // btnScheduleApptName
+            // 
+            this.btnScheduleApptName.Location = new System.Drawing.Point(195, 389);
+            this.btnScheduleApptName.Name = "btnScheduleApptName";
+            this.btnScheduleApptName.Size = new System.Drawing.Size(125, 23);
+            this.btnScheduleApptName.TabIndex = 7;
+            this.btnScheduleApptName.Text = "Schedule Appointment";
+            this.btnScheduleApptName.UseVisualStyleBackColor = true;
+            this.btnScheduleApptName.Click += new System.EventHandler(this.btnScheduleApptName_Click);
             // 
             // FindCoachForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 481);
-            this.Controls.Add(this.dataGridCoachesByTime);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -927,21 +872,23 @@
             this.Name = "FindCoachForm";
             this.Text = "FindCoachForm";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FindCoachForm_FormClosed);
+            this.Load += new System.EventHandler(this.FindCoachForm_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgCoachPic)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridCoachesByTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCoachAvailability)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -955,20 +902,14 @@
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label txtActiveCoachSince;
+        private System.Windows.Forms.Label txtCoachName;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label lblActiveCoachSince;
+        private System.Windows.Forms.Label lblCoachName;
+        private System.Windows.Forms.PictureBox imgCoachPic;
         private System.Windows.Forms.Button btnAgri;
         private System.Windows.Forms.Label lblEnergy;
         private System.Windows.Forms.Button btnEnergy;
@@ -1017,7 +958,10 @@
         private System.Windows.Forms.CheckBox chkMorning;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnSearchTime;
+        private System.Windows.Forms.ComboBox cbxCoachNames;
+        private System.Windows.Forms.DataGridView dataGridCoachAvailability;
         private System.Windows.Forms.DataGridView dataGridCoachesByTime;
+        private System.Windows.Forms.Button btnScheduleApptName;
         private System.Windows.Forms.Button btnScheduleAppointment;
     }
 }

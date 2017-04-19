@@ -40,5 +40,6 @@ namespace CoachConnect
         public virtual DbSet<UserCourse> UserCourses { get; set; }
         public virtual DbSet<CoachInterest> CoachInterests { get; set; }
         public virtual DbSet<CoachByTime> CoachByTimes { get; set; }
+        public virtual DbSet<CoachByName> CoachByNames { get; set; }
     }
 }

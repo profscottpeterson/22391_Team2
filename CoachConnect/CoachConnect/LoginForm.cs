@@ -73,14 +73,15 @@ namespace CoachConnect
                         }
                         else
                         {
-                            MessageBox.Show("Sorry, this password does not match the desired username...please try again!");
+                            MessageBox.Show("Sorry, invalid username or password.  Please try again!");
+                            txtUsername.Text = "";
                             txtPassword.Text = "";
-                            txtPassword.Focus();
+                            txtUsername.Focus();
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Sorry, username was not found.  Please enter a valid username.");
+                        MessageBox.Show("Sorry, invalid username or password.  Please try again!");
                         txtUsername.Text = "";
                         txtPassword.Text = "";
                         txtUsername.Focus();

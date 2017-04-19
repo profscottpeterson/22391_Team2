@@ -28,6 +28,10 @@ namespace CoachConnect
 
             if (cmbRoleChoice.Items.Count == 0)
                 throw new Exception("ERROR: User must be assigned to at least one role.");
+            else
+            {
+                cmbRoleChoice.SelectedIndex = 0;
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)

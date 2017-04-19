@@ -204,10 +204,8 @@ namespace CoachConnect
             }
             catch (Exception ex)
             {
-                ex.ToString();
+                MessageBox.Show(ex.ToString());
             }
-
-
 
             return;
         }
@@ -237,6 +235,7 @@ namespace CoachConnect
                 selectedCourseID = selectedRow.Cells[4].Value.ToString();
                 selectedCourse = selectedRow.Cells[5].Value.ToString();
 
+
                 DialogResult result = MessageBox.Show(
                     "Are you sure you want to create this appointment?\n"
                         + "Coach: " + selectedCoachName + "\n"
@@ -244,7 +243,7 @@ namespace CoachConnect
                         + "Day: " + selectedDay + "\n"
                         + "Course ID: " + selectedCourseID + "\n"
                         + "Selected Course: " + selectedCourse,
-                    "Confirmation",MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.No)
                 {
@@ -277,5 +276,176 @@ namespace CoachConnect
 
             return;
         }
+
+        public void GetCoachData()
+        {
+            var dataSource = new List<CoachItem>();
+
+            // Query the database and pull the list of coaches
+            try
+            {
+                using (var context = new db_sft_2172Entities())
+                {
+                    // Run query to get coach data
+                    var coachQuery = from coachResults in context.CoachByNames
+                                     select coachResults;
+
+                    // Find users where desired criteria are met
+                    var coachList = coachQuery.Where(t => t.IsCoach == true);
+
+                    foreach (CoachByName coach in coachList)
+                    {
+                        dataSource.Add(new CoachItem() { Name = coach.FirstName + " " + coach.LastName, Value = coach.UserID });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+
+            // Bind the data list to the combo box
+            cbxCoachNames.DataSource = dataSource;
+            cbxCoachNames.DisplayMember = "Name";
+            cbxCoachNames.ValueMember = "Value";
+
+            cbxCoachNames.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        /**
+         *  Event handler: Form Load
+         *  **/
+        private void FindCoachForm_Load(object sender, EventArgs e)
+        {
+            GetCoachData();
+        }
+
+        /**
+         * Event handler: update dropdown choice in Find Coach by Name tab
+         **/
+        private void cbxCoachNames_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedValue = cbxCoachNames.SelectedValue.ToString();
+
+            // Query the database and pull info for the selected coach
+            try
+            {
+                using (var context = new db_sft_2172Entities())
+                {
+                    // Run query to get coach data
+                    var coachQuery = from coachResult in context.CoachByNames
+                                     where coachResult.UserID.Equals(selectedValue)
+                                     select coachResult;
+
+                    var foundCoach = coachQuery.FirstOrDefault<CoachByName>();
+
+                    // Update form based on query data
+                    txtCoachName.Text = foundCoach.FirstName + " " + foundCoach.LastName;
+                    txtActiveCoachSince.Text = foundCoach.ActiveCoachSince.Value.ToString("MM/dd/yyyy");
+
+                    imgCoachPic.Load(foundCoach.ProfilePic);
+
+                    
+                    // Run another query to get available sessions for the selected coach
+                    var coachAvailabilityQuery = from coachAvailability in context.CoachByTimes
+                                                 where coachAvailability.UserID.Equals(selectedValue)
+                                                 select coachAvailability;
+
+                    dataGridCoachAvailability.DataSource = coachAvailabilityQuery.ToList();
+
+                    dataGridCoachAvailability.Columns["UserID"].Visible = false;
+                    dataGridCoachAvailability.Columns["UserID"].DisplayIndex = 0;
+                    dataGridCoachAvailability.Columns["Coach"].Visible = false;
+                    dataGridCoachAvailability.Columns["Coach"].DisplayIndex = 1;
+                    dataGridCoachAvailability.Columns["Time"].DisplayIndex = 2;
+                    dataGridCoachAvailability.Columns["Day"].DisplayIndex = 3;
+                    dataGridCoachAvailability.Columns["Subject"].DisplayIndex = 4;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+
+        }
+
+        private void btnScheduleApptName_Click(object sender, EventArgs e)
+        {
+            string selectedCoachID;
+            string selectedCoachName;
+            string selectedTime;
+            string selectedDay;
+            string selectedCourseID;
+            string selectedCourse;
+
+            try
+            {
+
+                if (dataGridCoachesByTime.SelectedRows == null)
+                {
+                    MessageBox.Show("Please select a row before continuing");
+                    return;
+                }
+                else
+                {
+                    DataGridViewRow selectedRow = dataGridCoachAvailability.SelectedRows[0];
+                    selectedCoachID = selectedRow.Cells[0].Value.ToString();
+                    selectedCoachName = selectedRow.Cells[1].Value.ToString();
+                    selectedTime = selectedRow.Cells[2].Value.ToString();
+                    selectedDay = selectedRow.Cells[3].Value.ToString();
+                    selectedCourseID = selectedRow.Cells[4].Value.ToString();
+                    selectedCourse = selectedRow.Cells[5].Value.ToString();
+
+
+                    DialogResult result = MessageBox.Show(
+                        "Are you sure you want to create this appointment?\n"
+                            + "Coach: " + selectedCoachName + "\n"
+                            + "Time: " + selectedTime + "\n"
+                            + "Day: " + selectedDay + "\n"
+                            + "Course ID: " + selectedCourseID + "\n"
+                            + "Selected Course: " + selectedCourse,
+                        "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if (result == DialogResult.No)
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        ///TODO: Stub to handle saving data to database (add linq query)
+                        SessionRoster sr = new SessionRoster()
+                        {
+                            SessionID = "WEB10152154MonAM",
+                            UserID = selectedCoachID,
+                            RoleID = "Student"
+                        };
+
+                        using (var context = new db_sft_2172Entities())
+                        {
+                            try
+                            {
+                                context.SessionRosters.Add(sr);
+                                context.SaveChanges();
+                            }
+                            catch (Exception ex)
+                            {
+                                ex.ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            return;
+        }
+    }
+
+    public class CoachItem
+    {
+        public string Name { get; set; }
+        public string Value { get; set; }
     }
 }
