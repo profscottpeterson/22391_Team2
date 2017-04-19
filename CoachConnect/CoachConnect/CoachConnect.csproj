@@ -102,7 +102,7 @@
     <Compile Include="FindCoachForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FindCoachForm.Designer.cs">
+    <Compile Include="FindCoachForm.designer.cs">
       <DependentUpon>FindCoachForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interest.cs">
