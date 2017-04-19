@@ -41,8 +41,6 @@ C:\Users\timdu\newsource\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachCo
 C:\Users\timdu\newsource\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
 C:\Users\timdu\newsource\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachInterest.resources
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.pdb
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.dll
@@ -51,9 +49,12 @@ C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachInterest.resources
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FindCoachForm.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.LoginForm.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.RoleForm.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
 D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
 D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe

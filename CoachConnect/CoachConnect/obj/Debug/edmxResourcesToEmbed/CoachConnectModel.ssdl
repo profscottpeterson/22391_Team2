@@ -148,9 +148,10 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachByTime' does not have a prima
       <PropertyRef Name="Day" />
       <PropertyRef Name="CourseID" />
       <PropertyRef Name="Subject" />
+      <PropertyRef Name="Coach" />
     </Key>
     <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Coach" Type="nvarchar" MaxLength="201" />
+    <Property Name="Coach" Type="nvarchar" MaxLength="201" Nullable="false" />
     <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
