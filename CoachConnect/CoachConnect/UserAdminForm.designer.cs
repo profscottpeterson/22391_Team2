@@ -1,6 +1,6 @@
 ﻿namespace CoachConnect
 {
-    partial class AdminForm
+    partial class UserAdminForm
     {
         /// <summary>
         /// Required designer variable.

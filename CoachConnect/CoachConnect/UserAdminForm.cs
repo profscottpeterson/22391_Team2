@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CoachConnect
 {
-    public partial class AdminForm : Form
+    public partial class UserAdminForm : Form
     {
-        public AdminForm()
+        public UserAdminForm()
         {
             InitializeComponent();
         }
