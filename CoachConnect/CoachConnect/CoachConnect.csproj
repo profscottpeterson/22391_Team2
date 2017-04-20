@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoachViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoachViewForm.Designer.cs">
+      <DependentUpon>CoachViewForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserAdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
