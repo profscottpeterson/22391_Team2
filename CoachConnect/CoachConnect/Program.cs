@@ -70,8 +70,8 @@ namespace CoachConnect
                 }
                 else if (roleText == coachRoleName)
                 {
-                    //var newForm = new FindStudentForm();
-                    //newForm.Show();
+                    var newForm = new FindCoachForm();
+                    newForm.Show();
                 }
                 else if (roleText == adminRoleName)
                 {
