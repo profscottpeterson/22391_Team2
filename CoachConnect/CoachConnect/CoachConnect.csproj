@@ -57,7 +57,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UserAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserAdminForm.designer.cs">
+      <DependentUpon>UserAdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Building.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoachByName.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CoachByTime.cs">
@@ -87,12 +96,6 @@
     <Compile Include="CoachInterestForm.Designer.cs">
       <DependentUpon>CoachInterestForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CoachViewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CoachViewForm.Designer.cs">
-      <DependentUpon>CoachViewForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Course.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -105,7 +108,7 @@
     <Compile Include="FindCoachForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FindCoachForm.Designer.cs">
+    <Compile Include="FindCoachForm.designer.cs">
       <DependentUpon>FindCoachForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Interest.cs">
@@ -122,6 +125,12 @@
     <Compile Include="Role.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="RoleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoleForm.Designer.cs">
+      <DependentUpon>RoleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Room.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -129,15 +138,6 @@
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SessionRoster.cs">
-      <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="TimePeriod.cs">
@@ -152,11 +152,11 @@
     <Compile Include="UserCourse.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserAdminForm.resx">
+      <DependentUpon>UserAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CoachInterestForm.resx">
       <DependentUpon>CoachInterestForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CoachViewForm.resx">
-      <DependentUpon>CoachViewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FindCoachForm.resx">
       <DependentUpon>FindCoachForm.cs</DependentUpon>
@@ -174,6 +174,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RoleForm.resx">
+      <DependentUpon>RoleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="CoachConnectModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CoachConnectModel.Designer.cs</LastGenOutput>

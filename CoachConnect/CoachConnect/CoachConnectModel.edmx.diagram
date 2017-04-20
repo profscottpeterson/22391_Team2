@@ -31,6 +31,8 @@
         <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_Course" />
         <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_Role" />
         <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_User" />
+        <EntityTypeShape EntityType="db_sft_2172Model.CoachByTime" Width="1.5" PointX="9.375" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_sft_2172Model.CoachByName" Width="1.5" PointX="8.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

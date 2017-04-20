@@ -8,6 +8,21 @@ namespace CoachConnect
 {
     static class Program
     {
+        public static LoginForm loginForm;
+
+        public static string CurrentUser { get; set; }
+
+        public static bool IsStudent { get; set; }
+
+        public static bool IsCoach { get; set; }
+
+        public static bool IsAdmin { get; set; }
+
+        public static string coachRoleName = "Coach";
+        public static string studentRoleName = "Student";
+        public static string adminRoleName = "Admin";
+
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,11 +31,27 @@ namespace CoachConnect
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
-            Application.Run(new LoginForm());
+            loginForm = new LoginForm();
+
+            Application.Run(loginForm);
         }
 
-        public static void OpenUserHomepage()
+        public static void RolePage()
+        {
+            using (var context = new db_sft_2172Entities())
+            {
+                var roleQuery = from r in context.Roles
+                                select r;
+
+                var roleNameQuery = from n in roleQuery
+                                    select n.Name;
+
+                RoleForm roleForm = new RoleForm();
+                roleForm.Show();
+            }
+        }
+
+        public static void openUserHomepage(string roleText)
         {
             // Check if current user is a coach
             // If so, load the coach page; if not, load the student page.
@@ -32,31 +63,23 @@ namespace CoachConnect
 
                 var userResult = userQuery.FirstOrDefault<User>();
 
-                if (userResult.IsCoach)
+                if (roleText == studentRoleName)
                 {
                     //var newForm = new FindCoachForm();
                     var newForm = new frmCoachView();
                     newForm.Show();
                 }
-                else
+                else if (roleText == coachRoleName)
                 {
-                    //var newForm = new FindStudentFom();
+                    //var newForm = new FindStudentForm();
                     //newForm.Show();
-                    //Application.Run(new FindStudentForm());
+                }
+                else if (roleText == adminRoleName)
+                {
+                    //var newForm = new AdminForm();
+                    //newForm.Show();
                 }
             }
-        }
-
-        public static string CurrentUser
-        {
-            get;
-            set;
-        }
-
-        public static string UserType
-        {
-            get;
-            set;
         }
     }
 }

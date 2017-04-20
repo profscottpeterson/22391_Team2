@@ -81,16 +81,6 @@
     <Property Name="UserID" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="RoleID" Type="nchar" MaxLength="10" Nullable="false" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="TimePeriod">
     <Key>
       <PropertyRef Name="TimePeriodID" />
@@ -111,6 +101,7 @@
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="ProfilePic" Type="nvarchar" MaxLength="50" />
+    <Property Name="ActiveCoachSince" Type="date" />
   </EntityType>
   <EntityType Name="UserAvailability">
     <Key>
@@ -132,18 +123,35 @@
     <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.CoachByName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CoachByName">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="IsCoach" />
+      <PropertyRef Name="IsActive" />
+    </Key>
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="IsCoach" Type="bit" Nullable="false" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="ActiveCoachSince" Type="date" />
+    <Property Name="ProfilePic" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.CoachByTime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="CoachByTime">
     <Key>
       <PropertyRef Name="UserID" />
-      <PropertyRef Name="Coach" />
       <PropertyRef Name="Time" />
       <PropertyRef Name="Day" />
       <PropertyRef Name="CourseID" />
       <PropertyRef Name="Subject" />
+      <PropertyRef Name="Coach" />
     </Key>
     <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Coach" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Coach" Type="nvarchar" MaxLength="201" Nullable="false" />
     <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -277,37 +285,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
-  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="version" Type="int" Mode="In" />
-    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-  </Function>
-  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-  </Function>
-  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-    <Parameter Name="owner_id" Type="int" Mode="In" />
-    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-  </Function>
-  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="db_sft_2172ModelStoreContainer">
     <EntitySet Name="Building" EntityType="Self.Building" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
@@ -318,11 +295,21 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
     <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SessionRoster" EntityType="Self.SessionRoster" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TimePeriod" EntityType="Self.TimePeriod" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAvailability" EntityType="Self.UserAvailability" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserCourse" EntityType="Self.UserCourse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CoachByName" EntityType="Self.CoachByName" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CoachByName].[UserID] AS [UserID], 
+    [CoachByName].[LastName] AS [LastName], 
+    [CoachByName].[FirstName] AS [FirstName], 
+    [CoachByName].[IsCoach] AS [IsCoach], 
+    [CoachByName].[IsActive] AS [IsActive], 
+    [CoachByName].[ActiveCoachSince] AS [ActiveCoachSince], 
+    [CoachByName].[ProfilePic] AS [ProfilePic]
+    FROM [dbo].[CoachByName] AS [CoachByName]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="CoachByTime" EntityType="Self.CoachByTime" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [CoachByTime].[UserID] AS [UserID], 
