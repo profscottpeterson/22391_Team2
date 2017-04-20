@@ -44,6 +44,12 @@ namespace CoachConnect
             btnPicSubmit.Show();
             btnCancel.Show();
             txtPicURL.Enabled = true;
+            txtPicURL.SelectionStart = 0;
+            txtPicURL.Text = "URL link";
+            txtPicURL.ForeColor = Color.Gray;
+            txtPicURL.SelectionLength = txtPicURL.Text.Length;
+            txtPicURL.Focus();
+            
         }            
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -67,6 +73,8 @@ namespace CoachConnect
 
         private void btnPicSubmit_Click(object sender, EventArgs e)
         {
+            imageExtension();
+            
             btnPicSubmit.Hide();
             btnEditPic.Show();
             btnCancel.Hide();
@@ -81,5 +89,17 @@ namespace CoachConnect
             pbProfile.ImageLocation = txtPicURL.Text;
             txtPicURL.Clear();
         }
+        private bool imageExtension()
+        {
+            MessageBox.Show(txtPicURL.Text.Substring(txtPicURL.TextLength - 3));
+            return false;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public bool
     }
 }
