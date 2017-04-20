@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8456ac9ca2294a93bef2b8d4ca3e5972" Name="Diagram1">
+      <Diagram DiagramId="8456ac9ca2294a93bef2b8d4ca3e5972" Name="Diagram1" ZoomLevel="95">
         <EntityTypeShape EntityType="db_sft_2172Model.Building" Width="1.5" PointX="1.125" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="db_sft_2172Model.Course" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_sft_2172Model.Room" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
@@ -31,8 +31,6 @@
         <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_Course" />
         <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_Role" />
         <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_User" />
-        <EntityTypeShape EntityType="db_sft_2172Model.sysdiagram" Width="1.5" PointX="9.75" PointY="0.75" />
-        <EntityTypeShape EntityType="db_sft_2172Model.CoachByTime" Width="1.5" PointX="0.75" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
