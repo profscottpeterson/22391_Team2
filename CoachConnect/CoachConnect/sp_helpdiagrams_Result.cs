@@ -10,18 +10,13 @@
 namespace CoachConnect
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class CoachInterest
+    public partial class sp_helpdiagrams_Result
     {
-        public string UserID { get; set; }
-        public string Coach { get; set; }
-        public string Time { get; set; }
-        public string Day { get; set; }
-        public string CourseID { get; set; }
-        public string Subjects { get; set; }
-        public string Interest { get; set; }
-        public string UserID { get; set; }
-        public string CourseID { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

@@ -65,7 +65,8 @@ namespace CoachConnect
 
                 if (roleText == studentRoleName)
                 {
-                    var newForm = new FindCoachForm();
+                    //var newForm = new FindCoachForm();
+                    var newForm = new frmCoachView();
                     newForm.Show();
                 }
                 else if (roleText == coachRoleName)

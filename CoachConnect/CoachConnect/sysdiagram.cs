@@ -12,16 +12,12 @@ namespace CoachConnect
     using System;
     using System.Collections.Generic;
     
-    public partial class CoachInterest
+    public partial class sysdiagram
     {
-        public string UserID { get; set; }
-        public string Coach { get; set; }
-        public string Time { get; set; }
-        public string Day { get; set; }
-        public string CourseID { get; set; }
-        public string Subjects { get; set; }
-        public string Interest { get; set; }
-        public string UserID { get; set; }
-        public string CourseID { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }
