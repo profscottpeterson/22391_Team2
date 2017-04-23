@@ -282,6 +282,8 @@
     <Property Name="ProfilePic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ActiveCoachSince" Type="DateTime" Precision="0" />
     <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Day">
     <Key>

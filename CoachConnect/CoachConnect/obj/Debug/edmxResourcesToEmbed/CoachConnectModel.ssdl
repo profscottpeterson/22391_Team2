@@ -106,6 +106,8 @@
     <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Phone" Type="varchar" MaxLength="10" />
+    <Property Name="Email" Type="nvarchar" MaxLength="320" />
     <Property Name="IsStudent" Type="bit" Nullable="false" />
     <Property Name="IsAdmin" Type="bit" Nullable="false" />
     <Property Name="IsCoach" Type="bit" Nullable="false" />

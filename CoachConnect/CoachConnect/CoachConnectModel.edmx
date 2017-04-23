@@ -111,6 +111,8 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Phone" Type="varchar" MaxLength="10" />
+          <Property Name="Email" Type="nvarchar" MaxLength="320" />
           <Property Name="IsStudent" Type="bit" Nullable="false" />
           <Property Name="IsAdmin" Type="bit" Nullable="false" />
           <Property Name="IsCoach" Type="bit" Nullable="false" />
@@ -702,6 +704,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <Property Name="ProfilePic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ActiveCoachSince" Type="DateTime" Precision="0" />
           <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Day">
           <Key>
@@ -975,6 +979,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="db_sft_2172Model.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
                 <ScalarProperty Name="ActiveCoachSince" ColumnName="ActiveCoachSince" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
