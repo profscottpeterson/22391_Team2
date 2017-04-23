@@ -101,17 +101,23 @@ namespace CoachConnect
 
         private void txtCurrentPass_TextChanged(object sender, EventArgs e)
         {
-            
-            User coach = new User();
-            coach = getCoach();
-
-            if(txtCurrentPass.Text==coach.Password)
+            lblPassSuccess.Visible = false;
+            lblPassInstructions.Visible = true;
+            if (!string.IsNullOrEmpty(txtCurrentPass.Text))
             {
-                pbcurrentPassCorrect.Visible = true;
-                txtConfirmNewPass.Enabled = true;
-                txtNewPass.Enabled = true;
-                txtCurrentPass.Enabled = false;
                 btnPassCancel.Visible = true;
+                User coach = new User();
+                coach = getCoach();
+
+                if (txtCurrentPass.Text == coach.Password)
+                {
+                    lblPassInstructions.Visible = false;
+                    pbcurrentPassCorrect.Visible = true;
+                    txtConfirmNewPass.Enabled = true;
+                    txtNewPass.Enabled = true;
+                    txtCurrentPass.Enabled = false;
+                    btnPassCancel.Visible = true;
+                }
             }
         }
 
@@ -123,16 +129,20 @@ namespace CoachConnect
                     lblMatchPass.Visible = true;
                     pbNewPass.Visible = false;
                     pbConfirmPass.Visible = false;
+                    btnUpdatePass.Visible = false;
                 }
                 else if (txtNewPass.Text == txtConfirmNewPass.Text)
                 {
+                    btnUpdatePass.Visible = false;
                     lblMatchPass.Visible = false;
                     pbNewPass.Visible = true;
                     pbConfirmPass.Visible = true;
+                    btnUpdatePass.Visible = true;
                 }
             }
             else
             {
+                btnUpdatePass.Visible = false;
                 pbConfirmPass.Visible = false;
                 pbNewPass.Visible = false;
                 lblMatchPass.Visible = false;
@@ -152,6 +162,8 @@ namespace CoachConnect
             pbNewPass.Visible = false;
             pbcurrentPassCorrect.Visible = false;
             pbConfirmPass.Visible = false;
+            btnUpdatePass.Visible = false;
+            btnPassCancel.Visible = false;
 
             lblMatchPass.Visible = false;
             lblWarningCurrentPass.Visible = false;
@@ -163,7 +175,7 @@ namespace CoachConnect
         }
 
         private void txtNewPass_TextChanged(object sender, EventArgs e)
-        {
+       {
             if (!string.IsNullOrEmpty(txtConfirmNewPass.Text) && txtNewPass.Text.Length >=txtConfirmNewPass.Text.Length )
             {
                 if (txtConfirmNewPass.Text != txtNewPass.Text)
@@ -171,12 +183,14 @@ namespace CoachConnect
                     lblMatchPass.Visible = true;
                     pbNewPass.Visible = false;
                     pbConfirmPass.Visible = false;
+                    btnUpdatePass.Visible = false;
                 }
                 else if (txtNewPass.Text == txtConfirmNewPass.Text)
                 {
                     lblMatchPass.Visible = false;
                     pbNewPass.Visible = true;
                     pbConfirmPass.Visible = true;
+                    btnUpdatePass.Visible = true;
                 }
             }
             else
@@ -184,7 +198,44 @@ namespace CoachConnect
                 pbConfirmPass.Visible = false;
                 pbNewPass.Visible = false;
                 lblMatchPass.Visible = false;
+                btnUpdatePass.Visible = false;
             }
+        }
+
+        private void btnUpdatePass_Click(object sender, EventArgs e)
+        {
+            if (txtNewPass.Text == txtConfirmNewPass.Text)
+            {
+                User coach = new User();
+                coach = getCoach();
+                if (coach.Password == txtCurrentPass.Text)
+                {
+                    using (var context = new db_sft_2172Entities())
+                    {
+                        var result = context.Users.SingleOrDefault(b => b.UserID == Program.CurrentUser);
+                        result.Password = txtConfirmNewPass.Text;
+                        context.SaveChanges();
+                    }
+                    btnPassCancel.PerformClick();
+                    lblPassInstructions.Visible = false;
+                    lblPassSuccess.Visible = true;
+                }
+            }
+        }
+
+        private void btnEditInfo_Click(object sender, EventArgs e)
+        {
+            txtFName.Enabled = true;
+            txtLName.Enabled = true;
+            txtMiddle.Enabled = true;
+            txtPhone.Enabled = true;
+            txtEmail.Enabled = true;
+            txtFName.Focus();
+        }
+
+        private void txtFName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

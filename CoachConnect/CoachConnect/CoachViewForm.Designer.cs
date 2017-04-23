@@ -76,6 +76,8 @@
             this.lblLName = new System.Windows.Forms.Label();
             this.lblFName = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.lblPassSuccess = new System.Windows.Forms.Label();
+            this.lblPassInstructions = new System.Windows.Forms.Label();
             this.tbForm.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).BeginInit();
@@ -199,6 +201,8 @@
             // 
             // grpPassword
             // 
+            this.grpPassword.Controls.Add(this.lblPassInstructions);
+            this.grpPassword.Controls.Add(this.lblPassSuccess);
             this.grpPassword.Controls.Add(this.pbConfirmPass);
             this.grpPassword.Controls.Add(this.pbNewPass);
             this.grpPassword.Controls.Add(this.pbcurrentPassCorrect);
@@ -285,6 +289,7 @@
             this.btnUpdatePass.Text = "Update";
             this.btnUpdatePass.UseVisualStyleBackColor = true;
             this.btnUpdatePass.Visible = false;
+            this.btnUpdatePass.Click += new System.EventHandler(this.btnUpdatePass_Click);
             // 
             // txtConfirmNewPass
             // 
@@ -486,6 +491,7 @@
             this.btnEditInfo.TabIndex = 18;
             this.btnEditInfo.Text = "Edit";
             this.btnEditInfo.UseVisualStyleBackColor = true;
+            this.btnEditInfo.Click += new System.EventHandler(this.btnEditInfo_Click);
             // 
             // lblMemberSince
             // 
@@ -577,6 +583,7 @@
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(201, 22);
             this.txtFName.TabIndex = 9;
+            this.txtFName.TextChanged += new System.EventHandler(this.txtFName_TextChanged);
             // 
             // lblLName
             // 
@@ -606,6 +613,29 @@
             this.btnLogout.TabIndex = 0;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
+            // 
+            // lblPassSuccess
+            // 
+            this.lblPassSuccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassSuccess.ForeColor = System.Drawing.Color.SeaGreen;
+            this.lblPassSuccess.Location = new System.Drawing.Point(-19, 122);
+            this.lblPassSuccess.Name = "lblPassSuccess";
+            this.lblPassSuccess.Size = new System.Drawing.Size(534, 23);
+            this.lblPassSuccess.TabIndex = 1;
+            this.lblPassSuccess.Text = "Password Successfully Changed!";
+            this.lblPassSuccess.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblPassSuccess.Visible = false;
+            // 
+            // lblPassInstructions
+            // 
+            this.lblPassInstructions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPassInstructions.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblPassInstructions.Location = new System.Drawing.Point(-19, 122);
+            this.lblPassInstructions.Name = "lblPassInstructions";
+            this.lblPassInstructions.Size = new System.Drawing.Size(534, 23);
+            this.lblPassInstructions.TabIndex = 34;
+            this.lblPassInstructions.Text = "Please enter correct password to begin.";
+            this.lblPassInstructions.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmCoachView
             // 
@@ -688,5 +718,7 @@
         private System.Windows.Forms.PictureBox pbConfirmPass;
         private System.Windows.Forms.PictureBox pbNewPass;
         private System.Windows.Forms.Label lblMatchPass;
+        private System.Windows.Forms.Label lblPassSuccess;
+        private System.Windows.Forms.Label lblPassInstructions;
     }
 }
