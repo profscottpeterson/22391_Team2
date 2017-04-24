@@ -234,7 +234,8 @@ namespace CoachConnect
             }
 
             this.CurrentUserIndex = lstBoxUsers.SelectedIndex;
-            
+            txtUserID.Enabled = false;
+            txtUserID.ReadOnly = true;
         }
 
         private void disableListBox()
@@ -305,7 +306,7 @@ namespace CoachConnect
             newUser.ResetPassword = true;
 
             // Assign new active date
-            newUser.ActiveCoachSince = DateTime.Now;
+            //newUser.ActiveCoachSince = DateTime.Now;
 
             // Add new user to the database and save changes
             try
@@ -324,7 +325,6 @@ namespace CoachConnect
                     MessageBox.Show("Student: " + newUser.IsStudent);
                     MessageBox.Show("Active: " + newUser.IsActive);
                     MessageBox.Show("Reset Password: " + newUser.ResetPassword);
-                    MessageBox.Show(newUser.ActiveCoachSince.ToString());
 
                     // Run query to get user data
                     context.Users.Add(newUser);
@@ -388,13 +388,13 @@ namespace CoachConnect
 
                     // Save updates to database
                     context.SaveChanges();
-
-                    enableListBox();
+                    this.CurrentUser = foundUser;
+                    MessageBox.Show("Save completed");
                 }
             }
             catch (Exception ex)
             {
-                ex.ToString();
+                MessageBox.Show(ex.StackTrace);
             }
 
         }

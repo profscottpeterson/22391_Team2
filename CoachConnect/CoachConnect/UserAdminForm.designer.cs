@@ -315,15 +315,16 @@
             this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.lblPhone.Location = new System.Drawing.Point(25, 256);
             this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(38, 13);
+            this.lblPhone.Size = new System.Drawing.Size(109, 13);
             this.lblPhone.TabIndex = 63;
-            this.lblPhone.Text = "Phone";
+            this.lblPhone.Text = "Phone (numbers only)";
             // 
             // txtPhone
             // 
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.Location = new System.Drawing.Point(25, 272);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPhone.MaxLength = 10;
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(188, 20);
             this.txtPhone.TabIndex = 8;
