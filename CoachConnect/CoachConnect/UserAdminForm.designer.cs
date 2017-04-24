@@ -29,270 +29,441 @@
         private void InitializeComponent()
         {
             this.lblAdminForm = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.txtBoxUserID = new System.Windows.Forms.TextBox();
+            this.txtUserID = new System.Windows.Forms.TextBox();
             this.lblUserID = new System.Windows.Forms.Label();
             this.lblMiddleName = new System.Windows.Forms.Label();
-            this.lblLastName = new System.Windows.Forms.Label();
+            this.lblDisplayName = new System.Windows.Forms.Label();
             this.lblFirstName = new System.Windows.Forms.Label();
-            this.txtBoxMiddleName = new System.Windows.Forms.TextBox();
-            this.txtBoxPassword = new System.Windows.Forms.TextBox();
-            this.txtBoxLastName = new System.Windows.Forms.TextBox();
-            this.txtBoxFirstName = new System.Windows.Forms.TextBox();
+            this.txtMiddleName = new System.Windows.Forms.TextBox();
+            this.txtDisplayName = new System.Windows.Forms.TextBox();
+            this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lstBoxUsers = new System.Windows.Forms.ListBox();
-            this.lblUsers = new System.Windows.Forms.Label();
-            this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.btnLogOff = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
             this.chkBoxStudent = new System.Windows.Forms.CheckBox();
             this.chkBoxCoach = new System.Windows.Forms.CheckBox();
             this.chkBoxAdmin = new System.Windows.Forms.CheckBox();
             this.chkBoxActive = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnMinus = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.chkBoxResetPassword = new System.Windows.Forms.CheckBox();
+            this.btnMenu = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnRevert = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblAdminForm
             // 
             this.lblAdminForm.AutoSize = true;
-            this.lblAdminForm.Font = new System.Drawing.Font("Baskerville Old Face", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminForm.Location = new System.Drawing.Point(200, 9);
+            this.lblAdminForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminForm.Location = new System.Drawing.Point(212, 11);
             this.lblAdminForm.Name = "lblAdminForm";
-            this.lblAdminForm.Size = new System.Drawing.Size(367, 73);
+            this.lblAdminForm.Size = new System.Drawing.Size(220, 31);
             this.lblAdminForm.TabIndex = 7;
-            this.lblAdminForm.Text = "Admin Form";
+            this.lblAdminForm.Text = "Update User Info";
             this.lblAdminForm.UseWaitCursor = true;
             // 
-            // lblPassword
+            // txtUserID
             // 
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(441, 372);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(103, 25);
-            this.lblPassword.TabIndex = 43;
-            this.lblPassword.Text = " Password";
-            // 
-            // txtBoxUserID
-            // 
-            this.txtBoxUserID.Location = new System.Drawing.Point(448, 336);
-            this.txtBoxUserID.Name = "txtBoxUserID";
-            this.txtBoxUserID.Size = new System.Drawing.Size(188, 33);
-            this.txtBoxUserID.TabIndex = 42;
+            this.txtUserID.Enabled = false;
+            this.txtUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserID.Location = new System.Drawing.Point(25, 37);
+            this.txtUserID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtUserID.Name = "txtUserID";
+            this.txtUserID.ReadOnly = true;
+            this.txtUserID.Size = new System.Drawing.Size(188, 20);
+            this.txtUserID.TabIndex = 3;
             // 
             // lblUserID
             // 
             this.lblUserID.AutoSize = true;
-            this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserID.Location = new System.Drawing.Point(443, 308);
+            this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblUserID.Location = new System.Drawing.Point(25, 21);
             this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(77, 25);
+            this.lblUserID.Size = new System.Drawing.Size(90, 13);
             this.lblUserID.TabIndex = 40;
-            this.lblUserID.Text = "User ID";
+            this.lblUserID.Text = "User ID (required)";
             // 
             // lblMiddleName
             // 
             this.lblMiddleName.AutoSize = true;
-            this.lblMiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMiddleName.Location = new System.Drawing.Point(443, 244);
+            this.lblMiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblMiddleName.Location = new System.Drawing.Point(25, 114);
             this.lblMiddleName.Name = "lblMiddleName";
-            this.lblMiddleName.Size = new System.Drawing.Size(127, 25);
+            this.lblMiddleName.Size = new System.Drawing.Size(69, 13);
             this.lblMiddleName.TabIndex = 39;
             this.lblMiddleName.Text = "Middle Name";
             // 
-            // lblLastName
+            // lblDisplayName
             // 
-            this.lblLastName.AutoSize = true;
-            this.lblLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastName.Location = new System.Drawing.Point(443, 180);
-            this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(106, 25);
-            this.lblLastName.TabIndex = 38;
-            this.lblLastName.Text = "Last Name";
+            this.lblDisplayName.AutoSize = true;
+            this.lblDisplayName.Cursor = System.Windows.Forms.Cursors.No;
+            this.lblDisplayName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblDisplayName.Location = new System.Drawing.Point(25, 206);
+            this.lblDisplayName.Name = "lblDisplayName";
+            this.lblDisplayName.Size = new System.Drawing.Size(119, 13);
+            this.lblDisplayName.TabIndex = 38;
+            this.lblDisplayName.Text = "Display Name (required)";
             // 
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstName.Location = new System.Drawing.Point(443, 116);
+            this.lblFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblFirstName.Location = new System.Drawing.Point(25, 66);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(106, 25);
+            this.lblFirstName.Size = new System.Drawing.Size(104, 13);
             this.lblFirstName.TabIndex = 37;
-            this.lblFirstName.Text = "First Name";
+            this.lblFirstName.Text = "First Name (required)";
             // 
-            // txtBoxMiddleName
+            // txtMiddleName
             // 
-            this.txtBoxMiddleName.Location = new System.Drawing.Point(448, 272);
-            this.txtBoxMiddleName.Name = "txtBoxMiddleName";
-            this.txtBoxMiddleName.Size = new System.Drawing.Size(188, 33);
-            this.txtBoxMiddleName.TabIndex = 36;
+            this.txtMiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMiddleName.Location = new System.Drawing.Point(25, 130);
+            this.txtMiddleName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtMiddleName.Name = "txtMiddleName";
+            this.txtMiddleName.Size = new System.Drawing.Size(188, 20);
+            this.txtMiddleName.TabIndex = 5;
             // 
-            // txtBoxPassword
+            // txtDisplayName
             // 
-            this.txtBoxPassword.Location = new System.Drawing.Point(448, 400);
-            this.txtBoxPassword.Name = "txtBoxPassword";
-            this.txtBoxPassword.Size = new System.Drawing.Size(188, 33);
-            this.txtBoxPassword.TabIndex = 35;
+            this.txtDisplayName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDisplayName.Location = new System.Drawing.Point(25, 222);
+            this.txtDisplayName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtDisplayName.Name = "txtDisplayName";
+            this.txtDisplayName.Size = new System.Drawing.Size(188, 20);
+            this.txtDisplayName.TabIndex = 7;
             // 
-            // txtBoxLastName
+            // txtFirstName
             // 
-            this.txtBoxLastName.Location = new System.Drawing.Point(448, 208);
-            this.txtBoxLastName.Name = "txtBoxLastName";
-            this.txtBoxLastName.Size = new System.Drawing.Size(188, 33);
-            this.txtBoxLastName.TabIndex = 34;
-            // 
-            // txtBoxFirstName
-            // 
-            this.txtBoxFirstName.Location = new System.Drawing.Point(448, 144);
-            this.txtBoxFirstName.Name = "txtBoxFirstName";
-            this.txtBoxFirstName.Size = new System.Drawing.Size(188, 33);
-            this.txtBoxFirstName.TabIndex = 33;
+            this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFirstName.Location = new System.Drawing.Point(25, 82);
+            this.txtFirstName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new System.Drawing.Size(188, 20);
+            this.txtFirstName.TabIndex = 4;
             // 
             // lstBoxUsers
             // 
-            this.lstBoxUsers.Font = new System.Drawing.Font("Microsoft NeoGothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstBoxUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstBoxUsers.FormattingEnabled = true;
-            this.lstBoxUsers.ItemHeight = 27;
-            this.lstBoxUsers.Location = new System.Drawing.Point(12, 125);
+            this.lstBoxUsers.Location = new System.Drawing.Point(12, 18);
+            this.lstBoxUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstBoxUsers.Name = "lstBoxUsers";
-            this.lstBoxUsers.Size = new System.Drawing.Size(269, 490);
-            this.lstBoxUsers.TabIndex = 47;
+            this.lstBoxUsers.Size = new System.Drawing.Size(153, 290);
+            this.lstBoxUsers.TabIndex = 0;
+            this.lstBoxUsers.SelectedValueChanged += new System.EventHandler(this.lstBoxUsers_SelectedValueChanged);
             // 
-            // lblUsers
+            // btnSave
             // 
-            this.lblUsers.AutoSize = true;
-            this.lblUsers.Font = new System.Drawing.Font("Baskerville Old Face", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsers.Location = new System.Drawing.Point(83, 82);
-            this.lblUsers.Name = "lblUsers";
-            this.lblUsers.Size = new System.Drawing.Size(105, 41);
-            this.lblUsers.TabIndex = 48;
-            this.lblUsers.Text = "Users";
-            this.lblUsers.Click += new System.EventHandler(this.lblUsers_Click);
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(352, 545);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(97, 47);
-            this.btnSubmit.TabIndex = 49;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnSave.Location = new System.Drawing.Point(481, 239);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(99, 23);
+            this.btnSave.TabIndex = 15;
+            this.btnSave.Text = "Save Changes";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnLogOff
             // 
-            this.btnLogOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOff.Location = new System.Drawing.Point(490, 545);
+            this.btnLogOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnLogOff.Location = new System.Drawing.Point(481, 344);
+            this.btnLogOff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogOff.Name = "btnLogOff";
-            this.btnLogOff.Size = new System.Drawing.Size(99, 47);
-            this.btnLogOff.TabIndex = 50;
+            this.btnLogOff.Size = new System.Drawing.Size(99, 23);
+            this.btnLogOff.TabIndex = 18;
             this.btnLogOff.Text = "Log Off";
             this.btnLogOff.UseVisualStyleBackColor = true;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(635, 545);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(99, 47);
-            this.btnExit.TabIndex = 51;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnLogOff.Click += new System.EventHandler(this.btnLogOff_Click);
             // 
             // chkBoxStudent
             // 
             this.chkBoxStudent.AutoSize = true;
-            this.chkBoxStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBoxStudent.Location = new System.Drawing.Point(664, 213);
+            this.chkBoxStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.chkBoxStudent.Location = new System.Drawing.Point(13, 46);
+            this.chkBoxStudent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkBoxStudent.Name = "chkBoxStudent";
-            this.chkBoxStudent.Size = new System.Drawing.Size(106, 29);
-            this.chkBoxStudent.TabIndex = 52;
+            this.chkBoxStudent.Size = new System.Drawing.Size(63, 17);
+            this.chkBoxStudent.TabIndex = 11;
             this.chkBoxStudent.Text = "Student";
             this.chkBoxStudent.UseVisualStyleBackColor = true;
             // 
             // chkBoxCoach
             // 
             this.chkBoxCoach.AutoSize = true;
-            this.chkBoxCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBoxCoach.Location = new System.Drawing.Point(664, 248);
+            this.chkBoxCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.chkBoxCoach.Location = new System.Drawing.Point(13, 69);
+            this.chkBoxCoach.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkBoxCoach.Name = "chkBoxCoach";
-            this.chkBoxCoach.Size = new System.Drawing.Size(96, 29);
-            this.chkBoxCoach.TabIndex = 53;
+            this.chkBoxCoach.Size = new System.Drawing.Size(57, 17);
+            this.chkBoxCoach.TabIndex = 12;
             this.chkBoxCoach.Text = "Coach";
             this.chkBoxCoach.UseVisualStyleBackColor = true;
             // 
             // chkBoxAdmin
             // 
             this.chkBoxAdmin.AutoSize = true;
-            this.chkBoxAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBoxAdmin.Location = new System.Drawing.Point(664, 178);
+            this.chkBoxAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.chkBoxAdmin.Location = new System.Drawing.Point(13, 23);
+            this.chkBoxAdmin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkBoxAdmin.Name = "chkBoxAdmin";
-            this.chkBoxAdmin.Size = new System.Drawing.Size(94, 29);
-            this.chkBoxAdmin.TabIndex = 54;
+            this.chkBoxAdmin.Size = new System.Drawing.Size(55, 17);
+            this.chkBoxAdmin.TabIndex = 10;
             this.chkBoxAdmin.Text = "Admin";
             this.chkBoxAdmin.UseVisualStyleBackColor = true;
             // 
             // chkBoxActive
             // 
             this.chkBoxActive.AutoSize = true;
-            this.chkBoxActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBoxActive.Location = new System.Drawing.Point(664, 143);
+            this.chkBoxActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.chkBoxActive.Location = new System.Drawing.Point(13, 23);
+            this.chkBoxActive.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chkBoxActive.Name = "chkBoxActive";
-            this.chkBoxActive.Size = new System.Drawing.Size(92, 29);
-            this.chkBoxActive.TabIndex = 55;
+            this.chkBoxActive.Size = new System.Drawing.Size(56, 17);
+            this.chkBoxActive.TabIndex = 13;
             this.chkBoxActive.Text = "Active";
             this.chkBoxActive.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(12, 569);
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(12, 315);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(135, 46);
-            this.btnAdd.TabIndex = 56;
-            this.btnAdd.Text = "+";
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.TabIndex = 1;
+            this.btnAdd.Text = "+ (Add)";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnMinus
             // 
-            this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinus.Location = new System.Drawing.Point(144, 569);
+            this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinus.Location = new System.Drawing.Point(90, 315);
+            this.btnMinus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMinus.Name = "btnMinus";
-            this.btnMinus.Size = new System.Drawing.Size(137, 46);
-            this.btnMinus.TabIndex = 57;
-            this.btnMinus.Text = "-";
+            this.btnMinus.Size = new System.Drawing.Size(75, 23);
+            this.btnMinus.TabIndex = 2;
+            this.btnMinus.Text = "- (Delete)";
             this.btnMinus.UseVisualStyleBackColor = true;
             // 
-            // AdminForm
+            // groupBox1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtEmail);
+            this.groupBox1.Controls.Add(this.lblPhone);
+            this.groupBox1.Controls.Add(this.txtPhone);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txtLastName);
+            this.groupBox1.Controls.Add(this.txtUserID);
+            this.groupBox1.Controls.Add(this.lblUserID);
+            this.groupBox1.Controls.Add(this.lblMiddleName);
+            this.groupBox1.Controls.Add(this.lblDisplayName);
+            this.groupBox1.Controls.Add(this.lblFirstName);
+            this.groupBox1.Controls.Add(this.txtMiddleName);
+            this.groupBox1.Controls.Add(this.txtDisplayName);
+            this.groupBox1.Controls.Add(this.txtFirstName);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(215, 54);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(243, 348);
+            this.groupBox1.TabIndex = 60;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "User Details";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.No;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label3.Location = new System.Drawing.Point(25, 303);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.TabIndex = 65;
+            this.label3.Text = "Email";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(25, 317);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(188, 20);
+            this.txtEmail.TabIndex = 9;
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Cursor = System.Windows.Forms.Cursors.No;
+            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.lblPhone.Location = new System.Drawing.Point(25, 256);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(38, 13);
+            this.lblPhone.TabIndex = 63;
+            this.lblPhone.Text = "Phone";
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPhone.Location = new System.Drawing.Point(25, 272);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(188, 20);
+            this.txtPhone.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label2.Location = new System.Drawing.Point(25, 160);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(105, 13);
+            this.label2.TabIndex = 61;
+            this.label2.Text = "Last Name (required)";
+            // 
+            // txtLastName
+            // 
+            this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLastName.Location = new System.Drawing.Point(25, 176);
+            this.txtLastName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(188, 20);
+            this.txtLastName.TabIndex = 6;
+            // 
+            // chkBoxResetPassword
+            // 
+            this.chkBoxResetPassword.AutoSize = true;
+            this.chkBoxResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.chkBoxResetPassword.Location = new System.Drawing.Point(13, 44);
+            this.chkBoxResetPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chkBoxResetPassword.Name = "chkBoxResetPassword";
+            this.chkBoxResetPassword.Size = new System.Drawing.Size(78, 17);
+            this.chkBoxResetPassword.TabIndex = 14;
+            this.chkBoxResetPassword.Text = "Reset Pwd";
+            this.chkBoxResetPassword.UseVisualStyleBackColor = true;
+            // 
+            // btnMenu
+            // 
+            this.btnMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnMenu.Location = new System.Drawing.Point(481, 317);
+            this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(99, 23);
+            this.btnMenu.TabIndex = 17;
+            this.btnMenu.Text = "Return to Menu";
+            this.btnMenu.UseVisualStyleBackColor = true;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnExit.Location = new System.Drawing.Point(481, 371);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(99, 23);
+            this.btnExit.TabIndex = 19;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.chkBoxAdmin);
+            this.groupBox2.Controls.Add(this.chkBoxStudent);
+            this.groupBox2.Controls.Add(this.chkBoxCoach);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(483, 54);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(97, 97);
+            this.groupBox2.TabIndex = 63;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "User Roles";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.lstBoxUsers);
+            this.groupBox3.Controls.Add(this.btnAdd);
+            this.groupBox3.Controls.Add(this.btnMinus);
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(15, 54);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(179, 346);
+            this.groupBox3.TabIndex = 64;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "User List";
+            // 
+            // btnRevert
+            // 
+            this.btnRevert.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnRevert.Location = new System.Drawing.Point(481, 266);
+            this.btnRevert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRevert.Name = "btnRevert";
+            this.btnRevert.Size = new System.Drawing.Size(99, 23);
+            this.btnRevert.TabIndex = 16;
+            this.btnRevert.Text = "Revert Changes";
+            this.btnRevert.UseVisualStyleBackColor = true;
+            this.btnRevert.Click += new System.EventHandler(this.btnRevert_Click);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.chkBoxResetPassword);
+            this.groupBox4.Controls.Add(this.chkBoxActive);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(483, 159);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox4.Size = new System.Drawing.Size(97, 66);
+            this.groupBox4.TabIndex = 65;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "User Options";
+            // 
+            // UserAdminForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 627);
-            this.Controls.Add(this.btnMinus);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.chkBoxActive);
-            this.Controls.Add(this.chkBoxAdmin);
-            this.Controls.Add(this.chkBoxCoach);
-            this.Controls.Add(this.chkBoxStudent);
+            this.ClientSize = new System.Drawing.Size(595, 411);
+            this.Controls.Add(this.btnRevert);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnLogOff);
-            this.Controls.Add(this.btnSubmit);
-            this.Controls.Add(this.lblUsers);
-            this.Controls.Add(this.lstBoxUsers);
-            this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.txtBoxUserID);
-            this.Controls.Add(this.lblUserID);
-            this.Controls.Add(this.lblMiddleName);
-            this.Controls.Add(this.lblLastName);
-            this.Controls.Add(this.lblFirstName);
-            this.Controls.Add(this.txtBoxMiddleName);
-            this.Controls.Add(this.txtBoxPassword);
-            this.Controls.Add(this.txtBoxLastName);
-            this.Controls.Add(this.txtBoxFirstName);
+            this.Controls.Add(this.btnMenu);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblAdminForm);
+            this.Controls.Add(this.btnLogOff);
+            this.Controls.Add(this.btnSave);
             this.Font = new System.Drawing.Font("MV Boli", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "AdminForm";
-            this.Text = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "UserAdminForm";
+            this.Text = "Update User Info";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,27 +471,37 @@
 
         #endregion
         private System.Windows.Forms.Label lblAdminForm;
-        private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox txtBoxUserID;
+        private System.Windows.Forms.TextBox txtUserID;
         private System.Windows.Forms.Label lblUserID;
         private System.Windows.Forms.Label lblMiddleName;
-        private System.Windows.Forms.Label lblLastName;
+        private System.Windows.Forms.Label lblDisplayName;
         private System.Windows.Forms.Label lblFirstName;
-        private System.Windows.Forms.TextBox txtBoxMiddleName;
-        private System.Windows.Forms.TextBox txtBoxPassword;
-        private System.Windows.Forms.TextBox txtBoxLastName;
-        private System.Windows.Forms.TextBox txtBoxFirstName;
+        private System.Windows.Forms.TextBox txtMiddleName;
+        private System.Windows.Forms.TextBox txtDisplayName;
+        private System.Windows.Forms.TextBox txtFirstName;
         private System.Windows.Forms.ListBox lstBoxUsers;
-        private System.Windows.Forms.Label lblUsers;
-        private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnLogOff;
-        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.CheckBox chkBoxStudent;
         private System.Windows.Forms.CheckBox chkBoxCoach;
         private System.Windows.Forms.CheckBox chkBoxAdmin;
         private System.Windows.Forms.CheckBox chkBoxActive;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnMinus;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnMenu;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtLastName;
+        private System.Windows.Forms.Button btnRevert;
+        private System.Windows.Forms.CheckBox chkBoxResetPassword;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblPhone;
+        private System.Windows.Forms.TextBox txtPhone;
     }
 }
 

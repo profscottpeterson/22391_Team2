@@ -92,7 +92,7 @@ namespace CoachConnect
             }
             catch (Exception ex)
             {
-                ex.ToString();
+                MessageBox.Show(ex.ToString());
             }
         }
 

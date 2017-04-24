@@ -76,8 +76,8 @@ namespace CoachConnect
                 }
                 else if (roleText == adminRoleName)
                 {
-                    //var newForm = new AdminForm();
-                    //newForm.Show();
+                    var newForm = new UserAdminForm();
+                    newForm.Show();
                 }
             }
         }
