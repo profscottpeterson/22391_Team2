@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace CoachConnect
 {
     public partial class frmCoachView : Form
     {
         public string OriginalPic;
+        public bool EditMode = false;
+        public bool flagValidate = true;
         public frmCoachView()
         {
             InitializeComponent();
@@ -49,7 +52,10 @@ namespace CoachConnect
             txtPicURL.ForeColor = Color.Gray;
             txtPicURL.SelectionLength = txtPicURL.Text.Length;
             txtPicURL.Focus();
-
+            EditMode = true;
+            grpPersonalInfo.Enabled = false;
+            grpPassword.Enabled = false;
+            this.AcceptButton = btnPreview;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -61,6 +67,9 @@ namespace CoachConnect
             btnEditPic.Show();
             pbEditPic.ImageLocation = OriginalPic;
             txtPicURL.Clear();
+            EditMode = false;
+            grpPassword.Enabled = true;
+            grpPersonalInfo.Enabled = true;
         }
 
         private void btnPreview_Click(object sender, EventArgs e)
@@ -101,11 +110,15 @@ namespace CoachConnect
 
         private void txtCurrentPass_TextChanged(object sender, EventArgs e)
         {
+            
             lblPassSuccess.Visible = false;
             lblPassInstructions.Visible = true;
             if (!string.IsNullOrEmpty(txtCurrentPass.Text))
             {
                 btnPassCancel.Visible = true;
+                grpProfilePic.Enabled = false;
+                grpPersonalInfo.Enabled = false;
+                EditMode = true;
                 User coach = new User();
                 coach = getCoach();
 
@@ -119,6 +132,12 @@ namespace CoachConnect
                     btnPassCancel.Visible = true;
                 }
             }
+            else
+            {
+                grpProfilePic.Enabled = true;
+                grpPersonalInfo.Enabled = true;
+                EditMode = false;
+            }
         }
 
         private void txtConfirmNewPass_TextChanged(object sender, EventArgs e)
@@ -126,10 +145,14 @@ namespace CoachConnect
             if (txtConfirmNewPass.Text.Length >= txtNewPass.Text.Length && !string.IsNullOrEmpty(txtConfirmNewPass.Text))
             {
                 if (txtConfirmNewPass.Text != txtNewPass.Text) {
+                    grpPersonalInfo.Enabled = true;
+                    grpProfilePic.Enabled = true;
+                    EditMode = false;
                     lblMatchPass.Visible = true;
                     pbNewPass.Visible = false;
                     pbConfirmPass.Visible = false;
                     btnUpdatePass.Visible = false;
+                    btnPassCancel.Visible = true;
                 }
                 else if (txtNewPass.Text == txtConfirmNewPass.Text)
                 {
@@ -146,6 +169,7 @@ namespace CoachConnect
                 pbConfirmPass.Visible = false;
                 pbNewPass.Visible = false;
                 lblMatchPass.Visible = false;
+
             }
         }
 
@@ -171,7 +195,11 @@ namespace CoachConnect
 
             txtCurrentPass.Focus();
             txtConfirmNewPass.BorderStyle = BorderStyle.FixedSingle;
-            txtNewPass.BorderStyle = BorderStyle.FixedSingle;      
+            txtNewPass.BorderStyle = BorderStyle.FixedSingle;
+
+            grpPersonalInfo.Enabled = true;
+            grpProfilePic.Enabled = true;
+            EditMode = false;
         }
 
         private void txtNewPass_TextChanged(object sender, EventArgs e)
@@ -219,6 +247,9 @@ namespace CoachConnect
                     btnPassCancel.PerformClick();
                     lblPassInstructions.Visible = false;
                     lblPassSuccess.Visible = true;
+                    grpProfilePic.Enabled = true;
+                    grpPersonalInfo.Enabled = true;
+                    EditMode = false;
                 }
             }
         }
@@ -231,11 +262,114 @@ namespace CoachConnect
             txtPhone.Enabled = true;
             txtEmail.Enabled = true;
             txtFName.Focus();
+            btnCancelInfo.Visible = true;
+            btnEditInfo.Visible = false;
+            grpProfilePic.Enabled = false;
+            grpPassword.Enabled = false;
+            EditMode = true;
+            this.AcceptButton = btnCancelInfo;
         }
 
         private void txtFName_TextChanged(object sender, EventArgs e)
         {
+           // btnSubmitInfo.Visible = true;
+        }
 
+        private void txtFName_Leave(object sender, EventArgs e)
+        {
+            txtFName.Text = txtFName.Text.Trim();
+            ValidateTextbox(txtFName.Text);
+            if (flagValidate)
+            {
+                txtFName.Text = FormatTextBox(txtFName.Text);
+                lblFNameError.Visible = false;
+            }
+            else
+            {
+                lblFNameError.Visible = true;
+                txtFName.Focus();
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            Program.loginForm.logout();
+
+            // Close this window
+            this.Close();
+        }
+
+        private void btnCancelInfo_Click(object sender, EventArgs e)
+        {
+            LoadEditProfile(getCoach());
+            txtFName.Enabled = false;
+            txtLName.Enabled = false;
+            txtMiddle.Enabled = false;
+            txtPhone.Enabled = false;
+            txtEmail.Enabled = false;
+            btnSubmitInfo.Visible = false;
+            btnCancelInfo.Visible = false;
+            btnEditInfo.Visible = true;
+            EditMode = false;
+            grpPassword.Enabled = true;
+            grpProfilePic.Enabled = true;
+        }
+
+        private void btnSubmitInfo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbForm_Deselecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (EditMode)
+            {
+                MessageBox.Show("Please submit your edit or cancel before moving to other Tab");
+                e.Cancel = true;
+            }
+        }
+        private void ValidateTextbox(String tb)
+        {
+            flagValidate = true;
+            if ((String.IsNullOrEmpty(tb)) || (!tb.All(char.IsLetter))) flagValidate = false;
+        }
+
+        private string FormatTextBox(String s)
+        {
+            if (s.Length > 1) return char.ToUpper(s[0]) + s.Substring(1).ToLower();
+            else return s.ToUpper();
+        }
+
+        private void txtMiddle_Leave(object sender, EventArgs e)
+        {
+            txtMiddle.Text = txtMiddle.Text.Trim();
+            ValidateTextbox(txtMiddle.Text);
+            if (flagValidate)
+            {
+                txtMiddle.Text = FormatTextBox(txtMiddle.Text);
+                lblMiddleError.Visible = false;
+            }
+            else
+            {
+                lblMiddleError.Visible = true;
+                txtMiddle.Focus();
+            }
+        }
+
+        private void txtLName_Leave(object sender, EventArgs e)
+        {
+            txtLName.Text = txtLName.Text.Trim();
+            ValidateTextbox(txtLName.Text);
+            if (flagValidate)
+            {
+                txtLName.Text = FormatTextBox(txtLName.Text);
+                lblLastName.Visible = false;
+            }
+            else
+            {
+                lblLastName.Visible = true;
+                txtLName.Focus();
+            }
         }
     }
 }
