@@ -45,7 +45,6 @@
             this.chkBoxAdmin = new System.Windows.Forms.CheckBox();
             this.chkBoxActive = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.btnMinus = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -60,6 +59,8 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRevert = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtProfilePic = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -160,17 +161,17 @@
             // 
             this.lstBoxUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstBoxUsers.FormattingEnabled = true;
-            this.lstBoxUsers.Location = new System.Drawing.Point(12, 18);
+            this.lstBoxUsers.Location = new System.Drawing.Point(12, 22);
             this.lstBoxUsers.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstBoxUsers.Name = "lstBoxUsers";
-            this.lstBoxUsers.Size = new System.Drawing.Size(153, 290);
+            this.lstBoxUsers.Size = new System.Drawing.Size(153, 329);
             this.lstBoxUsers.TabIndex = 0;
             this.lstBoxUsers.SelectedValueChanged += new System.EventHandler(this.lstBoxUsers_SelectedValueChanged);
             // 
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnSave.Location = new System.Drawing.Point(481, 239);
+            this.btnSave.Location = new System.Drawing.Point(481, 260);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(99, 23);
@@ -182,7 +183,7 @@
             // btnLogOff
             // 
             this.btnLogOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnLogOff.Location = new System.Drawing.Point(481, 344);
+            this.btnLogOff.Location = new System.Drawing.Point(481, 365);
             this.btnLogOff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogOff.Name = "btnLogOff";
             this.btnLogOff.Size = new System.Drawing.Size(99, 23);
@@ -242,28 +243,19 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(12, 315);
+            this.btnAdd.Location = new System.Drawing.Point(12, 361);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
+            this.btnAdd.Size = new System.Drawing.Size(153, 23);
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "+ (Add)";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnMinus
-            // 
-            this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinus.Location = new System.Drawing.Point(90, 315);
-            this.btnMinus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMinus.Name = "btnMinus";
-            this.btnMinus.Size = new System.Drawing.Size(75, 23);
-            this.btnMinus.TabIndex = 2;
-            this.btnMinus.Text = "- (Delete)";
-            this.btnMinus.UseVisualStyleBackColor = true;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtProfilePic);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.lblPhone);
@@ -283,7 +275,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(243, 348);
+            this.groupBox1.Size = new System.Drawing.Size(243, 396);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User Details";
@@ -363,7 +355,7 @@
             // btnMenu
             // 
             this.btnMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnMenu.Location = new System.Drawing.Point(481, 317);
+            this.btnMenu.Location = new System.Drawing.Point(481, 338);
             this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(99, 23);
@@ -374,7 +366,7 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnExit.Location = new System.Drawing.Point(481, 371);
+            this.btnExit.Location = new System.Drawing.Point(481, 392);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(99, 23);
@@ -402,13 +394,12 @@
             // 
             this.groupBox3.Controls.Add(this.lstBoxUsers);
             this.groupBox3.Controls.Add(this.btnAdd);
-            this.groupBox3.Controls.Add(this.btnMinus);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(15, 54);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(179, 346);
+            this.groupBox3.Size = new System.Drawing.Size(179, 396);
             this.groupBox3.TabIndex = 64;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "User List";
@@ -416,7 +407,7 @@
             // btnRevert
             // 
             this.btnRevert.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnRevert.Location = new System.Drawing.Point(481, 266);
+            this.btnRevert.Location = new System.Drawing.Point(481, 287);
             this.btnRevert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnRevert.Name = "btnRevert";
             this.btnRevert.Size = new System.Drawing.Size(99, 23);
@@ -439,11 +430,31 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "User Options";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.No;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label1.Location = new System.Drawing.Point(25, 349);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 67;
+            this.label1.Text = "Profile Pic URL";
+            // 
+            // txtProfilePic
+            // 
+            this.txtProfilePic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProfilePic.Location = new System.Drawing.Point(25, 363);
+            this.txtProfilePic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtProfilePic.Name = "txtProfilePic";
+            this.txtProfilePic.Size = new System.Drawing.Size(188, 20);
+            this.txtProfilePic.TabIndex = 66;
+            // 
             // UserAdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 411);
+            this.ClientSize = new System.Drawing.Size(595, 461);
             this.Controls.Add(this.btnRevert);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
@@ -488,7 +499,6 @@
         private System.Windows.Forms.CheckBox chkBoxAdmin;
         private System.Windows.Forms.CheckBox chkBoxActive;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnMinus;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnMenu;
         private System.Windows.Forms.Button btnExit;
@@ -503,6 +513,8 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.TextBox txtPhone;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtProfilePic;
     }
 }
 
