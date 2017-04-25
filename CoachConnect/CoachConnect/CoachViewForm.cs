@@ -319,12 +319,21 @@ namespace CoachConnect
 
         private void btnSubmitInfo_Click(object sender, EventArgs e)
         {
-            if (!lblFNameError.Visible||!lblMiddleError.Visible||!lblPhoneError.Visible||!lblLastName.Visible||!lblEmailError.Visible)
+            txtFName_Leave(sender, e);
+            txtLName_Leave(sender, e);
+            txtPhone_Leave(sender, e);
+            txtEmail_Leave(sender, e);
+            txtMiddle_Leave(sender, e);
+
+            if (!lblFNameError.Visible && !lblMiddleError.Visible&&!lblPhoneError.Visible && !lblLastName.Visible && !lblEmailError.Visible)
             {
                 updatePersonalInfo();
                 btnCancelInfo.PerformClick();
                 EditMode = false;
-                
+                User coach = new User();
+                coach = getCoach();
+
+                this.Text = coach.FirstName + " " + coach.LastName + " - " + coach.UserID;
             }
         }
 
