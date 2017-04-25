@@ -267,12 +267,13 @@ namespace CoachConnect
             grpProfilePic.Enabled = false;
             grpPassword.Enabled = false;
             EditMode = true;
-            this.AcceptButton = btnCancelInfo;
+            btnSubmitInfo.Visible = true;
+            this.AcceptButton = btnSubmitInfo;
         }
 
         private void txtFName_TextChanged(object sender, EventArgs e)
         {
-           // btnSubmitInfo.Visible = true;
+           //btnSubmitInfo.Visible = true;
         }
 
         private void txtFName_Leave(object sender, EventArgs e)
@@ -313,11 +314,18 @@ namespace CoachConnect
             EditMode = false;
             grpPassword.Enabled = true;
             grpProfilePic.Enabled = true;
+            txtMiddle.Font = new Font(txtMiddle.Font, FontStyle.Regular);
         }
 
         private void btnSubmitInfo_Click(object sender, EventArgs e)
         {
-
+            if (!lblFNameError.Visible||!lblMiddleError.Visible||!lblPhoneError.Visible||!lblLastName.Visible||!lblEmailError.Visible)
+            {
+                updatePersonalInfo();
+                btnCancelInfo.PerformClick();
+                EditMode = false;
+                
+            }
         }
 
         private void tbForm_Deselecting(object sender, TabControlCancelEventArgs e)
@@ -347,7 +355,13 @@ namespace CoachConnect
             if (flagValidate)
             {
                 txtMiddle.Text = FormatTextBox(txtMiddle.Text);
+                txtMiddle.Font = new Font(txtMiddle.Font, FontStyle.Regular);
                 lblMiddleError.Visible = false;
+            }
+            else if(!flagValidate && txtMiddle.Text=="")
+            {
+                txtMiddle.Text= "None";
+                txtMiddle.Font = new Font(txtMiddle.Font,FontStyle.Italic);
             }
             else
             {
@@ -369,6 +383,75 @@ namespace CoachConnect
             {
                 lblLastName.Visible = true;
                 txtLName.Focus();
+            }
+        }
+
+        private void txtPhone_Leave(object sender, EventArgs e)
+        {
+            string sanitizedNum = "";
+            string original = txtPhone.Text;
+
+            foreach (char num in txtPhone.Text)
+            {
+                if (char.IsDigit(num)) sanitizedNum += num.ToString();
+            }
+            if (sanitizedNum.Length == 10)
+            {
+                txtPhone.Text = "(" + sanitizedNum.Substring(0, 3) + ")" + sanitizedNum.Substring(3, 3) + "-" + sanitizedNum.Substring(6);
+                lblPhoneError.Visible = false;
+            }
+            else
+            {
+                txtPhone.Text = original;
+                lblPhoneError.Visible = true;
+                txtPhone.Focus();
+            }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            if (VerifyEmail())
+            {
+                lblEmailError.Visible = false;
+            }
+            else
+            {
+                lblEmailError.Visible = true;
+                txtEmail.Focus();
+            }
+
+        }
+        private bool VerifyEmail()
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(txtEmail.Text);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public void updatePersonalInfo()
+        {
+            string phoneNoFormat = "";
+            foreach(char num in txtPhone.Text)
+            {
+                if (char.IsDigit(num)) phoneNoFormat += num;
+            }
+            
+            using (var context = new db_sft_2172Entities())
+            {
+                var result = context.Users.SingleOrDefault(b => b.UserID == Program.CurrentUser);
+                result.FirstName = txtFName.Text;
+                result.LastName = txtLName.Text;
+                result.MiddleName = txtMiddle.Text;
+                result.Phone = phoneNoFormat;
+                result.Email = txtEmail.Text;
+                context.SaveChanges();
+                
             }
         }
     }

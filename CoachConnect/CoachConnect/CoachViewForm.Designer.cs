@@ -81,8 +81,8 @@
             this.lblPhoneError = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
             this.lblMiddleError = new System.Windows.Forms.Label();
-            this.btnLogout = new System.Windows.Forms.Button();
             this.lblFNameError = new System.Windows.Forms.Label();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.tbForm.SuspendLayout();
             this.tbSchedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAvailable)).BeginInit();
@@ -502,7 +502,7 @@
             this.btnSubmitInfo.Location = new System.Drawing.Point(75, 238);
             this.btnSubmitInfo.Name = "btnSubmitInfo";
             this.btnSubmitInfo.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmitInfo.TabIndex = 20;
+            this.btnSubmitInfo.TabIndex = 14;
             this.btnSubmitInfo.Text = "Update";
             this.btnSubmitInfo.UseVisualStyleBackColor = true;
             this.btnSubmitInfo.Visible = false;
@@ -514,7 +514,7 @@
             this.btnCancelInfo.Location = new System.Drawing.Point(156, 238);
             this.btnCancelInfo.Name = "btnCancelInfo";
             this.btnCancelInfo.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelInfo.TabIndex = 19;
+            this.btnCancelInfo.TabIndex = 15;
             this.btnCancelInfo.Text = "Cancel";
             this.btnCancelInfo.UseVisualStyleBackColor = true;
             this.btnCancelInfo.Visible = false;
@@ -550,6 +550,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(201, 20);
             this.txtEmail.TabIndex = 13;
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // lblEmail
             // 
@@ -594,6 +595,7 @@
             this.txtPhone.Size = new System.Drawing.Size(95, 20);
             this.txtPhone.TabIndex = 12;
             this.txtPhone.Text = "(888)888.8888";
+            this.txtPhone.Leave += new System.EventHandler(this.txtPhone_Leave);
             // 
             // lblPhone
             // 
@@ -698,16 +700,6 @@
             this.lblMiddleError.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.lblMiddleError.Visible = false;
             // 
-            // btnLogout
-            // 
-            this.btnLogout.Location = new System.Drawing.Point(468, 8);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(75, 23);
-            this.btnLogout.TabIndex = 0;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
             // lblFNameError
             // 
             this.lblFNameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -719,6 +711,16 @@
             this.lblFNameError.Text = "Invalid First Name";
             this.lblFNameError.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.lblFNameError.Visible = false;
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.Location = new System.Drawing.Point(468, 8);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnLogout.TabIndex = 16;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // frmCoachView
             // 

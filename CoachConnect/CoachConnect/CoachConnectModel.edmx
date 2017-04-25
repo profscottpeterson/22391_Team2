@@ -111,15 +111,17 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="10" />
           <Property Name="Email" Type="nvarchar" MaxLength="320" />
           <Property Name="IsStudent" Type="bit" Nullable="false" />
           <Property Name="IsAdmin" Type="bit" Nullable="false" />
           <Property Name="IsCoach" Type="bit" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
           <Property Name="ProfilePic" Type="nvarchar" MaxLength="50" />
-          <Property Name="ActiveCoachSince" Type="date" />
+          <Property Name="ActiveCoachSince" Type="datetime" />
+          <Property Name="ResetPassword" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="UserAvailability">
           <Key>
@@ -696,16 +698,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
           <Property Name="IsCoach" Type="Boolean" Nullable="false" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="UserAvailabilities" Relationship="db_sft_2172Model.FK_UserAvailability_User" FromRole="User" ToRole="UserAvailability" />
           <NavigationProperty Name="UserCourses" Relationship="db_sft_2172Model.FK_UserCourse_User" FromRole="User" ToRole="UserCourse" />
           <Property Name="IsStudent" Type="Boolean" Nullable="false" />
           <Property Name="ProfilePic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ActiveCoachSince" Type="DateTime" Precision="0" />
+          <Property Name="ActiveCoachSince" Type="DateTime" Precision="3" />
           <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ResetPassword" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Day">
           <Key>
@@ -979,6 +983,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="db_sft_2172Model.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ResetPassword" ColumnName="ResetPassword" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />

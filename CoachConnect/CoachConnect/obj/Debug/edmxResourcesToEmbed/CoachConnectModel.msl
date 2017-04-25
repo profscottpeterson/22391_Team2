@@ -92,6 +92,8 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="db_sft_2172Model.User">
         <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="ResetPassword" ColumnName="ResetPassword" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
