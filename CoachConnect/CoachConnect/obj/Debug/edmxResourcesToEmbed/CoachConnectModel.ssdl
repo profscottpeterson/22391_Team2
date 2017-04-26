@@ -102,11 +102,12 @@
     <Property Name="IsStudent" Type="bit" Nullable="false" />
     <Property Name="IsAdmin" Type="bit" Nullable="false" />
     <Property Name="IsCoach" Type="bit" Nullable="false" />
-    <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="500" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="ProfilePic" Type="nvarchar" MaxLength="50" />
-    <Property Name="ActiveCoachSince" Type="date" />
+    <Property Name="ActiveCoachSince" Type="datetime" />
     <Property Name="ResetPassword" Type="bit" Nullable="false" />
+    <Property Name="PasswordSalt" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="UserAvailability">
     <Key>

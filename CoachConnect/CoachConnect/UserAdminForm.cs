@@ -19,11 +19,6 @@ namespace CoachConnect
 
         private int CurrentUserIndex { get; set; }
 
-        const string CANCEL_STRING = "Cancel";
-        const string YES_STRING = "Yes";
-        const string NO_STRING = "No";
-
-
         /*****************/
         /** Constructor **/
         /*****************/

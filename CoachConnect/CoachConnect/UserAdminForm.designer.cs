@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblAdminForm = new System.Windows.Forms.Label();
             this.txtUserID = new System.Windows.Forms.TextBox();
             this.lblUserID = new System.Windows.Forms.Label();
             this.lblMiddleName = new System.Windows.Forms.Label();
@@ -46,6 +45,8 @@
             this.chkBoxActive = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtProfilePic = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblPhone = new System.Windows.Forms.Label();
@@ -59,24 +60,12 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRevert = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtProfilePic = new System.Windows.Forms.TextBox();
+            this.lblAdminForm = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblAdminForm
-            // 
-            this.lblAdminForm.AutoSize = true;
-            this.lblAdminForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminForm.Location = new System.Drawing.Point(212, 11);
-            this.lblAdminForm.Name = "lblAdminForm";
-            this.lblAdminForm.Size = new System.Drawing.Size(220, 31);
-            this.lblAdminForm.TabIndex = 7;
-            this.lblAdminForm.Text = "Update User Info";
-            this.lblAdminForm.UseWaitCursor = true;
             // 
             // txtUserID
             // 
@@ -280,6 +269,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User Details";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.No;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.label1.Location = new System.Drawing.Point(25, 349);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 67;
+            this.label1.Text = "Profile Pic URL";
+            // 
+            // txtProfilePic
+            // 
+            this.txtProfilePic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProfilePic.Location = new System.Drawing.Point(25, 363);
+            this.txtProfilePic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtProfilePic.Name = "txtProfilePic";
+            this.txtProfilePic.Size = new System.Drawing.Size(188, 20);
+            this.txtProfilePic.TabIndex = 66;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -430,25 +439,16 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "User Options";
             // 
-            // label1
+            // lblAdminForm
             // 
-            this.label1.AutoSize = true;
-            this.label1.Cursor = System.Windows.Forms.Cursors.No;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label1.Location = new System.Drawing.Point(25, 349);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 67;
-            this.label1.Text = "Profile Pic URL";
-            // 
-            // txtProfilePic
-            // 
-            this.txtProfilePic.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProfilePic.Location = new System.Drawing.Point(25, 363);
-            this.txtProfilePic.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtProfilePic.Name = "txtProfilePic";
-            this.txtProfilePic.Size = new System.Drawing.Size(188, 20);
-            this.txtProfilePic.TabIndex = 66;
+            this.lblAdminForm.AutoSize = true;
+            this.lblAdminForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminForm.Location = new System.Drawing.Point(207, 11);
+            this.lblAdminForm.Name = "lblAdminForm";
+            this.lblAdminForm.Size = new System.Drawing.Size(220, 31);
+            this.lblAdminForm.TabIndex = 7;
+            this.lblAdminForm.Text = "Update User Info";
+            this.lblAdminForm.UseWaitCursor = true;
             // 
             // UserAdminForm
             // 
@@ -482,7 +482,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label lblAdminForm;
         private System.Windows.Forms.TextBox txtUserID;
         private System.Windows.Forms.Label lblUserID;
         private System.Windows.Forms.Label lblMiddleName;
@@ -515,6 +514,7 @@
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtProfilePic;
+        private System.Windows.Forms.Label lblAdminForm;
     }
 }
 

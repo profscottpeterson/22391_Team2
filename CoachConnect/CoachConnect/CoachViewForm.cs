@@ -73,7 +73,7 @@ namespace CoachConnect
             OriginalPic = txtPicURL.Text;
            using (var context = new db_sft_2172Entities())
             {
-                var result = context.Users.SingleOrDefault(b => b.UserID == Program.CurrentUser);
+                var result = context.Users.SingleOrDefault(b => b.UserID == Program.CurrentUser.UserID);
                 result.ProfilePic = txtPicURL.Text;
                 context.SaveChanges();
             }

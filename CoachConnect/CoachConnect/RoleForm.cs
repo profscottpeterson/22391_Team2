@@ -17,17 +17,17 @@ namespace CoachConnect
             InitializeComponent();
 
             // Check current user roles and generate list items as appropriate
-            if (Program.IsStudent)
+            if (Program.CurrentUser.IsStudent)
                 cmbRoleChoice.Items.Add("Student");
 
-            if (Program.IsCoach)
+            if (Program.CurrentUser.IsCoach)
                 cmbRoleChoice.Items.Add("Coach");
 
-            if (Program.IsAdmin)
+            if (Program.CurrentUser.IsAdmin)
                 cmbRoleChoice.Items.Add("Admin");
 
             if (cmbRoleChoice.Items.Count == 0)
-                throw new Exception("ERROR: User must be assigned to at least one role.");
+                throw new Exception("ERROR: User must be assigned to at least one role.\nPlease contact an administrator for assistance.");
             else
             {
                 cmbRoleChoice.SelectedIndex = 0;
