@@ -55,10 +55,10 @@
             // lblAdminForm
             // 
             this.lblAdminForm.AutoSize = true;
-            this.lblAdminForm.Font = new System.Drawing.Font("Baskerville Old Face", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdminForm.Location = new System.Drawing.Point(200, 9);
             this.lblAdminForm.Name = "lblAdminForm";
-            this.lblAdminForm.Size = new System.Drawing.Size(367, 73);
+            this.lblAdminForm.Size = new System.Drawing.Size(380, 73);
             this.lblAdminForm.TabIndex = 7;
             this.lblAdminForm.Text = "Admin Form";
             this.lblAdminForm.UseWaitCursor = true;
@@ -157,14 +157,15 @@
             this.lstBoxUsers.Name = "lstBoxUsers";
             this.lstBoxUsers.Size = new System.Drawing.Size(269, 490);
             this.lstBoxUsers.TabIndex = 47;
+            this.lstBoxUsers.SelectedIndexChanged += new System.EventHandler(this.lstBoxUsers_SelectedIndexChanged);
             // 
             // lblUsers
             // 
             this.lblUsers.AutoSize = true;
-            this.lblUsers.Font = new System.Drawing.Font("Baskerville Old Face", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsers.Location = new System.Drawing.Point(83, 82);
             this.lblUsers.Name = "lblUsers";
-            this.lblUsers.Size = new System.Drawing.Size(105, 41);
+            this.lblUsers.Size = new System.Drawing.Size(116, 40);
             this.lblUsers.TabIndex = 48;
             this.lblUsers.Text = "Users";
             this.lblUsers.Click += new System.EventHandler(this.lblUsers_Click);
@@ -263,7 +264,7 @@
             this.btnMinus.Text = "-";
             this.btnMinus.UseVisualStyleBackColor = true;
             // 
-            // AdminForm
+            // UserAdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -291,8 +292,9 @@
             this.Controls.Add(this.txtBoxFirstName);
             this.Controls.Add(this.lblAdminForm);
             this.Font = new System.Drawing.Font("MV Boli", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "AdminForm";
+            this.Name = "UserAdminForm";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.UserAdminForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
