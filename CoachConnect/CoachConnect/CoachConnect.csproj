@@ -63,13 +63,17 @@
     <Compile Include="CoachViewForm.Designer.cs">
       <DependentUpon>CoachViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangePasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePasswordForm.designer.cs">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaltedHash.cs" />
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserAdminForm.cs">
@@ -161,6 +165,12 @@
     <Compile Include="User.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserAdminFormAdam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserAdminFormAdam.designer.cs">
+      <DependentUpon>UserAdminFormAdam.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserAvailability.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -169,6 +179,9 @@
     </Compile>
     <EmbeddedResource Include="CoachViewForm.resx">
       <DependentUpon>CoachViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePasswordForm.resx">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserAdminForm.resx">
       <DependentUpon>UserAdminForm.cs</DependentUpon>
@@ -194,6 +207,9 @@
     </Compile>
     <EmbeddedResource Include="RoleForm.resx">
       <DependentUpon>RoleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserAdminFormAdam.resx">
+      <DependentUpon>UserAdminFormAdam.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="CoachConnectModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

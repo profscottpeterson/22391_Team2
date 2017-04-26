@@ -175,7 +175,6 @@
     </AssociationSet>
     <EntitySet Name="CoachByTimes" EntityType="db_sft_2172Model.CoachByTime" />
     <EntitySet Name="CoachByNames" EntityType="db_sft_2172Model.CoachByName" />
-    <EntitySet Name="sysdiagrams" EntityType="db_sft_2172Model.sysdiagram" />
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -274,18 +273,19 @@
     <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
     <Property Name="IsCoach" Type="Boolean" Nullable="false" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="UserAvailabilities" Relationship="db_sft_2172Model.FK_UserAvailability_User" FromRole="User" ToRole="UserAvailability" />
     <NavigationProperty Name="UserCourses" Relationship="db_sft_2172Model.FK_UserCourse_User" FromRole="User" ToRole="UserCourse" />
     <Property Name="IsStudent" Type="Boolean" Nullable="false" />
-    <Property Name="ProfilePic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ActiveCoachSince" Type="DateTime" Precision="3" />
     <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
     <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="ResetPassword" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Day">
     <Key>
@@ -440,16 +440,6 @@
     <Property Name="ActiveCoachSince" Type="DateTime" Precision="0" />
     <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="ProfilePic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
