@@ -63,6 +63,18 @@
     <Compile Include="CoachViewForm.Designer.cs">
       <DependentUpon>CoachViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditStudentProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindCoachForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindCoachForm.designer.cs">
+      <DependentUpon>FindCoachForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResetStudentPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -120,11 +132,11 @@
     <Compile Include="Department.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="FindCoachForm.cs">
+    <Compile Include="FindCoachForm1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FindCoachForm.designer.cs">
-      <DependentUpon>FindCoachForm.cs</DependentUpon>
+    <Compile Include="FindCoachForm1.designer.cs">
+      <DependentUpon>FindCoachForm1.cs</DependentUpon>
     </Compile>
     <Compile Include="Interest.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
@@ -170,14 +182,23 @@
     <EmbeddedResource Include="CoachViewForm.resx">
       <DependentUpon>CoachViewForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditStudentProfileForm.resx">
+      <DependentUpon>EditStudentProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindCoachForm.resx">
+      <DependentUpon>FindCoachForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResetStudentPassword.resx">
+      <DependentUpon>ResetStudentPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserAdminForm.resx">
       <DependentUpon>UserAdminForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CoachInterestForm.resx">
       <DependentUpon>CoachInterestForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FindCoachForm.resx">
-      <DependentUpon>FindCoachForm.cs</DependentUpon>
+    <EmbeddedResource Include="FindCoachForm1.resx">
+      <DependentUpon>FindCoachForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
