@@ -10,13 +10,7 @@ namespace CoachConnect
     {
         public static LoginForm loginForm;
 
-        public static string CurrentUser { get; set; }
-
-        public static bool IsStudent { get; set; }
-
-        public static bool IsCoach { get; set; }
-
-        public static bool IsAdmin { get; set; }
+        public static User CurrentUser { get; set; }
 
         public static string coachRoleName = "Coach";
         public static string studentRoleName = "Student";
@@ -33,7 +27,9 @@ namespace CoachConnect
             Application.SetCompatibleTextRenderingDefault(false);
             loginForm = new LoginForm();
 
-            Application.Run(loginForm);
+            //Application.Run(loginForm);
+
+            Application.Run(new frmChangePassword());
         }
 
         public static void RolePage()
@@ -49,6 +45,11 @@ namespace CoachConnect
                 RoleForm roleForm = new RoleForm();
                 roleForm.Show();
             }
+        }
+
+        public static void ChangePassword()
+        {
+
         }
 
         public static void openUserHomepage(string roleText)
@@ -76,8 +77,8 @@ namespace CoachConnect
                 }
                 else if (roleText == adminRoleName)
                 {
-                    //var newForm = new AdminForm();
-                    //newForm.Show();
+                    var newForm = new UserAdminForm();
+                    newForm.Show();
                 }
             }
         }

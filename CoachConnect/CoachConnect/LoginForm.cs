@@ -50,20 +50,23 @@ namespace CoachConnect
 
                         // Check if password is correct.
                         // If not, display message and set focus to password text box.
-                        if (userResult.Password == password)
+                        if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, password))
+                        //if (userResult.Password == password)
                         {
-                            // Update static variable containing User ID
-                            Program.CurrentUser = userResult.UserID;
+                            // Update static User object
+                            Program.CurrentUser = userResult;
 
                             // If any of these three values are true, update static variables
+                            /*
                             if (userResult.IsStudent)
-                                Program.IsStudent = true;
+                                Program.CurrentUser.IsStudent = true;
 
                             if (userResult.IsAdmin)
-                                Program.IsAdmin = true;
+                                Program.CurrentUser.IsAdmin = true;
 
                             if (userResult.IsCoach)
-                                Program.IsCoach = true;
+                                Program.CurrentUser.IsCoach = true;
+                            */
 
                             // Call method from Program class to display Role Page
                             Program.RolePage();
@@ -92,7 +95,7 @@ namespace CoachConnect
             }
             catch (Exception ex)
             {
-                ex.ToString();
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -100,9 +103,9 @@ namespace CoachConnect
         {
             // Clear out all static variables related to user
             Program.CurrentUser = null;
-            Program.IsStudent = false;
-            Program.IsCoach = false;
-            Program.IsAdmin = false;
+            //Program.CurrenIsStudent = false;
+            //Program.IsCoach = false;
+            //Program.IsAdmin = false;
 
             // Show hidden login form
             Program.loginForm.Show();

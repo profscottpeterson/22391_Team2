@@ -31,6 +31,12 @@ namespace CoachConnect
         public bool IsStudent { get; set; }
         public string ProfilePic { get; set; }
         public Nullable<System.DateTime> ActiveCoachSince { get; set; }
+        public string MiddleName { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string DisplayName { get; set; }
+        public bool ResetPassword { get; set; }
+        public string PasswordSalt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAvailability> UserAvailabilities { get; set; }
