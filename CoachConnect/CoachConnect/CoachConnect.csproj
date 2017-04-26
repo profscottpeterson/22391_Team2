@@ -63,6 +63,15 @@
     <Compile Include="CoachViewForm.Designer.cs">
       <DependentUpon>CoachViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserAdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +167,9 @@
     <Compile Include="UserCourse.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CoachViewForm.resx">
+      <DependentUpon>CoachViewForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserAdminForm.resx">
       <DependentUpon>UserAdminForm.cs</DependentUpon>
     </EmbeddedResource>
