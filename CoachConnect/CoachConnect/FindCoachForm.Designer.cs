@@ -40,38 +40,30 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dgrShowAppointments = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btbEditProfile = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnResetPassowrd = new System.Windows.Forms.Button();
+            this.btnEditProfile = new System.Windows.Forms.Button();
             this.lblStdID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblStdProgram = new System.Windows.Forms.Label();
             this.lblStdPhone = new System.Windows.Forms.Label();
             this.lblStdEmail = new System.Windows.Forms.Label();
             this.lblStdName = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.comboBoxCoaches = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
             this.panelCoach = new System.Windows.Forms.Panel();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.label43 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.lblCoachName = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
+            this.lblRating = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.lblActiveCoach = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
@@ -82,6 +74,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.pictureBoxCoachProfile = new System.Windows.Forms.PictureBox();
             this.label24 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.checkBox15 = new System.Windows.Forms.CheckBox();
@@ -132,6 +125,19 @@
             this.lblBusiness = new System.Windows.Forms.Label();
             this.lblArch = new System.Windows.Forms.Label();
             this.lblAgri = new System.Windows.Forms.Label();
+            this.btnTransport = new System.Windows.Forms.Button();
+            this.btnScience = new System.Windows.Forms.Button();
+            this.btnManu = new System.Windows.Forms.Button();
+            this.btnLaw = new System.Windows.Forms.Button();
+            this.btnIT = new System.Windows.Forms.Button();
+            this.btnHuman = new System.Windows.Forms.Button();
+            this.btnHealth = new System.Windows.Forms.Button();
+            this.btnGeneral = new System.Windows.Forms.Button();
+            this.btnEnergy = new System.Windows.Forms.Button();
+            this.btnDigital = new System.Windows.Forms.Button();
+            this.btnBusiness = new System.Windows.Forms.Button();
+            this.btnArch = new System.Windows.Forms.Button();
+            this.btnAgri = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
@@ -165,21 +171,11 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxCoachProfile = new System.Windows.Forms.PictureBox();
-            this.btnTransport = new System.Windows.Forms.Button();
-            this.btnScience = new System.Windows.Forms.Button();
-            this.btnManu = new System.Windows.Forms.Button();
-            this.btnLaw = new System.Windows.Forms.Button();
-            this.btnIT = new System.Windows.Forms.Button();
-            this.btnHuman = new System.Windows.Forms.Button();
-            this.btnHealth = new System.Windows.Forms.Button();
-            this.btnGeneral = new System.Windows.Forms.Button();
-            this.btnEnergy = new System.Windows.Forms.Button();
-            this.btnDigital = new System.Windows.Forms.Button();
-            this.btnBusiness = new System.Windows.Forms.Button();
-            this.btnArch = new System.Windows.Forms.Button();
-            this.btnAgri = new System.Windows.Forms.Button();
+            this.appointmentMessage = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             label28 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -187,12 +183,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgrShowAppointments)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panelCoach.SuspendLayout();
-            this.groupBox15.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoachProfile)).BeginInit();
             this.groupBox8.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -206,8 +203,6 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoachProfile)).BeginInit();
             this.SuspendLayout();
             // 
             // label28
@@ -259,6 +254,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.appointmentMessage);
             this.groupBox6.Controls.Add(this.dgrShowAppointments);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(6, 233);
@@ -275,11 +271,10 @@
             this.dgrShowAppointments.Name = "dgrShowAppointments";
             this.dgrShowAppointments.Size = new System.Drawing.Size(841, 206);
             this.dgrShowAppointments.TabIndex = 0;
+            this.dgrShowAppointments.Visible = false;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.btbEditProfile);
             this.panel1.Controls.Add(this.groupBox5);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(6, 6);
@@ -288,39 +283,15 @@
             this.panel1.Size = new System.Drawing.Size(856, 213);
             this.panel1.TabIndex = 3;
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(736, 172);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(1);
-            this.button1.Size = new System.Drawing.Size(112, 28);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Reset Password";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btbEditProfile
-            // 
-            this.btbEditProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btbEditProfile.Location = new System.Drawing.Point(629, 172);
-            this.btbEditProfile.Name = "btbEditProfile";
-            this.btbEditProfile.Padding = new System.Windows.Forms.Padding(1);
-            this.btbEditProfile.Size = new System.Drawing.Size(87, 28);
-            this.btbEditProfile.TabIndex = 3;
-            this.btbEditProfile.Text = "Edit Profile";
-            this.btbEditProfile.UseVisualStyleBackColor = true;
-            this.btbEditProfile.Click += new System.EventHandler(this.btbEditProfile_Click);
-            // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnResetPassowrd);
+            this.groupBox5.Controls.Add(this.btnEditProfile);
             this.groupBox5.Controls.Add(this.lblStdID);
             this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.lblStdProgram);
             this.groupBox5.Controls.Add(this.lblStdPhone);
             this.groupBox5.Controls.Add(this.lblStdEmail);
             this.groupBox5.Controls.Add(this.lblStdName);
-            this.groupBox5.Controls.Add(this.label38);
             this.groupBox5.Controls.Add(this.label37);
             this.groupBox5.Controls.Add(this.label36);
             this.groupBox5.Controls.Add(this.label35);
@@ -331,6 +302,30 @@
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Profile";
+            // 
+            // btnResetPassowrd
+            // 
+            this.btnResetPassowrd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetPassowrd.Location = new System.Drawing.Point(536, 121);
+            this.btnResetPassowrd.Name = "btnResetPassowrd";
+            this.btnResetPassowrd.Padding = new System.Windows.Forms.Padding(1);
+            this.btnResetPassowrd.Size = new System.Drawing.Size(112, 28);
+            this.btnResetPassowrd.TabIndex = 6;
+            this.btnResetPassowrd.Text = "Reset Password";
+            this.btnResetPassowrd.UseVisualStyleBackColor = true;
+            this.btnResetPassowrd.Click += new System.EventHandler(this.btnResetPassowrd_Click);
+            // 
+            // btnEditProfile
+            // 
+            this.btnEditProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditProfile.Location = new System.Drawing.Point(429, 121);
+            this.btnEditProfile.Name = "btnEditProfile";
+            this.btnEditProfile.Padding = new System.Windows.Forms.Padding(1);
+            this.btnEditProfile.Size = new System.Drawing.Size(87, 28);
+            this.btnEditProfile.TabIndex = 3;
+            this.btnEditProfile.Text = "Edit Profile";
+            this.btnEditProfile.UseVisualStyleBackColor = true;
+            this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
             // 
             // lblStdID
             // 
@@ -352,18 +347,6 @@
             this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 8;
             this.label2.Text = "Student ID:";
-            // 
-            // lblStdProgram
-            // 
-            this.lblStdProgram.BackColor = System.Drawing.Color.Transparent;
-            this.lblStdProgram.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblStdProgram.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStdProgram.Location = new System.Drawing.Point(462, 22);
-            this.lblStdProgram.Name = "lblStdProgram";
-            this.lblStdProgram.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.lblStdProgram.Size = new System.Drawing.Size(205, 26);
-            this.lblStdProgram.TabIndex = 7;
-            this.lblStdProgram.Text = "Software Developer";
             // 
             // lblStdPhone
             // 
@@ -398,16 +381,6 @@
             this.lblStdName.Size = new System.Drawing.Size(205, 26);
             this.lblStdName.TabIndex = 4;
             // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(407, 28);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(49, 13);
-            this.label38.TabIndex = 3;
-            this.label38.Text = "Program:";
-            // 
             // label37
             // 
             this.label37.AutoSize = true;
@@ -437,6 +410,17 @@
             this.label35.Size = new System.Drawing.Size(78, 13);
             this.label35.TabIndex = 0;
             this.label35.Text = "Student Name:";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Image = global::CoachConnect.Properties.Resources.scottie;
+            this.pictureBox1.Location = new System.Drawing.Point(14, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(119, 130);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // tabPage2
             // 
@@ -498,7 +482,6 @@
             // 
             // panelCoach
             // 
-            this.panelCoach.Controls.Add(this.groupBox15);
             this.panelCoach.Controls.Add(this.groupBox16);
             this.panelCoach.Controls.Add(this.groupBox7);
             this.panelCoach.Controls.Add(this.groupBox2);
@@ -516,82 +499,6 @@
             this.panelCoach.Name = "panelCoach";
             this.panelCoach.Size = new System.Drawing.Size(828, 472);
             this.panelCoach.TabIndex = 8;
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.Controls.Add(this.label43);
-            this.groupBox15.Controls.Add(this.label44);
-            this.groupBox15.Controls.Add(this.label45);
-            this.groupBox15.Controls.Add(this.label46);
-            this.groupBox15.Controls.Add(this.label47);
-            this.groupBox15.Controls.Add(this.label48);
-            this.groupBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox15.Location = new System.Drawing.Point(470, 3);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(339, 138);
-            this.groupBox15.TabIndex = 10;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Office Info";
-            // 
-            // label43
-            // 
-            this.label43.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label43.Location = new System.Drawing.Point(73, 33);
-            this.label43.Name = "label43";
-            this.label43.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.label43.Size = new System.Drawing.Size(255, 24);
-            this.label43.TabIndex = 5;
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label44.Location = new System.Drawing.Point(21, 38);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(47, 13);
-            this.label44.TabIndex = 1;
-            this.label44.Text = "Building:";
-            // 
-            // label45
-            // 
-            this.label45.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label45.Location = new System.Drawing.Point(73, 93);
-            this.label45.Name = "label45";
-            this.label45.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.label45.Size = new System.Drawing.Size(255, 25);
-            this.label45.TabIndex = 7;
-            // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label46.Location = new System.Drawing.Point(13, 67);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(55, 13);
-            this.label46.TabIndex = 2;
-            this.label46.Text = "Office No:";
-            // 
-            // label47
-            // 
-            this.label47.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label47.Location = new System.Drawing.Point(73, 63);
-            this.label47.Name = "label47";
-            this.label47.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.label47.Size = new System.Drawing.Size(255, 25);
-            this.label47.TabIndex = 6;
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label48.Location = new System.Drawing.Point(40, 98);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(28, 13);
-            this.label48.TabIndex = 3;
-            this.label48.Text = "Tel: ";
             // 
             // groupBox16
             // 
@@ -612,16 +519,20 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.lblPhone);
+            this.groupBox7.Controls.Add(this.label4);
+            this.groupBox7.Controls.Add(this.lblEmail);
+            this.groupBox7.Controls.Add(this.label3);
             this.groupBox7.Controls.Add(this.lblCoachName);
             this.groupBox7.Controls.Add(this.label27);
-            this.groupBox7.Controls.Add(this.label21);
+            this.groupBox7.Controls.Add(this.lblRating);
             this.groupBox7.Controls.Add(this.label26);
             this.groupBox7.Controls.Add(this.lblActiveCoach);
             this.groupBox7.Controls.Add(this.label25);
             this.groupBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(135, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(332, 138);
+            this.groupBox7.Size = new System.Drawing.Size(674, 138);
             this.groupBox7.TabIndex = 9;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Coach Profile";
@@ -646,15 +557,15 @@
             this.label27.TabIndex = 1;
             this.label27.Text = "Coaches Name:";
             // 
-            // label21
+            // lblRating
             // 
-            this.label21.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(138, 93);
-            this.label21.Name = "label21";
-            this.label21.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.label21.Size = new System.Drawing.Size(175, 25);
-            this.label21.TabIndex = 7;
+            this.lblRating.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblRating.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRating.Location = new System.Drawing.Point(138, 93);
+            this.lblRating.Name = "lblRating";
+            this.lblRating.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.lblRating.Size = new System.Drawing.Size(175, 25);
+            this.lblRating.TabIndex = 7;
             // 
             // label26
             // 
@@ -761,6 +672,17 @@
             this.label20.Size = new System.Drawing.Size(110, 13);
             this.label20.TabIndex = 0;
             this.label20.Text = "Microsoft Visual Basic";
+            // 
+            // pictureBoxCoachProfile
+            // 
+            this.pictureBoxCoachProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxCoachProfile.Image = global::CoachConnect.Properties.Resources.scottie;
+            this.pictureBoxCoachProfile.Location = new System.Drawing.Point(7, 11);
+            this.pictureBoxCoachProfile.Name = "pictureBoxCoachProfile";
+            this.pictureBoxCoachProfile.Size = new System.Drawing.Size(121, 130);
+            this.pictureBoxCoachProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxCoachProfile.TabIndex = 0;
+            this.pictureBoxCoachProfile.TabStop = false;
             // 
             // label24
             // 
@@ -1335,6 +1257,149 @@
             this.lblAgri.Text = "Agriculture Food && Natural Resources";
             this.lblAgri.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // btnTransport
+            // 
+            this.btnTransport.BackgroundImage = global::CoachConnect.Properties.Resources.transportation_icon;
+            this.btnTransport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnTransport.Location = new System.Drawing.Point(488, 295);
+            this.btnTransport.Name = "btnTransport";
+            this.btnTransport.Size = new System.Drawing.Size(80, 80);
+            this.btnTransport.TabIndex = 24;
+            this.btnTransport.UseVisualStyleBackColor = true;
+            this.btnTransport.Click += new System.EventHandler(this.btnTransport_Click);
+            // 
+            // btnScience
+            // 
+            this.btnScience.BackgroundImage = global::CoachConnect.Properties.Resources.stem_icon;
+            this.btnScience.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnScience.Location = new System.Drawing.Point(386, 295);
+            this.btnScience.Name = "btnScience";
+            this.btnScience.Size = new System.Drawing.Size(80, 80);
+            this.btnScience.TabIndex = 22;
+            this.btnScience.UseVisualStyleBackColor = true;
+            this.btnScience.Click += new System.EventHandler(this.btnScience_Click);
+            // 
+            // btnManu
+            // 
+            this.btnManu.BackgroundImage = global::CoachConnect.Properties.Resources.manufacturing_icon;
+            this.btnManu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnManu.Location = new System.Drawing.Point(284, 295);
+            this.btnManu.Name = "btnManu";
+            this.btnManu.Size = new System.Drawing.Size(80, 80);
+            this.btnManu.TabIndex = 20;
+            this.btnManu.UseVisualStyleBackColor = true;
+            this.btnManu.Click += new System.EventHandler(this.btnManu_Click);
+            // 
+            // btnLaw
+            // 
+            this.btnLaw.BackgroundImage = global::CoachConnect.Properties.Resources.public_safety_icon;
+            this.btnLaw.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnLaw.Location = new System.Drawing.Point(590, 162);
+            this.btnLaw.Name = "btnLaw";
+            this.btnLaw.Size = new System.Drawing.Size(80, 80);
+            this.btnLaw.TabIndex = 18;
+            this.btnLaw.UseVisualStyleBackColor = true;
+            this.btnLaw.Click += new System.EventHandler(this.btnLaw_Click);
+            // 
+            // btnIT
+            // 
+            this.btnIT.BackgroundImage = global::CoachConnect.Properties.Resources.it_icon;
+            this.btnIT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnIT.Location = new System.Drawing.Point(488, 162);
+            this.btnIT.Name = "btnIT";
+            this.btnIT.Size = new System.Drawing.Size(80, 80);
+            this.btnIT.TabIndex = 16;
+            this.btnIT.UseVisualStyleBackColor = true;
+            this.btnIT.Click += new System.EventHandler(this.btnIT_Click);
+            // 
+            // btnHuman
+            // 
+            this.btnHuman.BackgroundImage = global::CoachConnect.Properties.Resources.education_icon;
+            this.btnHuman.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHuman.Location = new System.Drawing.Point(386, 162);
+            this.btnHuman.Name = "btnHuman";
+            this.btnHuman.Size = new System.Drawing.Size(80, 80);
+            this.btnHuman.TabIndex = 14;
+            this.btnHuman.UseVisualStyleBackColor = true;
+            this.btnHuman.Click += new System.EventHandler(this.btnHuman_Click);
+            // 
+            // btnHealth
+            // 
+            this.btnHealth.BackgroundImage = global::CoachConnect.Properties.Resources.health_science_icon;
+            this.btnHealth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnHealth.Location = new System.Drawing.Point(284, 162);
+            this.btnHealth.Name = "btnHealth";
+            this.btnHealth.Size = new System.Drawing.Size(80, 80);
+            this.btnHealth.TabIndex = 12;
+            this.btnHealth.UseVisualStyleBackColor = true;
+            this.btnHealth.Click += new System.EventHandler(this.bthHealth_Click);
+            // 
+            // btnGeneral
+            // 
+            this.btnGeneral.BackgroundImage = global::CoachConnect.Properties.Resources.general_studies_icon;
+            this.btnGeneral.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnGeneral.Location = new System.Drawing.Point(182, 162);
+            this.btnGeneral.Name = "btnGeneral";
+            this.btnGeneral.Size = new System.Drawing.Size(80, 80);
+            this.btnGeneral.TabIndex = 10;
+            this.btnGeneral.UseVisualStyleBackColor = true;
+            this.btnGeneral.Click += new System.EventHandler(this.btnGeneral_Click);
+            // 
+            // btnEnergy
+            // 
+            this.btnEnergy.BackgroundImage = global::CoachConnect.Properties.Resources.energy_icon;
+            this.btnEnergy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEnergy.Location = new System.Drawing.Point(591, 32);
+            this.btnEnergy.Name = "btnEnergy";
+            this.btnEnergy.Size = new System.Drawing.Size(80, 80);
+            this.btnEnergy.TabIndex = 8;
+            this.btnEnergy.UseVisualStyleBackColor = true;
+            this.btnEnergy.Click += new System.EventHandler(this.btnEnergy_Click);
+            // 
+            // btnDigital
+            // 
+            this.btnDigital.BackgroundImage = global::CoachConnect.Properties.Resources.digital_arts_icon;
+            this.btnDigital.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDigital.Location = new System.Drawing.Point(489, 32);
+            this.btnDigital.Name = "btnDigital";
+            this.btnDigital.Size = new System.Drawing.Size(80, 80);
+            this.btnDigital.TabIndex = 6;
+            this.btnDigital.UseVisualStyleBackColor = true;
+            this.btnDigital.Click += new System.EventHandler(this.btnDigital_Click);
+            // 
+            // btnBusiness
+            // 
+            this.btnBusiness.BackgroundImage = global::CoachConnect.Properties.Resources.business_icon;
+            this.btnBusiness.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnBusiness.Location = new System.Drawing.Point(387, 32);
+            this.btnBusiness.Name = "btnBusiness";
+            this.btnBusiness.Size = new System.Drawing.Size(80, 80);
+            this.btnBusiness.TabIndex = 4;
+            this.btnBusiness.UseVisualStyleBackColor = true;
+            this.btnBusiness.Click += new System.EventHandler(this.btnBusiness_Click);
+            // 
+            // btnArch
+            // 
+            this.btnArch.BackgroundImage = global::CoachConnect.Properties.Resources.archi_icon;
+            this.btnArch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnArch.Location = new System.Drawing.Point(285, 32);
+            this.btnArch.Name = "btnArch";
+            this.btnArch.Size = new System.Drawing.Size(80, 80);
+            this.btnArch.TabIndex = 2;
+            this.btnArch.UseVisualStyleBackColor = true;
+            this.btnArch.Click += new System.EventHandler(this.btnArch_Click);
+            // 
+            // btnAgri
+            // 
+            this.btnAgri.BackgroundImage = global::CoachConnect.Properties.Resources.agri_icon;
+            this.btnAgri.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAgri.Location = new System.Drawing.Point(183, 32);
+            this.btnAgri.Name = "btnAgri";
+            this.btnAgri.Size = new System.Drawing.Size(80, 80);
+            this.btnAgri.TabIndex = 0;
+            this.btnAgri.UseVisualStyleBackColor = true;
+            this.btnAgri.Click += new System.EventHandler(this.btnAgri_Click);
+            // 
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -1673,170 +1738,56 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Mon";
             // 
-            // pictureBox1
+            // appointmentMessage
             // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = global::CoachConnect.Properties.Resources.scottie;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(119, 130);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.appointmentMessage.AutoSize = true;
+            this.appointmentMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentMessage.Location = new System.Drawing.Point(233, 40);
+            this.appointmentMessage.Name = "appointmentMessage";
+            this.appointmentMessage.Size = new System.Drawing.Size(383, 25);
+            this.appointmentMessage.TabIndex = 6;
+            this.appointmentMessage.Text = "You don\'t have any appointments now.";
+            this.appointmentMessage.Visible = false;
             // 
-            // pictureBoxCoachProfile
+            // lblEmail
             // 
-            this.pictureBoxCoachProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBoxCoachProfile.Image = global::CoachConnect.Properties.Resources.scottie;
-            this.pictureBoxCoachProfile.Location = new System.Drawing.Point(7, 11);
-            this.pictureBoxCoachProfile.Name = "pictureBoxCoachProfile";
-            this.pictureBoxCoachProfile.Size = new System.Drawing.Size(121, 130);
-            this.pictureBoxCoachProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxCoachProfile.TabIndex = 0;
-            this.pictureBoxCoachProfile.TabStop = false;
+            this.lblEmail.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(430, 33);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.lblEmail.Size = new System.Drawing.Size(175, 25);
+            this.lblEmail.TabIndex = 9;
             // 
-            // btnTransport
+            // label3
             // 
-            this.btnTransport.BackgroundImage = global::CoachConnect.Properties.Resources.transportation_icon;
-            this.btnTransport.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTransport.Location = new System.Drawing.Point(488, 295);
-            this.btnTransport.Name = "btnTransport";
-            this.btnTransport.Size = new System.Drawing.Size(80, 80);
-            this.btnTransport.TabIndex = 24;
-            this.btnTransport.UseVisualStyleBackColor = true;
-            this.btnTransport.Click += new System.EventHandler(this.btnTransport_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(389, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Email:";
             // 
-            // btnScience
+            // lblPhone
             // 
-            this.btnScience.BackgroundImage = global::CoachConnect.Properties.Resources.stem_icon;
-            this.btnScience.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnScience.Location = new System.Drawing.Point(386, 295);
-            this.btnScience.Name = "btnScience";
-            this.btnScience.Size = new System.Drawing.Size(80, 80);
-            this.btnScience.TabIndex = 22;
-            this.btnScience.UseVisualStyleBackColor = true;
-            this.btnScience.Click += new System.EventHandler(this.btnScience_Click);
+            this.lblPhone.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhone.Location = new System.Drawing.Point(430, 62);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.lblPhone.Size = new System.Drawing.Size(175, 25);
+            this.lblPhone.TabIndex = 11;
             // 
-            // btnManu
+            // label4
             // 
-            this.btnManu.BackgroundImage = global::CoachConnect.Properties.Resources.manufacturing_icon;
-            this.btnManu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnManu.Location = new System.Drawing.Point(284, 295);
-            this.btnManu.Name = "btnManu";
-            this.btnManu.Size = new System.Drawing.Size(80, 80);
-            this.btnManu.TabIndex = 20;
-            this.btnManu.UseVisualStyleBackColor = true;
-            this.btnManu.Click += new System.EventHandler(this.btnManu_Click);
-            // 
-            // btnLaw
-            // 
-            this.btnLaw.BackgroundImage = global::CoachConnect.Properties.Resources.public_safety_icon;
-            this.btnLaw.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLaw.Location = new System.Drawing.Point(590, 162);
-            this.btnLaw.Name = "btnLaw";
-            this.btnLaw.Size = new System.Drawing.Size(80, 80);
-            this.btnLaw.TabIndex = 18;
-            this.btnLaw.UseVisualStyleBackColor = true;
-            this.btnLaw.Click += new System.EventHandler(this.btnLaw_Click);
-            // 
-            // btnIT
-            // 
-            this.btnIT.BackgroundImage = global::CoachConnect.Properties.Resources.it_icon;
-            this.btnIT.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnIT.Location = new System.Drawing.Point(488, 162);
-            this.btnIT.Name = "btnIT";
-            this.btnIT.Size = new System.Drawing.Size(80, 80);
-            this.btnIT.TabIndex = 16;
-            this.btnIT.UseVisualStyleBackColor = true;
-            this.btnIT.Click += new System.EventHandler(this.btnIT_Click);
-            // 
-            // btnHuman
-            // 
-            this.btnHuman.BackgroundImage = global::CoachConnect.Properties.Resources.education_icon;
-            this.btnHuman.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnHuman.Location = new System.Drawing.Point(386, 162);
-            this.btnHuman.Name = "btnHuman";
-            this.btnHuman.Size = new System.Drawing.Size(80, 80);
-            this.btnHuman.TabIndex = 14;
-            this.btnHuman.UseVisualStyleBackColor = true;
-            this.btnHuman.Click += new System.EventHandler(this.btnHuman_Click);
-            // 
-            // btnHealth
-            // 
-            this.btnHealth.BackgroundImage = global::CoachConnect.Properties.Resources.health_science_icon;
-            this.btnHealth.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnHealth.Location = new System.Drawing.Point(284, 162);
-            this.btnHealth.Name = "btnHealth";
-            this.btnHealth.Size = new System.Drawing.Size(80, 80);
-            this.btnHealth.TabIndex = 12;
-            this.btnHealth.UseVisualStyleBackColor = true;
-            this.btnHealth.Click += new System.EventHandler(this.bthHealth_Click);
-            // 
-            // btnGeneral
-            // 
-            this.btnGeneral.BackgroundImage = global::CoachConnect.Properties.Resources.general_studies_icon;
-            this.btnGeneral.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnGeneral.Location = new System.Drawing.Point(182, 162);
-            this.btnGeneral.Name = "btnGeneral";
-            this.btnGeneral.Size = new System.Drawing.Size(80, 80);
-            this.btnGeneral.TabIndex = 10;
-            this.btnGeneral.UseVisualStyleBackColor = true;
-            this.btnGeneral.Click += new System.EventHandler(this.btnGeneral_Click);
-            // 
-            // btnEnergy
-            // 
-            this.btnEnergy.BackgroundImage = global::CoachConnect.Properties.Resources.energy_icon;
-            this.btnEnergy.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEnergy.Location = new System.Drawing.Point(591, 32);
-            this.btnEnergy.Name = "btnEnergy";
-            this.btnEnergy.Size = new System.Drawing.Size(80, 80);
-            this.btnEnergy.TabIndex = 8;
-            this.btnEnergy.UseVisualStyleBackColor = true;
-            this.btnEnergy.Click += new System.EventHandler(this.btnEnergy_Click);
-            // 
-            // btnDigital
-            // 
-            this.btnDigital.BackgroundImage = global::CoachConnect.Properties.Resources.digital_arts_icon;
-            this.btnDigital.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDigital.Location = new System.Drawing.Point(489, 32);
-            this.btnDigital.Name = "btnDigital";
-            this.btnDigital.Size = new System.Drawing.Size(80, 80);
-            this.btnDigital.TabIndex = 6;
-            this.btnDigital.UseVisualStyleBackColor = true;
-            this.btnDigital.Click += new System.EventHandler(this.btnDigital_Click);
-            // 
-            // btnBusiness
-            // 
-            this.btnBusiness.BackgroundImage = global::CoachConnect.Properties.Resources.business_icon;
-            this.btnBusiness.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnBusiness.Location = new System.Drawing.Point(387, 32);
-            this.btnBusiness.Name = "btnBusiness";
-            this.btnBusiness.Size = new System.Drawing.Size(80, 80);
-            this.btnBusiness.TabIndex = 4;
-            this.btnBusiness.UseVisualStyleBackColor = true;
-            this.btnBusiness.Click += new System.EventHandler(this.btnBusiness_Click);
-            // 
-            // btnArch
-            // 
-            this.btnArch.BackgroundImage = global::CoachConnect.Properties.Resources.archi_icon;
-            this.btnArch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnArch.Location = new System.Drawing.Point(285, 32);
-            this.btnArch.Name = "btnArch";
-            this.btnArch.Size = new System.Drawing.Size(80, 80);
-            this.btnArch.TabIndex = 2;
-            this.btnArch.UseVisualStyleBackColor = true;
-            this.btnArch.Click += new System.EventHandler(this.btnArch_Click);
-            // 
-            // btnAgri
-            // 
-            this.btnAgri.BackgroundImage = global::CoachConnect.Properties.Resources.agri_icon;
-            this.btnAgri.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAgri.Location = new System.Drawing.Point(183, 32);
-            this.btnAgri.Name = "btnAgri";
-            this.btnAgri.Size = new System.Drawing.Size(80, 80);
-            this.btnAgri.TabIndex = 0;
-            this.btnAgri.UseVisualStyleBackColor = true;
-            this.btnAgri.Click += new System.EventHandler(this.btnAgri_Click);
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(399, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Tel:";
             // 
             // FindCoachForm
             // 
@@ -1852,22 +1803,23 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrShowAppointments)).EndInit();
             this.panel1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.panelCoach.ResumeLayout(false);
             this.panelCoach.PerformLayout();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoachProfile)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox14.ResumeLayout(false);
@@ -1892,8 +1844,6 @@
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoachProfile)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1932,13 +1882,11 @@
         private System.Windows.Forms.Label lblManu;
         private System.Windows.Forms.Button btnManu;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btbEditProfile;
+        private System.Windows.Forms.Button btnEditProfile;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label lblStdProgram;
         private System.Windows.Forms.Label lblStdPhone;
         private System.Windows.Forms.Label lblStdEmail;
         private System.Windows.Forms.Label lblStdName;
-        private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label35;
@@ -1947,17 +1895,10 @@
         private System.Windows.Forms.DataGridView dgrShowAppointments;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Panel panelCoach;
-        private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label label48;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label lblCoachName;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label lblRating;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label lblActiveCoach;
         private System.Windows.Forms.Label label25;
@@ -2036,7 +1977,7 @@
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnResetPassowrd;
         private System.Windows.Forms.Label lblStdID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
@@ -2046,5 +1987,10 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox comboBoxCoaches;
+        private System.Windows.Forms.Label appointmentMessage;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblPhone;
+        private System.Windows.Forms.Label label4;
     }
 }

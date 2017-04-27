@@ -79,3 +79,10 @@ C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\Coac
 C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
 C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
 C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachView.resources
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditStudentProfileForm.resources
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ResetStudentPassword.resources
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminForm.resources
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FindCoachForm1.resources
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.RoleForm.resources
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache

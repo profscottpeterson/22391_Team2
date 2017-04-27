@@ -98,6 +98,8 @@ namespace CoachConnect
         {
 
         }
+
+        //Disipaly student info to the home tab
         private void displayInfo()
         {
             using (var context = new db_sft_2172Entities())
@@ -108,12 +110,22 @@ namespace CoachConnect
                 var userResult = userQuery.FirstOrDefault<User>();
                 lblStdID.Text = userResult.UserID;
                 lblStdName.Text = userResult.FirstName + " " + userResult.LastName;
-                
+                lblStdEmail.Text = userResult.Email;
+                lblStdPhone.Text = displayPhoneFormat(userResult.Phone);
+                     
             }
         }
-        private void displayCoachList()
+
+        //Display phone number in the phone format
+        private string displayPhoneFormat(string phone)
         {
-            
+            string p = phone;
+            string formatedPhoneNumber = string.Format("({0}) {1}-{2}", p.Substring(0, 3), p.Substring(3, 3), p.Substring(6, 4));
+            return formatedPhoneNumber;
+        }
+        //Display all available coaches on the combobox
+        private void displayCoachList()
+        {    
             using (var context = new db_sft_2172Entities())
             {
                 var userQuery = (from u in context.Users
@@ -125,26 +137,25 @@ namespace CoachConnect
                     
                     comboBoxCoaches.Items.Add(c);
                 }
-
             }
         }
 
+        //Button click to search for specific coach from the database
         private void button2_Click(object sender, EventArgs e)
-        {
-            
+        {          
             string selectedCoach = (string)comboBoxCoaches.SelectedItem;
             seachForCoach(selectedCoach);
-
-
         }
+
+        //Called in the button2 to search a coach
         private void seachForCoach(string coach)
         {
             using (var context = new db_sft_2172Entities())
             {
-                var userQuery = from u in context.CoachByNames
+                var userQuery = from u in context.Users
                                 where u.IsCoach.Equals(true) && u.FirstName.Equals(coach)
                                 select u;
-                var userResult = userQuery.FirstOrDefault<CoachByName>();
+                var userResult = userQuery.FirstOrDefault<User>();
                 if (!String.IsNullOrEmpty(userResult.FirstName))
                 {
                     panelCoach.Visible = true;
@@ -157,24 +168,14 @@ namespace CoachConnect
                     }
                     lblCoachName.Text = userResult.FirstName + " " + userResult.LastName;
                     lblActiveCoach.Text = userResult.ActiveCoachSince.ToString();
+                    lblEmail.Text = userResult.Email;
+                    lblPhone.Text = userResult.Phone;
                 }
 
             }
         }
-
-        private void btbEditProfile_Click(object sender, EventArgs e)
-        {
-            EditStudentProfileForm editForm = new EditStudentProfileForm();
-            editForm.Show();
-            this.Hide();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ResetStudentPassword resetForm = new ResetStudentPassword();
-            resetForm.Show();
-            this.Hide();
-        }
+        
+        //Display the appointments for that student in datagridview
         private void displayAppointment()
         {
             using (var context = new db_sft_2172Entities())
@@ -188,8 +189,35 @@ namespace CoachConnect
                 {
                     appointment.Add(u);
                 }
-                dgrShowAppointments.DataSource = appointment;
+                if(appointment.Count() > 0)
+                {
+                    dgrShowAppointments.Visible = true;
+                    dgrShowAppointments.DataSource = appointment;
+                    appointmentMessage.Visible = false;
+                }
+                else
+                {
+                    dgrShowAppointments.Visible = false;
+                    appointmentMessage.Visible = true;
+                }
+                
             }
+        }  
+
+        //Reset password button click
+        private void btnResetPassowrd_Click(object sender, EventArgs e)
+        {
+            ResetStudentPassword resetForm = new ResetStudentPassword();
+            resetForm.Show();
+            this.Hide();
+        }
+
+        //Edit profile button click
+        private void btnEditProfile_Click(object sender, EventArgs e)
+        {
+            EditStudentProfileForm editForm = new EditStudentProfileForm();
+            editForm.Show();
+            this.Hide();
         }
     }
 }

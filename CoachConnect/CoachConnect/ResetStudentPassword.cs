@@ -12,63 +12,116 @@ namespace CoachConnect
 {
     public partial class ResetStudentPassword : Form
     {
-        private TextBox txtPassword;
-        private TextBox txtStdNewPassword;
-        private TextBox txtStdNewConfirmPassword;
-
         public ResetStudentPassword()
         {
             InitializeComponent();
         }
 
-        private void btbEditProfile_Click(object sender, EventArgs e)
+        //Button click to save the new password into the database
+        private void btnSaveNewPassword_Click(object sender, EventArgs e)
+        {
+            using (var context = new db_sft_2172Entities())
+            {
+                var userQuery = from u in context.Users
+                                where u.UserID.Equals(Program.CurrentUser)
+                                select u;
+                var userResult = userQuery.FirstOrDefault<User>();
+                if (userResult.Password == txtStdPassword.Text)
+                {
+                    
+                    if (!String.IsNullOrEmpty(txtStdNewPassword.Text) || !String.IsNullOrEmpty(txtStdNewConfirmPassowrd.Text))
+                    {
+                        if (txtStdNewPassword.Text == txtStdNewConfirmPassowrd.Text)
+                        {
+                            userResult.Password = txtStdNewPassword.Text;
+                            context.SaveChanges();
+                            txtStdPassword.Text = "";
+                            txtStdNewPassword.Text = "";
+                            txtStdNewConfirmPassowrd.Text = "";
+                            MessageBox.Show("Your passsword is save!");
+                            FindCoachForm coach = new FindCoachForm();
+                            coach.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            
+                            MessageBox.Show("Both passwords do not match eachother!");
+                        }
+                    }
+                }
+                else
+                {  
+                    MessageBox.Show("Your current password is incorect!");
+                }
+            }
+        }
+
+        //Cancle the reset new password
+        private void btnCancleResetPassword_Click(object sender, EventArgs e)
         {
             FindCoachForm mainForm = new FindCoachForm();
             mainForm.Show();
             this.Close();
         }
 
-        private void InitializeComponent()
+        //An event handler used to validate current password input
+        private void txtStdPassword_Leave(object sender, EventArgs e)
         {
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtStdNewPassword = new System.Windows.Forms.TextBox();
-            this.txtStdNewConfirmPassword = new System.Windows.Forms.TextBox();
-            this.SuspendLayout();
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Location = new System.Drawing.Point(107, 34);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(150, 20);
-            this.txtPassword.TabIndex = 1;
-            // 
-            // txtStdNewPassword
-            // 
-            this.txtStdNewPassword.Location = new System.Drawing.Point(107, 94);
-            this.txtStdNewPassword.Name = "txtStdNewPassword";
-            this.txtStdNewPassword.Size = new System.Drawing.Size(150, 20);
-            this.txtStdNewPassword.TabIndex = 2;
-            // 
-            // txtStdNewConfirmPassword
-            // 
-            this.txtStdNewConfirmPassword.Location = new System.Drawing.Point(107, 148);
-            this.txtStdNewConfirmPassword.Name = "txtStdNewConfirmPassword";
-            this.txtStdNewConfirmPassword.Size = new System.Drawing.Size(150, 20);
-            this.txtStdNewConfirmPassword.TabIndex = 3;
-            // 
-            // ResetStudentPassword
-            // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.txtStdNewConfirmPassword);
-            this.Controls.Add(this.txtStdNewPassword);
-            this.Controls.Add(this.txtPassword);
-            this.Name = "ResetStudentPassword";
-            this.Text = "Reset Student Password Form";
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            using (var context = new db_sft_2172Entities())
+            {
+                var userQuery = from u in context.Users
+                                where u.UserID.Equals(Program.CurrentUser)
+                                select u;
+                var userResult = userQuery.FirstOrDefault<User>();
+                if (userResult.Password == txtStdPassword.Text)
+                {
+                    pwdCorrect.Visible = true;
+                    currentPWDWrong.Visible = false;
+                }
+                else
+                {
+                    currentPWDWrong.Visible = true;
+                    pwdCorrect.Visible = false;
+                }
+            }
+        }
 
+        //An event handler used to validate the new password with the confirm weither they are matched
+        private void txtStdNewConfirmPassowrd_Leave(object sender, EventArgs e)
+        {
+            if (txtStdNewPassword.Text == txtStdNewConfirmPassowrd.Text && (txtStdNewPassword.Text != "" || txtStdNewConfirmPassowrd.Text != ""))
+            {
+                newPWD.Visible = true;
+                newPWDConfirmCorrect.Visible = true;
+                newPWDNotMatch.Visible = false;
+                newPWDConfirmWrong.Visible = false;
+            }
+            else
+            {
+                newPWDNotMatch.Visible = true;
+                newPWDConfirmWrong.Visible = true;
+                newPWD.Visible = false;
+                newPWDConfirmCorrect.Visible = false;
+            }
+        }
+
+        private void btnSaveNewPassword_MouseHover(object sender, EventArgs e)
+        {
+            if (txtStdNewPassword.Text == txtStdNewConfirmPassowrd.Text && (txtStdNewPassword.Text != "" || txtStdNewConfirmPassowrd.Text != ""))
+            {
+                newPWD.Visible = true;
+                newPWDConfirmCorrect.Visible = true;
+                newPWDNotMatch.Visible = false;
+                newPWDConfirmWrong.Visible = false;
+            }
+            else
+            {
+                newPWDNotMatch.Visible = true;
+                newPWDConfirmWrong.Visible = true;
+                newPWD.Visible = false;
+                newPWDConfirmCorrect.Visible = false;
+            }
         }
     }
-
-   
 }

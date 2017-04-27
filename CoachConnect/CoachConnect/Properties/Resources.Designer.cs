@@ -93,6 +93,16 @@ namespace CoachConnect.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap correct1 {
+            get {
+                object obj = ResourceManager.GetObject("correct1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap digital_arts_icon {
             get {
                 object obj = ResourceManager.GetObject("digital-arts-icon", resourceCulture);
@@ -196,6 +206,16 @@ namespace CoachConnect.Properties {
         internal static System.Drawing.Bitmap transportation_icon {
             get {
                 object obj = ResourceManager.GetObject("transportation-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wrong {
+            get {
+                object obj = ResourceManager.GetObject("wrong", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
