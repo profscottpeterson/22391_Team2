@@ -167,6 +167,7 @@
     <Compile Include="UserCourse.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validation.cs" />
     <EmbeddedResource Include="CoachViewForm.resx">
       <DependentUpon>CoachViewForm.cs</DependentUpon>
     </EmbeddedResource>

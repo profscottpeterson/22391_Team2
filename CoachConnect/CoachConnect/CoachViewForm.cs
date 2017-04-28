@@ -12,11 +12,13 @@ using System.Text.RegularExpressions;
 
 namespace CoachConnect
 {
+    //Before refactoring (4.28.2017) 469 lines    
     public partial class frmCoachView : Form
     {
         public string OriginalPic;
         public bool EditMode = false;
         public bool flagValidate = true;
+        Validation validator = new Validation();
         public frmCoachView()
         {
             InitializeComponent();
@@ -273,23 +275,25 @@ namespace CoachConnect
 
         private void txtFName_TextChanged(object sender, EventArgs e)
         {
-           //btnSubmitInfo.Visible = true;
+            //btnSubmitInfo.Visible = true;
+            if (validator.validateTextBox(txtFName.Text)) MessageBox.Show("validated");
         }
 
         private void txtFName_Leave(object sender, EventArgs e)
         {
-            txtFName.Text = txtFName.Text.Trim();
-            ValidateTextbox(txtFName.Text);
-            if (flagValidate)
-            {
-                txtFName.Text = FormatTextBox(txtFName.Text);
-                lblFNameError.Visible = false;
-            }
-            else
-            {
-                lblFNameError.Visible = true;
-                txtFName.Focus();
-            }
+            //txtFName.Text = txtFName.Text.Trim();
+            //ValidateTextbox(txtFName.Text);
+            //if (flagValidate)
+            //{
+            //    txtFName.Text = FormatTextBox(txtFName.Text);
+            //    lblFNameError.Visible = false;
+            //}
+            //else
+            //{
+            //    lblFNameError.Visible = true;
+            //    txtFName.Focus();
+            //}
+            
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
