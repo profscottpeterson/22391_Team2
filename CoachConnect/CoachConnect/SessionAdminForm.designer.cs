@@ -47,7 +47,7 @@
             this.dataGridViewSessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSessions.Location = new System.Drawing.Point(10, 56);
             this.dataGridViewSessions.Name = "dataGridViewSessions";
-            this.dataGridViewSessions.Size = new System.Drawing.Size(577, 380);
+            this.dataGridViewSessions.Size = new System.Drawing.Size(761, 380);
             this.dataGridViewSessions.TabIndex = 0;
             // 
             // btnRevert
@@ -64,7 +64,7 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnExit.Location = new System.Drawing.Point(507, 441);
+            this.btnExit.Location = new System.Drawing.Point(691, 441);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(80, 23);
@@ -76,7 +76,7 @@
             // btnMenu
             // 
             this.btnMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnMenu.Location = new System.Drawing.Point(297, 441);
+            this.btnMenu.Location = new System.Drawing.Point(481, 441);
             this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(99, 23);
@@ -87,7 +87,7 @@
             // btnLogOff
             // 
             this.btnLogOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnLogOff.Location = new System.Drawing.Point(402, 441);
+            this.btnLogOff.Location = new System.Drawing.Point(586, 441);
             this.btnLogOff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogOff.Name = "btnLogOff";
             this.btnLogOff.Size = new System.Drawing.Size(99, 23);
@@ -121,7 +121,7 @@
             // 
             this.lblSessionAdminForm.AutoSize = true;
             this.lblSessionAdminForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSessionAdminForm.Location = new System.Drawing.Point(170, 9);
+            this.lblSessionAdminForm.Location = new System.Drawing.Point(242, 13);
             this.lblSessionAdminForm.Name = "lblSessionAdminForm";
             this.lblSessionAdminForm.Size = new System.Drawing.Size(259, 31);
             this.lblSessionAdminForm.TabIndex = 21;
@@ -132,7 +132,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 466);
+            this.ClientSize = new System.Drawing.Size(783, 466);
             this.Controls.Add(this.btnRevert);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnMenu);

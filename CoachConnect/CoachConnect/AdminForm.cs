@@ -56,5 +56,11 @@ namespace CoachConnect
         {
             Application.Exit();
         }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            ChangePasswordForm changePassword = new ChangePasswordForm();
+            changePassword.ShowDialog();
+        }
     }
 }

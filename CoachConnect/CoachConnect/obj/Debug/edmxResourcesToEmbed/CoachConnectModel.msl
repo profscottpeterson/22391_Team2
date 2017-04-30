@@ -33,6 +33,8 @@
     <EntitySetMapping Name="Sessions">
       <EntityTypeMapping TypeName="db_sft_2172Model.Session">
         <MappingFragment StoreEntitySet="Session">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CoachID" ColumnName="CoachID" />
           <ScalarProperty Name="Day" ColumnName="Day" />
           <ScalarProperty Name="SessionID" ColumnName="SessionID" />
           <ScalarProperty Name="StartTime" ColumnName="StartTime" />
@@ -200,5 +202,18 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="db_sft_2172Model.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="db_sft_2172Model.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="ViewSessions">
+      <EntityTypeMapping TypeName="db_sft_2172Model.ViewSession">
+        <MappingFragment StoreEntitySet="ViewSession">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Coach" ColumnName="Coach" />
+          <ScalarProperty Name="End_Time" ColumnName="End Time" />
+          <ScalarProperty Name="Start_Time" ColumnName="Start Time" />
+          <ScalarProperty Name="Day_of_Week" ColumnName="Day of Week" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

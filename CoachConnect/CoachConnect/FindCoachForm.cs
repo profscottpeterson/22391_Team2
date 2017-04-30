@@ -254,7 +254,7 @@ namespace CoachConnect
                     ///TODO: Stub to handle saving data to database (add linq query)
                     SessionRoster sr = new SessionRoster()
                     {
-                        SessionID = "WEB10152154MonAM",
+                        SessionID = 1,
                         UserID = selectedCoachID,
                         RoleID = "Student"
                     };
@@ -415,7 +415,7 @@ namespace CoachConnect
                         ///TODO: Stub to handle saving data to database (add linq query)
                         SessionRoster sr = new SessionRoster()
                         {
-                            SessionID = "WEB10152154MonAM",
+                            SessionID = 1,
                             UserID = selectedCoachID,
                             RoleID = "Student"
                         };

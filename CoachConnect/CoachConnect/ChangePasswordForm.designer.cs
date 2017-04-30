@@ -100,8 +100,9 @@
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // frmChangePassword
+            // ChangePasswordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -113,7 +114,7 @@
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.txtPassword);
-            this.Name = "frmChangePassword";
+            this.Name = "ChangePasswordForm";
             this.Text = "Reset Password";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -77,6 +77,7 @@
             // 
             // cmbRoleChoice
             // 
+            this.cmbRoleChoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoleChoice.FormattingEnabled = true;
             this.cmbRoleChoice.Location = new System.Drawing.Point(71, 41);
             this.cmbRoleChoice.Name = "cmbRoleChoice";
