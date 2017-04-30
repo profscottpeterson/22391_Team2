@@ -15,7 +15,6 @@ namespace CoachConnect
     //Before refactoring (4.28.2017) 469 lines    
     public partial class frmCoachView : Form
     {
-        public string OriginalPic;
         public bool EditMode = false;
         public bool flagValidate = false;
         Validation validator = new Validation();
@@ -30,49 +29,31 @@ namespace CoachConnect
             LoadEditProfile(coach);
             lblCoachName.Text = coach.FirstName;
             lblCoachUser.Text = coach.UserID;
-            OriginalPic = coach.ProfilePic;
         }
-        public User getCoach()
-        {
-            using (var context = new db_sft_2172Entities())
-            {
-                var coach = from c in context.Users
-                            where c.UserID.Equals(Program.CurrentUser)
-                            select c;
-                return coach.First<User>();
-            }
-        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
+            EditModePrep();
+            grpProfilePic.Enabled = true;
             btnEditPic.Hide();
             btnPreview.Show();
             btnPicSubmit.Show();
             btnCancel.Show();
-            txtPicURL.Enabled = true;
+            foreach (Control c in grpProfilePic.Controls) c.Enabled = true;
             txtPicURL.SelectionStart = 0;
             txtPicURL.Text = "URL link";
             txtPicURL.ForeColor = Color.Gray;
             txtPicURL.SelectionLength = txtPicURL.Text.Length;
             txtPicURL.Focus();
-            EditMode = true;
-            grpPersonalInfo.Enabled = false;
-            grpPassword.Enabled = false;
             this.AcceptButton = btnPreview;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            txtPicURL.Enabled = false;
-            btnCancel.Hide();
-            btnPicSubmit.Hide();
-            btnPreview.Hide();
-            btnEditPic.Show();
-            pbEditPic.ImageLocation = OriginalPic;
-            txtPicURL.Clear();
-            EditMode = false;
-            grpPassword.Enabled = true;
-            grpPersonalInfo.Enabled = true;
+            grpProfilePic.Enabled = false;
+            EditModePrep();
+            LoadEditProfile(coach);
         }
 
         private void btnPreview_Click(object sender, EventArgs e)
@@ -84,24 +65,20 @@ namespace CoachConnect
 
         private void btnPicSubmit_Click(object sender, EventArgs e)
         {
-            btnPicSubmit.Hide();
-            btnEditPic.Show();
-            btnCancel.Hide();
-            OriginalPic = txtPicURL.Text;
             using (var context = new db_sft_2172Entities())
             {
                 var result = context.Users.SingleOrDefault(b => b.UserID == Program.CurrentUser);
                 result.ProfilePic = txtPicURL.Text;
                 context.SaveChanges();
             }
-            txtPicURL.Enabled = false;
-            pbProfile.ImageLocation = txtPicURL.Text;
-            txtPicURL.Clear();
+            grpProfilePic.Enabled = false;
+            EditModePrep();
+            LoadEditProfile(coach);
         }
 
         private void txtCurrentPass_TextChanged(object sender, EventArgs e)
         {
-            
+
             lblPassSuccess.Visible = false;
             lblPassInstructions.Visible = true;
             if (!string.IsNullOrEmpty(txtCurrentPass.Text) && (EditMode = false)) EditModePrep();
@@ -137,7 +114,8 @@ namespace CoachConnect
         {
             if (txtConfirmNewPass.Text.Length >= txtNewPass.Text.Length && !string.IsNullOrEmpty(txtConfirmNewPass.Text))
             {
-                if (txtConfirmNewPass.Text != txtNewPass.Text) {
+                if (txtConfirmNewPass.Text != txtNewPass.Text)
+                {
                     grpPersonalInfo.Enabled = true;
                     grpProfilePic.Enabled = true;
                     EditMode = false;
@@ -177,8 +155,8 @@ namespace CoachConnect
         }
 
         private void txtNewPass_TextChanged(object sender, EventArgs e)
-       {
-            if (!string.IsNullOrEmpty(txtConfirmNewPass.Text) && txtNewPass.Text.Length >=txtConfirmNewPass.Text.Length )
+        {
+            if (!string.IsNullOrEmpty(txtConfirmNewPass.Text) && txtNewPass.Text.Length >= txtConfirmNewPass.Text.Length)
             {
                 if (txtConfirmNewPass.Text != txtNewPass.Text)
                 {
@@ -230,19 +208,6 @@ namespace CoachConnect
 
         private void btnEditInfo_Click(object sender, EventArgs e)
         {
-            //txtFName.Enabled = true;
-            //txtLName.Enabled = true;
-            //txtMiddle.Enabled = true;
-            //txtPhone.Enabled = true;
-            //txtEmail.Enabled = true;
-            //txtFName.Focus();
-            //btnCancelInfo.Visible = true;
-            //btnEditInfo.Visible = false;
-            //grpProfilePic.Enabled = false;
-            //grpPassword.Enabled = false;
-            //EditMode = true;
-            //btnSubmitInfo.Visible = true;
-            //this.AcceptButton = btnSubmitInfo;
             EditModePrep();
             grpPersonalInfo.Enabled = true;
             foreach (Control c in grpPersonalInfo.Controls) c.Enabled = true;
@@ -250,7 +215,6 @@ namespace CoachConnect
             btnSubmitInfo.Visible = true;
             btnCancelInfo.Visible = true;
             this.AcceptButton = btnSubmitInfo;
-            
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -270,20 +234,13 @@ namespace CoachConnect
 
         private void btnSubmitInfo_Click(object sender, EventArgs e)
         {
-            //txtFName_Leave(sender, e);
-            //txtLName_Leave(sender, e);
-            //txtPhone_Leave(sender, e);
-            //txtEmail_Leave(sender, e);
-            //txtMiddle_Leave(sender, e);
-
-            if (!lblFNameError.Visible && !lblMiddleError.Visible&&!lblPhoneError.Visible && !lblLastName.Visible && !lblEmailError.Visible)
+            if (!lblFNameError.Visible && !lblMiddleError.Visible && !lblPhoneError.Visible && !lblLastName.Visible && !lblEmailError.Visible)
             {
                 updatePersonalInfo();
                 btnCancelInfo.PerformClick();
                 EditMode = false;
                 User coach = new User();
                 coach = getCoach();
-
                 this.Text = coach.FirstName + " " + coach.LastName + " - " + coach.UserID;
             }
         }
@@ -336,11 +293,11 @@ namespace CoachConnect
         public void updatePersonalInfo()
         {
             string phoneNoFormat = "";
-            foreach(char num in txtPhone.Text)
+            foreach (char num in txtPhone.Text)
             {
                 if (char.IsDigit(num)) phoneNoFormat += num;
             }
-            
+
             using (var context = new db_sft_2172Entities())
             {
                 var result = context.Users.SingleOrDefault(b => b.UserID == Program.CurrentUser);
@@ -356,6 +313,7 @@ namespace CoachConnect
         public void LoadEditProfile(User coach)
         {
             //Edit profile area
+            coach = getCoach();
             txtEmail.Text = coach.Email;
             txtFName.Text = coach.FirstName;
             txtLName.Text = coach.LastName;
@@ -367,12 +325,26 @@ namespace CoachConnect
             txtCurrentPass.Clear();
             txtNewPass.Clear();
             txtConfirmNewPass.Clear();
-            
+            txtPicURL.Clear();
+            btnPreview.Hide();
+            btnPicSubmit.Hide();
+            btnCancel.Hide();
             //Limit User interaction until they hit proper buttons
             DisableAreas();
             EnableEditBtns();
-            
         }
+
+        public User getCoach()
+        {
+            using (var context = new db_sft_2172Entities())
+            {
+                var coach = from c in context.Users
+                            where c.UserID.Equals(Program.CurrentUser)
+                            select c;
+                return coach.First<User>();
+            }
+        }
+
         public void DisableAreas()
         {
             foreach (Control c in grpPersonalInfo.Controls) c.Enabled = false;
