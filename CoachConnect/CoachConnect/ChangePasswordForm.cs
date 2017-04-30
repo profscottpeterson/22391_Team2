@@ -52,6 +52,13 @@ namespace CoachConnect
                         currentUser.PasswordSalt = sh.Salt;
 
                         context.SaveChanges();
+
+                        // Show confirmation if save is successful
+                        MessageBox.Show("Password updated successfully!");
+
+                        // Close form
+                        Close();
+
                     }
                 }
                 catch (Exception ex)
@@ -59,6 +66,11 @@ namespace CoachConnect
                     MessageBox.Show(ex.ToString());
                 }
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
