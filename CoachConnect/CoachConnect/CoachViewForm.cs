@@ -78,7 +78,7 @@ namespace CoachConnect
 
         private void txtCurrentPass_TextChanged(object sender, EventArgs e)
         {
-            
+
             lblPassSuccess.Visible = false;
             lblPassInstructions.Visible = true;
             if (!string.IsNullOrEmpty(txtCurrentPass.Text) && (EditMode = false)) EditModePrep();
@@ -114,7 +114,8 @@ namespace CoachConnect
         {
             if (txtConfirmNewPass.Text.Length >= txtNewPass.Text.Length && !string.IsNullOrEmpty(txtConfirmNewPass.Text))
             {
-                if (txtConfirmNewPass.Text != txtNewPass.Text) {
+                if (txtConfirmNewPass.Text != txtNewPass.Text)
+                {
                     grpPersonalInfo.Enabled = true;
                     grpProfilePic.Enabled = true;
                     EditMode = false;
@@ -154,8 +155,8 @@ namespace CoachConnect
         }
 
         private void txtNewPass_TextChanged(object sender, EventArgs e)
-       {
-            if (!string.IsNullOrEmpty(txtConfirmNewPass.Text) && txtNewPass.Text.Length >=txtConfirmNewPass.Text.Length )
+        {
+            if (!string.IsNullOrEmpty(txtConfirmNewPass.Text) && txtNewPass.Text.Length >= txtConfirmNewPass.Text.Length)
             {
                 if (txtConfirmNewPass.Text != txtNewPass.Text)
                 {
@@ -233,7 +234,7 @@ namespace CoachConnect
 
         private void btnSubmitInfo_Click(object sender, EventArgs e)
         {
-             if (!lblFNameError.Visible && !lblMiddleError.Visible&&!lblPhoneError.Visible && !lblLastName.Visible && !lblEmailError.Visible)
+            if (!lblFNameError.Visible && !lblMiddleError.Visible && !lblPhoneError.Visible && !lblLastName.Visible && !lblEmailError.Visible)
             {
                 updatePersonalInfo();
                 btnCancelInfo.PerformClick();
@@ -292,11 +293,11 @@ namespace CoachConnect
         public void updatePersonalInfo()
         {
             string phoneNoFormat = "";
-            foreach(char num in txtPhone.Text)
+            foreach (char num in txtPhone.Text)
             {
                 if (char.IsDigit(num)) phoneNoFormat += num;
             }
-            
+
             using (var context = new db_sft_2172Entities())
             {
                 var result = context.Users.SingleOrDefault(b => b.UserID == Program.CurrentUser);
