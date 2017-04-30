@@ -8,12 +8,12 @@
         <EntityTypeShape EntityType="db_sft_2172Model.Building" Width="1.5" PointX="1.125" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="db_sft_2172Model.Course" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_sft_2172Model.Room" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_sft_2172Model.Session" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="db_sft_2172Model.Session" PointX="12.5" PointY="7.25" Width="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="db_sft_2172Model.SessionRoster" Width="1.5" PointX="4.875" PointY="8.125" IsExpanded="true" />
         <AssociationConnector Association="db_sft_2172Model.FK_Room_Building" ManuallyRouted="false" />
-        <AssociationConnector Association="db_sft_2172Model.FK_Session_Course" ManuallyRouted="false" />
-        <AssociationConnector Association="db_sft_2172Model.FK_Session_Room" ManuallyRouted="false" />
-        <AssociationConnector Association="db_sft_2172Model.FK_SessionRoster_Session" ManuallyRouted="false" />
+        <AssociationConnector ManuallyRouted="false" Association="db_sft_2172Model.FK_Session_Course" />
+        <AssociationConnector ManuallyRouted="false" Association="db_sft_2172Model.FK_Session_Room" />
+        <AssociationConnector ManuallyRouted="false" Association="db_sft_2172Model.FK_SessionRoster_Session" />
         <EntityTypeShape EntityType="db_sft_2172Model.TimePeriod" Width="1.5" PointX="9.75" PointY="12.5" />
         <EntityTypeShape EntityType="db_sft_2172Model.Department" Width="1.5" PointX="0.75" PointY="5" />
         <EntityTypeShape EntityType="db_sft_2172Model.Interest" Width="1.5" PointX="0.75" PointY="8.125" />
@@ -33,6 +33,7 @@
         <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_User" />
         <EntityTypeShape EntityType="db_sft_2172Model.CoachByTime" Width="1.5" PointX="9.375" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_sft_2172Model.CoachByName" Width="1.5" PointX="8.375" PointY="9.75" />
+        <AssociationConnector Association="db_sft_2172Model.FK_Session_Day" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -60,7 +60,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRevert = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.lblAdminForm = new System.Windows.Forms.Label();
+            this.lblCourseAdminForm = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -371,6 +371,7 @@
             this.btnMenu.TabIndex = 17;
             this.btnMenu.Text = "Return to Menu";
             this.btnMenu.UseVisualStyleBackColor = true;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
             // 
             // btnExit
             // 
@@ -439,16 +440,17 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "User Options";
             // 
-            // lblAdminForm
+            // lblCourseAdminForm
             // 
-            this.lblAdminForm.AutoSize = true;
-            this.lblAdminForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminForm.Location = new System.Drawing.Point(207, 11);
-            this.lblAdminForm.Name = "lblAdminForm";
-            this.lblAdminForm.Size = new System.Drawing.Size(220, 31);
-            this.lblAdminForm.TabIndex = 7;
-            this.lblAdminForm.Text = "Update User Info";
-            this.lblAdminForm.UseWaitCursor = true;
+            this.lblCourseAdminForm.AutoSize = true;
+            this.lblCourseAdminForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCourseAdminForm.Location = new System.Drawing.Point(207, 11);
+            this.lblCourseAdminForm.Name = "lblCourseAdminForm";
+            this.lblCourseAdminForm.Size = new System.Drawing.Size(250, 31);
+            this.lblCourseAdminForm.TabIndex = 7;
+            this.lblCourseAdminForm.Text = "Update Course Info";
+            this.lblCourseAdminForm.UseWaitCursor = true;
+            this.lblCourseAdminForm.Click += new System.EventHandler(this.lblCourseAdminForm_Click);
             // 
             // UserAdminFormAdam
             // 
@@ -462,12 +464,12 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblAdminForm);
+            this.Controls.Add(this.lblCourseAdminForm);
             this.Controls.Add(this.btnLogOff);
             this.Controls.Add(this.btnSave);
             this.Font = new System.Drawing.Font("MV Boli", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "UserAdminForm";
+            this.Name = "UserAdminFormAdam";
             this.Text = "Update User Info";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -514,7 +516,7 @@
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtProfilePic;
-        private System.Windows.Forms.Label lblAdminForm;
+        private System.Windows.Forms.Label lblCourseAdminForm;
     }
 }
 

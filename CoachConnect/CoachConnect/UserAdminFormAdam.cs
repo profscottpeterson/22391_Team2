@@ -419,5 +419,15 @@ namespace CoachConnect
             chkBoxResetPassword.Checked = true;
             chkBoxResetPassword.Enabled = false;
         }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblCourseAdminForm_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

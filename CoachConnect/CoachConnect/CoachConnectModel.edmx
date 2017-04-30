@@ -65,10 +65,11 @@
             <PropertyRef Name="SessionID" />
           </Key>
           <Property Name="SessionID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
           <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
-          <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsMonday" Type="nvarchar" MaxLength="50" />
           <Property Name="IsTuesday" Type="bit" />
           <Property Name="IsWednesday" Type="bit" />
@@ -236,6 +237,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Session_Day">
+          <End Role="Day" Type="Self.Day" Multiplicity="1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Day">
+              <PropertyRef Name="DayID" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="Day" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Session_Room">
           <End Role="Room" Type="Self.Room" Multiplicity="1" />
           <End Role="Session" Type="Self.Session" Multiplicity="*" />
@@ -389,6 +402,10 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
             <End Role="Course" EntitySet="Course" />
             <End Role="Session" EntitySet="Session" />
           </AssociationSet>
+          <AssociationSet Name="FK_Session_Day" Association="Self.FK_Session_Day">
+            <End Role="Day" EntitySet="Day" />
+            <End Role="Session" EntitySet="Session" />
+          </AssociationSet>
           <AssociationSet Name="FK_Session_Room" Association="Self.FK_Session_Room">
             <End Role="Room" EntitySet="Room" />
             <End Role="Session" EntitySet="Session" />
@@ -450,12 +467,12 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <Key>
             <PropertyRef Name="SessionID" />
           </Key>
-          <Property Name="SessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="RoomID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsMonday" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SessionID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="StartTime" Nullable="false" Precision="7" Type="Time" />
+          <Property Name="EndTime" Nullable="false" Precision="7" Type="Time" />
+          <Property Name="RoomID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="CourseID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="IsMonday" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
           <Property Name="IsTuesday" Type="Boolean" />
           <Property Name="IsWednesday" Type="Boolean" />
           <Property Name="IsThursday" Type="Boolean" />
@@ -464,6 +481,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <NavigationProperty Name="Course" Relationship="Self.FK_Session_Course" FromRole="Session" ToRole="Course" />
           <NavigationProperty Name="Room" Relationship="Self.FK_Session_Room" FromRole="Session" ToRole="Room" />
           <NavigationProperty Name="SessionRosters" Relationship="Self.FK_SessionRoster_Session" FromRole="Session" ToRole="SessionRoster" />
+          <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Day1" Relationship="db_sft_2172Model.FK_Session_Day" FromRole="Session" ToRole="Day" />
         </EntityType>
         <EntityType Name="SessionRoster">
           <Key>
@@ -489,8 +508,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Session_Course">
-          <End Role="Course" Type="Self.Course" Multiplicity="1" />
-          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <End Type="Self.Course" Multiplicity="1" Role="Course" />
+          <End Type="Self.Session" Multiplicity="*" Role="Session" />
           <ReferentialConstraint>
             <Principal Role="Course">
               <PropertyRef Name="CourseID" />
@@ -501,8 +520,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Session_Room">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
-          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <End Type="Self.Room" Multiplicity="1" Role="Room" />
+          <End Type="Self.Session" Multiplicity="*" Role="Session" />
           <ReferentialConstraint>
             <Principal Role="Room">
               <PropertyRef Name="RoomID" />
@@ -513,8 +532,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SessionRoster_Session">
-          <End Role="Session" Type="Self.Session" Multiplicity="1" />
-          <End Role="SessionRoster" Type="Self.SessionRoster" Multiplicity="*" />
+          <End Type="Self.Session" Multiplicity="1" Role="Session" />
+          <End Type="Self.SessionRoster" Multiplicity="*" Role="SessionRoster" />
           <ReferentialConstraint>
             <Principal Role="Session">
               <PropertyRef Name="SessionID" />
@@ -535,16 +554,16 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
             <End Role="Room" EntitySet="Rooms" />
           </AssociationSet>
           <AssociationSet Name="FK_Session_Course" Association="Self.FK_Session_Course">
-            <End Role="Course" EntitySet="Courses" />
-            <End Role="Session" EntitySet="Sessions" />
+            <End EntitySet="Courses" Role="Course" />
+            <End EntitySet="Sessions" Role="Session" />
           </AssociationSet>
           <AssociationSet Name="FK_Session_Room" Association="Self.FK_Session_Room">
-            <End Role="Room" EntitySet="Rooms" />
-            <End Role="Session" EntitySet="Sessions" />
+            <End EntitySet="Rooms" Role="Room" />
+            <End EntitySet="Sessions" Role="Session" />
           </AssociationSet>
           <AssociationSet Name="FK_SessionRoster_Session" Association="Self.FK_SessionRoster_Session">
-            <End Role="Session" EntitySet="Sessions" />
-            <End Role="SessionRoster" EntitySet="SessionRosters" />
+            <End EntitySet="Sessions" Role="Session" />
+            <End EntitySet="SessionRosters" Role="SessionRoster" />
           </AssociationSet>
           <EntitySet Name="TimePeriods" EntityType="db_sft_2172Model.TimePeriod" />
           <EntitySet Name="Departments" EntityType="db_sft_2172Model.Department" />
@@ -590,35 +609,39 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <EntitySet Name="CoachByTimes" EntityType="db_sft_2172Model.CoachByTime" />
           <EntitySet Name="CoachByNames" EntityType="db_sft_2172Model.CoachByName" />
           <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
+          <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
             <Parameter Name="version" Mode="In" Type="Int32" />
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
+          <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
             <Parameter Name="version" Mode="In" Type="Int32" />
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
+          <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(db_sft_2172Model.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
+          <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(db_sft_2172Model.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
+          <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
+          <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="FK_Session_Day" Association="db_sft_2172Model.FK_Session_Day">
+            <End Role="Day" EntitySet="Days" />
+            <End Role="Session" EntitySet="Sessions" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="TimePeriod">
           <Key>
@@ -708,6 +731,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <Property Name="DayID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="DayName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="UserAvailabilities" Relationship="db_sft_2172Model.FK_UserAvailability_Day" FromRole="Day" ToRole="UserAvailability" />
+          <NavigationProperty Name="Sessions" Relationship="db_sft_2172Model.FK_Session_Day" FromRole="Day" ToRole="Session" />
         </EntityType>
         <EntityType Name="UserAvailability">
           <Key>
@@ -866,6 +890,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <Association Name="FK_Session_Day">
+          <End Type="db_sft_2172Model.Day" Role="Day" Multiplicity="1" />
+          <End Type="db_sft_2172Model.Session" Role="Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Day">
+              <PropertyRef Name="DayID" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="Day" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -904,6 +940,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <EntitySetMapping Name="Sessions">
             <EntityTypeMapping TypeName="db_sft_2172Model.Session">
               <MappingFragment StoreEntitySet="Session">
+                <ScalarProperty Name="Day" ColumnName="Day" />
                 <ScalarProperty Name="SessionID" ColumnName="SessionID" />
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="EndTime" ColumnName="EndTime" />

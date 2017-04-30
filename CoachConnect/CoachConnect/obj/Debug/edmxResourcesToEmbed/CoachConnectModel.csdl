@@ -36,12 +36,12 @@
     <Key>
       <PropertyRef Name="SessionID" />
     </Key>
-    <Property Name="SessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="RoomID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="CourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="IsMonday" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SessionID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="StartTime" Nullable="false" Precision="7" Type="Time" />
+    <Property Name="EndTime" Nullable="false" Precision="7" Type="Time" />
+    <Property Name="RoomID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="CourseID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+    <Property Name="IsMonday" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="IsTuesday" Type="Boolean" />
     <Property Name="IsWednesday" Type="Boolean" />
     <Property Name="IsThursday" Type="Boolean" />
@@ -50,6 +50,8 @@
     <NavigationProperty Name="Course" Relationship="Self.FK_Session_Course" FromRole="Session" ToRole="Course" />
     <NavigationProperty Name="Room" Relationship="Self.FK_Session_Room" FromRole="Session" ToRole="Room" />
     <NavigationProperty Name="SessionRosters" Relationship="Self.FK_SessionRoster_Session" FromRole="Session" ToRole="SessionRoster" />
+    <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Day1" Relationship="db_sft_2172Model.FK_Session_Day" FromRole="Session" ToRole="Day" />
   </EntityType>
   <EntityType Name="SessionRoster">
     <Key>
@@ -75,8 +77,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Session_Course">
-    <End Role="Course" Type="Self.Course" Multiplicity="1" />
-    <End Role="Session" Type="Self.Session" Multiplicity="*" />
+    <End Type="Self.Course" Multiplicity="1" Role="Course" />
+    <End Type="Self.Session" Multiplicity="*" Role="Session" />
     <ReferentialConstraint>
       <Principal Role="Course">
         <PropertyRef Name="CourseID" />
@@ -87,8 +89,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Session_Room">
-    <End Role="Room" Type="Self.Room" Multiplicity="1" />
-    <End Role="Session" Type="Self.Session" Multiplicity="*" />
+    <End Type="Self.Room" Multiplicity="1" Role="Room" />
+    <End Type="Self.Session" Multiplicity="*" Role="Session" />
     <ReferentialConstraint>
       <Principal Role="Room">
         <PropertyRef Name="RoomID" />
@@ -99,8 +101,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_SessionRoster_Session">
-    <End Role="Session" Type="Self.Session" Multiplicity="1" />
-    <End Role="SessionRoster" Type="Self.SessionRoster" Multiplicity="*" />
+    <End Type="Self.Session" Multiplicity="1" Role="Session" />
+    <End Type="Self.SessionRoster" Multiplicity="*" Role="SessionRoster" />
     <ReferentialConstraint>
       <Principal Role="Session">
         <PropertyRef Name="SessionID" />
@@ -121,16 +123,16 @@
       <End Role="Room" EntitySet="Rooms" />
     </AssociationSet>
     <AssociationSet Name="FK_Session_Course" Association="Self.FK_Session_Course">
-      <End Role="Course" EntitySet="Courses" />
-      <End Role="Session" EntitySet="Sessions" />
+      <End EntitySet="Courses" Role="Course" />
+      <End EntitySet="Sessions" Role="Session" />
     </AssociationSet>
     <AssociationSet Name="FK_Session_Room" Association="Self.FK_Session_Room">
-      <End Role="Room" EntitySet="Rooms" />
-      <End Role="Session" EntitySet="Sessions" />
+      <End EntitySet="Rooms" Role="Room" />
+      <End EntitySet="Sessions" Role="Session" />
     </AssociationSet>
     <AssociationSet Name="FK_SessionRoster_Session" Association="Self.FK_SessionRoster_Session">
-      <End Role="Session" EntitySet="Sessions" />
-      <End Role="SessionRoster" EntitySet="SessionRosters" />
+      <End EntitySet="Sessions" Role="Session" />
+      <End EntitySet="SessionRosters" Role="SessionRoster" />
     </AssociationSet>
     <EntitySet Name="TimePeriods" EntityType="db_sft_2172Model.TimePeriod" />
     <EntitySet Name="Departments" EntityType="db_sft_2172Model.Department" />
@@ -205,6 +207,10 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
+    <AssociationSet Name="FK_Session_Day" Association="db_sft_2172Model.FK_Session_Day">
+      <End Role="Day" EntitySet="Days" />
+      <End Role="Session" EntitySet="Sessions" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="TimePeriod">
     <Key>
@@ -294,6 +300,7 @@
     <Property Name="DayID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="DayName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="UserAvailabilities" Relationship="db_sft_2172Model.FK_UserAvailability_Day" FromRole="Day" ToRole="UserAvailability" />
+    <NavigationProperty Name="Sessions" Relationship="db_sft_2172Model.FK_Session_Day" FromRole="Day" ToRole="Session" />
   </EntityType>
   <EntityType Name="UserAvailability">
     <Key>
@@ -452,4 +459,16 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <Association Name="FK_Session_Day">
+    <End Type="db_sft_2172Model.Day" Role="Day" Multiplicity="1" />
+    <End Type="db_sft_2172Model.Session" Role="Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Day">
+        <PropertyRef Name="DayID" />
+      </Principal>
+      <Dependent Role="Session">
+        <PropertyRef Name="Day" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

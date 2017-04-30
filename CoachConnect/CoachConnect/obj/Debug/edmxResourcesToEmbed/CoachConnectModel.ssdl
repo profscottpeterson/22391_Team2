@@ -60,10 +60,11 @@
       <PropertyRef Name="SessionID" />
     </Key>
     <Property Name="SessionID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
     <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
-    <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IsMonday" Type="nvarchar" MaxLength="50" />
     <Property Name="IsTuesday" Type="bit" />
     <Property Name="IsWednesday" Type="bit" />
@@ -231,6 +232,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Session_Day">
+    <End Role="Day" Type="Self.Day" Multiplicity="1" />
+    <End Role="Session" Type="Self.Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Day">
+        <PropertyRef Name="DayID" />
+      </Principal>
+      <Dependent Role="Session">
+        <PropertyRef Name="Day" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Session_Room">
     <End Role="Room" Type="Self.Room" Multiplicity="1" />
     <End Role="Session" Type="Self.Session" Multiplicity="*" />
@@ -382,6 +395,10 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
     </AssociationSet>
     <AssociationSet Name="FK_Session_Course" Association="Self.FK_Session_Course">
       <End Role="Course" EntitySet="Course" />
+      <End Role="Session" EntitySet="Session" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Session_Day" Association="Self.FK_Session_Day">
+      <End Role="Day" EntitySet="Day" />
       <End Role="Session" EntitySet="Session" />
     </AssociationSet>
     <AssociationSet Name="FK_Session_Room" Association="Self.FK_Session_Room">

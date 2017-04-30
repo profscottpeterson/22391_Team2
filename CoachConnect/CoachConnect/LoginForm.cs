@@ -44,7 +44,7 @@ namespace CoachConnect
                                     where u.UserID.Equals(username)
                                     select u;
 
-                    if (userQuery.Count<User>() > 0)
+                    if (userQuery.Any())
                     {
                         var userResult = userQuery.FirstOrDefault<User>();
 
@@ -56,10 +56,10 @@ namespace CoachConnect
                         /** Otherwise, uncomment the second "if" to use encryption. **/
                         /*************************************************************/
                         // Create a new Salted Hash object
-                        SaltedHash sh = new SaltedHash(password);
+                        //SaltedHash sh = new SaltedHash(password);
 
                         if (userResult.Password == password) 
-                        //if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, password))
+                        //if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, sh.Hash))
                         {
                             // Update static variable containing User ID
                             Program.CurrentUser = userResult.UserID;

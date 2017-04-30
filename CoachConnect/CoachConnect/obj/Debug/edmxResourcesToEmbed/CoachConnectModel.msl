@@ -33,6 +33,7 @@
     <EntitySetMapping Name="Sessions">
       <EntityTypeMapping TypeName="db_sft_2172Model.Session">
         <MappingFragment StoreEntitySet="Session">
+          <ScalarProperty Name="Day" ColumnName="Day" />
           <ScalarProperty Name="SessionID" ColumnName="SessionID" />
           <ScalarProperty Name="StartTime" ColumnName="StartTime" />
           <ScalarProperty Name="EndTime" ColumnName="EndTime" />
