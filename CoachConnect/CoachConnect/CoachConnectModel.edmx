@@ -65,10 +65,11 @@
             <PropertyRef Name="SessionID" />
           </Key>
           <Property Name="SessionID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
           <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
-          <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="IsMonday" Type="nvarchar" MaxLength="50" />
           <Property Name="IsTuesday" Type="bit" />
           <Property Name="IsWednesday" Type="bit" />
@@ -86,16 +87,6 @@
           <Property Name="UserID" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="RoleID" Type="nchar" MaxLength="10" Nullable="false" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="TimePeriod">
           <Key>
             <PropertyRef Name="TimePeriodID" />
@@ -112,16 +103,17 @@
           <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
           <Property Name="DisplayName" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Phone" Type="varchar" MaxLength="10" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="320" />
           <Property Name="IsStudent" Type="bit" Nullable="false" />
           <Property Name="IsAdmin" Type="bit" Nullable="false" />
           <Property Name="IsCoach" Type="bit" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="500" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="ProfilePic" Type="nvarchar" MaxLength="50" />
+          <Property Name="ProfilePic" Type="nvarchar(max)" />
           <Property Name="ActiveCoachSince" Type="datetime" />
           <Property Name="ResetPassword" Type="bit" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="UserAvailability">
           <Key>
@@ -245,6 +237,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Session_Day">
+          <End Role="Day" Type="Self.Day" Multiplicity="1" />
+          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Day">
+              <PropertyRef Name="DayID" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="Day" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Session_Room">
           <End Role="Room" Type="Self.Room" Multiplicity="1" />
           <End Role="Session" Type="Self.Session" Multiplicity="*" />
@@ -346,7 +350,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SessionRoster" EntityType="Self.SessionRoster" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TimePeriod" EntityType="Self.TimePeriod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAvailability" EntityType="Self.UserAvailability" Schema="dbo" store:Type="Tables" />
@@ -397,6 +400,10 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           </AssociationSet>
           <AssociationSet Name="FK_Session_Course" Association="Self.FK_Session_Course">
             <End Role="Course" EntitySet="Course" />
+            <End Role="Session" EntitySet="Session" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Session_Day" Association="Self.FK_Session_Day">
+            <End Role="Day" EntitySet="Day" />
             <End Role="Session" EntitySet="Session" />
           </AssociationSet>
           <AssociationSet Name="FK_Session_Room" Association="Self.FK_Session_Room">
@@ -460,12 +467,12 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <Key>
             <PropertyRef Name="SessionID" />
           </Key>
-          <Property Name="SessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StartTime" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="RoomID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CourseID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsMonday" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SessionID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="StartTime" Nullable="false" Precision="7" Type="Time" />
+          <Property Name="EndTime" Nullable="false" Precision="7" Type="Time" />
+          <Property Name="RoomID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="CourseID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="IsMonday" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
           <Property Name="IsTuesday" Type="Boolean" />
           <Property Name="IsWednesday" Type="Boolean" />
           <Property Name="IsThursday" Type="Boolean" />
@@ -474,6 +481,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <NavigationProperty Name="Course" Relationship="Self.FK_Session_Course" FromRole="Session" ToRole="Course" />
           <NavigationProperty Name="Room" Relationship="Self.FK_Session_Room" FromRole="Session" ToRole="Room" />
           <NavigationProperty Name="SessionRosters" Relationship="Self.FK_SessionRoster_Session" FromRole="Session" ToRole="SessionRoster" />
+          <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Day1" Relationship="db_sft_2172Model.FK_Session_Day" FromRole="Session" ToRole="Day" />
         </EntityType>
         <EntityType Name="SessionRoster">
           <Key>
@@ -499,8 +508,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Session_Course">
-          <End Role="Course" Type="Self.Course" Multiplicity="1" />
-          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <End Type="Self.Course" Multiplicity="1" Role="Course" />
+          <End Type="Self.Session" Multiplicity="*" Role="Session" />
           <ReferentialConstraint>
             <Principal Role="Course">
               <PropertyRef Name="CourseID" />
@@ -511,8 +520,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Session_Room">
-          <End Role="Room" Type="Self.Room" Multiplicity="1" />
-          <End Role="Session" Type="Self.Session" Multiplicity="*" />
+          <End Type="Self.Room" Multiplicity="1" Role="Room" />
+          <End Type="Self.Session" Multiplicity="*" Role="Session" />
           <ReferentialConstraint>
             <Principal Role="Room">
               <PropertyRef Name="RoomID" />
@@ -523,8 +532,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SessionRoster_Session">
-          <End Role="Session" Type="Self.Session" Multiplicity="1" />
-          <End Role="SessionRoster" Type="Self.SessionRoster" Multiplicity="*" />
+          <End Type="Self.Session" Multiplicity="1" Role="Session" />
+          <End Type="Self.SessionRoster" Multiplicity="*" Role="SessionRoster" />
           <ReferentialConstraint>
             <Principal Role="Session">
               <PropertyRef Name="SessionID" />
@@ -545,16 +554,16 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
             <End Role="Room" EntitySet="Rooms" />
           </AssociationSet>
           <AssociationSet Name="FK_Session_Course" Association="Self.FK_Session_Course">
-            <End Role="Course" EntitySet="Courses" />
-            <End Role="Session" EntitySet="Sessions" />
+            <End EntitySet="Courses" Role="Course" />
+            <End EntitySet="Sessions" Role="Session" />
           </AssociationSet>
           <AssociationSet Name="FK_Session_Room" Association="Self.FK_Session_Room">
-            <End Role="Room" EntitySet="Rooms" />
-            <End Role="Session" EntitySet="Sessions" />
+            <End EntitySet="Rooms" Role="Room" />
+            <End EntitySet="Sessions" Role="Session" />
           </AssociationSet>
           <AssociationSet Name="FK_SessionRoster_Session" Association="Self.FK_SessionRoster_Session">
-            <End Role="Session" EntitySet="Sessions" />
-            <End Role="SessionRoster" EntitySet="SessionRosters" />
+            <End EntitySet="Sessions" Role="Session" />
+            <End EntitySet="SessionRosters" Role="SessionRoster" />
           </AssociationSet>
           <EntitySet Name="TimePeriods" EntityType="db_sft_2172Model.TimePeriod" />
           <EntitySet Name="Departments" EntityType="db_sft_2172Model.Department" />
@@ -599,37 +608,40 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           </AssociationSet>
           <EntitySet Name="CoachByTimes" EntityType="db_sft_2172Model.CoachByTime" />
           <EntitySet Name="CoachByNames" EntityType="db_sft_2172Model.CoachByName" />
-          <EntitySet Name="sysdiagrams" EntityType="db_sft_2172Model.sysdiagram" />
           <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
+          <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
             <Parameter Name="version" Mode="In" Type="Int32" />
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
+          <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
             <Parameter Name="version" Mode="In" Type="Int32" />
             <Parameter Name="definition" Mode="In" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
+          <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(db_sft_2172Model.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
+          <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(db_sft_2172Model.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
+          <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
+          <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <AssociationSet Name="FK_Session_Day" Association="db_sft_2172Model.FK_Session_Day">
+            <End Role="Day" EntitySet="Days" />
+            <End Role="Session" EntitySet="Sessions" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="TimePeriod">
           <Key>
@@ -698,18 +710,19 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
           <Property Name="IsCoach" Type="Boolean" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="UserAvailabilities" Relationship="db_sft_2172Model.FK_UserAvailability_User" FromRole="User" ToRole="UserAvailability" />
           <NavigationProperty Name="UserCourses" Relationship="db_sft_2172Model.FK_UserCourse_User" FromRole="User" ToRole="UserCourse" />
           <Property Name="IsStudent" Type="Boolean" Nullable="false" />
-          <Property Name="ProfilePic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ActiveCoachSince" Type="DateTime" Precision="3" />
           <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
           <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ResetPassword" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Day">
           <Key>
@@ -718,6 +731,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <Property Name="DayID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="DayName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="UserAvailabilities" Relationship="db_sft_2172Model.FK_UserAvailability_Day" FromRole="Day" ToRole="UserAvailability" />
+          <NavigationProperty Name="Sessions" Relationship="db_sft_2172Model.FK_Session_Day" FromRole="Day" ToRole="Session" />
         </EntityType>
         <EntityType Name="UserAvailability">
           <Key>
@@ -865,16 +879,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ProfilePic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
           <Property Type="Binary" Name="definition" Nullable="true" />
@@ -886,6 +890,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <Association Name="FK_Session_Day">
+          <End Type="db_sft_2172Model.Day" Role="Day" Multiplicity="1" />
+          <End Type="db_sft_2172Model.Session" Role="Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Day">
+              <PropertyRef Name="DayID" />
+            </Principal>
+            <Dependent Role="Session">
+              <PropertyRef Name="Day" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -924,6 +940,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <EntitySetMapping Name="Sessions">
             <EntityTypeMapping TypeName="db_sft_2172Model.Session">
               <MappingFragment StoreEntitySet="Session">
+                <ScalarProperty Name="Day" ColumnName="Day" />
                 <ScalarProperty Name="SessionID" ColumnName="SessionID" />
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="EndTime" ColumnName="EndTime" />
@@ -983,6 +1000,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="db_sft_2172Model.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
                 <ScalarProperty Name="ResetPassword" ColumnName="ResetPassword" />
                 <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -1062,17 +1080,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
                 <ScalarProperty Name="IsCoach" ColumnName="IsCoach" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="db_sft_2172Model.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -18,6 +18,7 @@ namespace CoachConnect
         public Day()
         {
             this.UserAvailabilities = new HashSet<UserAvailability>();
+            this.Sessions = new HashSet<Session>();
         }
     
         public string DayID { get; set; }
@@ -25,5 +26,7 @@ namespace CoachConnect
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAvailability> UserAvailabilities { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Session> Sessions { get; set; }
     }
 }

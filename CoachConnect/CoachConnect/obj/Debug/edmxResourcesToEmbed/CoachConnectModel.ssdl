@@ -60,10 +60,11 @@
       <PropertyRef Name="SessionID" />
     </Key>
     <Property Name="SessionID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
     <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
-    <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="IsMonday" Type="nvarchar" MaxLength="50" />
     <Property Name="IsTuesday" Type="bit" />
     <Property Name="IsWednesday" Type="bit" />
@@ -81,16 +82,6 @@
     <Property Name="UserID" Type="nchar" MaxLength="10" Nullable="false" />
     <Property Name="RoleID" Type="nchar" MaxLength="10" Nullable="false" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="TimePeriod">
     <Key>
       <PropertyRef Name="TimePeriodID" />
@@ -107,16 +98,17 @@
     <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
     <Property Name="DisplayName" Type="nvarchar" MaxLength="200" Nullable="false" />
-    <Property Name="Phone" Type="varchar" MaxLength="10" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="320" />
     <Property Name="IsStudent" Type="bit" Nullable="false" />
     <Property Name="IsAdmin" Type="bit" Nullable="false" />
     <Property Name="IsCoach" Type="bit" Nullable="false" />
-    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="500" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
-    <Property Name="ProfilePic" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProfilePic" Type="nvarchar(max)" />
     <Property Name="ActiveCoachSince" Type="datetime" />
     <Property Name="ResetPassword" Type="bit" Nullable="false" />
+    <Property Name="PasswordSalt" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="UserAvailability">
     <Key>
@@ -240,6 +232,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Session_Day">
+    <End Role="Day" Type="Self.Day" Multiplicity="1" />
+    <End Role="Session" Type="Self.Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Day">
+        <PropertyRef Name="DayID" />
+      </Principal>
+      <Dependent Role="Session">
+        <PropertyRef Name="Day" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Session_Room">
     <End Role="Room" Type="Self.Room" Multiplicity="1" />
     <End Role="Session" Type="Self.Session" Multiplicity="*" />
@@ -341,7 +345,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
     <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SessionRoster" EntityType="Self.SessionRoster" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TimePeriod" EntityType="Self.TimePeriod" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAvailability" EntityType="Self.UserAvailability" Schema="dbo" store:Type="Tables" />
@@ -392,6 +395,10 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
     </AssociationSet>
     <AssociationSet Name="FK_Session_Course" Association="Self.FK_Session_Course">
       <End Role="Course" EntitySet="Course" />
+      <End Role="Session" EntitySet="Session" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Session_Day" Association="Self.FK_Session_Day">
+      <End Role="Day" EntitySet="Day" />
       <End Role="Session" EntitySet="Session" />
     </AssociationSet>
     <AssociationSet Name="FK_Session_Room" Association="Self.FK_Session_Room">

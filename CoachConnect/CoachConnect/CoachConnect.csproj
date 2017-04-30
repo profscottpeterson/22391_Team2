@@ -57,19 +57,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CoachViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CoachViewForm.Designer.cs">
       <DependentUpon>CoachViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangePasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePasswordForm.designer.cs">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaltedHash.cs" />
+    <Compile Include="Session.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SessionAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SessionAdminForm.designer.cs">
+      <DependentUpon>SessionAdminForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagrams_Result.cs">
-      <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserAdminForm.cs">
@@ -149,9 +168,6 @@
     <Compile Include="Room.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Session.cs">
-      <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SessionRoster.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -161,14 +177,29 @@
     <Compile Include="User.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserAdminFormAdam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserAdminFormAdam.designer.cs">
+      <DependentUpon>UserAdminFormAdam.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserAvailability.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserCourse.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CoachViewForm.resx">
       <DependentUpon>CoachViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangePasswordForm.resx">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SessionAdminForm.resx">
+      <DependentUpon>SessionAdminForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserAdminForm.resx">
       <DependentUpon>UserAdminForm.cs</DependentUpon>
@@ -194,6 +225,9 @@
     </Compile>
     <EmbeddedResource Include="RoleForm.resx">
       <DependentUpon>RoleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserAdminFormAdam.resx">
+      <DependentUpon>UserAdminFormAdam.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="CoachConnectModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
