@@ -43,7 +43,6 @@ namespace CoachConnect
         public virtual DbSet<CoachInterest> CoachInterests { get; set; }
         public virtual DbSet<CoachByTime> CoachByTimes { get; set; }
         public virtual DbSet<CoachByName> CoachByNames { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

@@ -31,10 +31,12 @@ namespace CoachConnect
         public Nullable<bool> IsThursday { get; set; }
         public Nullable<bool> IsFriday { get; set; }
         public Nullable<bool> IsSaturday { get; set; }
+        public string Day { get; set; }
     
         public virtual Course Course { get; set; }
         public virtual Room Room { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SessionRoster> SessionRosters { get; set; }
+        public virtual Day Day1 { get; set; }
     }
 }
