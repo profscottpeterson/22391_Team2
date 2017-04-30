@@ -25,7 +25,7 @@ namespace CoachConnect
             {
                 using (var context = new db_sft_2172Entities())
                 {
-                    var sessionQuery = from sessions in context.Sessions
+                    var sessionQuery = from sessions in context.ViewSessions
                                        select sessions;
 
                     dataGridViewSessions.DataSource = sessionQuery.ToList();

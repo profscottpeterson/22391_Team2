@@ -37,7 +37,7 @@
             this.panelAdmin.AutoScroll = true;
             this.panelAdmin.Location = new System.Drawing.Point(163, 12);
             this.panelAdmin.Name = "panelAdmin";
-            this.panelAdmin.Size = new System.Drawing.Size(621, 510);
+            this.panelAdmin.Size = new System.Drawing.Size(746, 511);
             this.panelAdmin.TabIndex = 0;
             // 
             // listBoxAdminTools
@@ -54,7 +54,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(790, 530);
+            this.ClientSize = new System.Drawing.Size(916, 531);
             this.Controls.Add(this.listBoxAdminTools);
             this.Controls.Add(this.panelAdmin);
             this.Name = "AdminForm";
