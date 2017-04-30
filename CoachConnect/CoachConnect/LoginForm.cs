@@ -55,11 +55,8 @@ namespace CoachConnect
                         /** the first "if" statement below                          **/
                         /** Otherwise, uncomment the second "if" to use encryption. **/
                         /*************************************************************/
-                        // Create a new Salted Hash object
-                        //SaltedHash sh = new SaltedHash(password);
-
-                        if (userResult.Password == password) 
-                        //if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, sh.Hash))
+                        //if (userResult.Password == password) 
+                        if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, password))
                         {
                             // Update static variable containing User ID
                             Program.CurrentUser = userResult.UserID;
