@@ -418,7 +418,7 @@
             // btnPicSubmit
             // 
             this.btnPicSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPicSubmit.Location = new System.Drawing.Point(12, 185);
+            this.btnPicSubmit.Location = new System.Drawing.Point(12, 187);
             this.btnPicSubmit.Name = "btnPicSubmit";
             this.btnPicSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnPicSubmit.TabIndex = 5;
@@ -438,7 +438,7 @@
             // 
             // btnEditPic
             // 
-            this.btnEditPic.Location = new System.Drawing.Point(12, 184);
+            this.btnEditPic.Location = new System.Drawing.Point(12, 187);
             this.btnEditPic.Name = "btnEditPic";
             this.btnEditPic.Size = new System.Drawing.Size(75, 23);
             this.btnEditPic.TabIndex = 2;
@@ -629,7 +629,6 @@
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(201, 20);
             this.txtFName.TabIndex = 9;
-            this.txtFName.TextChanged += new System.EventHandler(this.txtFName_TextChanged);
             this.txtFName.Leave += new System.EventHandler(this.txtFName_Leave);
             // 
             // lblLName

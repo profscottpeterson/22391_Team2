@@ -17,12 +17,13 @@ namespace CoachConnect
     {
         public string OriginalPic;
         public bool EditMode = false;
-        public bool flagValidate = true;
+        public bool flagValidate = false;
         Validation validator = new Validation();
+        User coach;
         public frmCoachView()
         {
             InitializeComponent();
-            User coach = new User();
+            coach = new User();
             coach = getCoach();
             this.Text = coach.FirstName + " " + coach.LastName + " - " + coach.UserID;
             pbProfile.ImageLocation = coach.ProfilePic;
@@ -98,32 +99,24 @@ namespace CoachConnect
             txtPicURL.Clear();
         }
 
-        public void LoadEditProfile(User coach)
-        {
-            txtEmail.Text = coach.Email;
-            txtFName.Text = coach.FirstName;
-            txtLName.Text = coach.LastName;
-            txtMiddle.Text = coach.MiddleName;
-            txtPhone.Text = "(" + coach.Phone.Substring(0, 3) + ")" + coach.Phone.Substring(3,3)+"-"+coach.Phone.Substring(5,4);
-            pbEditPic.ImageLocation = coach.ProfilePic;
-            int endDate = coach.ActiveCoachSince.ToString().IndexOf(" ");
-            lblMemberSince.Text = "Active Coach Since: " + coach.ActiveCoachSince.ToString().Substring(0,endDate);
-        }
-
         private void txtCurrentPass_TextChanged(object sender, EventArgs e)
         {
             
             lblPassSuccess.Visible = false;
             lblPassInstructions.Visible = true;
+            if (!string.IsNullOrEmpty(txtCurrentPass.Text) && (EditMode = false)) EditModePrep();
             if (!string.IsNullOrEmpty(txtCurrentPass.Text))
             {
+                //btnPassCancel.Visible = true;
+                //grpProfilePic.Enabled = false;
+                //grpPersonalInfo.Enabled = false;
+                //EditMode = true;
+                //User coach = new User();
+                //coach = getCoach();
+                //EditModePrep();
+                grpPassword.Enabled = true;
                 btnPassCancel.Visible = true;
-                grpProfilePic.Enabled = false;
-                grpPersonalInfo.Enabled = false;
-                EditMode = true;
-                User coach = new User();
-                coach = getCoach();
-
+                btnPassCancel.Enabled = true;
                 if (txtCurrentPass.Text == coach.Password)
                 {
                     lblPassInstructions.Visible = false;
@@ -136,9 +129,7 @@ namespace CoachConnect
             }
             else
             {
-                grpProfilePic.Enabled = true;
-                grpPersonalInfo.Enabled = true;
-                EditMode = false;
+                EditModePrep();
             }
         }
 
@@ -177,31 +168,12 @@ namespace CoachConnect
 
         private void btnPassCancel_Click(object sender, EventArgs e)
         {
-            
-            txtConfirmNewPass.Enabled = false;
-            txtNewPass.Enabled = false;
-
-            txtCurrentPass.Clear();
-            txtNewPass.Clear();
-            txtConfirmNewPass.Clear();
-            
-            pbNewPass.Visible = false;
-            pbcurrentPassCorrect.Visible = false;
-            pbConfirmPass.Visible = false;
-            btnUpdatePass.Visible = false;
-            btnPassCancel.Visible = false;
-
-            lblMatchPass.Visible = false;
-            lblWarningCurrentPass.Visible = false;
+            EditModePrep();
+            LoadEditProfile(coach);
             txtCurrentPass.Enabled = true;
-
-            txtCurrentPass.Focus();
-            txtConfirmNewPass.BorderStyle = BorderStyle.FixedSingle;
-            txtNewPass.BorderStyle = BorderStyle.FixedSingle;
-
-            grpPersonalInfo.Enabled = true;
-            grpProfilePic.Enabled = true;
-            EditMode = false;
+            pbConfirmPass.Visible = false;
+            pbcurrentPassCorrect.Visible = false;
+            pbNewPass.Visible = false;
         }
 
         private void txtNewPass_TextChanged(object sender, EventArgs e)
@@ -258,41 +230,26 @@ namespace CoachConnect
 
         private void btnEditInfo_Click(object sender, EventArgs e)
         {
-            txtFName.Enabled = true;
-            txtLName.Enabled = true;
-            txtMiddle.Enabled = true;
-            txtPhone.Enabled = true;
-            txtEmail.Enabled = true;
-            txtFName.Focus();
-            btnCancelInfo.Visible = true;
-            btnEditInfo.Visible = false;
-            grpProfilePic.Enabled = false;
-            grpPassword.Enabled = false;
-            EditMode = true;
-            btnSubmitInfo.Visible = true;
-            this.AcceptButton = btnSubmitInfo;
-        }
-
-        private void txtFName_TextChanged(object sender, EventArgs e)
-        {
+            //txtFName.Enabled = true;
+            //txtLName.Enabled = true;
+            //txtMiddle.Enabled = true;
+            //txtPhone.Enabled = true;
+            //txtEmail.Enabled = true;
+            //txtFName.Focus();
+            //btnCancelInfo.Visible = true;
+            //btnEditInfo.Visible = false;
+            //grpProfilePic.Enabled = false;
+            //grpPassword.Enabled = false;
+            //EditMode = true;
             //btnSubmitInfo.Visible = true;
-            if (validator.validateTextBox(txtFName.Text)) MessageBox.Show("validated");
-        }
-
-        private void txtFName_Leave(object sender, EventArgs e)
-        {
-            //txtFName.Text = txtFName.Text.Trim();
-            //ValidateTextbox(txtFName.Text);
-            //if (flagValidate)
-            //{
-            //    txtFName.Text = FormatTextBox(txtFName.Text);
-            //    lblFNameError.Visible = false;
-            //}
-            //else
-            //{
-            //    lblFNameError.Visible = true;
-            //    txtFName.Focus();
-            //}
+            //this.AcceptButton = btnSubmitInfo;
+            EditModePrep();
+            grpPersonalInfo.Enabled = true;
+            foreach (Control c in grpPersonalInfo.Controls) c.Enabled = true;
+            btnEditInfo.Visible = false;
+            btnSubmitInfo.Visible = true;
+            btnCancelInfo.Visible = true;
+            this.AcceptButton = btnSubmitInfo;
             
         }
 
@@ -306,28 +263,18 @@ namespace CoachConnect
 
         private void btnCancelInfo_Click(object sender, EventArgs e)
         {
-            LoadEditProfile(getCoach());
-            txtFName.Enabled = false;
-            txtLName.Enabled = false;
-            txtMiddle.Enabled = false;
-            txtPhone.Enabled = false;
-            txtEmail.Enabled = false;
-            btnSubmitInfo.Visible = false;
-            btnCancelInfo.Visible = false;
-            btnEditInfo.Visible = true;
-            EditMode = false;
-            grpPassword.Enabled = true;
-            grpProfilePic.Enabled = true;
-            txtMiddle.Font = new Font(txtMiddle.Font, FontStyle.Regular);
+            EditModePrep();
+            grpPersonalInfo.Enabled = true;
+            LoadEditProfile(coach);
         }
 
         private void btnSubmitInfo_Click(object sender, EventArgs e)
         {
-            txtFName_Leave(sender, e);
-            txtLName_Leave(sender, e);
-            txtPhone_Leave(sender, e);
-            txtEmail_Leave(sender, e);
-            txtMiddle_Leave(sender, e);
+            //txtFName_Leave(sender, e);
+            //txtLName_Leave(sender, e);
+            //txtPhone_Leave(sender, e);
+            //txtEmail_Leave(sender, e);
+            //txtMiddle_Leave(sender, e);
 
             if (!lblFNameError.Visible && !lblMiddleError.Visible&&!lblPhoneError.Visible && !lblLastName.Visible && !lblEmailError.Visible)
             {
@@ -349,102 +296,41 @@ namespace CoachConnect
                 e.Cancel = true;
             }
         }
-        private void ValidateTextbox(String tb)
-        {
-            flagValidate = true;
-            if ((String.IsNullOrEmpty(tb)) || (!tb.All(char.IsLetter))) flagValidate = false;
-        }
 
-        private string FormatTextBox(String s)
+        private void txtFName_Leave(object sender, EventArgs e)
         {
-            if (s.Length > 1) return char.ToUpper(s[0]) + s.Substring(1).ToLower();
-            else return s.ToUpper();
+            lblFNameError.Visible = !validator.ValidateTextBox(txtFName.Text);
+            if (lblFNameError.Visible) txtFName.Focus();
+            else txtFName.Text = validator.CleanString(txtFName.Text);
         }
 
         private void txtMiddle_Leave(object sender, EventArgs e)
         {
-            txtMiddle.Text = txtMiddle.Text.Trim();
-            ValidateTextbox(txtMiddle.Text);
-            if (flagValidate)
-            {
-                txtMiddle.Text = FormatTextBox(txtMiddle.Text);
-                txtMiddle.Font = new Font(txtMiddle.Font, FontStyle.Regular);
-                lblMiddleError.Visible = false;
-            }
-            else if(!flagValidate && txtMiddle.Text=="")
-            {
-                txtMiddle.Text= "None";
-                txtMiddle.Font = new Font(txtMiddle.Font,FontStyle.Italic);
-            }
-            else
-            {
-                lblMiddleError.Visible = true;
-                txtMiddle.Focus();
-            }
+            lblMiddleError.Visible = !validator.ValidateTextBox(txtMiddle.Text);
+            if (lblMiddleError.Visible) txtMiddle.Focus();
+            else txtMiddle.Text = validator.CleanString(txtMiddle.Text);
         }
 
         private void txtLName_Leave(object sender, EventArgs e)
         {
-            txtLName.Text = txtLName.Text.Trim();
-            ValidateTextbox(txtLName.Text);
-            if (flagValidate)
-            {
-                txtLName.Text = FormatTextBox(txtLName.Text);
-                lblLastName.Visible = false;
-            }
-            else
-            {
-                lblLastName.Visible = true;
-                txtLName.Focus();
-            }
+            lblLastName.Visible = !validator.ValidateTextBox(txtLName.Text);
+            if (lblLastName.Visible) txtLName.Focus();
+            else txtLName.Text = validator.CleanString(txtLName.Text);
         }
 
         private void txtPhone_Leave(object sender, EventArgs e)
         {
-            string sanitizedNum = "";
-            string original = txtPhone.Text;
 
-            foreach (char num in txtPhone.Text)
-            {
-                if (char.IsDigit(num)) sanitizedNum += num.ToString();
-            }
-            if (sanitizedNum.Length == 10)
-            {
-                txtPhone.Text = "(" + sanitizedNum.Substring(0, 3) + ")" + sanitizedNum.Substring(3, 3) + "-" + sanitizedNum.Substring(6);
-                lblPhoneError.Visible = false;
-            }
-            else
-            {
-                txtPhone.Text = original;
-                lblPhoneError.Visible = true;
-                txtPhone.Focus();
-            }
+            string sanitizedNum = validator.CleanNumber(txtPhone.Text);
+            lblPhoneError.Visible = (!validator.ValidatePhone(sanitizedNum));
+            if (!validator.ValidatePhone(sanitizedNum)) txtPhone.Focus();
+            else txtPhone.Text = validator.FormatPhone(sanitizedNum);
         }
 
         private void txtEmail_Leave(object sender, EventArgs e)
         {
-            if (VerifyEmail())
-            {
-                lblEmailError.Visible = false;
-            }
-            else
-            {
-                lblEmailError.Visible = true;
-                txtEmail.Focus();
-            }
-
-        }
-        private bool VerifyEmail()
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(txtEmail.Text);
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            lblEmailError.Visible = !(validator.ValidateEmail(txtEmail.Text));
+            if (!validator.ValidateEmail(txtEmail.Text)) txtEmail.Focus();
         }
 
         public void updatePersonalInfo()
@@ -464,8 +350,53 @@ namespace CoachConnect
                 result.Phone = phoneNoFormat;
                 result.Email = txtEmail.Text;
                 context.SaveChanges();
-                
             }
+        }
+
+        public void LoadEditProfile(User coach)
+        {
+            //Edit profile area
+            txtEmail.Text = coach.Email;
+            txtFName.Text = coach.FirstName;
+            txtLName.Text = coach.LastName;
+            txtMiddle.Text = coach.MiddleName;
+            txtPhone.Text = validator.FormatPhone(coach.Phone);
+            pbEditPic.ImageLocation = coach.ProfilePic;
+            int endDate = coach.ActiveCoachSince.ToString().IndexOf(" ");
+            lblMemberSince.Text = "Active Coach Since: " + coach.ActiveCoachSince.ToString().Substring(0, endDate);
+            txtCurrentPass.Clear();
+            txtNewPass.Clear();
+            txtConfirmNewPass.Clear();
+            
+            //Limit User interaction until they hit proper buttons
+            DisableAreas();
+            EnableEditBtns();
+            
+        }
+        public void DisableAreas()
+        {
+            foreach (Control c in grpPersonalInfo.Controls) c.Enabled = false;
+            foreach (Control c in grpPassword.Controls) c.Enabled = false;
+            foreach (Control c in grpProfilePic.Controls) c.Enabled = false;
+        }
+
+        public void EnableEditBtns()
+        {
+            btnEditInfo.Visible = true;
+            btnEditInfo.Enabled = true;
+            btnEditPic.Visible = true;
+            btnEditPic.Enabled = true;
+            btnCancelInfo.Visible = false;
+            btnSubmitInfo.Visible = false;
+            txtCurrentPass.Enabled = true;
+        }
+
+        public void EditModePrep()
+        {
+            grpPassword.Enabled = !grpPassword.Enabled;
+            grpPersonalInfo.Enabled = !grpPersonalInfo.Enabled;
+            grpProfilePic.Enabled = !grpProfilePic.Enabled;
+            EditMode = !EditMode;
         }
     }
 }
