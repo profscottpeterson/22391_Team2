@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCoachView));
             this.tbForm = new System.Windows.Forms.TabControl();
-            this.tbHome = new System.Windows.Forms.TabPage();
             this.tbSchedule = new System.Windows.Forms.TabPage();
             this.dgvAvailable = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
@@ -99,7 +98,6 @@
             // 
             // tbForm
             // 
-            this.tbForm.Controls.Add(this.tbHome);
             this.tbForm.Controls.Add(this.tbSchedule);
             this.tbForm.Controls.Add(this.tbAvailabilty);
             this.tbForm.Controls.Add(this.tbProfile);
@@ -109,16 +107,6 @@
             this.tbForm.Size = new System.Drawing.Size(538, 449);
             this.tbForm.TabIndex = 0;
             this.tbForm.Deselecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tbForm_Deselecting);
-            // 
-            // tbHome
-            // 
-            this.tbHome.BackColor = System.Drawing.SystemColors.Control;
-            this.tbHome.Location = new System.Drawing.Point(4, 22);
-            this.tbHome.Name = "tbHome";
-            this.tbHome.Padding = new System.Windows.Forms.Padding(3);
-            this.tbHome.Size = new System.Drawing.Size(530, 423);
-            this.tbHome.TabIndex = 0;
-            this.tbHome.Text = "Home";
             // 
             // tbSchedule
             // 
@@ -756,7 +744,6 @@
         #endregion
 
         private System.Windows.Forms.TabControl tbForm;
-        private System.Windows.Forms.TabPage tbHome;
         private System.Windows.Forms.TabPage tbSchedule;
         private System.Windows.Forms.TabPage tbAvailabilty;
         private System.Windows.Forms.Label lblCoachName;
