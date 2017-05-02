@@ -18,12 +18,16 @@ namespace CoachConnect
         public TimePeriod()
         {
             this.UserAvailabilities = new HashSet<UserAvailability>();
+            this.Sessions = new HashSet<Session>();
         }
     
         public string TimePeriodID { get; set; }
         public string TimePeriodName { get; set; }
+        public int SortOrder { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAvailability> UserAvailabilities { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Session> Sessions { get; set; }
     }
 }

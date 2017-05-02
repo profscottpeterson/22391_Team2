@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             this.dataGridViewSessions = new System.Windows.Forms.DataGridView();
-            this.btnRevert = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnMenu = new System.Windows.Forms.Button();
             this.btnLogOff = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblSessionAdminForm = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSessions)).BeginInit();
@@ -43,28 +41,19 @@
             // 
             this.dataGridViewSessions.AllowUserToAddRows = false;
             this.dataGridViewSessions.AllowUserToDeleteRows = false;
-            this.dataGridViewSessions.AllowUserToOrderColumns = true;
+            this.dataGridViewSessions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewSessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSessions.Location = new System.Drawing.Point(10, 56);
             this.dataGridViewSessions.Name = "dataGridViewSessions";
-            this.dataGridViewSessions.Size = new System.Drawing.Size(761, 380);
+            this.dataGridViewSessions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewSessions.Size = new System.Drawing.Size(675, 380);
             this.dataGridViewSessions.TabIndex = 0;
-            // 
-            // btnRevert
-            // 
-            this.btnRevert.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnRevert.Location = new System.Drawing.Point(87, 441);
-            this.btnRevert.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnRevert.Name = "btnRevert";
-            this.btnRevert.Size = new System.Drawing.Size(99, 23);
-            this.btnRevert.TabIndex = 23;
-            this.btnRevert.Text = "Revert Changes";
-            this.btnRevert.UseVisualStyleBackColor = true;
+            this.dataGridViewSessions.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSessions_CellContentDoubleClick);
             // 
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnExit.Location = new System.Drawing.Point(691, 441);
+            this.btnExit.Location = new System.Drawing.Point(605, 441);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(80, 23);
@@ -76,7 +65,7 @@
             // btnMenu
             // 
             this.btnMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnMenu.Location = new System.Drawing.Point(481, 441);
+            this.btnMenu.Location = new System.Drawing.Point(395, 441);
             this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(99, 23);
@@ -87,24 +76,13 @@
             // btnLogOff
             // 
             this.btnLogOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnLogOff.Location = new System.Drawing.Point(586, 441);
+            this.btnLogOff.Location = new System.Drawing.Point(500, 441);
             this.btnLogOff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogOff.Name = "btnLogOff";
             this.btnLogOff.Size = new System.Drawing.Size(99, 23);
             this.btnLogOff.TabIndex = 25;
             this.btnLogOff.Text = "Log Off";
             this.btnLogOff.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnSave.Location = new System.Drawing.Point(192, 441);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(99, 23);
-            this.btnSave.TabIndex = 22;
-            this.btnSave.Text = "Save Changes";
-            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // btnAdd
             // 
@@ -116,6 +94,7 @@
             this.btnAdd.TabIndex = 20;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblSessionAdminForm
             // 
@@ -132,12 +111,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(783, 466);
-            this.Controls.Add(this.btnRevert);
+            this.ClientSize = new System.Drawing.Size(696, 466);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.btnLogOff);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblSessionAdminForm);
             this.Controls.Add(this.dataGridViewSessions);
@@ -153,11 +130,9 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewSessions;
-        private System.Windows.Forms.Button btnRevert;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnMenu;
         private System.Windows.Forms.Button btnLogOff;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Label lblSessionAdminForm;
     }

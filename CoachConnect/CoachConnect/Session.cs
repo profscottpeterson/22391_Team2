@@ -21,8 +21,6 @@ namespace CoachConnect
         }
     
         public int SessionID { get; set; }
-        public System.TimeSpan StartTime { get; set; }
-        public System.TimeSpan EndTime { get; set; }
         public string RoomID { get; set; }
         public string CourseID { get; set; }
         public string IsMonday { get; set; }
@@ -33,7 +31,9 @@ namespace CoachConnect
         public Nullable<bool> IsSaturday { get; set; }
         public string Day { get; set; }
         public string CoachID { get; set; }
-        public Nullable<bool> Active { get; set; }
+        public bool Active { get; set; }
+        public string TimePeriodID { get; set; }
+        public bool IsFull { get; set; }
     
         public virtual Course Course { get; set; }
         public virtual Room Room { get; set; }
@@ -41,5 +41,6 @@ namespace CoachConnect
         public virtual ICollection<SessionRoster> SessionRosters { get; set; }
         public virtual Day Day1 { get; set; }
         public virtual User User { get; set; }
+        public virtual TimePeriod TimePeriod { get; set; }
     }
 }

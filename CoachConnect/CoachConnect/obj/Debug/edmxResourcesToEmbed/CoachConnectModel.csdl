@@ -31,14 +31,13 @@
     <Property Name="BuildingID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Building" Relationship="Self.FK_Room_Building" FromRole="Room" ToRole="Building" />
     <NavigationProperty Name="Sessions" Relationship="Self.FK_Session_Room" FromRole="Room" ToRole="Session" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
   <EntityType Name="Session">
     <Key>
       <PropertyRef Name="SessionID" />
     </Key>
     <Property Name="SessionID" Nullable="false" Type="Int32" />
-    <Property Name="StartTime" Nullable="false" Precision="7" Type="Time" />
-    <Property Name="EndTime" Nullable="false" Precision="7" Type="Time" />
     <Property Name="RoomID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="CourseID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
     <Property Name="IsMonday" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
@@ -53,8 +52,11 @@
     <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Day1" Relationship="db_sft_2172Model.FK_Session_Day" FromRole="Session" ToRole="Day" />
     <Property Name="CoachID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Active" Type="Boolean" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="User" Relationship="db_sft_2172Model.FK_Session_User" FromRole="Session" ToRole="User" />
+    <Property Name="TimePeriodID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="IsFull" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TimePeriod" Relationship="db_sft_2172Model.FK_Session_TimePeriod" FromRole="Session" ToRole="TimePeriod" />
   </EntityType>
   <EntityType Name="SessionRoster">
     <Key>
@@ -227,6 +229,11 @@
       <End Role="User" EntitySet="Users" />
       <End Role="SessionRoster" EntitySet="SessionRosters" />
     </AssociationSet>
+    <EntitySet Name="Availabilities" EntityType="db_sft_2172Model.Availability" />
+    <AssociationSet Name="FK_Session_TimePeriod" Association="db_sft_2172Model.FK_Session_TimePeriod">
+      <End Role="TimePeriod" EntitySet="TimePeriods" />
+      <End Role="Session" EntitySet="Sessions" />
+    </AssociationSet>
     <EntitySet Name="ViewSessions" EntityType="db_sft_2172Model.ViewSession" />
   </EntityContainer>
   <EntityType Name="TimePeriod">
@@ -236,6 +243,8 @@
     <Property Name="TimePeriodID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="TimePeriodName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="UserAvailabilities" Relationship="db_sft_2172Model.FK_UserAvailability_TimePeriod" FromRole="TimePeriod" ToRole="UserAvailability" />
+    <Property Name="SortOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sessions" Relationship="db_sft_2172Model.FK_Session_TimePeriod" FromRole="TimePeriod" ToRole="Session" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
@@ -321,6 +330,7 @@
     <Property Name="DayName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="UserAvailabilities" Relationship="db_sft_2172Model.FK_UserAvailability_Day" FromRole="Day" ToRole="UserAvailability" />
     <NavigationProperty Name="Sessions" Relationship="db_sft_2172Model.FK_Session_Day" FromRole="Day" ToRole="Session" />
+    <Property Name="SortOrder" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="UserAvailability">
     <Key>
@@ -527,20 +537,48 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Availability">
+    <Key>
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="DayID" />
+      <PropertyRef Name="TimePeriodID" />
+    </Key>
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DayID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TimePeriodID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_Session_TimePeriod">
+    <End Type="db_sft_2172Model.TimePeriod" Role="TimePeriod" Multiplicity="0..1" />
+    <End Type="db_sft_2172Model.Session" Role="Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TimePeriod">
+        <PropertyRef Name="TimePeriodID" />
+      </Principal>
+      <Dependent Role="Session">
+        <PropertyRef Name="TimePeriodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityType Name="ViewSession">
     <Key>
+      <PropertyRef Name="SessionID" />
       <PropertyRef Name="Course" />
       <PropertyRef Name="Room" />
-      <PropertyRef Name="Day_of_Week" />
-      <PropertyRef Name="Start_Time" />
-      <PropertyRef Name="End_Time" />
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="Full" />
+      <PropertyRef Name="Active" />
     </Key>
+    <Property Name="SessionID" Type="Int32" Nullable="false" />
     <Property Name="Course" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Room" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Day_of_Week" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Start_Time" Type="Time" Nullable="false" Precision="7" />
-    <Property Name="End_Time" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Coach" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Active" Type="Boolean" />
+    <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Full" Type="Boolean" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
 </Schema>

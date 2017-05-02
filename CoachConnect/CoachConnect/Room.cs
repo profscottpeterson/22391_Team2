@@ -25,6 +25,7 @@ namespace CoachConnect
         public System.TimeSpan OpenTime { get; set; }
         public System.TimeSpan CloseTime { get; set; }
         public string BuildingID { get; set; }
+        public bool Active { get; set; }
     
         public virtual Building Building { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
