@@ -29,15 +29,14 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Label label28;
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
-            "Scotty Pipen",
-            "Sunday",
-            "Afternoon",
-            "Javascript"}, -1);
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button17 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.appointmentMessage = new System.Windows.Forms.Label();
             this.dgrShowAppointments = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -56,11 +55,15 @@
             this.comboBoxCoaches = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button16 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
+            this.btnScheduleApptName = new System.Windows.Forms.Button();
             this.panelCoach = new System.Windows.Forms.Panel();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.lblPhone = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblCoachName = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.lblRating = new System.Windows.Forms.Label();
@@ -76,41 +79,41 @@
             this.label20 = new System.Windows.Forms.Label();
             this.pictureBoxCoachProfile = new System.Windows.Forms.PictureBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.checkBox15 = new System.Windows.Forms.CheckBox();
-            this.checkBox14 = new System.Windows.Forms.CheckBox();
-            this.checkBox13 = new System.Windows.Forms.CheckBox();
-            this.checkBox12 = new System.Windows.Forms.CheckBox();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.checkBox36 = new System.Windows.Forms.CheckBox();
-            this.checkBox37 = new System.Windows.Forms.CheckBox();
-            this.checkBox38 = new System.Windows.Forms.CheckBox();
-            this.checkBox39 = new System.Windows.Forms.CheckBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.checkBox16 = new System.Windows.Forms.CheckBox();
-            this.checkBox17 = new System.Windows.Forms.CheckBox();
-            this.checkBox18 = new System.Windows.Forms.CheckBox();
-            this.checkBox19 = new System.Windows.Forms.CheckBox();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.checkBox32 = new System.Windows.Forms.CheckBox();
-            this.checkBox33 = new System.Windows.Forms.CheckBox();
-            this.checkBox34 = new System.Windows.Forms.CheckBox();
-            this.checkBox35 = new System.Windows.Forms.CheckBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.checkBox20 = new System.Windows.Forms.CheckBox();
-            this.checkBox21 = new System.Windows.Forms.CheckBox();
-            this.checkBox22 = new System.Windows.Forms.CheckBox();
-            this.checkBox23 = new System.Windows.Forms.CheckBox();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.checkBox28 = new System.Windows.Forms.CheckBox();
-            this.checkBox29 = new System.Windows.Forms.CheckBox();
-            this.checkBox30 = new System.Windows.Forms.CheckBox();
-            this.checkBox31 = new System.Windows.Forms.CheckBox();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.checkBox24 = new System.Windows.Forms.CheckBox();
-            this.checkBox25 = new System.Windows.Forms.CheckBox();
-            this.checkBox26 = new System.Windows.Forms.CheckBox();
-            this.checkBox27 = new System.Windows.Forms.CheckBox();
+            this.Monday = new System.Windows.Forms.GroupBox();
+            this.chkMonEvening = new System.Windows.Forms.CheckBox();
+            this.chkMonAfternoon = new System.Windows.Forms.CheckBox();
+            this.chkMonMidday = new System.Windows.Forms.CheckBox();
+            this.chkMonMorning = new System.Windows.Forms.CheckBox();
+            this.Sunday = new System.Windows.Forms.GroupBox();
+            this.chkSunEvening = new System.Windows.Forms.CheckBox();
+            this.chkSunAfternoon = new System.Windows.Forms.CheckBox();
+            this.chkSunMidday = new System.Windows.Forms.CheckBox();
+            this.chkSunMorning = new System.Windows.Forms.CheckBox();
+            this.Tuesday = new System.Windows.Forms.GroupBox();
+            this.chkTueEvening = new System.Windows.Forms.CheckBox();
+            this.chkTueAfternoon = new System.Windows.Forms.CheckBox();
+            this.chkTueMidday = new System.Windows.Forms.CheckBox();
+            this.chkTueMorning = new System.Windows.Forms.CheckBox();
+            this.Saturday = new System.Windows.Forms.GroupBox();
+            this.chkSatEvening = new System.Windows.Forms.CheckBox();
+            this.chkSatAfternoon = new System.Windows.Forms.CheckBox();
+            this.chkSatMidday = new System.Windows.Forms.CheckBox();
+            this.chkSatMorning = new System.Windows.Forms.CheckBox();
+            this.Wednesday = new System.Windows.Forms.GroupBox();
+            this.chkWedEvening = new System.Windows.Forms.CheckBox();
+            this.chkWedAfternoon = new System.Windows.Forms.CheckBox();
+            this.chkWedMidday = new System.Windows.Forms.CheckBox();
+            this.chkWedMorning = new System.Windows.Forms.CheckBox();
+            this.Friday = new System.Windows.Forms.GroupBox();
+            this.chkFriEvening = new System.Windows.Forms.CheckBox();
+            this.chkFriAfternoon = new System.Windows.Forms.CheckBox();
+            this.chkFriMidday = new System.Windows.Forms.CheckBox();
+            this.chkFriMorning = new System.Windows.Forms.CheckBox();
+            this.Thursday = new System.Windows.Forms.GroupBox();
+            this.chkThuEvening = new System.Windows.Forms.CheckBox();
+            this.chkThuAfternoon = new System.Windows.Forms.CheckBox();
+            this.chkThuMidday = new System.Windows.Forms.CheckBox();
+            this.chkThuMorning = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lblTransport = new System.Windows.Forms.Label();
             this.lblScience = new System.Windows.Forms.Label();
@@ -142,28 +145,23 @@
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button18 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.btnScheduleAppointment = new System.Windows.Forms.Button();
+            this.btnSearchByTime = new System.Windows.Forms.Button();
             this.label49 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox11 = new System.Windows.Forms.CheckBox();
-            this.checkBox10 = new System.Windows.Forms.CheckBox();
-            this.checkBox9 = new System.Windows.Forms.CheckBox();
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.chkEvening = new System.Windows.Forms.CheckBox();
+            this.chkMidday = new System.Windows.Forms.CheckBox();
+            this.chkAfternoon = new System.Windows.Forms.CheckBox();
+            this.chkMorning = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox7 = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkSun = new System.Windows.Forms.CheckBox();
+            this.chkSat = new System.Windows.Forms.CheckBox();
+            this.chkFri = new System.Windows.Forms.CheckBox();
+            this.chkThu = new System.Windows.Forms.CheckBox();
+            this.chkWed = new System.Windows.Forms.CheckBox();
+            this.chkTue = new System.Windows.Forms.CheckBox();
+            this.chkMon = new System.Windows.Forms.CheckBox();
             this.label34 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
@@ -171,11 +169,7 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.appointmentMessage = new System.Windows.Forms.Label();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lblPhone = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.dataGridCoachesByTime = new System.Windows.Forms.DataGridView();
             label28 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -190,19 +184,20 @@
             this.groupBox7.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoachProfile)).BeginInit();
-            this.groupBox8.SuspendLayout();
-            this.groupBox14.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox13.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            this.groupBox11.SuspendLayout();
+            this.Monday.SuspendLayout();
+            this.Sunday.SuspendLayout();
+            this.Tuesday.SuspendLayout();
+            this.Saturday.SuspendLayout();
+            this.Wednesday.SuspendLayout();
+            this.Friday.SuspendLayout();
+            this.Thursday.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox17.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCoachesByTime)).BeginInit();
             this.SuspendLayout();
             // 
             // label28
@@ -263,6 +258,17 @@
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Your Appointment(s)";
+            // 
+            // appointmentMessage
+            // 
+            this.appointmentMessage.AutoSize = true;
+            this.appointmentMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.appointmentMessage.Location = new System.Drawing.Point(233, 40);
+            this.appointmentMessage.Name = "appointmentMessage";
+            this.appointmentMessage.Size = new System.Drawing.Size(383, 25);
+            this.appointmentMessage.TabIndex = 6;
+            this.appointmentMessage.Text = "You don\'t have any appointments now.";
+            this.appointmentMessage.Visible = false;
             // 
             // dgrShowAppointments
             // 
@@ -428,7 +434,7 @@
             this.tabPage2.Controls.Add(this.comboBoxCoaches);
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.button16);
-            this.tabPage2.Controls.Add(this.button15);
+            this.tabPage2.Controls.Add(this.btnScheduleApptName);
             this.tabPage2.Controls.Add(this.panelCoach);
             this.tabPage2.Controls.Add(label28);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -470,15 +476,16 @@
             this.button16.Text = "Cancel";
             this.button16.UseVisualStyleBackColor = true;
             // 
-            // button15
+            // btnScheduleApptName
             // 
-            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(689, 527);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(72, 28);
-            this.button15.TabIndex = 24;
-            this.button15.Text = "OK";
-            this.button15.UseVisualStyleBackColor = true;
+            this.btnScheduleApptName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScheduleApptName.Location = new System.Drawing.Point(689, 527);
+            this.btnScheduleApptName.Name = "btnScheduleApptName";
+            this.btnScheduleApptName.Size = new System.Drawing.Size(72, 28);
+            this.btnScheduleApptName.TabIndex = 24;
+            this.btnScheduleApptName.Text = "OK";
+            this.btnScheduleApptName.UseVisualStyleBackColor = true;
+            this.btnScheduleApptName.Click += new System.EventHandler(this.btnScheduleApptName_Click);
             // 
             // panelCoach
             // 
@@ -487,13 +494,13 @@
             this.panelCoach.Controls.Add(this.groupBox2);
             this.panelCoach.Controls.Add(this.pictureBoxCoachProfile);
             this.panelCoach.Controls.Add(this.label24);
-            this.panelCoach.Controls.Add(this.groupBox8);
-            this.panelCoach.Controls.Add(this.groupBox14);
-            this.panelCoach.Controls.Add(this.groupBox9);
-            this.panelCoach.Controls.Add(this.groupBox13);
-            this.panelCoach.Controls.Add(this.groupBox10);
-            this.panelCoach.Controls.Add(this.groupBox12);
-            this.panelCoach.Controls.Add(this.groupBox11);
+            this.panelCoach.Controls.Add(this.Monday);
+            this.panelCoach.Controls.Add(this.Sunday);
+            this.panelCoach.Controls.Add(this.Tuesday);
+            this.panelCoach.Controls.Add(this.Saturday);
+            this.panelCoach.Controls.Add(this.Wednesday);
+            this.panelCoach.Controls.Add(this.Friday);
+            this.panelCoach.Controls.Add(this.Thursday);
             this.panelCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelCoach.Location = new System.Drawing.Point(21, 55);
             this.panelCoach.Name = "panelCoach";
@@ -536,6 +543,46 @@
             this.groupBox7.TabIndex = 9;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Coach Profile";
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhone.Location = new System.Drawing.Point(430, 62);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.lblPhone.Size = new System.Drawing.Size(175, 25);
+            this.lblPhone.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(399, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(25, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Tel:";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(430, 33);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.lblEmail.Size = new System.Drawing.Size(175, 25);
+            this.lblEmail.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(389, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Email:";
             // 
             // lblCoachName
             // 
@@ -694,411 +741,418 @@
             this.label24.TabIndex = 23;
             this.label24.Text = "To make an appointment, Please select a part of a day below";
             // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.checkBox15);
-            this.groupBox8.Controls.Add(this.checkBox14);
-            this.groupBox8.Controls.Add(this.checkBox13);
-            this.groupBox8.Controls.Add(this.checkBox12);
-            this.groupBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox8.Location = new System.Drawing.Point(8, 266);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(111, 135);
-            this.groupBox8.TabIndex = 16;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Moday";
-            // 
-            // checkBox15
-            // 
-            this.checkBox15.AutoSize = true;
-            this.checkBox15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox15.Location = new System.Drawing.Point(17, 106);
-            this.checkBox15.Name = "checkBox15";
-            this.checkBox15.Size = new System.Drawing.Size(65, 17);
-            this.checkBox15.TabIndex = 10;
-            this.checkBox15.Text = "Evening";
-            this.checkBox15.UseVisualStyleBackColor = true;
-            // 
-            // checkBox14
-            // 
-            this.checkBox14.AutoSize = true;
-            this.checkBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox14.Location = new System.Drawing.Point(17, 80);
-            this.checkBox14.Name = "checkBox14";
-            this.checkBox14.Size = new System.Drawing.Size(72, 17);
-            this.checkBox14.TabIndex = 9;
-            this.checkBox14.Text = "Afternoon";
-            this.checkBox14.UseVisualStyleBackColor = true;
-            // 
-            // checkBox13
-            // 
-            this.checkBox13.AutoSize = true;
-            this.checkBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox13.Location = new System.Drawing.Point(17, 54);
-            this.checkBox13.Name = "checkBox13";
-            this.checkBox13.Size = new System.Drawing.Size(60, 17);
-            this.checkBox13.TabIndex = 8;
-            this.checkBox13.Text = "Midday";
-            this.checkBox13.UseVisualStyleBackColor = true;
-            // 
-            // checkBox12
-            // 
-            this.checkBox12.AutoSize = true;
-            this.checkBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox12.Location = new System.Drawing.Point(17, 28);
-            this.checkBox12.Name = "checkBox12";
-            this.checkBox12.Size = new System.Drawing.Size(64, 17);
-            this.checkBox12.TabIndex = 7;
-            this.checkBox12.Text = "Morning";
-            this.checkBox12.UseVisualStyleBackColor = true;
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.checkBox36);
-            this.groupBox14.Controls.Add(this.checkBox37);
-            this.groupBox14.Controls.Add(this.checkBox38);
-            this.groupBox14.Controls.Add(this.checkBox39);
-            this.groupBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox14.Location = new System.Drawing.Point(710, 266);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(111, 135);
-            this.groupBox14.TabIndex = 22;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Sunday";
-            // 
-            // checkBox36
-            // 
-            this.checkBox36.AutoSize = true;
-            this.checkBox36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox36.Location = new System.Drawing.Point(17, 106);
-            this.checkBox36.Name = "checkBox36";
-            this.checkBox36.Size = new System.Drawing.Size(65, 17);
-            this.checkBox36.TabIndex = 10;
-            this.checkBox36.Text = "Evening";
-            this.checkBox36.UseVisualStyleBackColor = true;
-            // 
-            // checkBox37
-            // 
-            this.checkBox37.AutoSize = true;
-            this.checkBox37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox37.Location = new System.Drawing.Point(17, 80);
-            this.checkBox37.Name = "checkBox37";
-            this.checkBox37.Size = new System.Drawing.Size(72, 17);
-            this.checkBox37.TabIndex = 9;
-            this.checkBox37.Text = "Afternoon";
-            this.checkBox37.UseVisualStyleBackColor = true;
-            // 
-            // checkBox38
-            // 
-            this.checkBox38.AutoSize = true;
-            this.checkBox38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox38.Location = new System.Drawing.Point(17, 54);
-            this.checkBox38.Name = "checkBox38";
-            this.checkBox38.Size = new System.Drawing.Size(60, 17);
-            this.checkBox38.TabIndex = 8;
-            this.checkBox38.Text = "Midday";
-            this.checkBox38.UseVisualStyleBackColor = true;
-            // 
-            // checkBox39
-            // 
-            this.checkBox39.AutoSize = true;
-            this.checkBox39.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox39.Location = new System.Drawing.Point(17, 28);
-            this.checkBox39.Name = "checkBox39";
-            this.checkBox39.Size = new System.Drawing.Size(64, 17);
-            this.checkBox39.TabIndex = 7;
-            this.checkBox39.Text = "Morning";
-            this.checkBox39.UseVisualStyleBackColor = true;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.checkBox16);
-            this.groupBox9.Controls.Add(this.checkBox17);
-            this.groupBox9.Controls.Add(this.checkBox18);
-            this.groupBox9.Controls.Add(this.checkBox19);
-            this.groupBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox9.Location = new System.Drawing.Point(125, 266);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(111, 135);
-            this.groupBox9.TabIndex = 17;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Tuesday";
-            // 
-            // checkBox16
-            // 
-            this.checkBox16.AutoSize = true;
-            this.checkBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox16.Location = new System.Drawing.Point(17, 106);
-            this.checkBox16.Name = "checkBox16";
-            this.checkBox16.Size = new System.Drawing.Size(65, 17);
-            this.checkBox16.TabIndex = 10;
-            this.checkBox16.Text = "Evening";
-            this.checkBox16.UseVisualStyleBackColor = true;
-            // 
-            // checkBox17
-            // 
-            this.checkBox17.AutoSize = true;
-            this.checkBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox17.Location = new System.Drawing.Point(17, 80);
-            this.checkBox17.Name = "checkBox17";
-            this.checkBox17.Size = new System.Drawing.Size(72, 17);
-            this.checkBox17.TabIndex = 9;
-            this.checkBox17.Text = "Afternoon";
-            this.checkBox17.UseVisualStyleBackColor = true;
-            // 
-            // checkBox18
-            // 
-            this.checkBox18.AutoSize = true;
-            this.checkBox18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox18.Location = new System.Drawing.Point(17, 54);
-            this.checkBox18.Name = "checkBox18";
-            this.checkBox18.Size = new System.Drawing.Size(60, 17);
-            this.checkBox18.TabIndex = 8;
-            this.checkBox18.Text = "Midday";
-            this.checkBox18.UseVisualStyleBackColor = true;
-            // 
-            // checkBox19
-            // 
-            this.checkBox19.AutoSize = true;
-            this.checkBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox19.Location = new System.Drawing.Point(17, 28);
-            this.checkBox19.Name = "checkBox19";
-            this.checkBox19.Size = new System.Drawing.Size(64, 17);
-            this.checkBox19.TabIndex = 7;
-            this.checkBox19.Text = "Morning";
-            this.checkBox19.UseVisualStyleBackColor = true;
-            // 
-            // groupBox13
-            // 
-            this.groupBox13.Controls.Add(this.checkBox32);
-            this.groupBox13.Controls.Add(this.checkBox33);
-            this.groupBox13.Controls.Add(this.checkBox34);
-            this.groupBox13.Controls.Add(this.checkBox35);
-            this.groupBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox13.Location = new System.Drawing.Point(593, 266);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(111, 135);
-            this.groupBox13.TabIndex = 21;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "Saturday";
-            // 
-            // checkBox32
-            // 
-            this.checkBox32.AutoSize = true;
-            this.checkBox32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox32.Location = new System.Drawing.Point(17, 106);
-            this.checkBox32.Name = "checkBox32";
-            this.checkBox32.Size = new System.Drawing.Size(65, 17);
-            this.checkBox32.TabIndex = 10;
-            this.checkBox32.Text = "Evening";
-            this.checkBox32.UseVisualStyleBackColor = true;
-            // 
-            // checkBox33
-            // 
-            this.checkBox33.AutoSize = true;
-            this.checkBox33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox33.Location = new System.Drawing.Point(17, 80);
-            this.checkBox33.Name = "checkBox33";
-            this.checkBox33.Size = new System.Drawing.Size(72, 17);
-            this.checkBox33.TabIndex = 9;
-            this.checkBox33.Text = "Afternoon";
-            this.checkBox33.UseVisualStyleBackColor = true;
-            // 
-            // checkBox34
-            // 
-            this.checkBox34.AutoSize = true;
-            this.checkBox34.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox34.Location = new System.Drawing.Point(17, 54);
-            this.checkBox34.Name = "checkBox34";
-            this.checkBox34.Size = new System.Drawing.Size(60, 17);
-            this.checkBox34.TabIndex = 8;
-            this.checkBox34.Text = "Midday";
-            this.checkBox34.UseVisualStyleBackColor = true;
-            // 
-            // checkBox35
-            // 
-            this.checkBox35.AutoSize = true;
-            this.checkBox35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox35.Location = new System.Drawing.Point(17, 28);
-            this.checkBox35.Name = "checkBox35";
-            this.checkBox35.Size = new System.Drawing.Size(64, 17);
-            this.checkBox35.TabIndex = 7;
-            this.checkBox35.Text = "Morning";
-            this.checkBox35.UseVisualStyleBackColor = true;
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.checkBox20);
-            this.groupBox10.Controls.Add(this.checkBox21);
-            this.groupBox10.Controls.Add(this.checkBox22);
-            this.groupBox10.Controls.Add(this.checkBox23);
-            this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox10.Location = new System.Drawing.Point(242, 266);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(111, 135);
-            this.groupBox10.TabIndex = 18;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Wednesday";
-            // 
-            // checkBox20
-            // 
-            this.checkBox20.AutoSize = true;
-            this.checkBox20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox20.Location = new System.Drawing.Point(17, 106);
-            this.checkBox20.Name = "checkBox20";
-            this.checkBox20.Size = new System.Drawing.Size(65, 17);
-            this.checkBox20.TabIndex = 10;
-            this.checkBox20.Text = "Evening";
-            this.checkBox20.UseVisualStyleBackColor = true;
-            // 
-            // checkBox21
-            // 
-            this.checkBox21.AutoSize = true;
-            this.checkBox21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox21.Location = new System.Drawing.Point(17, 80);
-            this.checkBox21.Name = "checkBox21";
-            this.checkBox21.Size = new System.Drawing.Size(72, 17);
-            this.checkBox21.TabIndex = 9;
-            this.checkBox21.Text = "Afternoon";
-            this.checkBox21.UseVisualStyleBackColor = true;
-            // 
-            // checkBox22
-            // 
-            this.checkBox22.AutoSize = true;
-            this.checkBox22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox22.Location = new System.Drawing.Point(17, 54);
-            this.checkBox22.Name = "checkBox22";
-            this.checkBox22.Size = new System.Drawing.Size(60, 17);
-            this.checkBox22.TabIndex = 8;
-            this.checkBox22.Text = "Midday";
-            this.checkBox22.UseVisualStyleBackColor = true;
-            // 
-            // checkBox23
-            // 
-            this.checkBox23.AutoSize = true;
-            this.checkBox23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox23.Location = new System.Drawing.Point(17, 28);
-            this.checkBox23.Name = "checkBox23";
-            this.checkBox23.Size = new System.Drawing.Size(64, 17);
-            this.checkBox23.TabIndex = 7;
-            this.checkBox23.Text = "Morning";
-            this.checkBox23.UseVisualStyleBackColor = true;
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.checkBox28);
-            this.groupBox12.Controls.Add(this.checkBox29);
-            this.groupBox12.Controls.Add(this.checkBox30);
-            this.groupBox12.Controls.Add(this.checkBox31);
-            this.groupBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox12.Location = new System.Drawing.Point(476, 266);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(111, 135);
-            this.groupBox12.TabIndex = 20;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Friday";
-            // 
-            // checkBox28
-            // 
-            this.checkBox28.AutoSize = true;
-            this.checkBox28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox28.Location = new System.Drawing.Point(17, 106);
-            this.checkBox28.Name = "checkBox28";
-            this.checkBox28.Size = new System.Drawing.Size(65, 17);
-            this.checkBox28.TabIndex = 10;
-            this.checkBox28.Text = "Evening";
-            this.checkBox28.UseVisualStyleBackColor = true;
-            // 
-            // checkBox29
-            // 
-            this.checkBox29.AutoSize = true;
-            this.checkBox29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox29.Location = new System.Drawing.Point(17, 80);
-            this.checkBox29.Name = "checkBox29";
-            this.checkBox29.Size = new System.Drawing.Size(72, 17);
-            this.checkBox29.TabIndex = 9;
-            this.checkBox29.Text = "Afternoon";
-            this.checkBox29.UseVisualStyleBackColor = true;
-            // 
-            // checkBox30
-            // 
-            this.checkBox30.AutoSize = true;
-            this.checkBox30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox30.Location = new System.Drawing.Point(17, 54);
-            this.checkBox30.Name = "checkBox30";
-            this.checkBox30.Size = new System.Drawing.Size(60, 17);
-            this.checkBox30.TabIndex = 8;
-            this.checkBox30.Text = "Midday";
-            this.checkBox30.UseVisualStyleBackColor = true;
-            // 
-            // checkBox31
-            // 
-            this.checkBox31.AutoSize = true;
-            this.checkBox31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox31.Location = new System.Drawing.Point(17, 28);
-            this.checkBox31.Name = "checkBox31";
-            this.checkBox31.Size = new System.Drawing.Size(64, 17);
-            this.checkBox31.TabIndex = 7;
-            this.checkBox31.Text = "Morning";
-            this.checkBox31.UseVisualStyleBackColor = true;
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.checkBox24);
-            this.groupBox11.Controls.Add(this.checkBox25);
-            this.groupBox11.Controls.Add(this.checkBox26);
-            this.groupBox11.Controls.Add(this.checkBox27);
-            this.groupBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox11.Location = new System.Drawing.Point(359, 266);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(111, 135);
-            this.groupBox11.TabIndex = 19;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Thursday";
-            // 
-            // checkBox24
-            // 
-            this.checkBox24.AutoSize = true;
-            this.checkBox24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox24.Location = new System.Drawing.Point(17, 106);
-            this.checkBox24.Name = "checkBox24";
-            this.checkBox24.Size = new System.Drawing.Size(65, 17);
-            this.checkBox24.TabIndex = 10;
-            this.checkBox24.Text = "Evening";
-            this.checkBox24.UseVisualStyleBackColor = true;
-            // 
-            // checkBox25
-            // 
-            this.checkBox25.AutoSize = true;
-            this.checkBox25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox25.Location = new System.Drawing.Point(17, 80);
-            this.checkBox25.Name = "checkBox25";
-            this.checkBox25.Size = new System.Drawing.Size(72, 17);
-            this.checkBox25.TabIndex = 9;
-            this.checkBox25.Text = "Afternoon";
-            this.checkBox25.UseVisualStyleBackColor = true;
-            // 
-            // checkBox26
-            // 
-            this.checkBox26.AutoSize = true;
-            this.checkBox26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox26.Location = new System.Drawing.Point(17, 54);
-            this.checkBox26.Name = "checkBox26";
-            this.checkBox26.Size = new System.Drawing.Size(60, 17);
-            this.checkBox26.TabIndex = 8;
-            this.checkBox26.Text = "Midday";
-            this.checkBox26.UseVisualStyleBackColor = true;
-            // 
-            // checkBox27
-            // 
-            this.checkBox27.AutoSize = true;
-            this.checkBox27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox27.Location = new System.Drawing.Point(17, 28);
-            this.checkBox27.Name = "checkBox27";
-            this.checkBox27.Size = new System.Drawing.Size(64, 17);
-            this.checkBox27.TabIndex = 7;
-            this.checkBox27.Text = "Morning";
-            this.checkBox27.UseVisualStyleBackColor = true;
+            // Monday
+            // 
+            this.Monday.Controls.Add(this.chkMonEvening);
+            this.Monday.Controls.Add(this.chkMonAfternoon);
+            this.Monday.Controls.Add(this.chkMonMidday);
+            this.Monday.Controls.Add(this.chkMonMorning);
+            this.Monday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Monday.Location = new System.Drawing.Point(8, 266);
+            this.Monday.Name = "Monday";
+            this.Monday.Size = new System.Drawing.Size(111, 135);
+            this.Monday.TabIndex = 16;
+            this.Monday.TabStop = false;
+            this.Monday.Text = "Moday";
+            this.Monday.Visible = false;
+            // 
+            // chkMonEvening
+            // 
+            this.chkMonEvening.AutoSize = true;
+            this.chkMonEvening.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMonEvening.Location = new System.Drawing.Point(17, 106);
+            this.chkMonEvening.Name = "chkMonEvening";
+            this.chkMonEvening.Size = new System.Drawing.Size(65, 17);
+            this.chkMonEvening.TabIndex = 10;
+            this.chkMonEvening.Text = "Evening";
+            this.chkMonEvening.UseVisualStyleBackColor = true;
+            // 
+            // chkMonAfternoon
+            // 
+            this.chkMonAfternoon.AutoSize = true;
+            this.chkMonAfternoon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMonAfternoon.Location = new System.Drawing.Point(17, 80);
+            this.chkMonAfternoon.Name = "chkMonAfternoon";
+            this.chkMonAfternoon.Size = new System.Drawing.Size(72, 17);
+            this.chkMonAfternoon.TabIndex = 9;
+            this.chkMonAfternoon.Text = "Afternoon";
+            this.chkMonAfternoon.UseVisualStyleBackColor = true;
+            // 
+            // chkMonMidday
+            // 
+            this.chkMonMidday.AutoSize = true;
+            this.chkMonMidday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMonMidday.Location = new System.Drawing.Point(17, 54);
+            this.chkMonMidday.Name = "chkMonMidday";
+            this.chkMonMidday.Size = new System.Drawing.Size(60, 17);
+            this.chkMonMidday.TabIndex = 8;
+            this.chkMonMidday.Text = "Midday";
+            this.chkMonMidday.UseVisualStyleBackColor = true;
+            // 
+            // chkMonMorning
+            // 
+            this.chkMonMorning.AutoSize = true;
+            this.chkMonMorning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMonMorning.Location = new System.Drawing.Point(17, 28);
+            this.chkMonMorning.Name = "chkMonMorning";
+            this.chkMonMorning.Size = new System.Drawing.Size(64, 17);
+            this.chkMonMorning.TabIndex = 7;
+            this.chkMonMorning.Text = "Morning";
+            this.chkMonMorning.UseVisualStyleBackColor = true;
+            // 
+            // Sunday
+            // 
+            this.Sunday.Controls.Add(this.chkSunEvening);
+            this.Sunday.Controls.Add(this.chkSunAfternoon);
+            this.Sunday.Controls.Add(this.chkSunMidday);
+            this.Sunday.Controls.Add(this.chkSunMorning);
+            this.Sunday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Sunday.Location = new System.Drawing.Point(710, 266);
+            this.Sunday.Name = "Sunday";
+            this.Sunday.Size = new System.Drawing.Size(111, 135);
+            this.Sunday.TabIndex = 22;
+            this.Sunday.TabStop = false;
+            this.Sunday.Text = "Sunday";
+            this.Sunday.Visible = false;
+            // 
+            // chkSunEvening
+            // 
+            this.chkSunEvening.AutoSize = true;
+            this.chkSunEvening.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSunEvening.Location = new System.Drawing.Point(17, 106);
+            this.chkSunEvening.Name = "chkSunEvening";
+            this.chkSunEvening.Size = new System.Drawing.Size(65, 17);
+            this.chkSunEvening.TabIndex = 10;
+            this.chkSunEvening.Text = "Evening";
+            this.chkSunEvening.UseVisualStyleBackColor = true;
+            // 
+            // chkSunAfternoon
+            // 
+            this.chkSunAfternoon.AutoSize = true;
+            this.chkSunAfternoon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSunAfternoon.Location = new System.Drawing.Point(17, 80);
+            this.chkSunAfternoon.Name = "chkSunAfternoon";
+            this.chkSunAfternoon.Size = new System.Drawing.Size(72, 17);
+            this.chkSunAfternoon.TabIndex = 9;
+            this.chkSunAfternoon.Text = "Afternoon";
+            this.chkSunAfternoon.UseVisualStyleBackColor = true;
+            // 
+            // chkSunMidday
+            // 
+            this.chkSunMidday.AutoSize = true;
+            this.chkSunMidday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSunMidday.Location = new System.Drawing.Point(17, 54);
+            this.chkSunMidday.Name = "chkSunMidday";
+            this.chkSunMidday.Size = new System.Drawing.Size(60, 17);
+            this.chkSunMidday.TabIndex = 8;
+            this.chkSunMidday.Text = "Midday";
+            this.chkSunMidday.UseVisualStyleBackColor = true;
+            // 
+            // chkSunMorning
+            // 
+            this.chkSunMorning.AutoSize = true;
+            this.chkSunMorning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSunMorning.Location = new System.Drawing.Point(17, 28);
+            this.chkSunMorning.Name = "chkSunMorning";
+            this.chkSunMorning.Size = new System.Drawing.Size(64, 17);
+            this.chkSunMorning.TabIndex = 7;
+            this.chkSunMorning.Text = "Morning";
+            this.chkSunMorning.UseVisualStyleBackColor = true;
+            // 
+            // Tuesday
+            // 
+            this.Tuesday.Controls.Add(this.chkTueEvening);
+            this.Tuesday.Controls.Add(this.chkTueAfternoon);
+            this.Tuesday.Controls.Add(this.chkTueMidday);
+            this.Tuesday.Controls.Add(this.chkTueMorning);
+            this.Tuesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tuesday.Location = new System.Drawing.Point(125, 266);
+            this.Tuesday.Name = "Tuesday";
+            this.Tuesday.Size = new System.Drawing.Size(111, 135);
+            this.Tuesday.TabIndex = 17;
+            this.Tuesday.TabStop = false;
+            this.Tuesday.Text = "Tuesday";
+            this.Tuesday.Visible = false;
+            // 
+            // chkTueEvening
+            // 
+            this.chkTueEvening.AutoSize = true;
+            this.chkTueEvening.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkTueEvening.Location = new System.Drawing.Point(17, 106);
+            this.chkTueEvening.Name = "chkTueEvening";
+            this.chkTueEvening.Size = new System.Drawing.Size(65, 17);
+            this.chkTueEvening.TabIndex = 10;
+            this.chkTueEvening.Text = "Evening";
+            this.chkTueEvening.UseVisualStyleBackColor = true;
+            // 
+            // chkTueAfternoon
+            // 
+            this.chkTueAfternoon.AutoSize = true;
+            this.chkTueAfternoon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkTueAfternoon.Location = new System.Drawing.Point(17, 80);
+            this.chkTueAfternoon.Name = "chkTueAfternoon";
+            this.chkTueAfternoon.Size = new System.Drawing.Size(72, 17);
+            this.chkTueAfternoon.TabIndex = 9;
+            this.chkTueAfternoon.Text = "Afternoon";
+            this.chkTueAfternoon.UseVisualStyleBackColor = true;
+            // 
+            // chkTueMidday
+            // 
+            this.chkTueMidday.AutoSize = true;
+            this.chkTueMidday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkTueMidday.Location = new System.Drawing.Point(17, 54);
+            this.chkTueMidday.Name = "chkTueMidday";
+            this.chkTueMidday.Size = new System.Drawing.Size(60, 17);
+            this.chkTueMidday.TabIndex = 8;
+            this.chkTueMidday.Text = "Midday";
+            this.chkTueMidday.UseVisualStyleBackColor = true;
+            // 
+            // chkTueMorning
+            // 
+            this.chkTueMorning.AutoSize = true;
+            this.chkTueMorning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkTueMorning.Location = new System.Drawing.Point(17, 28);
+            this.chkTueMorning.Name = "chkTueMorning";
+            this.chkTueMorning.Size = new System.Drawing.Size(64, 17);
+            this.chkTueMorning.TabIndex = 7;
+            this.chkTueMorning.Text = "Morning";
+            this.chkTueMorning.UseVisualStyleBackColor = true;
+            // 
+            // Saturday
+            // 
+            this.Saturday.Controls.Add(this.chkSatEvening);
+            this.Saturday.Controls.Add(this.chkSatAfternoon);
+            this.Saturday.Controls.Add(this.chkSatMidday);
+            this.Saturday.Controls.Add(this.chkSatMorning);
+            this.Saturday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Saturday.Location = new System.Drawing.Point(593, 266);
+            this.Saturday.Name = "Saturday";
+            this.Saturday.Size = new System.Drawing.Size(111, 135);
+            this.Saturday.TabIndex = 21;
+            this.Saturday.TabStop = false;
+            this.Saturday.Text = "Saturday";
+            this.Saturday.Visible = false;
+            // 
+            // chkSatEvening
+            // 
+            this.chkSatEvening.AutoSize = true;
+            this.chkSatEvening.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSatEvening.Location = new System.Drawing.Point(17, 106);
+            this.chkSatEvening.Name = "chkSatEvening";
+            this.chkSatEvening.Size = new System.Drawing.Size(65, 17);
+            this.chkSatEvening.TabIndex = 10;
+            this.chkSatEvening.Text = "Evening";
+            this.chkSatEvening.UseVisualStyleBackColor = true;
+            // 
+            // chkSatAfternoon
+            // 
+            this.chkSatAfternoon.AutoSize = true;
+            this.chkSatAfternoon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSatAfternoon.Location = new System.Drawing.Point(17, 80);
+            this.chkSatAfternoon.Name = "chkSatAfternoon";
+            this.chkSatAfternoon.Size = new System.Drawing.Size(72, 17);
+            this.chkSatAfternoon.TabIndex = 9;
+            this.chkSatAfternoon.Text = "Afternoon";
+            this.chkSatAfternoon.UseVisualStyleBackColor = true;
+            // 
+            // chkSatMidday
+            // 
+            this.chkSatMidday.AutoSize = true;
+            this.chkSatMidday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSatMidday.Location = new System.Drawing.Point(17, 54);
+            this.chkSatMidday.Name = "chkSatMidday";
+            this.chkSatMidday.Size = new System.Drawing.Size(60, 17);
+            this.chkSatMidday.TabIndex = 8;
+            this.chkSatMidday.Text = "Midday";
+            this.chkSatMidday.UseVisualStyleBackColor = true;
+            // 
+            // chkSatMorning
+            // 
+            this.chkSatMorning.AutoSize = true;
+            this.chkSatMorning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkSatMorning.Location = new System.Drawing.Point(17, 28);
+            this.chkSatMorning.Name = "chkSatMorning";
+            this.chkSatMorning.Size = new System.Drawing.Size(64, 17);
+            this.chkSatMorning.TabIndex = 7;
+            this.chkSatMorning.Text = "Morning";
+            this.chkSatMorning.UseVisualStyleBackColor = true;
+            // 
+            // Wednesday
+            // 
+            this.Wednesday.Controls.Add(this.chkWedEvening);
+            this.Wednesday.Controls.Add(this.chkWedAfternoon);
+            this.Wednesday.Controls.Add(this.chkWedMidday);
+            this.Wednesday.Controls.Add(this.chkWedMorning);
+            this.Wednesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Wednesday.Location = new System.Drawing.Point(242, 266);
+            this.Wednesday.Name = "Wednesday";
+            this.Wednesday.Size = new System.Drawing.Size(111, 135);
+            this.Wednesday.TabIndex = 18;
+            this.Wednesday.TabStop = false;
+            this.Wednesday.Text = "Wednesday";
+            this.Wednesday.Visible = false;
+            // 
+            // chkWedEvening
+            // 
+            this.chkWedEvening.AutoSize = true;
+            this.chkWedEvening.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkWedEvening.Location = new System.Drawing.Point(17, 106);
+            this.chkWedEvening.Name = "chkWedEvening";
+            this.chkWedEvening.Size = new System.Drawing.Size(65, 17);
+            this.chkWedEvening.TabIndex = 10;
+            this.chkWedEvening.Text = "Evening";
+            this.chkWedEvening.UseVisualStyleBackColor = true;
+            // 
+            // chkWedAfternoon
+            // 
+            this.chkWedAfternoon.AutoSize = true;
+            this.chkWedAfternoon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkWedAfternoon.Location = new System.Drawing.Point(17, 80);
+            this.chkWedAfternoon.Name = "chkWedAfternoon";
+            this.chkWedAfternoon.Size = new System.Drawing.Size(72, 17);
+            this.chkWedAfternoon.TabIndex = 9;
+            this.chkWedAfternoon.Text = "Afternoon";
+            this.chkWedAfternoon.UseVisualStyleBackColor = true;
+            // 
+            // chkWedMidday
+            // 
+            this.chkWedMidday.AutoSize = true;
+            this.chkWedMidday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkWedMidday.Location = new System.Drawing.Point(17, 54);
+            this.chkWedMidday.Name = "chkWedMidday";
+            this.chkWedMidday.Size = new System.Drawing.Size(60, 17);
+            this.chkWedMidday.TabIndex = 8;
+            this.chkWedMidday.Text = "Midday";
+            this.chkWedMidday.UseVisualStyleBackColor = true;
+            // 
+            // chkWedMorning
+            // 
+            this.chkWedMorning.AutoSize = true;
+            this.chkWedMorning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkWedMorning.Location = new System.Drawing.Point(17, 28);
+            this.chkWedMorning.Name = "chkWedMorning";
+            this.chkWedMorning.Size = new System.Drawing.Size(64, 17);
+            this.chkWedMorning.TabIndex = 7;
+            this.chkWedMorning.Text = "Morning";
+            this.chkWedMorning.UseVisualStyleBackColor = true;
+            // 
+            // Friday
+            // 
+            this.Friday.Controls.Add(this.chkFriEvening);
+            this.Friday.Controls.Add(this.chkFriAfternoon);
+            this.Friday.Controls.Add(this.chkFriMidday);
+            this.Friday.Controls.Add(this.chkFriMorning);
+            this.Friday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Friday.Location = new System.Drawing.Point(476, 266);
+            this.Friday.Name = "Friday";
+            this.Friday.Size = new System.Drawing.Size(111, 135);
+            this.Friday.TabIndex = 20;
+            this.Friday.TabStop = false;
+            this.Friday.Text = "Friday";
+            this.Friday.Visible = false;
+            // 
+            // chkFriEvening
+            // 
+            this.chkFriEvening.AutoSize = true;
+            this.chkFriEvening.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFriEvening.Location = new System.Drawing.Point(17, 106);
+            this.chkFriEvening.Name = "chkFriEvening";
+            this.chkFriEvening.Size = new System.Drawing.Size(65, 17);
+            this.chkFriEvening.TabIndex = 10;
+            this.chkFriEvening.Text = "Evening";
+            this.chkFriEvening.UseVisualStyleBackColor = true;
+            // 
+            // chkFriAfternoon
+            // 
+            this.chkFriAfternoon.AutoSize = true;
+            this.chkFriAfternoon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFriAfternoon.Location = new System.Drawing.Point(17, 80);
+            this.chkFriAfternoon.Name = "chkFriAfternoon";
+            this.chkFriAfternoon.Size = new System.Drawing.Size(72, 17);
+            this.chkFriAfternoon.TabIndex = 9;
+            this.chkFriAfternoon.Text = "Afternoon";
+            this.chkFriAfternoon.UseVisualStyleBackColor = true;
+            // 
+            // chkFriMidday
+            // 
+            this.chkFriMidday.AutoSize = true;
+            this.chkFriMidday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFriMidday.Location = new System.Drawing.Point(17, 54);
+            this.chkFriMidday.Name = "chkFriMidday";
+            this.chkFriMidday.Size = new System.Drawing.Size(60, 17);
+            this.chkFriMidday.TabIndex = 8;
+            this.chkFriMidday.Text = "Midday";
+            this.chkFriMidday.UseVisualStyleBackColor = true;
+            // 
+            // chkFriMorning
+            // 
+            this.chkFriMorning.AutoSize = true;
+            this.chkFriMorning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkFriMorning.Location = new System.Drawing.Point(17, 28);
+            this.chkFriMorning.Name = "chkFriMorning";
+            this.chkFriMorning.Size = new System.Drawing.Size(64, 17);
+            this.chkFriMorning.TabIndex = 7;
+            this.chkFriMorning.Text = "Morning";
+            this.chkFriMorning.UseVisualStyleBackColor = true;
+            // 
+            // Thursday
+            // 
+            this.Thursday.Controls.Add(this.chkThuEvening);
+            this.Thursday.Controls.Add(this.chkThuAfternoon);
+            this.Thursday.Controls.Add(this.chkThuMidday);
+            this.Thursday.Controls.Add(this.chkThuMorning);
+            this.Thursday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Thursday.Location = new System.Drawing.Point(359, 266);
+            this.Thursday.Name = "Thursday";
+            this.Thursday.Size = new System.Drawing.Size(111, 135);
+            this.Thursday.TabIndex = 19;
+            this.Thursday.TabStop = false;
+            this.Thursday.Text = "Thursday";
+            this.Thursday.Visible = false;
+            // 
+            // chkThuEvening
+            // 
+            this.chkThuEvening.AutoSize = true;
+            this.chkThuEvening.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkThuEvening.Location = new System.Drawing.Point(17, 106);
+            this.chkThuEvening.Name = "chkThuEvening";
+            this.chkThuEvening.Size = new System.Drawing.Size(65, 17);
+            this.chkThuEvening.TabIndex = 10;
+            this.chkThuEvening.Text = "Evening";
+            this.chkThuEvening.UseVisualStyleBackColor = true;
+            // 
+            // chkThuAfternoon
+            // 
+            this.chkThuAfternoon.AutoSize = true;
+            this.chkThuAfternoon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkThuAfternoon.Location = new System.Drawing.Point(17, 80);
+            this.chkThuAfternoon.Name = "chkThuAfternoon";
+            this.chkThuAfternoon.Size = new System.Drawing.Size(72, 17);
+            this.chkThuAfternoon.TabIndex = 9;
+            this.chkThuAfternoon.Text = "Afternoon";
+            this.chkThuAfternoon.UseVisualStyleBackColor = true;
+            // 
+            // chkThuMidday
+            // 
+            this.chkThuMidday.AutoSize = true;
+            this.chkThuMidday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkThuMidday.Location = new System.Drawing.Point(17, 54);
+            this.chkThuMidday.Name = "chkThuMidday";
+            this.chkThuMidday.Size = new System.Drawing.Size(60, 17);
+            this.chkThuMidday.TabIndex = 8;
+            this.chkThuMidday.Text = "Midday";
+            this.chkThuMidday.UseVisualStyleBackColor = true;
+            // 
+            // chkThuMorning
+            // 
+            this.chkThuMorning.AutoSize = true;
+            this.chkThuMorning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkThuMorning.Location = new System.Drawing.Point(17, 28);
+            this.chkThuMorning.Name = "chkThuMorning";
+            this.chkThuMorning.Size = new System.Drawing.Size(64, 17);
+            this.chkThuMorning.TabIndex = 7;
+            this.chkThuMorning.Text = "Morning";
+            this.chkThuMorning.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -1405,8 +1459,8 @@
             this.tabPage4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabPage4.Controls.Add(this.button3);
             this.tabPage4.Controls.Add(this.groupBox17);
-            this.tabPage4.Controls.Add(this.button18);
-            this.tabPage4.Controls.Add(this.button14);
+            this.tabPage4.Controls.Add(this.btnScheduleAppointment);
+            this.tabPage4.Controls.Add(this.btnSearchByTime);
             this.tabPage4.Controls.Add(this.label49);
             this.tabPage4.Controls.Add(this.groupBox4);
             this.tabPage4.Controls.Add(this.groupBox3);
@@ -1445,25 +1499,27 @@
             this.textBox2.Size = new System.Drawing.Size(809, 20);
             this.textBox2.TabIndex = 27;
             // 
-            // button18
+            // btnScheduleAppointment
             // 
-            this.button18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button18.Location = new System.Drawing.Point(682, 518);
-            this.button18.Name = "button18";
-            this.button18.Size = new System.Drawing.Size(73, 28);
-            this.button18.TabIndex = 22;
-            this.button18.Text = "OK";
-            this.button18.UseVisualStyleBackColor = true;
+            this.btnScheduleAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScheduleAppointment.Location = new System.Drawing.Point(682, 518);
+            this.btnScheduleAppointment.Name = "btnScheduleAppointment";
+            this.btnScheduleAppointment.Size = new System.Drawing.Size(73, 28);
+            this.btnScheduleAppointment.TabIndex = 22;
+            this.btnScheduleAppointment.Text = "OK";
+            this.btnScheduleAppointment.UseVisualStyleBackColor = true;
+            this.btnScheduleAppointment.Click += new System.EventHandler(this.btnScheduleAppointment_Click);
             // 
-            // button14
+            // btnSearchByTime
             // 
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(770, 174);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(73, 28);
-            this.button14.TabIndex = 21;
-            this.button14.Text = "Search";
-            this.button14.UseVisualStyleBackColor = true;
+            this.btnSearchByTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchByTime.Location = new System.Drawing.Point(770, 174);
+            this.btnSearchByTime.Name = "btnSearchByTime";
+            this.btnSearchByTime.Size = new System.Drawing.Size(73, 28);
+            this.btnSearchByTime.TabIndex = 21;
+            this.btnSearchByTime.Text = "Search";
+            this.btnSearchByTime.UseVisualStyleBackColor = true;
+            this.btnSearchByTime.Click += new System.EventHandler(this.btnSearchByTime_Click);
             // 
             // label49
             // 
@@ -1478,7 +1534,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.listView1);
+            this.groupBox4.Controls.Add(this.dataGridCoachesByTime);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(22, 214);
             this.groupBox4.Name = "groupBox4";
@@ -1487,48 +1543,12 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Available Coaches";
             // 
-            // listView1
-            // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
-            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listView1.Location = new System.Drawing.Point(6, 23);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(809, 187);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Coach";
-            this.columnHeader1.Width = 70;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Day";
-            this.columnHeader2.Width = 48;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Time";
-            this.columnHeader3.Width = 58;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Subjects";
-            // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.checkBox11);
-            this.groupBox3.Controls.Add(this.checkBox10);
-            this.groupBox3.Controls.Add(this.checkBox9);
-            this.groupBox3.Controls.Add(this.checkBox8);
+            this.groupBox3.Controls.Add(this.chkEvening);
+            this.groupBox3.Controls.Add(this.chkMidday);
+            this.groupBox3.Controls.Add(this.chkAfternoon);
+            this.groupBox3.Controls.Add(this.chkMorning);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(426, 61);
             this.groupBox3.Name = "groupBox3";
@@ -1537,59 +1557,59 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Day Periods";
             // 
-            // checkBox11
+            // chkEvening
             // 
-            this.checkBox11.AutoSize = true;
-            this.checkBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox11.Location = new System.Drawing.Point(305, 57);
-            this.checkBox11.Name = "checkBox11";
-            this.checkBox11.Size = new System.Drawing.Size(51, 17);
-            this.checkBox11.TabIndex = 3;
-            this.checkBox11.Text = "Night";
-            this.checkBox11.UseVisualStyleBackColor = true;
+            this.chkEvening.AutoSize = true;
+            this.chkEvening.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkEvening.Location = new System.Drawing.Point(305, 57);
+            this.chkEvening.Name = "chkEvening";
+            this.chkEvening.Size = new System.Drawing.Size(51, 17);
+            this.chkEvening.TabIndex = 3;
+            this.chkEvening.Text = "Night";
+            this.chkEvening.UseVisualStyleBackColor = true;
             // 
-            // checkBox10
+            // chkMidday
             // 
-            this.checkBox10.AutoSize = true;
-            this.checkBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox10.Location = new System.Drawing.Point(137, 57);
-            this.checkBox10.Name = "checkBox10";
-            this.checkBox10.Size = new System.Drawing.Size(60, 17);
-            this.checkBox10.TabIndex = 2;
-            this.checkBox10.Text = "Midday";
-            this.checkBox10.UseVisualStyleBackColor = true;
+            this.chkMidday.AutoSize = true;
+            this.chkMidday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMidday.Location = new System.Drawing.Point(137, 57);
+            this.chkMidday.Name = "chkMidday";
+            this.chkMidday.Size = new System.Drawing.Size(60, 17);
+            this.chkMidday.TabIndex = 2;
+            this.chkMidday.Text = "Midday";
+            this.chkMidday.UseVisualStyleBackColor = true;
             // 
-            // checkBox9
+            // chkAfternoon
             // 
-            this.checkBox9.AutoSize = true;
-            this.checkBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox9.Location = new System.Drawing.Point(215, 57);
-            this.checkBox9.Name = "checkBox9";
-            this.checkBox9.Size = new System.Drawing.Size(72, 17);
-            this.checkBox9.TabIndex = 1;
-            this.checkBox9.Text = "Afternoon";
-            this.checkBox9.UseVisualStyleBackColor = true;
+            this.chkAfternoon.AutoSize = true;
+            this.chkAfternoon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkAfternoon.Location = new System.Drawing.Point(215, 57);
+            this.chkAfternoon.Name = "chkAfternoon";
+            this.chkAfternoon.Size = new System.Drawing.Size(72, 17);
+            this.chkAfternoon.TabIndex = 1;
+            this.chkAfternoon.Text = "Afternoon";
+            this.chkAfternoon.UseVisualStyleBackColor = true;
             // 
-            // checkBox8
+            // chkMorning
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox8.Location = new System.Drawing.Point(22, 57);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(90, 17);
-            this.checkBox8.TabIndex = 0;
-            this.checkBox8.Text = "Early Morning";
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.chkMorning.AutoSize = true;
+            this.chkMorning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkMorning.Location = new System.Drawing.Point(22, 57);
+            this.chkMorning.Name = "chkMorning";
+            this.chkMorning.Size = new System.Drawing.Size(90, 17);
+            this.chkMorning.TabIndex = 0;
+            this.chkMorning.Text = "Early Morning";
+            this.chkMorning.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox7);
-            this.groupBox1.Controls.Add(this.checkBox6);
-            this.groupBox1.Controls.Add(this.checkBox5);
-            this.groupBox1.Controls.Add(this.checkBox4);
-            this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.chkSun);
+            this.groupBox1.Controls.Add(this.chkSat);
+            this.groupBox1.Controls.Add(this.chkFri);
+            this.groupBox1.Controls.Add(this.chkThu);
+            this.groupBox1.Controls.Add(this.chkWed);
+            this.groupBox1.Controls.Add(this.chkTue);
+            this.groupBox1.Controls.Add(this.chkMon);
             this.groupBox1.Controls.Add(this.label34);
             this.groupBox1.Controls.Add(this.label33);
             this.groupBox1.Controls.Add(this.label32);
@@ -1605,68 +1625,68 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Days";
             // 
-            // checkBox7
+            // chkSun
             // 
-            this.checkBox7.AutoSize = true;
-            this.checkBox7.Location = new System.Drawing.Point(275, 63);
-            this.checkBox7.Name = "checkBox7";
-            this.checkBox7.Size = new System.Drawing.Size(15, 14);
-            this.checkBox7.TabIndex = 13;
-            this.checkBox7.UseVisualStyleBackColor = true;
+            this.chkSun.AutoSize = true;
+            this.chkSun.Location = new System.Drawing.Point(275, 63);
+            this.chkSun.Name = "chkSun";
+            this.chkSun.Size = new System.Drawing.Size(15, 14);
+            this.chkSun.TabIndex = 13;
+            this.chkSun.UseVisualStyleBackColor = true;
             // 
-            // checkBox6
+            // chkSat
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(237, 63);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(15, 14);
-            this.checkBox6.TabIndex = 12;
-            this.checkBox6.UseVisualStyleBackColor = true;
+            this.chkSat.AutoSize = true;
+            this.chkSat.Location = new System.Drawing.Point(237, 63);
+            this.chkSat.Name = "chkSat";
+            this.chkSat.Size = new System.Drawing.Size(15, 14);
+            this.chkSat.TabIndex = 12;
+            this.chkSat.UseVisualStyleBackColor = true;
             // 
-            // checkBox5
+            // chkFri
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(198, 63);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(15, 14);
-            this.checkBox5.TabIndex = 11;
-            this.checkBox5.UseVisualStyleBackColor = true;
+            this.chkFri.AutoSize = true;
+            this.chkFri.Location = new System.Drawing.Point(198, 63);
+            this.chkFri.Name = "chkFri";
+            this.chkFri.Size = new System.Drawing.Size(15, 14);
+            this.chkFri.TabIndex = 11;
+            this.chkFri.UseVisualStyleBackColor = true;
             // 
-            // checkBox4
+            // chkThu
             // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(162, 63);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(15, 14);
-            this.checkBox4.TabIndex = 10;
-            this.checkBox4.UseVisualStyleBackColor = true;
+            this.chkThu.AutoSize = true;
+            this.chkThu.Location = new System.Drawing.Point(162, 63);
+            this.chkThu.Name = "chkThu";
+            this.chkThu.Size = new System.Drawing.Size(15, 14);
+            this.chkThu.TabIndex = 10;
+            this.chkThu.UseVisualStyleBackColor = true;
             // 
-            // checkBox3
+            // chkWed
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(121, 63);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(15, 14);
-            this.checkBox3.TabIndex = 9;
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.chkWed.AutoSize = true;
+            this.chkWed.Location = new System.Drawing.Point(121, 63);
+            this.chkWed.Name = "chkWed";
+            this.chkWed.Size = new System.Drawing.Size(15, 14);
+            this.chkWed.TabIndex = 9;
+            this.chkWed.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // chkTue
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(79, 63);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(15, 14);
-            this.checkBox2.TabIndex = 8;
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.chkTue.AutoSize = true;
+            this.chkTue.Location = new System.Drawing.Point(79, 63);
+            this.chkTue.Name = "chkTue";
+            this.chkTue.Size = new System.Drawing.Size(15, 14);
+            this.chkTue.TabIndex = 8;
+            this.chkTue.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // chkMon
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(37, 63);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkMon.AutoSize = true;
+            this.chkMon.Location = new System.Drawing.Point(37, 63);
+            this.chkMon.Name = "chkMon";
+            this.chkMon.Size = new System.Drawing.Size(15, 14);
+            this.chkMon.TabIndex = 7;
+            this.chkMon.UseVisualStyleBackColor = true;
             // 
             // label34
             // 
@@ -1738,56 +1758,41 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Mon";
             // 
-            // appointmentMessage
+            // dataGridCoachesByTime
             // 
-            this.appointmentMessage.AutoSize = true;
-            this.appointmentMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appointmentMessage.Location = new System.Drawing.Point(233, 40);
-            this.appointmentMessage.Name = "appointmentMessage";
-            this.appointmentMessage.Size = new System.Drawing.Size(383, 25);
-            this.appointmentMessage.TabIndex = 6;
-            this.appointmentMessage.Text = "You don\'t have any appointments now.";
-            this.appointmentMessage.Visible = false;
-            // 
-            // lblEmail
-            // 
-            this.lblEmail.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(430, 33);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.lblEmail.Size = new System.Drawing.Size(175, 25);
-            this.lblEmail.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(389, 38);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Email:";
-            // 
-            // lblPhone
-            // 
-            this.lblPhone.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhone.Location = new System.Drawing.Point(430, 62);
-            this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
-            this.lblPhone.Size = new System.Drawing.Size(175, 25);
-            this.lblPhone.TabIndex = 11;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(399, 67);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(25, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Tel:";
+            this.dataGridCoachesByTime.AllowUserToAddRows = false;
+            this.dataGridCoachesByTime.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridCoachesByTime.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridCoachesByTime.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridCoachesByTime.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridCoachesByTime.Location = new System.Drawing.Point(6, 19);
+            this.dataGridCoachesByTime.Name = "dataGridCoachesByTime";
+            this.dataGridCoachesByTime.ReadOnly = true;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridCoachesByTime.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridCoachesByTime.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridCoachesByTime.Size = new System.Drawing.Size(809, 191);
+            this.dataGridCoachesByTime.TabIndex = 10;
             // 
             // FindCoachForm
             // 
@@ -1820,20 +1825,20 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoachProfile)).EndInit();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
+            this.Monday.ResumeLayout(false);
+            this.Monday.PerformLayout();
+            this.Sunday.ResumeLayout(false);
+            this.Sunday.PerformLayout();
+            this.Tuesday.ResumeLayout(false);
+            this.Tuesday.PerformLayout();
+            this.Saturday.ResumeLayout(false);
+            this.Saturday.PerformLayout();
+            this.Wednesday.ResumeLayout(false);
+            this.Wednesday.PerformLayout();
+            this.Friday.ResumeLayout(false);
+            this.Friday.PerformLayout();
+            this.Thursday.ResumeLayout(false);
+            this.Thursday.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
@@ -1844,6 +1849,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridCoachesByTime)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1911,64 +1917,59 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.PictureBox pictureBoxCoachProfile;
         private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button btnScheduleApptName;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.GroupBox groupBox14;
-        private System.Windows.Forms.CheckBox checkBox36;
-        private System.Windows.Forms.CheckBox checkBox37;
-        private System.Windows.Forms.CheckBox checkBox38;
-        private System.Windows.Forms.CheckBox checkBox39;
-        private System.Windows.Forms.GroupBox groupBox13;
-        private System.Windows.Forms.CheckBox checkBox32;
-        private System.Windows.Forms.CheckBox checkBox33;
-        private System.Windows.Forms.CheckBox checkBox34;
-        private System.Windows.Forms.CheckBox checkBox35;
-        private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.CheckBox checkBox28;
-        private System.Windows.Forms.CheckBox checkBox29;
-        private System.Windows.Forms.CheckBox checkBox30;
-        private System.Windows.Forms.CheckBox checkBox31;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.CheckBox checkBox24;
-        private System.Windows.Forms.CheckBox checkBox25;
-        private System.Windows.Forms.CheckBox checkBox26;
-        private System.Windows.Forms.CheckBox checkBox27;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.CheckBox checkBox20;
-        private System.Windows.Forms.CheckBox checkBox21;
-        private System.Windows.Forms.CheckBox checkBox22;
-        private System.Windows.Forms.CheckBox checkBox23;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.CheckBox checkBox16;
-        private System.Windows.Forms.CheckBox checkBox17;
-        private System.Windows.Forms.CheckBox checkBox18;
-        private System.Windows.Forms.CheckBox checkBox19;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.CheckBox checkBox15;
-        private System.Windows.Forms.CheckBox checkBox14;
-        private System.Windows.Forms.CheckBox checkBox13;
-        private System.Windows.Forms.CheckBox checkBox12;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.GroupBox Sunday;
+        private System.Windows.Forms.CheckBox chkSunEvening;
+        private System.Windows.Forms.CheckBox chkSunAfternoon;
+        private System.Windows.Forms.CheckBox chkSunMidday;
+        private System.Windows.Forms.CheckBox chkSunMorning;
+        private System.Windows.Forms.GroupBox Saturday;
+        private System.Windows.Forms.CheckBox chkSatEvening;
+        private System.Windows.Forms.CheckBox chkSatAfternoon;
+        private System.Windows.Forms.CheckBox chkSatMidday;
+        private System.Windows.Forms.CheckBox chkSatMorning;
+        private System.Windows.Forms.GroupBox Friday;
+        private System.Windows.Forms.CheckBox chkFriEvening;
+        private System.Windows.Forms.CheckBox chkFriAfternoon;
+        private System.Windows.Forms.CheckBox chkFriMidday;
+        private System.Windows.Forms.CheckBox chkFriMorning;
+        private System.Windows.Forms.GroupBox Thursday;
+        private System.Windows.Forms.CheckBox chkThuEvening;
+        private System.Windows.Forms.CheckBox chkThuAfternoon;
+        private System.Windows.Forms.CheckBox chkThuMidday;
+        private System.Windows.Forms.CheckBox chkThuMorning;
+        private System.Windows.Forms.GroupBox Wednesday;
+        private System.Windows.Forms.CheckBox chkWedEvening;
+        private System.Windows.Forms.CheckBox chkWedAfternoon;
+        private System.Windows.Forms.CheckBox chkWedMidday;
+        private System.Windows.Forms.CheckBox chkWedMorning;
+        private System.Windows.Forms.GroupBox Tuesday;
+        private System.Windows.Forms.CheckBox chkTueEvening;
+        private System.Windows.Forms.CheckBox chkTueAfternoon;
+        private System.Windows.Forms.CheckBox chkTueMidday;
+        private System.Windows.Forms.CheckBox chkTueMorning;
+        private System.Windows.Forms.GroupBox Monday;
+        private System.Windows.Forms.CheckBox chkMonEvening;
+        private System.Windows.Forms.CheckBox chkMonAfternoon;
+        private System.Windows.Forms.CheckBox chkMonMidday;
+        private System.Windows.Forms.CheckBox chkMonMorning;
+        private System.Windows.Forms.Button btnSearchByTime;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox checkBox11;
-        private System.Windows.Forms.CheckBox checkBox10;
-        private System.Windows.Forms.CheckBox checkBox9;
-        private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.CheckBox chkEvening;
+        private System.Windows.Forms.CheckBox chkMidday;
+        private System.Windows.Forms.CheckBox chkAfternoon;
+        private System.Windows.Forms.CheckBox chkMorning;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox checkBox7;
-        private System.Windows.Forms.CheckBox checkBox6;
-        private System.Windows.Forms.CheckBox checkBox5;
-        private System.Windows.Forms.CheckBox checkBox4;
-        private System.Windows.Forms.CheckBox checkBox3;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkSun;
+        private System.Windows.Forms.CheckBox chkSat;
+        private System.Windows.Forms.CheckBox chkFri;
+        private System.Windows.Forms.CheckBox chkThu;
+        private System.Windows.Forms.CheckBox chkWed;
+        private System.Windows.Forms.CheckBox chkTue;
+        private System.Windows.Forms.CheckBox chkMon;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label32;
@@ -1976,7 +1977,7 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button btnScheduleAppointment;
         private System.Windows.Forms.Button btnResetPassowrd;
         private System.Windows.Forms.Label lblStdID;
         private System.Windows.Forms.Label label2;
@@ -1992,5 +1993,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridCoachesByTime;
     }
 }
