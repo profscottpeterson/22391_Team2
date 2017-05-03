@@ -31,26 +31,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Sessions">
-      <EntityTypeMapping TypeName="db_sft_2172Model.Session">
-        <MappingFragment StoreEntitySet="Session">
-          <ScalarProperty Name="IsFull" ColumnName="IsFull" />
-          <ScalarProperty Name="TimePeriodID" ColumnName="TimePeriodID" />
-          <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="CoachID" ColumnName="CoachID" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
-          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
-          <ScalarProperty Name="IsMonday" ColumnName="IsMonday" />
-          <ScalarProperty Name="IsTuesday" ColumnName="IsTuesday" />
-          <ScalarProperty Name="IsWednesday" ColumnName="IsWednesday" />
-          <ScalarProperty Name="IsThursday" ColumnName="IsThursday" />
-          <ScalarProperty Name="IsFriday" ColumnName="IsFriday" />
-          <ScalarProperty Name="IsSaturday" ColumnName="IsSaturday" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="SessionRosters">
       <EntityTypeMapping TypeName="db_sft_2172Model.SessionRoster">
         <MappingFragment StoreEntitySet="SessionRoster">
@@ -63,6 +43,7 @@
     <EntitySetMapping Name="TimePeriods">
       <EntityTypeMapping TypeName="db_sft_2172Model.TimePeriod">
         <MappingFragment StoreEntitySet="TimePeriod">
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="TimePeriodName" ColumnName="TimePeriodName" />
           <ScalarProperty Name="TimePeriodID" ColumnName="TimePeriodID" />
         </MappingFragment>
@@ -118,6 +99,7 @@
     <EntitySetMapping Name="Days">
       <EntityTypeMapping TypeName="db_sft_2172Model.Day">
         <MappingFragment StoreEntitySet="Day">
+          <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
           <ScalarProperty Name="DayName" ColumnName="DayName" />
           <ScalarProperty Name="DayID" ColumnName="DayID" />
         </MappingFragment>
@@ -236,6 +218,26 @@
           <ScalarProperty Name="DayID" ColumnName="DayID" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sessions">
+      <EntityTypeMapping TypeName="db_sft_2172Model.Session">
+        <MappingFragment StoreEntitySet="Session">
+          <ScalarProperty Name="IsSaturday" ColumnName="IsSaturday" />
+          <ScalarProperty Name="IsFriday" ColumnName="IsFriday" />
+          <ScalarProperty Name="IsThursday" ColumnName="IsThursday" />
+          <ScalarProperty Name="IsWednesday" ColumnName="IsWednesday" />
+          <ScalarProperty Name="IsTuesday" ColumnName="IsTuesday" />
+          <ScalarProperty Name="IsMonday" ColumnName="IsMonday" />
+          <ScalarProperty Name="IsFull" ColumnName="IsFull" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CoachID" ColumnName="CoachID" />
+          <ScalarProperty Name="TimePeriodID" ColumnName="TimePeriodID" />
+          <ScalarProperty Name="DayID" ColumnName="DayID" />
+          <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
