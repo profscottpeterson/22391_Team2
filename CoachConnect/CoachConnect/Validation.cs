@@ -32,6 +32,13 @@ namespace CoachConnect
             if (tb.Length == 10) return true;
             else return false;
         }
+
+        public bool ValidateComboBox(int selectedIndex)
+        {
+            if (selectedIndex == -1) return false;
+            else return true;
+        }
+
         public string CleanString(string dirty)
         {
             string clean = "";
@@ -40,6 +47,7 @@ namespace CoachConnect
             else return clean.ToUpper();
             
         }
+
         public string CleanNumber(string dirty)
         {
             string clean = "";
