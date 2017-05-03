@@ -319,7 +319,7 @@
             this.btnResetPassowrd.TabIndex = 6;
             this.btnResetPassowrd.Text = "Reset Password";
             this.btnResetPassowrd.UseVisualStyleBackColor = true;
-            this.btnResetPassowrd.Click += new System.EventHandler(this.btnResetPassowrd_Click);
+            //this.btnResetPassowrd.Click += new System.EventHandler(this.btnResetPassowrd_Click);
             // 
             // btnEditProfile
             // 
@@ -331,7 +331,7 @@
             this.btnEditProfile.TabIndex = 3;
             this.btnEditProfile.Text = "Edit Profile";
             this.btnEditProfile.UseVisualStyleBackColor = true;
-            this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
+            //this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
             // 
             // lblStdID
             // 
@@ -464,7 +464,7 @@
             this.button2.TabIndex = 26;
             this.button2.Text = "Search";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            //this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button16
             // 
@@ -1519,7 +1519,7 @@
             this.btnSearchByTime.TabIndex = 21;
             this.btnSearchByTime.Text = "Search";
             this.btnSearchByTime.UseVisualStyleBackColor = true;
-            this.btnSearchByTime.Click += new System.EventHandler(this.btnSearchByTime_Click);
+            //this.btnSearchByTime.Click += new System.EventHandler(this.btnSearchByTime_Click);
             // 
             // label49
             // 

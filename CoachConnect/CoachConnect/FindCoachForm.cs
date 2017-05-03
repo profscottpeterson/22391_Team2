@@ -305,11 +305,11 @@ namespace CoachConnect
             }
 
             // Bind the data list to the combo box
-            cbxCoachNames.DataSource = dataSource;
-            cbxCoachNames.DisplayMember = "Name";
-            cbxCoachNames.ValueMember = "Value";
+            //cbxCoachNames.DataSource = dataSource;
+            //cbxCoachNames.DisplayMember = "Name";
+            //cbxCoachNames.ValueMember = "Value";
 
-            cbxCoachNames.DropDownStyle = ComboBoxStyle.DropDownList;
+            //cbxCoachNames.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         /**
@@ -325,8 +325,8 @@ namespace CoachConnect
          **/
         private void cbxCoachNames_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedValue = cbxCoachNames.SelectedValue.ToString();
-
+            //string selectedValue = cbxCoachNames.SelectedValue.ToString();
+            
             // Query the database and pull info for the selected coach
             try
             {
@@ -334,32 +334,32 @@ namespace CoachConnect
                 {
                     // Run query to get coach data
                     var coachQuery = from coachResult in context.CoachByNames
-                                     where coachResult.UserID.Equals(selectedValue)
+                                     //where coachResult.UserID.Equals(selectedValue)
                                      select coachResult;
 
                     var foundCoach = coachQuery.FirstOrDefault<CoachByName>();
 
                     // Update form based on query data
-                    txtCoachName.Text = foundCoach.FirstName + " " + foundCoach.LastName;
-                    txtActiveCoachSince.Text = foundCoach.ActiveCoachSince.Value.ToString("MM/dd/yyyy");
+                    //txtCoachName.Text = foundCoach.FirstName + " " + foundCoach.LastName;
+                    //txtActiveCoachSince.Text = foundCoach.ActiveCoachSince.Value.ToString("MM/dd/yyyy");
 
-                    imgCoachPic.Load(foundCoach.ProfilePic);
+                    //imgCoachPic.Load(foundCoach.ProfilePic);
 
                     
                     // Run another query to get available sessions for the selected coach
                     var coachAvailabilityQuery = from coachAvailability in context.CoachByTimes
-                                                 where coachAvailability.UserID.Equals(selectedValue)
+                                                 //where coachAvailability.UserID.Equals(selectedValue)
                                                  select coachAvailability;
 
-                    dataGridCoachAvailability.DataSource = coachAvailabilityQuery.ToList();
+                    //dataGridCoachAvailability.DataSource = coachAvailabilityQuery.ToList();
 
-                    dataGridCoachAvailability.Columns["UserID"].Visible = false;
-                    dataGridCoachAvailability.Columns["UserID"].DisplayIndex = 0;
-                    dataGridCoachAvailability.Columns["Coach"].Visible = false;
-                    dataGridCoachAvailability.Columns["Coach"].DisplayIndex = 1;
-                    dataGridCoachAvailability.Columns["Time"].DisplayIndex = 2;
-                    dataGridCoachAvailability.Columns["Day"].DisplayIndex = 3;
-                    dataGridCoachAvailability.Columns["Subject"].DisplayIndex = 4;
+                    //dataGridCoachAvailability.Columns["UserID"].Visible = false;
+                    //dataGridCoachAvailability.Columns["UserID"].DisplayIndex = 0;
+                   // dataGridCoachAvailability.Columns["Coach"].Visible = false;
+                    //dataGridCoachAvailability.Columns["Coach"].DisplayIndex = 1;
+                    //dataGridCoachAvailability.Columns["Time"].DisplayIndex = 2;
+                    //dataGridCoachAvailability.Columns["Day"].DisplayIndex = 3;
+                   // dataGridCoachAvailability.Columns["Subject"].DisplayIndex = 4;
                 }
             }
             catch (Exception ex)
@@ -388,15 +388,15 @@ namespace CoachConnect
                 }
                 else
                 {
-                    DataGridViewRow selectedRow = dataGridCoachAvailability.SelectedRows[0];
-                    selectedCoachID = selectedRow.Cells[0].Value.ToString();
-                    selectedCoachName = selectedRow.Cells[1].Value.ToString();
-                    selectedTime = selectedRow.Cells[2].Value.ToString();
-                    selectedDay = selectedRow.Cells[3].Value.ToString();
-                    selectedCourseID = selectedRow.Cells[4].Value.ToString();
-                    selectedCourse = selectedRow.Cells[5].Value.ToString();
+                    //DataGridViewRow selectedRow = dataGridCoachAvailability.SelectedRows[0];
+                    //selectedCoachID = selectedRow.Cells[0].Value.ToString();
+                    //selectedCoachName = selectedRow.Cells[1].Value.ToString();
+                    //selectedTime = selectedRow.Cells[2].Value.ToString();
+                    //selectedDay = selectedRow.Cells[3].Value.ToString();
+                    //selectedCourseID = selectedRow.Cells[4].Value.ToString();
+                    //selectedCourse = selectedRow.Cells[5].Value.ToString();
 
-
+                    /*
                     DialogResult result = MessageBox.Show(
                         "Are you sure you want to create this appointment?\n"
                             + "Coach: " + selectedCoachName + "\n"
@@ -432,7 +432,7 @@ namespace CoachConnect
                                 ex.ToString();
                             }
                         }
-                    }
+                    }*/
                 }
             }
             catch (Exception ex)

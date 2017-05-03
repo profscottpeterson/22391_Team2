@@ -118,3 +118,4 @@ D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConne
 D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminForm.resources
 D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.RoleForm.resources
 D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminFormAdam.resources
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditSession.resources
