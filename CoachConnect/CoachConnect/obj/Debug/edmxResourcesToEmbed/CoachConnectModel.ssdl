@@ -22,7 +22,6 @@
     </Key>
     <Property Name="DayID" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="DayName" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="SortOrder" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
@@ -85,13 +84,22 @@
     <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="RoleID" Type="nvarchar" MaxLength="5" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="TimePeriod">
     <Key>
       <PropertyRef Name="TimePeriodID" />
     </Key>
     <Property Name="TimePeriodID" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="TimePeriodName" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="SortOrder" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -213,7 +221,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
       <PropertyRef Name="Day" />
       <PropertyRef Name="Time" />
       <PropertyRef Name="Full" />
-      <PropertyRef Name="Active" />
     </Key>
     <Property Name="SessionID" Type="int" Nullable="false" />
     <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -305,18 +312,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
       </Principal>
       <Dependent Role="Session">
         <PropertyRef Name="RoomID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Session_TimePeriod">
-    <End Role="TimePeriod" Type="Self.TimePeriod" Multiplicity="0..1" />
-    <End Role="Session" Type="Self.Session" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TimePeriod">
-        <PropertyRef Name="TimePeriodID" />
-      </Principal>
-      <Dependent Role="Session">
-        <PropertyRef Name="TimePeriodID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -433,6 +428,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
     <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SessionRoster" EntityType="Self.SessionRoster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TimePeriod" EntityType="Self.TimePeriod" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAvailability" EntityType="Self.UserAvailability" Schema="dbo" store:Type="Tables" />
@@ -516,10 +512,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
     </AssociationSet>
     <AssociationSet Name="FK_Session_Room" Association="Self.FK_Session_Room">
       <End Role="Room" EntitySet="Room" />
-      <End Role="Session" EntitySet="Session" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Session_TimePeriod" Association="Self.FK_Session_TimePeriod">
-      <End Role="TimePeriod" EntitySet="TimePeriod" />
       <End Role="Session" EntitySet="Session" />
     </AssociationSet>
     <AssociationSet Name="FK_Session_User" Association="Self.FK_Session_User">
