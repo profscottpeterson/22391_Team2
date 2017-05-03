@@ -20,7 +20,7 @@ namespace CoachConnect
             InitializeComponent();
 
             // Set up Users tab
-            UserAdminFormAdam userForm = new UserAdminFormAdam();
+            UserAdminForm userForm = new UserAdminForm();
             userForm.TopLevel = false;
             userForm.AutoScroll = true;
             //userForm.FormBorderStyle = FormBorderStyle.None;
