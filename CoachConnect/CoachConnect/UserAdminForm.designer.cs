@@ -50,6 +50,7 @@
             this.chkBoxActive = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnMinus = new System.Windows.Forms.Button();
+            this.btnResetPassword = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblAdminForm
@@ -174,7 +175,7 @@
             // btnSubmit
             // 
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(352, 545);
+            this.btnSubmit.Location = new System.Drawing.Point(477, 545);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(97, 47);
             this.btnSubmit.TabIndex = 49;
@@ -185,7 +186,7 @@
             // btnLogOff
             // 
             this.btnLogOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOff.Location = new System.Drawing.Point(490, 545);
+            this.btnLogOff.Location = new System.Drawing.Point(577, 545);
             this.btnLogOff.Name = "btnLogOff";
             this.btnLogOff.Size = new System.Drawing.Size(99, 47);
             this.btnLogOff.TabIndex = 50;
@@ -195,7 +196,7 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(635, 545);
+            this.btnExit.Location = new System.Drawing.Point(678, 545);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(99, 47);
             this.btnExit.TabIndex = 51;
@@ -268,11 +269,23 @@
             this.btnMinus.Text = "-";
             this.btnMinus.UseVisualStyleBackColor = true;
             // 
+            // btnResetPassword
+            // 
+            this.btnResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetPassword.Location = new System.Drawing.Point(282, 543);
+            this.btnResetPassword.Name = "btnResetPassword";
+            this.btnResetPassword.Size = new System.Drawing.Size(191, 49);
+            this.btnResetPassword.TabIndex = 58;
+            this.btnResetPassword.Text = "Reset Password";
+            this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
+            // 
             // UserAdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(779, 627);
+            this.Controls.Add(this.btnResetPassword);
             this.Controls.Add(this.btnMinus);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.chkBoxActive);
@@ -327,6 +340,7 @@
         private System.Windows.Forms.CheckBox chkBoxActive;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnMinus;
+        private System.Windows.Forms.Button btnResetPassword;
     }
 }
 

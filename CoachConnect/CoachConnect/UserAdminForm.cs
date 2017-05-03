@@ -157,6 +157,12 @@ namespace CoachConnect
                 }
             }
         }
+
+        private void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            ChangePasswordForm reset = new ChangePasswordForm();
+            reset.ShowDialog();
+        }
     }
 }
 
