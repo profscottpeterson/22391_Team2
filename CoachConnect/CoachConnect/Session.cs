@@ -21,25 +21,26 @@ namespace CoachConnect
         }
     
         public int SessionID { get; set; }
-        public string RoomID { get; set; }
         public string CourseID { get; set; }
+        public string RoomID { get; set; }
+        public string DayID { get; set; }
+        public string TimePeriodID { get; set; }
+        public string CoachID { get; set; }
+        public bool Active { get; set; }
+        public bool IsFull { get; set; }
         public string IsMonday { get; set; }
         public Nullable<bool> IsTuesday { get; set; }
         public Nullable<bool> IsWednesday { get; set; }
         public Nullable<bool> IsThursday { get; set; }
         public Nullable<bool> IsFriday { get; set; }
         public Nullable<bool> IsSaturday { get; set; }
-        public string Day { get; set; }
-        public string CoachID { get; set; }
-        public bool Active { get; set; }
-        public string TimePeriodID { get; set; }
-        public bool IsFull { get; set; }
     
         public virtual Course Course { get; set; }
+        public virtual Day Day { get; set; }
         public virtual Room Room { get; set; }
+        public virtual TimePeriod TimePeriod { get; set; }
+        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SessionRoster> SessionRosters { get; set; }
-        public virtual Day Day1 { get; set; }
-        public virtual User User { get; set; }
     }
 }

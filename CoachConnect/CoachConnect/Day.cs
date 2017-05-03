@@ -23,6 +23,7 @@ namespace CoachConnect
     
         public string DayID { get; set; }
         public string DayName { get; set; }
+        public int SortOrder { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAvailability> UserAvailabilities { get; set; }

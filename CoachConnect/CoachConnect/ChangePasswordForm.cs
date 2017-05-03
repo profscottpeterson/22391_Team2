@@ -17,6 +17,11 @@ namespace CoachConnect
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Event handler to validate password and apply salted hash when the Update button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             // Verify that the two entered passwords match
@@ -50,15 +55,16 @@ namespace CoachConnect
 
                         currentUser.Password = sh.Hash;
                         currentUser.PasswordSalt = sh.Salt;
+                        currentUser.ResetPassword = false;
 
                         context.SaveChanges();
 
                         // Show confirmation if save is successful
-                        MessageBox.Show("Password updated successfully!");
+                        MessageBox.Show("Password updated successfully!  Please login again with your new password.");
 
-                        // Close form
+                        // Force user to logout and login with new password
+                        Program.loginForm.logout();
                         Close();
-
                     }
                 }
                 catch (Exception ex)
@@ -68,6 +74,11 @@ namespace CoachConnect
             }
         }
 
+        /// <summary>
+        /// Event handler to close the form when the Cancel button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
