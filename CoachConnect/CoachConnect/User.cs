@@ -19,6 +19,8 @@ namespace CoachConnect
         {
             this.UserAvailabilities = new HashSet<UserAvailability>();
             this.UserCourses = new HashSet<UserCourse>();
+            this.SessionRosters = new HashSet<SessionRoster>();
+            this.Sessions = new HashSet<Session>();
         }
     
         public string UserID { get; set; }
@@ -36,10 +38,15 @@ namespace CoachConnect
         public string Email { get; set; }
         public string DisplayName { get; set; }
         public bool ResetPassword { get; set; }
+        public string PasswordSalt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserAvailability> UserAvailabilities { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserCourse> UserCourses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SessionRoster> SessionRosters { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Session> Sessions { get; set; }
     }
 }

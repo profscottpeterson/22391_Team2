@@ -39,19 +39,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(94, 14);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(63, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(211, 29);
+            this.label1.Size = new System.Drawing.Size(139, 20);
             this.label1.TabIndex = 7;
             this.label1.Text = "Choose Your Role";
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(18, 122);
-            this.btnAccept.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAccept.Location = new System.Drawing.Point(12, 79);
             this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(112, 35);
+            this.btnAccept.Size = new System.Drawing.Size(75, 23);
             this.btnAccept.TabIndex = 8;
             this.btnAccept.Text = "Accept";
             this.btnAccept.UseVisualStyleBackColor = true;
@@ -59,10 +57,9 @@
             // 
             // btnLogout
             // 
-            this.btnLogout.Location = new System.Drawing.Point(140, 122);
-            this.btnLogout.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnLogout.Location = new System.Drawing.Point(93, 79);
             this.btnLogout.Name = "btnLogout";
-            this.btnLogout.Size = new System.Drawing.Size(112, 35);
+            this.btnLogout.Size = new System.Drawing.Size(75, 23);
             this.btnLogout.TabIndex = 9;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -70,10 +67,9 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(261, 122);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnExit.Location = new System.Drawing.Point(174, 79);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(112, 35);
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
             this.btnExit.TabIndex = 10;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -81,27 +77,25 @@
             // 
             // cmbRoleChoice
             // 
+            this.cmbRoleChoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbRoleChoice.FormattingEnabled = true;
-            this.cmbRoleChoice.Location = new System.Drawing.Point(106, 63);
-            this.cmbRoleChoice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbRoleChoice.Location = new System.Drawing.Point(71, 41);
             this.cmbRoleChoice.Name = "cmbRoleChoice";
-            this.cmbRoleChoice.Size = new System.Drawing.Size(180, 28);
+            this.cmbRoleChoice.Size = new System.Drawing.Size(121, 21);
             this.cmbRoleChoice.TabIndex = 11;
             // 
             // RoleForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 177);
+            this.ClientSize = new System.Drawing.Size(261, 115);
             this.Controls.Add(this.cmbRoleChoice);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "RoleForm";
             this.Text = "RoleForm";
-            this.Load += new System.EventHandler(this.RoleForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

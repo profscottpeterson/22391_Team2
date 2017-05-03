@@ -65,8 +65,7 @@ namespace CoachConnect
 
                 if (roleText == studentRoleName)
                 {
-                    //var newForm = new FindCoachForm();
-                    var newForm = new frmCoachView();
+                    var newForm = new FindCoachForm();
                     newForm.Show();
                 }
                 else if (roleText == coachRoleName)
@@ -76,7 +75,7 @@ namespace CoachConnect
                 }
                 else if (roleText == adminRoleName)
                 {
-                    var newForm = new UserAdminForm();
+                    var newForm = new AdminForm();
                     newForm.Show();
                 }
             }

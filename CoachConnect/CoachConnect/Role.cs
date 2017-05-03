@@ -18,6 +18,7 @@ namespace CoachConnect
         public Role()
         {
             this.UserCourses = new HashSet<UserCourse>();
+            this.SessionRosters = new HashSet<SessionRoster>();
         }
     
         public string RoleID { get; set; }
@@ -25,5 +26,7 @@ namespace CoachConnect
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserCourse> UserCourses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SessionRoster> SessionRosters { get; set; }
     }
 }

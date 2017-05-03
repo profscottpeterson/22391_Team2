@@ -22,6 +22,7 @@
     </Key>
     <Property Name="DayID" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="DayName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
@@ -54,16 +55,20 @@
     <Property Name="OpenTime" Type="time" Precision="7" Nullable="false" />
     <Property Name="CloseTime" Type="time" Precision="7" Nullable="false" />
     <Property Name="BuildingID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="Session">
     <Key>
       <PropertyRef Name="SessionID" />
     </Key>
-    <Property Name="SessionID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
-    <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
-    <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
     <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DayID" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="TimePeriodID" Type="varchar" MaxLength="25" />
+    <Property Name="CoachID" Type="nvarchar" MaxLength="50" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="IsFull" Type="bit" Nullable="false" />
     <Property Name="IsMonday" Type="nvarchar" MaxLength="50" />
     <Property Name="IsTuesday" Type="bit" />
     <Property Name="IsWednesday" Type="bit" />
@@ -75,11 +80,10 @@
     <Key>
       <PropertyRef Name="SessionID" />
       <PropertyRef Name="UserID" />
-      <PropertyRef Name="RoleID" />
     </Key>
-    <Property Name="SessionID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="UserID" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="RoleID" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleID" Type="nvarchar" MaxLength="5" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -97,6 +101,7 @@
     </Key>
     <Property Name="TimePeriodID" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="TimePeriodName" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="SortOrder" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -107,16 +112,17 @@
     <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
     <Property Name="DisplayName" Type="nvarchar" MaxLength="200" Nullable="false" />
-    <Property Name="Phone" Type="varchar" MaxLength="10" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="320" />
     <Property Name="IsStudent" Type="bit" Nullable="false" />
     <Property Name="IsAdmin" Type="bit" Nullable="false" />
     <Property Name="IsCoach" Type="bit" Nullable="false" />
-    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="500" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
-    <Property Name="ProfilePic" Type="nvarchar" MaxLength="50" />
+    <Property Name="ProfilePic" Type="nvarchar(max)" />
     <Property Name="ActiveCoachSince" Type="datetime" />
     <Property Name="ResetPassword" Type="bit" Nullable="false" />
+    <Property Name="PasswordSalt" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="UserAvailability">
     <Key>
@@ -136,6 +142,21 @@
     <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="RoleID" Type="nvarchar" MaxLength="5" Nullable="false" />
     <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.Availability' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Availability">
+    <Key>
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="DayID" />
+      <PropertyRef Name="TimePeriodID" />
+    </Key>
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DayID" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="TimePeriodID" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="ProfilePic" Type="nvarchar(max)" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.CoachByName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -192,6 +213,26 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
     <Property Name="Subjects" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Interest" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewSession">
+    <Key>
+      <PropertyRef Name="SessionID" />
+      <PropertyRef Name="Course" />
+      <PropertyRef Name="Room" />
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="Full" />
+    </Key>
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Room" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Coach" Type="nvarchar" MaxLength="200" />
+    <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Full" Type="bit" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
   <Association Name="FK_Course_Department">
     <End Role="Department" Type="Self.Department" Multiplicity="1" />
     <End Role="Course" Type="Self.Course" Multiplicity="*" />
@@ -213,6 +254,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
       </Principal>
       <Dependent Role="Department">
         <PropertyRef Name="InterestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_SessionRoster">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="SessionRoster" Type="Self.SessionRoster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="SessionRoster">
+        <PropertyRef Name="RoleID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -240,6 +293,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Session_Day">
+    <End Role="Day" Type="Self.Day" Multiplicity="1" />
+    <End Role="Session" Type="Self.Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Day">
+        <PropertyRef Name="DayID" />
+      </Principal>
+      <Dependent Role="Session">
+        <PropertyRef Name="DayID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Session_Room">
     <End Role="Room" Type="Self.Room" Multiplicity="1" />
     <End Role="Session" Type="Self.Session" Multiplicity="*" />
@@ -252,6 +317,30 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Session_TimePeriod">
+    <End Role="TimePeriod" Type="Self.TimePeriod" Multiplicity="0..1" />
+    <End Role="Session" Type="Self.Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TimePeriod">
+        <PropertyRef Name="TimePeriodID" />
+      </Principal>
+      <Dependent Role="Session">
+        <PropertyRef Name="TimePeriodID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Session_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Session" Type="Self.Session" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Session">
+        <PropertyRef Name="CoachID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_SessionRoster_Session">
     <End Role="Session" Type="Self.Session" Multiplicity="1" />
     <End Role="SessionRoster" Type="Self.SessionRoster" Multiplicity="*" />
@@ -261,6 +350,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
       </Principal>
       <Dependent Role="SessionRoster">
         <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_SessionRoster">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="SessionRoster" Type="Self.SessionRoster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="SessionRoster">
+        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -346,6 +447,15 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserAvailability" EntityType="Self.UserAvailability" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserCourse" EntityType="Self.UserCourse" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Availability" EntityType="Self.Availability" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Availability].[LastName] AS [LastName], 
+    [Availability].[FirstName] AS [FirstName], 
+    [Availability].[DayID] AS [DayID], 
+    [Availability].[TimePeriodID] AS [TimePeriodID], 
+    [Availability].[ProfilePic] AS [ProfilePic]
+    FROM [dbo].[Availability] AS [Availability]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="CoachByName" EntityType="Self.CoachByName" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [CoachByName].[UserID] AS [UserID], 
@@ -378,6 +488,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
     [CoachInterest].[Interest] AS [Interest]
     FROM [dbo].[CoachInterest] AS [CoachInterest]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="ViewSession" EntityType="Self.ViewSession" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ViewSession].[SessionID] AS [SessionID], 
+    [ViewSession].[Course] AS [Course], 
+    [ViewSession].[Room] AS [Room], 
+    [ViewSession].[Day] AS [Day], 
+    [ViewSession].[Coach] AS [Coach], 
+    [ViewSession].[Time] AS [Time], 
+    [ViewSession].[Full] AS [Full], 
+    [ViewSession].[Active] AS [Active]
+    FROM [dbo].[ViewSession] AS [ViewSession]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_Course_Department" Association="Self.FK_Course_Department">
       <End Role="Department" EntitySet="Department" />
       <End Role="Course" EntitySet="Course" />
@@ -385,6 +507,10 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
     <AssociationSet Name="FK_Department_Interest" Association="Self.FK_Department_Interest">
       <End Role="Interest" EntitySet="Interest" />
       <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_SessionRoster" Association="Self.FK_Role_SessionRoster">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="SessionRoster" EntitySet="SessionRoster" />
     </AssociationSet>
     <AssociationSet Name="FK_Room_Building" Association="Self.FK_Room_Building">
       <End Role="Building" EntitySet="Building" />
@@ -394,12 +520,28 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
       <End Role="Course" EntitySet="Course" />
       <End Role="Session" EntitySet="Session" />
     </AssociationSet>
+    <AssociationSet Name="FK_Session_Day" Association="Self.FK_Session_Day">
+      <End Role="Day" EntitySet="Day" />
+      <End Role="Session" EntitySet="Session" />
+    </AssociationSet>
     <AssociationSet Name="FK_Session_Room" Association="Self.FK_Session_Room">
       <End Role="Room" EntitySet="Room" />
       <End Role="Session" EntitySet="Session" />
     </AssociationSet>
+    <AssociationSet Name="FK_Session_TimePeriod" Association="Self.FK_Session_TimePeriod">
+      <End Role="TimePeriod" EntitySet="TimePeriod" />
+      <End Role="Session" EntitySet="Session" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Session_User" Association="Self.FK_Session_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Session" EntitySet="Session" />
+    </AssociationSet>
     <AssociationSet Name="FK_SessionRoster_Session" Association="Self.FK_SessionRoster_Session">
       <End Role="Session" EntitySet="Session" />
+      <End Role="SessionRoster" EntitySet="SessionRoster" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_SessionRoster" Association="Self.FK_User_SessionRoster">
+      <End Role="User" EntitySet="User" />
       <End Role="SessionRoster" EntitySet="SessionRoster" />
     </AssociationSet>
     <AssociationSet Name="FK_UserCourse_Course" Association="Self.FK_UserCourse_Course">
