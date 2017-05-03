@@ -105,6 +105,7 @@ namespace CoachConnect
             txtPhone.Text = "(" + coach.Phone.Substring(0, 3) + ")" + coach.Phone.Substring(3,3)+"-"+coach.Phone.Substring(5,4);
             pbEditPic.ImageLocation = coach.ProfilePic;
             int endDate = coach.ActiveCoachSince.ToString().IndexOf(" ");
+            
             lblMemberSince.Text = "Active Coach Since: " + coach.ActiveCoachSince.ToString().Substring(0,endDate);
         }
 

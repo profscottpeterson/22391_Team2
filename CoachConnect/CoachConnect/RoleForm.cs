@@ -64,5 +64,10 @@ namespace CoachConnect
 
             this.Close();
         }
+
+        private void RoleForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

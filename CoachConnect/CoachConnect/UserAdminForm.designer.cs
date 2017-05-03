@@ -147,6 +147,7 @@
             this.txtBoxFirstName.Name = "txtBoxFirstName";
             this.txtBoxFirstName.Size = new System.Drawing.Size(188, 33);
             this.txtBoxFirstName.TabIndex = 33;
+            this.txtBoxFirstName.TextChanged += new System.EventHandler(this.txtBoxFirstName_TextChanged);
             // 
             // lstBoxUsers
             // 
@@ -163,7 +164,7 @@
             // 
             this.lblUsers.AutoSize = true;
             this.lblUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsers.Location = new System.Drawing.Point(83, 82);
+            this.lblUsers.Location = new System.Drawing.Point(90, 82);
             this.lblUsers.Name = "lblUsers";
             this.lblUsers.Size = new System.Drawing.Size(116, 40);
             this.lblUsers.TabIndex = 48;
@@ -179,6 +180,7 @@
             this.btnSubmit.TabIndex = 49;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnLogOff
             // 
@@ -199,6 +201,7 @@
             this.btnExit.TabIndex = 51;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // chkBoxStudent
             // 
@@ -253,6 +256,7 @@
             this.btnAdd.TabIndex = 56;
             this.btnAdd.Text = "+";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnMinus
             // 
