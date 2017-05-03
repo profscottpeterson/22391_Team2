@@ -105,8 +105,20 @@
     <Compile Include="EditSession.Designer.cs">
       <DependentUpon>EditSession.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditStudentProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditStudentProfileForm.Designer.cs">
+      <DependentUpon>EditStudentProfileForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interest.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResetStudentPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResetStudentPassword.Designer.cs">
+      <DependentUpon>ResetStudentPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
@@ -216,6 +228,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditSession.resx">
       <DependentUpon>EditSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditStudentProfileForm.resx">
+      <DependentUpon>EditStudentProfileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResetStudentPassword.resx">
+      <DependentUpon>ResetStudentPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SessionAdminForm.resx">
       <DependentUpon>SessionAdminForm.cs</DependentUpon>
