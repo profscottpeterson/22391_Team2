@@ -31,8 +31,8 @@ namespace CoachConnect
 
         private void btnInterestExit_Click(object sender, EventArgs e)
         {
-            this.Hide();
             originalForm.Show();
+            this.Close();
         }
 
         /// <summary>
@@ -47,8 +47,8 @@ namespace CoachConnect
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            this.Hide();
             originalForm.Show();
+            this.Close();
         }
 
         /// <summary>

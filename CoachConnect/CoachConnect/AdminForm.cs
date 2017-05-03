@@ -12,51 +12,68 @@ namespace CoachConnect
 {
     public partial class AdminForm : Form
     {
-        private List<string> adminToolList; 
-
-
+        /// <summary>
+        /// Constructor to initialize form and set up subforms on individual tabs
+        /// </summary>
         public AdminForm()
         {
             InitializeComponent();
 
-            SessionAdminForm PanelForm = new SessionAdminForm();
-            PanelForm.TopLevel = false;
-            PanelForm.AutoScroll = true;
-            panelAdmin.Controls.Add(PanelForm);
-            PanelForm.FormBorderStyle = FormBorderStyle.None;
-            PanelForm.Show();
+            // Set up Users tab
+            UserAdminForm userForm = new UserAdminForm();
+            userForm.TopLevel = false;
+            userForm.AutoScroll = true;
+            //userForm.FormBorderStyle = FormBorderStyle.None;
+
+            UsersTabPage.Controls.Add(userForm);
+            userForm.Show();
+
+
+            // Set up Session tab
+            SessionAdminForm sessionForm = new SessionAdminForm();
+            sessionForm.TopLevel = false;
+            sessionForm.AutoScroll = true;
+            //sessionForm.FormBorderStyle = FormBorderStyle.None;
+
+            SessionsTabPage.Controls.Add(sessionForm);
+            sessionForm.Show();
         }
 
-        private void listBoxAdminTools_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Event handler to exit the application when the Exit button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        /// <summary>
+        /// Event handler to logoff and return to the login form when the Logoff button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLogOff_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Event handler to exit the application when the Form is closed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AdminForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+            Program.loginForm.logout();
         }
 
+        /// <summary>
+        /// Event handler to load the Change Password form when the Change Password button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
             ChangePasswordForm changePassword = new ChangePasswordForm();

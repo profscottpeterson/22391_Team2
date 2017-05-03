@@ -12,16 +12,19 @@ namespace CoachConnect
 {
     public partial class UserAdminFormAdam : Form
     {
-        /****************/
-        /** Properties **/
-        /****************/
+        /// <summary>
+        /// CurrentUser: An object to store the current user's data
+        /// </summary>
         private User CurrentUser { get; set; }
 
+        /// <summary>
+        /// CurrentUserIndex: A value used to store the current selected value from the User list box
+        /// </summary>
         private int CurrentUserIndex { get; set; }
 
-        /*****************/
-        /** Constructor **/
-        /*****************/
+        /// <summary>
+        /// Constructor to initialize the User Admin Form (Adam's version)
+        /// </summary>
         public UserAdminFormAdam()
         {
             InitializeComponent();
@@ -35,9 +38,11 @@ namespace CoachConnect
             lstBoxUsers.SelectedIndex = 0;
         }
 
-        /*********************/
-        /** Button handlers **/
-        /*********************/
+        /// <summary>
+        /// Event handler to logoff and return to the login screen when the Logoff button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLogOff_Click(object sender, EventArgs e)
         {
             // TODO: Confirm changes before closing form //
@@ -49,15 +54,19 @@ namespace CoachConnect
             this.Close();
         }
 
+        /// <summary>
+        /// Event handler to exit the application when the Exit button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
-
-        /*******************/
-        /** Data handlers **/
-        /*******************/
+        /// <summary>
+        /// Method to update user list when form opens or new user is saved
+        /// </summary>
         private void updateUserList()
         {
             // Query the database and pull the list of users
@@ -81,10 +90,8 @@ namespace CoachConnect
             }
         }
 
-
-
         /// <summary>
-        /// 
+        /// Method to query database and insert current user data into form
         /// </summary>
         /// <param name="userID"></param>
         /// <returns>currentUser</returns>
@@ -137,47 +144,11 @@ namespace CoachConnect
             }
         }
 
-        //private bool isUserDataDifferent()
-        //{
-        //    if (txtFirstName.Equals(CurrentUser.FirstName) &&
-        //        txtLastName.Equals(CurrentUser.LastName) &&
-        //        txtMiddleName.Equals(CurrentUser.MiddleName) &&
-        //        txtDisplayName.Equals(CurrentUser.DisplayName))
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
-
-        //private string confirmUserChanges()
-        //{
-        //    string resultString = CANCEL_STRING;
-
-        //    // Display dialog box to confirm changes
-        //    DialogResult confirmChoice = MessageBox.Show("Do you want to save these changes?", "Confirmation", MessageBoxButtons.YesNoCancel);
-
-        //    if (confirmChoice.Equals(DialogResult.Cancel))
-        //    {
-        //        resultString = CANCEL_STRING;
-        //    }
-        //    else if (confirmChoice.Equals(DialogResult.No))
-        //    {
-        //        resultString = NO_STRING;
-        //    }
-        //    else if (confirmChoice.Equals(DialogResult.Yes))
-        //    {
-        //        resultString = YES_STRING;
-
-        //        // Update changes in database
-                
-        //    }
-
-        //    return resultString;
-        //}
-
+        /// <summary>
+        /// Event handler to save the user data when the Save button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSave_Click(object sender, EventArgs e)
         {
             // Create new User objet and save entries for the DB update
@@ -234,6 +205,11 @@ namespace CoachConnect
             lstBoxUsers.Enabled = true;
         }
 
+        /// <summary>
+        /// Event handler to display the selected user's data when the list box selected value is changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstBoxUsers_SelectedValueChanged(object sender, EventArgs e)
         {
             if (this.CurrentUserIndex == lstBoxUsers.SelectedIndex)
@@ -254,6 +230,9 @@ namespace CoachConnect
             txtUserID.ReadOnly = true;
         }
 
+        /// <summary>
+        /// Method to disable the list box (used when a user is created or updated)
+        /// </summary>
         private void disableListBox()
         {
             if (lstBoxUsers.Enabled)
@@ -262,6 +241,9 @@ namespace CoachConnect
             }
         }
 
+        /// <summary>
+        /// Method to enable the list box (used after a user is saved or the Revert button is clicked)
+        /// </summary>
         private void enableListBox()
         {
             if (!lstBoxUsers.Enabled)
@@ -270,6 +252,11 @@ namespace CoachConnect
             }
         }
 
+        /// <summary>
+        /// Event handler to restore original user data (or use blanks for new user) when the Revert button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRevert_Click(object sender, EventArgs e)
         {
             if (txtUserID.Enabled)
@@ -314,6 +301,10 @@ namespace CoachConnect
             enableListBox();
         }
 
+        /// <summary>
+        /// Method to save a new user to the database
+        /// </summary>
+        /// <param name="newUser"></param>
         private void addNewUser(User newUser)
         {
             // Always set the "reset password" field to TRUE for new users
@@ -324,7 +315,7 @@ namespace CoachConnect
             {
                 using (var context = new db_sft_2172Entities())
                 {
-                    // Run query to get user data
+                    // Run query and save new user data to database
                     context.Users.Add(newUser);
                     context.SaveChanges();
 
@@ -360,6 +351,10 @@ namespace CoachConnect
 
         }
 
+        /// <summary>
+        /// Method to update existing user data in the database
+        /// </summary>
+        /// <param name="currentUser"></param>
         private void updateExistingUser(User currentUser)
         {
             // Find existing user in the database and update record
@@ -409,6 +404,11 @@ namespace CoachConnect
             }
         }
 
+        /// <summary>
+        /// Event handler to prepare form for a new user when the Add button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             txtUserID.Enabled = true;
@@ -419,15 +419,6 @@ namespace CoachConnect
             chkBoxResetPassword.Checked = true;
             chkBoxResetPassword.Enabled = false;
         }
-
-        private void btnMenu_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblCourseAdminForm_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+      

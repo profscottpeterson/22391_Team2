@@ -59,10 +59,16 @@ namespace CoachConnect
             }
             else
             {
-                throw new Exception("Invalid choice...please try again!");
+                MessageBox.Show("Invalid choice...please try again!");
+                cmbRoleChoice.Focus();
             }
 
             this.Close();
+        }
+
+        private void RoleForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
