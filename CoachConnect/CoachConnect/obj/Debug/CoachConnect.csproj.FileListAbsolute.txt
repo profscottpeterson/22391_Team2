@@ -68,6 +68,27 @@ C:\Users\timdu\repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnec
 C:\Users\timdu\repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
 C:\Users\timdu\repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
 C:\Users\timdu\repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AdminForm.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachView.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ChangePasswordForm.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.SessionAdminForm.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminForm.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachInterest.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FindCoachForm.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.LoginForm.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.RoleForm.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminFormAdam.resources
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.pdb
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.dll
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.xml
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.pdb
@@ -89,45 +110,36 @@ C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\Coac
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.pdb
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.dll
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.xml
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AdminForm.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachView.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ChangePasswordForm.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditSession.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.SessionAdminForm.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminForm.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachInterest.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FindCoachForm.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.LoginForm.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.RoleForm.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminFormAdam.resources
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.pdb
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.dll
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.xml
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AdminForm.resources
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachView.resources
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ChangePasswordForm.resources
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditSession.resources
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.SessionAdminForm.resources
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminForm.resources
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachInterest.resources
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FindCoachForm.resources
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.LoginForm.resources
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.RoleForm.resources
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminFormAdam.resources
-C:\Users\Brian Lueskow\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AdminForm.resources
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachView.resources
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ChangePasswordForm.resources
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.SessionAdminForm.resources
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminForm.resources
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.RoleForm.resources
+D:\Spring Semester\team software\TeamProject\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminFormAdam.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AdminForm.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachView.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ChangePasswordForm.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditSession.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.SessionAdminForm.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminForm.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachInterest.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FindCoachForm.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.LoginForm.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.RoleForm.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminFormAdam.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
+H:\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
+H:\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe
+H:\22393_Team2\CoachConnect\CoachConnect\bin\Debug\CoachConnect.pdb
+H:\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.dll
+H:\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.dll
+H:\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.xml
+H:\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.xml
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditStudentProfileForm.resources
+H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ResetStudentPassword.resources
