@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoachConnect
 {
-    class Validation
+    public class Validation
     {
 
         public bool ValidateTextBox(string tb)

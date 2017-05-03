@@ -59,6 +59,7 @@
           <Property Name="OpenTime" Type="time" Precision="7" Nullable="false" />
           <Property Name="CloseTime" Type="time" Precision="7" Nullable="false" />
           <Property Name="BuildingID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Session">
           <Key>
@@ -68,10 +69,10 @@
           <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="StartTime" Type="time" Precision="7" Nullable="false" />
-          <Property Name="EndTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="TimePeriodID" Type="varchar" MaxLength="25" />
           <Property Name="CoachID" Type="nvarchar" MaxLength="50" />
-          <Property Name="Active" Type="bit" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="IsFull" Type="bit" Nullable="false" />
           <Property Name="IsMonday" Type="nvarchar" MaxLength="50" />
           <Property Name="IsTuesday" Type="bit" />
           <Property Name="IsWednesday" Type="bit" />
@@ -87,6 +88,16 @@
           <Property Name="SessionID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleID" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TimePeriod">
           <Key>
@@ -134,6 +145,21 @@
           <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleID" Type="nvarchar" MaxLength="5" Nullable="false" />
           <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.Availability' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Availability">
+          <Key>
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="DayID" />
+            <PropertyRef Name="TimePeriodID" />
+          </Key>
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DayID" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="TimePeriodID" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ProfilePic" Type="nvarchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.CoachByName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -194,19 +220,22 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
 warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewSession">
           <Key>
+            <PropertyRef Name="SessionID" />
             <PropertyRef Name="Course" />
             <PropertyRef Name="Room" />
-            <PropertyRef Name="Day of Week" />
-            <PropertyRef Name="Start Time" />
-            <PropertyRef Name="End Time" />
+            <PropertyRef Name="Day" />
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="Full" />
+            
           </Key>
+          <Property Name="SessionID" Type="int" Nullable="false" />
           <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Room" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Day of Week" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="Start Time" Type="time" Precision="7" Nullable="false" />
-          <Property Name="End Time" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Coach" Type="nvarchar" MaxLength="200" />
-          <Property Name="Active" Type="bit" />
+          <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="Full" Type="bit" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Course_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="1" />
@@ -405,10 +434,20 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Session" EntityType="Self.Session" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SessionRoster" EntityType="Self.SessionRoster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TimePeriod" EntityType="Self.TimePeriod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserAvailability" EntityType="Self.UserAvailability" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCourse" EntityType="Self.UserCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Availability" EntityType="Self.Availability" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Availability].[LastName] AS [LastName], 
+    [Availability].[FirstName] AS [FirstName], 
+    [Availability].[DayID] AS [DayID], 
+    [Availability].[TimePeriodID] AS [TimePeriodID], 
+    [Availability].[ProfilePic] AS [ProfilePic]
+    FROM [dbo].[Availability] AS [Availability]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="CoachByName" EntityType="Self.CoachByName" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [CoachByName].[UserID] AS [UserID], 
@@ -443,12 +482,13 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           </EntitySet>
           <EntitySet Name="ViewSession" EntityType="Self.ViewSession" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
+    [ViewSession].[SessionID] AS [SessionID], 
     [ViewSession].[Course] AS [Course], 
     [ViewSession].[Room] AS [Room], 
-    [ViewSession].[Day of Week] AS [Day of Week], 
-    [ViewSession].[Start Time] AS [Start Time], 
-    [ViewSession].[End Time] AS [End Time], 
+    [ViewSession].[Day] AS [Day], 
     [ViewSession].[Coach] AS [Coach], 
+    [ViewSession].[Time] AS [Time], 
+    [ViewSession].[Full] AS [Full], 
     [ViewSession].[Active] AS [Active]
     FROM [dbo].[ViewSession] AS [ViewSession]</DefiningQuery>
           </EntitySet>
@@ -540,14 +580,13 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <Property Name="BuildingID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Building" Relationship="Self.FK_Room_Building" FromRole="Room" ToRole="Building" />
           <NavigationProperty Name="Sessions" Relationship="Self.FK_Session_Room" FromRole="Room" ToRole="Session" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Session">
           <Key>
             <PropertyRef Name="SessionID" />
           </Key>
           <Property Name="SessionID" Nullable="false" Type="Int32" />
-          <Property Name="StartTime" Nullable="false" Precision="7" Type="Time" />
-          <Property Name="EndTime" Nullable="false" Precision="7" Type="Time" />
           <Property Name="RoomID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
           <Property Name="CourseID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
           <Property Name="IsMonday" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
@@ -562,8 +601,10 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Day1" Relationship="db_sft_2172Model.FK_Session_Day" FromRole="Session" ToRole="Day" />
           <Property Name="CoachID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Active" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="User" Relationship="db_sft_2172Model.FK_Session_User" FromRole="Session" ToRole="User" />
+          <Property Name="TimePeriodID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="IsFull" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="SessionRoster">
           <Key>
@@ -737,6 +778,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
             <End Role="SessionRoster" EntitySet="SessionRosters" />
           </AssociationSet>
           <EntitySet Name="ViewSessions" EntityType="db_sft_2172Model.ViewSession" />
+          <EntitySet Name="sysdiagrams" EntityType="db_sft_2172Model.sysdiagram" />
+          <EntitySet Name="Availabilities" EntityType="db_sft_2172Model.Availability" />
         </EntityContainer>
         <EntityType Name="TimePeriod">
           <Key>
@@ -1040,17 +1083,42 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <Key>
             <PropertyRef Name="Course" />
             <PropertyRef Name="Room" />
-            <PropertyRef Name="Day_of_Week" />
-            <PropertyRef Name="Start_Time" />
-            <PropertyRef Name="End_Time" />
+            <PropertyRef Name="SessionID" />
+            <PropertyRef Name="Day" />
+            <PropertyRef Name="Time" />
+            <PropertyRef Name="Full" />
           </Key>
           <Property Name="Course" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Room" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Day_of_Week" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="Start_Time" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="End_Time" Type="Time" Nullable="false" Precision="7" />
           <Property Name="Coach" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Active" Type="Boolean" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="SessionID" Type="Int32" Nullable="false" />
+          <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Full" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Availability">
+          <Key>
+            <PropertyRef Name="LastName" />
+            <PropertyRef Name="FirstName" />
+            <PropertyRef Name="DayID" />
+            <PropertyRef Name="TimePeriodID" />
+          </Key>
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DayID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TimePeriodID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1079,6 +1147,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <EntitySetMapping Name="Rooms">
             <EntityTypeMapping TypeName="db_sft_2172Model.Room">
               <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="RoomID" ColumnName="RoomID" />
                 <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
                 <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
@@ -1090,12 +1159,12 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <EntitySetMapping Name="Sessions">
             <EntityTypeMapping TypeName="db_sft_2172Model.Session">
               <MappingFragment StoreEntitySet="Session">
+                <ScalarProperty Name="IsFull" ColumnName="IsFull" />
+                <ScalarProperty Name="TimePeriodID" ColumnName="TimePeriodID" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="CoachID" ColumnName="CoachID" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
                 <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
                 <ScalarProperty Name="RoomID" ColumnName="RoomID" />
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
                 <ScalarProperty Name="IsMonday" ColumnName="IsMonday" />
@@ -1262,13 +1331,36 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <EntitySetMapping Name="ViewSessions">
             <EntityTypeMapping TypeName="db_sft_2172Model.ViewSession">
               <MappingFragment StoreEntitySet="ViewSession">
+                <ScalarProperty Name="Full" ColumnName="Full" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="Coach" ColumnName="Coach" />
-                <ScalarProperty Name="End_Time" ColumnName="End Time" />
-                <ScalarProperty Name="Start_Time" ColumnName="Start Time" />
-                <ScalarProperty Name="Day_of_Week" ColumnName="Day of Week" />
                 <ScalarProperty Name="Room" ColumnName="Room" />
                 <ScalarProperty Name="Course" ColumnName="Course" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="db_sft_2172Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Availabilities">
+            <EntityTypeMapping TypeName="db_sft_2172Model.Availability">
+              <MappingFragment StoreEntitySet="Availability">
+                <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
+                <ScalarProperty Name="TimePeriodID" ColumnName="TimePeriodID" />
+                <ScalarProperty Name="DayID" ColumnName="DayID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
