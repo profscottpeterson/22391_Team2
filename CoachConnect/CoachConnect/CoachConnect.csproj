@@ -57,6 +57,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Availability.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Building.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -75,6 +84,12 @@
     <Compile Include="CoachViewForm.Designer.cs">
       <DependentUpon>CoachViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangePasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangePasswordForm.designer.cs">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Course.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -84,26 +99,8 @@
     <Compile Include="Department.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EditStudentProfileForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditStudentProfileForm.Designer.cs">
-      <DependentUpon>EditStudentProfileForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FindCoachForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FindCoachForm.designer.cs">
-      <DependentUpon>FindCoachForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Interest.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResetStudentPassword.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ResetStudentPassword.Designer.cs">
-      <DependentUpon>ResetStudentPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
@@ -111,8 +108,15 @@
     <Compile Include="Room.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SaltedHash.cs" />
     <Compile Include="Session.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SessionAdminForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SessionAdminForm.designer.cs">
+      <DependentUpon>SessionAdminForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SessionRoster.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
@@ -159,6 +163,12 @@
     <Compile Include="CoachInterestForm.Designer.cs">
       <DependentUpon>CoachInterestForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FindCoachForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindCoachForm.designer.cs">
+      <DependentUpon>FindCoachForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,29 +183,42 @@
     <Compile Include="RoleForm.Designer.cs">
       <DependentUpon>RoleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserAdminFormAdam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserAdminFormAdam.designer.cs">
+      <DependentUpon>UserAdminFormAdam.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserAvailability.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserCourse.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Validation.cs" />
+    <Compile Include="ViewSession.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CoachViewForm.resx">
       <DependentUpon>CoachViewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditStudentProfileForm.resx">
-      <DependentUpon>EditStudentProfileForm.cs</DependentUpon>
+    <EmbeddedResource Include="ChangePasswordForm.resx">
+      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FindCoachForm.resx">
-      <DependentUpon>FindCoachForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ResetStudentPassword.resx">
-      <DependentUpon>ResetStudentPassword.cs</DependentUpon>
+    <EmbeddedResource Include="SessionAdminForm.resx">
+      <DependentUpon>SessionAdminForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserAdminForm.resx">
       <DependentUpon>UserAdminForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CoachInterestForm.resx">
       <DependentUpon>CoachInterestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindCoachForm.resx">
+      <DependentUpon>FindCoachForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -212,6 +235,9 @@
     </Compile>
     <EmbeddedResource Include="RoleForm.resx">
       <DependentUpon>RoleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserAdminFormAdam.resx">
+      <DependentUpon>UserAdminFormAdam.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="CoachConnectModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -259,17 +285,11 @@
       <DependentUpon>CoachConnectModel.edmx</DependentUpon>
       <LastGenOutput>CoachConnectModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="CoachConnectModel.edmx.sql" />
     <Content Include="CoachConnectModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CoachConnectModel.edmx</DependentUpon>
       <LastGenOutput>CoachConnectModel.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\wrong.png" />
-    <None Include="Resources\correct1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -44,13 +44,19 @@ namespace CoachConnect
                                     where u.UserID.Equals(username)
                                     select u;
 
-                    if (userQuery.Count<User>() > 0)
+                    if (userQuery.Any())
                     {
                         var userResult = userQuery.FirstOrDefault<User>();
 
-                        // Check if password is correct.
-                        // If not, display message and set focus to password text box.
-                        if (userResult.Password == password)
+                        /*************************************************************/
+                        /** Applying salted hash technique to verify password       **/
+                        /**                                                         **/
+                        /** If you wish to use a non-encrypted password, uncomment  **/
+                        /** the first "if" statement below                          **/
+                        /** Otherwise, uncomment the second "if" to use encryption. **/
+                        /*************************************************************/
+                        //if (userResult.Password == password) 
+                        if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, password))
                         {
                             // Update static variable containing User ID
                             Program.CurrentUser = userResult.UserID;
@@ -92,7 +98,7 @@ namespace CoachConnect
             }
             catch (Exception ex)
             {
-                ex.ToString();
+                MessageBox.Show(ex.ToString());
             }
         }
 

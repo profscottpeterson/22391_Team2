@@ -4,3 +4,4 @@
 
 /CoachConnect/CoachConnect/bin/Debug/CoachConnect.vshost.exe.manifest
 /CoachConnect/CoachConnect.Tests/obj/Debug/build.force
+*.cs

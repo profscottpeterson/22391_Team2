@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace CoachConnect
 {
     public partial class FindCoachForm : Form
@@ -16,10 +15,6 @@ namespace CoachConnect
         public FindCoachForm()
         {
             InitializeComponent();
-            displayInfo();
-            displayCoachList();
-            displayAppointment();
-            panelCoach.Visible = false;
         }
 
         private void SelectedInterest(Image interest, string title)
@@ -95,194 +90,12 @@ namespace CoachConnect
             SelectedInterest(btnTransport.BackgroundImage,lblTransport.Text);
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void FindCoachForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-
+            Program.loginForm.logout();
         }
 
-        //Disipaly student info to the home tab
-        private void displayInfo()
-        {
-            using (var context = new db_sft_2172Entities())
-            {
-                var userQuery = from u in context.Users
-                                where u.UserID.Equals(Program.CurrentUser)
-                                select u;
-                var userResult = userQuery.FirstOrDefault<User>();
-                lblStdID.Text = userResult.UserID;
-                lblStdName.Text = userResult.FirstName + " " + userResult.LastName;
-                lblStdEmail.Text = userResult.Email;
-                lblStdPhone.Text = displayPhoneFormat(userResult.Phone);
-                     
-            }
-        }
-
-        //Display phone number in the phone format
-        private string displayPhoneFormat(string phone)
-        {
-            string p = phone;
-            string formatedPhoneNumber = string.Format("({0}) {1}-{2}", p.Substring(0, 3), p.Substring(3, 3), p.Substring(6, 4));
-            return formatedPhoneNumber;
-        }
-        //Display all available coaches on the combobox
-        private void displayCoachList()
-        {    
-            using (var context = new db_sft_2172Entities())
-            {
-                var userQuery = (from u in context.Users
-                                where u.IsCoach.Equals(true)
-                                select u.FirstName).ToList();
-                
-                foreach(var c in userQuery)
-                {
-                    
-                    comboBoxCoaches.Items.Add(c);
-                }
-            }
-        }
-
-        //Button click to search for specific coach from the database
-        private void button2_Click(object sender, EventArgs e)
-        {          
-            string selectedCoach = (string)comboBoxCoaches.SelectedItem;
-            seachForCoach(selectedCoach);
-            
-            
-        }
-
-        //Called in the button2 to search a coach
-        private void seachForCoach(string coach)
-        {
-            using (var context = new db_sft_2172Entities())
-            {
-                var userQuery = from u in context.Users
-                                where u.IsCoach.Equals(true) && u.FirstName.Equals(coach)
-                                select u;
-                var userResult = userQuery.FirstOrDefault<User>();
-                try
-                {
-                    if (!String.IsNullOrEmpty(userResult.FirstName))
-                    {
-                        panelCoach.Visible = true;
-                        var request = System.Net.WebRequest.Create(userResult.ProfilePic);
-
-                        using (var response = request.GetResponse())
-                        using (var stream = response.GetResponseStream())
-                        {
-                            pictureBoxCoachProfile.Image = Bitmap.FromStream(stream);
-                        }
-                        lblCoachName.Text = userResult.FirstName + " " + userResult.LastName;
-                        lblActiveCoach.Text = userResult.ActiveCoachSince.ToString();
-                        lblEmail.Text = userResult.Email;
-                        lblPhone.Text = userResult.Phone;
-
-                        //display the day 
-                        seachCoachOnSession(coach);
-                    }
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Please choose a coach");
-                    
-                }
-                
-            }
-        }
-
-        //Search for available coach by session
-        private void seachCoachOnSession(string coach)
-        {
-            using (var context = new db_sft_2172Entities())
-            {
-                var userQuery = from s in context.Sessions
-                                join c in context.Courses on s.CourseID equals c.CourseID
-                                join uc in context.UserCourses on c.CourseID equals uc.CourseID
-                                join u in context.Users on uc.UserID equals u.UserID
-                                where u.IsCoach.Equals(true) && u.FirstName.Equals(coach)
-                                select s;
-               // var userResult = userQuery.FirstOrDefault<Session>();
-                try
-                {
-                    var userResult = userQuery.FirstOrDefault<Session>();
-                    if (!String.IsNullOrEmpty(userResult.SessionID))
-                    {
-                        if (userResult.IsMonday == "true")
-                        {
-                            Monday.Visible = true;
-                        }
-                        if (userResult.IsTuesday == true)
-                        {
-                            Tuesday.Visible = true;
-                        }
-                        if (userResult.IsWednesday == true)
-                        {
-                            Wednesday.Visible = true;
-                        }
-                        if (userResult.IsThursday == true)
-                        {
-                            Thursday.Visible = true;
-                        }
-                        if (userResult.IsSaturday == true)
-                        {
-                            Saturday.Visible = true;
-                        }
-                        
-                    }
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("No time available ");
-                }
-                
-            }
-        }
-
-        //Display the appointments for that student in datagridview
-        private void displayAppointment()
-        {
-            using (var context = new db_sft_2172Entities())
-            {
-                List<CoachByTime> appointment = new List<CoachByTime>();
-                var userQuery = from u in context.CoachByTimes
-                                where u.UserID.Equals(Program.CurrentUser)
-                                select u;
-                var userResult = userQuery.ToList();
-                foreach(var u in userResult)
-                {
-                    appointment.Add(u);
-                }
-                if(appointment.Count() > 0)
-                {
-                    dgrShowAppointments.Visible = true;
-                    dgrShowAppointments.DataSource = appointment;
-                    appointmentMessage.Visible = false;
-                }
-                else
-                {
-                    dgrShowAppointments.Visible = false;
-                    appointmentMessage.Visible = true;
-                }
-                
-            }
-        }  
-
-        //Reset password button click
-        private void btnResetPassowrd_Click(object sender, EventArgs e)
-        {
-            ResetStudentPassword resetForm = new ResetStudentPassword();
-            resetForm.Show();
-            this.Hide();
-        }
-
-        //Edit profile button click
-        private void btnEditProfile_Click(object sender, EventArgs e)
-        {
-            EditStudentProfileForm editForm = new EditStudentProfileForm();
-            editForm.Show();
-            this.Hide();
-        }
-
-        private void btnSearchByTime_Click(object sender, EventArgs e)
+        private void btnSearchTime_Click(object sender, EventArgs e)
         {
             coachTimeQuery();
         }
@@ -306,7 +119,7 @@ namespace CoachConnect
                     }
 
                     if (this.chkMidday.Checked)
-                    {
+                    { 
                         timeQuery = timeQuery.Union(coachByTimeQuery.Where(t => t.Time == "Midday"));
                     }
 
@@ -441,12 +254,12 @@ namespace CoachConnect
                     ///TODO: Stub to handle saving data to database (add linq query)
                     SessionRoster sr = new SessionRoster()
                     {
-                        SessionID = "WEB10152154MonAM",
+                        SessionID = 1,
                         UserID = selectedCoachID,
-                        RoleID = "STUD"
+                        RoleID = "Student"
                     };
 
-                    using (db_sft_2172Entities context = new db_sft_2172Entities())
+                    using (var context = new db_sft_2172Entities())
                     {
                         try
                         {
@@ -464,9 +277,100 @@ namespace CoachConnect
             return;
         }
 
+        public void GetCoachData()
+        {
+            var dataSource = new List<CoachItem>();
+
+            // Query the database and pull the list of coaches
+            try
+            {
+                using (var context = new db_sft_2172Entities())
+                {
+                    // Run query to get coach data
+                    var coachQuery = from coachResults in context.CoachByNames
+                                     select coachResults;
+
+                    // Find users where desired criteria are met
+                    var coachList = coachQuery.Where(t => t.IsCoach == true);
+
+                    foreach (CoachByName coach in coachList)
+                    {
+                        dataSource.Add(new CoachItem() { Name = coach.FirstName + " " + coach.LastName, Value = coach.UserID });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+
+            // Bind the data list to the combo box
+            cbxCoachNames.DataSource = dataSource;
+            cbxCoachNames.DisplayMember = "Name";
+            cbxCoachNames.ValueMember = "Value";
+
+            cbxCoachNames.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        /**
+         *  Event handler: Form Load
+         *  **/
+        private void FindCoachForm_Load(object sender, EventArgs e)
+        {
+            GetCoachData();
+        }
+
+        /**
+         * Event handler: update dropdown choice in Find Coach by Name tab
+         **/
+        private void cbxCoachNames_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedValue = cbxCoachNames.SelectedValue.ToString();
+
+            // Query the database and pull info for the selected coach
+            try
+            {
+                using (var context = new db_sft_2172Entities())
+                {
+                    // Run query to get coach data
+                    var coachQuery = from coachResult in context.CoachByNames
+                                     where coachResult.UserID.Equals(selectedValue)
+                                     select coachResult;
+
+                    var foundCoach = coachQuery.FirstOrDefault<CoachByName>();
+
+                    // Update form based on query data
+                    txtCoachName.Text = foundCoach.FirstName + " " + foundCoach.LastName;
+                    txtActiveCoachSince.Text = foundCoach.ActiveCoachSince.Value.ToString("MM/dd/yyyy");
+
+                    imgCoachPic.Load(foundCoach.ProfilePic);
+
+                    
+                    // Run another query to get available sessions for the selected coach
+                    var coachAvailabilityQuery = from coachAvailability in context.CoachByTimes
+                                                 where coachAvailability.UserID.Equals(selectedValue)
+                                                 select coachAvailability;
+
+                    dataGridCoachAvailability.DataSource = coachAvailabilityQuery.ToList();
+
+                    dataGridCoachAvailability.Columns["UserID"].Visible = false;
+                    dataGridCoachAvailability.Columns["UserID"].DisplayIndex = 0;
+                    dataGridCoachAvailability.Columns["Coach"].Visible = false;
+                    dataGridCoachAvailability.Columns["Coach"].DisplayIndex = 1;
+                    dataGridCoachAvailability.Columns["Time"].DisplayIndex = 2;
+                    dataGridCoachAvailability.Columns["Day"].DisplayIndex = 3;
+                    dataGridCoachAvailability.Columns["Subject"].DisplayIndex = 4;
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.ToString();
+            }
+
+        }
+
         private void btnScheduleApptName_Click(object sender, EventArgs e)
         {
-            /*
             string selectedCoachID;
             string selectedCoachName;
             string selectedTime;
@@ -511,7 +415,7 @@ namespace CoachConnect
                         ///TODO: Stub to handle saving data to database (add linq query)
                         SessionRoster sr = new SessionRoster()
                         {
-                            SessionID = "WEB10152154MonAM",
+                            SessionID = 1,
                             UserID = selectedCoachID,
                             RoleID = "Student"
                         };
@@ -536,7 +440,12 @@ namespace CoachConnect
                 MessageBox.Show(ex.ToString());
             }
             return;
-            */
         }
-    }   
+    }
+
+    public class CoachItem
+    {
+        public string Name { get; set; }
+        public string Value { get; set; }
+    }
 }
