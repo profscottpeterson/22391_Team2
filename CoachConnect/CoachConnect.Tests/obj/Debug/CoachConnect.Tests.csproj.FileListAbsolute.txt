@@ -36,3 +36,11 @@ C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.xml
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.dll
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.pdb
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.exe
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.dll
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.pdb
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.xml
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb
