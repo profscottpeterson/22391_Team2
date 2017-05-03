@@ -76,135 +76,135 @@ namespace CoachConnect
             LoadEditProfile(coach);
         }
 
-        private void txtCurrentPass_TextChanged(object sender, EventArgs e)
-        {
+        //private void txtCurrentPass_TextChanged(object sender, EventArgs e)
+        //{
 
-            lblPassSuccess.Visible = false;
-            lblPassInstructions.Visible = true;
-            if (!string.IsNullOrEmpty(txtCurrentPass.Text) && (EditMode = false)) EditModePrep();
-            if (!string.IsNullOrEmpty(txtCurrentPass.Text))
-            {
-                //btnPassCancel.Visible = true;
-                //grpProfilePic.Enabled = false;
-                //grpPersonalInfo.Enabled = false;
-                //EditMode = true;
-                //User coach = new User();
-                //coach = getCoach();
-                //EditModePrep();
-                grpPassword.Enabled = true;
-                btnPassCancel.Visible = true;
-                btnPassCancel.Enabled = true;
-                if (txtCurrentPass.Text == coach.Password)
-                {
-                    lblPassInstructions.Visible = false;
-                    pbcurrentPassCorrect.Visible = true;
-                    txtConfirmNewPass.Enabled = true;
-                    txtNewPass.Enabled = true;
-                    txtCurrentPass.Enabled = false;
-                    btnPassCancel.Visible = true;
-                }
-            }
-            else
-            {
-                EditModePrep();
-            }
-        }
+        //    lblPassSuccess.Visible = false;
+        //    lblPassInstructions.Visible = true;
+        //    if (!string.IsNullOrEmpty(txtCurrentPass.Text) && (EditMode = false)) EditModePrep();
+        //    if (!string.IsNullOrEmpty(txtCurrentPass.Text))
+        //    {
+        //        //btnPassCancel.Visible = true;
+        //        //grpProfilePic.Enabled = false;
+        //        //grpPersonalInfo.Enabled = false;
+        //        //EditMode = true;
+        //        //User coach = new User();
+        //        //coach = getCoach();
+        //        //EditModePrep();
+        //        grpPassword.Enabled = true;
+        //        btnPassCancel.Visible = true;
+        //        btnPassCancel.Enabled = true;
+        //        if (txtCurrentPass.Text == coach.Password)
+        //        {
+        //            lblPassInstructions.Visible = false;
+        //            pbcurrentPassCorrect.Visible = true;
+        //            txtConfirmNewPass.Enabled = true;
+        //            txtNewPass.Enabled = true;
+        //            txtCurrentPass.Enabled = false;
+        //            btnPassCancel.Visible = true;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        EditModePrep();
+        //    }
+        //}
 
-        private void txtConfirmNewPass_TextChanged(object sender, EventArgs e)
-        {
-            if (txtConfirmNewPass.Text.Length >= txtNewPass.Text.Length && !string.IsNullOrEmpty(txtConfirmNewPass.Text))
-            {
-                if (txtConfirmNewPass.Text != txtNewPass.Text)
-                {
-                    grpPersonalInfo.Enabled = true;
-                    grpProfilePic.Enabled = true;
-                    EditMode = false;
-                    lblMatchPass.Visible = true;
-                    pbNewPass.Visible = false;
-                    pbConfirmPass.Visible = false;
-                    btnUpdatePass.Visible = false;
-                    btnPassCancel.Visible = true;
-                }
-                else if (txtNewPass.Text == txtConfirmNewPass.Text)
-                {
-                    btnUpdatePass.Visible = false;
-                    lblMatchPass.Visible = false;
-                    pbNewPass.Visible = true;
-                    pbConfirmPass.Visible = true;
-                    btnUpdatePass.Visible = true;
-                }
-            }
-            else
-            {
-                btnUpdatePass.Visible = false;
-                pbConfirmPass.Visible = false;
-                pbNewPass.Visible = false;
-                lblMatchPass.Visible = false;
+        //private void txtConfirmNewPass_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (txtConfirmNewPass.Text.Length >= txtNewPass.Text.Length && !string.IsNullOrEmpty(txtConfirmNewPass.Text))
+        //    {
+        //        if (txtConfirmNewPass.Text != txtNewPass.Text)
+        //        {
+        //            grpPersonalInfo.Enabled = true;
+        //            grpProfilePic.Enabled = true;
+        //            EditMode = false;
+        //            lblMatchPass.Visible = true;
+        //            pbNewPass.Visible = false;
+        //            pbConfirmPass.Visible = false;
+        //            btnUpdatePass.Visible = false;
+        //            btnPassCancel.Visible = true;
+        //        }
+        //        else if (txtNewPass.Text == txtConfirmNewPass.Text)
+        //        {
+        //            btnUpdatePass.Visible = false;
+        //            lblMatchPass.Visible = false;
+        //            pbNewPass.Visible = true;
+        //            pbConfirmPass.Visible = true;
+        //            btnUpdatePass.Visible = true;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        btnUpdatePass.Visible = false;
+        //        pbConfirmPass.Visible = false;
+        //        pbNewPass.Visible = false;
+        //        lblMatchPass.Visible = false;
 
-            }
-        }
+        //    }
+        //}
 
-        private void btnPassCancel_Click(object sender, EventArgs e)
-        {
-            EditModePrep();
-            LoadEditProfile(coach);
-            txtCurrentPass.Enabled = true;
-            pbConfirmPass.Visible = false;
-            pbcurrentPassCorrect.Visible = false;
-            pbNewPass.Visible = false;
-        }
+        //private void btnPassCancel_Click(object sender, EventArgs e)
+        //{
+        //    EditModePrep();
+        //    LoadEditProfile(coach);
+        //    txtCurrentPass.Enabled = true;
+        //    pbConfirmPass.Visible = false;
+        //    pbcurrentPassCorrect.Visible = false;
+        //    pbNewPass.Visible = false;
+        //}
 
-        private void txtNewPass_TextChanged(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(txtConfirmNewPass.Text) && txtNewPass.Text.Length >= txtConfirmNewPass.Text.Length)
-            {
-                if (txtConfirmNewPass.Text != txtNewPass.Text)
-                {
-                    lblMatchPass.Visible = true;
-                    pbNewPass.Visible = false;
-                    pbConfirmPass.Visible = false;
-                    btnUpdatePass.Visible = false;
-                }
-                else if (txtNewPass.Text == txtConfirmNewPass.Text)
-                {
-                    lblMatchPass.Visible = false;
-                    pbNewPass.Visible = true;
-                    pbConfirmPass.Visible = true;
-                    btnUpdatePass.Visible = true;
-                }
-            }
-            else
-            {
-                pbConfirmPass.Visible = false;
-                pbNewPass.Visible = false;
-                lblMatchPass.Visible = false;
-                btnUpdatePass.Visible = false;
-            }
-        }
+        //private void txtNewPass_TextChanged(object sender, EventArgs e)
+        //{
+        //    if (!string.IsNullOrEmpty(txtConfirmNewPass.Text) && txtNewPass.Text.Length >= txtConfirmNewPass.Text.Length)
+        //    {
+        //        if (txtConfirmNewPass.Text != txtNewPass.Text)
+        //        {
+        //            lblMatchPass.Visible = true;
+        //            pbNewPass.Visible = false;
+        //            pbConfirmPass.Visible = false;
+        //            btnUpdatePass.Visible = false;
+        //        }
+        //        else if (txtNewPass.Text == txtConfirmNewPass.Text)
+        //        {
+        //            lblMatchPass.Visible = false;
+        //            pbNewPass.Visible = true;
+        //            pbConfirmPass.Visible = true;
+        //            btnUpdatePass.Visible = true;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        pbConfirmPass.Visible = false;
+        //        pbNewPass.Visible = false;
+        //        lblMatchPass.Visible = false;
+        //        btnUpdatePass.Visible = false;
+        //    }
+        //}
 
-        private void btnUpdatePass_Click(object sender, EventArgs e)
-        {
-            if (txtNewPass.Text == txtConfirmNewPass.Text)
-            {
-                User coach = new User();
-                coach = getCoach();
-                if (coach.Password == txtCurrentPass.Text)
-                {
-                    using (var context = new db_sft_2172Entities())
-                    {
-                        var result = context.Users.SingleOrDefault(b => b.UserID == Program.CurrentUser);
-                        result.Password = txtConfirmNewPass.Text;
-                        context.SaveChanges();
-                    }
-                    btnPassCancel.PerformClick();
-                    lblPassInstructions.Visible = false;
-                    lblPassSuccess.Visible = true;
-                    grpProfilePic.Enabled = true;
-                    grpPersonalInfo.Enabled = true;
-                    EditMode = false;
-                }
-            }
-        }
+        //private void btnUpdatePass_Click(object sender, EventArgs e)
+        //{
+        //    if (txtNewPass.Text == txtConfirmNewPass.Text)
+        //    {
+        //        User coach = new User();
+        //        coach = getCoach();
+        //        if (coach.Password == txtCurrentPass.Text)
+        //        {
+        //            using (var context = new db_sft_2172Entities())
+        //            {
+        //                var result = context.Users.SingleOrDefault(b => b.UserID == Program.CurrentUser);
+        //                result.Password = txtConfirmNewPass.Text;
+        //                context.SaveChanges();
+        //            }
+        //            btnPassCancel.PerformClick();
+        //            lblPassInstructions.Visible = false;
+        //            lblPassSuccess.Visible = true;
+        //            grpProfilePic.Enabled = true;
+        //            grpPersonalInfo.Enabled = true;
+        //            EditMode = false;
+        //        }
+        //    }
+        //}
 
         private void btnEditInfo_Click(object sender, EventArgs e)
         {
@@ -322,9 +322,9 @@ namespace CoachConnect
             pbEditPic.ImageLocation = coach.ProfilePic;
             int endDate = coach.ActiveCoachSince.ToString().IndexOf(" ");
             lblMemberSince.Text = "Active Coach Since: " + coach.ActiveCoachSince.ToString().Substring(0, endDate);
-            txtCurrentPass.Clear();
-            txtNewPass.Clear();
-            txtConfirmNewPass.Clear();
+            //txtCurrentPass.Clear();
+            //txtNewPass.Clear();
+            //txtConfirmNewPass.Clear();
             txtPicURL.Clear();
             btnPreview.Hide();
             btnPicSubmit.Hide();
@@ -348,7 +348,7 @@ namespace CoachConnect
         public void DisableAreas()
         {
             foreach (Control c in grpPersonalInfo.Controls) c.Enabled = false;
-            foreach (Control c in grpPassword.Controls) c.Enabled = false;
+            foreach (Control c in grpPass.Controls) c.Enabled = false;
             foreach (Control c in grpProfilePic.Controls) c.Enabled = false;
         }
 
@@ -360,15 +360,22 @@ namespace CoachConnect
             btnEditPic.Enabled = true;
             btnCancelInfo.Visible = false;
             btnSubmitInfo.Visible = false;
-            txtCurrentPass.Enabled = true;
+            btnPass.Enabled = true;
+            //txtCurrentPass.Enabled = true;
         }
 
         public void EditModePrep()
         {
-            grpPassword.Enabled = !grpPassword.Enabled;
+            grpPass.Enabled = !grpPass.Enabled;
             grpPersonalInfo.Enabled = !grpPersonalInfo.Enabled;
             grpProfilePic.Enabled = !grpProfilePic.Enabled;
             EditMode = !EditMode;
+        }
+
+        private void btnPass_Click(object sender, EventArgs e)
+        {
+            ChangePasswordForm frm = new ChangePasswordForm();
+            frm.ShowDialog();
         }
     }
 }
