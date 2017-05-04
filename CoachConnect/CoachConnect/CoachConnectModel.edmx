@@ -66,7 +66,7 @@
           <Key>
             <PropertyRef Name="SessionID" />
           </Key>
-          <Property Name="SessionID" Type="int" Nullable="false" />
+          <Property Name="SessionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DayID" Type="varchar" MaxLength="25" Nullable="false" />

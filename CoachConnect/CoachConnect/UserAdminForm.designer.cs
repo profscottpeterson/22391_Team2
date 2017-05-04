@@ -76,10 +76,11 @@
             // 
             // txtBoxUserID
             // 
+            this.txtBoxUserID.Font = new System.Drawing.Font("Perpetua Titling MT", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxUserID.Location = new System.Drawing.Point(448, 336);
             this.txtBoxUserID.Name = "txtBoxUserID";
-            this.txtBoxUserID.Size = new System.Drawing.Size(188, 33);
-            this.txtBoxUserID.TabIndex = 42;
+            this.txtBoxUserID.Size = new System.Drawing.Size(188, 27);
+            this.txtBoxUserID.TabIndex = 6;
             // 
             // lblUserID
             // 
@@ -123,42 +124,46 @@
             // 
             // txtBoxMiddleName
             // 
+            this.txtBoxMiddleName.Font = new System.Drawing.Font("Perpetua Titling MT", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxMiddleName.Location = new System.Drawing.Point(448, 272);
             this.txtBoxMiddleName.Name = "txtBoxMiddleName";
-            this.txtBoxMiddleName.Size = new System.Drawing.Size(188, 33);
-            this.txtBoxMiddleName.TabIndex = 36;
+            this.txtBoxMiddleName.Size = new System.Drawing.Size(188, 27);
+            this.txtBoxMiddleName.TabIndex = 5;
             // 
             // txtBoxPassword
             // 
+            this.txtBoxPassword.Font = new System.Drawing.Font("Perpetua Titling MT", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxPassword.Location = new System.Drawing.Point(448, 400);
             this.txtBoxPassword.Name = "txtBoxPassword";
-            this.txtBoxPassword.Size = new System.Drawing.Size(188, 33);
-            this.txtBoxPassword.TabIndex = 35;
+            this.txtBoxPassword.Size = new System.Drawing.Size(188, 27);
+            this.txtBoxPassword.TabIndex = 7;
             // 
             // txtBoxLastName
             // 
+            this.txtBoxLastName.Font = new System.Drawing.Font("Perpetua Titling MT", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxLastName.Location = new System.Drawing.Point(448, 208);
             this.txtBoxLastName.Name = "txtBoxLastName";
-            this.txtBoxLastName.Size = new System.Drawing.Size(188, 33);
-            this.txtBoxLastName.TabIndex = 34;
+            this.txtBoxLastName.Size = new System.Drawing.Size(188, 27);
+            this.txtBoxLastName.TabIndex = 4;
             // 
             // txtBoxFirstName
             // 
+            this.txtBoxFirstName.Font = new System.Drawing.Font("Perpetua Titling MT", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxFirstName.Location = new System.Drawing.Point(448, 144);
             this.txtBoxFirstName.Name = "txtBoxFirstName";
-            this.txtBoxFirstName.Size = new System.Drawing.Size(188, 33);
-            this.txtBoxFirstName.TabIndex = 33;
+            this.txtBoxFirstName.Size = new System.Drawing.Size(188, 27);
+            this.txtBoxFirstName.TabIndex = 3;
             this.txtBoxFirstName.TextChanged += new System.EventHandler(this.txtBoxFirstName_TextChanged);
             // 
             // lstBoxUsers
             // 
-            this.lstBoxUsers.Font = new System.Drawing.Font("Microsoft NeoGothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstBoxUsers.Font = new System.Drawing.Font("Perpetua Titling MT", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstBoxUsers.FormattingEnabled = true;
-            this.lstBoxUsers.ItemHeight = 27;
+            this.lstBoxUsers.ItemHeight = 24;
             this.lstBoxUsers.Location = new System.Drawing.Point(12, 125);
             this.lstBoxUsers.Name = "lstBoxUsers";
-            this.lstBoxUsers.Size = new System.Drawing.Size(269, 490);
-            this.lstBoxUsers.TabIndex = 47;
+            this.lstBoxUsers.Size = new System.Drawing.Size(269, 484);
+            this.lstBoxUsers.TabIndex = 0;
             this.lstBoxUsers.SelectedIndexChanged += new System.EventHandler(this.lstBoxUsers_SelectedIndexChanged);
             // 
             // lblUsers
@@ -175,10 +180,10 @@
             // btnSubmit
             // 
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(477, 545);
+            this.btnSubmit.Location = new System.Drawing.Point(473, 569);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(97, 47);
-            this.btnSubmit.TabIndex = 49;
+            this.btnSubmit.TabIndex = 12;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -186,20 +191,21 @@
             // btnLogOff
             // 
             this.btnLogOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOff.Location = new System.Drawing.Point(577, 545);
+            this.btnLogOff.Location = new System.Drawing.Point(573, 569);
             this.btnLogOff.Name = "btnLogOff";
             this.btnLogOff.Size = new System.Drawing.Size(99, 47);
-            this.btnLogOff.TabIndex = 50;
+            this.btnLogOff.TabIndex = 14;
             this.btnLogOff.Text = "Log Off";
             this.btnLogOff.UseVisualStyleBackColor = true;
+            this.btnLogOff.Click += new System.EventHandler(this.btnLogOff_Click);
             // 
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(678, 545);
+            this.btnExit.Location = new System.Drawing.Point(673, 569);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(99, 47);
-            this.btnExit.TabIndex = 51;
+            this.btnExit.TabIndex = 15;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -211,7 +217,7 @@
             this.chkBoxStudent.Location = new System.Drawing.Point(664, 213);
             this.chkBoxStudent.Name = "chkBoxStudent";
             this.chkBoxStudent.Size = new System.Drawing.Size(106, 29);
-            this.chkBoxStudent.TabIndex = 52;
+            this.chkBoxStudent.TabIndex = 10;
             this.chkBoxStudent.Text = "Student";
             this.chkBoxStudent.UseVisualStyleBackColor = true;
             // 
@@ -222,7 +228,7 @@
             this.chkBoxCoach.Location = new System.Drawing.Point(664, 248);
             this.chkBoxCoach.Name = "chkBoxCoach";
             this.chkBoxCoach.Size = new System.Drawing.Size(96, 29);
-            this.chkBoxCoach.TabIndex = 53;
+            this.chkBoxCoach.TabIndex = 11;
             this.chkBoxCoach.Text = "Coach";
             this.chkBoxCoach.UseVisualStyleBackColor = true;
             // 
@@ -233,7 +239,7 @@
             this.chkBoxAdmin.Location = new System.Drawing.Point(664, 178);
             this.chkBoxAdmin.Name = "chkBoxAdmin";
             this.chkBoxAdmin.Size = new System.Drawing.Size(94, 29);
-            this.chkBoxAdmin.TabIndex = 54;
+            this.chkBoxAdmin.TabIndex = 9;
             this.chkBoxAdmin.Text = "Admin";
             this.chkBoxAdmin.UseVisualStyleBackColor = true;
             // 
@@ -244,7 +250,7 @@
             this.chkBoxActive.Location = new System.Drawing.Point(664, 143);
             this.chkBoxActive.Name = "chkBoxActive";
             this.chkBoxActive.Size = new System.Drawing.Size(92, 29);
-            this.chkBoxActive.TabIndex = 55;
+            this.chkBoxActive.TabIndex = 8;
             this.chkBoxActive.Text = "Active";
             this.chkBoxActive.UseVisualStyleBackColor = true;
             // 
@@ -254,7 +260,7 @@
             this.btnAdd.Location = new System.Drawing.Point(12, 569);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(135, 46);
-            this.btnAdd.TabIndex = 56;
+            this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "+";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -265,17 +271,17 @@
             this.btnMinus.Location = new System.Drawing.Point(144, 569);
             this.btnMinus.Name = "btnMinus";
             this.btnMinus.Size = new System.Drawing.Size(137, 46);
-            this.btnMinus.TabIndex = 57;
+            this.btnMinus.TabIndex = 2;
             this.btnMinus.Text = "-";
             this.btnMinus.UseVisualStyleBackColor = true;
             // 
             // btnResetPassword
             // 
             this.btnResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetPassword.Location = new System.Drawing.Point(282, 543);
+            this.btnResetPassword.Location = new System.Drawing.Point(280, 568);
             this.btnResetPassword.Name = "btnResetPassword";
-            this.btnResetPassword.Size = new System.Drawing.Size(191, 49);
-            this.btnResetPassword.TabIndex = 58;
+            this.btnResetPassword.Size = new System.Drawing.Size(191, 47);
+            this.btnResetPassword.TabIndex = 13;
             this.btnResetPassword.Text = "Reset Password";
             this.btnResetPassword.UseVisualStyleBackColor = true;
             this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
