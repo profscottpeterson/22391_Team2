@@ -36,6 +36,7 @@ namespace CoachConnect
 
         private void btnSaveEditProfile_Click(object sender, EventArgs e)
         {
+            Validation myValidation = new Validation();
             using (var context = new db_sft_2172Entities())
             {
 
@@ -45,23 +46,43 @@ namespace CoachConnect
                 string phone = txtStdPhone.Text;
                 if (String.IsNullOrEmpty(url))
                 {
-                    //lblErrorURL.Text = "Field URL is required!";
-                }/*
-                else if (String.IsNullOrEmpty(email))
-                {
-                    lblErrorEmail.Text = "Field Email is required!"
+                    lblErrorURL.Visible = true;
                 }
                 else if (String.IsNullOrEmpty(email))
                 {
-                    lblErrorPhone.Text = "Field Phone is required!";
-                }*/
+                    lblErrorEmail.Visible = true;
+                }
+                else if (String.IsNullOrEmpty(email))
+                {
+                    lblErrorPhone.Visible = true;
+                }
                 else
                 {
-                    context.SaveChanges();
-                    MessageBox.Show("Your change is saved!");;
-                    FindCoachForm coach = new FindCoachForm();
-                    coach.Show();
-                    this.Close();
+                    lblErrorURL.Visible = false;
+                    lblErrorEmail.Visible = false;
+                    lblErrorPhone.Visible = false;
+                    user.ProfilePic = url;
+                    if (myValidation.ValidateEmail(email))
+                    {
+                        user.Email = email;
+                        if (myValidation.ValidatePhone(phone))
+                        {
+                            user.Phone = myValidation.FormatPhone(phone);
+                            context.SaveChanges();
+                            MessageBox.Show("Your change is saved!"); ;
+                            FindCoachForm coach = new FindCoachForm();
+                            coach.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Enter your phone number in 10 digits!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid email address!");
+                    }     
                 }
             }
         }
@@ -75,7 +96,9 @@ namespace CoachConnect
 
         private void txtStdEmail_Leave(object sender, EventArgs e)
         {
-            if (isValidEmail(txtStdEmail.Text))
+            Validation myValidation = new Validation();
+            //if (isValidEmail(txtStdEmail.Text))
+            if (myValidation.ValidateEmail(txtStdEmail.Text))
             {
                 validEmail.Visible = true;
                 InvalidEmail.Visible = false;
@@ -88,16 +111,16 @@ namespace CoachConnect
         }
 
         //Validate input email address
-        private bool isValidEmail(string inputEmail)
-        {
-            string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
-                  @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
-                  @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
-            Regex re = new Regex(strRegex);
-            if (re.IsMatch(inputEmail))
-                return (true);
-            else
-                return (false);
-        }
+        //private bool isValidEmail(string inputEmail)
+        //{
+        //    string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
+        //          @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
+        //          @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+        //    Regex re = new Regex(strRegex);
+        //    if (re.IsMatch(inputEmail))
+        //        return (true);
+        //    else
+        //        return (false);
+        //}
     }
 }

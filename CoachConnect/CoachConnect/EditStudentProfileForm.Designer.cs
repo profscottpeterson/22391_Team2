@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.InvalidEmail = new System.Windows.Forms.PictureBox();
+            this.validEmail = new System.Windows.Forms.PictureBox();
             this.txtStdEmail = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
@@ -37,8 +39,9 @@
             this.txtStdPhone = new System.Windows.Forms.TextBox();
             this.btnSaveEditProfile = new System.Windows.Forms.Button();
             this.btnCancleEditProfile = new System.Windows.Forms.Button();
-            this.InvalidEmail = new System.Windows.Forms.PictureBox();
-            this.validEmail = new System.Windows.Forms.PictureBox();
+            this.lblErrorURL = new System.Windows.Forms.Label();
+            this.lblErrorEmail = new System.Windows.Forms.Label();
+            this.lblErrorPhone = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InvalidEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.validEmail)).BeginInit();
@@ -46,6 +49,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblErrorPhone);
+            this.groupBox1.Controls.Add(this.lblErrorEmail);
+            this.groupBox1.Controls.Add(this.lblErrorURL);
             this.groupBox1.Controls.Add(this.InvalidEmail);
             this.groupBox1.Controls.Add(this.validEmail);
             this.groupBox1.Controls.Add(this.txtStdEmail);
@@ -60,6 +66,28 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Editing Profile";
+            // 
+            // InvalidEmail
+            // 
+            this.InvalidEmail.Image = global::CoachConnect.Properties.Resources.wrong;
+            this.InvalidEmail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.InvalidEmail.Location = new System.Drawing.Point(263, 76);
+            this.InvalidEmail.Name = "InvalidEmail";
+            this.InvalidEmail.Size = new System.Drawing.Size(36, 33);
+            this.InvalidEmail.TabIndex = 38;
+            this.InvalidEmail.TabStop = false;
+            this.InvalidEmail.Visible = false;
+            // 
+            // validEmail
+            // 
+            this.validEmail.Image = global::CoachConnect.Properties.Resources.correct1;
+            this.validEmail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.validEmail.Location = new System.Drawing.Point(262, 71);
+            this.validEmail.Name = "validEmail";
+            this.validEmail.Size = new System.Drawing.Size(36, 33);
+            this.validEmail.TabIndex = 37;
+            this.validEmail.TabStop = false;
+            this.validEmail.Visible = false;
             // 
             // txtStdEmail
             // 
@@ -137,27 +165,41 @@
             this.btnCancleEditProfile.UseVisualStyleBackColor = true;
             this.btnCancleEditProfile.Click += new System.EventHandler(this.btnCancleEditProfile_Click);
             // 
-            // InvalidEmail
+            // lblErrorURL
             // 
-            this.InvalidEmail.Image = global::CoachConnect.Properties.Resources.wrong;
-            this.InvalidEmail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.InvalidEmail.Location = new System.Drawing.Point(263, 76);
-            this.InvalidEmail.Name = "InvalidEmail";
-            this.InvalidEmail.Size = new System.Drawing.Size(36, 33);
-            this.InvalidEmail.TabIndex = 38;
-            this.InvalidEmail.TabStop = false;
-            this.InvalidEmail.Visible = false;
+            this.lblErrorURL.AutoSize = true;
+            this.lblErrorURL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorURL.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorURL.Location = new System.Drawing.Point(106, 61);
+            this.lblErrorURL.Name = "lblErrorURL";
+            this.lblErrorURL.Size = new System.Drawing.Size(83, 13);
+            this.lblErrorURL.TabIndex = 39;
+            this.lblErrorURL.Text = "URL is required!";
+            this.lblErrorURL.Visible = false;
             // 
-            // validEmail
+            // lblErrorEmail
             // 
-            this.validEmail.Image = global::CoachConnect.Properties.Resources.correct1;
-            this.validEmail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.validEmail.Location = new System.Drawing.Point(262, 71);
-            this.validEmail.Name = "validEmail";
-            this.validEmail.Size = new System.Drawing.Size(36, 33);
-            this.validEmail.TabIndex = 37;
-            this.validEmail.TabStop = false;
-            this.validEmail.Visible = false;
+            this.lblErrorEmail.AutoSize = true;
+            this.lblErrorEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorEmail.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorEmail.Location = new System.Drawing.Point(106, 100);
+            this.lblErrorEmail.Name = "lblErrorEmail";
+            this.lblErrorEmail.Size = new System.Drawing.Size(86, 13);
+            this.lblErrorEmail.TabIndex = 40;
+            this.lblErrorEmail.Text = "Email is required!";
+            this.lblErrorEmail.Visible = false;
+            // 
+            // lblErrorPhone
+            // 
+            this.lblErrorPhone.AutoSize = true;
+            this.lblErrorPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrorPhone.ForeColor = System.Drawing.Color.Red;
+            this.lblErrorPhone.Location = new System.Drawing.Point(103, 138);
+            this.lblErrorPhone.Name = "lblErrorPhone";
+            this.lblErrorPhone.Size = new System.Drawing.Size(92, 13);
+            this.lblErrorPhone.TabIndex = 41;
+            this.lblErrorPhone.Text = "Phone is required!";
+            this.lblErrorPhone.Visible = false;
             // 
             // EditStudentProfileForm
             // 
@@ -190,5 +232,8 @@
         private System.Windows.Forms.Button btnCancleEditProfile;
         private System.Windows.Forms.PictureBox InvalidEmail;
         private System.Windows.Forms.PictureBox validEmail;
+        private System.Windows.Forms.Label lblErrorURL;
+        private System.Windows.Forms.Label lblErrorEmail;
+        private System.Windows.Forms.Label lblErrorPhone;
     }
 }

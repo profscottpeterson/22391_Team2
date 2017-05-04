@@ -81,5 +81,10 @@ namespace CoachConnect
                 ex.ToString();
             }
         }
+
+        private void dataGridAvailableCoaches_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            btnSelectCoach.Enabled = true;
+        }
     }
 }

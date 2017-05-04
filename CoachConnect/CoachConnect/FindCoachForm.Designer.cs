@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Label label28;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button17 = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxStdProfile = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.comboBoxCoaches = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -170,6 +170,7 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.btnStdLogout = new System.Windows.Forms.Button();
             label28 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -177,7 +178,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgrShowAppointments)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStdProfile)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panelCoach.SuspendLayout();
             this.groupBox16.SuspendLayout();
@@ -282,7 +283,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.groupBox5);
-            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.pictureBoxStdProfile);
             this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(1);
@@ -291,6 +292,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnStdLogout);
             this.groupBox5.Controls.Add(this.btnResetPassowrd);
             this.groupBox5.Controls.Add(this.btnEditProfile);
             this.groupBox5.Controls.Add(this.lblStdID);
@@ -312,7 +314,7 @@
             // btnResetPassowrd
             // 
             this.btnResetPassowrd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetPassowrd.Location = new System.Drawing.Point(536, 121);
+            this.btnResetPassowrd.Location = new System.Drawing.Point(474, 20);
             this.btnResetPassowrd.Name = "btnResetPassowrd";
             this.btnResetPassowrd.Padding = new System.Windows.Forms.Padding(1);
             this.btnResetPassowrd.Size = new System.Drawing.Size(112, 28);
@@ -324,13 +326,14 @@
             // btnEditProfile
             // 
             this.btnEditProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditProfile.Location = new System.Drawing.Point(429, 121);
+            this.btnEditProfile.Location = new System.Drawing.Point(369, 20);
             this.btnEditProfile.Name = "btnEditProfile";
             this.btnEditProfile.Padding = new System.Windows.Forms.Padding(1);
             this.btnEditProfile.Size = new System.Drawing.Size(87, 28);
             this.btnEditProfile.TabIndex = 3;
             this.btnEditProfile.Text = "Edit Profile";
             this.btnEditProfile.UseVisualStyleBackColor = true;
+            this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
             // 
             // lblStdID
             // 
@@ -416,16 +419,15 @@
             this.label35.TabIndex = 0;
             this.label35.Text = "Student Name:";
             // 
-            // pictureBox1
+            // pictureBoxStdProfile
             // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Image = global::CoachConnect.Properties.Resources.scottie;
-            this.pictureBox1.Location = new System.Drawing.Point(14, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(119, 130);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxStdProfile.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBoxStdProfile.Location = new System.Drawing.Point(14, 15);
+            this.pictureBoxStdProfile.Name = "pictureBoxStdProfile";
+            this.pictureBoxStdProfile.Size = new System.Drawing.Size(119, 130);
+            this.pictureBoxStdProfile.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxStdProfile.TabIndex = 1;
+            this.pictureBoxStdProfile.TabStop = false;
             // 
             // tabPage2
             // 
@@ -746,6 +748,7 @@
             this.Monday.Controls.Add(this.chkMonAfternoon);
             this.Monday.Controls.Add(this.chkMonMidday);
             this.Monday.Controls.Add(this.chkMonMorning);
+            this.Monday.Enabled = false;
             this.Monday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Monday.Location = new System.Drawing.Point(8, 266);
             this.Monday.Name = "Monday";
@@ -753,7 +756,6 @@
             this.Monday.TabIndex = 16;
             this.Monday.TabStop = false;
             this.Monday.Text = "Moday";
-            this.Monday.Visible = false;
             // 
             // chkMonEvening
             // 
@@ -805,6 +807,7 @@
             this.Sunday.Controls.Add(this.chkSunAfternoon);
             this.Sunday.Controls.Add(this.chkSunMidday);
             this.Sunday.Controls.Add(this.chkSunMorning);
+            this.Sunday.Enabled = false;
             this.Sunday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Sunday.Location = new System.Drawing.Point(710, 266);
             this.Sunday.Name = "Sunday";
@@ -812,7 +815,6 @@
             this.Sunday.TabIndex = 22;
             this.Sunday.TabStop = false;
             this.Sunday.Text = "Sunday";
-            this.Sunday.Visible = false;
             // 
             // chkSunEvening
             // 
@@ -864,6 +866,7 @@
             this.Tuesday.Controls.Add(this.chkTueAfternoon);
             this.Tuesday.Controls.Add(this.chkTueMidday);
             this.Tuesday.Controls.Add(this.chkTueMorning);
+            this.Tuesday.Enabled = false;
             this.Tuesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Tuesday.Location = new System.Drawing.Point(125, 266);
             this.Tuesday.Name = "Tuesday";
@@ -871,7 +874,6 @@
             this.Tuesday.TabIndex = 17;
             this.Tuesday.TabStop = false;
             this.Tuesday.Text = "Tuesday";
-            this.Tuesday.Visible = false;
             // 
             // chkTueEvening
             // 
@@ -923,6 +925,7 @@
             this.Saturday.Controls.Add(this.chkSatAfternoon);
             this.Saturday.Controls.Add(this.chkSatMidday);
             this.Saturday.Controls.Add(this.chkSatMorning);
+            this.Saturday.Enabled = false;
             this.Saturday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Saturday.Location = new System.Drawing.Point(593, 266);
             this.Saturday.Name = "Saturday";
@@ -930,7 +933,6 @@
             this.Saturday.TabIndex = 21;
             this.Saturday.TabStop = false;
             this.Saturday.Text = "Saturday";
-            this.Saturday.Visible = false;
             // 
             // chkSatEvening
             // 
@@ -982,6 +984,7 @@
             this.Wednesday.Controls.Add(this.chkWedAfternoon);
             this.Wednesday.Controls.Add(this.chkWedMidday);
             this.Wednesday.Controls.Add(this.chkWedMorning);
+            this.Wednesday.Enabled = false;
             this.Wednesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Wednesday.Location = new System.Drawing.Point(242, 266);
             this.Wednesday.Name = "Wednesday";
@@ -989,7 +992,6 @@
             this.Wednesday.TabIndex = 18;
             this.Wednesday.TabStop = false;
             this.Wednesday.Text = "Wednesday";
-            this.Wednesday.Visible = false;
             // 
             // chkWedEvening
             // 
@@ -1041,6 +1043,7 @@
             this.Friday.Controls.Add(this.chkFriAfternoon);
             this.Friday.Controls.Add(this.chkFriMidday);
             this.Friday.Controls.Add(this.chkFriMorning);
+            this.Friday.Enabled = false;
             this.Friday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Friday.Location = new System.Drawing.Point(476, 266);
             this.Friday.Name = "Friday";
@@ -1048,7 +1051,6 @@
             this.Friday.TabIndex = 20;
             this.Friday.TabStop = false;
             this.Friday.Text = "Friday";
-            this.Friday.Visible = false;
             // 
             // chkFriEvening
             // 
@@ -1100,6 +1102,7 @@
             this.Thursday.Controls.Add(this.chkThuAfternoon);
             this.Thursday.Controls.Add(this.chkThuMidday);
             this.Thursday.Controls.Add(this.chkThuMorning);
+            this.Thursday.Enabled = false;
             this.Thursday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Thursday.Location = new System.Drawing.Point(359, 266);
             this.Thursday.Name = "Thursday";
@@ -1107,7 +1110,6 @@
             this.Thursday.TabIndex = 19;
             this.Thursday.TabStop = false;
             this.Thursday.Text = "Thursday";
-            this.Thursday.Visible = false;
             // 
             // chkThuEvening
             // 
@@ -1518,6 +1520,7 @@
             this.btnSearchByTime.TabIndex = 21;
             this.btnSearchByTime.Text = "Search";
             this.btnSearchByTime.UseVisualStyleBackColor = true;
+            this.btnSearchByTime.Click += new System.EventHandler(this.btnSearchByTime_Click);
             // 
             // label49
             // 
@@ -1545,34 +1548,34 @@
             // 
             this.dataGridCoachesByTime.AllowUserToAddRows = false;
             this.dataGridCoachesByTime.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridCoachesByTime.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridCoachesByTime.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridCoachesByTime.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridCoachesByTime.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridCoachesByTime.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridCoachesByTime.Location = new System.Drawing.Point(6, 19);
             this.dataGridCoachesByTime.Name = "dataGridCoachesByTime";
             this.dataGridCoachesByTime.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridCoachesByTime.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridCoachesByTime.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridCoachesByTime.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridCoachesByTime.Size = new System.Drawing.Size(809, 191);
             this.dataGridCoachesByTime.TabIndex = 10;
@@ -1792,6 +1795,16 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Mon";
             // 
+            // btnStdLogout
+            // 
+            this.btnStdLogout.Location = new System.Drawing.Point(601, 20);
+            this.btnStdLogout.Name = "btnStdLogout";
+            this.btnStdLogout.Size = new System.Drawing.Size(75, 28);
+            this.btnStdLogout.TabIndex = 10;
+            this.btnStdLogout.Text = "Logout";
+            this.btnStdLogout.UseVisualStyleBackColor = true;
+            this.btnStdLogout.Click += new System.EventHandler(this.btnStdLogout_Click);
+            // 
             // FindCoachForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1811,7 +1824,7 @@
             this.panel1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStdProfile)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.panelCoach.ResumeLayout(false);
@@ -1894,7 +1907,7 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxStdProfile;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.DataGridView dgrShowAppointments;
         private System.Windows.Forms.Button button17;
@@ -1992,5 +2005,6 @@
         private System.Windows.Forms.Label lblPhone;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridCoachesByTime;
+        private System.Windows.Forms.Button btnStdLogout;
     }
 }

@@ -33,6 +33,7 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridAvailableCoaches = new System.Windows.Forms.DataGridView();
             this.btnInterestExit = new System.Windows.Forms.Button();
+            this.btnSelectCoach = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbInterest)).BeginInit();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAvailableCoaches)).BeginInit();
@@ -77,8 +78,10 @@
             this.dataGridAvailableCoaches.Location = new System.Drawing.Point(7, 20);
             this.dataGridAvailableCoaches.Name = "dataGridAvailableCoaches";
             this.dataGridAvailableCoaches.ReadOnly = true;
+            this.dataGridAvailableCoaches.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridAvailableCoaches.Size = new System.Drawing.Size(523, 242);
             this.dataGridAvailableCoaches.TabIndex = 1;
+            this.dataGridAvailableCoaches.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAvailableCoaches_RowEnter);
             // 
             // btnInterestExit
             // 
@@ -90,11 +93,22 @@
             this.btnInterestExit.UseVisualStyleBackColor = true;
             this.btnInterestExit.Click += new System.EventHandler(this.btnInterestExit_Click);
             // 
+            // btnSelectCoach
+            // 
+            this.btnSelectCoach.Enabled = false;
+            this.btnSelectCoach.Location = new System.Drawing.Point(334, 446);
+            this.btnSelectCoach.Name = "btnSelectCoach";
+            this.btnSelectCoach.Size = new System.Drawing.Size(105, 23);
+            this.btnSelectCoach.TabIndex = 6;
+            this.btnSelectCoach.Text = "Select Coach";
+            this.btnSelectCoach.UseVisualStyleBackColor = true;
+            // 
             // frmCoachInterest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 481);
+            this.Controls.Add(this.btnSelectCoach);
             this.Controls.Add(this.btnInterestExit);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.lblTitle);
@@ -118,5 +132,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnInterestExit;
         private System.Windows.Forms.DataGridView dataGridAvailableCoaches;
+        private System.Windows.Forms.Button btnSelectCoach;
     }
 }
