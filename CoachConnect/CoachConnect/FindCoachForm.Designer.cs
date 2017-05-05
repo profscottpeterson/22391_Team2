@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Label label28;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button17 = new System.Windows.Forms.Button();
@@ -40,6 +40,7 @@
             this.dgrShowAppointments = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnStdLogout = new System.Windows.Forms.Button();
             this.btnResetPassowrd = new System.Windows.Forms.Button();
             this.btnEditProfile = new System.Windows.Forms.Button();
             this.lblStdID = new System.Windows.Forms.Label();
@@ -54,7 +55,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.comboBoxCoaches = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.btnScheduleApptName = new System.Windows.Forms.Button();
             this.panelCoach = new System.Windows.Forms.Panel();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
@@ -71,14 +72,10 @@
             this.lblActiveCoach = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.lblSubject = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.pictureBoxCoachProfile = new System.Windows.Forms.PictureBox();
-            this.label24 = new System.Windows.Forms.Label();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.Monday = new System.Windows.Forms.GroupBox();
             this.chkMonEvening = new System.Windows.Forms.CheckBox();
             this.chkMonAfternoon = new System.Windows.Forms.CheckBox();
@@ -142,7 +139,7 @@
             this.btnArch = new System.Windows.Forms.Button();
             this.btnAgri = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnClearByTime = new System.Windows.Forms.Button();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.btnScheduleAppointment = new System.Windows.Forms.Button();
@@ -170,7 +167,6 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.btnStdLogout = new System.Windows.Forms.Button();
             label28 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -311,6 +307,16 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Profile";
             // 
+            // btnStdLogout
+            // 
+            this.btnStdLogout.Location = new System.Drawing.Point(601, 20);
+            this.btnStdLogout.Name = "btnStdLogout";
+            this.btnStdLogout.Size = new System.Drawing.Size(75, 28);
+            this.btnStdLogout.TabIndex = 10;
+            this.btnStdLogout.Text = "Logout";
+            this.btnStdLogout.UseVisualStyleBackColor = true;
+            this.btnStdLogout.Click += new System.EventHandler(this.btnStdLogout_Click);
+            // 
             // btnResetPassowrd
             // 
             this.btnResetPassowrd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -434,7 +440,7 @@
             this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabPage2.Controls.Add(this.comboBoxCoaches);
             this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.button16);
+            this.tabPage2.Controls.Add(this.btnClear);
             this.tabPage2.Controls.Add(this.btnScheduleApptName);
             this.tabPage2.Controls.Add(this.panelCoach);
             this.tabPage2.Controls.Add(label28);
@@ -444,6 +450,7 @@
             this.tabPage2.Size = new System.Drawing.Size(868, 561);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Find Coach by Name";
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // comboBoxCoaches
             // 
@@ -467,24 +474,27 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button16
+            // btnClear
             // 
-            this.button16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button16.Location = new System.Drawing.Point(767, 527);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(73, 28);
-            this.button16.TabIndex = 25;
-            this.button16.Text = "Cancel";
-            this.button16.UseVisualStyleBackColor = true;
+            this.btnClear.Enabled = false;
+            this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.Location = new System.Drawing.Point(767, 528);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(73, 28);
+            this.btnClear.TabIndex = 25;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnScheduleApptName
             // 
+            this.btnScheduleApptName.Enabled = false;
             this.btnScheduleApptName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnScheduleApptName.Location = new System.Drawing.Point(689, 527);
+            this.btnScheduleApptName.Location = new System.Drawing.Point(631, 528);
             this.btnScheduleApptName.Name = "btnScheduleApptName";
-            this.btnScheduleApptName.Size = new System.Drawing.Size(72, 28);
+            this.btnScheduleApptName.Size = new System.Drawing.Size(130, 28);
             this.btnScheduleApptName.TabIndex = 24;
-            this.btnScheduleApptName.Text = "OK";
+            this.btnScheduleApptName.Text = "Make an Appointment";
             this.btnScheduleApptName.UseVisualStyleBackColor = true;
             this.btnScheduleApptName.Click += new System.EventHandler(this.btnScheduleApptName_Click);
             // 
@@ -494,7 +504,7 @@
             this.panelCoach.Controls.Add(this.groupBox7);
             this.panelCoach.Controls.Add(this.groupBox2);
             this.panelCoach.Controls.Add(this.pictureBoxCoachProfile);
-            this.panelCoach.Controls.Add(this.label24);
+            this.panelCoach.Controls.Add(this.lblMessage);
             this.panelCoach.Controls.Add(this.Monday);
             this.panelCoach.Controls.Add(this.Sunday);
             this.panelCoach.Controls.Add(this.Tuesday);
@@ -647,11 +657,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.label16);
-            this.groupBox2.Controls.Add(this.label17);
-            this.groupBox2.Controls.Add(this.label18);
-            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.lblSubject);
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(7, 159);
@@ -661,55 +667,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Available Subjects";
             // 
-            // label15
+            // lblSubject
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(349, 26);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(41, 13);
-            this.label15.TabIndex = 5;
-            this.label15.Text = "mySQL";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(239, 26);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(56, 13);
-            this.label16.TabIndex = 4;
-            this.label16.Text = "Calculus II";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(583, 26);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(33, 13);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Excel";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(183, 26);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(21, 13);
-            this.label18.TabIndex = 2;
-            this.label18.Text = "C#";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(456, 26);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 13);
-            this.label19.TabIndex = 1;
-            this.label19.Text = "JavaScript";
+            this.lblSubject.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblSubject.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubject.Location = new System.Drawing.Point(116, 22);
+            this.lblSubject.Name = "lblSubject";
+            this.lblSubject.Padding = new System.Windows.Forms.Padding(3, 6, 3, 3);
+            this.lblSubject.Size = new System.Drawing.Size(175, 25);
+            this.lblSubject.TabIndex = 8;
             // 
             // label20
             // 
@@ -717,9 +683,9 @@
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.Location = new System.Drawing.Point(8, 26);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(110, 13);
+            this.label20.Size = new System.Drawing.Size(102, 13);
             this.label20.TabIndex = 0;
-            this.label20.Text = "Microsoft Visual Basic";
+            this.label20.Text = "Responsible subject";
             // 
             // pictureBoxCoachProfile
             // 
@@ -732,15 +698,15 @@
             this.pictureBoxCoachProfile.TabIndex = 0;
             this.pictureBoxCoachProfile.TabStop = false;
             // 
-            // label24
+            // lblMessage
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(214, 234);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(296, 13);
-            this.label24.TabIndex = 23;
-            this.label24.Text = "To make an appointment, Please select a part of a day below";
+            this.lblMessage.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Location = new System.Drawing.Point(209, 234);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(404, 18);
+            this.lblMessage.TabIndex = 23;
+            this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Monday
             // 
@@ -767,6 +733,7 @@
             this.chkMonEvening.TabIndex = 10;
             this.chkMonEvening.Text = "Evening";
             this.chkMonEvening.UseVisualStyleBackColor = true;
+            this.chkMonEvening.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkMonAfternoon
             // 
@@ -778,6 +745,7 @@
             this.chkMonAfternoon.TabIndex = 9;
             this.chkMonAfternoon.Text = "Afternoon";
             this.chkMonAfternoon.UseVisualStyleBackColor = true;
+            this.chkMonAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkMonMidday
             // 
@@ -789,6 +757,7 @@
             this.chkMonMidday.TabIndex = 8;
             this.chkMonMidday.Text = "Midday";
             this.chkMonMidday.UseVisualStyleBackColor = true;
+            this.chkMonMidday.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkMonMorning
             // 
@@ -800,6 +769,7 @@
             this.chkMonMorning.TabIndex = 7;
             this.chkMonMorning.Text = "Morning";
             this.chkMonMorning.UseVisualStyleBackColor = true;
+            this.chkMonMorning.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // Sunday
             // 
@@ -826,6 +796,7 @@
             this.chkSunEvening.TabIndex = 10;
             this.chkSunEvening.Text = "Evening";
             this.chkSunEvening.UseVisualStyleBackColor = true;
+            this.chkSunEvening.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkSunAfternoon
             // 
@@ -837,6 +808,7 @@
             this.chkSunAfternoon.TabIndex = 9;
             this.chkSunAfternoon.Text = "Afternoon";
             this.chkSunAfternoon.UseVisualStyleBackColor = true;
+            this.chkSunAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkSunMidday
             // 
@@ -848,6 +820,7 @@
             this.chkSunMidday.TabIndex = 8;
             this.chkSunMidday.Text = "Midday";
             this.chkSunMidday.UseVisualStyleBackColor = true;
+            this.chkSunMidday.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkSunMorning
             // 
@@ -859,6 +832,7 @@
             this.chkSunMorning.TabIndex = 7;
             this.chkSunMorning.Text = "Morning";
             this.chkSunMorning.UseVisualStyleBackColor = true;
+            this.chkSunMorning.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // Tuesday
             // 
@@ -885,6 +859,7 @@
             this.chkTueEvening.TabIndex = 10;
             this.chkTueEvening.Text = "Evening";
             this.chkTueEvening.UseVisualStyleBackColor = true;
+            this.chkTueEvening.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkTueAfternoon
             // 
@@ -896,6 +871,7 @@
             this.chkTueAfternoon.TabIndex = 9;
             this.chkTueAfternoon.Text = "Afternoon";
             this.chkTueAfternoon.UseVisualStyleBackColor = true;
+            this.chkTueAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkTueMidday
             // 
@@ -907,6 +883,7 @@
             this.chkTueMidday.TabIndex = 8;
             this.chkTueMidday.Text = "Midday";
             this.chkTueMidday.UseVisualStyleBackColor = true;
+            this.chkTueMidday.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkTueMorning
             // 
@@ -918,6 +895,7 @@
             this.chkTueMorning.TabIndex = 7;
             this.chkTueMorning.Text = "Morning";
             this.chkTueMorning.UseVisualStyleBackColor = true;
+            this.chkTueMorning.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // Saturday
             // 
@@ -944,6 +922,7 @@
             this.chkSatEvening.TabIndex = 10;
             this.chkSatEvening.Text = "Evening";
             this.chkSatEvening.UseVisualStyleBackColor = true;
+            this.chkSatEvening.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkSatAfternoon
             // 
@@ -955,6 +934,7 @@
             this.chkSatAfternoon.TabIndex = 9;
             this.chkSatAfternoon.Text = "Afternoon";
             this.chkSatAfternoon.UseVisualStyleBackColor = true;
+            this.chkSatAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkSatMidday
             // 
@@ -966,6 +946,7 @@
             this.chkSatMidday.TabIndex = 8;
             this.chkSatMidday.Text = "Midday";
             this.chkSatMidday.UseVisualStyleBackColor = true;
+            this.chkSatMidday.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkSatMorning
             // 
@@ -977,6 +958,7 @@
             this.chkSatMorning.TabIndex = 7;
             this.chkSatMorning.Text = "Morning";
             this.chkSatMorning.UseVisualStyleBackColor = true;
+            this.chkSatMorning.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // Wednesday
             // 
@@ -1003,6 +985,7 @@
             this.chkWedEvening.TabIndex = 10;
             this.chkWedEvening.Text = "Evening";
             this.chkWedEvening.UseVisualStyleBackColor = true;
+            this.chkWedEvening.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkWedAfternoon
             // 
@@ -1014,6 +997,7 @@
             this.chkWedAfternoon.TabIndex = 9;
             this.chkWedAfternoon.Text = "Afternoon";
             this.chkWedAfternoon.UseVisualStyleBackColor = true;
+            this.chkWedAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkWedMidday
             // 
@@ -1025,6 +1009,7 @@
             this.chkWedMidday.TabIndex = 8;
             this.chkWedMidday.Text = "Midday";
             this.chkWedMidday.UseVisualStyleBackColor = true;
+            this.chkWedMidday.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkWedMorning
             // 
@@ -1036,6 +1021,7 @@
             this.chkWedMorning.TabIndex = 7;
             this.chkWedMorning.Text = "Morning";
             this.chkWedMorning.UseVisualStyleBackColor = true;
+            this.chkWedMorning.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // Friday
             // 
@@ -1062,6 +1048,7 @@
             this.chkFriEvening.TabIndex = 10;
             this.chkFriEvening.Text = "Evening";
             this.chkFriEvening.UseVisualStyleBackColor = true;
+            this.chkFriEvening.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkFriAfternoon
             // 
@@ -1073,6 +1060,7 @@
             this.chkFriAfternoon.TabIndex = 9;
             this.chkFriAfternoon.Text = "Afternoon";
             this.chkFriAfternoon.UseVisualStyleBackColor = true;
+            this.chkFriAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkFriMidday
             // 
@@ -1084,6 +1072,7 @@
             this.chkFriMidday.TabIndex = 8;
             this.chkFriMidday.Text = "Midday";
             this.chkFriMidday.UseVisualStyleBackColor = true;
+            this.chkFriMidday.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkFriMorning
             // 
@@ -1095,6 +1084,7 @@
             this.chkFriMorning.TabIndex = 7;
             this.chkFriMorning.Text = "Morning";
             this.chkFriMorning.UseVisualStyleBackColor = true;
+            this.chkFriMorning.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // Thursday
             // 
@@ -1121,6 +1111,7 @@
             this.chkThuEvening.TabIndex = 10;
             this.chkThuEvening.Text = "Evening";
             this.chkThuEvening.UseVisualStyleBackColor = true;
+            this.chkThuEvening.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkThuAfternoon
             // 
@@ -1132,6 +1123,7 @@
             this.chkThuAfternoon.TabIndex = 9;
             this.chkThuAfternoon.Text = "Afternoon";
             this.chkThuAfternoon.UseVisualStyleBackColor = true;
+            this.chkThuAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkThuMidday
             // 
@@ -1143,6 +1135,7 @@
             this.chkThuMidday.TabIndex = 8;
             this.chkThuMidday.Text = "Midday";
             this.chkThuMidday.UseVisualStyleBackColor = true;
+            this.chkThuMidday.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // chkThuMorning
             // 
@@ -1154,6 +1147,7 @@
             this.chkThuMorning.TabIndex = 7;
             this.chkThuMorning.Text = "Morning";
             this.chkThuMorning.UseVisualStyleBackColor = true;
+            this.chkThuMorning.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // tabPage3
             // 
@@ -1458,7 +1452,7 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage4.Controls.Add(this.button3);
+            this.tabPage4.Controls.Add(this.btnClearByTime);
             this.tabPage4.Controls.Add(this.groupBox17);
             this.tabPage4.Controls.Add(this.btnScheduleAppointment);
             this.tabPage4.Controls.Add(this.btnSearchByTime);
@@ -1473,15 +1467,16 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Find Coach By Time";
             // 
-            // button3
+            // btnClearByTime
             // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(770, 518);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(73, 28);
-            this.button3.TabIndex = 30;
-            this.button3.Text = "Cancel";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnClearByTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClearByTime.Location = new System.Drawing.Point(770, 167);
+            this.btnClearByTime.Name = "btnClearByTime";
+            this.btnClearByTime.Size = new System.Drawing.Size(73, 28);
+            this.btnClearByTime.TabIndex = 30;
+            this.btnClearByTime.Text = "Clear";
+            this.btnClearByTime.UseVisualStyleBackColor = true;
+            this.btnClearByTime.Click += new System.EventHandler(this.btnClearByTime_Click);
             // 
             // groupBox17
             // 
@@ -1503,18 +1498,18 @@
             // btnScheduleAppointment
             // 
             this.btnScheduleAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnScheduleAppointment.Location = new System.Drawing.Point(682, 518);
+            this.btnScheduleAppointment.Location = new System.Drawing.Point(704, 517);
             this.btnScheduleAppointment.Name = "btnScheduleAppointment";
-            this.btnScheduleAppointment.Size = new System.Drawing.Size(73, 28);
+            this.btnScheduleAppointment.Size = new System.Drawing.Size(139, 28);
             this.btnScheduleAppointment.TabIndex = 22;
-            this.btnScheduleAppointment.Text = "OK";
+            this.btnScheduleAppointment.Text = "Make an Appointment";
             this.btnScheduleAppointment.UseVisualStyleBackColor = true;
             this.btnScheduleAppointment.Click += new System.EventHandler(this.btnScheduleAppointment_Click);
             // 
             // btnSearchByTime
             // 
             this.btnSearchByTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchByTime.Location = new System.Drawing.Point(770, 174);
+            this.btnSearchByTime.Location = new System.Drawing.Point(682, 167);
             this.btnSearchByTime.Name = "btnSearchByTime";
             this.btnSearchByTime.Size = new System.Drawing.Size(73, 28);
             this.btnSearchByTime.TabIndex = 21;
@@ -1548,34 +1543,34 @@
             // 
             this.dataGridCoachesByTime.AllowUserToAddRows = false;
             this.dataGridCoachesByTime.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridCoachesByTime.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridCoachesByTime.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridCoachesByTime.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridCoachesByTime.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridCoachesByTime.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridCoachesByTime.Location = new System.Drawing.Point(6, 19);
             this.dataGridCoachesByTime.Name = "dataGridCoachesByTime";
             this.dataGridCoachesByTime.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridCoachesByTime.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridCoachesByTime.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridCoachesByTime.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridCoachesByTime.Size = new System.Drawing.Size(809, 191);
             this.dataGridCoachesByTime.TabIndex = 10;
@@ -1795,16 +1790,6 @@
             this.label14.TabIndex = 0;
             this.label14.Text = "Mon";
             // 
-            // btnStdLogout
-            // 
-            this.btnStdLogout.Location = new System.Drawing.Point(601, 20);
-            this.btnStdLogout.Name = "btnStdLogout";
-            this.btnStdLogout.Size = new System.Drawing.Size(75, 28);
-            this.btnStdLogout.TabIndex = 10;
-            this.btnStdLogout.Text = "Logout";
-            this.btnStdLogout.UseVisualStyleBackColor = true;
-            this.btnStdLogout.Click += new System.EventHandler(this.btnStdLogout_Click);
-            // 
             // FindCoachForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1816,6 +1801,7 @@
             this.MinimizeBox = false;
             this.Name = "FindCoachForm";
             this.Text = "Student Main Form, Find Coach Form";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FindCoachForm_FormClosed);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -1828,7 +1814,6 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.panelCoach.ResumeLayout(false);
-            this.panelCoach.PerformLayout();
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
             this.groupBox7.ResumeLayout(false);
@@ -1920,16 +1905,11 @@
         private System.Windows.Forms.Label lblActiveCoach;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.PictureBox pictureBoxCoachProfile;
-        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnScheduleApptName;
-        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.GroupBox Sunday;
         private System.Windows.Forms.CheckBox chkSunEvening;
         private System.Windows.Forms.CheckBox chkSunAfternoon;
@@ -1997,7 +1977,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.GroupBox groupBox17;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnClearByTime;
         private System.Windows.Forms.ComboBox comboBoxCoaches;
         private System.Windows.Forms.Label appointmentMessage;
         private System.Windows.Forms.Label lblEmail;
@@ -2006,5 +1986,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridCoachesByTime;
         private System.Windows.Forms.Button btnStdLogout;
+        private System.Windows.Forms.Label lblSubject;
     }
 }

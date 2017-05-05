@@ -48,7 +48,6 @@ namespace CoachConnect
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             originalForm.Show();
-            this.Close();
         }
 
         /// <summary>

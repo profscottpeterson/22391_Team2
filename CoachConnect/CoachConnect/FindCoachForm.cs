@@ -190,6 +190,10 @@ namespace CoachConnect
             chkSunMidday.Checked = false;
             chkSunAfternoon.Checked = false;
             chkSunEvening.Checked = false;
+
+            //Disable buttons when search a new coach
+            btnScheduleApptName.Enabled = false;
+            btnClear.Enabled = false;
         }
 
         //Called in the button2 to search a coach
@@ -242,6 +246,7 @@ namespace CoachConnect
                 {
                     if (userQuery.Any())
                     {
+                        lblMessage.Text = "To make an appointment, Please select a day period bellow.";
                         var userResult = userQuery.FirstOrDefault<ViewSession>();
                         
                         if (userResult.Day.Equals("Monday"))
@@ -310,12 +315,34 @@ namespace CoachConnect
                         Friday.Enabled = false;
                         Saturday.Enabled = false;
                         Sunday.Enabled = false;
+                        lblMessage.Text = "This coach is not available in this session, Please choose another coach.";
                     }
                 }
                 catch (Exception e)
                 {
                     MessageBox.Show(e.Message);
                 }
+            }
+        }
+
+        //Enable buttons 
+        private void enableButtons()
+        {
+            if (chkMonMorning.Checked == true || chkMonMidday.Checked == true || chkMonAfternoon.Checked == true || chkMonEvening.Checked == true ||
+                chkTueMorning.Checked == true || chkTueMidday.Checked == true || chkTueAfternoon.Checked == true || chkTueEvening.Checked == true ||
+                chkWedMorning.Checked == true || chkWedMidday.Checked == true || chkWedAfternoon.Checked == true || chkWedEvening.Checked == true ||
+                chkThuMorning.Checked == true || chkThuMidday.Checked == true || chkThuAfternoon.Checked == true || chkThuEvening.Checked == true ||
+                chkFriMorning.Checked == true || chkFriMidday.Checked == true || chkFriAfternoon.Checked == true || chkFriEvening.Checked == true ||
+                chkSatMorning.Checked == true || chkSatMidday.Checked == true || chkSatAfternoon.Checked == true || chkSatEvening.Checked == true ||
+                chkSunMorning.Checked == true || chkSunMidday.Checked == true || chkSunAfternoon.Checked == true || chkSunEvening.Checked == true)
+            {
+                btnScheduleApptName.Enabled = true;
+                btnClear.Enabled = true;
+            }
+            else
+            {
+                btnScheduleApptName.Enabled = false;
+                btnClear.Enabled = false;
             }
         }
 
@@ -351,7 +378,7 @@ namespace CoachConnect
         //Reset password button click
         private void btnResetPassowrd_Click(object sender, EventArgs e)
         {
-            ResetStudentPassword resetForm = new ResetStudentPassword();
+            ResetStudentPassword resetForm = new ResetStudentPassword(this);
             resetForm.Show();
             this.Hide();
         }
@@ -359,7 +386,7 @@ namespace CoachConnect
         //Edit profile button click
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
-            EditStudentProfileForm editForm = new EditStudentProfileForm();
+            EditStudentProfileForm editForm = new EditStudentProfileForm(this);
             editForm.Show();
             this.Hide();
         }
@@ -627,6 +654,35 @@ namespace CoachConnect
 
             // Close this window
             this.Close();
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+            enableButtons();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            unCheckedDayPeriods();
+        }
+
+        private void btnClearByTime_Click(object sender, EventArgs e)
+        {
+            chkMon.Checked = false;
+            chkTue.Checked = false;
+            chkThu.Checked = false;
+            chkWed.Checked = false;
+            chkSat.Checked = false;
+            chkSun.Checked = false;
+            chkMorning.Checked = false;
+            chkMidday.Checked = false;
+            chkAfternoon.Checked = false;
+            chkEvening.Checked = false;
+        }
+
+        private void FindCoachForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Program.loginForm.logout();
         }
     }
 }

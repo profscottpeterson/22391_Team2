@@ -167,6 +167,8 @@
             this.Controls.Add(this.btnSaveNewPassword);
             this.Controls.Add(this.btnCancleResetPassword);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ResetStudentPassword";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

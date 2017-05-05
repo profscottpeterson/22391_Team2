@@ -12,9 +12,17 @@ namespace CoachConnect
 {
     public partial class ResetStudentPassword : Form
     {
+        Form originalForm { get; set; }
+
         public ResetStudentPassword()
         {
             InitializeComponent();
+        }
+
+        public ResetStudentPassword(Form original)
+        {
+            InitializeComponent();
+            originalForm = original;
         }
 
         //Button click to save the new password into the database
@@ -45,8 +53,7 @@ namespace CoachConnect
                             txtStdNewPassword.Text = "";
                             txtStdNewConfirmPassowrd.Text = "";
                             MessageBox.Show("Your passsword has been save!");
-                            FindCoachForm coach = new FindCoachForm();
-                            coach.Show();
+                            originalForm.Show();
                             this.Close();
                         }
                         else
@@ -70,8 +77,7 @@ namespace CoachConnect
         //Cancle the reset new password
         private void btnCancleResetPassword_Click(object sender, EventArgs e)
         {
-            FindCoachForm mainForm = new FindCoachForm();
-            mainForm.Show();
+            originalForm.Show();
             this.Close();
         }
 
@@ -135,6 +141,11 @@ namespace CoachConnect
                 newPWD.Visible = false;
                 newPWDConfirmCorrect.Visible = false;
             }
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            originalForm.Show();
         }
     }
 }

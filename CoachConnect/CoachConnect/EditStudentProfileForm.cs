@@ -13,10 +13,18 @@ namespace CoachConnect
 {
     public partial class EditStudentProfileForm : Form
     {
+        Form originalForm { get; set; }
+
         public EditStudentProfileForm()
         {
             InitializeComponent();
+        }
+
+        public EditStudentProfileForm(Form original)
+        {
+            InitializeComponent();
             getStudentInfo();
+            originalForm = original;
         }
 
         private void getStudentInfo()
@@ -70,8 +78,7 @@ namespace CoachConnect
                             user.Phone = myValidation.FormatPhone(phone);
                             context.SaveChanges();
                             MessageBox.Show("Your change is saved!"); ;
-                            FindCoachForm coach = new FindCoachForm();
-                            coach.Show();
+                            originalForm.Show();
                             this.Close();
                         }
                         else
@@ -89,8 +96,7 @@ namespace CoachConnect
 
         private void btnCancleEditProfile_Click(object sender, EventArgs e)
         {
-            FindCoachForm mainForm = new FindCoachForm();
-            mainForm.Show();
+            originalForm.Show();
             this.Close();
         }
 
@@ -108,6 +114,11 @@ namespace CoachConnect
                 validEmail.Visible = false;
                 InvalidEmail.Visible = true;
             }
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            originalForm.Show();
         }
 
         //Validate input email address
