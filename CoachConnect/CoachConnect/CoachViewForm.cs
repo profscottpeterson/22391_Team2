@@ -32,6 +32,7 @@ namespace CoachConnect
             lblAvailCoachName.Text = coach.DisplayName;
             lblAvailCoachUsername.Text = coach.UserID;
             pbAvailProfilePic.ImageLocation = coach.ProfilePic;
+            getSessionData();
             LoadAvailability();
         }
 
@@ -194,6 +195,8 @@ namespace CoachConnect
             txtMiddle.Text = coach.MiddleName;
             txtPhone.Text = validator.FormatPhone(coach.Phone);
             pbEditPic.ImageLocation = coach.ProfilePic;
+            pbAvailProfilePic.ImageLocation = coach.ProfilePic;
+            pbProfile.ImageLocation = coach.ProfilePic;
             int endDate = coach.ActiveCoachSince.ToString().IndexOf(" ");
             lblMemberSince.Text = "Active Coach Since: " + coach.ActiveCoachSince.ToString().Substring(0, endDate);
             //txtCurrentPass.Clear();
@@ -394,6 +397,35 @@ namespace CoachConnect
         {
             ClearCheckboxes();
         }
+        private void getSessionData()
+        {
+            // Generate query to pull all sessions from the database
+            try
+            {
+                using (var context = new db_sft_2172Entities())
+                {
+                    var sessionQuery = from sessions in context.ViewSessions
+                                       where sessions.UserID.Equals(Program.CurrentUser)
+                                       select sessions;
 
-     }
+                    dgvAvailable.DataSource = sessionQuery.ToList();
+
+                    // Hide SessionID...field is needed for EditSession form, but user doesn't need to see it
+                    dgvAvailable.Columns["SessionID"].Visible = false;
+                    dgvAvailable.Columns["UserID"].Visible = false;
+                    dgvAvailable.Columns["Coach"].Visible = false;
+                    dgvAvailable.Columns["active"].Visible = false;
+                    dgvAvailable.Columns["CourseName"].DisplayIndex = 1;
+                    dgvAvailable.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    dgvAvailable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+    }
 }

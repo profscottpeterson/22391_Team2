@@ -22,5 +22,7 @@ namespace CoachConnect
         public string Day { get; set; }
         public string Time { get; set; }
         public bool Full { get; set; }
+        public string UserID { get; set; }
+        public string CourseName { get; set; }
     }
 }
