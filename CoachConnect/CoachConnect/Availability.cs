@@ -19,5 +19,7 @@ namespace CoachConnect
         public string DayID { get; set; }
         public string TimePeriodID { get; set; }
         public string ProfilePic { get; set; }
+        public string UserID { get; set; }
+        public string Expr1 { get; set; }
     }
 }

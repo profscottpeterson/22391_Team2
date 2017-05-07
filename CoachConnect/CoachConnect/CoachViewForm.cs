@@ -27,8 +27,12 @@ namespace CoachConnect
             this.Text = coach.FirstName + " " + coach.LastName + " - " + coach.UserID;
             pbProfile.ImageLocation = coach.ProfilePic;
             LoadEditProfile(coach);
-            lblCoachName.Text = coach.FirstName;
+            lblCoachName.Text = coach.DisplayName;
             lblCoachUser.Text = coach.UserID;
+            lblAvailCoachName.Text = coach.DisplayName;
+            lblAvailCoachUsername.Text = coach.UserID;
+            pbAvailProfilePic.ImageLocation = coach.ProfilePic;
+            LoadAvailability();
         }
 
 
@@ -75,136 +79,6 @@ namespace CoachConnect
             EditModePrep();
             LoadEditProfile(coach);
         }
-
-        //private void txtCurrentPass_TextChanged(object sender, EventArgs e)
-        //{
-
-        //    lblPassSuccess.Visible = false;
-        //    lblPassInstructions.Visible = true;
-        //    if (!string.IsNullOrEmpty(txtCurrentPass.Text) && (EditMode = false)) EditModePrep();
-        //    if (!string.IsNullOrEmpty(txtCurrentPass.Text))
-        //    {
-        //        //btnPassCancel.Visible = true;
-        //        //grpProfilePic.Enabled = false;
-        //        //grpPersonalInfo.Enabled = false;
-        //        //EditMode = true;
-        //        //User coach = new User();
-        //        //coach = getCoach();
-        //        //EditModePrep();
-        //        grpPassword.Enabled = true;
-        //        btnPassCancel.Visible = true;
-        //        btnPassCancel.Enabled = true;
-        //        if (txtCurrentPass.Text == coach.Password)
-        //        {
-        //            lblPassInstructions.Visible = false;
-        //            pbcurrentPassCorrect.Visible = true;
-        //            txtConfirmNewPass.Enabled = true;
-        //            txtNewPass.Enabled = true;
-        //            txtCurrentPass.Enabled = false;
-        //            btnPassCancel.Visible = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        EditModePrep();
-        //    }
-        //}
-
-        //private void txtConfirmNewPass_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (txtConfirmNewPass.Text.Length >= txtNewPass.Text.Length && !string.IsNullOrEmpty(txtConfirmNewPass.Text))
-        //    {
-        //        if (txtConfirmNewPass.Text != txtNewPass.Text)
-        //        {
-        //            grpPersonalInfo.Enabled = true;
-        //            grpProfilePic.Enabled = true;
-        //            EditMode = false;
-        //            lblMatchPass.Visible = true;
-        //            pbNewPass.Visible = false;
-        //            pbConfirmPass.Visible = false;
-        //            btnUpdatePass.Visible = false;
-        //            btnPassCancel.Visible = true;
-        //        }
-        //        else if (txtNewPass.Text == txtConfirmNewPass.Text)
-        //        {
-        //            btnUpdatePass.Visible = false;
-        //            lblMatchPass.Visible = false;
-        //            pbNewPass.Visible = true;
-        //            pbConfirmPass.Visible = true;
-        //            btnUpdatePass.Visible = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        btnUpdatePass.Visible = false;
-        //        pbConfirmPass.Visible = false;
-        //        pbNewPass.Visible = false;
-        //        lblMatchPass.Visible = false;
-
-        //    }
-        //}
-
-        //private void btnPassCancel_Click(object sender, EventArgs e)
-        //{
-        //    EditModePrep();
-        //    LoadEditProfile(coach);
-        //    txtCurrentPass.Enabled = true;
-        //    pbConfirmPass.Visible = false;
-        //    pbcurrentPassCorrect.Visible = false;
-        //    pbNewPass.Visible = false;
-        //}
-
-        //private void txtNewPass_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (!string.IsNullOrEmpty(txtConfirmNewPass.Text) && txtNewPass.Text.Length >= txtConfirmNewPass.Text.Length)
-        //    {
-        //        if (txtConfirmNewPass.Text != txtNewPass.Text)
-        //        {
-        //            lblMatchPass.Visible = true;
-        //            pbNewPass.Visible = false;
-        //            pbConfirmPass.Visible = false;
-        //            btnUpdatePass.Visible = false;
-        //        }
-        //        else if (txtNewPass.Text == txtConfirmNewPass.Text)
-        //        {
-        //            lblMatchPass.Visible = false;
-        //            pbNewPass.Visible = true;
-        //            pbConfirmPass.Visible = true;
-        //            btnUpdatePass.Visible = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        pbConfirmPass.Visible = false;
-        //        pbNewPass.Visible = false;
-        //        lblMatchPass.Visible = false;
-        //        btnUpdatePass.Visible = false;
-        //    }
-        //}
-
-        //private void btnUpdatePass_Click(object sender, EventArgs e)
-        //{
-        //    if (txtNewPass.Text == txtConfirmNewPass.Text)
-        //    {
-        //        User coach = new User();
-        //        coach = getCoach();
-        //        if (coach.Password == txtCurrentPass.Text)
-        //        {
-        //            using (var context = new db_sft_2172Entities())
-        //            {
-        //                var result = context.Users.SingleOrDefault(b => b.UserID == Program.CurrentUser);
-        //                result.Password = txtConfirmNewPass.Text;
-        //                context.SaveChanges();
-        //            }
-        //            btnPassCancel.PerformClick();
-        //            lblPassInstructions.Visible = false;
-        //            lblPassSuccess.Visible = true;
-        //            grpProfilePic.Enabled = true;
-        //            grpPersonalInfo.Enabled = true;
-        //            EditMode = false;
-        //        }
-        //    }
-        //}
 
         private void btnEditInfo_Click(object sender, EventArgs e)
         {
@@ -377,5 +251,149 @@ namespace CoachConnect
             ChangePasswordForm frm = new ChangePasswordForm();
             frm.ShowDialog();
         }
-    }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            base.OnFormClosed(e);
+            Program.loginForm.logout();
+        }
+
+        private void btnEditAvailability_Click(object sender, EventArgs e)
+        {
+            FlipGrpBoxes();
+        }
+
+        private void FlipGrpBoxes()
+        {
+            grpMon.Enabled = !grpMon.Enabled;
+            grpTues.Enabled = !grpTues.Enabled;
+            grpWed.Enabled = !grpWed.Enabled;
+            grpThu.Enabled = !grpThu.Enabled;
+            grpFri.Enabled = !grpFri.Enabled;
+            grpSat.Enabled = !grpSat.Enabled;
+            grpSun.Enabled = !grpSun.Enabled;
+            btnCancelAvailability.Visible = !btnCancelAvailability.Visible;
+            btnSubmitAvailability.Visible = !btnSubmitAvailability.Visible;
+            btnEditAvailability.Visible = !btnSubmitAvailability.Visible;
+            btnCheckAll.Visible = !btnCheckAll.Visible;
+            btnCheckNone.Visible = !btnCheckNone.Visible;
+            LoadAvailability();
+        }
+
+        private void btnCancelAvailability_Click(object sender, EventArgs e)
+        {
+            FlipGrpBoxes();
+        }
+
+        private void btnSubmitAvailability_Click(object sender, EventArgs e)
+        {
+            var newEntry = new UserAvailability();
+
+            var removeOld = new db_sft_2172Entities();
+            removeOld.UserAvailabilities.RemoveRange(removeOld.UserAvailabilities.Where(u => u.UserID == Program.CurrentUser));
+            removeOld.SaveChanges();
+            foreach (Control c in grpAvailability.Controls)
+            {
+                foreach (Control ca in c.Controls)
+                {
+                    if (ca is CheckBox)
+                    {
+                        CheckBox chkbox = (CheckBox)ca;
+
+                        if (chkbox.Checked)
+                        {
+                            newEntry.UserID = Program.CurrentUser;
+                            newEntry.DayID = chkbox.Name.Substring(0, 3);
+                            newEntry.TimePeriodID = chkbox.Name.Substring(3, 3);
+
+                            using (var context = new db_sft_2172Entities())
+                            {
+                                context.UserAvailabilities.Add(newEntry);
+                                context.SaveChanges();
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            FlipGrpBoxes();
+        }
+        private void LoadAvailability()
+        {
+             List<CoachConnect.Availability> CoachAvailability = new List<CoachConnect.Availability>();
+            using (var context = new db_sft_2172Entities())
+            {
+                
+                var result = from Availability in context.Availabilities
+                             where Availability.UserID.Equals(Program.CurrentUser)
+                             select Availability;
+                CoachAvailability = result.ToList();
+
+                ClearCheckboxes();
+                
+                    foreach (Control c in grpAvailability.Controls)
+                    {
+                        foreach (Control ca in c.Controls)
+                        {
+                            foreach (Availability a in CoachAvailability)
+                            {
+                                if (ca is CheckBox)
+                            {
+                                CheckBox chk = (CheckBox)ca;
+                                if (chk.Name == (a.DayID + a.TimePeriodID))
+                                {
+                                    chk.Checked = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void ClearCheckboxes()
+        {
+            foreach(Control c in grpAvailability.Controls)
+            {
+                foreach(Control ca in c.Controls)
+                {
+                    if (ca is CheckBox)
+                    {
+                        CheckBox chk = (CheckBox)ca;
+                        chk.Checked = false;
+                    }
+                }
+            }
+        }
+        private void CheckCheckboxes()
+        {
+            foreach (Control c in grpAvailability.Controls)
+            {
+                foreach (Control ca in c.Controls)
+                {
+                    if (ca is CheckBox)
+                    {
+                        CheckBox chk = (CheckBox)ca;
+                        chk.Checked = true;
+                    }
+                }
+            }
+        }
+
+        private void btnCheckAll_Click(object sender, EventArgs e)
+        {
+            CheckCheckboxes();
+        }
+
+        private void btnCheckNone_Click(object sender, EventArgs e)
+        {
+            ClearCheckboxes();
+        }
+
+     }
 }

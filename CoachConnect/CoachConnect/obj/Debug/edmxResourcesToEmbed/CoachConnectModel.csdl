@@ -175,6 +175,8 @@
       <End Role="Session" EntitySet="Sessions" />
       <End Role="SessionRoster" EntitySet="SessionRosters" />
     </AssociationSet>
+    <EntitySet Name="StudentByCourses" EntityType="db_sft_2172Model.StudentByCourse" />
+    <EntitySet Name="ViewSessionRosters" EntityType="db_sft_2172Model.ViewSessionRoster" />
   </EntityContainer>
   <EntityType Name="TimePeriod">
     <Key>
@@ -487,12 +489,16 @@
       <PropertyRef Name="FirstName" />
       <PropertyRef Name="DayID" />
       <PropertyRef Name="TimePeriodID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Expr1" />
     </Key>
     <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="DayID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="TimePeriodID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Expr1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Session">
     <Key>
@@ -591,4 +597,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="StudentByCourse">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="DisplayName" />
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ViewSessionRoster">
+    <Key>
+      <PropertyRef Name="SessionID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="SessionID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>
