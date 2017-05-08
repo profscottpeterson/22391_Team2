@@ -46,6 +46,8 @@ namespace CoachConnect
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Availability> Availabilities { get; set; }
         public virtual DbSet<Session> Sessions { get; set; }
+        public virtual DbSet<StudentByCourse> StudentByCourses { get; set; }
+        public virtual DbSet<ViewSessionRoster> ViewSessionRosters { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

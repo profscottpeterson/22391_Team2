@@ -188,6 +188,8 @@
     <EntitySetMapping Name="ViewSessions">
       <EntityTypeMapping TypeName="db_sft_2172Model.ViewSession">
         <MappingFragment StoreEntitySet="ViewSession">
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="Full" ColumnName="Full" />
           <ScalarProperty Name="Time" ColumnName="Time" />
           <ScalarProperty Name="Day" ColumnName="Day" />
@@ -213,6 +215,8 @@
     <EntitySetMapping Name="Availabilities">
       <EntityTypeMapping TypeName="db_sft_2172Model.Availability">
         <MappingFragment StoreEntitySet="Availability">
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
           <ScalarProperty Name="TimePeriodID" ColumnName="TimePeriodID" />
           <ScalarProperty Name="DayID" ColumnName="DayID" />
@@ -237,6 +241,24 @@
           <ScalarProperty Name="DayID" ColumnName="DayID" />
           <ScalarProperty Name="RoomID" ColumnName="RoomID" />
           <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentByCourses">
+      <EntityTypeMapping TypeName="db_sft_2172Model.StudentByCourse">
+        <MappingFragment StoreEntitySet="StudentByCourse">
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewSessionRosters">
+      <EntityTypeMapping TypeName="db_sft_2172Model.ViewSessionRoster">
+        <MappingFragment StoreEntitySet="ViewSessionRoster">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="SessionID" ColumnName="SessionID" />
         </MappingFragment>
       </EntityTypeMapping>

@@ -18,7 +18,7 @@
         <AssociationConnector Association="db_sft_2172Model.FK_Department_Interest" />
         <EntityTypeShape EntityType="db_sft_2172Model.User" Width="1.5" PointX="6" PointY="11" />
         <EntityTypeShape EntityType="db_sft_2172Model.Day" Width="1.5" PointX="10.25" PointY="15" />
-        <EntityTypeShape EntityType="db_sft_2172Model.UserAvailability" Width="1.5" PointX="6.625" PointY="15.125" />
+        <EntityTypeShape EntityType="db_sft_2172Model.UserAvailability" Width="1.5" PointX="7.75" PointY="15.375" />
         <AssociationConnector Association="db_sft_2172Model.FK_UserAvailability_Day" />
         <AssociationConnector Association="db_sft_2172Model.FK_UserAvailability_TimePeriod" />
         <AssociationConnector Association="db_sft_2172Model.FK_UserAvailability_User" />
@@ -41,6 +41,8 @@
         <AssociationConnector Association="db_sft_2172Model.FK_Session_TimePeriod" />
         <AssociationConnector Association="db_sft_2172Model.FK_Session_User" />
         <AssociationConnector Association="db_sft_2172Model.FK_SessionRoster_Session" />
+        <EntityTypeShape EntityType="db_sft_2172Model.StudentByCourse" Width="1.5" PointX="12.375" PointY="12.75" />
+        <EntityTypeShape EntityType="db_sft_2172Model.ViewSessionRoster" Width="1.5" PointX="13.375" PointY="0.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

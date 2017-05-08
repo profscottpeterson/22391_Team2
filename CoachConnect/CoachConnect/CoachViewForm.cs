@@ -1,223 +1,169 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Net;
-using System.Windows.Forms;
-using System.Text.RegularExpressions;
+﻿//-----------------------------------------------------------------------
+// <copyright file="CoachViewForm.cs" company="PABT,Inc">
+//     Copyright (c) Pabt, Inc. All rights reserved
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace CoachConnect
 {
-    //Before refactoring (4.28.2017) 469 lines    
-    public partial class frmCoachView : Form
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Net;
+    using System.Text;
+    using System.Text.RegularExpressions;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// Form for the Coach's view. Here the coach can see current sessions,
+    /// change availability, or edit their profile.
+    /// </summary>
+    public partial class FrmCoachView : Form
     {
-        public bool EditMode = false;
-        public bool flagValidate = false;
-        Validation validator = new Validation();
-        User coach;
-        public frmCoachView()
+        /// <summary>
+        /// Flag to validate if the user is in edit mode
+        /// </summary>
+        private bool editMode = false;
+
+        /// <summary>
+        /// Instantiate object to allow for proper validation of text boxes
+        /// </summary>
+        private Validation validator = new Validation();
+
+        /// <summary>
+        /// Create coach object to use to populate the forms later
+        /// </summary>
+        private User coach;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FrmCoachView"/> class
+        /// </summary>
+        public FrmCoachView()
         {
-            InitializeComponent();
-            coach = new User();
-            coach = getCoach();
-            this.Text = coach.FirstName + " " + coach.LastName + " - " + coach.UserID;
-            pbProfile.ImageLocation = coach.ProfilePic;
-            LoadEditProfile(coach);
-            lblCoachName.Text = coach.FirstName;
-            lblCoachUser.Text = coach.UserID;
+            this.InitializeComponent();
+            this.coach = new User();
+            this.coach = this.GetCoach();
+            this.Text = this.coach.FirstName + " " + this.coach.LastName + " - " + this.coach.UserID;
+            this.pbProfile.ImageLocation = this.coach.ProfilePic;
+            this.LoadEditProfile(this.coach);
+            this.lblCoachName.Text = this.coach.DisplayName;
+            this.lblCoachUser.Text = this.coach.UserID;
+            this.lblAvailCoachName.Text = this.coach.DisplayName;
+            this.lblAvailCoachUsername.Text = this.coach.UserID;
+            this.pbAvailProfilePic.ImageLocation = this.coach.ProfilePic;
+            this.GetSessionData();
+            this.LoadAvailability();
         }
 
-
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Logs user out instead of closing application
+        /// </summary>
+        /// <param name="e"> event on close</param>
+        protected override void OnFormClosed(FormClosedEventArgs e)
         {
-            EditModePrep();
-            grpProfilePic.Enabled = true;
-            btnEditPic.Hide();
-            btnPreview.Show();
-            btnPicSubmit.Show();
-            btnCancel.Show();
-            foreach (Control c in grpProfilePic.Controls) c.Enabled = true;
-            txtPicURL.SelectionStart = 0;
-            txtPicURL.Text = "URL link";
-            txtPicURL.ForeColor = Color.Gray;
-            txtPicURL.SelectionLength = txtPicURL.Text.Length;
-            txtPicURL.Focus();
-            this.AcceptButton = btnPreview;
+            base.OnFormClosed(e);
+            Program.loginForm.logout();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Edit the profile Pic
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void Button1_Click(object sender, EventArgs e)
         {
-            grpProfilePic.Enabled = false;
-            EditModePrep();
-            LoadEditProfile(coach);
+            this.EditModePrep();
+            this.grpProfilePic.Enabled = true;
+            this.btnEditPic.Hide();
+            this.btnPreview.Show();
+            this.btnPicSubmit.Show();
+            this.btnCancel.Show();
+            foreach (Control c in this.grpProfilePic.Controls)
+            {
+                c.Enabled = true;
+            }
+
+            this.txtPicURL.SelectionStart = 0;
+            this.txtPicURL.Text = "URL link";
+            this.txtPicURL.ForeColor = Color.Gray;
+            this.txtPicURL.SelectionLength = this.txtPicURL.Text.Length;
+            this.txtPicURL.Focus();
+            this.AcceptButton = this.btnPreview;
         }
 
-        private void btnPreview_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Cancel Profile Pic update
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
-            pbEditPic.ImageLocation = txtPicURL.Text;
-            btnPreview.Hide();
-            btnPicSubmit.Show();
+            this.grpProfilePic.Enabled = false;
+            this.EditModePrep();
+            this.LoadEditProfile(this.coach);
         }
 
-        private void btnPicSubmit_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Preview new Profile Pic
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnPreview_Click(object sender, EventArgs e)
+        {
+            this.pbEditPic.ImageLocation = this.txtPicURL.Text;
+            this.btnPreview.Hide();
+            this.btnPicSubmit.Show();
+        }
+
+        /// <summary>
+        /// commit to new profile pic
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnPicSubmit_Click(object sender, EventArgs e)
         {
             using (var context = new db_sft_2172Entities())
             {
                 var result = context.Users.SingleOrDefault(b => b.UserID == Program.CurrentUser);
-                result.ProfilePic = txtPicURL.Text;
+                result.ProfilePic = this.txtPicURL.Text;
                 context.SaveChanges();
             }
-            grpProfilePic.Enabled = false;
-            EditModePrep();
-            LoadEditProfile(coach);
+
+            this.grpProfilePic.Enabled = false;
+            this.EditModePrep();
+            this.LoadEditProfile(this.coach);
         }
 
-        //private void txtCurrentPass_TextChanged(object sender, EventArgs e)
-        //{
-
-        //    lblPassSuccess.Visible = false;
-        //    lblPassInstructions.Visible = true;
-        //    if (!string.IsNullOrEmpty(txtCurrentPass.Text) && (EditMode = false)) EditModePrep();
-        //    if (!string.IsNullOrEmpty(txtCurrentPass.Text))
-        //    {
-        //        //btnPassCancel.Visible = true;
-        //        //grpProfilePic.Enabled = false;
-        //        //grpPersonalInfo.Enabled = false;
-        //        //EditMode = true;
-        //        //User coach = new User();
-        //        //coach = getCoach();
-        //        //EditModePrep();
-        //        grpPassword.Enabled = true;
-        //        btnPassCancel.Visible = true;
-        //        btnPassCancel.Enabled = true;
-        //        if (txtCurrentPass.Text == coach.Password)
-        //        {
-        //            lblPassInstructions.Visible = false;
-        //            pbcurrentPassCorrect.Visible = true;
-        //            txtConfirmNewPass.Enabled = true;
-        //            txtNewPass.Enabled = true;
-        //            txtCurrentPass.Enabled = false;
-        //            btnPassCancel.Visible = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        EditModePrep();
-        //    }
-        //}
-
-        //private void txtConfirmNewPass_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (txtConfirmNewPass.Text.Length >= txtNewPass.Text.Length && !string.IsNullOrEmpty(txtConfirmNewPass.Text))
-        //    {
-        //        if (txtConfirmNewPass.Text != txtNewPass.Text)
-        //        {
-        //            grpPersonalInfo.Enabled = true;
-        //            grpProfilePic.Enabled = true;
-        //            EditMode = false;
-        //            lblMatchPass.Visible = true;
-        //            pbNewPass.Visible = false;
-        //            pbConfirmPass.Visible = false;
-        //            btnUpdatePass.Visible = false;
-        //            btnPassCancel.Visible = true;
-        //        }
-        //        else if (txtNewPass.Text == txtConfirmNewPass.Text)
-        //        {
-        //            btnUpdatePass.Visible = false;
-        //            lblMatchPass.Visible = false;
-        //            pbNewPass.Visible = true;
-        //            pbConfirmPass.Visible = true;
-        //            btnUpdatePass.Visible = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        btnUpdatePass.Visible = false;
-        //        pbConfirmPass.Visible = false;
-        //        pbNewPass.Visible = false;
-        //        lblMatchPass.Visible = false;
-
-        //    }
-        //}
-
-        //private void btnPassCancel_Click(object sender, EventArgs e)
-        //{
-        //    EditModePrep();
-        //    LoadEditProfile(coach);
-        //    txtCurrentPass.Enabled = true;
-        //    pbConfirmPass.Visible = false;
-        //    pbcurrentPassCorrect.Visible = false;
-        //    pbNewPass.Visible = false;
-        //}
-
-        //private void txtNewPass_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (!string.IsNullOrEmpty(txtConfirmNewPass.Text) && txtNewPass.Text.Length >= txtConfirmNewPass.Text.Length)
-        //    {
-        //        if (txtConfirmNewPass.Text != txtNewPass.Text)
-        //        {
-        //            lblMatchPass.Visible = true;
-        //            pbNewPass.Visible = false;
-        //            pbConfirmPass.Visible = false;
-        //            btnUpdatePass.Visible = false;
-        //        }
-        //        else if (txtNewPass.Text == txtConfirmNewPass.Text)
-        //        {
-        //            lblMatchPass.Visible = false;
-        //            pbNewPass.Visible = true;
-        //            pbConfirmPass.Visible = true;
-        //            btnUpdatePass.Visible = true;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        pbConfirmPass.Visible = false;
-        //        pbNewPass.Visible = false;
-        //        lblMatchPass.Visible = false;
-        //        btnUpdatePass.Visible = false;
-        //    }
-        //}
-
-        //private void btnUpdatePass_Click(object sender, EventArgs e)
-        //{
-        //    if (txtNewPass.Text == txtConfirmNewPass.Text)
-        //    {
-        //        User coach = new User();
-        //        coach = getCoach();
-        //        if (coach.Password == txtCurrentPass.Text)
-        //        {
-        //            using (var context = new db_sft_2172Entities())
-        //            {
-        //                var result = context.Users.SingleOrDefault(b => b.UserID == Program.CurrentUser);
-        //                result.Password = txtConfirmNewPass.Text;
-        //                context.SaveChanges();
-        //            }
-        //            btnPassCancel.PerformClick();
-        //            lblPassInstructions.Visible = false;
-        //            lblPassSuccess.Visible = true;
-        //            grpProfilePic.Enabled = true;
-        //            grpPersonalInfo.Enabled = true;
-        //            EditMode = false;
-        //        }
-        //    }
-        //}
-
-        private void btnEditInfo_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Edit Coach Info
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnEditInfo_Click(object sender, EventArgs e)
         {
-            EditModePrep();
-            grpPersonalInfo.Enabled = true;
-            foreach (Control c in grpPersonalInfo.Controls) c.Enabled = true;
-            btnEditInfo.Visible = false;
-            btnSubmitInfo.Visible = true;
-            btnCancelInfo.Visible = true;
-            this.AcceptButton = btnSubmitInfo;
+            this.EditModePrep();
+            this.grpPersonalInfo.Enabled = true;
+            foreach (Control c in this.grpPersonalInfo.Controls)
+            {
+                c.Enabled = true;
+            }
+
+            this.btnEditInfo.Visible = false;
+            this.btnSubmitInfo.Visible = true;
+            this.btnCancelInfo.Visible = true;
+            this.AcceptButton = this.btnSubmitInfo;
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Logout current user
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnLogout_Click(object sender, EventArgs e)
         {
             Program.loginForm.logout();
 
@@ -225,116 +171,196 @@ namespace CoachConnect
             this.Close();
         }
 
-        private void btnCancelInfo_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Cancel any changes of user profile
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnCancelInfo_Click(object sender, EventArgs e)
         {
-            EditModePrep();
-            grpPersonalInfo.Enabled = true;
-            LoadEditProfile(coach);
+            this.EditModePrep();
+            this.grpPersonalInfo.Enabled = true;
+            this.LoadEditProfile(this.coach);
         }
 
-        private void btnSubmitInfo_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Submit updated user info
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnSubmitInfo_Click(object sender, EventArgs e)
         {
-            if (!lblFNameError.Visible && !lblMiddleError.Visible && !lblPhoneError.Visible && !lblLastName.Visible && !lblEmailError.Visible)
+            if (!this.lblFNameError.Visible && !this.lblMiddleError.Visible && !this.lblPhoneError.Visible && !this.lblLastName.Visible && !this.lblEmailError.Visible)
             {
-                updatePersonalInfo();
-                btnCancelInfo.PerformClick();
-                EditMode = false;
+                this.UpdatePersonalInfo();
+                this.btnCancelInfo.PerformClick();
+                this.editMode = false;
                 User coach = new User();
-                coach = getCoach();
+                coach = this.GetCoach();
                 this.Text = coach.FirstName + " " + coach.LastName + " - " + coach.UserID;
             }
         }
 
-        private void tbForm_Deselecting(object sender, TabControlCancelEventArgs e)
+        /// <summary>
+        /// Don't allow any tabs to be selected while in Edit mode
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void TbForm_Deselecting(object sender, TabControlCancelEventArgs e)
         {
-            if (EditMode)
+            if (this.editMode)
             {
                 MessageBox.Show("Please submit your edit or cancel before moving to other Tab");
                 e.Cancel = true;
             }
         }
 
-        private void txtFName_Leave(object sender, EventArgs e)
+        /// <summary>
+        /// Validate textbox after losing focus
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void TxtFName_Leave(object sender, EventArgs e)
         {
-            lblFNameError.Visible = !validator.ValidateTextBox(txtFName.Text);
-            if (lblFNameError.Visible) txtFName.Focus();
-            else txtFName.Text = validator.CleanString(txtFName.Text);
-        }
-
-        private void txtMiddle_Leave(object sender, EventArgs e)
-        {
-            lblMiddleError.Visible = !validator.ValidateTextBox(txtMiddle.Text);
-            if (lblMiddleError.Visible) txtMiddle.Focus();
-            else txtMiddle.Text = validator.CleanString(txtMiddle.Text);
-        }
-
-        private void txtLName_Leave(object sender, EventArgs e)
-        {
-            lblLastName.Visible = !validator.ValidateTextBox(txtLName.Text);
-            if (lblLastName.Visible) txtLName.Focus();
-            else txtLName.Text = validator.CleanString(txtLName.Text);
-        }
-
-        private void txtPhone_Leave(object sender, EventArgs e)
-        {
-
-            string sanitizedNum = validator.CleanNumber(txtPhone.Text);
-            lblPhoneError.Visible = (!validator.ValidatePhone(sanitizedNum));
-            if (!validator.ValidatePhone(sanitizedNum)) txtPhone.Focus();
-            else txtPhone.Text = validator.FormatPhone(sanitizedNum);
-        }
-
-        private void txtEmail_Leave(object sender, EventArgs e)
-        {
-            lblEmailError.Visible = !(validator.ValidateEmail(txtEmail.Text));
-            if (!validator.ValidateEmail(txtEmail.Text)) txtEmail.Focus();
-        }
-
-        public void updatePersonalInfo()
-        {
-            string phoneNoFormat = "";
-            foreach (char num in txtPhone.Text)
+            this.lblFNameError.Visible = !this.validator.ValidateTextBox(this.txtFName.Text);
+            if (this.lblFNameError.Visible)
             {
-                if (char.IsDigit(num)) phoneNoFormat += num;
+                this.txtFName.Focus();
+            }
+            else
+            {
+                this.txtFName.Text = this.validator.CleanString(this.txtFName.Text);
+            }
+        }
+
+        /// <summary>
+        /// Validate textbox after losing focus
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void TxtMiddle_Leave(object sender, EventArgs e)
+        {
+            this.lblMiddleError.Visible = !this.validator.ValidateTextBox(this.txtMiddle.Text);
+            if (this.lblMiddleError.Visible)
+            {
+                this.txtMiddle.Focus();
+            }
+            else
+            {
+                this.txtMiddle.Text = this.validator.CleanString(this.txtMiddle.Text);
+            }
+        }
+
+        /// <summary>
+        /// Validate textbox after losing focus
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void TxtLName_Leave(object sender, EventArgs e)
+        {
+            this.lblLastName.Visible = !this.validator.ValidateTextBox(this.txtLName.Text);
+            if (this.lblLastName.Visible)
+            {
+                this.txtLName.Focus();
+            }
+            else
+            {
+                this.txtLName.Text = this.validator.CleanString(this.txtLName.Text);
+            }
+        }
+
+        /// <summary>
+        /// Validate textbox after losing focus
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void TxtPhone_Leave(object sender, EventArgs e)
+        {
+            string sanitizedNum = this.validator.CleanNumber(this.txtPhone.Text);
+            this.lblPhoneError.Visible = !this.validator.ValidatePhone(sanitizedNum);
+            if (!this.validator.ValidatePhone(sanitizedNum))
+            {
+                this.txtPhone.Focus();
+            }
+            else
+            {
+                this.txtPhone.Text = this.validator.FormatPhone(sanitizedNum);
+            }
+        }
+
+        /// <summary>
+        /// Validate textbox after losing focus
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void TxtEmail_Leave(object sender, EventArgs e)
+        {
+            this.lblEmailError.Visible = !this.validator.ValidateEmail(this.txtEmail.Text);
+            if (!this.validator.ValidateEmail(this.txtEmail.Text))
+            {
+                this.txtEmail.Focus();
+            }
+        }
+
+        /// <summary>
+        /// update the database after all of the validation. 
+        /// also remove any weird formatting.
+        /// </summary>
+        private void UpdatePersonalInfo()
+        {
+            string phoneNoFormat = string.Empty;
+            foreach (char num in this.txtPhone.Text)
+            {
+                if (char.IsDigit(num))
+                {
+                    phoneNoFormat += num;
+                }
             }
 
             using (var context = new db_sft_2172Entities())
             {
                 var result = context.Users.SingleOrDefault(b => b.UserID == Program.CurrentUser);
-                result.FirstName = txtFName.Text;
-                result.LastName = txtLName.Text;
-                result.MiddleName = txtMiddle.Text;
+                result.FirstName = this.txtFName.Text;
+                result.LastName = this.txtLName.Text;
+                result.MiddleName = this.txtMiddle.Text;
                 result.Phone = phoneNoFormat;
-                result.Email = txtEmail.Text;
+                result.Email = this.txtEmail.Text;
                 context.SaveChanges();
             }
         }
 
-        public void LoadEditProfile(User coach)
+        /// <summary>
+        /// Method to load all coach information on the form
+        /// this includes all the tabs
+        /// </summary>
+        /// <param name="coach"> Load the logged in coach's profile</param>
+        private void LoadEditProfile(User coach)
         {
-            //Edit profile area
-            coach = getCoach();
-            txtEmail.Text = coach.Email;
-            txtFName.Text = coach.FirstName;
-            txtLName.Text = coach.LastName;
-            txtMiddle.Text = coach.MiddleName;
-            txtPhone.Text = validator.FormatPhone(coach.Phone);
-            pbEditPic.ImageLocation = coach.ProfilePic;
+            // Edit profile area
+            coach = this.GetCoach();
+            this.txtEmail.Text = coach.Email;
+            this.txtFName.Text = coach.FirstName;
+            this.txtLName.Text = coach.LastName;
+            this.txtMiddle.Text = coach.MiddleName;
+            this.txtPhone.Text = this.validator.FormatPhone(coach.Phone);
+            this.pbEditPic.ImageLocation = coach.ProfilePic;
+            this.pbAvailProfilePic.ImageLocation = coach.ProfilePic;
+            this.pbProfile.ImageLocation = coach.ProfilePic;
             int endDate = coach.ActiveCoachSince.ToString().IndexOf(" ");
-            lblMemberSince.Text = "Active Coach Since: " + coach.ActiveCoachSince.ToString().Substring(0, endDate);
-            //txtCurrentPass.Clear();
-            //txtNewPass.Clear();
-            //txtConfirmNewPass.Clear();
-            txtPicURL.Clear();
-            btnPreview.Hide();
-            btnPicSubmit.Hide();
-            btnCancel.Hide();
-            //Limit User interaction until they hit proper buttons
-            DisableAreas();
-            EnableEditBtns();
+            this.lblMemberSince.Text = "Active Coach Since: " + coach.ActiveCoachSince.ToString().Substring(0, endDate);
+            this.txtPicURL.Clear();
+            this.btnPreview.Hide();
+            this.btnPicSubmit.Hide();
+            this.btnCancel.Hide();
+            this.DisableAreas();
+            this.EnableEditBtns();
         }
 
-        public User getCoach()
+        /// <summary>
+        /// Get the currently logged in coach's information
+        /// </summary>
+        /// <returns>Coach is returned</returns>
+        private User GetCoach()
         {
             using (var context = new db_sft_2172Entities())
             {
@@ -345,37 +371,273 @@ namespace CoachConnect
             }
         }
 
-        public void DisableAreas()
+        /// <summary>
+        /// disable all areas except the one being edited
+        /// </summary>
+        private void DisableAreas()
         {
-            foreach (Control c in grpPersonalInfo.Controls) c.Enabled = false;
-            foreach (Control c in grpPass.Controls) c.Enabled = false;
-            foreach (Control c in grpProfilePic.Controls) c.Enabled = false;
+            foreach (Control c in this.grpPersonalInfo.Controls)
+            {
+                c.Enabled = false;
+            }
+
+            foreach (Control c in this.grpPass.Controls)
+            {
+                c.Enabled = false;
+            }
+
+            foreach (Control c in this.grpProfilePic.Controls)
+            {
+                c.Enabled = false;
+            }
         }
 
-        public void EnableEditBtns()
+        /// <summary>
+        /// Enable the edit buttons
+        /// </summary>
+        private void EnableEditBtns()
         {
-            btnEditInfo.Visible = true;
-            btnEditInfo.Enabled = true;
-            btnEditPic.Visible = true;
-            btnEditPic.Enabled = true;
-            btnCancelInfo.Visible = false;
-            btnSubmitInfo.Visible = false;
-            btnPass.Enabled = true;
-            //txtCurrentPass.Enabled = true;
+            this.btnEditInfo.Visible = true;
+            this.btnEditInfo.Enabled = true;
+            this.btnEditPic.Visible = true;
+            this.btnEditPic.Enabled = true;
+            this.btnCancelInfo.Visible = false;
+            this.btnSubmitInfo.Visible = false;
+            this.btnPass.Enabled = true;
         }
 
-        public void EditModePrep()
+        /// <summary>
+        /// prep the group boxes for editing and non editing
+        /// </summary>
+        private void EditModePrep()
         {
-            grpPass.Enabled = !grpPass.Enabled;
-            grpPersonalInfo.Enabled = !grpPersonalInfo.Enabled;
-            grpProfilePic.Enabled = !grpProfilePic.Enabled;
-            EditMode = !EditMode;
+            this.grpPass.Enabled = !this.grpPass.Enabled;
+            this.grpPersonalInfo.Enabled = !this.grpPersonalInfo.Enabled;
+            this.grpProfilePic.Enabled = !this.grpProfilePic.Enabled;
+            this.editMode = !this.editMode;
         }
 
-        private void btnPass_Click(object sender, EventArgs e)
+        /// <summary>
+        /// button that will open secondary form to edit password
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnPass_Click(object sender, EventArgs e)
         {
             ChangePasswordForm frm = new ChangePasswordForm();
             frm.ShowDialog();
+        }
+
+        /// <summary>
+        /// button to exit application
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnExit_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
+
+        /// <summary>
+        /// Allows the editing of the availability checkboxes.
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnEditAvailability_Click(object sender, EventArgs e)
+        {
+            this.FlipGrpBoxes();
+        }
+
+        /// <summary>
+        /// Enable/disable on the fly. one method will turn on /off
+        /// </summary>
+        private void FlipGrpBoxes()
+        {
+            this.grpMon.Enabled = !this.grpMon.Enabled;
+            this.grpTues.Enabled = !this.grpTues.Enabled;
+            this.grpWed.Enabled = !this.grpWed.Enabled;
+            this.grpThu.Enabled = !this.grpThu.Enabled;
+            this.grpFri.Enabled = !this.grpFri.Enabled;
+            this.grpSat.Enabled = !this.grpSat.Enabled;
+            this.grpSun.Enabled = !this.grpSun.Enabled;
+            this.btnCancelAvailability.Visible = !this.btnCancelAvailability.Visible;
+            this.btnSubmitAvailability.Visible = !this.btnSubmitAvailability.Visible;
+            this.btnEditAvailability.Visible = !this.btnSubmitAvailability.Visible;
+            this.btnCheckAll.Visible = !this.btnCheckAll.Visible;
+            this.btnCheckNone.Visible = !this.btnCheckNone.Visible;
+            this.LoadAvailability();
+        }
+
+        /// <summary>
+        /// Cancel any commits
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnCancelAvailability_Click(object sender, EventArgs e)
+        {
+            this.FlipGrpBoxes();
+        }
+
+        /// <summary>
+        /// commit to availability changes
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnSubmitAvailability_Click(object sender, EventArgs e)
+        {
+            var newEntry = new UserAvailability();
+
+            var removeOld = new db_sft_2172Entities();
+            removeOld.UserAvailabilities.RemoveRange(removeOld.UserAvailabilities.Where(u => u.UserID == Program.CurrentUser));
+            removeOld.SaveChanges();
+            foreach (Control c in this.grpAvailability.Controls)
+            {
+                foreach (Control ca in c.Controls)
+                {
+                    if (ca is CheckBox)
+                    {
+                        CheckBox chkbox = (CheckBox)ca;
+
+                        if (chkbox.Checked)
+                        {
+                            newEntry.UserID = Program.CurrentUser;
+                            newEntry.DayID = chkbox.Name.Substring(0, 3);
+                            newEntry.TimePeriodID = chkbox.Name.Substring(3, 3);
+
+                            using (var context = new db_sft_2172Entities())
+                            {
+                                context.UserAvailabilities.Add(newEntry);
+                                context.SaveChanges();
+                            }
+                        }
+                    }
+                }
+            }
+
+            this.FlipGrpBoxes();
+        }
+
+        /// <summary>
+        /// load the current availability of the coach that is logged in.
+        /// </summary>
+        private void LoadAvailability()
+        {
+            List<CoachConnect.Availability> coachAvailability = new List<CoachConnect.Availability>();
+            using (var context = new db_sft_2172Entities())
+            {
+                var result = from Availability in context.Availabilities
+                             where Availability.UserID.Equals(Program.CurrentUser)
+                             select Availability;
+                coachAvailability = result.ToList();
+
+                this.ClearCheckboxes();
+                
+                    foreach (Control c in this.grpAvailability.Controls)
+                    {
+                        foreach (Control ca in c.Controls)
+                        {
+                            foreach (Availability a in coachAvailability)
+                            {
+                                if (ca is CheckBox)
+                            {
+                                CheckBox chk = (CheckBox)ca;
+                                if (chk.Name == (a.DayID + a.TimePeriodID))
+                                {
+                                    chk.Checked = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// clear all check boxes (Initialization and prep)
+        /// </summary>
+        private void ClearCheckboxes()
+        {
+            foreach (Control c in this.grpAvailability.Controls)
+            {
+                foreach (Control ca in c.Controls)
+                {
+                    if (ca is CheckBox)
+                    {
+                        CheckBox chk = (CheckBox)ca;
+                        chk.Checked = false;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Allows simple check all
+        /// </summary>
+        private void CheckCheckboxes()
+        {
+            foreach (Control c in this.grpAvailability.Controls)
+            {
+                foreach (Control ca in c.Controls)
+                {
+                    if (ca is CheckBox)
+                    {
+                        CheckBox chk = (CheckBox)ca;
+                        chk.Checked = true;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// button to call the check checkboxes method
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnCheckAll_Click(object sender, EventArgs e)
+        {
+            this.CheckCheckboxes();
+        }
+
+        /// <summary>
+        /// button to call method to clear checkboxes
+        /// </summary>
+        /// <param name="sender">object sent</param>
+        /// <param name="e">event on click</param>
+        private void BtnCheckNone_Click(object sender, EventArgs e)
+        {
+            this.ClearCheckboxes();
+        }
+
+        /// <summary>
+        /// get the currently logged in coach's session list
+        /// </summary>
+        private void GetSessionData()
+        {
+            // Generate query to pull all sessions from the database
+            try
+            {
+                using (var context = new db_sft_2172Entities())
+                {
+                    var sessionQuery = from sessions in context.ViewSessions
+                                       where sessions.UserID.Equals(Program.CurrentUser)
+                                       select sessions;
+
+                    this.dgvAvailable.DataSource = sessionQuery.ToList();
+
+                    // Hide SessionID...field is needed for EditSession form, but user doesn't need to see it
+                    this.dgvAvailable.Columns["SessionID"].Visible = false;
+                    this.dgvAvailable.Columns["UserID"].Visible = false;
+                    this.dgvAvailable.Columns["Coach"].Visible = false;
+                    this.dgvAvailable.Columns["active"].Visible = false;
+                    this.dgvAvailable.Columns["CourseName"].DisplayIndex = 1;
+                    this.dgvAvailable.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                    this.dgvAvailable.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

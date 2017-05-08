@@ -13,7 +13,7 @@ namespace CoachConnect
     public partial class AdminForm : Form
     {
         /// <summary>
-        /// Constructor to initialize form and set up subforms on individual tabs
+        /// Initializes a new instance of the <see cref="AdminForm"/>
         /// </summary>
         public AdminForm()
         {
