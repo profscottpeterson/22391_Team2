@@ -130,7 +130,7 @@ C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\Enti
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.xml
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AdminForm.resources
-C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachView.resources
+C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FrmCoachView.resources
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ChangePasswordForm.resources
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditSession.resources
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditStudentProfileForm.resources

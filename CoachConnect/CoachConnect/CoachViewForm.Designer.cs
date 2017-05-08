@@ -1,6 +1,14 @@
-﻿namespace CoachConnect
+﻿//-----------------------------------------------------------------------
+// <copyright file="CoachViewForm.Designer.cs" company="PABT,Inc">
+//     Copyright (c) Pabt, Inc. All rights reserved
+// </copyright>
+//-----------------------------------------------------------------------
+namespace CoachConnect
 {
-    partial class frmCoachView
+    /// <summary>
+    /// Design View
+    /// </summary>
+    public partial class FrmCoachView
     {
         /// <summary>
         /// Required designer variable.
@@ -13,10 +21,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -29,7 +38,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCoachView));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCoachView));
             this.tbForm = new System.Windows.Forms.TabControl();
             this.tbSchedule = new System.Windows.Forms.TabPage();
             this.dgvAvailable = new System.Windows.Forms.DataGridView();
@@ -150,7 +159,7 @@
             this.tbForm.SelectedIndex = 0;
             this.tbForm.Size = new System.Drawing.Size(547, 500);
             this.tbForm.TabIndex = 0;
-            this.tbForm.Deselecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tbForm_Deselecting);
+            this.tbForm.Deselecting += new System.Windows.Forms.TabControlCancelEventHandler(this.TbForm_Deselecting);
             // 
             // tbSchedule
             // 
@@ -309,7 +318,7 @@
             this.btnCheckAll.Text = "All";
             this.btnCheckAll.UseVisualStyleBackColor = true;
             this.btnCheckAll.Visible = false;
-            this.btnCheckAll.Click += new System.EventHandler(this.btnCheckAll_Click);
+            this.btnCheckAll.Click += new System.EventHandler(this.BtnCheckAll_Click);
             // 
             // btnCheckNone
             // 
@@ -320,7 +329,7 @@
             this.btnCheckNone.Text = "None";
             this.btnCheckNone.UseVisualStyleBackColor = true;
             this.btnCheckNone.Visible = false;
-            this.btnCheckNone.Click += new System.EventHandler(this.btnCheckNone_Click);
+            this.btnCheckNone.Click += new System.EventHandler(this.BtnCheckNone_Click);
             // 
             // label5
             // 
@@ -340,7 +349,7 @@
             this.btnCancelAvailability.Text = "Cancel";
             this.btnCancelAvailability.UseVisualStyleBackColor = true;
             this.btnCancelAvailability.Visible = false;
-            this.btnCancelAvailability.Click += new System.EventHandler(this.btnCancelAvailability_Click);
+            this.btnCancelAvailability.Click += new System.EventHandler(this.BtnCancelAvailability_Click);
             // 
             // label4
             // 
@@ -360,7 +369,7 @@
             this.btnSubmitAvailability.Text = "Submit";
             this.btnSubmitAvailability.UseVisualStyleBackColor = true;
             this.btnSubmitAvailability.Visible = false;
-            this.btnSubmitAvailability.Click += new System.EventHandler(this.btnSubmitAvailability_Click);
+            this.btnSubmitAvailability.Click += new System.EventHandler(this.BtnSubmitAvailability_Click);
             // 
             // label3
             // 
@@ -379,7 +388,7 @@
             this.btnEditAvailability.TabIndex = 34;
             this.btnEditAvailability.Text = "Edit";
             this.btnEditAvailability.UseVisualStyleBackColor = true;
-            this.btnEditAvailability.Click += new System.EventHandler(this.btnEditAvailability_Click);
+            this.btnEditAvailability.Click += new System.EventHandler(this.BtnEditAvailability_Click);
             // 
             // lblMor
             // 
@@ -808,7 +817,7 @@
             this.btnPass.TabIndex = 0;
             this.btnPass.Text = "Reset Password";
             this.btnPass.UseVisualStyleBackColor = true;
-            this.btnPass.Click += new System.EventHandler(this.btnPass_Click);
+            this.btnPass.Click += new System.EventHandler(this.BtnPass_Click);
             // 
             // grpProfilePic
             // 
@@ -836,7 +845,7 @@
             this.btnPreview.Text = "Preview";
             this.btnPreview.UseVisualStyleBackColor = true;
             this.btnPreview.Visible = false;
-            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
+            this.btnPreview.Click += new System.EventHandler(this.BtnPreview_Click);
             // 
             // btnPicSubmit
             // 
@@ -848,7 +857,7 @@
             this.btnPicSubmit.Text = "Submit";
             this.btnPicSubmit.UseVisualStyleBackColor = true;
             this.btnPicSubmit.Visible = false;
-            this.btnPicSubmit.Click += new System.EventHandler(this.btnPicSubmit_Click);
+            this.btnPicSubmit.Click += new System.EventHandler(this.BtnPicSubmit_Click);
             // 
             // txtPicURL
             // 
@@ -877,7 +886,7 @@
             this.btnEditPic.TabIndex = 2;
             this.btnEditPic.Text = "Edit Pic";
             this.btnEditPic.UseVisualStyleBackColor = true;
-            this.btnEditPic.Click += new System.EventHandler(this.button1_Click);
+            this.btnEditPic.Click += new System.EventHandler(this.Button1_Click);
             // 
             // btnCancel
             // 
@@ -889,7 +898,7 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Visible = false;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // pbEditPic
             // 
@@ -938,7 +947,7 @@
             this.btnSubmitInfo.Text = "Update";
             this.btnSubmitInfo.UseVisualStyleBackColor = true;
             this.btnSubmitInfo.Visible = false;
-            this.btnSubmitInfo.Click += new System.EventHandler(this.btnSubmitInfo_Click);
+            this.btnSubmitInfo.Click += new System.EventHandler(this.BtnSubmitInfo_Click);
             // 
             // btnCancelInfo
             // 
@@ -950,7 +959,7 @@
             this.btnCancelInfo.Text = "Cancel";
             this.btnCancelInfo.UseVisualStyleBackColor = true;
             this.btnCancelInfo.Visible = false;
-            this.btnCancelInfo.Click += new System.EventHandler(this.btnCancelInfo_Click);
+            this.btnCancelInfo.Click += new System.EventHandler(this.BtnCancelInfo_Click);
             // 
             // btnEditInfo
             // 
@@ -960,7 +969,7 @@
             this.btnEditInfo.TabIndex = 18;
             this.btnEditInfo.Text = "Edit";
             this.btnEditInfo.UseVisualStyleBackColor = true;
-            this.btnEditInfo.Click += new System.EventHandler(this.btnEditInfo_Click);
+            this.btnEditInfo.Click += new System.EventHandler(this.BtnEditInfo_Click);
             // 
             // txtEmail
             // 
@@ -972,7 +981,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(201, 20);
             this.txtEmail.TabIndex = 13;
-            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
+            this.txtEmail.Leave += new System.EventHandler(this.TxtEmail_Leave);
             // 
             // lblEmail
             // 
@@ -994,7 +1003,7 @@
             this.txtMiddle.Name = "txtMiddle";
             this.txtMiddle.Size = new System.Drawing.Size(201, 20);
             this.txtMiddle.TabIndex = 10;
-            this.txtMiddle.Leave += new System.EventHandler(this.txtMiddle_Leave);
+            this.txtMiddle.Leave += new System.EventHandler(this.TxtMiddle_Leave);
             // 
             // lblMiddle
             // 
@@ -1017,7 +1026,7 @@
             this.txtPhone.Size = new System.Drawing.Size(95, 20);
             this.txtPhone.TabIndex = 12;
             this.txtPhone.Text = "(888)888.8888";
-            this.txtPhone.Leave += new System.EventHandler(this.txtPhone_Leave);
+            this.txtPhone.Leave += new System.EventHandler(this.TxtPhone_Leave);
             // 
             // lblPhone
             // 
@@ -1039,7 +1048,7 @@
             this.txtLName.Name = "txtLName";
             this.txtLName.Size = new System.Drawing.Size(201, 20);
             this.txtLName.TabIndex = 11;
-            this.txtLName.Leave += new System.EventHandler(this.txtLName_Leave);
+            this.txtLName.Leave += new System.EventHandler(this.TxtLName_Leave);
             // 
             // txtFName
             // 
@@ -1051,7 +1060,7 @@
             this.txtFName.Name = "txtFName";
             this.txtFName.Size = new System.Drawing.Size(201, 20);
             this.txtFName.TabIndex = 9;
-            this.txtFName.Leave += new System.EventHandler(this.txtFName_Leave);
+            this.txtFName.Leave += new System.EventHandler(this.TxtFName_Leave);
             // 
             // lblLName
             // 
@@ -1141,7 +1150,7 @@
             this.btnLogout.TabIndex = 16;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            this.btnLogout.Click += new System.EventHandler(this.BtnLogout_Click);
             // 
             // btnExit
             // 
@@ -1151,7 +1160,7 @@
             this.btnExit.TabIndex = 17;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
             // frmCoachView
             // 

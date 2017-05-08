@@ -83,6 +83,7 @@
     </Compile>
     <Compile Include="CoachViewForm.Designer.cs">
       <DependentUpon>CoachViewForm.cs</DependentUpon>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="ChangePasswordForm.cs">
       <SubType>Form</SubType>

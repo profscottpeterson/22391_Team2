@@ -1,25 +1,39 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿//-----------------------------------------------------------------------
+// <copyright file="ValidationTest.cs" company="PABT,Inc">
+//     Copyright (c) Pabt, Inc. All rights reserved
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace CoachConnect.Tests
 {
-       [TestClass]
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    
+    /// <summary>
+    /// Validation Tests
+    /// </summary>
+    [TestClass]
        public class ValidationTest
     {
-
+        /// <summary>
+        /// testing if null in text box
+        /// </summary>
         [TestMethod]
         public void ValidateTextBox_Null()
         {
             Validation testValidate = new Validation();
-            string test1 = "";
+            string test1 = string.Empty;
             bool expected = false;
             bool actual = testValidate.ValidateTextBox(test1);
 
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Validate with special Characters
+        /// </summary>
         [TestMethod]
         public void ValidateTextBox_NonAlpha()
         {
@@ -31,6 +45,9 @@ namespace CoachConnect.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Test with out the @ sign
+        /// </summary>
         [TestMethod]
         public void ValidateEmail_Sans_At()
         {
@@ -42,6 +59,9 @@ namespace CoachConnect.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Test with normal email
+        /// </summary>
         [TestMethod]
         public void ValidateEmail()
         {
@@ -53,6 +73,9 @@ namespace CoachConnect.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Test if user puts in more than 10 digits
+        /// </summary>
         [TestMethod]
         public void ValidatePhone_10plusDigits()
         {
@@ -63,6 +86,10 @@ namespace CoachConnect.Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        /// Test if user puts in less than 10 digits
+        /// </summary>
         [TestMethod]
         public void ValidatePhone_10minusDigits()
         {
@@ -74,6 +101,9 @@ namespace CoachConnect.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Test normal phone
+        /// </summary>
         [TestMethod]
         public void ValidatePhone()
         {
@@ -84,6 +114,10 @@ namespace CoachConnect.Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        /// Test if it string gets successfully cleaned
+        /// </summary>
         [TestMethod]
         public void CleanString()
         {
@@ -94,6 +128,10 @@ namespace CoachConnect.Tests
 
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        /// One letter name properly formatted
+        /// </summary>
         [TestMethod]
         public void CleanString_OneCharacter()
         {
@@ -105,6 +143,9 @@ namespace CoachConnect.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Test if it pulls out all numbers
+        /// </summary>
         [TestMethod]
         public void CleanNumber()
         {
@@ -116,6 +157,9 @@ namespace CoachConnect.Tests
             Assert.AreEqual(expected, actual);
         }
 
+        /// <summary>
+        /// Test if phone gets formatted correctly
+        /// </summary>
         [TestMethod]
         public void FormatPhone()
         {
