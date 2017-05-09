@@ -8,14 +8,8 @@ namespace CoachConnect
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
     using System.Drawing;
     using System.Linq;
-    using System.Net;
-    using System.Text;
-    using System.Text.RegularExpressions;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     /// <summary>
@@ -475,6 +469,7 @@ namespace CoachConnect
         /// <param name="e">event on click</param>
         private void BtnCancelAvailability_Click(object sender, EventArgs e)
         {
+            this.ClearAvailbleErrors();
             this.FlipGrpBoxes();
         }
 
@@ -486,35 +481,38 @@ namespace CoachConnect
         private void BtnSubmitAvailability_Click(object sender, EventArgs e)
         {
             var newEntry = new UserAvailability();
-
             var removeOld = new db_sft_2172Entities();
-            removeOld.UserAvailabilities.RemoveRange(removeOld.UserAvailabilities.Where(u => u.UserID == Program.CurrentUser));
-            removeOld.SaveChanges();
-            foreach (Control c in this.grpAvailability.Controls)
+            if (this.CheckSessionAvailbility())
             {
-                foreach (Control ca in c.Controls)
+                removeOld.UserAvailabilities.RemoveRange(
+                    removeOld.UserAvailabilities.Where(u => u.UserID == Program.CurrentUser));
+                removeOld.SaveChanges();
+                foreach (Control c in this.grpAvailability.Controls)
                 {
-                    if (ca is CheckBox)
+                    foreach (Control ca in c.Controls)
                     {
-                        CheckBox chkbox = (CheckBox)ca;
-
-                        if (chkbox.Checked)
+                        if (ca is CheckBox)
                         {
-                            newEntry.UserID = Program.CurrentUser;
-                            newEntry.DayID = chkbox.Name.Substring(0, 3);
-                            newEntry.TimePeriodID = chkbox.Name.Substring(3, 3);
+                            CheckBox chkbox = (CheckBox)ca;
 
-                            using (var context = new db_sft_2172Entities())
+                            if (chkbox.Checked)
                             {
-                                context.UserAvailabilities.Add(newEntry);
-                                context.SaveChanges();
+                                newEntry.UserID = Program.CurrentUser;
+                                newEntry.DayID = chkbox.Name.Substring(0, 3);
+                                newEntry.TimePeriodID = chkbox.Name.Substring(3, 3);
+
+                                using (var context = new db_sft_2172Entities())
+                                {
+                                    context.UserAvailabilities.Add(newEntry);
+                                    context.SaveChanges();
+                                }
                             }
                         }
                     }
                 }
+                
+                this.FlipGrpBoxes();
             }
-
-            this.FlipGrpBoxes();
         }
 
         /// <summary>
@@ -557,6 +555,7 @@ namespace CoachConnect
         /// </summary>
         private void ClearCheckboxes()
         {
+            this.ClearAvailbleErrors();
             foreach (Control c in this.grpAvailability.Controls)
             {
                 foreach (Control ca in c.Controls)
@@ -575,6 +574,7 @@ namespace CoachConnect
         /// </summary>
         private void CheckCheckboxes()
         {
+            this.ClearAvailbleErrors();
             foreach (Control c in this.grpAvailability.Controls)
             {
                 foreach (Control ca in c.Controls)
@@ -637,6 +637,68 @@ namespace CoachConnect
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Checks to see if they coach has an active session before adjusting the availability
+        /// </summary>
+        /// <returns>Returns boolean value if valid available edit</returns>
+        private bool CheckSessionAvailbility()
+        {
+            bool validChange = true;
+            List<CoachConnect.Session> sessquery = new List<CoachConnect.Session>();
+            using (var context = new db_sft_2172Entities())
+            {
+                var coachSession = from sessions in context.Sessions
+                    where sessions.CoachID.Equals(Program.CurrentUser)
+                    select sessions;
+                sessquery = coachSession.ToList();
+
+                foreach (Control c in this.grpAvailability.Controls)
+                {
+                    foreach (Control ca in c.Controls)
+                    {
+                        foreach (Session a in sessquery)
+                        {
+                            if (ca is CheckBox)
+                            {
+                                CheckBox chk = (CheckBox)ca;
+                                if (!chk.Checked && a.DayID + a.TimePeriodID == chk.Name && a.Active)
+                                {
+                                    chk.Text = "X";
+                                    chk.ForeColor = Color.White;
+                                    chk.BackColor = Color.Red;
+                                    validChange = false;
+                                    chk.Checked = true;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                return validChange;
+            }
+        }
+
+        /// <summary>
+        /// Clean up the GUI
+        /// </summary>
+        private void ClearAvailbleErrors()
+        {
+            {
+                foreach (Control c in this.grpAvailability.Controls)
+                {
+                    foreach (Control ca in c.Controls)
+                    {
+                        if (ca is CheckBox)
+                        {
+                            CheckBox chk = (CheckBox)ca;
+                            chk.BackColor = SystemColors.Control;
+                            chk.Text = string.Empty;
+                        }
+                    }
+                }
             }
         }
     }

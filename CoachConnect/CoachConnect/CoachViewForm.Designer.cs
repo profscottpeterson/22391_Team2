@@ -447,12 +447,14 @@ namespace CoachConnect
             // MONMOR
             // 
             this.MONMOR.AutoSize = true;
+            this.MONMOR.BackColor = System.Drawing.SystemColors.Control;
             this.MONMOR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MONMOR.ForeColor = System.Drawing.SystemColors.ControlText;
             this.MONMOR.Location = new System.Drawing.Point(17, 28);
             this.MONMOR.Name = "MONMOR";
             this.MONMOR.Size = new System.Drawing.Size(15, 14);
             this.MONMOR.TabIndex = 7;
-            this.MONMOR.UseVisualStyleBackColor = true;
+            this.MONMOR.UseVisualStyleBackColor = false;
             // 
             // grpSun
             // 
@@ -1162,7 +1164,7 @@ namespace CoachConnect
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.BtnExit_Click);
             // 
-            // frmCoachView
+            // FrmCoachView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1174,7 +1176,7 @@ namespace CoachConnect
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmCoachView";
+            this.Name = "FrmCoachView";
             this.Text = "CoachViewForm";
             this.tbForm.ResumeLayout(false);
             this.tbSchedule.ResumeLayout(false);
