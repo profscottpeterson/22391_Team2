@@ -185,20 +185,6 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="db_sft_2172Model.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="db_sft_2172Model.Store.sp_upgraddiagrams" />
-    <EntitySetMapping Name="ViewSessions">
-      <EntityTypeMapping TypeName="db_sft_2172Model.ViewSession">
-        <MappingFragment StoreEntitySet="ViewSession">
-          <ScalarProperty Name="Full" ColumnName="Full" />
-          <ScalarProperty Name="Time" ColumnName="Time" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-          <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="Coach" ColumnName="Coach" />
-          <ScalarProperty Name="Room" ColumnName="Room" />
-          <ScalarProperty Name="Course" ColumnName="Course" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="db_sft_2172Model.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -213,6 +199,8 @@
     <EntitySetMapping Name="Availabilities">
       <EntityTypeMapping TypeName="db_sft_2172Model.Availability">
         <MappingFragment StoreEntitySet="Availability">
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
           <ScalarProperty Name="TimePeriodID" ColumnName="TimePeriodID" />
           <ScalarProperty Name="DayID" ColumnName="DayID" />
@@ -237,6 +225,40 @@
           <ScalarProperty Name="DayID" ColumnName="DayID" />
           <ScalarProperty Name="RoomID" ColumnName="RoomID" />
           <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentByCourses">
+      <EntityTypeMapping TypeName="db_sft_2172Model.StudentByCourse">
+        <MappingFragment StoreEntitySet="StudentByCourse">
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewSessionRosters">
+      <EntityTypeMapping TypeName="db_sft_2172Model.ViewSessionRoster">
+        <MappingFragment StoreEntitySet="ViewSessionRoster">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewSessions">
+      <EntityTypeMapping TypeName="db_sft_2172Model.ViewSession">
+        <MappingFragment StoreEntitySet="ViewSession">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Full" ColumnName="Full" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Coach" ColumnName="Coach" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
           <ScalarProperty Name="SessionID" ColumnName="SessionID" />
         </MappingFragment>
       </EntityTypeMapping>

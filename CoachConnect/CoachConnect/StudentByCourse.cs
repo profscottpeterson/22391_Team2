@@ -15,22 +15,14 @@ namespace CoachConnect
 using System;
     using System.Collections.Generic;
     
-public partial class Availability
+public partial class StudentByCourse
 {
-
-    public string LastName { get; set; }
-
-    public string FirstName { get; set; }
-
-    public string DayID { get; set; }
-
-    public string TimePeriodID { get; set; }
-
-    public string ProfilePic { get; set; }
 
     public string UserID { get; set; }
 
-    public string Expr1 { get; set; }
+    public string DisplayName { get; set; }
+
+    public string CourseID { get; set; }
 
 }
 

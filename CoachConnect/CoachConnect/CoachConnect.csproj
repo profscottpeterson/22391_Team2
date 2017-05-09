@@ -145,6 +145,9 @@
     <Compile Include="sp_helpdiagrams_Result.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StudentByCourse.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sysdiagram.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -215,6 +218,9 @@
     </Compile>
     <Compile Include="Validation.cs" />
     <Compile Include="ViewSession.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSessionRoster.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AdminForm.resx">

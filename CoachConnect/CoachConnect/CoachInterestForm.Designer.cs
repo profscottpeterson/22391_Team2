@@ -85,7 +85,7 @@
             // 
             // btnInterestExit
             // 
-            this.btnInterestExit.Location = new System.Drawing.Point(301, 446);
+            this.btnInterestExit.Location = new System.Drawing.Point(339, 446);
             this.btnInterestExit.Name = "btnInterestExit";
             this.btnInterestExit.Size = new System.Drawing.Size(105, 23);
             this.btnInterestExit.TabIndex = 5;
@@ -96,12 +96,13 @@
             // btnSelectCoach
             // 
             this.btnSelectCoach.Enabled = false;
-            this.btnSelectCoach.Location = new System.Drawing.Point(421, 446);
+            this.btnSelectCoach.Location = new System.Drawing.Point(460, 446);
             this.btnSelectCoach.Name = "btnSelectCoach";
-            this.btnSelectCoach.Size = new System.Drawing.Size(127, 23);
+            this.btnSelectCoach.Size = new System.Drawing.Size(88, 23);
             this.btnSelectCoach.TabIndex = 6;
-            this.btnSelectCoach.Text = "Make an Appointment";
+            this.btnSelectCoach.Text = "Assign Coach";
             this.btnSelectCoach.UseVisualStyleBackColor = true;
+            this.btnSelectCoach.Click += new System.EventHandler(this.btnSelectCoach_Click);
             // 
             // frmCoachInterest
             // 

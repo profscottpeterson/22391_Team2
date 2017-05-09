@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace CoachConnect
 {
     public partial class FindCoachForm : Form
@@ -106,7 +107,7 @@ namespace CoachConnect
             {
                 var userQuery = from u in context.Users
                                 where u.UserID.Equals(Program.CurrentUser)
-                                select u;
+                                select u; 
                 var userResult = userQuery.FirstOrDefault<User>();
                 lblStdID.Text = userResult.UserID;
                 lblStdName.Text = userResult.FirstName + " " + userResult.LastName;
@@ -118,24 +119,38 @@ namespace CoachConnect
                 {
                     pictureBoxStdProfile.Image = Bitmap.FromStream(stream);
                 }
+
+                var userCourse = from c in context.Courses
+                                 join uc in context.UserCourses on c.CourseID equals uc.CourseID
+                                 where uc.UserID.Equals(userResult.UserID)
+                                 select c.CourseName;
+                if (!userCourse.Any())
+                {
+                    lblRegisterStatusMessage.Visible = true;
+                    listBoxCourse.Visible = false;
+                }
+                else
+                {
+                    lblRegisterStatusMessage.Visible = false;
+                    listBoxCourse.Visible = true;
+                    foreach(var c in userCourse.ToList())
+                    {
+                        listBoxCourse.Items.Add(c);
+                    }
+                }
+               
             }
         }
 
-        //Display phone number in the phone format
-        //private string displayPhoneFormat(string phone)
-        //{
-        //    string p = phone;
-        //    string formatedPhoneNumber = string.Format("({0}) {1}-{2}", p.Substring(0, 3), p.Substring(3, 3), p.Substring(6, 4));
-        //    return formatedPhoneNumber;
-        //}
-        //Display all available coaches on the combobox
+        //Display coaches in the dropdown comboBox
         private void displayCoachList()
         {
             using (var context = new db_sft_2172Entities())
             {
                 var userQuery = (from u in context.Users
+                                 join s in context.Sessions on u.UserID equals s.CoachID
                                  where u.IsCoach.Equals(true)
-                                 select u.FirstName).ToList();
+                                 select u.DisplayName).ToList().Distinct();
 
                 foreach (var c in userQuery)
                 {
@@ -150,10 +165,50 @@ namespace CoachConnect
         {
             string selectedCoach = (string)comboBoxCoaches.SelectedItem;
             unCheckedDayPeriods();
+            disableChkPeriod();
             seachForCoach(selectedCoach);
         }
 
-        //Called in the unchecked day period method to clear the check boxes first
+        //To disable checkboxes on the Coach by Name tab
+        private void disableChkPeriod()
+        {
+            chkMonMorning.Enabled = false;
+            chkMonMidday.Enabled = false;
+            chkMonAfternoon.Enabled = false;
+            chkMonEvening.Enabled = false;
+
+            chkTueMorning.Enabled = false;
+            chkTueMidday.Enabled = false;
+            chkTueAfternoon.Enabled = false;
+            chkTueEvening.Enabled = false;
+
+            chkWedMorning.Enabled = false;
+            chkWedMidday.Enabled = false;
+            chkWedAfternoon.Enabled = false;
+            chkWedEvening.Enabled = false;
+
+            chkThuMorning.Enabled = false;
+            chkThuMidday.Enabled = false;
+            chkThuAfternoon.Enabled = false;
+            chkThuEvening.Enabled = false;
+
+            chkFriMorning.Enabled = false;
+            chkFriMidday.Enabled = false;
+            chkFriAfternoon.Enabled = false;
+            chkFriEvening.Enabled = false;
+
+            chkSatMorning.Enabled = false;
+            chkSatMidday.Enabled = false;
+            chkSatAfternoon.Enabled = false;
+            chkSatEvening.Enabled = false;
+
+            chkSunMorning.Enabled = false;
+            chkSunMidday.Enabled = false;
+            chkSunAfternoon.Enabled = false;
+            chkSunEvening.Enabled = false;
+        }
+
+        //Called in the unchecked day period method to clear the check boxes first 
         private void unCheckedDayPeriods()
         {
             chkMonMorning.Checked = false;
@@ -202,12 +257,12 @@ namespace CoachConnect
             using (var context = new db_sft_2172Entities())
             {
                 var userQuery = from u in context.Users
-                                where u.IsCoach.Equals(true) && u.FirstName.Equals(coach)
+                                where u.IsCoach.Equals(true) && u.DisplayName.Equals(coach)
                                 select u;
                 var userResult = userQuery.FirstOrDefault<User>();
                 try
                 {
-                    if (!String.IsNullOrEmpty(userResult.FirstName))
+                    if (!String.IsNullOrEmpty(userResult.DisplayName))
                     {
                         panelCoach.Visible = true;
                         var request = System.Net.WebRequest.Create(userResult.ProfilePic);
@@ -217,12 +272,12 @@ namespace CoachConnect
                         {
                             pictureBoxCoachProfile.Image = Bitmap.FromStream(stream);
                         }
-                        lblCoachName.Text = userResult.FirstName + " " + userResult.LastName;
+                        lblCoachName.Text = userResult.DisplayName;
                         lblActiveCoach.Text = userResult.ActiveCoachSince.ToString();
                         lblEmail.Text = userResult.Email;
                         lblPhone.Text = userResult.Phone;
 
-                        //display the day 
+                        //display the day period by coach
                         seachCoachOnSession(userResult.DisplayName);
                     }
                 }
@@ -236,75 +291,222 @@ namespace CoachConnect
         //Search for available coach by session
         private void seachCoachOnSession(string coach)
         {
+            listBoxDisplayCoachSubject.Items.Clear();
             using (var context = new db_sft_2172Entities())
             {
                 var userQuery = from vs in context.ViewSessions
                                 where vs.Coach.Equals(coach)
                                 select vs;
-                // var userResult = userQuery.FirstOrDefault<Session>();
                 try
                 {
                     if (userQuery.Any())
                     {
-                        lblMessage.Text = "To make an appointment, Please select a day period bellow.";
-                        var userResult = userQuery.FirstOrDefault<ViewSession>();
-                        
-                        if (userResult.Day.Equals("Monday"))
+                        lblMessage.Text = "To assign the coach, Please select a day period bellow.";
+                        var userR = userQuery.ToList();
+
+                        foreach(var userResult in userR)
                         {
-                            Monday.Enabled = true;
-                        }
-                        else
-                        {
-                            Monday.Enabled = false;
-                        }
-                        if (userResult.Day.Equals("Tuesday"))
-                        {
-                            Tuesday.Enabled = true;
-                        }
-                        else
-                        {
-                            Tuesday.Enabled = false;
-                        }
-                        if (userResult.Day.Equals("Wednesday"))
-                        {
-                            Wednesday.Enabled = true;
-                        }
-                        else
-                        {
-                            Wednesday.Enabled = false;
-                        }
-                        if (userResult.Day.Equals("Thursday"))
-                        {
-                            Thursday.Enabled = true;
-                        }
-                        else
-                        {
-                            Thursday.Enabled = false;
-                        }
-                        if (userResult.Day.Equals("Friday"))
-                        {
-                            Friday.Enabled = true;
-                        }
-                        else
-                        {
-                            Friday.Enabled = false;
-                        }
-                        if (userResult.Day.Equals("Saturday"))
-                        {
-                            Saturday.Enabled = true;
-                        }
-                        else
-                        {
-                            Saturday.Enabled = false;
-                        }
-                        if (userResult.Day.Equals("Sunday"))
-                        {
-                            Sunday.Enabled = true;
-                        }
-                        else
-                        {
-                            Sunday.Enabled = false;
-                        }
+                            listBoxDisplayCoachSubject.Items.Add(userResult.Course);
+                            if (userResult.Day.Equals("Monday"))
+                            {
+                                Monday.Enabled = true;
+                                if (userResult.Time.Equals("Morning"))
+                                {
+                                    chkMonMorning.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Midday"))
+                                {
+                                    chkMonMidday.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Afternoon"))
+                                {
+                                    chkMonAfternoon.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Evening"))
+                                {
+                                    chkMonEvening.Enabled = true;
+                                }
+                                else
+                                {
+                                    chkMonMorning.Enabled = false;
+                                    chkMonMidday.Enabled = false;
+                                    chkMonAfternoon.Enabled = false;
+                                    chkMonEvening.Enabled = false;
+                                }
+                            }
+                            else if (userResult.Day.Equals("Tuesday"))
+                            {
+                                Tuesday.Enabled = true;
+                                if (userResult.Time.Equals("Morning"))
+                                {
+                                    chkTueMorning.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Midday"))
+                                {
+                                    chkTueMidday.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Afternoon"))
+                                {
+                                    chkTueAfternoon.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Evening"))
+                                {
+                                    chkTueEvening.Enabled = true;
+                                }
+                                else
+                                {
+                                    chkTueMorning.Enabled = false;
+                                    chkTueMidday.Enabled = false;
+                                    chkTueAfternoon.Enabled = false;
+                                    chkTueEvening.Enabled = false;
+                                }
+                            }
+                            else if (userResult.Day.Equals("Wednesday"))
+                            {
+                                Wednesday.Enabled = true;
+                                if (userResult.Time.Equals("Morning"))
+                                {
+                                    chkWedMorning.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Midday"))
+                                {
+                                    chkWedMidday.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Afternoon"))
+                                {
+                                    chkWedAfternoon.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Evening"))
+                                {
+                                    chkWedEvening.Enabled = true;
+                                }
+                                else
+                                {
+                                    chkWedMorning.Enabled = false;
+                                    chkWedMidday.Enabled = false;
+                                    chkWedAfternoon.Enabled = false;
+                                    chkWedEvening.Enabled = false;
+                                }
+                            }
+                            else if (userResult.Day.Equals("Thursday"))
+                            {
+                                Thursday.Enabled = true;
+                                if (userResult.Time.Equals("Morning"))
+                                {
+                                    chkThuMorning.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Midday"))
+                                {
+                                    chkThuMidday.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Afternoon"))
+                                {
+                                    chkThuAfternoon.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Evening"))
+                                {
+                                    chkThuEvening.Enabled = true;
+                                }
+                                else
+                                {
+                                    chkThuMorning.Enabled = false;
+                                    chkThuMidday.Enabled = false;
+                                    chkThuAfternoon.Enabled = false;
+                                    chkThuEvening.Enabled = false;
+                                }
+                            }
+                            else if (userResult.Day.Equals("Friday"))
+                            {
+                                Friday.Enabled = true;
+                                if (userResult.Time.Equals("Morning"))
+                                {
+                                    chkFriMorning.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Midday"))
+                                {
+                                    chkFriMidday.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Afternoon"))
+                                {
+                                    chkFriAfternoon.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Evening"))
+                                {
+                                    chkFriEvening.Enabled = true;
+                                }
+                                else
+                                {
+                                    chkFriMorning.Enabled = false;
+                                    chkFriMidday.Enabled = false;
+                                    chkFriAfternoon.Enabled = false;
+                                    chkFriEvening.Enabled = false;
+                                }
+                            }
+                            else if (userResult.Day.Equals("Saturday"))
+                            {
+                                Saturday.Enabled = true;
+                                if (userResult.Time.Equals("Morning"))
+                                {
+                                    chkSatMorning.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Midday"))
+                                {
+                                    chkSatMidday.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Afternoon"))
+                                {
+                                    chkSatAfternoon.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Evening"))
+                                {
+                                    chkSatEvening.Enabled = true;
+                                }
+                                else
+                                {
+                                    chkSatMorning.Enabled = false;
+                                    chkSatMidday.Enabled = false;
+                                    chkSatAfternoon.Enabled = false;
+                                    chkSatEvening.Enabled = false;
+                                }
+                            }
+                            else if (userResult.Day.Equals("Sunday"))
+                            {
+                                Sunday.Enabled = true;
+                                if (userResult.Time.Equals("Morning"))
+                                {
+                                    chkSunMorning.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Midday"))
+                                {
+                                    chkSunMidday.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Afternoon"))
+                                {
+                                    chkSunAfternoon.Enabled = true;
+                                }
+                                else if (userResult.Time.Equals("Evening"))
+                                {
+                                    chkSunEvening.Enabled = true;
+                                }
+                                else
+                                {
+                                    chkSunMorning.Enabled = false;
+                                    chkSunMidday.Enabled = false;
+                                    chkSunAfternoon.Enabled = false;
+                                    chkSunEvening.Enabled = false;
+                                }
+                            }
+                            else
+                            {
+                                Monday.Enabled = false;
+                                Tuesday.Enabled = false;
+                                Wednesday.Enabled = false;
+                                Thursday.Enabled = false;
+                                Friday.Enabled = false;
+                                Saturday.Enabled = false;
+                                Sunday.Enabled = false;
+                            }
+                        }  
                     }
                     else
                     {
@@ -346,32 +548,49 @@ namespace CoachConnect
             }
         }
 
-        //Display the appointments for that student in datagridview
-        private void displayAppointment()
+        //Display the appointments for that current student in datagridview on the home tab
+        public void displayAppointment()
         {
             using (var context = new db_sft_2172Entities())
             {
-                List<CoachByTime> appointment = new List<CoachByTime>();
-                var userQuery = from u in context.CoachByTimes
-                                where u.UserID.Equals(Program.CurrentUser)
-                                select u;
+                List<ViewSession> appointment = new List<ViewSession>();
+                var userQuery = from sr in context.SessionRosters
+                                where sr.UserID.Equals(Program.CurrentUser)
+                                select sr;
                 var userResult = userQuery.ToList();
                 foreach (var u in userResult)
                 {
-                    appointment.Add(u);
+                    //appointment.Add(u);
+                    var session = from s in context.ViewSessions
+                                  where s.SessionID.Equals(u.SessionID)
+                                  select s;
+                                  
+                    var sessionResult = session.ToList();
+                    foreach (var s in sessionResult)
+                    {
+                        appointment.Add(s);
+                    }
                 }
                 if (appointment.Count() > 0)
                 {
-                    dgrShowAppointments.Visible = true;
-                    dgrShowAppointments.DataSource = appointment;
-                    appointmentMessage.Visible = false;
+                    try
+                    {
+                        dgrShowAppointments.Visible = true;
+                        dgrShowAppointments.DataSource = appointment;
+                        appointmentMessage.Visible = false;
+                        btnCancelCoach.Enabled = true;
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.Message);
+                    }
                 }
                 else
                 {
                     dgrShowAppointments.Visible = false;
                     appointmentMessage.Visible = true;
+                    btnCancelCoach.Enabled = false;
                 }
-
             }
         }
 
@@ -391,11 +610,13 @@ namespace CoachConnect
             this.Hide();
         }
 
+        //Search by time clicked button
         private void btnSearchByTime_Click(object sender, EventArgs e)
         {
             coachTimeQuery();
         }
 
+        //To query the search after cliking the Search by Time button
         private void coachTimeQuery()
         {
             try
@@ -506,6 +727,8 @@ namespace CoachConnect
             return;
         }
 
+
+        //Assign a coach clicked button on the Search by Time tab
         private void btnScheduleAppointment_Click(object sender, EventArgs e)
         {
             string selectedCoachID;
@@ -547,107 +770,256 @@ namespace CoachConnect
                 }
                 else
                 {
-                    /////TODO: Stub to handle saving data to database (add linq query)
-                    SessionRoster sr = new SessionRoster();
-                    ////{
-                    ////    SessionID = "WEB10152154MonAM",
-                    ////    UserID = selectedCoachID,
-                    ////    RoleID = "STUD"
-                    ////};
-
                     using (db_sft_2172Entities context = new db_sft_2172Entities())
                     {
-                        try
-                        {
-                            context.SessionRosters.Add(sr);
-                            context.SaveChanges();
-                        }
-                        catch (Exception ex)
-                        {
-                            ex.ToString();
-                        }
-                    }
-                }
-            }
-
-            return;
-        }
-
-        private void btnScheduleApptName_Click(object sender, EventArgs e)
-        {
-            /*
-            string selectedCoachID;
-            string selectedCoachName;
-            string selectedTime;
-            string selectedDay;
-            string selectedCourseID;
-            string selectedCourse;
-
-            try
-            {
-
-                if (dataGridCoachesByTime.SelectedRows == null)
-                {
-                    MessageBox.Show("Please select a row before continuing");
-                    return;
-                }
-                else
-                {
-                    DataGridViewRow selectedRow = dataGridCoachAvailability.SelectedRows[0];
-                    selectedCoachID = selectedRow.Cells[0].Value.ToString();
-                    selectedCoachName = selectedRow.Cells[1].Value.ToString();
-                    selectedTime = selectedRow.Cells[2].Value.ToString();
-                    selectedDay = selectedRow.Cells[3].Value.ToString();
-                    selectedCourseID = selectedRow.Cells[4].Value.ToString();
-                    selectedCourse = selectedRow.Cells[5].Value.ToString();
-
-
-                    DialogResult result = MessageBox.Show(
-                        "Are you sure you want to create this appointment?\n"
-                            + "Coach: " + selectedCoachName + "\n"
-                            + "Time: " + selectedTime + "\n"
-                            + "Day: " + selectedDay + "\n"
-                            + "Course ID: " + selectedCourseID + "\n"
-                            + "Selected Course: " + selectedCourse,
-                        "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                    if (result == DialogResult.No)
-                    {
-                        return;
-                    }
-                    else
-                    {
-                        ///TODO: Stub to handle saving data to database (add linq query)
-                        SessionRoster sr = new SessionRoster()
-                        {
-                            SessionID = "WEB10152154MonAM",
-                            UserID = selectedCoachID,
-                            RoleID = "Student"
-                        };
-
-                        using (var context = new db_sft_2172Entities())
+                        var userQuery = from s in context.ViewSessions
+                                        where s.UserID.Equals(selectedCoachID) && s.Day.Equals(selectedDay) && s.Time.Equals(selectedTime)
+                                        select s;
+                        var userResult = userQuery.FirstOrDefault<ViewSession>();
+                        if (userQuery.Any())
                         {
                             try
                             {
+                                /////TODO: Stub to handle saving data to database (add linq query)
+                                SessionRoster sr = new SessionRoster()
+                                {
+                                    SessionID = userResult.SessionID,
+                                    UserID = Program.CurrentUser,
+                                    RoleID = "STUD"
+                                };
                                 context.SessionRosters.Add(sr);
                                 context.SaveChanges();
+                                displayAppointment();
                             }
                             catch (Exception ex)
                             {
                                 ex.ToString();
                             }
                         }
+                        else
+                        {
+                            MessageBox.Show("This coach is not assigned into this session!");
+                        }
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
+
             return;
-            */
         }
 
+        //Assign a coach clicked button on the Search by Name tab
+        private void btnScheduleApptName_Click(object sender, EventArgs e)
+        {
+            string selectedCoachID;
+            string selectedCoachName;
+            string selectedTime;
+            string selectedDay;
+            string selectedCourseID;
+            string selectedCourseName;
+
+            selectedCoachName = lblCoachName.Text;
+            if (chkMonMorning.Checked == true)
+            {
+                selectedDay = "Monday";
+                selectedTime = "Morning";
+            }
+            else if(chkMonMidday.Checked == true)
+            {
+                selectedDay = "Monday";
+                selectedTime = "Midday";
+            }
+            else if (chkMonAfternoon.Checked == true)
+            {
+                selectedDay = "Monday";
+                selectedTime = "Afternoon";
+            }
+            else if (chkMonEvening.Checked == true)
+            {
+                selectedDay = "Monday";
+                selectedTime = "Evening";
+            }
+            else if (chkTueMorning.Checked == true)
+            {
+                selectedDay = "Tuesday";
+                selectedTime = "Morning";
+            }
+            else if (chkTueMidday.Checked == true)
+            {
+                selectedDay = "Tuesday";
+                selectedTime = "Midday";
+            }
+            else if (chkTueAfternoon.Checked == true)
+            {
+                selectedDay = "Tuesday";
+                selectedTime = "Afternoon";
+            }
+            else if (chkTueEvening.Checked == true)
+            {
+                selectedDay = "Tuesday";
+                selectedTime = "Evening";
+            }
+            else if (chkWedMorning.Checked == true)
+            {
+                selectedDay = "Wednesday";
+                selectedTime = "Morning";
+            }
+            else if (chkWedMidday.Checked == true)
+            {
+                selectedDay = "Wednesday";
+                selectedTime = "Midday";
+            }
+            else if (chkWedAfternoon.Checked == true)
+            {
+                selectedDay = "Wednesday";
+                selectedTime = "Afternoon";
+            }
+            else if (chkWedEvening.Checked == true)
+            {
+                selectedDay = "Wednesday";
+                selectedTime = "Evening";
+            }
+            else if (chkThuMorning.Checked == true)
+            {
+                selectedDay = "Thursday";
+                selectedTime = "Morning";
+            }
+            else if (chkThuMidday.Checked == true)
+            {
+                selectedDay = "Thursday";
+                selectedTime = "Midday";
+            }
+            else if (chkThuAfternoon.Checked == true)
+            {
+                selectedDay = "Thursday";
+                selectedTime = "Afternoon";
+            }
+            else if (chkThuEvening.Checked == true)
+            {
+                selectedDay = "Thursday";
+                selectedTime = "Evening";
+            }
+            else if (chkFriMorning.Checked == true)
+            {
+                selectedDay = "Friday";
+                selectedTime = "Morning";
+            }
+            else if (chkFriMidday.Checked == true)
+            {
+                selectedDay = "Friday";
+                selectedTime = "Midday";
+            }
+            else if (chkFriAfternoon.Checked == true)
+            {
+                selectedDay = "Friday";
+                selectedTime = "Afternoon";
+            }
+            else if (chkFriEvening.Checked == true)
+            {
+                selectedDay = "Friday";
+                selectedTime = "Evening";
+            }
+            else if (chkSatMorning.Checked == true)
+            {
+                selectedDay = "Saturday";
+                selectedTime = "Morning";
+            }
+            else if (chkSatMidday.Checked == true)
+            {
+                selectedDay = "Saturday";
+                selectedTime = "Midday";
+            }
+            else if (chkSatAfternoon.Checked == true)
+            {
+                selectedDay = "Saturday";
+                selectedTime = "Afternoon";
+            }
+            else if (chkSatEvening.Checked == true)
+            {
+                selectedDay = "Saturday";
+                selectedTime = "Evening";
+            }
+            else if (chkSunMorning.Checked == true)
+            {
+                selectedDay = "Sunday";
+                selectedTime = "Morning";
+            }
+            else if (chkSunMidday.Checked == true)
+            {
+                selectedDay = "Sunday";
+                selectedTime = "Midday";
+            }
+            else if (chkSunAfternoon.Checked == true)
+            {
+                selectedDay = "Sunday";
+                selectedTime = "Afternoon";
+            }
+            else if (chkSunEvening.Checked == true)
+            {
+                selectedDay = "Sunday";
+                selectedTime = "Evening";
+            }
+            else
+            {
+                MessageBox.Show("Please choose a time period!");
+                return;
+            }
+            using (db_sft_2172Entities context = new db_sft_2172Entities())
+            {
+                var coach = from c in context.ViewSessions
+                            where c.Coach.Equals(selectedCoachName) && c.Day.Equals(selectedDay) && c.Time.Equals(selectedTime)
+                            select c;
+                var result = coach.FirstOrDefault<ViewSession>();
+                selectedCoachID = result.UserID;
+                selectedCourseID = result.Course;
+                selectedCourseName = result.CourseName;
+
+                DialogResult resultBox = MessageBox.Show(
+                   "Are you sure you want to assign with this coach?\n"
+                       + "Coach: " + selectedCoachName + "\n"
+                       + "Time: " + selectedTime + "\n"
+                       + "Day: " + selectedDay + "\n"
+                       + "Course ID: " + selectedCourseID + "\n"
+                       + "Selected Course: " + selectedCourseName,
+                   "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (resultBox == DialogResult.No)
+                {
+                    return;
+                }
+                else
+                {
+                    try
+                    {
+                        var checkSessionRoster = from sessionRoster in context.SessionRosters
+                                                 where sessionRoster.UserID.Equals(Program.CurrentUser) && sessionRoster.SessionID.Equals(result.SessionID)
+                                                 select sessionRoster;
+                        if (checkSessionRoster.Any())
+                        {
+                            MessageBox.Show("This sessional coach has been assigned already.");
+                        }
+                        else
+                        {
+                            SessionRoster sr = new SessionRoster()
+                            {
+                                SessionID = result.SessionID,
+                                UserID = Program.CurrentUser,
+                                RoleID = "STUD"
+                            };
+                            context.SessionRosters.Add(sr);
+                            context.SaveChanges();
+                            displayAppointment();
+                        }
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        ex.ToString();
+                    }
+                }
+            }
+        }
+        
+        //Logout clicked button on the stutend home tab
         private void btnStdLogout_Click(object sender, EventArgs e)
         {
             Program.loginForm.logout();
@@ -661,6 +1033,7 @@ namespace CoachConnect
             enableButtons();
         }
 
+        //Clear button on the Search by Name tab to clear all checkboxes
         private void btnClear_Click(object sender, EventArgs e)
         {
             unCheckedDayPeriods();
@@ -680,9 +1053,72 @@ namespace CoachConnect
             chkEvening.Checked = false;
         }
 
+        //Event handler to logout the program event if the main form is closed
         private void FindCoachForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Program.loginForm.logout();
+        }
+
+        //Cancel the sessional coach
+        private void btnCancelCoach_Click(object sender, EventArgs e)
+        {
+            string selectedCoachID;
+            string selectedSessionID;
+            string selectedTime;
+            string selectedDay;
+            string selectedCourseID;
+
+            if (dgrShowAppointments.SelectedRows == null)
+            {
+                MessageBox.Show("Please select a row before continuing");
+                return;
+            }
+            else
+            {
+                DataGridViewRow selectedRow = dgrShowAppointments.SelectedRows[0];
+                selectedSessionID = selectedRow.Cells[0].Value.ToString();
+                selectedCourseID = selectedRow.Cells[1].Value.ToString();
+                selectedDay = selectedRow.Cells[3].Value.ToString();
+                selectedTime = selectedRow.Cells[4].Value.ToString();
+                selectedCoachID = selectedRow.Cells[5].Value.ToString();
+
+                DialogResult result = MessageBox.Show(
+                    "Are you sure you want to cancel the this coach?\n\n"
+                        + "Coach ID: " + selectedCoachID + "\n"
+                        + "Session ID: " + selectedSessionID + "\n"
+                        + "Time: " + selectedTime + "\n"
+                        + "Day: " + selectedDay + "\n"
+                        + "Course ID: " + selectedCourseID,
+                        
+                    "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+                else
+                {
+                    using (db_sft_2172Entities context = new db_sft_2172Entities())
+                    {
+                        int sessionID = int.Parse(selectedSessionID);
+
+                        try
+                        {
+                            var sr = (from srt in context.SessionRosters
+                                      where srt.SessionID.Equals(sessionID) && srt.UserID.Equals(Program.CurrentUser)
+                                      select srt).SingleOrDefault();
+                            context.SessionRosters.Remove(sr);
+                            context.SaveChanges();
+                            displayAppointment();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }  
+                    }  
+                }
+            }
+            return;
         }
     }
 }
