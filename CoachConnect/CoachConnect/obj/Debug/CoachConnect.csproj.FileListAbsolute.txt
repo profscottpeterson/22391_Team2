@@ -149,3 +149,5 @@ C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AddSessionStudent.resources
