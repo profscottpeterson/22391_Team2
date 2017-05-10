@@ -30,6 +30,9 @@ namespace CoachConnect
         /// </summary>
         Validation Validator = new Validation();
 
+        List<ViewSessionRoster> CurrentRoster { get; set; }
+
+
         /// <summary>
         /// Constructor: create a new EditSession form and populate the combo boxes
         /// </summary>
@@ -62,6 +65,9 @@ namespace CoachConnect
 
             // Call method to pull current session data from the database
             loadSessionData();
+
+            // Call method to populate session roster
+            populateRoster();
         }
 
         /// <summary>
@@ -221,9 +227,6 @@ namespace CoachConnect
                 MessageBox.Show(ex.Message);
             }
 
-
-            MessageBox.Show(CurrentSession.DayID.ToString());
-
             // Populate combo boxes with current session data
             cbxCoach.SelectedValue = CurrentSession.CoachID;
             cbxCourse.SelectedValue = CurrentSession.CourseID;
@@ -236,7 +239,32 @@ namespace CoachConnect
                 cbxActive.SelectedIndex = 0;
             }
             else
+            {
                 cbxActive.SelectedIndex = 1;
+            }
+        }
+
+        private void populateRoster()
+        {
+            try
+            {
+                using (var context = new db_sft_2172Entities())
+                {
+                    var rosterQuery = from studentRoster in context.ViewSessionRosters
+                                      where studentRoster.SessionID.Equals(CurrentSession.SessionID)
+                                      select studentRoster;
+
+                    CurrentRoster = rosterQuery.ToList();
+
+                    dataGridViewRoster.DataSource = CurrentRoster;
+
+                    dataGridViewRoster.Columns["SessionID"].Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         /// <summary>
@@ -387,6 +415,55 @@ namespace CoachConnect
             {
                 cbxActive.Focus();
             }
+        }
+
+        private void btnAddToRoster_Click(object sender, EventArgs e)
+        {
+            AddSessionStudent addStudentForm = new AddSessionStudent(this.CurrentSession);
+            addStudentForm.ShowDialog();
+            populateRoster();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            string selectedStudentId = dataGridViewRoster.SelectedRows[0].Cells["UserID"].Value.ToString();
+
+            // Confirm action
+            DialogResult removeConfirmation =
+                MessageBox.Show("Are you sure you want to remove this student from the session?", "Confirm Removal",
+                    MessageBoxButtons.YesNo,MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+
+            // If user did not click yes, leave the method without doing anything.
+            if (!removeConfirmation.Equals(DialogResult.Yes)) return;
+
+            try
+            {
+                // Remove the selected record from the database
+                SessionRoster selectedStudentEntry = new SessionRoster
+                {
+                    SessionID = this.CurrentSession.SessionID,
+                    UserID = selectedStudentId,
+                    RoleID = "STUD"
+                };
+
+                using (var context = new db_sft_2172Entities())
+                {
+                    context.SessionRosters.Attach(selectedStudentEntry);
+                    context.SessionRosters.Remove(selectedStudentEntry);
+                    context.SaveChanges();
+                }
+
+                // Display a confirmation message
+                MessageBox.Show("Student removed sucessfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            // Update the data grid view
+            populateRoster();
+
         }
     }
 }

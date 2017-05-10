@@ -66,7 +66,7 @@
           <Key>
             <PropertyRef Name="SessionID" />
           </Key>
-          <Property Name="SessionID" Type="int" Nullable="false" />
+          <Property Name="SessionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoomID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DayID" Type="varchar" MaxLength="25" Nullable="false" />
@@ -156,12 +156,16 @@ warning 6002: The table/view 'db_sft_2172.dbo.Availability' does not have a prim
             <PropertyRef Name="FirstName" />
             <PropertyRef Name="DayID" />
             <PropertyRef Name="TimePeriodID" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Expr1" />
           </Key>
           <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="DayID" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="TimePeriodID" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="ProfilePic" Type="nvarchar(max)" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Expr1" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.CoachByName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -219,11 +223,24 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
           <Property Name="Interest" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.StudentByCourse' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StudentByCourse">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="DisplayName" />
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="ViewSession">
           <Key>
             <PropertyRef Name="SessionID" />
             <PropertyRef Name="Course" />
+            <PropertyRef Name="CourseName" />
             <PropertyRef Name="Room" />
             <PropertyRef Name="Day" />
             <PropertyRef Name="Time" />
@@ -232,12 +249,26 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           </Key>
           <Property Name="SessionID" Type="int" Nullable="false" />
           <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Room" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Coach" Type="nvarchar" MaxLength="200" />
           <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="Full" Type="bit" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewSessionRoster">
+          <Key>
+            <PropertyRef Name="SessionID" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="SessionID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <Association Name="FK_Course_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="1" />
@@ -424,6 +455,10 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_GetEligibleStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SessionID" Type="int" Mode="In" />
+          <Parameter Name="CourseID" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -459,7 +494,9 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
     [Availability].[FirstName] AS [FirstName], 
     [Availability].[DayID] AS [DayID], 
     [Availability].[TimePeriodID] AS [TimePeriodID], 
-    [Availability].[ProfilePic] AS [ProfilePic]
+    [Availability].[ProfilePic] AS [ProfilePic], 
+    [Availability].[UserID] AS [UserID], 
+    [Availability].[Expr1] AS [Expr1]
     FROM [dbo].[Availability] AS [Availability]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="CoachByName" EntityType="Self.CoachByName" store:Type="Views" store:Schema="dbo">
@@ -494,17 +531,33 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
     [CoachInterest].[Interest] AS [Interest]
     FROM [dbo].[CoachInterest] AS [CoachInterest]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="StudentByCourse" EntityType="Self.StudentByCourse" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StudentByCourse].[UserID] AS [UserID], 
+    [StudentByCourse].[DisplayName] AS [DisplayName], 
+    [StudentByCourse].[CourseID] AS [CourseID]
+    FROM [dbo].[StudentByCourse] AS [StudentByCourse]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="ViewSession" EntityType="Self.ViewSession" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [ViewSession].[SessionID] AS [SessionID], 
     [ViewSession].[Course] AS [Course], 
+    [ViewSession].[CourseName] AS [CourseName], 
     [ViewSession].[Room] AS [Room], 
     [ViewSession].[Day] AS [Day], 
     [ViewSession].[Coach] AS [Coach], 
     [ViewSession].[Time] AS [Time], 
     [ViewSession].[Full] AS [Full], 
-    [ViewSession].[Active] AS [Active]
+    [ViewSession].[Active] AS [Active], 
+    [ViewSession].[UserID] AS [UserID]
     FROM [dbo].[ViewSession] AS [ViewSession]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ViewSessionRoster" EntityType="Self.ViewSessionRoster" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewSessionRoster].[SessionID] AS [SessionID], 
+    [ViewSessionRoster].[UserID] AS [UserID], 
+    [ViewSessionRoster].[Name] AS [Name]
+    FROM [dbo].[ViewSessionRoster] AS [ViewSessionRoster]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Course_Department" Association="Self.FK_Course_Department">
             <End Role="Department" EntitySet="Department" />
@@ -600,18 +653,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Sessions" Relationship="db_sft_2172Model.FK_Session_Room" FromRole="Room" ToRole="Session" />
         </EntityType>
-        <EntityType Name="SessionRoster">
-          <Key>
-            <PropertyRef Name="SessionID" />
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="SessionID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RoleID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Role" Relationship="db_sft_2172Model.FK_Role_SessionRoster" FromRole="SessionRoster" ToRole="Role" />
-          <NavigationProperty Name="User" Relationship="db_sft_2172Model.FK_User_SessionRoster" FromRole="SessionRoster" ToRole="User" />
-          <NavigationProperty Name="Session" Relationship="db_sft_2172Model.FK_SessionRoster_Session" FromRole="SessionRoster" ToRole="Session" />
-        </EntityType>
         <Association Name="FK_Room_Building">
           <End Role="Building" Type="Self.Building" Multiplicity="1" />
           <End Role="Room" Type="Self.Room" Multiplicity="*" />
@@ -628,7 +669,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <EntitySet Name="Buildings" EntityType="Self.Building" />
           <EntitySet Name="Courses" EntityType="Self.Course" />
           <EntitySet Name="Rooms" EntityType="Self.Room" />
-          <EntitySet Name="SessionRosters" EntityType="Self.SessionRoster" />
           <AssociationSet Name="FK_Room_Building" Association="Self.FK_Room_Building">
             <End Role="Building" EntitySet="Buildings" />
             <End Role="Room" EntitySet="Rooms" />
@@ -706,14 +746,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <AssociationSet Name="FK_Role_SessionRoster" Association="db_sft_2172Model.FK_Role_SessionRoster">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="SessionRoster" EntitySet="SessionRosters" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_SessionRoster" Association="db_sft_2172Model.FK_User_SessionRoster">
-            <End Role="User" EntitySet="Users" />
-            <End Role="SessionRoster" EntitySet="SessionRosters" />
-          </AssociationSet>
           <EntitySet Name="ViewSessions" EntityType="db_sft_2172Model.ViewSession" />
           <EntitySet Name="sysdiagrams" EntityType="db_sft_2172Model.sysdiagram" />
           <EntitySet Name="Availabilities" EntityType="db_sft_2172Model.Availability" />
@@ -738,10 +770,25 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
             <End Role="User" EntitySet="Users" />
             <End Role="Session" EntitySet="Sessions" />
           </AssociationSet>
+          <EntitySet Name="StudentByCourses" EntityType="db_sft_2172Model.StudentByCourse" />
+          <EntitySet Name="ViewSessionRosters" EntityType="db_sft_2172Model.ViewSessionRoster" />
+          <EntitySet Name="SessionRosters" EntityType="db_sft_2172Model.SessionRoster" />
+          <AssociationSet Name="FK_Role_SessionRoster" Association="db_sft_2172Model.FK_Role_SessionRoster">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="SessionRoster" EntitySet="SessionRosters" />
+          </AssociationSet>
           <AssociationSet Name="FK_SessionRoster_Session" Association="db_sft_2172Model.FK_SessionRoster_Session">
             <End Role="Session" EntitySet="Sessions" />
             <End Role="SessionRoster" EntitySet="SessionRosters" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_SessionRoster" Association="db_sft_2172Model.FK_User_SessionRoster">
+            <End Role="User" EntitySet="Users" />
+            <End Role="SessionRoster" EntitySet="SessionRosters" />
+          </AssociationSet>
+          <FunctionImport Name="sp_GetEligibleStudents">
+            <Parameter Name="SessionID" Mode="In" Type="Int32" />
+            <Parameter Name="CourseID" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="TimePeriod">
           <Key>
@@ -826,8 +873,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ResetPassword" Type="Boolean" Nullable="false" />
           <Property Name="PasswordSalt" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SessionRosters" Relationship="db_sft_2172Model.FK_User_SessionRoster" FromRole="User" ToRole="SessionRoster" />
           <NavigationProperty Name="Sessions" Relationship="db_sft_2172Model.FK_Session_User" FromRole="User" ToRole="Session" />
+          <NavigationProperty Name="SessionRosters" Relationship="db_sft_2172Model.FK_User_SessionRoster" FromRole="User" ToRole="SessionRoster" />
         </EntityType>
         <EntityType Name="Day">
           <Key>
@@ -996,30 +1043,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <Association Name="FK_Role_SessionRoster">
-          <End Type="db_sft_2172Model.Role" Role="Role" Multiplicity="0..1" />
-          <End Type="db_sft_2172Model.SessionRoster" Role="SessionRoster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="RoleID" />
-            </Principal>
-            <Dependent Role="SessionRoster">
-              <PropertyRef Name="RoleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_User_SessionRoster">
-          <End Type="db_sft_2172Model.User" Role="User" Multiplicity="1" />
-          <End Type="db_sft_2172Model.SessionRoster" Role="SessionRoster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="SessionRoster">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="ViewSession">
           <Key>
             <PropertyRef Name="Course" />
@@ -1028,6 +1051,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
             <PropertyRef Name="Day" />
             <PropertyRef Name="Time" />
             <PropertyRef Name="Full" />
+            <PropertyRef Name="CourseName" />
           </Key>
           <Property Name="Course" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Room" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1037,6 +1061,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="Full" Type="Boolean" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -1054,12 +1080,16 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
             <PropertyRef Name="FirstName" />
             <PropertyRef Name="DayID" />
             <PropertyRef Name="TimePeriodID" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Expr1" />
           </Key>
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="DayID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="TimePeriodID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Session">
           <Key>
@@ -1146,6 +1176,50 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="StudentByCourse">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="DisplayName" />
+            <PropertyRef Name="CourseID" />
+          </Key>
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ViewSessionRoster">
+          <Key>
+            <PropertyRef Name="SessionID" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="SessionID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SessionRoster">
+          <Key>
+            <PropertyRef Name="SessionID" />
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="SessionID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoleID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Role" Relationship="db_sft_2172Model.FK_Role_SessionRoster" FromRole="SessionRoster" ToRole="Role" />
+          <NavigationProperty Name="Session" Relationship="db_sft_2172Model.FK_SessionRoster_Session" FromRole="SessionRoster" ToRole="Session" />
+          <NavigationProperty Name="User" Relationship="db_sft_2172Model.FK_User_SessionRoster" FromRole="SessionRoster" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Role_SessionRoster">
+          <End Type="db_sft_2172Model.Role" Role="Role" Multiplicity="0..1" />
+          <End Type="db_sft_2172Model.SessionRoster" Role="SessionRoster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="SessionRoster">
+              <PropertyRef Name="RoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_SessionRoster_Session">
           <End Type="db_sft_2172Model.Session" Role="Session" Multiplicity="1" />
           <End Type="db_sft_2172Model.SessionRoster" Role="SessionRoster" Multiplicity="*" />
@@ -1155,6 +1229,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
             </Principal>
             <Dependent Role="SessionRoster">
               <PropertyRef Name="SessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_SessionRoster">
+          <End Type="db_sft_2172Model.User" Role="User" Multiplicity="1" />
+          <End Type="db_sft_2172Model.SessionRoster" Role="SessionRoster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="SessionRoster">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1191,15 +1277,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
                 <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
                 <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
                 <ScalarProperty Name="BuildingID" ColumnName="BuildingID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SessionRosters">
-            <EntityTypeMapping TypeName="db_sft_2172Model.SessionRoster">
-              <MappingFragment StoreEntitySet="SessionRoster">
-                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1351,6 +1428,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <EntitySetMapping Name="ViewSessions">
             <EntityTypeMapping TypeName="db_sft_2172Model.ViewSession">
               <MappingFragment StoreEntitySet="ViewSession">
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="Full" ColumnName="Full" />
                 <ScalarProperty Name="Time" ColumnName="Time" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
@@ -1376,6 +1455,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
           <EntitySetMapping Name="Availabilities">
             <EntityTypeMapping TypeName="db_sft_2172Model.Availability">
               <MappingFragment StoreEntitySet="Availability">
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
                 <ScalarProperty Name="TimePeriodID" ColumnName="TimePeriodID" />
                 <ScalarProperty Name="DayID" ColumnName="DayID" />
@@ -1404,6 +1485,34 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="StudentByCourses">
+            <EntityTypeMapping TypeName="db_sft_2172Model.StudentByCourse">
+              <MappingFragment StoreEntitySet="StudentByCourse">
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewSessionRosters">
+            <EntityTypeMapping TypeName="db_sft_2172Model.ViewSessionRoster">
+              <MappingFragment StoreEntitySet="ViewSessionRoster">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SessionRosters">
+            <EntityTypeMapping TypeName="db_sft_2172Model.SessionRoster">
+              <MappingFragment StoreEntitySet="SessionRoster">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetEligibleStudents" FunctionName="db_sft_2172Model.Store.sp_GetEligibleStudents" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

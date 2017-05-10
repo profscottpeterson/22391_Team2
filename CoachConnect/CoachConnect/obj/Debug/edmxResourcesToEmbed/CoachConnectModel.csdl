@@ -33,18 +33,6 @@
     <Property Name="Active" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Sessions" Relationship="db_sft_2172Model.FK_Session_Room" FromRole="Room" ToRole="Session" />
   </EntityType>
-  <EntityType Name="SessionRoster">
-    <Key>
-      <PropertyRef Name="SessionID" />
-      <PropertyRef Name="UserID" />
-    </Key>
-    <Property Name="SessionID" Type="Int32" Nullable="false" />
-    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="RoleID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Role" Relationship="db_sft_2172Model.FK_Role_SessionRoster" FromRole="SessionRoster" ToRole="Role" />
-    <NavigationProperty Name="User" Relationship="db_sft_2172Model.FK_User_SessionRoster" FromRole="SessionRoster" ToRole="User" />
-    <NavigationProperty Name="Session" Relationship="db_sft_2172Model.FK_SessionRoster_Session" FromRole="SessionRoster" ToRole="Session" />
-  </EntityType>
   <Association Name="FK_Room_Building">
     <End Role="Building" Type="Self.Building" Multiplicity="1" />
     <End Role="Room" Type="Self.Room" Multiplicity="*" />
@@ -61,7 +49,6 @@
     <EntitySet Name="Buildings" EntityType="Self.Building" />
     <EntitySet Name="Courses" EntityType="Self.Course" />
     <EntitySet Name="Rooms" EntityType="Self.Room" />
-    <EntitySet Name="SessionRosters" EntityType="Self.SessionRoster" />
     <AssociationSet Name="FK_Room_Building" Association="Self.FK_Room_Building">
       <End Role="Building" EntitySet="Buildings" />
       <End Role="Room" EntitySet="Rooms" />
@@ -139,14 +126,6 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
-    <AssociationSet Name="FK_Role_SessionRoster" Association="db_sft_2172Model.FK_Role_SessionRoster">
-      <End Role="Role" EntitySet="Roles" />
-      <End Role="SessionRoster" EntitySet="SessionRosters" />
-    </AssociationSet>
-    <AssociationSet Name="FK_User_SessionRoster" Association="db_sft_2172Model.FK_User_SessionRoster">
-      <End Role="User" EntitySet="Users" />
-      <End Role="SessionRoster" EntitySet="SessionRosters" />
-    </AssociationSet>
     <EntitySet Name="ViewSessions" EntityType="db_sft_2172Model.ViewSession" />
     <EntitySet Name="sysdiagrams" EntityType="db_sft_2172Model.sysdiagram" />
     <EntitySet Name="Availabilities" EntityType="db_sft_2172Model.Availability" />
@@ -171,10 +150,25 @@
       <End Role="User" EntitySet="Users" />
       <End Role="Session" EntitySet="Sessions" />
     </AssociationSet>
+    <EntitySet Name="StudentByCourses" EntityType="db_sft_2172Model.StudentByCourse" />
+    <EntitySet Name="ViewSessionRosters" EntityType="db_sft_2172Model.ViewSessionRoster" />
+    <EntitySet Name="SessionRosters" EntityType="db_sft_2172Model.SessionRoster" />
+    <AssociationSet Name="FK_Role_SessionRoster" Association="db_sft_2172Model.FK_Role_SessionRoster">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="SessionRoster" EntitySet="SessionRosters" />
+    </AssociationSet>
     <AssociationSet Name="FK_SessionRoster_Session" Association="db_sft_2172Model.FK_SessionRoster_Session">
       <End Role="Session" EntitySet="Sessions" />
       <End Role="SessionRoster" EntitySet="SessionRosters" />
     </AssociationSet>
+    <AssociationSet Name="FK_User_SessionRoster" Association="db_sft_2172Model.FK_User_SessionRoster">
+      <End Role="User" EntitySet="Users" />
+      <End Role="SessionRoster" EntitySet="SessionRosters" />
+    </AssociationSet>
+    <FunctionImport Name="sp_GetEligibleStudents">
+      <Parameter Name="SessionID" Mode="In" Type="Int32" />
+      <Parameter Name="CourseID" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="TimePeriod">
     <Key>
@@ -259,8 +253,8 @@
     <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="ResetPassword" Type="Boolean" Nullable="false" />
     <Property Name="PasswordSalt" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="SessionRosters" Relationship="db_sft_2172Model.FK_User_SessionRoster" FromRole="User" ToRole="SessionRoster" />
     <NavigationProperty Name="Sessions" Relationship="db_sft_2172Model.FK_Session_User" FromRole="User" ToRole="Session" />
+    <NavigationProperty Name="SessionRosters" Relationship="db_sft_2172Model.FK_User_SessionRoster" FromRole="User" ToRole="SessionRoster" />
   </EntityType>
   <EntityType Name="Day">
     <Key>
@@ -429,30 +423,6 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
-  <Association Name="FK_Role_SessionRoster">
-    <End Type="db_sft_2172Model.Role" Role="Role" Multiplicity="0..1" />
-    <End Type="db_sft_2172Model.SessionRoster" Role="SessionRoster" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Role">
-        <PropertyRef Name="RoleID" />
-      </Principal>
-      <Dependent Role="SessionRoster">
-        <PropertyRef Name="RoleID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_User_SessionRoster">
-    <End Type="db_sft_2172Model.User" Role="User" Multiplicity="1" />
-    <End Type="db_sft_2172Model.SessionRoster" Role="SessionRoster" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="SessionRoster">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityType Name="ViewSession">
     <Key>
       <PropertyRef Name="Course" />
@@ -461,6 +431,7 @@
       <PropertyRef Name="Day" />
       <PropertyRef Name="Time" />
       <PropertyRef Name="Full" />
+      <PropertyRef Name="CourseName" />
     </Key>
     <Property Name="Course" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Room" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -470,6 +441,8 @@
     <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Full" Type="Boolean" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
@@ -487,12 +460,16 @@
       <PropertyRef Name="FirstName" />
       <PropertyRef Name="DayID" />
       <PropertyRef Name="TimePeriodID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Expr1" />
     </Key>
     <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="DayID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="TimePeriodID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Expr1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Session">
     <Key>
@@ -579,6 +556,50 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="StudentByCourse">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="DisplayName" />
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ViewSessionRoster">
+    <Key>
+      <PropertyRef Name="SessionID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="SessionID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SessionRoster">
+    <Key>
+      <PropertyRef Name="SessionID" />
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="SessionID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Role" Relationship="db_sft_2172Model.FK_Role_SessionRoster" FromRole="SessionRoster" ToRole="Role" />
+    <NavigationProperty Name="Session" Relationship="db_sft_2172Model.FK_SessionRoster_Session" FromRole="SessionRoster" ToRole="Session" />
+    <NavigationProperty Name="User" Relationship="db_sft_2172Model.FK_User_SessionRoster" FromRole="SessionRoster" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Role_SessionRoster">
+    <End Type="db_sft_2172Model.Role" Role="Role" Multiplicity="0..1" />
+    <End Type="db_sft_2172Model.SessionRoster" Role="SessionRoster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="SessionRoster">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_SessionRoster_Session">
     <End Type="db_sft_2172Model.Session" Role="Session" Multiplicity="1" />
     <End Type="db_sft_2172Model.SessionRoster" Role="SessionRoster" Multiplicity="*" />
@@ -588,6 +609,18 @@
       </Principal>
       <Dependent Role="SessionRoster">
         <PropertyRef Name="SessionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_SessionRoster">
+    <End Type="db_sft_2172Model.User" Role="User" Multiplicity="1" />
+    <End Type="db_sft_2172Model.SessionRoster" Role="SessionRoster" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="SessionRoster">
+        <PropertyRef Name="UserID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

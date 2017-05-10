@@ -8,7 +8,6 @@
         <EntityTypeShape EntityType="db_sft_2172Model.Building" Width="1.5" PointX="1.125" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="db_sft_2172Model.Course" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_sft_2172Model.Room" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_sft_2172Model.SessionRoster" Width="1.5" PointX="4.875" PointY="8.125" IsExpanded="true" />
         <AssociationConnector Association="db_sft_2172Model.FK_Room_Building" ManuallyRouted="false" />
         <EntityTypeShape EntityType="db_sft_2172Model.TimePeriod" Width="1.5" PointX="9.75" PointY="12.5" />
         <EntityTypeShape EntityType="db_sft_2172Model.Department" Width="1.5" PointX="0.75" PointY="5" />
@@ -18,7 +17,7 @@
         <AssociationConnector Association="db_sft_2172Model.FK_Department_Interest" />
         <EntityTypeShape EntityType="db_sft_2172Model.User" Width="1.5" PointX="6" PointY="11" />
         <EntityTypeShape EntityType="db_sft_2172Model.Day" Width="1.5" PointX="10.25" PointY="15" />
-        <EntityTypeShape EntityType="db_sft_2172Model.UserAvailability" Width="1.5" PointX="7.625" PointY="15.25" />
+        <EntityTypeShape EntityType="db_sft_2172Model.UserAvailability" Width="1.5" PointX="7.75" PointY="15.375" />
         <AssociationConnector Association="db_sft_2172Model.FK_UserAvailability_Day" />
         <AssociationConnector Association="db_sft_2172Model.FK_UserAvailability_TimePeriod" />
         <AssociationConnector Association="db_sft_2172Model.FK_UserAvailability_User" />
@@ -29,8 +28,6 @@
         <AssociationConnector Association="db_sft_2172Model.FK_UserCourse_User" />
         <EntityTypeShape EntityType="db_sft_2172Model.CoachByTime" Width="1.5" PointX="9.375" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_sft_2172Model.CoachByName" Width="1.5" PointX="8.375" PointY="9.75" />
-        <AssociationConnector Association="db_sft_2172Model.FK_Role_SessionRoster" />
-        <AssociationConnector Association="db_sft_2172Model.FK_User_SessionRoster" />
         <EntityTypeShape EntityType="db_sft_2172Model.ViewSession" Width="1.5" PointX="11.25" PointY="0.625" />
         <EntityTypeShape EntityType="db_sft_2172Model.sysdiagram" PointX="5.375" PointY="4.75" Width="1.5" />
         <EntityTypeShape EntityType="db_sft_2172Model.Availability" Width="1.5" PointX="0.75" PointY="10.75" />
@@ -40,7 +37,12 @@
         <AssociationConnector Association="db_sft_2172Model.FK_Session_Room" />
         <AssociationConnector Association="db_sft_2172Model.FK_Session_TimePeriod" />
         <AssociationConnector Association="db_sft_2172Model.FK_Session_User" />
+        <EntityTypeShape EntityType="db_sft_2172Model.StudentByCourse" Width="1.5" PointX="12.375" PointY="12.75" />
+        <EntityTypeShape EntityType="db_sft_2172Model.ViewSessionRoster" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="db_sft_2172Model.SessionRoster" Width="1.5" PointX="14.75" PointY="7.25" />
+        <AssociationConnector Association="db_sft_2172Model.FK_Role_SessionRoster" />
         <AssociationConnector Association="db_sft_2172Model.FK_SessionRoster_Session" />
+        <AssociationConnector Association="db_sft_2172Model.FK_User_SessionRoster" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
