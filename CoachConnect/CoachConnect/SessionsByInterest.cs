@@ -15,27 +15,28 @@ namespace CoachConnect
 using System;
     using System.Collections.Generic;
     
-public partial class Interest
+public partial class SessionsByInterest
 {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Interest()
-    {
+    public int SessionID { get; set; }
 
-        this.Departments = new HashSet<Department>();
+    public string Course { get; set; }
 
-    }
+    public string CourseName { get; set; }
 
+    public string Room { get; set; }
 
-    public string InterestID { get; set; }
+    public string Day { get; set; }
 
-    public string InterestName { get; set; }
+    public string Coach { get; set; }
 
+    public string Time { get; set; }
 
+    public bool Active { get; set; }
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public string UserID { get; set; }
 
-    public virtual ICollection<Department> Departments { get; set; }
+    public string Interest { get; set; }
 
 }
 

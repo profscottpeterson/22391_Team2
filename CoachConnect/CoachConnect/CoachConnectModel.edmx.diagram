@@ -43,6 +43,7 @@
         <AssociationConnector Association="db_sft_2172Model.FK_Role_SessionRoster" />
         <AssociationConnector Association="db_sft_2172Model.FK_SessionRoster_Session" />
         <AssociationConnector Association="db_sft_2172Model.FK_User_SessionRoster" />
+        <EntityTypeShape EntityType="db_sft_2172Model.SessionsByInterest" Width="1.5" PointX="0.75" PointY="14.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
