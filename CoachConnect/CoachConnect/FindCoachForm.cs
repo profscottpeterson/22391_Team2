@@ -26,8 +26,9 @@ namespace CoachConnect
         {
             this.Hide();
             frmCoachInterest frm2 = new frmCoachInterest(this, interest, title);
-            frm2.Show();
             frm2.Location = this.Location;
+            frm2.ShowDialog();
+            displayAppointment();
         }
 
         private void btnAgri_Click(object sender, EventArgs e)
@@ -560,15 +561,21 @@ namespace CoachConnect
                 var userResult = userQuery.ToList();
                 foreach (var u in userResult)
                 {
-                    //appointment.Add(u);
-                    var session = from s in context.ViewSessions
-                                  where s.SessionID.Equals(u.SessionID)
-                                  select s;
-                                  
-                    var sessionResult = session.ToList();
-                    foreach (var s in sessionResult)
+                    try
                     {
-                        appointment.Add(s);
+                        var session = from s in context.ViewSessions
+                                      where s.SessionID.Equals(u.SessionID)
+                                      select s;
+
+                        var sessionResult = session.ToList();
+                        foreach (var s in sessionResult)
+                        {
+                            appointment.Add(s);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.Message);
                     }
                 }
                 if (appointment.Count() > 0)
@@ -579,6 +586,9 @@ namespace CoachConnect
                         dgrShowAppointments.DataSource = appointment;
                         appointmentMessage.Visible = false;
                         btnCancelCoach.Enabled = true;
+                        dgrShowAppointments.Columns["SessionID"].Visible = false;
+                        dgrShowAppointments.Columns["Room"].Visible = false;
+                        dgrShowAppointments.Columns["UserID"].Visible = false;
                     }
                     catch (Exception e)
                     {
@@ -625,7 +635,8 @@ namespace CoachConnect
                 {
                     // Access view and pull data
                     var coachByTimeQuery =
-                        from coachTimes in context.CoachByTimes
+                        //from coachTimes in context.CoachByTimes
+                        from coachTimes in context.ViewSessions
                         select coachTimes;
 
                     var timeQuery = coachByTimeQuery.Where(t => t.Time == "None");
@@ -712,11 +723,12 @@ namespace CoachConnect
                     }
 
                     dataGridCoachesByTime.Columns["UserID"].Visible = false;
+                    dataGridCoachesByTime.Columns["Room"].Visible = false;
                     dataGridCoachesByTime.Columns["UserID"].DisplayIndex = 0;
                     dataGridCoachesByTime.Columns["Coach"].DisplayIndex = 1;
                     dataGridCoachesByTime.Columns["Time"].DisplayIndex = 2;
                     dataGridCoachesByTime.Columns["Day"].DisplayIndex = 3;
-                    dataGridCoachesByTime.Columns["Subject"].DisplayIndex = 4;
+                    dataGridCoachesByTime.Columns["CourseName"].DisplayIndex = 4;
                 }
             }
             catch (Exception ex)
@@ -747,12 +759,12 @@ namespace CoachConnect
             else
             {
                 DataGridViewRow selectedRow = dataGridCoachesByTime.SelectedRows[0];
-                selectedCoachID = selectedRow.Cells[0].Value.ToString();
-                selectedCoachName = selectedRow.Cells[1].Value.ToString();
-                selectedTime = selectedRow.Cells[2].Value.ToString();
-                selectedDay = selectedRow.Cells[3].Value.ToString();
-                selectedCourseID = selectedRow.Cells[4].Value.ToString();
-                selectedCourse = selectedRow.Cells[5].Value.ToString();
+                selectedCoachID = selectedRow.Cells[8].Value.ToString();
+                selectedCoachName = selectedRow.Cells[5].Value.ToString();
+                selectedTime = selectedRow.Cells[6].Value.ToString();
+                selectedDay = selectedRow.Cells[4].Value.ToString();
+                selectedCourseID = selectedRow.Cells[1].Value.ToString();
+                selectedCourse = selectedRow.Cells[3].Value.ToString();
 
 
                 DialogResult result = MessageBox.Show(
@@ -780,16 +792,25 @@ namespace CoachConnect
                         {
                             try
                             {
-                                /////TODO: Stub to handle saving data to database (add linq query)
-                                SessionRoster sr = new SessionRoster()
+                                var checkSessionRoster = from sessionRoster in context.SessionRosters
+                                                         where sessionRoster.UserID.Equals(Program.CurrentUser) && sessionRoster.SessionID.Equals(userResult.SessionID)
+                                                         select sessionRoster;
+                                if (checkSessionRoster.Any())
                                 {
-                                    SessionID = userResult.SessionID,
-                                    UserID = Program.CurrentUser,
-                                    RoleID = "STUD"
-                                };
-                                context.SessionRosters.Add(sr);
-                                context.SaveChanges();
-                                displayAppointment();
+                                    MessageBox.Show("This sessional coach has been assigned already.");
+                                }
+                                else
+                                {
+                                    SessionRoster sr = new SessionRoster()
+                                    {
+                                        SessionID = userResult.SessionID,
+                                        UserID = Program.CurrentUser,
+                                        RoleID = "STUD"
+                                    };
+                                    context.SessionRosters.Add(sr);
+                                    context.SaveChanges();
+                                    displayAppointment();
+                                } 
                             }
                             catch (Exception ex)
                             {
@@ -1119,6 +1140,11 @@ namespace CoachConnect
                 }
             }
             return;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -61,7 +61,8 @@ namespace CoachConnect
                 {
                     // Access view and pull data
                     var coachInterestQuery =
-                        from coachinterests in context.CoachInterests
+                        //from coachinterests in context.CoachInterests
+                        from coachinterests in context.SessionsByInterests
                         where coachinterests.Interest.Equals(this.titleInterest)
                         select new
                         {
@@ -69,8 +70,8 @@ namespace CoachConnect
                             Coach = coachinterests.Coach,
                             Day = coachinterests.Day,
                             Time = coachinterests.Time,
-                            CourseID = coachinterests.CourseID,
-                            Subjects = coachinterests.Subjects
+                            CourseID = coachinterests.Course,
+                            CourseName = coachinterests.CourseName
                         };
 
                     // Add results to data grid view
@@ -140,17 +141,24 @@ namespace CoachConnect
                         {
                             try
                             {
-                                /////TODO: Stub to handle saving data to database (add linq query)
-                                SessionRoster sr = new SessionRoster()
+                                var checkSessionRoster = from sessionRoster in context.SessionRosters
+                                                         where sessionRoster.UserID.Equals(Program.CurrentUser) && sessionRoster.SessionID.Equals(userResult.SessionID)
+                                                         select sessionRoster;
+                                if (checkSessionRoster.Any())
                                 {
-                                    SessionID = userResult.SessionID,
-                                    UserID = Program.CurrentUser,
-                                    RoleID = "STUD"
-                                };
-                                context.SessionRosters.Add(sr);
-                                context.SaveChanges();
-                                FindCoachForm coachForm = new FindCoachForm();
-                                coachForm.displayAppointment();
+                                    MessageBox.Show("This sessional coach has been assigned already.");
+                                }
+                                else
+                                {
+                                    SessionRoster sr = new SessionRoster()
+                                    {
+                                        SessionID = userResult.SessionID,
+                                        UserID = Program.CurrentUser,
+                                        RoleID = "STUD"
+                                    };
+                                    context.SessionRosters.Add(sr);
+                                    context.SaveChanges();
+                                } 
                             }
                             catch (Exception ex)
                             {

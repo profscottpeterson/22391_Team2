@@ -42,7 +42,8 @@
         <AssociationConnector Association="db_sft_2172Model.FK_SessionRoster_Session" />
         <EntityTypeShape EntityType="db_sft_2172Model.StudentByCourse" Width="1.5" PointX="12.375" PointY="12.75" />
         <EntityTypeShape EntityType="db_sft_2172Model.ViewSessionRoster" Width="1.5" PointX="13.375" PointY="0.75" />
-        <EntityTypeShape EntityType="db_sft_2172Model.ViewSession" Width="1.5" PointX="3.125" PointY="10.875" />
+        <EntityTypeShape EntityType="db_sft_2172Model.ViewSession" Width="1.5" PointX="3.125" PointY="11.125" />
+        <EntityTypeShape EntityType="db_sft_2172Model.SessionsByInterest" Width="1.5" PointX="0.75" PointY="14.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

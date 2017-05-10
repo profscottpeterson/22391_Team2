@@ -15,7 +15,7 @@ namespace CoachConnect
 using System;
     using System.Collections.Generic;
     
-public partial class ViewSession
+public partial class SessionsByInterest
 {
 
     public int SessionID { get; set; }
@@ -35,6 +35,8 @@ public partial class ViewSession
     public bool Active { get; set; }
 
     public string UserID { get; set; }
+
+    public string Interest { get; set; }
 
 }
 

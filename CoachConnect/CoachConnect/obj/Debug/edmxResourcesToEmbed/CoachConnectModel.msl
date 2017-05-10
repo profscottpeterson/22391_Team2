@@ -252,7 +252,22 @@
         <MappingFragment StoreEntitySet="ViewSession">
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="Full" ColumnName="Full" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Coach" ColumnName="Coach" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SessionsByInterests">
+      <EntityTypeMapping TypeName="db_sft_2172Model.SessionsByInterest">
+        <MappingFragment StoreEntitySet="SessionsByInterest">
+          <ScalarProperty Name="Interest" ColumnName="Interest" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="Time" ColumnName="Time" />
           <ScalarProperty Name="Coach" ColumnName="Coach" />
           <ScalarProperty Name="Day" ColumnName="Day" />

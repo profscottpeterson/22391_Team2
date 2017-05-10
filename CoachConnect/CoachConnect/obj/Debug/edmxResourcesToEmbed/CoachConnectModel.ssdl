@@ -218,6 +218,32 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
     <Property Name="Interest" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.SessionsByInterest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SessionsByInterest">
+    <Key>
+      <PropertyRef Name="SessionID" />
+      <PropertyRef Name="Course" />
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="Room" />
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="Coach" />
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="Active" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Interest" />
+    </Key>
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Room" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Coach" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Interest" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.StudentByCourse' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="StudentByCourse">
     <Key>
@@ -239,7 +265,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
       <PropertyRef Name="Room" />
       <PropertyRef Name="Day" />
       <PropertyRef Name="Time" />
-      <PropertyRef Name="Full" />
       <PropertyRef Name="Active" />
     </Key>
     <Property Name="SessionID" Type="int" Nullable="false" />
@@ -249,7 +274,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
     <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Coach" Type="nvarchar" MaxLength="200" />
     <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="Full" Type="bit" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
     <Property Name="UserID" Type="nvarchar" MaxLength="50" />
   </EntityType>
@@ -522,6 +546,20 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
     [CoachInterest].[Interest] AS [Interest]
     FROM [dbo].[CoachInterest] AS [CoachInterest]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="SessionsByInterest" EntityType="Self.SessionsByInterest" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SessionsByInterest].[SessionID] AS [SessionID], 
+    [SessionsByInterest].[Course] AS [Course], 
+    [SessionsByInterest].[CourseName] AS [CourseName], 
+    [SessionsByInterest].[Room] AS [Room], 
+    [SessionsByInterest].[Day] AS [Day], 
+    [SessionsByInterest].[Coach] AS [Coach], 
+    [SessionsByInterest].[Time] AS [Time], 
+    [SessionsByInterest].[Active] AS [Active], 
+    [SessionsByInterest].[UserID] AS [UserID], 
+    [SessionsByInterest].[Interest] AS [Interest]
+    FROM [dbo].[SessionsByInterest] AS [SessionsByInterest]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="StudentByCourse" EntityType="Self.StudentByCourse" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [StudentByCourse].[UserID] AS [UserID], 
@@ -538,7 +576,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
     [ViewSession].[Day] AS [Day], 
     [ViewSession].[Coach] AS [Coach], 
     [ViewSession].[Time] AS [Time], 
-    [ViewSession].[Full] AS [Full], 
     [ViewSession].[Active] AS [Active], 
     [ViewSession].[UserID] AS [UserID]
     FROM [dbo].[ViewSession] AS [ViewSession]</DefiningQuery>

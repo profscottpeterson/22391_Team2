@@ -77,6 +77,8 @@ public partial class db_sft_2172Entities : DbContext
 
     public virtual DbSet<ViewSession> ViewSessions { get; set; }
 
+    public virtual DbSet<SessionsByInterest> SessionsByInterests { get; set; }
+
 
     public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
     {
