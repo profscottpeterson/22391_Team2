@@ -165,6 +165,10 @@
       <End Role="User" EntitySet="Users" />
       <End Role="SessionRoster" EntitySet="SessionRosters" />
     </AssociationSet>
+    <FunctionImport Name="sp_GetEligibleStudents">
+      <Parameter Name="SessionID" Mode="In" Type="Int32" />
+      <Parameter Name="CourseID" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="TimePeriod">
     <Key>
