@@ -31,15 +31,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SessionRosters">
-      <EntityTypeMapping TypeName="db_sft_2172Model.SessionRoster">
-        <MappingFragment StoreEntitySet="SessionRoster">
-          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TimePeriods">
       <EntityTypeMapping TypeName="db_sft_2172Model.TimePeriod">
         <MappingFragment StoreEntitySet="TimePeriod">
@@ -185,6 +176,22 @@
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="db_sft_2172Model.Store.sp_renamediagram" />
     <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="db_sft_2172Model.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="ViewSessions">
+      <EntityTypeMapping TypeName="db_sft_2172Model.ViewSession">
+        <MappingFragment StoreEntitySet="ViewSession">
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="Full" ColumnName="Full" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="Coach" ColumnName="Coach" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Course" ColumnName="Course" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="db_sft_2172Model.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -247,36 +254,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ViewSessions">
-      <EntityTypeMapping TypeName="db_sft_2172Model.ViewSession">
-        <MappingFragment StoreEntitySet="ViewSession">
+    <EntitySetMapping Name="SessionRosters">
+      <EntityTypeMapping TypeName="db_sft_2172Model.SessionRoster">
+        <MappingFragment StoreEntitySet="SessionRoster">
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="Time" ColumnName="Time" />
-          <ScalarProperty Name="Coach" ColumnName="Coach" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="Room" ColumnName="Room" />
-          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-          <ScalarProperty Name="Course" ColumnName="Course" />
           <ScalarProperty Name="SessionID" ColumnName="SessionID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="SessionsByInterests">
-      <EntityTypeMapping TypeName="db_sft_2172Model.SessionsByInterest">
-        <MappingFragment StoreEntitySet="SessionsByInterest">
-          <ScalarProperty Name="Interest" ColumnName="Interest" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="Active" ColumnName="Active" />
-          <ScalarProperty Name="Time" ColumnName="Time" />
-          <ScalarProperty Name="Coach" ColumnName="Coach" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="Room" ColumnName="Room" />
-          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-          <ScalarProperty Name="Course" ColumnName="Course" />
-          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetEligibleStudents" FunctionName="db_sft_2172Model.Store.sp_GetEligibleStudents" />
   </EntityContainerMapping>
 </Mapping>

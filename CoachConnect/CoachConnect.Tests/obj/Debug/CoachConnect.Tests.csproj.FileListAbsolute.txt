@@ -18,6 +18,23 @@ C:\Users\timdu\repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\Entit
 C:\Users\timdu\repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojResolveAssemblyReference.cache
 C:\Users\timdu\repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
 C:\Users\timdu\repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.dll
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.pdb
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.exe
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.dll
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.pdb
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.xml
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
+H:\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.dll
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.pdb
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.exe
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.dll
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.pdb
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.xml
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojResolveAssemblyReference.cache
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
+C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.dll
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.pdb
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.exe
@@ -27,29 +44,3 @@ C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debu
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojResolveAssemblyReference.cache
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojResolveAssemblyReference.cache
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.dll
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.pdb
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.exe
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.dll
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.pdb
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.xml
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
-C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb
-H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.dll
-H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.pdb
-H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.exe
-H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.dll
-H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.pdb
-H:\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.xml
-H:\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
-H:\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb
-D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.dll
-D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.pdb
-D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.exe
-D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.dll
-D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.pdb
-D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.xml
-D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojResolveAssemblyReference.cache
-D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
-D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb

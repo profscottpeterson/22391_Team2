@@ -82,7 +82,7 @@ namespace CoachConnect
                         /** the first "if" statement below                          **/
                         /** Otherwise, uncomment the second "if" to use encryption. **/
                         /*************************************************************/
-                        //if (userResult.Password == password) 
+                       // if (userResult.Password == password) 
                         if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, password))
                         {
                             // Update static variable containing User ID
@@ -162,5 +162,9 @@ namespace CoachConnect
             Program.loginForm.Show();
         }
 
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
