@@ -49,16 +49,6 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Event handler exits the application when the Exit button is clicked
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        /// <summary>
         /// Event handler exits the application when the form is closed
         /// </summary>
         /// <param name="sender"></param>
@@ -76,12 +66,10 @@ namespace CoachConnect
         private void dataGridViewSessions_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // Get SessionID for the selected row
-            int selectedSessionID = Convert.ToInt32(dataGridViewSessions.SelectedRows[0].Cells["SessionID"].Value);
-            MessageBox.Show(selectedSessionID.ToString());
-
+            int selectedSessionId = Convert.ToInt32(dataGridViewSessions.SelectedRows[0].Cells["SessionID"].Value);
 
             // Open new EditSession window
-            EditSession newSessionWindow = new EditSession(selectedSessionID);
+            EditSession newSessionWindow = new EditSession(selectedSessionId);
             newSessionWindow.ShowDialog();
         }
 

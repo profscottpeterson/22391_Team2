@@ -425,5 +425,47 @@ namespace CoachConnect
             AddSessionStudent addStudentForm = new AddSessionStudent(this.CurrentSession);
             addStudentForm.ShowDialog();
         }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            string selectedStudentId = dataGridViewRoster.SelectedRows[0].Cells["UserID"].Value.ToString();
+
+            // Confirm action
+            DialogResult removeConfirmation =
+                MessageBox.Show("Are you sure you want to remove this student from the session?", "Confirm Removal",
+                    MessageBoxButtons.YesNo,MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
+
+            // If user did not click yes, leave the method without doing anything.
+            if (!removeConfirmation.Equals(DialogResult.Yes)) return;
+
+            try
+            {
+                // Remove the selected record
+                SessionRoster selectedStudentEntry = new SessionRoster
+                {
+                    SessionID = this.CurrentSession.SessionID,
+                    UserID = selectedStudentId,
+                    RoleID = "STUD"
+                };
+
+                using (var context = new db_sft_2172Entities())
+                {
+                    context.SessionRosters.Attach(selectedStudentEntry);
+                    context.SessionRosters.Remove(selectedStudentEntry);
+                    context.SaveChanges();
+                }
+
+                // Display a confirmation message
+                MessageBox.Show("Student removed sucessfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            // Update the data grid view
+            populateRoster();
+
+        }
     }
 }
