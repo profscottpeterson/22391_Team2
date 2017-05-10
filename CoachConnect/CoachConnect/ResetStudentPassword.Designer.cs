@@ -30,6 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResetStudentPassword));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.newPWDNotMatch = new System.Windows.Forms.PictureBox();
+            this.newPWDConfirmWrong = new System.Windows.Forms.PictureBox();
+            this.currentPWDWrong = new System.Windows.Forms.PictureBox();
+            this.newPWD = new System.Windows.Forms.PictureBox();
+            this.newPWDConfirmCorrect = new System.Windows.Forms.PictureBox();
+            this.pwdCorrect = new System.Windows.Forms.PictureBox();
             this.txtStdPassword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtStdNewConfirmPassowrd = new System.Windows.Forms.TextBox();
@@ -38,12 +44,6 @@
             this.label35 = new System.Windows.Forms.Label();
             this.btnSaveNewPassword = new System.Windows.Forms.Button();
             this.btnCancleResetPassword = new System.Windows.Forms.Button();
-            this.newPWDNotMatch = new System.Windows.Forms.PictureBox();
-            this.newPWDConfirmWrong = new System.Windows.Forms.PictureBox();
-            this.currentPWDWrong = new System.Windows.Forms.PictureBox();
-            this.newPWD = new System.Windows.Forms.PictureBox();
-            this.newPWDConfirmCorrect = new System.Windows.Forms.PictureBox();
-            this.pwdCorrect = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newPWDNotMatch)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.newPWDConfirmWrong)).BeginInit();
@@ -70,6 +70,48 @@
             resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // newPWDNotMatch
+            // 
+            this.newPWDNotMatch.Image = global::CoachConnect.Properties.Resources.wrong;
+            resources.ApplyResources(this.newPWDNotMatch, "newPWDNotMatch");
+            this.newPWDNotMatch.Name = "newPWDNotMatch";
+            this.newPWDNotMatch.TabStop = false;
+            // 
+            // newPWDConfirmWrong
+            // 
+            this.newPWDConfirmWrong.Image = global::CoachConnect.Properties.Resources.wrong;
+            resources.ApplyResources(this.newPWDConfirmWrong, "newPWDConfirmWrong");
+            this.newPWDConfirmWrong.Name = "newPWDConfirmWrong";
+            this.newPWDConfirmWrong.TabStop = false;
+            // 
+            // currentPWDWrong
+            // 
+            this.currentPWDWrong.Image = global::CoachConnect.Properties.Resources.wrong;
+            resources.ApplyResources(this.currentPWDWrong, "currentPWDWrong");
+            this.currentPWDWrong.Name = "currentPWDWrong";
+            this.currentPWDWrong.TabStop = false;
+            // 
+            // newPWD
+            // 
+            this.newPWD.Image = global::CoachConnect.Properties.Resources.correct1;
+            resources.ApplyResources(this.newPWD, "newPWD");
+            this.newPWD.Name = "newPWD";
+            this.newPWD.TabStop = false;
+            // 
+            // newPWDConfirmCorrect
+            // 
+            this.newPWDConfirmCorrect.Image = global::CoachConnect.Properties.Resources.correct1;
+            resources.ApplyResources(this.newPWDConfirmCorrect, "newPWDConfirmCorrect");
+            this.newPWDConfirmCorrect.Name = "newPWDConfirmCorrect";
+            this.newPWDConfirmCorrect.TabStop = false;
+            // 
+            // pwdCorrect
+            // 
+            this.pwdCorrect.Image = global::CoachConnect.Properties.Resources.correct1;
+            resources.ApplyResources(this.pwdCorrect, "pwdCorrect");
+            this.pwdCorrect.Name = "pwdCorrect";
+            this.pwdCorrect.TabStop = false;
             // 
             // txtStdPassword
             // 
@@ -118,48 +160,6 @@
             this.btnCancleResetPassword.UseVisualStyleBackColor = true;
             this.btnCancleResetPassword.Click += new System.EventHandler(this.btnCancleResetPassword_Click);
             // 
-            // newPWDNotMatch
-            // 
-            this.newPWDNotMatch.Image = global::CoachConnect.Properties.Resources.wrong;
-            resources.ApplyResources(this.newPWDNotMatch, "newPWDNotMatch");
-            this.newPWDNotMatch.Name = "newPWDNotMatch";
-            this.newPWDNotMatch.TabStop = false;
-            // 
-            // newPWDConfirmWrong
-            // 
-            this.newPWDConfirmWrong.Image = global::CoachConnect.Properties.Resources.wrong;
-            resources.ApplyResources(this.newPWDConfirmWrong, "newPWDConfirmWrong");
-            this.newPWDConfirmWrong.Name = "newPWDConfirmWrong";
-            this.newPWDConfirmWrong.TabStop = false;
-            // 
-            // currentPWDWrong
-            // 
-            this.currentPWDWrong.Image = global::CoachConnect.Properties.Resources.wrong;
-            resources.ApplyResources(this.currentPWDWrong, "currentPWDWrong");
-            this.currentPWDWrong.Name = "currentPWDWrong";
-            this.currentPWDWrong.TabStop = false;
-            // 
-            // newPWD
-            // 
-            this.newPWD.Image = global::CoachConnect.Properties.Resources.correct1;
-            resources.ApplyResources(this.newPWD, "newPWD");
-            this.newPWD.Name = "newPWD";
-            this.newPWD.TabStop = false;
-            // 
-            // newPWDConfirmCorrect
-            // 
-            this.newPWDConfirmCorrect.Image = global::CoachConnect.Properties.Resources.correct1;
-            resources.ApplyResources(this.newPWDConfirmCorrect, "newPWDConfirmCorrect");
-            this.newPWDConfirmCorrect.Name = "newPWDConfirmCorrect";
-            this.newPWDConfirmCorrect.TabStop = false;
-            // 
-            // pwdCorrect
-            // 
-            this.pwdCorrect.Image = global::CoachConnect.Properties.Resources.correct1;
-            resources.ApplyResources(this.pwdCorrect, "pwdCorrect");
-            this.pwdCorrect.Name = "pwdCorrect";
-            this.pwdCorrect.TabStop = false;
-            // 
             // ResetStudentPassword
             // 
             resources.ApplyResources(this, "$this");
@@ -167,6 +167,8 @@
             this.Controls.Add(this.btnSaveNewPassword);
             this.Controls.Add(this.btnCancleResetPassword);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ResetStudentPassword";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
