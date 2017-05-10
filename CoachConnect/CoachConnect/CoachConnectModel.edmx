@@ -455,6 +455,10 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_GetEligibleStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SessionID" Type="int" Mode="In" />
+          <Parameter Name="CourseID" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -781,6 +785,10 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
             <End Role="User" EntitySet="Users" />
             <End Role="SessionRoster" EntitySet="SessionRosters" />
           </AssociationSet>
+          <FunctionImport Name="sp_GetEligibleStudents">
+            <Parameter Name="SessionID" Mode="In" Type="Int32" />
+            <Parameter Name="CourseID" Mode="In" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <EntityType Name="TimePeriod">
           <Key>
@@ -1504,6 +1512,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_GetEligibleStudents" FunctionName="db_sft_2172Model.Store.sp_GetEligibleStudents" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

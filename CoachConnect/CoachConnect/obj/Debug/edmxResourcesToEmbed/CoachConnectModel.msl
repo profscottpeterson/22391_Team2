@@ -263,5 +263,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetEligibleStudents" FunctionName="db_sft_2172Model.Store.sp_GetEligibleStudents" />
   </EntityContainerMapping>
 </Mapping>
