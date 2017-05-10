@@ -146,6 +146,9 @@
     <Compile Include="SessionRoster.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SessionsByInterest.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>

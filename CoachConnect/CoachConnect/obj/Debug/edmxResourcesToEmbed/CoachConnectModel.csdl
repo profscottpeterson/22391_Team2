@@ -169,6 +169,7 @@
       <Parameter Name="SessionID" Mode="In" Type="Int32" />
       <Parameter Name="CourseID" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="SessionsByInterests" EntityType="db_sft_2172Model.SessionsByInterest" />
   </EntityContainer>
   <EntityType Name="TimePeriod">
     <Key>
@@ -430,7 +431,6 @@
       <PropertyRef Name="SessionID" />
       <PropertyRef Name="Day" />
       <PropertyRef Name="Time" />
-      <PropertyRef Name="Full" />
       <PropertyRef Name="CourseName" />
     </Key>
     <Property Name="Course" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -440,7 +440,6 @@
     <Property Name="SessionID" Type="Int32" Nullable="false" />
     <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Full" Type="Boolean" Nullable="false" />
     <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
@@ -624,4 +623,28 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="SessionsByInterest">
+    <Key>
+      <PropertyRef Name="SessionID" />
+      <PropertyRef Name="Course" />
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="Room" />
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="Coach" />
+      <PropertyRef Name="Time" />
+      <PropertyRef Name="Active" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Interest" />
+    </Key>
+    <Property Name="SessionID" Type="Int32" Nullable="false" />
+    <Property Name="Course" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Room" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Coach" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Interest" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
 </Schema>

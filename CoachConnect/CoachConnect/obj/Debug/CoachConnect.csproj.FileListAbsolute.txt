@@ -150,3 +150,29 @@ C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\Coac
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\bin\Debug\CoachConnect.pdb
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\bin\Debug\EntityFramework.dll
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.dll
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\bin\Debug\EntityFramework.xml
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.xml
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AddSessionStudent.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AdminForm.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FrmCoachView.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ChangePasswordForm.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditSession.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditStudentProfileForm.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ResetStudentPassword.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.SessionAdminForm.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminForm.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.frmCoachInterest.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FindCoachForm.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.LoginForm.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.RoleForm.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminFormAdam.resources
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
