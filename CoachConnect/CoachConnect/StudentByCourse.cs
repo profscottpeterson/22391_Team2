@@ -12,17 +12,10 @@ namespace CoachConnect
     using System;
     using System.Collections.Generic;
     
-    public partial class ViewSession
+    public partial class StudentByCourse
     {
-        public string Course { get; set; }
-        public string Room { get; set; }
-        public string Coach { get; set; }
-        public bool Active { get; set; }
-        public int SessionID { get; set; }
-        public string Day { get; set; }
-        public string Time { get; set; }
-        public bool Full { get; set; }
         public string UserID { get; set; }
-        public string CourseName { get; set; }
+        public string DisplayName { get; set; }
+        public string CourseID { get; set; }
     }
 }

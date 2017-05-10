@@ -50,14 +50,13 @@
             this.chkBoxActive = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnMinus = new System.Windows.Forms.Button();
-            this.btnResetPassword = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblAdminForm
             // 
             this.lblAdminForm.AutoSize = true;
             this.lblAdminForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminForm.Location = new System.Drawing.Point(200, 9);
+            this.lblAdminForm.Location = new System.Drawing.Point(223, 9);
             this.lblAdminForm.Name = "lblAdminForm";
             this.lblAdminForm.Size = new System.Drawing.Size(380, 73);
             this.lblAdminForm.TabIndex = 7;
@@ -76,10 +75,10 @@
             // 
             // txtBoxUserID
             // 
-            this.txtBoxUserID.Font = new System.Drawing.Font("Perpetua Titling MT", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxUserID.Location = new System.Drawing.Point(448, 336);
             this.txtBoxUserID.Name = "txtBoxUserID";
-            this.txtBoxUserID.Size = new System.Drawing.Size(188, 27);
+            this.txtBoxUserID.Size = new System.Drawing.Size(188, 28);
             this.txtBoxUserID.TabIndex = 6;
             // 
             // lblUserID
@@ -119,50 +118,49 @@
             this.lblFirstName.Location = new System.Drawing.Point(443, 116);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(106, 25);
-            this.lblFirstName.TabIndex = 37;
+            this.lblFirstName.TabIndex = 4;
             this.lblFirstName.Text = "First Name";
             // 
             // txtBoxMiddleName
             // 
-            this.txtBoxMiddleName.Font = new System.Drawing.Font("Perpetua Titling MT", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxMiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxMiddleName.Location = new System.Drawing.Point(448, 272);
             this.txtBoxMiddleName.Name = "txtBoxMiddleName";
-            this.txtBoxMiddleName.Size = new System.Drawing.Size(188, 27);
+            this.txtBoxMiddleName.Size = new System.Drawing.Size(188, 28);
             this.txtBoxMiddleName.TabIndex = 5;
             // 
             // txtBoxPassword
             // 
-            this.txtBoxPassword.Font = new System.Drawing.Font("Perpetua Titling MT", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxPassword.Location = new System.Drawing.Point(448, 400);
             this.txtBoxPassword.Name = "txtBoxPassword";
-            this.txtBoxPassword.Size = new System.Drawing.Size(188, 27);
+            this.txtBoxPassword.Size = new System.Drawing.Size(188, 28);
             this.txtBoxPassword.TabIndex = 7;
             // 
             // txtBoxLastName
             // 
-            this.txtBoxLastName.Font = new System.Drawing.Font("Perpetua Titling MT", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxLastName.Location = new System.Drawing.Point(448, 208);
             this.txtBoxLastName.Name = "txtBoxLastName";
-            this.txtBoxLastName.Size = new System.Drawing.Size(188, 27);
+            this.txtBoxLastName.Size = new System.Drawing.Size(188, 28);
             this.txtBoxLastName.TabIndex = 4;
             // 
             // txtBoxFirstName
             // 
-            this.txtBoxFirstName.Font = new System.Drawing.Font("Perpetua Titling MT", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBoxFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxFirstName.Location = new System.Drawing.Point(448, 144);
             this.txtBoxFirstName.Name = "txtBoxFirstName";
-            this.txtBoxFirstName.Size = new System.Drawing.Size(188, 27);
+            this.txtBoxFirstName.Size = new System.Drawing.Size(188, 28);
             this.txtBoxFirstName.TabIndex = 3;
-            this.txtBoxFirstName.TextChanged += new System.EventHandler(this.txtBoxFirstName_TextChanged);
             // 
             // lstBoxUsers
             // 
-            this.lstBoxUsers.Font = new System.Drawing.Font("Perpetua Titling MT", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstBoxUsers.Font = new System.Drawing.Font("Microsoft NeoGothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstBoxUsers.FormattingEnabled = true;
-            this.lstBoxUsers.ItemHeight = 24;
+            this.lstBoxUsers.ItemHeight = 27;
             this.lstBoxUsers.Location = new System.Drawing.Point(12, 125);
             this.lstBoxUsers.Name = "lstBoxUsers";
-            this.lstBoxUsers.Size = new System.Drawing.Size(269, 484);
+            this.lstBoxUsers.Size = new System.Drawing.Size(288, 328);
             this.lstBoxUsers.TabIndex = 0;
             this.lstBoxUsers.SelectedIndexChanged += new System.EventHandler(this.lstBoxUsers_SelectedIndexChanged);
             // 
@@ -170,7 +168,7 @@
             // 
             this.lblUsers.AutoSize = true;
             this.lblUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsers.Location = new System.Drawing.Point(90, 82);
+            this.lblUsers.Location = new System.Drawing.Point(101, 82);
             this.lblUsers.Name = "lblUsers";
             this.lblUsers.Size = new System.Drawing.Size(116, 40);
             this.lblUsers.TabIndex = 48;
@@ -180,7 +178,7 @@
             // btnSubmit
             // 
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(473, 569);
+            this.btnSubmit.Location = new System.Drawing.Point(351, 458);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(97, 47);
             this.btnSubmit.TabIndex = 12;
@@ -191,21 +189,20 @@
             // btnLogOff
             // 
             this.btnLogOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOff.Location = new System.Drawing.Point(573, 569);
+            this.btnLogOff.Location = new System.Drawing.Point(490, 458);
             this.btnLogOff.Name = "btnLogOff";
             this.btnLogOff.Size = new System.Drawing.Size(99, 47);
-            this.btnLogOff.TabIndex = 14;
+            this.btnLogOff.TabIndex = 13;
             this.btnLogOff.Text = "Log Off";
             this.btnLogOff.UseVisualStyleBackColor = true;
-            this.btnLogOff.Click += new System.EventHandler(this.btnLogOff_Click);
             // 
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(673, 569);
+            this.btnExit.Location = new System.Drawing.Point(636, 458);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(99, 47);
-            this.btnExit.TabIndex = 15;
+            this.btnExit.TabIndex = 14;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -256,42 +253,31 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(12, 569);
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(12, 452);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(135, 46);
+            this.btnAdd.Size = new System.Drawing.Size(145, 46);
             this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "+";
+            this.btnAdd.Text = "Add User";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnMinus
             // 
-            this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinus.Location = new System.Drawing.Point(144, 569);
+            this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinus.Location = new System.Drawing.Point(156, 452);
             this.btnMinus.Name = "btnMinus";
-            this.btnMinus.Size = new System.Drawing.Size(137, 46);
+            this.btnMinus.Size = new System.Drawing.Size(144, 46);
             this.btnMinus.TabIndex = 2;
-            this.btnMinus.Text = "-";
+            this.btnMinus.Text = "Inactive user";
             this.btnMinus.UseVisualStyleBackColor = true;
-            // 
-            // btnResetPassword
-            // 
-            this.btnResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetPassword.Location = new System.Drawing.Point(280, 568);
-            this.btnResetPassword.Name = "btnResetPassword";
-            this.btnResetPassword.Size = new System.Drawing.Size(191, 47);
-            this.btnResetPassword.TabIndex = 13;
-            this.btnResetPassword.Text = "Reset Password";
-            this.btnResetPassword.UseVisualStyleBackColor = true;
-            this.btnResetPassword.Click += new System.EventHandler(this.btnResetPassword_Click);
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
             // 
             // UserAdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 627);
-            this.Controls.Add(this.btnResetPassword);
+            this.ClientSize = new System.Drawing.Size(779, 524);
             this.Controls.Add(this.btnMinus);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.chkBoxActive);
@@ -346,7 +332,6 @@
         private System.Windows.Forms.CheckBox chkBoxActive;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnMinus;
-        private System.Windows.Forms.Button btnResetPassword;
     }
 }
 

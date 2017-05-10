@@ -151,12 +151,16 @@ warning 6002: The table/view 'db_sft_2172.dbo.Availability' does not have a prim
       <PropertyRef Name="FirstName" />
       <PropertyRef Name="DayID" />
       <PropertyRef Name="TimePeriodID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Expr1" />
     </Key>
     <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="DayID" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="TimePeriodID" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="ProfilePic" Type="nvarchar(max)" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Expr1" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.CoachByName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -214,11 +218,24 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
     <Property Name="Interest" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.StudentByCourse' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="StudentByCourse">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="DisplayName" />
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DisplayName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ViewSession">
     <Key>
       <PropertyRef Name="SessionID" />
       <PropertyRef Name="Course" />
+      <PropertyRef Name="CourseName" />
       <PropertyRef Name="Room" />
       <PropertyRef Name="Day" />
       <PropertyRef Name="Time" />
@@ -226,12 +243,26 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
     </Key>
     <Property Name="SessionID" Type="int" Nullable="false" />
     <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Room" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Coach" Type="nvarchar" MaxLength="200" />
     <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Full" Type="bit" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ViewSessionRoster">
+    <Key>
+      <PropertyRef Name="SessionID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="SessionID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
   </EntityType>
   <Association Name="FK_Course_Department">
     <End Role="Department" Type="Self.Department" Multiplicity="1" />
@@ -418,6 +449,10 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_GetEligibleStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SessionID" Type="int" Mode="In" />
+    <Parameter Name="CourseID" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -453,7 +488,9 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
     [Availability].[FirstName] AS [FirstName], 
     [Availability].[DayID] AS [DayID], 
     [Availability].[TimePeriodID] AS [TimePeriodID], 
-    [Availability].[ProfilePic] AS [ProfilePic]
+    [Availability].[ProfilePic] AS [ProfilePic], 
+    [Availability].[UserID] AS [UserID], 
+    [Availability].[Expr1] AS [Expr1]
     FROM [dbo].[Availability] AS [Availability]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="CoachByName" EntityType="Self.CoachByName" store:Type="Views" store:Schema="dbo">
@@ -488,17 +525,33 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a prima
     [CoachInterest].[Interest] AS [Interest]
     FROM [dbo].[CoachInterest] AS [CoachInterest]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="StudentByCourse" EntityType="Self.StudentByCourse" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [StudentByCourse].[UserID] AS [UserID], 
+    [StudentByCourse].[DisplayName] AS [DisplayName], 
+    [StudentByCourse].[CourseID] AS [CourseID]
+    FROM [dbo].[StudentByCourse] AS [StudentByCourse]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="ViewSession" EntityType="Self.ViewSession" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [ViewSession].[SessionID] AS [SessionID], 
     [ViewSession].[Course] AS [Course], 
+    [ViewSession].[CourseName] AS [CourseName], 
     [ViewSession].[Room] AS [Room], 
     [ViewSession].[Day] AS [Day], 
     [ViewSession].[Coach] AS [Coach], 
     [ViewSession].[Time] AS [Time], 
     [ViewSession].[Full] AS [Full], 
-    [ViewSession].[Active] AS [Active]
+    [ViewSession].[Active] AS [Active], 
+    [ViewSession].[UserID] AS [UserID]
     FROM [dbo].[ViewSession] AS [ViewSession]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ViewSessionRoster" EntityType="Self.ViewSessionRoster" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ViewSessionRoster].[SessionID] AS [SessionID], 
+    [ViewSessionRoster].[UserID] AS [UserID], 
+    [ViewSessionRoster].[Name] AS [Name]
+    FROM [dbo].[ViewSessionRoster] AS [ViewSessionRoster]</DefiningQuery>
     </EntitySet>
     <AssociationSet Name="FK_Course_Department" Association="Self.FK_Course_Department">
       <End Role="Department" EntitySet="Department" />
