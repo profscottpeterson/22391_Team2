@@ -57,6 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddSessionStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddSessionStudent.Designer.cs">
+      <DependentUpon>AddSessionStudent.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,9 @@
     <Compile Include="ViewSessionRoster.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddSessionStudent.resx">
+      <DependentUpon>AddSessionStudent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
