@@ -449,6 +449,10 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
   </Function>
+  <Function Name="sp_GetEligibleStudents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="SessionID" Type="int" Mode="In" />
+    <Parameter Name="CourseID" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
     <Parameter Name="owner_id" Type="int" Mode="In" />
