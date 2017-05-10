@@ -62,7 +62,7 @@
             // lblCourse
             // 
             this.lblCourse.AutoSize = true;
-            this.lblCourse.Location = new System.Drawing.Point(18, 36);
+            this.lblCourse.Location = new System.Drawing.Point(18, 31);
             this.lblCourse.Name = "lblCourse";
             this.lblCourse.Size = new System.Drawing.Size(40, 13);
             this.lblCourse.TabIndex = 3;
@@ -70,8 +70,9 @@
             // 
             // cbxCourse
             // 
+            this.cbxCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCourse.FormattingEnabled = true;
-            this.cbxCourse.Location = new System.Drawing.Point(61, 33);
+            this.cbxCourse.Location = new System.Drawing.Point(61, 28);
             this.cbxCourse.Name = "cbxCourse";
             this.cbxCourse.Size = new System.Drawing.Size(121, 21);
             this.cbxCourse.TabIndex = 2;
@@ -80,7 +81,7 @@
             // lblRoom
             // 
             this.lblRoom.AutoSize = true;
-            this.lblRoom.Location = new System.Drawing.Point(18, 63);
+            this.lblRoom.Location = new System.Drawing.Point(18, 58);
             this.lblRoom.Name = "lblRoom";
             this.lblRoom.Size = new System.Drawing.Size(35, 13);
             this.lblRoom.TabIndex = 5;
@@ -88,8 +89,9 @@
             // 
             // cbxRoom
             // 
+            this.cbxRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRoom.FormattingEnabled = true;
-            this.cbxRoom.Location = new System.Drawing.Point(61, 60);
+            this.cbxRoom.Location = new System.Drawing.Point(61, 55);
             this.cbxRoom.Name = "cbxRoom";
             this.cbxRoom.Size = new System.Drawing.Size(121, 21);
             this.cbxRoom.TabIndex = 4;
@@ -98,7 +100,7 @@
             // lblDay
             // 
             this.lblDay.AutoSize = true;
-            this.lblDay.Location = new System.Drawing.Point(18, 92);
+            this.lblDay.Location = new System.Drawing.Point(18, 87);
             this.lblDay.Name = "lblDay";
             this.lblDay.Size = new System.Drawing.Size(26, 13);
             this.lblDay.TabIndex = 7;
@@ -106,8 +108,9 @@
             // 
             // cbxDay
             // 
+            this.cbxDay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxDay.FormattingEnabled = true;
-            this.cbxDay.Location = new System.Drawing.Point(61, 89);
+            this.cbxDay.Location = new System.Drawing.Point(61, 84);
             this.cbxDay.Name = "cbxDay";
             this.cbxDay.Size = new System.Drawing.Size(121, 21);
             this.cbxDay.TabIndex = 6;
@@ -116,7 +119,7 @@
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(18, 119);
+            this.lblTime.Location = new System.Drawing.Point(18, 114);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(30, 13);
             this.lblTime.TabIndex = 9;
@@ -124,8 +127,9 @@
             // 
             // cbxTime
             // 
+            this.cbxTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxTime.FormattingEnabled = true;
-            this.cbxTime.Location = new System.Drawing.Point(61, 116);
+            this.cbxTime.Location = new System.Drawing.Point(61, 111);
             this.cbxTime.Name = "cbxTime";
             this.cbxTime.Size = new System.Drawing.Size(121, 21);
             this.cbxTime.TabIndex = 8;
@@ -134,7 +138,7 @@
             // lblCoach
             // 
             this.lblCoach.AutoSize = true;
-            this.lblCoach.Location = new System.Drawing.Point(18, 146);
+            this.lblCoach.Location = new System.Drawing.Point(18, 141);
             this.lblCoach.Name = "lblCoach";
             this.lblCoach.Size = new System.Drawing.Size(38, 13);
             this.lblCoach.TabIndex = 11;
@@ -142,8 +146,9 @@
             // 
             // cbxCoach
             // 
+            this.cbxCoach.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxCoach.FormattingEnabled = true;
-            this.cbxCoach.Location = new System.Drawing.Point(61, 143);
+            this.cbxCoach.Location = new System.Drawing.Point(61, 138);
             this.cbxCoach.Name = "cbxCoach";
             this.cbxCoach.Size = new System.Drawing.Size(121, 21);
             this.cbxCoach.TabIndex = 10;
@@ -161,7 +166,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(231, 274);
+            this.btnSave.Location = new System.Drawing.Point(219, 261);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 13;
@@ -171,7 +176,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(317, 274);
+            this.btnCancel.Location = new System.Drawing.Point(317, 261);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 14;
@@ -182,7 +187,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 173);
+            this.label1.Location = new System.Drawing.Point(18, 168);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 16;
@@ -190,11 +195,12 @@
             // 
             // cbxActive
             // 
+            this.cbxActive.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxActive.FormattingEnabled = true;
             this.cbxActive.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.cbxActive.Location = new System.Drawing.Point(61, 170);
+            this.cbxActive.Location = new System.Drawing.Point(61, 165);
             this.cbxActive.Name = "cbxActive";
             this.cbxActive.Size = new System.Drawing.Size(121, 21);
             this.cbxActive.TabIndex = 15;
@@ -204,79 +210,80 @@
             // 
             this.lblInvalidCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidCourse.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidCourse.Location = new System.Drawing.Point(188, 36);
+            this.lblInvalidCourse.Location = new System.Drawing.Point(188, 31);
             this.lblInvalidCourse.Name = "lblInvalidCourse";
-            this.lblInvalidCourse.Size = new System.Drawing.Size(90, 16);
+            this.lblInvalidCourse.Size = new System.Drawing.Size(75, 13);
             this.lblInvalidCourse.TabIndex = 25;
             this.lblInvalidCourse.Text = "Invalid Course";
-            this.lblInvalidCourse.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblInvalidCourse.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblInvalidCourse.Visible = false;
             // 
             // lblInvalidRoom
             // 
             this.lblInvalidRoom.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidRoom.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidRoom.Location = new System.Drawing.Point(188, 63);
+            this.lblInvalidRoom.Location = new System.Drawing.Point(188, 58);
             this.lblInvalidRoom.Name = "lblInvalidRoom";
-            this.lblInvalidRoom.Size = new System.Drawing.Size(90, 16);
+            this.lblInvalidRoom.Size = new System.Drawing.Size(75, 13);
             this.lblInvalidRoom.TabIndex = 26;
             this.lblInvalidRoom.Text = "Invalid Room";
-            this.lblInvalidRoom.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblInvalidRoom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblInvalidRoom.Visible = false;
             // 
             // lblInvalidDay
             // 
             this.lblInvalidDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidDay.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidDay.Location = new System.Drawing.Point(188, 92);
+            this.lblInvalidDay.Location = new System.Drawing.Point(188, 87);
             this.lblInvalidDay.Name = "lblInvalidDay";
-            this.lblInvalidDay.Size = new System.Drawing.Size(90, 16);
+            this.lblInvalidDay.Size = new System.Drawing.Size(75, 13);
             this.lblInvalidDay.TabIndex = 27;
             this.lblInvalidDay.Text = "Invalid Day";
-            this.lblInvalidDay.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblInvalidDay.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblInvalidDay.Visible = false;
             // 
             // lblInvalidTime
             // 
             this.lblInvalidTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidTime.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidTime.Location = new System.Drawing.Point(188, 119);
+            this.lblInvalidTime.Location = new System.Drawing.Point(188, 114);
             this.lblInvalidTime.Name = "lblInvalidTime";
-            this.lblInvalidTime.Size = new System.Drawing.Size(90, 16);
+            this.lblInvalidTime.Size = new System.Drawing.Size(75, 13);
             this.lblInvalidTime.TabIndex = 28;
             this.lblInvalidTime.Text = "Invalid Time";
-            this.lblInvalidTime.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblInvalidTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblInvalidTime.Visible = false;
             // 
             // lblInvalidCoach
             // 
             this.lblInvalidCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidCoach.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidCoach.Location = new System.Drawing.Point(188, 146);
+            this.lblInvalidCoach.Location = new System.Drawing.Point(188, 138);
             this.lblInvalidCoach.Name = "lblInvalidCoach";
-            this.lblInvalidCoach.Size = new System.Drawing.Size(90, 16);
+            this.lblInvalidCoach.Size = new System.Drawing.Size(75, 18);
             this.lblInvalidCoach.TabIndex = 29;
             this.lblInvalidCoach.Text = "Invalid Coach";
-            this.lblInvalidCoach.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblInvalidCoach.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblInvalidCoach.Visible = false;
             // 
             // lblInvalidActive
             // 
             this.lblInvalidActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblInvalidActive.ForeColor = System.Drawing.Color.Red;
-            this.lblInvalidActive.Location = new System.Drawing.Point(188, 173);
+            this.lblInvalidActive.Location = new System.Drawing.Point(188, 164);
             this.lblInvalidActive.Name = "lblInvalidActive";
-            this.lblInvalidActive.Size = new System.Drawing.Size(90, 16);
+            this.lblInvalidActive.Size = new System.Drawing.Size(75, 20);
             this.lblInvalidActive.TabIndex = 30;
             this.lblInvalidActive.Text = "Invalid Choice";
-            this.lblInvalidActive.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblInvalidActive.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblInvalidActive.Visible = false;
             // 
             // dataGridViewRoster
             // 
             this.dataGridViewRoster.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewRoster.Location = new System.Drawing.Point(19, 28);
+            this.dataGridViewRoster.Location = new System.Drawing.Point(12, 28);
             this.dataGridViewRoster.Name = "dataGridViewRoster";
+            this.dataGridViewRoster.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewRoster.Size = new System.Drawing.Size(270, 136);
             this.dataGridViewRoster.TabIndex = 31;
             // 
@@ -285,16 +292,16 @@
             this.groupBox1.Controls.Add(this.btnRemove);
             this.groupBox1.Controls.Add(this.btnAddToRoster);
             this.groupBox1.Controls.Add(this.dataGridViewRoster);
-            this.groupBox1.Location = new System.Drawing.Point(317, 44);
+            this.groupBox1.Location = new System.Drawing.Point(300, 44);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(295, 215);
+            this.groupBox1.Size = new System.Drawing.Size(295, 205);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Session Roster";
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(169, 173);
+            this.btnRemove.Location = new System.Drawing.Point(207, 170);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
             this.btnRemove.TabIndex = 34;
@@ -304,7 +311,7 @@
             // 
             // btnAddToRoster
             // 
-            this.btnAddToRoster.Location = new System.Drawing.Point(77, 173);
+            this.btnAddToRoster.Location = new System.Drawing.Point(12, 173);
             this.btnAddToRoster.Name = "btnAddToRoster";
             this.btnAddToRoster.Size = new System.Drawing.Size(86, 23);
             this.btnAddToRoster.TabIndex = 33;
@@ -334,7 +341,7 @@
             this.groupBox2.Controls.Add(this.cbxCourse);
             this.groupBox2.Location = new System.Drawing.Point(16, 44);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(290, 214);
+            this.groupBox2.Size = new System.Drawing.Size(269, 205);
             this.groupBox2.TabIndex = 33;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Session Details";
@@ -343,7 +350,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 300);
+            this.ClientSize = new System.Drawing.Size(608, 300);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);

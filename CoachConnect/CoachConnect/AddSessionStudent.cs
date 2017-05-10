@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,8 +16,9 @@ namespace CoachConnect
     {
         private Session CurrentSession { get; set; }
 
-        private List<User> EligibleStudents { get; set; }
-        private List<string> CurrentRosterIDs { get; set; }
+        private List<StudentByCourse> EligibleStudents { get; set; }
+        private List<SessionRoster> CurrentRoster { get; set; }
+        private bool SuccessfulAdd { get; set; }
 
         public AddSessionStudent(Session currentSession)
         {
@@ -23,25 +26,45 @@ namespace CoachConnect
 
             InitializeComponent();
 
-            getCurrentSessionRoster();
-            getEligibleStudents();
-
-            cbxName.DataSource = EligibleStudents;
-            
-                
+            GetCurrentSessionRoster();
+            GetEligibleStudents();
         }
+
+        /// <summary>
+        /// Destructor
+        /// </summary>
+        ~AddSessionStudent() { }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            if (dataGridViewEligibleStudents.SelectedRows.Count > 0)
+            {
+                AddStudentToSession();
+            }
 
+            if (SuccessfulAdd) Close();
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void getCurrentSessionRoster()
+        private void dataGridViewEligibleStudents_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AddStudentToSession();
+
+            if (SuccessfulAdd) Close();
+        }
+
+        private void dataGridViewEligibleStudents_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            AddStudentToSession();
+
+            if (SuccessfulAdd) Close();
+        }
+
+        private void GetCurrentSessionRoster()
         {
             try
             {
@@ -49,9 +72,9 @@ namespace CoachConnect
                 {
                     var currentStudentsQuery = from currentStudents in context.SessionRosters
                                                where currentStudents.SessionID.Equals(CurrentSession.SessionID)
-                                               select currentStudents.UserID;
+                                               select currentStudents;
 
-                    CurrentRosterIDs = currentStudentsQuery.ToList();
+                    CurrentRoster = currentStudentsQuery.ToList();
                 }
             }
             catch (Exception ex)
@@ -61,28 +84,34 @@ namespace CoachConnect
 
         }
 
-        private void getEligibleStudents()
+        private void GetEligibleStudents()
         {
             try
             {
                 using (var context = new db_sft_2172Entities())
                 {
                     // Pull list of all eligible students
-                    var eligibleStudentIDsQuery = from eligibleStudents in context.StudentByCourses
-                                                where eligibleStudents.CourseID.Equals(CurrentSession.CourseID) 
-                                                select eligibleStudents.UserID;
+                    var enrolledStudentQuery = from students in context.StudentByCourses
+                        where students.CourseID.Equals(CurrentSession.CourseID)
+                        select students;
 
-                    // Remove students that are already enrolled (no need to list them again)
-                    var nonEnrolledEligibleStudents = eligibleStudentIDsQuery.Where(s => CurrentRosterIDs.All(s2 => s2 != s));
+                    if (enrolledStudentQuery == null || enrolledStudentQuery.ToList().Count == 0)
+                    { 
+                        MessageBox.Show("Sorry, no students are enrolled in this course.  Please update your session with a different course.");
+                        Close();
+                        return;
+                    }
+                    
+                    List<StudentByCourse> eligibleStudentList = enrolledStudentQuery.ToList();
 
-                    List<string> eligibleStudentIDs = nonEnrolledEligibleStudents.ToList();
+                    // Find list of eligible students
+                    EligibleStudents = eligibleStudentList.ToList();
 
-                    // Run another query to get student records
-                    var studentsQuery = from students in context.Users
-                                        select students;
-                    studentsQuery = studentsQuery.Where(s => eligibleStudentIDs.All(s2 => s2.Equals(s)));
+                    // Add eligible students to the data grid
+                    dataGridViewEligibleStudents.DataSource = null;
+                    dataGridViewEligibleStudents.DataSource = EligibleStudents;
 
-                    EligibleStudents = studentsQuery.ToList();
+                    dataGridViewEligibleStudents.Columns["CourseID"].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -90,6 +119,47 @@ namespace CoachConnect
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        
+
+        private void AddStudentToSession()
+        {
+            this.SuccessfulAdd = false;
+
+            try
+            {
+                // Get UserID for the selected row
+                string selectedUserId = dataGridViewEligibleStudents.SelectedRows[0].Cells["UserID"].Value.ToString();
+
+                // Create a new SessionRoster object
+                SessionRoster addStudent = new SessionRoster
+                {
+                    SessionID = CurrentSession.SessionID,
+                    UserID = selectedUserId,
+                    RoleID = "STUD"
+                };
+
+                using (var context = new db_sft_2172Entities())
+                {
+                    context.SessionRosters.Add(addStudent);
+                    context.SaveChanges();
+                }
+
+                // Display confirmation
+                MessageBox.Show("Student added successfully!");
+
+                this.Close();
+            }
+            catch (DbUpdateException dbUpdateException)
+            {
+                MessageBox.Show("Student is already enrolled.  Please select a different student.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }

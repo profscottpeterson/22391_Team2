@@ -227,9 +227,6 @@ namespace CoachConnect
                 MessageBox.Show(ex.Message);
             }
 
-
-            MessageBox.Show(CurrentSession.DayID.ToString());
-
             // Populate combo boxes with current session data
             cbxCoach.SelectedValue = CurrentSession.CoachID;
             cbxCourse.SelectedValue = CurrentSession.CourseID;
@@ -424,6 +421,7 @@ namespace CoachConnect
         {
             AddSessionStudent addStudentForm = new AddSessionStudent(this.CurrentSession);
             addStudentForm.ShowDialog();
+            populateRoster();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -440,7 +438,7 @@ namespace CoachConnect
 
             try
             {
-                // Remove the selected record
+                // Remove the selected record from the database
                 SessionRoster selectedStudentEntry = new SessionRoster
                 {
                     SessionID = this.CurrentSession.SessionID,

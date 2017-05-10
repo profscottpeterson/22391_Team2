@@ -18,13 +18,13 @@ namespace CoachConnect
         public SessionAdminForm()
         {
             InitializeComponent();
-            getSessionData();
+            GetSessionData();
         }
 
         /// <summary>
         /// Method to get session data from the database
         /// </summary>
-        private void getSessionData()
+        private void GetSessionData()
         {
             // Generate query to pull all sessions from the database
             try
@@ -81,15 +81,14 @@ namespace CoachConnect
         private void dataGridViewSessions_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // Get SessionID for the selected row
-            int selectedSessionID = Convert.ToInt32(dataGridViewSessions.SelectedRows[0].Cells["SessionID"].Value.ToString());
-            MessageBox.Show(selectedSessionID.ToString());
+            int selectedSessionId = Convert.ToInt32(dataGridViewSessions.SelectedRows[0].Cells["SessionID"].Value.ToString());
 
             // Open new EditSession window
-            EditSession newSessionWindow = new EditSession(selectedSessionID);
+            EditSession newSessionWindow = new EditSession(selectedSessionId);
             newSessionWindow.ShowDialog();
 
             // When form is closed, refresh the datagrid
-            getSessionData();
+            GetSessionData();
         }
 
         /// <summary>
@@ -103,7 +102,7 @@ namespace CoachConnect
             newSessionWindow.ShowDialog();
 
             // When form is closed, refresh the datagrid
-            getSessionData();
+            GetSessionData();
         }
     }
 }
