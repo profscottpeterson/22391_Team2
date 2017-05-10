@@ -151,5 +151,18 @@ namespace CoachConnect
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual int sp_GetEligibleStudents(Nullable<int> sessionID, string courseID)
+        {
+            var sessionIDParameter = sessionID.HasValue ?
+                new ObjectParameter("SessionID", sessionID) :
+                new ObjectParameter("SessionID", typeof(int));
+    
+            var courseIDParameter = courseID != null ?
+                new ObjectParameter("CourseID", courseID) :
+                new ObjectParameter("CourseID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_GetEligibleStudents", sessionIDParameter, courseIDParameter);
+        }
     }
 }

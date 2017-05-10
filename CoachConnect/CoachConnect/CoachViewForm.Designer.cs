@@ -41,6 +41,7 @@ namespace CoachConnect
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCoachView));
             this.tbForm = new System.Windows.Forms.TabControl();
             this.tbSchedule = new System.Windows.Forms.TabPage();
+            this.lblDoubleclick = new System.Windows.Forms.Label();
             this.dgvAvailable = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCoachName = new System.Windows.Forms.Label();
@@ -164,6 +165,7 @@ namespace CoachConnect
             // tbSchedule
             // 
             this.tbSchedule.BackColor = System.Drawing.SystemColors.Control;
+            this.tbSchedule.Controls.Add(this.lblDoubleclick);
             this.tbSchedule.Controls.Add(this.dgvAvailable);
             this.tbSchedule.Controls.Add(this.label1);
             this.tbSchedule.Controls.Add(this.lblCoachName);
@@ -175,6 +177,16 @@ namespace CoachConnect
             this.tbSchedule.Size = new System.Drawing.Size(539, 474);
             this.tbSchedule.TabIndex = 1;
             this.tbSchedule.Text = "Current Schedule";
+            // 
+            // lblDoubleclick
+            // 
+            this.lblDoubleclick.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDoubleclick.Location = new System.Drawing.Point(6, 420);
+            this.lblDoubleclick.Name = "lblDoubleclick";
+            this.lblDoubleclick.Size = new System.Drawing.Size(518, 23);
+            this.lblDoubleclick.TabIndex = 6;
+            this.lblDoubleclick.Text = "Doubleclick the session to see full roster.";
+            this.lblDoubleclick.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dgvAvailable
             // 
@@ -192,12 +204,13 @@ namespace CoachConnect
             this.dgvAvailable.Name = "dgvAvailable";
             this.dgvAvailable.Size = new System.Drawing.Size(518, 197);
             this.dgvAvailable.TabIndex = 5;
+            this.dgvAvailable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvAvailable_CellDoubleClick);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(175, 182);
+            this.label1.Location = new System.Drawing.Point(189, 182);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 24);
             this.label1.TabIndex = 4;
@@ -205,20 +218,20 @@ namespace CoachConnect
             // 
             // lblCoachName
             // 
-            this.lblCoachName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCoachName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCoachName.Location = new System.Drawing.Point(126, 20);
             this.lblCoachName.Name = "lblCoachName";
-            this.lblCoachName.Size = new System.Drawing.Size(398, 23);
+            this.lblCoachName.Size = new System.Drawing.Size(400, 40);
             this.lblCoachName.TabIndex = 2;
             this.lblCoachName.Text = "coach";
             this.lblCoachName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblCoachUser
             // 
-            this.lblCoachUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCoachUser.Location = new System.Drawing.Point(126, 52);
+            this.lblCoachUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCoachUser.Location = new System.Drawing.Point(127, 60);
             this.lblCoachUser.Name = "lblCoachUser";
-            this.lblCoachUser.Size = new System.Drawing.Size(398, 23);
+            this.lblCoachUser.Size = new System.Drawing.Size(400, 25);
             this.lblCoachUser.TabIndex = 1;
             this.lblCoachUser.Text = "username";
             this.lblCoachUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -247,20 +260,20 @@ namespace CoachConnect
             // 
             // lblAvailCoachName
             // 
-            this.lblAvailCoachName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAvailCoachName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAvailCoachName.Location = new System.Drawing.Point(126, 20);
             this.lblAvailCoachName.Name = "lblAvailCoachName";
-            this.lblAvailCoachName.Size = new System.Drawing.Size(398, 23);
+            this.lblAvailCoachName.Size = new System.Drawing.Size(400, 40);
             this.lblAvailCoachName.TabIndex = 40;
             this.lblAvailCoachName.Text = "coach";
             this.lblAvailCoachName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblAvailCoachUsername
             // 
-            this.lblAvailCoachUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAvailCoachUsername.Location = new System.Drawing.Point(126, 52);
+            this.lblAvailCoachUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAvailCoachUsername.Location = new System.Drawing.Point(123, 60);
             this.lblAvailCoachUsername.Name = "lblAvailCoachUsername";
-            this.lblAvailCoachUsername.Size = new System.Drawing.Size(398, 23);
+            this.lblAvailCoachUsername.Size = new System.Drawing.Size(400, 25);
             this.lblAvailCoachUsername.TabIndex = 39;
             this.lblAvailCoachUsername.Text = "username";
             this.lblAvailCoachUsername.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1303,5 +1316,6 @@ namespace CoachConnect
         private System.Windows.Forms.Label lblAvailCoachUsername;
         private System.Windows.Forms.PictureBox pbAvailProfilePic;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblDoubleclick;
     }
 }

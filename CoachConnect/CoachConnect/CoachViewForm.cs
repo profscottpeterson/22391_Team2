@@ -701,5 +701,43 @@ namespace CoachConnect
                 }
             }
         }
+
+       /// <summary>
+       /// Method called when some one clicks on cell in the data grid view
+       /// </summary>
+       /// <param name="sender">Double clicked cell</param>
+       /// <param name="e">Data Grid View is the argument</param>
+        private void DgvAvailable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int sessionIDfromGrid = (int)dgvAvailable[4, e.RowIndex].Value;
+            List<CoachConnect.ViewSessionRoster> sessRoster = new List<CoachConnect.ViewSessionRoster>();
+            ViewSessionRoster oneperson = new ViewSessionRoster();
+            
+            string message = string.Empty;
+            string header = "The following students are \nscheduled for this Session:\n";
+
+            using (var context = new db_sft_2172Entities())
+            {
+                var rosterList = from people in context.ViewSessionRosters
+                    where people.SessionID.Equals(sessionIDfromGrid)
+                    select people;
+                
+                sessRoster = rosterList.ToList();
+                
+                foreach (ViewSessionRoster vsr in sessRoster)
+                {
+                    message += "\n" + vsr.Name;
+                }
+
+                if (message == string.Empty)
+                {
+                    MessageBox.Show("Sorry, no one has signed up yet");
+                }
+                else
+                {
+                    MessageBox.Show(header + message);
+                }
+            }
+        }
     }
 }
