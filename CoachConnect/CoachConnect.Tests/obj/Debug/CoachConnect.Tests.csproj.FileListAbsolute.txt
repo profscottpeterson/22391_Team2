@@ -44,3 +44,12 @@ C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\bin\Debu
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojResolveAssemblyReference.cache
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
 C:\Users\timdu\Source\Repos\22393_Team2\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.dll
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.Tests.pdb
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.exe
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.dll
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.pdb
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.xml
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojResolveAssemblyReference.cache
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb

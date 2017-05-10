@@ -12,9 +12,17 @@ namespace CoachConnect
 {
     public partial class ResetStudentPassword : Form
     {
+        Form originalForm { get; set; }
+
         public ResetStudentPassword()
         {
             InitializeComponent();
+        }
+
+        public ResetStudentPassword(Form original)
+        {
+            InitializeComponent();
+            originalForm = original;
         }
 
         //Button click to save the new password into the database
@@ -26,21 +34,26 @@ namespace CoachConnect
                                 where u.UserID.Equals(Program.CurrentUser)
                                 select u;
                 var userResult = userQuery.FirstOrDefault<User>();
-                if (userResult.Password == txtStdPassword.Text)
+                //if (userResult.Password == currentsh.Hash)
+                if(SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, txtStdPassword.Text))
                 {
                     
                     if (!String.IsNullOrEmpty(txtStdNewPassword.Text) || !String.IsNullOrEmpty(txtStdNewConfirmPassowrd.Text))
                     {
                         if (txtStdNewPassword.Text == txtStdNewConfirmPassowrd.Text)
                         {
-                            userResult.Password = txtStdNewPassword.Text;
+                            // Generate salt and salted hash
+                            SaltedHash sh = new SaltedHash(txtStdNewPassword.Text);
+                            //userResult.Password = txtStdNewPassword.Text;
+                            userResult.Password = sh.Hash;
+                            userResult.PasswordSalt = sh.Salt;
+                            userResult.ResetPassword = false;
                             context.SaveChanges();
                             txtStdPassword.Text = "";
                             txtStdNewPassword.Text = "";
                             txtStdNewConfirmPassowrd.Text = "";
-                            MessageBox.Show("Your passsword is save!");
-                            FindCoachForm coach = new FindCoachForm();
-                            coach.Show();
+                            MessageBox.Show("Your passsword has been save!");
+                            originalForm.Show();
                             this.Close();
                         }
                         else
@@ -48,6 +61,10 @@ namespace CoachConnect
                             
                             MessageBox.Show("Both passwords do not match eachother!");
                         }
+                    }
+                    else
+                    {
+                        MessageBox.Show("New password or confirm password is empty!");
                     }
                 }
                 else
@@ -60,8 +77,7 @@ namespace CoachConnect
         //Cancle the reset new password
         private void btnCancleResetPassword_Click(object sender, EventArgs e)
         {
-            FindCoachForm mainForm = new FindCoachForm();
-            mainForm.Show();
+            originalForm.Show();
             this.Close();
         }
 
@@ -74,7 +90,8 @@ namespace CoachConnect
                                 where u.UserID.Equals(Program.CurrentUser)
                                 select u;
                 var userResult = userQuery.FirstOrDefault<User>();
-                if (userResult.Password == txtStdPassword.Text)
+                //if (userResult.Password == currentsh.Hash)
+                if(SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, txtStdPassword.Text))
                 {
                     pwdCorrect.Visible = true;
                     currentPWDWrong.Visible = false;
@@ -108,20 +125,27 @@ namespace CoachConnect
 
         private void btnSaveNewPassword_MouseHover(object sender, EventArgs e)
         {
-            if (txtStdNewPassword.Text == txtStdNewConfirmPassowrd.Text && (txtStdNewPassword.Text != "" || txtStdNewConfirmPassowrd.Text != ""))
+            if (txtStdPassword.Text != "" && txtStdNewPassword.Text == txtStdNewConfirmPassowrd.Text && (txtStdNewPassword.Text != "" || txtStdNewConfirmPassowrd.Text != ""))
             {
                 newPWD.Visible = true;
                 newPWDConfirmCorrect.Visible = true;
                 newPWDNotMatch.Visible = false;
                 newPWDConfirmWrong.Visible = false;
+                currentPWDWrong.Visible = false;
             }
             else
             {
+                currentPWDWrong.Visible = true;
                 newPWDNotMatch.Visible = true;
                 newPWDConfirmWrong.Visible = true;
                 newPWD.Visible = false;
                 newPWDConfirmCorrect.Visible = false;
             }
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            originalForm.Show();
         }
     }
 }
