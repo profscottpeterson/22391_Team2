@@ -156,6 +156,7 @@ namespace CoachConnect
                 var userQuery = (from u in context.Users
                                  join s in context.Sessions on u.UserID equals s.CoachID
                                  where u.IsCoach.Equals(true)
+                                 orderby u.DisplayName 
                                  select u.DisplayName).ToList().Distinct();
 
                 foreach (var c in userQuery)
