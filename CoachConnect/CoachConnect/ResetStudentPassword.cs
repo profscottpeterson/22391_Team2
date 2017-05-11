@@ -1,15 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿//-----------------------------------------------------------------------
+// <copyright file="ResetStudentPassword.cs" company="PABT,Inc">
+//     Copyright (c) Pabt, Inc. All rights reserved
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace CoachConnect
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+
     public partial class ResetStudentPassword : Form
     {
         Form originalForm { get; set; }

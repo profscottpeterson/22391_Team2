@@ -1,16 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="FindCoachForm.cs" company="PABT,Inc">
+//     Copyright (c) Pabt, Inc. All rights reserved
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace CoachConnect
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+
     public partial class FindCoachForm : Form
     {
         public FindCoachForm()
@@ -759,12 +764,12 @@ namespace CoachConnect
             else
             {
                 DataGridViewRow selectedRow = dataGridCoachesByTime.SelectedRows[0];
-                selectedCoachID = selectedRow.Cells[8].Value.ToString();
-                selectedCoachName = selectedRow.Cells[5].Value.ToString();
+                selectedCoachID = selectedRow.Cells[7].Value.ToString();
+                selectedCoachName = selectedRow.Cells[2].Value.ToString();
                 selectedTime = selectedRow.Cells[6].Value.ToString();
-                selectedDay = selectedRow.Cells[4].Value.ToString();
-                selectedCourseID = selectedRow.Cells[1].Value.ToString();
-                selectedCourse = selectedRow.Cells[3].Value.ToString();
+                selectedDay = selectedRow.Cells[5].Value.ToString();
+                selectedCourseID = selectedRow.Cells[0].Value.ToString();
+                selectedCourse = selectedRow.Cells[8].Value.ToString();
 
 
                 DialogResult result = MessageBox.Show(
@@ -1097,11 +1102,11 @@ namespace CoachConnect
             else
             {
                 DataGridViewRow selectedRow = dgrShowAppointments.SelectedRows[0];
-                selectedSessionID = selectedRow.Cells[0].Value.ToString();
-                selectedCourseID = selectedRow.Cells[1].Value.ToString();
-                selectedDay = selectedRow.Cells[3].Value.ToString();
-                selectedTime = selectedRow.Cells[4].Value.ToString();
-                selectedCoachID = selectedRow.Cells[5].Value.ToString();
+                selectedSessionID = selectedRow.Cells[4].Value.ToString();
+                selectedCourseID = selectedRow.Cells[0].Value.ToString();
+                selectedDay = selectedRow.Cells[5].Value.ToString();
+                selectedTime = selectedRow.Cells[6].Value.ToString();
+                selectedCoachID = selectedRow.Cells[7].Value.ToString();
 
                 DialogResult result = MessageBox.Show(
                     "Are you sure you want to cancel the this coach?\n\n"

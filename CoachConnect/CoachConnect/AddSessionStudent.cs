@@ -151,7 +151,9 @@ namespace CoachConnect
 
                 this.Close();
             }
+            #pragma warning disable CS0168 // Variable is declared but never used
             catch (DbUpdateException dbUpdateException)
+            #pragma warning restore CS0168 // Variable is declared but never used
             {
                 MessageBox.Show("Student is already enrolled.  Please select a different student.");
             }
