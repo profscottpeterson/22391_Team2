@@ -175,3 +175,4 @@ D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect
 D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
 D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
 D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
+D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache

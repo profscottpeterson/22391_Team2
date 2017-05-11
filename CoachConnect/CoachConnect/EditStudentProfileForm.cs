@@ -42,6 +42,9 @@ namespace CoachConnect
                                 select u;
                 var userResult = userQuery.FirstOrDefault<User>();
                 txtStdURL.Text = userResult.ProfilePic;
+                txtStdFirstName.Text = userResult.FirstName;
+                txtStdMiddleName.Text = userResult.MiddleName;
+                txtStdLastName.Text = userResult.LastName;
                 txtStdEmail.Text = userResult.Email;
                 txtStdPhone.Text = userResult.Phone;
 
@@ -56,46 +59,95 @@ namespace CoachConnect
 
                 User user = context.Users.Single(u => u.UserID == Program.CurrentUser);
                 string url = txtStdURL.Text;
+                string fName = txtStdFirstName.Text;
+                string midleName = txtStdMiddleName.Text;
+                string lName = txtStdLastName.Text;
                 string email = txtStdEmail.Text;
                 string phone = txtStdPhone.Text;
                 if (String.IsNullOrEmpty(url))
                 {
                     lblErrorURL.Visible = true;
                 }
+                else if (String.IsNullOrEmpty(fName))
+                {
+                    lblFirstNameError.Visible = true;
+                }
+                else if (String.IsNullOrEmpty(midleName))
+                {
+                    lblMiddleNameError.Visible = true;
+                }
+                else if (String.IsNullOrEmpty(lName))
+                {
+                    lblLastNameError.Visible = true;
+                }
                 else if (String.IsNullOrEmpty(email))
                 {
                     lblErrorEmail.Visible = true;
                 }
-                else if (String.IsNullOrEmpty(email))
+                else if (String.IsNullOrEmpty(phone))
                 {
                     lblErrorPhone.Visible = true;
                 }
                 else
                 {
                     lblErrorURL.Visible = false;
+                    lblFirstNameError.Visible = false;
+                    lblMiddleNameError.Visible = false;
+                    lblLastNameError.Visible = false;
                     lblErrorEmail.Visible = false;
                     lblErrorPhone.Visible = false;
+
+                    //Add profile url
                     user.ProfilePic = url;
-                    if (myValidation.ValidateEmail(email))
+
+                    //Validate firstname, middlename, and lastname
+                    if (myValidation.ValidateTextBox(fName) && myValidation.ValidateTextBox(midleName) && myValidation.ValidateTextBox(lName))
                     {
-                        user.Email = email;
-                        if (myValidation.ValidatePhone(phone))
+                        //Add firstname, middlename, and lastname
+                        user.FirstName = myValidation.CleanString(fName);
+                        user.MiddleName = myValidation.CleanString(midleName);
+                        user.LastName = myValidation.CleanString(lName);
+
+                        //Update the dipslay name
+                        if(user.MiddleName == "None" || user.MiddleName == "none" || user.MiddleName == null || user.MiddleName == "")
                         {
-                            user.Phone = myValidation.FormatPhone(phone);
-                            context.SaveChanges();
-                            MessageBox.Show("Your change is saved!"); ;
-                            originalForm.Show();
-                            this.Close();
+                            user.DisplayName = user.FirstName + " " + user.LastName;
                         }
                         else
                         {
-                            MessageBox.Show("Enter your phone number in 10 digits!");
+                            user.DisplayName = user.FirstName + " " + user.MiddleName + " " + user.LastName;
+                        }
+
+                        //Validate email address
+                        if (myValidation.ValidateEmail(email))
+                        {
+                            //Add email address
+                            user.Email = email;
+
+                            //Validate phone
+                            if (myValidation.ValidatePhone(phone))
+                            {
+                                //Add phone
+                                user.Phone = myValidation.FormatPhone(phone);
+                                context.SaveChanges();
+                                MessageBox.Show("Your change is saved!"); ;
+                                originalForm.Show();
+                                this.Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Enter your phone number in 10 digits!");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid email address!");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Invalid email address!");
-                    }     
+                        MessageBox.Show("Invalid first name or middle name or last name!");
+                    }
                 }
             }
         }

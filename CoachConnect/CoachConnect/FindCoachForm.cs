@@ -116,7 +116,7 @@ namespace CoachConnect
                                 select u; 
                 var userResult = userQuery.FirstOrDefault<User>();
                 lblStdID.Text = userResult.UserID;
-                lblStdName.Text = userResult.FirstName + " " + userResult.LastName;
+                lblStdName.Text = userResult.DisplayName;
                 lblStdEmail.Text = userResult.Email;
                 lblStdPhone.Text = userResult.Phone;
                 var request = System.Net.WebRequest.Create(userResult.ProfilePic);
@@ -621,9 +621,11 @@ namespace CoachConnect
         //Edit profile button click
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
-            EditStudentProfileForm editForm = new EditStudentProfileForm(this);
-            editForm.Show();
             this.Hide();
+            EditStudentProfileForm editForm = new EditStudentProfileForm(this);
+            editForm.Location = this.Location;
+            editForm.ShowDialog();
+            displayInfo();
         }
 
         //Search by time clicked button

@@ -158,6 +158,8 @@ namespace CoachConnect
                                     };
                                     context.SessionRosters.Add(sr);
                                     context.SaveChanges();
+                                    originalForm.Show();
+                                    this.Close();
                                 } 
                             }
                             catch (Exception ex)
