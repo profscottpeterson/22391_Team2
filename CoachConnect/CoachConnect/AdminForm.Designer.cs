@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.UsersTabPage = new System.Windows.Forms.TabPage();
@@ -46,7 +47,7 @@
             this.btnChangePassword.TabIndex = 2;
             this.btnChangePassword.Text = "Change My Password";
             this.btnChangePassword.UseVisualStyleBackColor = true;
-            this.btnChangePassword.Click += new System.EventHandler(this.btnChangePassword_Click);
+            this.btnChangePassword.Click += new System.EventHandler(this.BtnChangePassword_Click);
             // 
             // tabControl1
             // 
@@ -88,7 +89,7 @@
             this.btnExit.TabIndex = 29;
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.Click += new System.EventHandler(this.BtnExitClick);
             // 
             // btnMenu
             // 
@@ -112,7 +113,7 @@
             this.btnLogOff.TabIndex = 28;
             this.btnLogOff.Text = "Log Off";
             this.btnLogOff.UseVisualStyleBackColor = true;
-            this.btnLogOff.Click += new System.EventHandler(this.btnLogOff_Click);
+            this.btnLogOff.Click += new System.EventHandler(this.BtnLogOffClick);
             // 
             // AdminForm
             // 
@@ -125,9 +126,11 @@
             this.Controls.Add(this.btnLogOff);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnChangePassword);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdminForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administration";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminForm_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminFormFormClosed);
             this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
 

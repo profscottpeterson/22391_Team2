@@ -177,3 +177,7 @@ D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect
 D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
 D:\Spring Semester\team software\Coach\22393_Team(Tim)\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
 H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AddSessionStudent.resources
+C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AddSessionStudent.resources
+C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditSession.resources
+C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditStudentProfileForm.resources
+C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ResetStudentPassword.resources

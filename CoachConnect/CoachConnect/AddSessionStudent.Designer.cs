@@ -53,7 +53,7 @@
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.Click += new System.EventHandler(this.BtnAddClick);
             // 
             // btnCancel
             // 
@@ -63,7 +63,7 @@
             this.btnCancel.TabIndex = 17;
             this.btnCancel.Text = "Close";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCloseClick);
             // 
             // dataGridViewEligibleStudents
             // 
@@ -74,8 +74,8 @@
             this.dataGridViewEligibleStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEligibleStudents.Size = new System.Drawing.Size(259, 150);
             this.dataGridViewEligibleStudents.TabIndex = 28;
-            this.dataGridViewEligibleStudents.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEligibleStudents_CellContentDoubleClick);
-            this.dataGridViewEligibleStudents.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewEligibleStudents_RowHeaderMouseDoubleClick);
+            this.dataGridViewEligibleStudents.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewEligibleStudentsCellContentDoubleClick);
+            this.dataGridViewEligibleStudents.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewEligibleStudentsRowHeaderMouseDoubleClick);
             // 
             // AddSessionStudent
             // 
