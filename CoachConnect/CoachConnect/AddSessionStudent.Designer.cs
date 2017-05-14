@@ -3,8 +3,31 @@
 // </copyright>
 namespace CoachConnect
 {
-    partial class AddSessionStudent
+    /// <summary>
+    /// AddSessionStudent: Allows users to add a student to a session roster
+    /// </summary>
+    public partial class AddSessionStudent
     {
+        /// <summary>
+        /// A header label for the form
+        /// </summary>
+        private System.Windows.Forms.Label lblEditSessionHeader;
+
+        /// <summary>
+        /// A button that allows users to add the selected student to the session
+        /// </summary>
+        private System.Windows.Forms.Button btnAdd;
+
+        /// <summary>
+        /// A button that cancels the add and closes this form
+        /// </summary>
+        private System.Windows.Forms.Button btnCancel;
+
+        /// <summary>
+        /// A data grid view to display students that are eligible to enroll in the session
+        /// </summary>
+        private System.Windows.Forms.DataGridView dataGridViewEligibleStudents;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -102,10 +125,5 @@ namespace CoachConnect
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblEditSessionHeader;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.DataGridView dataGridViewEligibleStudents;
     }
 }

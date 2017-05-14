@@ -1,7 +1,43 @@
-﻿namespace CoachConnect
+﻿// <copyright file="AdminForm.Designer.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
+namespace CoachConnect
 {
-    partial class AdminForm
+    /// <summary>
+    /// AdminForm: A class which is used to create a placeholder form to hold "admin tool" sub-forms
+    /// </summary>
+    public partial class AdminForm
     {
+        /// <summary>
+        /// A button that allows the user to change his/her password
+        /// </summary>
+        private System.Windows.Forms.Button btnChangePassword;
+
+        /// <summary>
+        /// A tab control object to allow different admin tool subforms to be displayed
+        /// </summary>
+        private System.Windows.Forms.TabControl tabControl1;
+
+        /// <summary>
+        /// A tab page to hold the Users admin tool as a subform
+        /// </summary>
+        private System.Windows.Forms.TabPage usersTabPage;
+
+        /// <summary>
+        /// A tab page to hold the Sessions admin tool as a subform
+        /// </summary>
+        private System.Windows.Forms.TabPage sessionsTabPage;
+
+        /// <summary>
+        /// A button that allows the user to exit the program
+        /// </summary>
+        private System.Windows.Forms.Button btnExit;
+
+        /// <summary>
+        /// A button that allows the user to logoff
+        /// </summary>
+        private System.Windows.Forms.Button btnLogOff;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -13,10 +49,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -31,10 +68,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.btnChangePassword = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.UsersTabPage = new System.Windows.Forms.TabPage();
-            this.SessionsTabPage = new System.Windows.Forms.TabPage();
+            this.usersTabPage = new System.Windows.Forms.TabPage();
+            this.sessionsTabPage = new System.Windows.Forms.TabPage();
             this.btnExit = new System.Windows.Forms.Button();
-            this.btnMenu = new System.Windows.Forms.Button();
             this.btnLogOff = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.SuspendLayout();
@@ -51,33 +87,33 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.UsersTabPage);
-            this.tabControl1.Controls.Add(this.SessionsTabPage);
+            this.tabControl1.Controls.Add(this.usersTabPage);
+            this.tabControl1.Controls.Add(this.sessionsTabPage);
             this.tabControl1.Location = new System.Drawing.Point(8, 10);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(791, 531);
             this.tabControl1.TabIndex = 3;
             // 
-            // UsersTabPage
+            // usersTabPage
             // 
-            this.UsersTabPage.Location = new System.Drawing.Point(4, 22);
-            this.UsersTabPage.Name = "UsersTabPage";
-            this.UsersTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.UsersTabPage.Size = new System.Drawing.Size(783, 505);
-            this.UsersTabPage.TabIndex = 0;
-            this.UsersTabPage.Text = "Users";
-            this.UsersTabPage.UseVisualStyleBackColor = true;
+            this.usersTabPage.Location = new System.Drawing.Point(4, 22);
+            this.usersTabPage.Name = "usersTabPage";
+            this.usersTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.usersTabPage.Size = new System.Drawing.Size(783, 505);
+            this.usersTabPage.TabIndex = 0;
+            this.usersTabPage.Text = "Users";
+            this.usersTabPage.UseVisualStyleBackColor = true;
             // 
-            // SessionsTabPage
+            // sessionsTabPage
             // 
-            this.SessionsTabPage.Location = new System.Drawing.Point(4, 22);
-            this.SessionsTabPage.Name = "SessionsTabPage";
-            this.SessionsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.SessionsTabPage.Size = new System.Drawing.Size(783, 505);
-            this.SessionsTabPage.TabIndex = 1;
-            this.SessionsTabPage.Text = "Sessions";
-            this.SessionsTabPage.UseVisualStyleBackColor = true;
+            this.sessionsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.sessionsTabPage.Name = "sessionsTabPage";
+            this.sessionsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.sessionsTabPage.Size = new System.Drawing.Size(783, 505);
+            this.sessionsTabPage.TabIndex = 1;
+            this.sessionsTabPage.Text = "Sessions";
+            this.sessionsTabPage.UseVisualStyleBackColor = true;
             // 
             // btnExit
             // 
@@ -90,18 +126,6 @@
             this.btnExit.Text = "Exit";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.BtnExitClick);
-            // 
-            // btnMenu
-            // 
-            this.btnMenu.Enabled = false;
-            this.btnMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnMenu.Location = new System.Drawing.Point(505, 547);
-            this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(99, 23);
-            this.btnMenu.TabIndex = 27;
-            this.btnMenu.Text = "Return to Menu";
-            this.btnMenu.UseVisualStyleBackColor = true;
             // 
             // btnLogOff
             // 
@@ -122,7 +146,6 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(811, 580);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.btnLogOff);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnChangePassword);
@@ -135,14 +158,6 @@
             this.ResumeLayout(false);
 
         }
-
         #endregion
-        private System.Windows.Forms.Button btnChangePassword;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage UsersTabPage;
-        private System.Windows.Forms.TabPage SessionsTabPage;
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Button btnMenu;
-        private System.Windows.Forms.Button btnLogOff;
     }
 }

@@ -31,7 +31,7 @@ namespace CoachConnect
             userForm.AutoScroll = true;
             userForm.FormBorderStyle = FormBorderStyle.None;
 
-            this.UsersTabPage.Controls.Add(userForm);
+            this.usersTabPage.Controls.Add(userForm);
             userForm.Show();
 
             // Set up Session tab
@@ -40,7 +40,7 @@ namespace CoachConnect
             sessionForm.AutoScroll = true;
             sessionForm.FormBorderStyle = FormBorderStyle.None;
 
-            this.SessionsTabPage.Controls.Add(sessionForm);
+            this.sessionsTabPage.Controls.Add(sessionForm);
             sessionForm.Show();
         }
 
