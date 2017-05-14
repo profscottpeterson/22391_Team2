@@ -1,31 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿// <copyright file="LoginForm.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
 namespace CoachConnect
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// A class to display a login form for the user
+    /// </summary>
     public partial class LoginForm : Form
     {
         /// <summary>
-        /// Constructor to initialize the login form
+        /// Initializes a new instance of the <see cref="LoginForm" /> class.
         /// </summary>
         public LoginForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
+        }
+
+        /// <summary>
+        /// Method to handle Logout process
+        /// </summary>
+        public void Logout()
+        {
+            // Clear out text boxes and set focus to the username text box
+            this.txtUsername.Text = string.Empty;
+            this.txtPassword.Text = string.Empty;
+
+            this.txtUsername.Focus();
+
+            // Clear out all static variables related to user
+            Program.CurrentUser = null;
+            Program.IsStudent = false;
+            Program.IsCoach = false;
+            Program.IsAdmin = false;
+
+            // Show hidden login form
+            Program.LoginForm.Show();
         }
 
         /// <summary>
         /// Event handler to exit the application when the Exit button is clicked
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnExit_Click(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnExitClick(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -33,26 +60,26 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to obtain the entered username and password, then call the login method
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnLogin_Click(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnLoginClick(object sender, EventArgs e)
         {
-            string usernameText = txtUsername.Text;
-            string passwordText = txtPassword.Text;
+            string usernameText = this.txtUsername.Text;
+            string passwordText = this.txtPassword.Text;
 
-            btnLogin.Enabled = false;
+            this.btnLogin.Enabled = false;
 
-            login(usernameText, passwordText);
+            this.Login(usernameText, passwordText);
 
-            btnLogin.Enabled = true;
+            this.btnLogin.Enabled = true;
         }
 
         /// <summary>
         /// Method to match password with the database (using salted hash), then login and load the role form
         /// </summary>
-        /// <param name="username"></param>
-        /// <param name="password"></param>
-        private void login(string username, string password)
+        /// <param name="username">The username string entered by the user</param>
+        /// <param name="password">The password string entered by the user</param>
+        private void Login(string username, string password)
         {
             try
             {
@@ -66,11 +93,11 @@ namespace CoachConnect
                     {
                         var userResult = userQuery.FirstOrDefault<User>();
 
-                        // Determine whether user is active.  If not, display a message and logout.
+                        // Determine whether user is active.  If not, display a message and Logout.
                         if (!userResult.IsActive)
                         {
                             MessageBox.Show("Sorry, this user is inactive.  Please contact an administrator if you need to reactivate your account.");
-                            logout();
+                            this.Logout();
 
                             return;
                         }
@@ -82,7 +109,6 @@ namespace CoachConnect
                         /** the first "if" statement below                          **/
                         /** Otherwise, uncomment the second "if" to use encryption. **/
                         /*************************************************************/
-                       // if (userResult.Password == password) 
                         if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, password))
                         {
                             // Update static variable containing User ID
@@ -98,18 +124,23 @@ namespace CoachConnect
 
                                 return;
                             }
-
                             else
                             {
                                 // If any of these three values are true, update static variables
                                 if (userResult.IsStudent)
+                                {
                                     Program.IsStudent = true;
+                                }
 
                                 if (userResult.IsAdmin)
+                                {
                                     Program.IsAdmin = true;
+                                }
 
                                 if (userResult.IsCoach)
+                                {
                                     Program.IsCoach = true;
+                                }
 
                                 // Call method from Program class to display Role Page
                                 Program.RolePage();
@@ -121,17 +152,17 @@ namespace CoachConnect
                         else
                         {
                             MessageBox.Show("Sorry, invalid username or password.  Please try again!");
-                            txtUsername.Text = "";
-                            txtPassword.Text = "";
-                            txtUsername.Focus();
+                            this.txtUsername.Text = string.Empty;
+                            this.txtPassword.Text = string.Empty;
+                            this.txtUsername.Focus();
                         }
                     }
                     else
                     {
                         MessageBox.Show("Sorry, invalid username or password.  Please try again!");
-                        txtUsername.Text = "";
-                        txtPassword.Text = "";
-                        txtUsername.Focus();
+                        this.txtUsername.Text = string.Empty;
+                        this.txtPassword.Text = string.Empty;
+                        this.txtUsername.Focus();
                     }
                 }
             }
@@ -139,32 +170,6 @@ namespace CoachConnect
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-        /// <summary>
-        /// Method to handle logout process
-        /// </summary>
-        public void logout()
-        {
-            // Clear out text boxes and set focus to the username text box
-            txtUsername.Text = "";
-            txtPassword.Text = "";
-
-            txtUsername.Focus();
-
-            // Clear out all static variables related to user
-            Program.CurrentUser = null;
-            Program.IsStudent = false;
-            Program.IsCoach = false;
-            Program.IsAdmin = false;
-
-            // Show hidden login form
-            Program.loginForm.Show();
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -61,7 +61,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnAddClick(object sender, EventArgs e)
         {
-            if (dataGridViewEligibleStudents.SelectedRows.Count > 0)
+            if (this.dataGridViewEligibleStudents.SelectedRows.Count > 0)
             {
                 this.AddStudentToSession();
             }
@@ -183,7 +183,7 @@ namespace CoachConnect
             try
             {
                 // Get UserID for the selected row
-                string selectedUserId = dataGridViewEligibleStudents.SelectedRows[0].Cells["UserID"].Value.ToString();
+                string selectedUserId = this.dataGridViewEligibleStudents.SelectedRows[0].Cells["UserID"].Value.ToString();
 
                 // Create a new SessionRoster object
                 SessionRoster addStudent = new SessionRoster

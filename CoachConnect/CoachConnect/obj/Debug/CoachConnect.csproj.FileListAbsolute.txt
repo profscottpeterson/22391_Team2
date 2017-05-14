@@ -8,7 +8,6 @@ C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\Enti
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.xml
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FindCoachForm.resources
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache

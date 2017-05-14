@@ -31,7 +31,7 @@ namespace CoachConnect
             userForm.AutoScroll = true;
             userForm.FormBorderStyle = FormBorderStyle.None;
 
-            UsersTabPage.Controls.Add(userForm);
+            this.UsersTabPage.Controls.Add(userForm);
             userForm.Show();
 
             // Set up Session tab
@@ -40,7 +40,7 @@ namespace CoachConnect
             sessionForm.AutoScroll = true;
             sessionForm.FormBorderStyle = FormBorderStyle.None;
 
-            SessionsTabPage.Controls.Add(sessionForm);
+            this.SessionsTabPage.Controls.Add(sessionForm);
             sessionForm.Show();
         }
 
@@ -71,7 +71,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void AdminFormFormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.loginForm.logout();
+            Program.LoginForm.Logout();
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace CoachConnect
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
-        private void BtnChangePassword_Click(object sender, EventArgs e)
+        private void BtnChangePasswordClick(object sender, EventArgs e)
         {
             ChangePasswordForm changePassword = new ChangePasswordForm();
             changePassword.ShowDialog();

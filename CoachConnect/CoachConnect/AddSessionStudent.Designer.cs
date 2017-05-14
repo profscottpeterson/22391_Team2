@@ -1,4 +1,7 @@
-﻿namespace CoachConnect
+﻿// <copyright file="AddSessionStudent.Designer.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
+namespace CoachConnect
 {
     partial class AddSessionStudent
     {
@@ -13,10 +16,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -28,6 +32,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSessionStudent));
             this.lblEditSessionHeader = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -86,7 +91,9 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblEditSessionHeader);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddSessionStudent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Student to Session";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEligibleStudents)).EndInit();
             this.ResumeLayout(false);

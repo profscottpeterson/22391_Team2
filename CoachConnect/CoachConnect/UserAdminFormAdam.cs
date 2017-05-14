@@ -48,7 +48,7 @@ namespace CoachConnect
             // TODO: Confirm changes before closing form //
 
             // Open login form and clear out active user
-            Program.loginForm.logout();
+            Program.LoginForm.Logout();
 
             // Close this window
             this.Close();
