@@ -119,10 +119,8 @@ namespace CoachConnect
                             {
                                 MessageBox.Show("Your password is outdated and needs to be changed.  Please reset your password now.");
 
-                                ChangePasswordForm changePassword = new ChangePasswordForm();
+                                ResetStudentPassword changePassword = new ResetStudentPassword();
                                 changePassword.ShowDialog();
-
-                                return;
                             }
                             else
                             {

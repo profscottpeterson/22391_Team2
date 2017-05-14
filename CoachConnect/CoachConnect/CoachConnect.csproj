@@ -217,12 +217,6 @@
     <Compile Include="RoleForm.Designer.cs">
       <DependentUpon>RoleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserAdminFormAdam.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserAdminFormAdam.designer.cs">
-      <DependentUpon>UserAdminFormAdam.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserAvailability.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -284,9 +278,6 @@
     </Compile>
     <EmbeddedResource Include="RoleForm.resx">
       <DependentUpon>RoleForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserAdminFormAdam.resx">
-      <DependentUpon>UserAdminFormAdam.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="CoachConnectModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
