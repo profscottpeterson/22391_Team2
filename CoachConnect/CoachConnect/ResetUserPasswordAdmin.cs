@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CoachConnect
 {
-    public partial class ChangePasswordForm : Form
+    public partial class ResetUserPasswordAdmin : Form
     {
-        public ChangePasswordForm()
+        public ResetUserPasswordAdmin()
         {
             InitializeComponent();
         }

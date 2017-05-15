@@ -92,11 +92,11 @@
       <DependentUpon>CoachViewForm.cs</DependentUpon>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="ChangePasswordForm.cs">
+    <Compile Include="ResetUserPasswordAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangePasswordForm.designer.cs">
-      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    <Compile Include="ResetUserPasswordAdmin.designer.cs">
+      <DependentUpon>ResetUserPasswordAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="Course.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
@@ -236,8 +236,8 @@
     <EmbeddedResource Include="CoachViewForm.resx">
       <DependentUpon>CoachViewForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangePasswordForm.resx">
-      <DependentUpon>ChangePasswordForm.cs</DependentUpon>
+    <EmbeddedResource Include="ResetUserPasswordAdmin.resx">
+      <DependentUpon>ResetUserPasswordAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditSession.resx">
       <DependentUpon>EditSession.cs</DependentUpon>

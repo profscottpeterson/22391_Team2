@@ -186,6 +186,12 @@ namespace CoachConnect
             chkBoxCoach.Checked = false;
             chkBoxStudent.Checked = false;
         }
+
+        private void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            ResetUserPasswordAdmin resetPasswordForm = new ResetUserPasswordAdmin();
+            resetPasswordForm.ShowDialog();
+        }
     }
    
 }

@@ -288,6 +288,7 @@ namespace CoachConnect
             this.dataGridViewRoster.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewRoster.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRoster.Location = new System.Drawing.Point(12, 28);
+            this.dataGridViewRoster.MultiSelect = false;
             this.dataGridViewRoster.Name = "dataGridViewRoster";
             this.dataGridViewRoster.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewRoster.Size = new System.Drawing.Size(270, 136);

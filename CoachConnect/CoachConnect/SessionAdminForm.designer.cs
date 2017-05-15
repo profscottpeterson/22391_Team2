@@ -42,9 +42,10 @@
             this.dataGridViewSessions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewSessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSessions.Location = new System.Drawing.Point(10, 56);
+            this.dataGridViewSessions.MultiSelect = false;
             this.dataGridViewSessions.Name = "dataGridViewSessions";
             this.dataGridViewSessions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSessions.Size = new System.Drawing.Size(737, 410);
+            this.dataGridViewSessions.Size = new System.Drawing.Size(720, 295);
             this.dataGridViewSessions.TabIndex = 0;
             this.dataGridViewSessions.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewSessionsCellContentDoubleClick);
             this.dataGridViewSessions.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewSessionsRowHeaderMouseDoubleClick);
@@ -52,7 +53,7 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(10, 478);
+            this.btnAdd.Location = new System.Drawing.Point(10, 356);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(110, 23);
@@ -65,7 +66,7 @@
             // 
             this.lblSessionAdminForm.AutoSize = true;
             this.lblSessionAdminForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSessionAdminForm.Location = new System.Drawing.Point(258, 9);
+            this.lblSessionAdminForm.Location = new System.Drawing.Point(227, 9);
             this.lblSessionAdminForm.Name = "lblSessionAdminForm";
             this.lblSessionAdminForm.Size = new System.Drawing.Size(259, 31);
             this.lblSessionAdminForm.TabIndex = 21;
@@ -76,7 +77,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(759, 509);
+            this.ClientSize = new System.Drawing.Size(741, 387);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblSessionAdminForm);
             this.Controls.Add(this.dataGridViewSessions);
