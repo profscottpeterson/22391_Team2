@@ -1,7 +1,33 @@
-﻿namespace CoachConnect
+﻿// <copyright file="AddSessionStudent.Designer.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
+namespace CoachConnect
 {
-    partial class AddSessionStudent
+    /// <summary>
+    /// AddSessionStudent: Allows users to add a student to a session roster
+    /// </summary>
+    public partial class AddSessionStudent
     {
+        /// <summary>
+        /// A header label for the form
+        /// </summary>
+        private System.Windows.Forms.Label lblEditSessionHeader;
+
+        /// <summary>
+        /// A button that allows users to add the selected student to the session
+        /// </summary>
+        private System.Windows.Forms.Button btnAdd;
+
+        /// <summary>
+        /// A button that cancels the add and closes this form
+        /// </summary>
+        private System.Windows.Forms.Button btnCancel;
+
+        /// <summary>
+        /// A data grid view to display students that are eligible to enroll in the session
+        /// </summary>
+        private System.Windows.Forms.DataGridView dataGridViewEligibleStudents;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -13,10 +39,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -28,6 +55,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSessionStudent));
             this.lblEditSessionHeader = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -53,7 +81,7 @@
             this.btnAdd.TabIndex = 16;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.Click += new System.EventHandler(this.BtnAddClick);
             // 
             // btnCancel
             // 
@@ -63,7 +91,7 @@
             this.btnCancel.TabIndex = 17;
             this.btnCancel.Text = "Close";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnClose_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCloseClick);
             // 
             // dataGridViewEligibleStudents
             // 
@@ -74,8 +102,8 @@
             this.dataGridViewEligibleStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEligibleStudents.Size = new System.Drawing.Size(259, 150);
             this.dataGridViewEligibleStudents.TabIndex = 28;
-            this.dataGridViewEligibleStudents.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEligibleStudents_CellContentDoubleClick);
-            this.dataGridViewEligibleStudents.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewEligibleStudents_RowHeaderMouseDoubleClick);
+            this.dataGridViewEligibleStudents.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewEligibleStudentsCellContentDoubleClick);
+            this.dataGridViewEligibleStudents.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewEligibleStudentsRowHeaderMouseDoubleClick);
             // 
             // AddSessionStudent
             // 
@@ -86,7 +114,9 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblEditSessionHeader);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddSessionStudent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add Student to Session";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEligibleStudents)).EndInit();
             this.ResumeLayout(false);
@@ -95,10 +125,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblEditSessionHeader;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.DataGridView dataGridViewEligibleStudents;
     }
 }

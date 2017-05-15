@@ -1,4 +1,7 @@
-﻿namespace CoachConnect
+﻿// <copyright file="EditSession.Designer.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
+namespace CoachConnect
 {
     partial class EditSession
     {
@@ -13,10 +16,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -28,6 +32,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditSession));
             this.lblCourse = new System.Windows.Forms.Label();
             this.cbxCourse = new System.Windows.Forms.ComboBox();
             this.lblRoom = new System.Windows.Forms.Label();
@@ -76,7 +81,7 @@
             this.cbxCourse.Name = "cbxCourse";
             this.cbxCourse.Size = new System.Drawing.Size(121, 21);
             this.cbxCourse.TabIndex = 2;
-            this.cbxCourse.Leave += new System.EventHandler(this.cbxCourse_Leave);
+            this.cbxCourse.Leave += new System.EventHandler(this.CbxCourse_Leave);
             // 
             // lblRoom
             // 
@@ -95,7 +100,7 @@
             this.cbxRoom.Name = "cbxRoom";
             this.cbxRoom.Size = new System.Drawing.Size(121, 21);
             this.cbxRoom.TabIndex = 4;
-            this.cbxRoom.Leave += new System.EventHandler(this.cbxRoom_Leave);
+            this.cbxRoom.Leave += new System.EventHandler(this.CbxRoom_Leave);
             // 
             // lblDay
             // 
@@ -114,7 +119,7 @@
             this.cbxDay.Name = "cbxDay";
             this.cbxDay.Size = new System.Drawing.Size(121, 21);
             this.cbxDay.TabIndex = 6;
-            this.cbxDay.Leave += new System.EventHandler(this.cbxDay_Leave);
+            this.cbxDay.Leave += new System.EventHandler(this.CbxDay_Leave);
             // 
             // lblTime
             // 
@@ -133,7 +138,7 @@
             this.cbxTime.Name = "cbxTime";
             this.cbxTime.Size = new System.Drawing.Size(121, 21);
             this.cbxTime.TabIndex = 8;
-            this.cbxTime.Leave += new System.EventHandler(this.cbxTime_Leave);
+            this.cbxTime.Leave += new System.EventHandler(this.CbxTime_Leave);
             // 
             // lblCoach
             // 
@@ -152,7 +157,7 @@
             this.cbxCoach.Name = "cbxCoach";
             this.cbxCoach.Size = new System.Drawing.Size(121, 21);
             this.cbxCoach.TabIndex = 10;
-            this.cbxCoach.Leave += new System.EventHandler(this.cbxCoach_Leave);
+            this.cbxCoach.Leave += new System.EventHandler(this.CbxCoach_Leave);
             // 
             // lblEditSessionHeader
             // 
@@ -172,7 +177,7 @@
             this.btnSave.TabIndex = 13;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
             // 
             // btnCancel
             // 
@@ -182,7 +187,7 @@
             this.btnCancel.TabIndex = 14;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
             // label1
             // 
@@ -204,7 +209,7 @@
             this.cbxActive.Name = "cbxActive";
             this.cbxActive.Size = new System.Drawing.Size(121, 21);
             this.cbxActive.TabIndex = 15;
-            this.cbxActive.Leave += new System.EventHandler(this.cbxActive_Leave);
+            this.cbxActive.Leave += new System.EventHandler(this.CbxActive_Leave);
             // 
             // lblInvalidCourse
             // 
@@ -280,6 +285,7 @@
             // 
             // dataGridViewRoster
             // 
+            this.dataGridViewRoster.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewRoster.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRoster.Location = new System.Drawing.Point(12, 28);
             this.dataGridViewRoster.Name = "dataGridViewRoster";
@@ -307,7 +313,7 @@
             this.btnRemove.TabIndex = 34;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            this.btnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // btnAddToRoster
             // 
@@ -317,7 +323,7 @@
             this.btnAddToRoster.TabIndex = 33;
             this.btnAddToRoster.Text = "Add To Roster";
             this.btnAddToRoster.UseVisualStyleBackColor = true;
-            this.btnAddToRoster.Click += new System.EventHandler(this.btnAddToRoster_Click);
+            this.btnAddToRoster.Click += new System.EventHandler(this.BtnAddToRoster_Click);
             // 
             // groupBox2
             // 
@@ -356,7 +362,9 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblEditSessionHeader);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditSession";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditSession";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRoster)).EndInit();
             this.groupBox1.ResumeLayout(false);
