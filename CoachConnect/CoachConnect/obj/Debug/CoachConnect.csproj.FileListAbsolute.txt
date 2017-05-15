@@ -66,7 +66,6 @@ H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FindCoachForm.re
 H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.LoginForm.resources
 H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
 H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.RoleForm.resources
-H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminFormAdam.resources
 H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
 H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
 H:\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb

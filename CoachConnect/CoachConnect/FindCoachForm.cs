@@ -1163,7 +1163,7 @@ namespace CoachConnect
         /// <param name="e"></param>
         private void btnStdLogout_Click(object sender, EventArgs e)
         {
-            Program.loginForm.logout();
+            Program.LoginForm.Logout();
 
             // Close this window
             this.Close();
@@ -1215,7 +1215,7 @@ namespace CoachConnect
         /// <param name="e"></param>
         private void FindCoachForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.loginForm.logout();
+            Program.LoginForm.Logout();
         }
 
         /// <summary>

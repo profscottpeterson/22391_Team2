@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SessionAdminForm));
             this.dataGridViewSessions = new System.Windows.Forms.DataGridView();
             this.btnAdd = new System.Windows.Forms.Button();
             this.lblSessionAdminForm = new System.Windows.Forms.Label();
@@ -79,6 +80,7 @@
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblSessionAdminForm);
             this.Controls.Add(this.dataGridViewSessions);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SessionAdminForm";
             this.Text = "Session Admin Form";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SessionAdminFormFormClosed);

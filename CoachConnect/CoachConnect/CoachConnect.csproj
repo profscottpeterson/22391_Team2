@@ -280,6 +280,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CoachConnectModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
     <None Include="CoachConnectModel.edmx.diagram">
       <DependentUpon>CoachConnectModel.edmx</DependentUpon>
     </None>

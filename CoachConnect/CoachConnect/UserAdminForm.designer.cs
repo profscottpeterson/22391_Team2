@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserAdminForm));
             this.lblAdminForm = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtBoxUserID = new System.Windows.Forms.TextBox();
@@ -58,7 +59,7 @@
             this.lblAdminForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAdminForm.Location = new System.Drawing.Point(223, 9);
             this.lblAdminForm.Name = "lblAdminForm";
-            this.lblAdminForm.Size = new System.Drawing.Size(380, 73);
+            this.lblAdminForm.Size = new System.Drawing.Size(256, 51);
             this.lblAdminForm.TabIndex = 7;
             this.lblAdminForm.Text = "Admin Form";
             this.lblAdminForm.UseWaitCursor = true;
@@ -69,7 +70,7 @@
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPassword.Location = new System.Drawing.Point(441, 372);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(103, 25);
+            this.lblPassword.Size = new System.Drawing.Size(73, 17);
             this.lblPassword.TabIndex = 43;
             this.lblPassword.Text = " Password";
             // 
@@ -78,7 +79,7 @@
             this.txtBoxUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxUserID.Location = new System.Drawing.Point(448, 336);
             this.txtBoxUserID.Name = "txtBoxUserID";
-            this.txtBoxUserID.Size = new System.Drawing.Size(188, 28);
+            this.txtBoxUserID.Size = new System.Drawing.Size(188, 21);
             this.txtBoxUserID.TabIndex = 6;
             // 
             // lblUserID
@@ -87,7 +88,7 @@
             this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserID.Location = new System.Drawing.Point(443, 308);
             this.lblUserID.Name = "lblUserID";
-            this.lblUserID.Size = new System.Drawing.Size(77, 25);
+            this.lblUserID.Size = new System.Drawing.Size(55, 17);
             this.lblUserID.TabIndex = 40;
             this.lblUserID.Text = "User ID";
             // 
@@ -97,7 +98,7 @@
             this.lblMiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMiddleName.Location = new System.Drawing.Point(443, 244);
             this.lblMiddleName.Name = "lblMiddleName";
-            this.lblMiddleName.Size = new System.Drawing.Size(127, 25);
+            this.lblMiddleName.Size = new System.Drawing.Size(90, 17);
             this.lblMiddleName.TabIndex = 39;
             this.lblMiddleName.Text = "Middle Name";
             // 
@@ -107,7 +108,7 @@
             this.lblLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLastName.Location = new System.Drawing.Point(443, 180);
             this.lblLastName.Name = "lblLastName";
-            this.lblLastName.Size = new System.Drawing.Size(106, 25);
+            this.lblLastName.Size = new System.Drawing.Size(76, 17);
             this.lblLastName.TabIndex = 38;
             this.lblLastName.Text = "Last Name";
             // 
@@ -117,7 +118,7 @@
             this.lblFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFirstName.Location = new System.Drawing.Point(443, 116);
             this.lblFirstName.Name = "lblFirstName";
-            this.lblFirstName.Size = new System.Drawing.Size(106, 25);
+            this.lblFirstName.Size = new System.Drawing.Size(76, 17);
             this.lblFirstName.TabIndex = 4;
             this.lblFirstName.Text = "First Name";
             // 
@@ -126,7 +127,7 @@
             this.txtBoxMiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxMiddleName.Location = new System.Drawing.Point(448, 272);
             this.txtBoxMiddleName.Name = "txtBoxMiddleName";
-            this.txtBoxMiddleName.Size = new System.Drawing.Size(188, 28);
+            this.txtBoxMiddleName.Size = new System.Drawing.Size(188, 21);
             this.txtBoxMiddleName.TabIndex = 5;
             // 
             // txtBoxPassword
@@ -134,7 +135,7 @@
             this.txtBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxPassword.Location = new System.Drawing.Point(448, 400);
             this.txtBoxPassword.Name = "txtBoxPassword";
-            this.txtBoxPassword.Size = new System.Drawing.Size(188, 28);
+            this.txtBoxPassword.Size = new System.Drawing.Size(188, 21);
             this.txtBoxPassword.TabIndex = 7;
             // 
             // txtBoxLastName
@@ -142,7 +143,7 @@
             this.txtBoxLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxLastName.Location = new System.Drawing.Point(448, 208);
             this.txtBoxLastName.Name = "txtBoxLastName";
-            this.txtBoxLastName.Size = new System.Drawing.Size(188, 28);
+            this.txtBoxLastName.Size = new System.Drawing.Size(188, 21);
             this.txtBoxLastName.TabIndex = 4;
             // 
             // txtBoxFirstName
@@ -150,17 +151,17 @@
             this.txtBoxFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxFirstName.Location = new System.Drawing.Point(448, 144);
             this.txtBoxFirstName.Name = "txtBoxFirstName";
-            this.txtBoxFirstName.Size = new System.Drawing.Size(188, 28);
+            this.txtBoxFirstName.Size = new System.Drawing.Size(188, 21);
             this.txtBoxFirstName.TabIndex = 3;
             // 
             // lstBoxUsers
             // 
-            this.lstBoxUsers.Font = new System.Drawing.Font("Microsoft NeoGothic", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstBoxUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstBoxUsers.FormattingEnabled = true;
-            this.lstBoxUsers.ItemHeight = 27;
+            this.lstBoxUsers.ItemHeight = 16;
             this.lstBoxUsers.Location = new System.Drawing.Point(12, 125);
             this.lstBoxUsers.Name = "lstBoxUsers";
-            this.lstBoxUsers.Size = new System.Drawing.Size(288, 328);
+            this.lstBoxUsers.Size = new System.Drawing.Size(288, 324);
             this.lstBoxUsers.TabIndex = 0;
             this.lstBoxUsers.SelectedIndexChanged += new System.EventHandler(this.lstBoxUsers_SelectedIndexChanged);
             // 
@@ -170,7 +171,7 @@
             this.lblUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsers.Location = new System.Drawing.Point(101, 82);
             this.lblUsers.Name = "lblUsers";
-            this.lblUsers.Size = new System.Drawing.Size(116, 40);
+            this.lblUsers.Size = new System.Drawing.Size(81, 29);
             this.lblUsers.TabIndex = 48;
             this.lblUsers.Text = "Users";
             this.lblUsers.Click += new System.EventHandler(this.lblUsers_Click);
@@ -213,7 +214,7 @@
             this.chkBoxStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkBoxStudent.Location = new System.Drawing.Point(664, 213);
             this.chkBoxStudent.Name = "chkBoxStudent";
-            this.chkBoxStudent.Size = new System.Drawing.Size(106, 29);
+            this.chkBoxStudent.Size = new System.Drawing.Size(76, 21);
             this.chkBoxStudent.TabIndex = 10;
             this.chkBoxStudent.Text = "Student";
             this.chkBoxStudent.UseVisualStyleBackColor = true;
@@ -224,7 +225,7 @@
             this.chkBoxCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkBoxCoach.Location = new System.Drawing.Point(664, 248);
             this.chkBoxCoach.Name = "chkBoxCoach";
-            this.chkBoxCoach.Size = new System.Drawing.Size(96, 29);
+            this.chkBoxCoach.Size = new System.Drawing.Size(67, 21);
             this.chkBoxCoach.TabIndex = 11;
             this.chkBoxCoach.Text = "Coach";
             this.chkBoxCoach.UseVisualStyleBackColor = true;
@@ -235,7 +236,7 @@
             this.chkBoxAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkBoxAdmin.Location = new System.Drawing.Point(664, 178);
             this.chkBoxAdmin.Name = "chkBoxAdmin";
-            this.chkBoxAdmin.Size = new System.Drawing.Size(94, 29);
+            this.chkBoxAdmin.Size = new System.Drawing.Size(66, 21);
             this.chkBoxAdmin.TabIndex = 9;
             this.chkBoxAdmin.Text = "Admin";
             this.chkBoxAdmin.UseVisualStyleBackColor = true;
@@ -246,7 +247,7 @@
             this.chkBoxActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkBoxActive.Location = new System.Drawing.Point(664, 143);
             this.chkBoxActive.Name = "chkBoxActive";
-            this.chkBoxActive.Size = new System.Drawing.Size(92, 29);
+            this.chkBoxActive.Size = new System.Drawing.Size(65, 21);
             this.chkBoxActive.TabIndex = 8;
             this.chkBoxActive.Text = "Active";
             this.chkBoxActive.UseVisualStyleBackColor = true;
@@ -275,7 +276,7 @@
             // 
             // UserAdminForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(779, 524);
             this.Controls.Add(this.btnMinus);
@@ -301,6 +302,7 @@
             this.Controls.Add(this.txtBoxFirstName);
             this.Controls.Add(this.lblAdminForm);
             this.Font = new System.Drawing.Font("MV Boli", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UserAdminForm";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.UserAdminForm_Load);
