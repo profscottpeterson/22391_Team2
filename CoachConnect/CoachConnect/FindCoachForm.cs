@@ -1,16 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="FindCoachForm.cs" company="PABT,Inc">
+//     Copyright (c) Pabt, Inc. All rights reserved
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace CoachConnect
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+
     public partial class FindCoachForm : Form
     {
         public FindCoachForm()
@@ -22,6 +27,11 @@ namespace CoachConnect
             panelCoach.Visible = false;
         }
 
+        /// <summary>
+        /// Select a coach from interested dropdown list.
+        /// </summary>
+        /// <param name="interest">The interest to join.</param>
+        /// <param name="title">The title to join.</param>
         private void SelectedInterest(Image interest, string title)
         {
             this.Hide();
@@ -31,77 +41,139 @@ namespace CoachConnect
             displayAppointment();
         }
 
+        /// <summary>
+        /// Event handler to select coaches belonging to the Agriculture.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAgri_Click(object sender, EventArgs e)
         {
             SelectedInterest(btnAgri.BackgroundImage, lblAgri.Text);
         }
 
+        /// <summary>
+        /// Event handler to select coaches belonging to the Architecture.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnArch_Click(object sender, EventArgs e)
         {
             SelectedInterest(btnArch.BackgroundImage, lblArch.Text);
         }
 
+        /// <summary>
+        /// Event handler to select coaches belonging to the Business.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBusiness_Click(object sender, EventArgs e)
         {
             SelectedInterest(btnBusiness.BackgroundImage, lblBusiness.Text);
         }
 
+        /// <summary>
+        /// Event handler to select coaches belonging to the Digital.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDigital_Click(object sender, EventArgs e)
         {
             SelectedInterest(btnDigital.BackgroundImage, lblDigital.Text);
         }
 
+        /// <summary>
+        /// Event handler to select coaches belonging to the Energy.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEnergy_Click(object sender, EventArgs e)
         {
             SelectedInterest(btnEnergy.BackgroundImage, lblEnergy.Text);
         }
 
+        /// <summary>
+        /// Event handler to select coaches belonging to the General.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGeneral_Click(object sender, EventArgs e)
         {
             SelectedInterest(btnGeneral.BackgroundImage, lblGeneral.Text);
         }
 
+        /// <summary>
+        /// Event handler to select coaches belonging to the Health.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bthHealth_Click(object sender, EventArgs e)
         {
             SelectedInterest(btnHealth.BackgroundImage, lblHealth.Text);
         }
 
+        /// <summary>
+        /// Event handler to select coaches belonging to the Human Resource.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnHuman_Click(object sender, EventArgs e)
         {
             SelectedInterest(btnHuman.BackgroundImage, lblHuman.Text);
         }
 
+        /// <summary>
+        /// Event handler to select coaches belonging to the IT.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnIT_Click(object sender, EventArgs e)
         {
             SelectedInterest(btnIT.BackgroundImage, lblIT.Text);
         }
 
+        /// <summary>
+        /// Event handler to select coaches belonging to the Law.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLaw_Click(object sender, EventArgs e)
         {
             SelectedInterest(btnLaw.BackgroundImage, lblLaw.Text);
         }
 
+        /// <summary>
+        /// Event handler to select coaches belonging to the Menu.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnManu_Click(object sender, EventArgs e)
         {
             SelectedInterest(btnManu.BackgroundImage, lblManu.Text);
         }
 
+        /// <summary>
+        /// Event handler to select coaches belonging to the Science.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnScience_Click(object sender, EventArgs e)
         {
             SelectedInterest(btnScience.BackgroundImage, lblScience.Text);
         }
 
+        /// <summary>
+        /// Event handler to select coaches belonging to the Transport.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnTransport_Click(object sender, EventArgs e)
         {
             SelectedInterest(btnTransport.BackgroundImage, lblTransport.Text);
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        //Disipaly student info to the home tab
+        /// <summary>
+        /// Disiplay student info to the home tab
+        /// </summary>
         private void displayInfo()
         {
             using (var context = new db_sft_2172Entities())
@@ -111,7 +183,7 @@ namespace CoachConnect
                                 select u; 
                 var userResult = userQuery.FirstOrDefault<User>();
                 lblStdID.Text = userResult.UserID;
-                lblStdName.Text = userResult.FirstName + " " + userResult.LastName;
+                lblStdName.Text = userResult.DisplayName;
                 lblStdEmail.Text = userResult.Email;
                 lblStdPhone.Text = userResult.Phone;
                 var request = System.Net.WebRequest.Create(userResult.ProfilePic);
@@ -142,8 +214,10 @@ namespace CoachConnect
                
             }
         }
-
-        //Display coaches in the dropdown comboBox
+        
+        /// <summary>
+        /// Display coaches in the dropdown comboBox
+        /// </summary>
         private void displayCoachList()
         {
             using (var context = new db_sft_2172Entities())
@@ -151,6 +225,7 @@ namespace CoachConnect
                 var userQuery = (from u in context.Users
                                  join s in context.Sessions on u.UserID equals s.CoachID
                                  where u.IsCoach.Equals(true)
+                                 orderby u.DisplayName 
                                  select u.DisplayName).ToList().Distinct();
 
                 foreach (var c in userQuery)
@@ -161,7 +236,11 @@ namespace CoachConnect
             }
         }
 
-        //Button click to search for specific coach from the database
+        /// <summary>
+        /// Event handler to search for specific coach from the database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             string selectedCoach = (string)comboBoxCoaches.SelectedItem;
@@ -170,7 +249,9 @@ namespace CoachConnect
             seachForCoach(selectedCoach);
         }
 
-        //To disable checkboxes on the Coach by Name tab
+        /// <summary>
+        /// To disable checkboxes on the Coach by Name tab.
+        /// </summary>
         private void disableChkPeriod()
         {
             chkMonMorning.Enabled = false;
@@ -209,7 +290,9 @@ namespace CoachConnect
             chkSunEvening.Enabled = false;
         }
 
-        //Called in the unchecked day period method to clear the check boxes first 
+        /// <summary>
+        /// Called in the unchecked day period method to clear the check boxes first.
+        /// </summary>
         private void unCheckedDayPeriods()
         {
             chkMonMorning.Checked = false;
@@ -252,7 +335,10 @@ namespace CoachConnect
             btnClear.Enabled = false;
         }
 
-        //Called in the button2 to search a coach
+        /// <summary>
+        /// Called in the button2 to search a coach.
+        /// </summary>
+        /// <param name="coach"></param>
         private void seachForCoach(string coach)
         {
             using (var context = new db_sft_2172Entities())
@@ -289,7 +375,10 @@ namespace CoachConnect
             }
         }
 
-        //Search for available coach by session
+        /// <summary>
+        /// Search for available coach by session.
+        /// </summary>
+        /// <param name="coach"></param>
         private void seachCoachOnSession(string coach)
         {
             listBoxDisplayCoachSubject.Items.Clear();
@@ -528,7 +617,9 @@ namespace CoachConnect
             }
         }
 
-        //Enable buttons 
+        /// <summary>
+        /// Method used to Enable buttons.
+        /// </summary>
         private void enableButtons()
         {
             if (chkMonMorning.Checked == true || chkMonMidday.Checked == true || chkMonAfternoon.Checked == true || chkMonEvening.Checked == true ||
@@ -549,7 +640,9 @@ namespace CoachConnect
             }
         }
 
-        //Display the appointments for that current student in datagridview on the home tab
+        /// <summary>
+        /// Display the appointments for that current student in datagridview on the home tab
+        /// </summary>
         public void displayAppointment()
         {
             using (var context = new db_sft_2172Entities())
@@ -604,7 +697,11 @@ namespace CoachConnect
             }
         }
 
-        //Reset password button click
+        /// <summary>
+        /// Event handler to reset password button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnResetPassowrd_Click(object sender, EventArgs e)
         {
             ResetStudentPassword resetForm = new ResetStudentPassword(this);
@@ -612,21 +709,33 @@ namespace CoachConnect
             this.Hide();
         }
 
-        //Edit profile button click
+        /// <summary>
+        /// Event handler to edit profile button click.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
-            EditStudentProfileForm editForm = new EditStudentProfileForm(this);
-            editForm.Show();
             this.Hide();
+            EditStudentProfileForm editForm = new EditStudentProfileForm(this);
+            editForm.Location = this.Location;
+            editForm.ShowDialog();
+            displayInfo();
         }
 
-        //Search by time clicked button
+        /// <summary>
+        /// Event handler to earch by time clicked button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSearchByTime_Click(object sender, EventArgs e)
         {
             coachTimeQuery();
         }
 
-        //To query the search after cliking the Search by Time button
+        /// <summary>
+        /// Method to query the search after cliking the Search by Time button.
+        /// </summary>
         private void coachTimeQuery()
         {
             try
@@ -739,8 +848,11 @@ namespace CoachConnect
             return;
         }
 
-
-        //Assign a coach clicked button on the Search by Time tab
+        /// <summary>
+        /// Event handler to assign a coach clicked button on the Search by Time tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnScheduleAppointment_Click(object sender, EventArgs e)
         {
             string selectedCoachID;
@@ -759,12 +871,12 @@ namespace CoachConnect
             else
             {
                 DataGridViewRow selectedRow = dataGridCoachesByTime.SelectedRows[0];
-                selectedCoachID = selectedRow.Cells[8].Value.ToString();
-                selectedCoachName = selectedRow.Cells[5].Value.ToString();
+                selectedCoachID = selectedRow.Cells[7].Value.ToString();
+                selectedCoachName = selectedRow.Cells[2].Value.ToString();
                 selectedTime = selectedRow.Cells[6].Value.ToString();
-                selectedDay = selectedRow.Cells[4].Value.ToString();
-                selectedCourseID = selectedRow.Cells[1].Value.ToString();
-                selectedCourse = selectedRow.Cells[3].Value.ToString();
+                selectedDay = selectedRow.Cells[5].Value.ToString();
+                selectedCourseID = selectedRow.Cells[0].Value.ToString();
+                selectedCourse = selectedRow.Cells[8].Value.ToString();
 
 
                 DialogResult result = MessageBox.Show(
@@ -828,7 +940,11 @@ namespace CoachConnect
             return;
         }
 
-        //Assign a coach clicked button on the Search by Name tab
+        /// <summary>
+        /// Event handler to assign a coach clicked button on the Search by Name tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnScheduleApptName_Click(object sender, EventArgs e)
         {
             string selectedCoachID;
@@ -1039,27 +1155,45 @@ namespace CoachConnect
                 }
             }
         }
-        
-        //Logout clicked button on the stutend home tab
+
+        /// <summary>
+        /// Event handler to logout clicked button on the stutend home tab.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStdLogout_Click(object sender, EventArgs e)
         {
-            Program.LoginForm.Logout();
+            Program.loginForm.logout();
 
             // Close this window
             this.Close();
         }
 
+        /// <summary>
+        /// Event handler to enable buttons.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tabPage2_Click(object sender, EventArgs e)
         {
             enableButtons();
         }
 
-        //Clear button on the Search by Name tab to clear all checkboxes
+        /// <summary>
+        /// Event handler to clear button on the Search by Name tab to clear all checkboxes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClear_Click(object sender, EventArgs e)
         {
             unCheckedDayPeriods();
         }
 
+        /// <summary>
+        /// Event handler to coaches by time.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClearByTime_Click(object sender, EventArgs e)
         {
             chkMon.Checked = false;
@@ -1074,13 +1208,21 @@ namespace CoachConnect
             chkEvening.Checked = false;
         }
 
-        //Event handler to Logout the program event if the main form is closed
+        /// <summary>
+        /// Event handler to logout the program event if the main form is closed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FindCoachForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.LoginForm.Logout();
+            Program.loginForm.logout();
         }
 
-        //Cancel the sessional coach
+        /// <summary>
+        /// Event handler to cancel the sessional coach.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancelCoach_Click(object sender, EventArgs e)
         {
             string selectedCoachID;
@@ -1097,11 +1239,11 @@ namespace CoachConnect
             else
             {
                 DataGridViewRow selectedRow = dgrShowAppointments.SelectedRows[0];
-                selectedSessionID = selectedRow.Cells[0].Value.ToString();
-                selectedCourseID = selectedRow.Cells[1].Value.ToString();
-                selectedDay = selectedRow.Cells[3].Value.ToString();
-                selectedTime = selectedRow.Cells[4].Value.ToString();
-                selectedCoachID = selectedRow.Cells[5].Value.ToString();
+                selectedSessionID = selectedRow.Cells[4].Value.ToString();
+                selectedCourseID = selectedRow.Cells[0].Value.ToString();
+                selectedDay = selectedRow.Cells[5].Value.ToString();
+                selectedTime = selectedRow.Cells[6].Value.ToString();
+                selectedCoachID = selectedRow.Cells[7].Value.ToString();
 
                 DialogResult result = MessageBox.Show(
                     "Are you sure you want to cancel the this coach?\n\n"
@@ -1142,6 +1284,11 @@ namespace CoachConnect
             return;
         }
 
+        /// <summary>
+        /// Event handler to exit the application when the Exit button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();

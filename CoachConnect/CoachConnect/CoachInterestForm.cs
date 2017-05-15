@@ -84,11 +84,21 @@ namespace CoachConnect
             }
         }
 
+        /// <summary>
+        /// Event handler to enter a row on datagridview.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridAvailableCoaches_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             btnSelectCoach.Enabled = true;
         }
 
+        /// <summary>
+        /// Event handler to select a coach.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSelectCoach_Click(object sender, EventArgs e)
         {
             string selectedCoachID;
@@ -158,6 +168,8 @@ namespace CoachConnect
                                     };
                                     context.SessionRosters.Add(sr);
                                     context.SaveChanges();
+                                    originalForm.Show();
+                                    this.Close();
                                 } 
                             }
                             catch (Exception ex)
