@@ -43,8 +43,6 @@
             this.lstBoxUsers = new System.Windows.Forms.ListBox();
             this.lblUsers = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
-            this.btnLogOff = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
             this.chkBoxStudent = new System.Windows.Forms.CheckBox();
             this.chkBoxCoach = new System.Windows.Forms.CheckBox();
             this.chkBoxAdmin = new System.Windows.Forms.CheckBox();
@@ -174,39 +172,17 @@
             this.lblUsers.Size = new System.Drawing.Size(81, 29);
             this.lblUsers.TabIndex = 48;
             this.lblUsers.Text = "Users";
-            this.lblUsers.Click += new System.EventHandler(this.lblUsers_Click);
             // 
             // btnSubmit
             // 
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(351, 458);
+            this.btnSubmit.Location = new System.Drawing.Point(460, 445);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(97, 47);
+            this.btnSubmit.Size = new System.Drawing.Size(161, 53);
             this.btnSubmit.TabIndex = 12;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
-            // btnLogOff
-            // 
-            this.btnLogOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOff.Location = new System.Drawing.Point(490, 458);
-            this.btnLogOff.Name = "btnLogOff";
-            this.btnLogOff.Size = new System.Drawing.Size(99, 47);
-            this.btnLogOff.TabIndex = 13;
-            this.btnLogOff.Text = "Log Off";
-            this.btnLogOff.UseVisualStyleBackColor = true;
-            // 
-            // btnExit
-            // 
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(636, 458);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(99, 47);
-            this.btnExit.TabIndex = 14;
-            this.btnExit.Text = "Exit";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // chkBoxStudent
             // 
@@ -285,8 +261,6 @@
             this.Controls.Add(this.chkBoxAdmin);
             this.Controls.Add(this.chkBoxCoach);
             this.Controls.Add(this.chkBoxStudent);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnLogOff);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.lblUsers);
             this.Controls.Add(this.lstBoxUsers);
@@ -326,8 +300,6 @@
         private System.Windows.Forms.ListBox lstBoxUsers;
         private System.Windows.Forms.Label lblUsers;
         private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.Button btnLogOff;
-        private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.CheckBox chkBoxStudent;
         private System.Windows.Forms.CheckBox chkBoxCoach;
         private System.Windows.Forms.CheckBox chkBoxAdmin;
