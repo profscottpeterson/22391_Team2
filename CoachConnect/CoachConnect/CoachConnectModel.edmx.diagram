@@ -29,7 +29,6 @@
         <EntityTypeShape EntityType="db_sft_2172Model.CoachByTime" Width="1.5" PointX="9.375" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_sft_2172Model.CoachByName" Width="1.5" PointX="8.375" PointY="9.75" />
         <EntityTypeShape EntityType="db_sft_2172Model.ViewSession" Width="1.5" PointX="11.25" PointY="0.625" />
-        <EntityTypeShape EntityType="db_sft_2172Model.sysdiagram" PointX="5.375" PointY="4.75" Width="1.5" />
         <EntityTypeShape EntityType="db_sft_2172Model.Availability" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="db_sft_2172Model.Session" Width="1.5" PointX="12.5" PointY="6.375" />
         <AssociationConnector Association="db_sft_2172Model.FK_Session_Course" />
@@ -43,7 +42,7 @@
         <AssociationConnector Association="db_sft_2172Model.FK_Role_SessionRoster" />
         <AssociationConnector Association="db_sft_2172Model.FK_SessionRoster_Session" />
         <AssociationConnector Association="db_sft_2172Model.FK_User_SessionRoster" />
-        <EntityTypeShape EntityType="db_sft_2172Model.SessionsByInterest" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="db_sft_2172Model.SessionsByInterest" Width="1.5" PointX="3.625" PointY="9.5" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

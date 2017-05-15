@@ -1,69 +1,120 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Entity.Infrastructure;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿// <copyright file="AddSessionStudent.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
 namespace CoachConnect
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Data.Entity.Infrastructure;
+    using System.Data.SqlClient;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// AddSessionStudent: Allows users to add a student to a session roster
+    /// </summary>
     public partial class AddSessionStudent : Form
     {
-        private Session CurrentSession { get; set; }
-
-        private List<StudentByCourse> EligibleStudents { get; set; }
-        private List<SessionRoster> CurrentRoster { get; set; }
-        private bool SuccessfulAdd { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AddSessionStudent" /> class
+        /// </summary>
+        /// <param name="currentSession">The session object to be updated</param>
         public AddSessionStudent(Session currentSession)
         {
-            CurrentSession = currentSession;
+            this.CurrentSession = currentSession;
 
-            InitializeComponent();
+            this.InitializeComponent();
 
-            GetCurrentSessionRoster();
-            GetEligibleStudents();
+            this.GetCurrentSessionRoster();
+            this.GetEligibleStudents();
         }
 
         /// <summary>
-        /// Destructor
+        /// Gets or sets a Session object that stores information on the current coaching session
         /// </summary>
-        ~AddSessionStudent() { }
+        private Session CurrentSession { get; set; }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Gets or sets a list of students that are enrolled in the class and eligible to enroll in the coaching session
+        /// </summary>
+        private List<StudentByCourse> EligibleStudents { get; set; }
+
+        /// <summary>
+        ///  Gets or sets a list of students that are already enrolled in the coaching session
+        /// </summary>
+        private List<SessionRoster> CurrentRoster { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the student was added successfully
+        /// </summary>
+        private bool SuccessfulAdd { get; set; }
+
+        /// <summary>
+        /// Event handler to call a method and add the selected student to the database when the Add button is clicked
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnAddClick(object sender, EventArgs e)
         {
-            if (dataGridViewEligibleStudents.SelectedRows.Count > 0)
+            if (this.dataGridViewEligibleStudents.SelectedRows.Count > 0)
             {
-                AddStudentToSession();
+                this.AddStudentToSession();
             }
 
-            if (SuccessfulAdd) Close();
+            if (this.SuccessfulAdd)
+            {
+                this.Close();
+            }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Event handler to close the form when the Close button is clicked
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnCloseClick(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void dataGridViewEligibleStudents_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// Event handler to call a method and add the selected student to the database when a data cell is double-clicked
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void DataGridViewEligibleStudentsCellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            AddStudentToSession();
+            this.AddStudentToSession();
 
-            if (SuccessfulAdd) Close();
+            if (this.SuccessfulAdd)
+            {
+                this.Close();
+            }
         }
 
-        private void dataGridViewEligibleStudents_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        /// <summary>
+        /// Event handler to call a method and add the selected student to the database when a data row header is double-clicked
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void DataGridViewEligibleStudentsRowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            AddStudentToSession();
+            this.AddStudentToSession();
 
-            if (SuccessfulAdd) Close();
+            if (this.SuccessfulAdd)
+            {
+                this.Close();
+            }
         }
 
+        /// <summary>
+        /// Method to obtain the current session's roster from the database and add results to the data grid view
+        /// </summary>
         private void GetCurrentSessionRoster()
         {
             try
@@ -71,19 +122,21 @@ namespace CoachConnect
                 using (var context = new db_sft_2172Entities())
                 {
                     var currentStudentsQuery = from currentStudents in context.SessionRosters
-                                               where currentStudents.SessionID.Equals(CurrentSession.SessionID)
+                                               where currentStudents.SessionID.Equals(this.CurrentSession.SessionID)
                                                select currentStudents;
 
-                    CurrentRoster = currentStudentsQuery.ToList();
+                    this.CurrentRoster = currentStudentsQuery.ToList();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
+        /// <summary>
+        /// Method to obtain a list of students that are part of the desired class (and thus eligible to enroll in the coaching session)
+        /// </summary>
         private void GetEligibleStudents()
         {
             try
@@ -92,37 +145,37 @@ namespace CoachConnect
                 {
                     // Pull list of all eligible students
                     var enrolledStudentQuery = from students in context.StudentByCourses
-                        where students.CourseID.Equals(CurrentSession.CourseID)
+                        where students.CourseID.Equals(this.CurrentSession.CourseID)
                         select students;
 
-                    if (enrolledStudentQuery == null || enrolledStudentQuery.ToList().Count == 0)
+                    if (enrolledStudentQuery.ToList().Count == 0)
                     { 
                         MessageBox.Show("Sorry, no students are enrolled in this course.  Please update your session with a different course.");
-                        Close();
+                        this.Close();
                         return;
                     }
                     
                     List<StudentByCourse> eligibleStudentList = enrolledStudentQuery.ToList();
 
                     // Find list of eligible students
-                    EligibleStudents = eligibleStudentList.ToList();
+                    this.EligibleStudents = eligibleStudentList.ToList();
 
                     // Add eligible students to the data grid
-                    dataGridViewEligibleStudents.DataSource = null;
-                    dataGridViewEligibleStudents.DataSource = EligibleStudents;
+                    this.dataGridViewEligibleStudents.DataSource = null;
+                    this.dataGridViewEligibleStudents.DataSource = this.EligibleStudents;
 
-                    dataGridViewEligibleStudents.Columns["CourseID"].Visible = false;
+                    this.dataGridViewEligibleStudents.Columns["CourseID"].Visible = false;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
         }
 
-        
-
+        /// <summary>
+        /// Method to get data for the selected student, then add a new record to the SessionRoster entity
+        /// </summary>
         private void AddStudentToSession()
         {
             this.SuccessfulAdd = false;
@@ -130,12 +183,12 @@ namespace CoachConnect
             try
             {
                 // Get UserID for the selected row
-                string selectedUserId = dataGridViewEligibleStudents.SelectedRows[0].Cells["UserID"].Value.ToString();
+                string selectedUserId = this.dataGridViewEligibleStudents.SelectedRows[0].Cells["UserID"].Value.ToString();
 
                 // Create a new SessionRoster object
                 SessionRoster addStudent = new SessionRoster
                 {
-                    SessionID = CurrentSession.SessionID,
+                    SessionID = this.CurrentSession.SessionID,
                     UserID = selectedUserId,
                     RoleID = "STUD"
                 };
@@ -151,7 +204,9 @@ namespace CoachConnect
 
                 this.Close();
             }
+#pragma warning disable CS0168 // Variable is declared but never used
             catch (DbUpdateException dbUpdateException)
+#pragma warning restore CS0168 // Variable is declared but never used
             {
                 MessageBox.Show("Student is already enrolled.  Please select a different student.");
             }
@@ -159,7 +214,6 @@ namespace CoachConnect
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
     }
 }

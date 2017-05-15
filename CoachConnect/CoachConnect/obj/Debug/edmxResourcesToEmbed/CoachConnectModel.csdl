@@ -127,7 +127,6 @@
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
     <EntitySet Name="ViewSessions" EntityType="db_sft_2172Model.ViewSession" />
-    <EntitySet Name="sysdiagrams" EntityType="db_sft_2172Model.sysdiagram" />
     <EntitySet Name="Availabilities" EntityType="db_sft_2172Model.Availability" />
     <EntitySet Name="Sessions" EntityType="db_sft_2172Model.Session" />
     <AssociationSet Name="FK_Session_Course" Association="db_sft_2172Model.FK_Session_Course">
@@ -442,16 +441,6 @@
     <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="sysdiagram">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
-    <Property Name="principal_id" Nullable="false" Type="Int32" />
-    <Property Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" MaxLength="Max" FixedLength="false" Type="Binary" />
   </EntityType>
   <EntityType Name="Availability">
     <Key>

@@ -1043,7 +1043,7 @@ namespace CoachConnect
         //Logout clicked button on the stutend home tab
         private void btnStdLogout_Click(object sender, EventArgs e)
         {
-            Program.loginForm.logout();
+            Program.LoginForm.Logout();
 
             // Close this window
             this.Close();
@@ -1074,10 +1074,10 @@ namespace CoachConnect
             chkEvening.Checked = false;
         }
 
-        //Event handler to logout the program event if the main form is closed
+        //Event handler to Logout the program event if the main form is closed
         private void FindCoachForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.loginForm.logout();
+            Program.LoginForm.Logout();
         }
 
         //Cancel the sessional coach

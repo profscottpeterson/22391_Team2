@@ -200,8 +200,10 @@ namespace CoachConnect
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvAvailable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAvailable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAvailable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvAvailable.Location = new System.Drawing.Point(6, 209);
             this.dgvAvailable.Name = "dgvAvailable";
+            this.dgvAvailable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAvailable.Size = new System.Drawing.Size(518, 197);
             this.dgvAvailable.TabIndex = 5;
             this.dgvAvailable.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvAvailable_CellDoubleClick);
@@ -347,7 +349,7 @@ namespace CoachConnect
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(48, 197);
+            this.label5.Location = new System.Drawing.Point(14, 197);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 13);
             this.label5.TabIndex = 44;
@@ -367,7 +369,7 @@ namespace CoachConnect
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(41, 171);
+            this.label4.Location = new System.Drawing.Point(7, 171);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 43;
@@ -387,7 +389,7 @@ namespace CoachConnect
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(53, 145);
+            this.label3.Location = new System.Drawing.Point(19, 145);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 42;
@@ -406,7 +408,7 @@ namespace CoachConnect
             // lblMor
             // 
             this.lblMor.AutoSize = true;
-            this.lblMor.Location = new System.Drawing.Point(49, 119);
+            this.lblMor.Location = new System.Drawing.Point(15, 119);
             this.lblMor.Name = "lblMor";
             this.lblMor.Size = new System.Drawing.Size(45, 13);
             this.lblMor.TabIndex = 41;
@@ -420,9 +422,9 @@ namespace CoachConnect
             this.grpMon.Controls.Add(this.MONMOR);
             this.grpMon.Enabled = false;
             this.grpMon.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpMon.Location = new System.Drawing.Point(111, 91);
+            this.grpMon.Location = new System.Drawing.Point(76, 91);
             this.grpMon.Name = "grpMon";
-            this.grpMon.Size = new System.Drawing.Size(45, 135);
+            this.grpMon.Size = new System.Drawing.Size(54, 135);
             this.grpMon.TabIndex = 34;
             this.grpMon.TabStop = false;
             this.grpMon.Text = "Mon";
@@ -477,9 +479,9 @@ namespace CoachConnect
             this.grpSun.Controls.Add(this.SUNMOR);
             this.grpSun.Enabled = false;
             this.grpSun.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpSun.Location = new System.Drawing.Point(417, 91);
+            this.grpSun.Location = new System.Drawing.Point(442, 91);
             this.grpSun.Name = "grpSun";
-            this.grpSun.Size = new System.Drawing.Size(45, 135);
+            this.grpSun.Size = new System.Drawing.Size(54, 135);
             this.grpSun.TabIndex = 40;
             this.grpSun.TabStop = false;
             this.grpSun.Text = "Sun";
@@ -532,9 +534,9 @@ namespace CoachConnect
             this.grpTues.Controls.Add(this.TUEMOR);
             this.grpTues.Enabled = false;
             this.grpTues.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpTues.Location = new System.Drawing.Point(162, 91);
+            this.grpTues.Location = new System.Drawing.Point(137, 91);
             this.grpTues.Name = "grpTues";
-            this.grpTues.Size = new System.Drawing.Size(45, 135);
+            this.grpTues.Size = new System.Drawing.Size(54, 135);
             this.grpTues.TabIndex = 35;
             this.grpTues.TabStop = false;
             this.grpTues.Text = "Tue";
@@ -587,9 +589,9 @@ namespace CoachConnect
             this.grpSat.Controls.Add(this.SATMOR);
             this.grpSat.Enabled = false;
             this.grpSat.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpSat.Location = new System.Drawing.Point(366, 91);
+            this.grpSat.Location = new System.Drawing.Point(381, 91);
             this.grpSat.Name = "grpSat";
-            this.grpSat.Size = new System.Drawing.Size(45, 135);
+            this.grpSat.Size = new System.Drawing.Size(54, 135);
             this.grpSat.TabIndex = 39;
             this.grpSat.TabStop = false;
             this.grpSat.Text = "Sat";
@@ -642,9 +644,9 @@ namespace CoachConnect
             this.grpWed.Controls.Add(this.WEDMOR);
             this.grpWed.Enabled = false;
             this.grpWed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpWed.Location = new System.Drawing.Point(213, 91);
+            this.grpWed.Location = new System.Drawing.Point(198, 91);
             this.grpWed.Name = "grpWed";
-            this.grpWed.Size = new System.Drawing.Size(45, 135);
+            this.grpWed.Size = new System.Drawing.Size(54, 135);
             this.grpWed.TabIndex = 36;
             this.grpWed.TabStop = false;
             this.grpWed.Text = "Wed";
@@ -697,9 +699,9 @@ namespace CoachConnect
             this.grpFri.Controls.Add(this.FRIMOR);
             this.grpFri.Enabled = false;
             this.grpFri.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpFri.Location = new System.Drawing.Point(315, 91);
+            this.grpFri.Location = new System.Drawing.Point(320, 91);
             this.grpFri.Name = "grpFri";
-            this.grpFri.Size = new System.Drawing.Size(45, 135);
+            this.grpFri.Size = new System.Drawing.Size(54, 135);
             this.grpFri.TabIndex = 38;
             this.grpFri.TabStop = false;
             this.grpFri.Text = "Fri";
@@ -752,9 +754,9 @@ namespace CoachConnect
             this.grpThu.Controls.Add(this.THUMOR);
             this.grpThu.Enabled = false;
             this.grpThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpThu.Location = new System.Drawing.Point(264, 91);
+            this.grpThu.Location = new System.Drawing.Point(259, 91);
             this.grpThu.Name = "grpThu";
-            this.grpThu.Size = new System.Drawing.Size(45, 135);
+            this.grpThu.Size = new System.Drawing.Size(54, 135);
             this.grpThu.TabIndex = 37;
             this.grpThu.TabStop = false;
             this.grpThu.Text = "Thu";
@@ -1190,6 +1192,7 @@ namespace CoachConnect
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCoachView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CoachViewForm";
             this.tbForm.ResumeLayout(false);
             this.tbSchedule.ResumeLayout(false);

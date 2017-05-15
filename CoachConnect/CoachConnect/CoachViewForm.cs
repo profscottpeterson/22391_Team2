@@ -60,7 +60,7 @@ namespace CoachConnect
         protected override void OnFormClosed(FormClosedEventArgs e)
         {
             base.OnFormClosed(e);
-            Program.loginForm.logout();
+            Program.LoginForm.Logout();
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace CoachConnect
         /// <param name="e">event on click</param>
         private void BtnLogout_Click(object sender, EventArgs e)
         {
-            Program.loginForm.logout();
+            Program.LoginForm.Logout();
 
             // Close this window
             this.Close();
@@ -671,12 +671,15 @@ namespace CoachConnect
                                     chk.BackColor = Color.Red;
                                     validChange = false;
                                     chk.Checked = true;
+                                    
                                 }
                             }
                         }
                     }
                 }
-
+                if (!validChange) {
+                    MessageBox.Show("You are assigned to existing Session in red. Can't change availability!");
+                }
                 return validChange;
             }
         }

@@ -62,8 +62,8 @@ namespace CoachConnect
                         // Show confirmation if save is successful
                         MessageBox.Show("Password updated successfully!  Please login again with your new password.");
 
-                        // Force user to logout and login with new password
-                        Program.loginForm.logout();
+                        // Force user to Logout and login with new password
+                        Program.LoginForm.Logout();
                         Close();
                     }
                 }
