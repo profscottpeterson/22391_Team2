@@ -671,12 +671,15 @@ namespace CoachConnect
                                     chk.BackColor = Color.Red;
                                     validChange = false;
                                     chk.Checked = true;
+                                    
                                 }
                             }
                         }
                     }
                 }
-
+                if (!validChange) {
+                    MessageBox.Show("You are assigned to existing Session in red. Can't change availability!");
+                }
                 return validChange;
             }
         }
