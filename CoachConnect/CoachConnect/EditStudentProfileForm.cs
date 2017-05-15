@@ -33,6 +33,9 @@ namespace CoachConnect
             originalForm = original;
         }
 
+        /// <summary>
+        /// To get student information to display on the home tab.
+        /// </summary>
         private void getStudentInfo()
         {
             using (var context = new db_sft_2172Entities())
@@ -51,6 +54,11 @@ namespace CoachConnect
             }
         }
 
+        /// <summary>
+        /// Event handler to save user edited profile
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSaveEditProfile_Click(object sender, EventArgs e)
         {
             Validation myValidation = new Validation();
@@ -152,12 +160,22 @@ namespace CoachConnect
             }
         }
 
+        /// <summary>
+        /// Event handler to cancel the editing profile.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancleEditProfile_Click(object sender, EventArgs e)
         {
             originalForm.Show();
             this.Close();
         }
 
+        /// <summary>
+        /// Event handler to leave the focus on the textbox email.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtStdEmail_Leave(object sender, EventArgs e)
         {
             Validation myValidation = new Validation();
@@ -174,22 +192,13 @@ namespace CoachConnect
             }
         }
 
+        /// <summary>
+        /// Override method event handler to perform when the form is closed.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             originalForm.Show();
         }
-
-        //Validate input email address
-        //private bool isValidEmail(string inputEmail)
-        //{
-        //    string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}" +
-        //          @"\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\" +
-        //          @".)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
-        //    Regex re = new Regex(strRegex);
-        //    if (re.IsMatch(inputEmail))
-        //        return (true);
-        //    else
-        //        return (false);
-        //}
     }
 }

@@ -31,7 +31,11 @@ namespace CoachConnect
             originalForm = original;
         }
 
-        //Button click to save the new password into the database
+        /// <summary>
+        /// Event handler to click to save the new password into the database
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSaveNewPassword_Click(object sender, EventArgs e)
         {
             using (var context = new db_sft_2172Entities())
@@ -80,14 +84,22 @@ namespace CoachConnect
             }
         }
 
-        //Cancle the reset new password
+        /// <summary>
+        /// Event handler to cancle the reset new password.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancleResetPassword_Click(object sender, EventArgs e)
         {
             originalForm.Show();
             this.Close();
         }
 
-        //An event handler used to validate current password input
+        /// <summary>
+        /// Event handler to validate current password input.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtStdPassword_Leave(object sender, EventArgs e)
         {
             using (var context = new db_sft_2172Entities())
@@ -110,7 +122,11 @@ namespace CoachConnect
             }
         }
 
-        //An event handler used to validate the new password with the confirm weither they are matched
+        /// <summary>
+        /// Event handler to validate the new password with the confirm weither they are matched.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txtStdNewConfirmPassowrd_Leave(object sender, EventArgs e)
         {
             if (txtStdNewPassword.Text == txtStdNewConfirmPassowrd.Text && (txtStdNewPassword.Text != "" || txtStdNewConfirmPassowrd.Text != ""))
@@ -129,6 +145,11 @@ namespace CoachConnect
             }
         }
 
+        /// <summary>
+        /// Event handler to hover the new saved password button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSaveNewPassword_MouseHover(object sender, EventArgs e)
         {
             if (txtStdPassword.Text != "" && txtStdNewPassword.Text == txtStdNewConfirmPassowrd.Text && (txtStdNewPassword.Text != "" || txtStdNewConfirmPassowrd.Text != ""))
@@ -149,6 +170,10 @@ namespace CoachConnect
             }
         }
 
+        /// <summary>
+        /// Override method event handler to perform when the form is closed.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             originalForm.Show();
