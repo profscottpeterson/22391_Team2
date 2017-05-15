@@ -148,7 +148,7 @@ namespace CoachConnect
                         where students.CourseID.Equals(this.CurrentSession.CourseID)
                         select students;
 
-                    if (enrolledStudentQuery == null || enrolledStudentQuery.ToList().Count == 0)
+                    if (enrolledStudentQuery.ToList().Count == 0)
                     { 
                         MessageBox.Show("Sorry, no students are enrolled in this course.  Please update your session with a different course.");
                         this.Close();

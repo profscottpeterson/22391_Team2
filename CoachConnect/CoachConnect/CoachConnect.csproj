@@ -160,9 +160,6 @@
     <Compile Include="StudentByCourse.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="TimePeriod.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
