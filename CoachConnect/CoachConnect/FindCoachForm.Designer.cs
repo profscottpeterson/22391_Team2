@@ -1798,6 +1798,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FindCoachForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Student Main Form, Find Coach Form";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FindCoachForm_FormClosed);
             this.tabControl1.ResumeLayout(false);

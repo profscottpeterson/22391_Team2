@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblLastNameError = new System.Windows.Forms.Label();
+            this.lblMiddleNameError = new System.Windows.Forms.Label();
+            this.lblFirstNameError = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtStdMiddleName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtStdLastName = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtStdFirstName = new System.Windows.Forms.TextBox();
             this.lblErrorPhone = new System.Windows.Forms.Label();
             this.lblErrorEmail = new System.Windows.Forms.Label();
             this.lblErrorURL = new System.Windows.Forms.Label();
@@ -42,15 +51,6 @@
             this.txtStdPhone = new System.Windows.Forms.TextBox();
             this.btnSaveEditProfile = new System.Windows.Forms.Button();
             this.btnCancleEditProfile = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtStdFirstName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtStdLastName = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtStdMiddleName = new System.Windows.Forms.TextBox();
-            this.lblFirstNameError = new System.Windows.Forms.Label();
-            this.lblMiddleNameError = new System.Windows.Forms.Label();
-            this.lblLastNameError = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InvalidEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.validEmail)).BeginInit();
@@ -84,6 +84,93 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Editing Profile";
+            // 
+            // lblLastNameError
+            // 
+            this.lblLastNameError.AutoSize = true;
+            this.lblLastNameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLastNameError.ForeColor = System.Drawing.Color.Red;
+            this.lblLastNameError.Location = new System.Drawing.Point(106, 167);
+            this.lblLastNameError.Name = "lblLastNameError";
+            this.lblLastNameError.Size = new System.Drawing.Size(112, 13);
+            this.lblLastNameError.TabIndex = 50;
+            this.lblLastNameError.Text = "Last Name is required!";
+            this.lblLastNameError.Visible = false;
+            // 
+            // lblMiddleNameError
+            // 
+            this.lblMiddleNameError.AutoSize = true;
+            this.lblMiddleNameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMiddleNameError.ForeColor = System.Drawing.Color.Red;
+            this.lblMiddleNameError.Location = new System.Drawing.Point(106, 127);
+            this.lblMiddleNameError.Name = "lblMiddleNameError";
+            this.lblMiddleNameError.Size = new System.Drawing.Size(123, 13);
+            this.lblMiddleNameError.TabIndex = 49;
+            this.lblMiddleNameError.Text = "Middle Name is required!";
+            this.lblMiddleNameError.Visible = false;
+            // 
+            // lblFirstNameError
+            // 
+            this.lblFirstNameError.AutoSize = true;
+            this.lblFirstNameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFirstNameError.ForeColor = System.Drawing.Color.Red;
+            this.lblFirstNameError.Location = new System.Drawing.Point(106, 88);
+            this.lblFirstNameError.Name = "lblFirstNameError";
+            this.lblFirstNameError.Size = new System.Drawing.Size(111, 13);
+            this.lblFirstNameError.TabIndex = 48;
+            this.lblFirstNameError.Text = "First Name is required!";
+            this.lblFirstNameError.Visible = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(36, 107);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 13);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "Midd Name:";
+            // 
+            // txtStdMiddleName
+            // 
+            this.txtStdMiddleName.Location = new System.Drawing.Point(105, 104);
+            this.txtStdMiddleName.Name = "txtStdMiddleName";
+            this.txtStdMiddleName.Size = new System.Drawing.Size(151, 20);
+            this.txtStdMiddleName.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(39, 148);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 13);
+            this.label2.TabIndex = 45;
+            this.label2.Text = "Last Name:";
+            // 
+            // txtStdLastName
+            // 
+            this.txtStdLastName.Location = new System.Drawing.Point(105, 145);
+            this.txtStdLastName.Name = "txtStdLastName";
+            this.txtStdLastName.Size = new System.Drawing.Size(151, 20);
+            this.txtStdLastName.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(40, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "First Name:";
+            // 
+            // txtStdFirstName
+            // 
+            this.txtStdFirstName.Location = new System.Drawing.Point(106, 65);
+            this.txtStdFirstName.Name = "txtStdFirstName";
+            this.txtStdFirstName.Size = new System.Drawing.Size(151, 20);
+            this.txtStdFirstName.TabIndex = 2;
             // 
             // lblErrorPhone
             // 
@@ -219,93 +306,6 @@
             this.btnCancleEditProfile.UseVisualStyleBackColor = true;
             this.btnCancleEditProfile.Click += new System.EventHandler(this.btnCancleEditProfile_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(40, 68);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 43;
-            this.label1.Text = "First Name:";
-            // 
-            // txtStdFirstName
-            // 
-            this.txtStdFirstName.Location = new System.Drawing.Point(106, 65);
-            this.txtStdFirstName.Name = "txtStdFirstName";
-            this.txtStdFirstName.Size = new System.Drawing.Size(151, 20);
-            this.txtStdFirstName.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(39, 148);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 13);
-            this.label2.TabIndex = 45;
-            this.label2.Text = "Last Name:";
-            // 
-            // txtStdLastName
-            // 
-            this.txtStdLastName.Location = new System.Drawing.Point(105, 145);
-            this.txtStdLastName.Name = "txtStdLastName";
-            this.txtStdLastName.Size = new System.Drawing.Size(151, 20);
-            this.txtStdLastName.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(36, 107);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 13);
-            this.label3.TabIndex = 47;
-            this.label3.Text = "Midd Name:";
-            // 
-            // txtStdMiddleName
-            // 
-            this.txtStdMiddleName.Location = new System.Drawing.Point(105, 104);
-            this.txtStdMiddleName.Name = "txtStdMiddleName";
-            this.txtStdMiddleName.Size = new System.Drawing.Size(151, 20);
-            this.txtStdMiddleName.TabIndex = 3;
-            // 
-            // lblFirstNameError
-            // 
-            this.lblFirstNameError.AutoSize = true;
-            this.lblFirstNameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFirstNameError.ForeColor = System.Drawing.Color.Red;
-            this.lblFirstNameError.Location = new System.Drawing.Point(106, 88);
-            this.lblFirstNameError.Name = "lblFirstNameError";
-            this.lblFirstNameError.Size = new System.Drawing.Size(111, 13);
-            this.lblFirstNameError.TabIndex = 48;
-            this.lblFirstNameError.Text = "First Name is required!";
-            this.lblFirstNameError.Visible = false;
-            // 
-            // lblMiddleNameError
-            // 
-            this.lblMiddleNameError.AutoSize = true;
-            this.lblMiddleNameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMiddleNameError.ForeColor = System.Drawing.Color.Red;
-            this.lblMiddleNameError.Location = new System.Drawing.Point(106, 127);
-            this.lblMiddleNameError.Name = "lblMiddleNameError";
-            this.lblMiddleNameError.Size = new System.Drawing.Size(123, 13);
-            this.lblMiddleNameError.TabIndex = 49;
-            this.lblMiddleNameError.Text = "Middle Name is required!";
-            this.lblMiddleNameError.Visible = false;
-            // 
-            // lblLastNameError
-            // 
-            this.lblLastNameError.AutoSize = true;
-            this.lblLastNameError.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastNameError.ForeColor = System.Drawing.Color.Red;
-            this.lblLastNameError.Location = new System.Drawing.Point(106, 167);
-            this.lblLastNameError.Name = "lblLastNameError";
-            this.lblLastNameError.Size = new System.Drawing.Size(112, 13);
-            this.lblLastNameError.TabIndex = 50;
-            this.lblLastNameError.Text = "Last Name is required!";
-            this.lblLastNameError.Visible = false;
-            // 
             // EditStudentProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,6 +317,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditStudentProfileForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Student Profile Form";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

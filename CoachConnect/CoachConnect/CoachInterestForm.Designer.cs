@@ -118,6 +118,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCoachInterest";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Find Coach By Interest";
             ((System.ComponentModel.ISupportInitialize)(this.pbInterest)).EndInit();
             this.groupBox4.ResumeLayout(false);
