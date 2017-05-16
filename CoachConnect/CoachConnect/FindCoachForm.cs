@@ -16,15 +16,21 @@ namespace CoachConnect
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
+    /// <content>
+    /// Contains functionalities and features for the FindCoachForm class.
+    /// </content>
     public partial class FindCoachForm : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FindCoachForm"/> class
+        /// </summary>
         public FindCoachForm()
         {
-            InitializeComponent();
-            displayInfo();
-            displayCoachList();
-            displayAppointment();
-            panelCoach.Visible = false;
+            this.InitializeComponent();
+            this.DisplayInfo();
+            this.DisplayCoachList();
+            this.DisplayAppointment();
+            this.panelCoach.Visible = false;
         }
 
         /// <summary>
@@ -38,143 +44,143 @@ namespace CoachConnect
             frmCoachInterest frm2 = new frmCoachInterest(this, interest, title);
             frm2.Location = this.Location;
             frm2.ShowDialog();
-            displayAppointment();
+            this.DisplayAppointment();
         }
 
         /// <summary>
         /// Event handler to select coaches belonging to the Agriculture.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnAgri_Click(object sender, EventArgs e)
         {
-            SelectedInterest(btnAgri.BackgroundImage, lblAgri.Text);
+            this.SelectedInterest(this.btnAgri.BackgroundImage, this.lblAgri.Text);
         }
 
         /// <summary>
         /// Event handler to select coaches belonging to the Architecture.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnArch_Click(object sender, EventArgs e)
         {
-            SelectedInterest(btnArch.BackgroundImage, lblArch.Text);
+            this.SelectedInterest(btnArch.BackgroundImage, lblArch.Text);
         }
 
         /// <summary>
         /// Event handler to select coaches belonging to the Business.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnBusiness_Click(object sender, EventArgs e)
         {
-            SelectedInterest(btnBusiness.BackgroundImage, lblBusiness.Text);
+            this.SelectedInterest(btnBusiness.BackgroundImage, lblBusiness.Text);
         }
 
         /// <summary>
         /// Event handler to select coaches belonging to the Digital.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnDigital_Click(object sender, EventArgs e)
         {
-            SelectedInterest(btnDigital.BackgroundImage, lblDigital.Text);
+            this.SelectedInterest(btnDigital.BackgroundImage, lblDigital.Text);
         }
 
         /// <summary>
         /// Event handler to select coaches belonging to the Energy.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnEnergy_Click(object sender, EventArgs e)
         {
-            SelectedInterest(btnEnergy.BackgroundImage, lblEnergy.Text);
+            this.SelectedInterest(btnEnergy.BackgroundImage, lblEnergy.Text);
         }
 
         /// <summary>
         /// Event handler to select coaches belonging to the General.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnGeneral_Click(object sender, EventArgs e)
         {
-            SelectedInterest(btnGeneral.BackgroundImage, lblGeneral.Text);
+            this.SelectedInterest(btnGeneral.BackgroundImage, lblGeneral.Text);
         }
 
         /// <summary>
         /// Event handler to select coaches belonging to the Health.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void bthHealth_Click(object sender, EventArgs e)
         {
-            SelectedInterest(btnHealth.BackgroundImage, lblHealth.Text);
+            this.SelectedInterest(btnHealth.BackgroundImage, lblHealth.Text);
         }
 
         /// <summary>
         /// Event handler to select coaches belonging to the Human Resource.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnHuman_Click(object sender, EventArgs e)
         {
-            SelectedInterest(btnHuman.BackgroundImage, lblHuman.Text);
+            this.SelectedInterest(btnHuman.BackgroundImage, lblHuman.Text);
         }
 
         /// <summary>
         /// Event handler to select coaches belonging to the IT.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnIT_Click(object sender, EventArgs e)
         {
-            SelectedInterest(btnIT.BackgroundImage, lblIT.Text);
+            this.SelectedInterest(btnIT.BackgroundImage, lblIT.Text);
         }
 
         /// <summary>
         /// Event handler to select coaches belonging to the Law.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnLaw_Click(object sender, EventArgs e)
         {
-            SelectedInterest(btnLaw.BackgroundImage, lblLaw.Text);
+            this.SelectedInterest(btnLaw.BackgroundImage, lblLaw.Text);
         }
 
         /// <summary>
         /// Event handler to select coaches belonging to the Menu.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnManu_Click(object sender, EventArgs e)
         {
-            SelectedInterest(btnManu.BackgroundImage, lblManu.Text);
+            this.SelectedInterest(btnManu.BackgroundImage, lblManu.Text);
         }
 
         /// <summary>
         /// Event handler to select coaches belonging to the Science.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnScience_Click(object sender, EventArgs e)
         {
-            SelectedInterest(btnScience.BackgroundImage, lblScience.Text);
+            this.SelectedInterest(btnScience.BackgroundImage, lblScience.Text);
         }
 
         /// <summary>
         /// Event handler to select coaches belonging to the Transport.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnTransport_Click(object sender, EventArgs e)
         {
-            SelectedInterest(btnTransport.BackgroundImage, lblTransport.Text);
+            this.SelectedInterest(btnTransport.BackgroundImage, lblTransport.Text);
         }
 
         /// <summary>
-        /// Disiplay student info to the home tab
+        /// Display student info to the home tab.
         /// </summary>
-        private void displayInfo()
+        private void DisplayInfo()
         {
             using (var context = new db_sft_2172Entities())
             {
@@ -206,19 +212,18 @@ namespace CoachConnect
                 {
                     lblRegisterStatusMessage.Visible = false;
                     listBoxCourse.Visible = true;
-                    foreach(var c in userCourse.ToList())
+                    foreach (var c in userCourse.ToList())
                     {
                         listBoxCourse.Items.Add(c);
                     }
-                }
-               
+                }             
             }
         }
         
         /// <summary>
         /// Display coaches in the dropdown comboBox
         /// </summary>
-        private void displayCoachList()
+        private void DisplayCoachList()
         {
             using (var context = new db_sft_2172Entities())
             {
@@ -227,10 +232,8 @@ namespace CoachConnect
                                  where u.IsCoach.Equals(true)
                                  orderby u.DisplayName 
                                  select u.DisplayName).ToList().Distinct();
-
                 foreach (var c in userQuery)
                 {
-
                     comboBoxCoaches.Items.Add(c);
                 }
             }
@@ -239,51 +242,45 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to search for specific coach from the database.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void button2_Click(object sender, EventArgs e)
         {
             string selectedCoach = (string)comboBoxCoaches.SelectedItem;
-            unCheckedDayPeriods();
-            disableChkPeriod();
-            seachForCoach(selectedCoach);
+            this.UnCheckedDayPeriods();
+            this.DisableChkPeriod();
+            this.SeachForCoach(selectedCoach);
         }
 
         /// <summary>
         /// To disable checkboxes on the Coach by Name tab.
         /// </summary>
-        private void disableChkPeriod()
+        private void DisableChkPeriod()
         {
             chkMonMorning.Enabled = false;
             chkMonMidday.Enabled = false;
             chkMonAfternoon.Enabled = false;
             chkMonEvening.Enabled = false;
-
             chkTueMorning.Enabled = false;
             chkTueMidday.Enabled = false;
             chkTueAfternoon.Enabled = false;
             chkTueEvening.Enabled = false;
-
             chkWedMorning.Enabled = false;
             chkWedMidday.Enabled = false;
             chkWedAfternoon.Enabled = false;
             chkWedEvening.Enabled = false;
-
             chkThuMorning.Enabled = false;
             chkThuMidday.Enabled = false;
             chkThuAfternoon.Enabled = false;
             chkThuEvening.Enabled = false;
-
             chkFriMorning.Enabled = false;
             chkFriMidday.Enabled = false;
             chkFriAfternoon.Enabled = false;
             chkFriEvening.Enabled = false;
-
             chkSatMorning.Enabled = false;
             chkSatMidday.Enabled = false;
             chkSatAfternoon.Enabled = false;
             chkSatEvening.Enabled = false;
-
             chkSunMorning.Enabled = false;
             chkSunMidday.Enabled = false;
             chkSunAfternoon.Enabled = false;
@@ -293,44 +290,38 @@ namespace CoachConnect
         /// <summary>
         /// Called in the unchecked day period method to clear the check boxes first.
         /// </summary>
-        private void unCheckedDayPeriods()
+        private void UnCheckedDayPeriods()
         {
             chkMonMorning.Checked = false;
             chkMonMidday.Checked = false;
             chkMonAfternoon.Checked = false;
             chkMonEvening.Checked = false;
-
             chkTueMorning.Checked = false;
             chkTueMidday.Checked = false;
             chkTueAfternoon.Checked = false;
             chkTueEvening.Checked = false;
-
             chkWedMorning.Checked = false;
             chkWedMidday.Checked = false;
             chkWedAfternoon.Checked = false;
             chkWedEvening.Checked = false;
-
             chkThuMorning.Checked = false;
             chkThuMidday.Checked = false;
             chkThuAfternoon.Checked = false;
             chkThuEvening.Checked = false;
-
             chkFriMorning.Checked = false;
             chkFriMidday.Checked = false;
             chkFriAfternoon.Checked = false;
             chkFriEvening.Checked = false;
-
             chkSatMorning.Checked = false;
             chkSatMidday.Checked = false;
             chkSatAfternoon.Checked = false;
             chkSatEvening.Checked = false;
-
             chkSunMorning.Checked = false;
             chkSunMidday.Checked = false;
             chkSunAfternoon.Checked = false;
             chkSunEvening.Checked = false;
 
-            //Disable buttons when search a new coach
+            // Disable buttons when search a new coach
             btnScheduleApptName.Enabled = false;
             btnClear.Enabled = false;
         }
@@ -338,8 +329,8 @@ namespace CoachConnect
         /// <summary>
         /// Called in the button2 to search a coach.
         /// </summary>
-        /// <param name="coach"></param>
-        private void seachForCoach(string coach)
+        /// <param name="coach">The coach to join</param>
+        private void SeachForCoach(string coach)
         {
             using (var context = new db_sft_2172Entities())
             {
@@ -349,7 +340,7 @@ namespace CoachConnect
                 var userResult = userQuery.FirstOrDefault<User>();
                 try
                 {
-                    if (!String.IsNullOrEmpty(userResult.DisplayName))
+                    if (!string.IsNullOrEmpty(userResult.DisplayName))
                     {
                         panelCoach.Visible = true;
                         var request = System.Net.WebRequest.Create(userResult.ProfilePic);
@@ -359,13 +350,14 @@ namespace CoachConnect
                         {
                             pictureBoxCoachProfile.Image = Bitmap.FromStream(stream);
                         }
+
                         lblCoachName.Text = userResult.DisplayName;
                         lblActiveCoach.Text = userResult.ActiveCoachSince.ToString();
                         lblEmail.Text = userResult.Email;
                         lblPhone.Text = userResult.Phone;
 
-                        //display the day period by coach
-                        seachCoachOnSession(userResult.DisplayName);
+                        // Display the day period by coach
+                        this.SeachCoachOnSession(userResult.DisplayName);
                     }
                 }
                 catch (Exception e)
@@ -378,8 +370,8 @@ namespace CoachConnect
         /// <summary>
         /// Search for available coach by session.
         /// </summary>
-        /// <param name="coach"></param>
-        private void seachCoachOnSession(string coach)
+        /// <param name="coach">The coach to join</param>
+        private void SeachCoachOnSession(string coach)
         {
             listBoxDisplayCoachSubject.Items.Clear();
             using (var context = new db_sft_2172Entities())
@@ -620,7 +612,7 @@ namespace CoachConnect
         /// <summary>
         /// Method used to Enable buttons.
         /// </summary>
-        private void enableButtons()
+        private void EnableButtons()
         {
             if (chkMonMorning.Checked == true || chkMonMidday.Checked == true || chkMonAfternoon.Checked == true || chkMonEvening.Checked == true ||
                 chkTueMorning.Checked == true || chkTueMidday.Checked == true || chkTueAfternoon.Checked == true || chkTueEvening.Checked == true ||
@@ -641,9 +633,9 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Display the appointments for that current student in datagridview on the home tab
+        /// Display the appointments for that current student in DataGridView on the home tab.
         /// </summary>
-        public void displayAppointment()
+        public void DisplayAppointment()
         {
             using (var context = new db_sft_2172Entities())
             {
@@ -671,6 +663,7 @@ namespace CoachConnect
                         MessageBox.Show(e.Message);
                     }
                 }
+
                 if (appointment.Count() > 0)
                 {
                     try
@@ -700,8 +693,8 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to reset password button click.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnResetPassowrd_Click(object sender, EventArgs e)
         {
             ResetStudentPassword resetForm = new ResetStudentPassword(this);
@@ -712,31 +705,31 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to edit profile button click.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnEditProfile_Click(object sender, EventArgs e)
         {
             this.Hide();
             EditStudentProfileForm editForm = new EditStudentProfileForm(this);
             editForm.Location = this.Location;
             editForm.ShowDialog();
-            displayInfo();
+            this.DisplayInfo();
         }
 
         /// <summary>
-        /// Event handler to earch by time clicked button.
+        /// Event handler to each by time clicked button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnSearchByTime_Click(object sender, EventArgs e)
         {
-            coachTimeQuery();
+            this.CoachTimeQuery();
         }
 
         /// <summary>
-        /// Method to query the search after cliking the Search by Time button.
+        /// Method to query the search after clicking the Search by Time button.
         /// </summary>
-        private void coachTimeQuery()
+        private void CoachTimeQuery()
         {
             try
             {
@@ -744,12 +737,9 @@ namespace CoachConnect
                 {
                     // Access view and pull data
                     var coachByTimeQuery =
-                        //from coachTimes in context.CoachByTimes
                         from coachTimes in context.ViewSessions
                         select coachTimes;
-
                     var timeQuery = coachByTimeQuery.Where(t => t.Time == "None");
-
                     if (this.chkMorning.Checked)
                     {
                         timeQuery = timeQuery.Union(coachByTimeQuery.Where(t => t.Time == "Morning"));
@@ -772,8 +762,6 @@ namespace CoachConnect
 
                     // Work through "day" query
                     var dayQuery = coachByTimeQuery.Where(t => t.Day == "None");
-
-
                     if (this.chkMon.Checked)
                     {
                         dayQuery = dayQuery.Union(coachByTimeQuery.Where(t => t.Day == "Monday"));
@@ -809,7 +797,6 @@ namespace CoachConnect
                         dayQuery = dayQuery.Union(coachByTimeQuery.Where(d => d.Day == "Sunday"));
                     }
 
-
                     // Add results to data grid view
                     if ((this.chkSun.Checked || this.chkMon.Checked || this.chkTue.Checked ||
                          this.chkWed.Checked || this.chkThu.Checked || this.chkFri.Checked || this.chkSat.Checked) &&
@@ -826,7 +813,7 @@ namespace CoachConnect
                     {
                         dataGridCoachesByTime.DataSource = timeQuery.ToList();
                     }
-                    else // nothing should be selected
+                    else 
                     {
                         dataGridCoachesByTime.DataSource = coachByTimeQuery.ToList();
                     }
@@ -851,8 +838,8 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to assign a coach clicked button on the Search by Time tab.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnScheduleAppointment_Click(object sender, EventArgs e)
         {
             string selectedCoachID;
@@ -861,8 +848,6 @@ namespace CoachConnect
             string selectedDay;
             string selectedCourseID;
             string selectedCourse;
-
-
             if (dataGridCoachesByTime.SelectedRows == null)
             {
                 MessageBox.Show("Please select a row before continuing");
@@ -877,7 +862,6 @@ namespace CoachConnect
                 selectedDay = selectedRow.Cells[5].Value.ToString();
                 selectedCourseID = selectedRow.Cells[0].Value.ToString();
                 selectedCourse = selectedRow.Cells[8].Value.ToString();
-
 
                 DialogResult result = MessageBox.Show(
                     "Are you sure you want to create this appointment?\n"
@@ -921,7 +905,8 @@ namespace CoachConnect
                                     };
                                     context.SessionRosters.Add(sr);
                                     context.SaveChanges();
-                                    displayAppointment();
+
+                                    this.DisplayAppointment();
                                 } 
                             }
                             catch (Exception ex)
@@ -943,8 +928,8 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to assign a coach clicked button on the Search by Name tab.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnScheduleApptName_Click(object sender, EventArgs e)
         {
             string selectedCoachID;
@@ -960,7 +945,7 @@ namespace CoachConnect
                 selectedDay = "Monday";
                 selectedTime = "Morning";
             }
-            else if(chkMonMidday.Checked == true)
+            else if (chkMonMidday.Checked == true)
             {
                 selectedDay = "Monday";
                 selectedTime = "Midday";
@@ -1100,6 +1085,7 @@ namespace CoachConnect
                 MessageBox.Show("Please choose a time period!");
                 return;
             }
+
             using (db_sft_2172Entities context = new db_sft_2172Entities())
             {
                 var coach = from c in context.ViewSessions
@@ -1144,7 +1130,7 @@ namespace CoachConnect
                             };
                             context.SessionRosters.Add(sr);
                             context.SaveChanges();
-                            displayAppointment();
+                            this.DisplayAppointment();
                         }
                         
                     }
@@ -1157,13 +1143,13 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Event handler to logout clicked button on the stutend home tab.
+        /// Event handler to logout clicked button on the student home tab.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnStdLogout_Click(object sender, EventArgs e)
         {
-            Program.loginForm.logout();
+            Program.LoginForm.Logout();
 
             // Close this window
             this.Close();
@@ -1172,28 +1158,28 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to enable buttons.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void tabPage2_Click(object sender, EventArgs e)
         {
-            enableButtons();
+            this.EnableButtons();
         }
 
         /// <summary>
         /// Event handler to clear button on the Search by Name tab to clear all checkboxes.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnClear_Click(object sender, EventArgs e)
         {
-            unCheckedDayPeriods();
+            this.UnCheckedDayPeriods();
         }
 
         /// <summary>
         /// Event handler to coaches by time.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnClearByTime_Click(object sender, EventArgs e)
         {
             chkMon.Checked = false;
@@ -1211,18 +1197,18 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to logout the program event if the main form is closed.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void FindCoachForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.loginForm.logout();
+            Program.LoginForm.Logout();
         }
 
         /// <summary>
         /// Event handler to cancel the sessional coach.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnCancelCoach_Click(object sender, EventArgs e)
         {
             string selectedCoachID;
@@ -1251,8 +1237,7 @@ namespace CoachConnect
                         + "Session ID: " + selectedSessionID + "\n"
                         + "Time: " + selectedTime + "\n"
                         + "Day: " + selectedDay + "\n"
-                        + "Course ID: " + selectedCourseID,
-                        
+                        + "Course ID: " + selectedCourseID,                 
                     "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (result == DialogResult.No)
@@ -1272,7 +1257,7 @@ namespace CoachConnect
                                       select srt).SingleOrDefault();
                             context.SessionRosters.Remove(sr);
                             context.SaveChanges();
-                            displayAppointment();
+                            this.DisplayAppointment();
                         }
                         catch (Exception ex)
                         {
@@ -1281,14 +1266,15 @@ namespace CoachConnect
                     }  
                 }
             }
+
             return;
         }
 
         /// <summary>
         /// Event handler to exit the application when the Exit button is clicked
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
