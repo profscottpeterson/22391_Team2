@@ -71,7 +71,10 @@ namespace CoachConnect
                 txtStdMiddleName.Text = userResult.MiddleName;
                 txtStdLastName.Text = userResult.LastName;
                 txtStdEmail.Text = userResult.Email;
-                txtStdPhone.Text = userResult.Phone;
+                string phone = userResult.Phone.Replace("(","");
+                phone = phone.Replace(")", "");
+                phone = phone.Replace("-", "");
+                txtStdPhone.Text = phone;
             }
         }
 
