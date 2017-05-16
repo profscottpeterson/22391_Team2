@@ -1,9 +1,6 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="EditStudentProfileForm.cs" company="PABT,Inc">
-//     Copyright (c) Pabt, Inc. All rights reserved
+﻿// <copyright file = "EditStudentProfileForm.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
 // </copyright>
-//-----------------------------------------------------------------------
-
 namespace CoachConnect
 {
     using System;
@@ -17,26 +14,48 @@ namespace CoachConnect
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
+    /// <summary>
+    /// A form that allows a student user to update his/her profile.
+    /// </summary>
     public partial class EditStudentProfileForm : Form
     {
-        Form originalForm { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EditStudentProfileForm" /> class.
+        /// </summary>
         public EditStudentProfileForm()
         {
-            InitializeComponent();
-        }
-
-        public EditStudentProfileForm(Form original)
-        {
-            InitializeComponent();
-            getStudentInfo();
-            originalForm = original;
+            this.InitializeComponent();
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="EditStudentProfileForm" /> class.
+        /// </summary>
+        /// <param name="original">The original calling form</param>
+        public EditStudentProfileForm(Form original)
+        {
+            this.InitializeComponent();
+            this.GetStudentInfo();
+            this.OriginalForm = original;
+        }
+
+        /// <summary>
+        /// Gets or sets the original "calling" form
+        /// </summary>
+        private Form OriginalForm { get; set; }
+
+        /// <summary>
+        /// Override method event handler to perform when the form is closed.
+        /// </summary>
+        /// <param name="e">The parameter is not used.</param>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            this.OriginalForm.Show();
+        }
+        
+        /// <summary>
         /// To get student information to display on the home tab.
         /// </summary>
-        private void getStudentInfo()
+        private void GetStudentInfo()
         {
             using (var context = new db_sft_2172Entities())
             {
@@ -44,80 +63,79 @@ namespace CoachConnect
                                 where u.UserID.Equals(Program.CurrentUser)
                                 select u;
                 var userResult = userQuery.FirstOrDefault<User>();
-                txtStdURL.Text = userResult.ProfilePic;
-                txtStdFirstName.Text = userResult.FirstName;
-                txtStdMiddleName.Text = userResult.MiddleName;
-                txtStdLastName.Text = userResult.LastName;
-                txtStdEmail.Text = userResult.Email;
-                txtStdPhone.Text = userResult.Phone;
-
+                this.txtStdURL.Text = userResult.ProfilePic;
+                this.txtStdFirstName.Text = userResult.FirstName;
+                this.txtStdMiddleName.Text = userResult.MiddleName;
+                this.txtStdLastName.Text = userResult.LastName;
+                this.txtStdEmail.Text = userResult.Email;
+                this.txtStdPhone.Text = userResult.Phone;
             }
         }
 
         /// <summary>
         /// Event handler to save user edited profile
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnSaveEditProfile_Click(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnSaveEditProfileClick(object sender, EventArgs e)
         {
             Validation myValidation = new Validation();
             using (var context = new db_sft_2172Entities())
             {
-
                 User user = context.Users.Single(u => u.UserID == Program.CurrentUser);
                 string url = txtStdURL.Text;
-                string fName = txtStdFirstName.Text;
-                string midleName = txtStdMiddleName.Text;
-                string lName = txtStdLastName.Text;
+                string firstName = txtStdFirstName.Text;
+                string midddleName = txtStdMiddleName.Text;
+                string lastName = txtStdLastName.Text;
                 string email = txtStdEmail.Text;
                 string phone = txtStdPhone.Text;
-                if (String.IsNullOrEmpty(url))
+
+                if (string.IsNullOrEmpty(url))
                 {
-                    lblErrorURL.Visible = true;
+                    this.lblErrorURL.Visible = true;
                 }
-                else if (String.IsNullOrEmpty(fName))
+                else if (string.IsNullOrEmpty(firstName))
                 {
-                    lblFirstNameError.Visible = true;
+                    this.lblFirstNameError.Visible = true;
                 }
-                else if (String.IsNullOrEmpty(midleName))
+                else if (string.IsNullOrEmpty(midddleName))
                 {
-                    lblMiddleNameError.Visible = true;
+                    this.lblMiddleNameError.Visible = true;
                 }
-                else if (String.IsNullOrEmpty(lName))
+                else if (string.IsNullOrEmpty(lastName))
                 {
-                    lblLastNameError.Visible = true;
+                    this.lblLastNameError.Visible = true;
                 }
-                else if (String.IsNullOrEmpty(email))
+                else if (string.IsNullOrEmpty(email))
                 {
-                    lblErrorEmail.Visible = true;
+                    this.lblErrorEmail.Visible = true;
                 }
-                else if (String.IsNullOrEmpty(phone))
+                else if (string.IsNullOrEmpty(phone))
                 {
-                    lblErrorPhone.Visible = true;
+                    this.lblErrorPhone.Visible = true;
                 }
                 else
                 {
-                    lblErrorURL.Visible = false;
-                    lblFirstNameError.Visible = false;
-                    lblMiddleNameError.Visible = false;
-                    lblLastNameError.Visible = false;
-                    lblErrorEmail.Visible = false;
-                    lblErrorPhone.Visible = false;
+                    this.lblErrorURL.Visible = false;
+                    this.lblFirstNameError.Visible = false;
+                    this.lblMiddleNameError.Visible = false;
+                    this.lblLastNameError.Visible = false;
+                    this.lblErrorEmail.Visible = false;
+                    this.lblErrorPhone.Visible = false;
 
-                    //Add profile url
+                    // Add profile url
                     user.ProfilePic = url;
 
-                    //Validate firstname, middlename, and lastname
-                    if (myValidation.ValidateTextBox(fName) && myValidation.ValidateTextBox(midleName) && myValidation.ValidateTextBox(lName))
+                    // Validate firstname, middlename, and lastname
+                    if (myValidation.ValidateTextBox(firstName) && myValidation.ValidateTextBox(midddleName) && myValidation.ValidateTextBox(lastName))
                     {
-                        //Add firstname, middlename, and lastname
-                        user.FirstName = myValidation.CleanString(fName);
-                        user.MiddleName = myValidation.CleanString(midleName);
-                        user.LastName = myValidation.CleanString(lName);
+                        // Add firstname, middlename, and lastname
+                        user.FirstName = myValidation.CleanString(firstName);
+                        user.MiddleName = myValidation.CleanString(midddleName);
+                        user.LastName = myValidation.CleanString(lastName);
 
-                        //Update the dipslay name
-                        if(user.MiddleName == "None" || user.MiddleName == "none" || user.MiddleName == null || user.MiddleName == "")
+                        // Update the dipslay name
+                        if (user.MiddleName == "None" || user.MiddleName == "none" || user.MiddleName == null || user.MiddleName == string.Empty)
                         {
                             user.DisplayName = user.FirstName + " " + user.LastName;
                         }
@@ -126,20 +144,20 @@ namespace CoachConnect
                             user.DisplayName = user.FirstName + " " + user.MiddleName + " " + user.LastName;
                         }
 
-                        //Validate email address
+                        // Validate email address
                         if (myValidation.ValidateEmail(email))
                         {
-                            //Add email address
+                            // Add email address
                             user.Email = email;
 
-                            //Validate phone
+                            // Validate phone
                             if (myValidation.ValidatePhone(phone))
                             {
-                                //Add phone
+                                // Add phone
                                 user.Phone = myValidation.FormatPhone(phone);
                                 context.SaveChanges();
-                                MessageBox.Show("Your change is saved!"); ;
-                                originalForm.Show();
+                                MessageBox.Show("Your change is saved!");
+                                this.OriginalForm.Show();
                                 this.Close();
                             }
                             else
@@ -163,42 +181,32 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to cancel the editing profile.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnCancleEditProfile_Click(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnCancelEditProfileClick(object sender, EventArgs e)
         {
-            originalForm.Show();
+            this.OriginalForm.Show();
             this.Close();
         }
 
         /// <summary>
         /// Event handler to leave the focus on the textbox email.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtStdEmail_Leave(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void TxtStdEmailLeave(object sender, EventArgs e)
         {
             Validation myValidation = new Validation();
-            //if (isValidEmail(txtStdEmail.Text))
             if (myValidation.ValidateEmail(txtStdEmail.Text))
             {
                 validEmail.Visible = true;
-                InvalidEmail.Visible = false;
+                this.invalidEmail.Visible = false;
             }
             else
             {
                 validEmail.Visible = false;
-                InvalidEmail.Visible = true;
+                this.invalidEmail.Visible = true;
             }
-        }
-
-        /// <summary>
-        /// Override method event handler to perform when the form is closed.
-        /// </summary>
-        /// <param name="e"></param>
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            originalForm.Show();
         }
     }
 }

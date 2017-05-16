@@ -1,41 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿// <copyright file="ResetUserPasswordAdmin.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
 namespace CoachConnect
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// A form for admin's to reset a password and enter a new initial login password.
+    /// </summary>
     public partial class ResetUserPasswordAdmin : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResetUserPasswordAdmin" /> class.
+        /// </summary>
         public ResetUserPasswordAdmin()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         /// <summary>
         /// Event handler to validate password and apply salted hash when the Update button is clicked
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnUpdate_Click(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnUpdateClick(object sender, EventArgs e)
         {
             // Verify that the two entered passwords match
-            if (!txtPassword.Text.Equals(txtConfirmPassword.Text))
+            if (!this.txtPassword.Text.Equals(this.txtConfirmPassword.Text))
             {
                 MessageBox.Show("Sorry, the passwords do not match.  Please try again!");
 
                 // Clear the password boxes
-                txtPassword.Text = "";
-                txtConfirmPassword.Text = "";
+                this.txtPassword.Text = string.Empty;
+                this.txtConfirmPassword.Text = string.Empty;
 
-                txtPassword.Focus();
+                this.txtPassword.Focus();
             }
-
             else
             {
                 // Generate salt and salted hash
@@ -64,7 +72,7 @@ namespace CoachConnect
 
                         // Force user to Logout and login with new password
                         Program.LoginForm.Logout();
-                        Close();
+                        this.Close();
                     }
                 }
                 catch (Exception ex)
@@ -77,11 +85,11 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to close the form when the Cancel button is clicked
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnCancel_Click(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">     The parameter is not used.</param>
+        private void BtnCancelClick(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
     }
 }

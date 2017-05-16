@@ -1,7 +1,28 @@
-﻿namespace CoachConnect
+﻿// <copyright file="SessionAdminForm.designer.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
+namespace CoachConnect
 {
-    partial class SessionAdminForm
+    /// <summary>
+    /// A form to display a list of available sessions
+    /// </summary>
+    public partial class SessionAdminForm
     {
+        /// <summary>
+        /// A data grid view to show the current sessions
+        /// </summary>
+        private System.Windows.Forms.DataGridView dataGridViewSessions;
+
+        /// <summary>
+        /// A button to add a new session to the database
+        /// </summary>
+        private System.Windows.Forms.Button btnAdd;
+
+        /// <summary>
+        /// A label for the admin window
+        /// </summary>
+        private System.Windows.Forms.Label lblSessionAdminForm;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -13,10 +34,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -92,9 +114,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridViewSessions;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label lblSessionAdminForm;
     }
 }

@@ -1,7 +1,128 @@
-﻿namespace CoachConnect
+﻿// <copyright file="EditStudentProfileForm.Designer.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
+namespace CoachConnect
 {
-    partial class EditStudentProfileForm
+    /// <summary>
+    /// A form that allows the current user to edit his/her profile 
+    /// </summary>
+    public partial class EditStudentProfileForm
     {
+        /// <summary>
+        /// Group box
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox1;
+
+        /// <summary>
+        /// Text box to hold the user's email address
+        /// </summary>
+        private System.Windows.Forms.TextBox txtStdEmail;
+
+        /// <summary>
+        /// A Label
+        /// </summary>
+        private System.Windows.Forms.Label label35;
+
+        /// <summary>
+        /// A Label
+        /// </summary>
+        private System.Windows.Forms.Label label36;
+
+        /// <summary>
+        /// A Label
+        /// </summary>
+        private System.Windows.Forms.Label label37;
+
+        /// <summary>
+        /// A text box to hold the URL for the user's profile pic
+        /// </summary>
+        private System.Windows.Forms.TextBox txtStdURL;
+
+        /// <summary>
+        /// A text box to hold the user's phone number
+        /// </summary>
+        private System.Windows.Forms.TextBox txtStdPhone;
+
+        /// <summary>
+        /// Button to save changes
+        /// </summary>
+        private System.Windows.Forms.Button btnSaveEditProfile;
+
+        /// <summary>
+        /// Button to cancel the update
+        /// </summary>
+        private System.Windows.Forms.Button btnCancelEditProfile;
+
+        /// <summary>
+        /// Picture Box with an icon indicating an invalid email
+        /// </summary>
+        private System.Windows.Forms.PictureBox invalidEmail;
+
+        /// <summary>
+        /// Picture box with an icon indicating a valid email
+        /// </summary>
+        private System.Windows.Forms.PictureBox validEmail;
+
+        /// <summary>
+        /// Validation label indicating an invalid URL
+        /// </summary>
+        private System.Windows.Forms.Label lblErrorURL;
+
+        /// <summary>
+        /// Validation label indicating an invalid email
+        /// </summary>
+        private System.Windows.Forms.Label lblErrorEmail;
+
+        /// <summary>
+        /// Validation lable indicating an invalid phone number
+        /// </summary>
+        private System.Windows.Forms.Label lblErrorPhone;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label3;
+
+        /// <summary>
+        /// A text box to hold the user's middle name
+        /// </summary>
+        private System.Windows.Forms.TextBox txtStdMiddleName;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label2;
+
+        /// <summary>
+        /// A text box to hold the user's last name
+        /// </summary>
+        private System.Windows.Forms.TextBox txtStdLastName;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label1;
+
+        /// <summary>
+        ///  At text box to hold the user's first name
+        /// </summary>
+        private System.Windows.Forms.TextBox txtStdFirstName;
+
+        /// <summary>
+        /// A Validation label to indicate an invalid last name
+        /// </summary>
+        private System.Windows.Forms.Label lblLastNameError;
+
+        /// <summary>
+        /// A Validation label to indicate an invalid middle name
+        /// </summary>
+        private System.Windows.Forms.Label lblMiddleNameError;
+
+        /// <summary>
+        /// A validation label to indicate an invalid first name
+        /// </summary>
+        private System.Windows.Forms.Label lblFirstNameError;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -13,10 +134,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -42,7 +164,7 @@
             this.lblErrorPhone = new System.Windows.Forms.Label();
             this.lblErrorEmail = new System.Windows.Forms.Label();
             this.lblErrorURL = new System.Windows.Forms.Label();
-            this.InvalidEmail = new System.Windows.Forms.PictureBox();
+            this.invalidEmail = new System.Windows.Forms.PictureBox();
             this.validEmail = new System.Windows.Forms.PictureBox();
             this.txtStdEmail = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -51,9 +173,9 @@
             this.txtStdURL = new System.Windows.Forms.TextBox();
             this.txtStdPhone = new System.Windows.Forms.TextBox();
             this.btnSaveEditProfile = new System.Windows.Forms.Button();
-            this.btnCancleEditProfile = new System.Windows.Forms.Button();
+            this.btnCancelEditProfile = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.InvalidEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invalidEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.validEmail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +193,7 @@
             this.groupBox1.Controls.Add(this.lblErrorPhone);
             this.groupBox1.Controls.Add(this.lblErrorEmail);
             this.groupBox1.Controls.Add(this.lblErrorURL);
-            this.groupBox1.Controls.Add(this.InvalidEmail);
+            this.groupBox1.Controls.Add(this.invalidEmail);
             this.groupBox1.Controls.Add(this.validEmail);
             this.groupBox1.Controls.Add(this.txtStdEmail);
             this.groupBox1.Controls.Add(this.label35);
@@ -209,16 +331,16 @@
             this.lblErrorURL.Text = "URL is required!";
             this.lblErrorURL.Visible = false;
             // 
-            // InvalidEmail
+            // invalidEmail
             // 
-            this.InvalidEmail.Image = global::CoachConnect.Properties.Resources.wrong;
-            this.InvalidEmail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.InvalidEmail.Location = new System.Drawing.Point(263, 182);
-            this.InvalidEmail.Name = "InvalidEmail";
-            this.InvalidEmail.Size = new System.Drawing.Size(36, 33);
-            this.InvalidEmail.TabIndex = 38;
-            this.InvalidEmail.TabStop = false;
-            this.InvalidEmail.Visible = false;
+            this.invalidEmail.Image = global::CoachConnect.Properties.Resources.wrong;
+            this.invalidEmail.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.invalidEmail.Location = new System.Drawing.Point(263, 182);
+            this.invalidEmail.Name = "invalidEmail";
+            this.invalidEmail.Size = new System.Drawing.Size(36, 33);
+            this.invalidEmail.TabIndex = 38;
+            this.invalidEmail.TabStop = false;
+            this.invalidEmail.Visible = false;
             // 
             // validEmail
             // 
@@ -237,7 +359,7 @@
             this.txtStdEmail.Name = "txtStdEmail";
             this.txtStdEmail.Size = new System.Drawing.Size(151, 20);
             this.txtStdEmail.TabIndex = 5;
-            this.txtStdEmail.Leave += new System.EventHandler(this.txtStdEmail_Leave);
+            this.txtStdEmail.Leave += new System.EventHandler(this.TxtStdEmailLeave);
             // 
             // label35
             // 
@@ -293,19 +415,19 @@
             this.btnSaveEditProfile.TabIndex = 7;
             this.btnSaveEditProfile.Text = "Save";
             this.btnSaveEditProfile.UseVisualStyleBackColor = true;
-            this.btnSaveEditProfile.Click += new System.EventHandler(this.btnSaveEditProfile_Click);
+            this.btnSaveEditProfile.Click += new System.EventHandler(this.BtnSaveEditProfileClick);
             // 
-            // btnCancleEditProfile
+            // btnCancelEditProfile
             // 
-            this.btnCancleEditProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancleEditProfile.Location = new System.Drawing.Point(274, 291);
-            this.btnCancleEditProfile.Name = "btnCancleEditProfile";
-            this.btnCancleEditProfile.Padding = new System.Windows.Forms.Padding(1);
-            this.btnCancleEditProfile.Size = new System.Drawing.Size(62, 28);
-            this.btnCancleEditProfile.TabIndex = 8;
-            this.btnCancleEditProfile.Text = "Cancle";
-            this.btnCancleEditProfile.UseVisualStyleBackColor = true;
-            this.btnCancleEditProfile.Click += new System.EventHandler(this.btnCancleEditProfile_Click);
+            this.btnCancelEditProfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelEditProfile.Location = new System.Drawing.Point(274, 291);
+            this.btnCancelEditProfile.Name = "btnCancelEditProfile";
+            this.btnCancelEditProfile.Padding = new System.Windows.Forms.Padding(1);
+            this.btnCancelEditProfile.Size = new System.Drawing.Size(62, 28);
+            this.btnCancelEditProfile.TabIndex = 8;
+            this.btnCancelEditProfile.Text = "Cancle";
+            this.btnCancelEditProfile.UseVisualStyleBackColor = true;
+            this.btnCancelEditProfile.Click += new System.EventHandler(this.BtnCancelEditProfileClick);
             // 
             // EditStudentProfileForm
             // 
@@ -313,7 +435,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(348, 330);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnCancleEditProfile);
+            this.Controls.Add(this.btnCancelEditProfile);
             this.Controls.Add(this.btnSaveEditProfile);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -323,36 +445,12 @@
             this.Text = "Edit Student Profile Form";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.InvalidEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.invalidEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.validEmail)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtStdEmail;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox txtStdURL;
-        private System.Windows.Forms.TextBox txtStdPhone;
-        private System.Windows.Forms.Button btnSaveEditProfile;
-        private System.Windows.Forms.Button btnCancleEditProfile;
-        private System.Windows.Forms.PictureBox InvalidEmail;
-        private System.Windows.Forms.PictureBox validEmail;
-        private System.Windows.Forms.Label lblErrorURL;
-        private System.Windows.Forms.Label lblErrorEmail;
-        private System.Windows.Forms.Label lblErrorPhone;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtStdMiddleName;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtStdLastName;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtStdFirstName;
-        private System.Windows.Forms.Label lblLastNameError;
-        private System.Windows.Forms.Label lblMiddleNameError;
-        private System.Windows.Forms.Label lblFirstNameError;
     }
 }

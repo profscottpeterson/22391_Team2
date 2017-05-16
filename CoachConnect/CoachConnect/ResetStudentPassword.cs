@@ -1,8 +1,6 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="ResetStudentPassword.cs" company="PABT,Inc">
-//     Copyright (c) Pabt, Inc. All rights reserved
+﻿// <copyright file="ResetStudentPassword.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
 // </copyright>
-//-----------------------------------------------------------------------
 
 namespace CoachConnect
 {
@@ -12,31 +10,54 @@ namespace CoachConnect
     using System.Data;
     using System.Drawing;
     using System.Linq;
+    using System.Security;
     using System.Text;
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
+    /// <summary>
+    /// A form that allows a user to reset his/her password
+    /// </summary>
     public partial class ResetStudentPassword : Form
     {
-        Form originalForm { get; set; }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResetStudentPassword" /> class.
+        /// </summary>
         public ResetStudentPassword()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ResetStudentPassword" /> class with inputs.
+        /// </summary>
+        /// <param name="original">The original form</param>
         public ResetStudentPassword(Form original)
         {
-            InitializeComponent();
-            originalForm = original;
+            this.InitializeComponent();
+            this.OriginalForm = original;
+        }
+
+        /// <summary>
+        /// Gets or sets a form object that stores the previous room
+        /// </summary>
+        private Form OriginalForm { get; set; }
+
+        /// <summary>
+        /// Override method event handler to perform when the form is closed.
+        /// </summary>
+        /// <param name="e">The parameter is not used.</param>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            this.OriginalForm.Show();
         }
 
         /// <summary>
         /// Event handler to click to save the new password into the database
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnSaveNewPassword_Click(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnSaveNewPasswordClick(object sender, EventArgs e)
         {
             using (var context = new db_sft_2172Entities())
             {
@@ -44,32 +65,28 @@ namespace CoachConnect
                                 where u.UserID.Equals(Program.CurrentUser)
                                 select u;
                 var userResult = userQuery.FirstOrDefault<User>();
-                //if (userResult.Password == currentsh.Hash)
-                if(SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, txtStdPassword.Text))
+                if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, txtStdPassword.Text))
                 {
-                    
-                    if (!String.IsNullOrEmpty(txtStdNewPassword.Text) || !String.IsNullOrEmpty(txtStdNewConfirmPassowrd.Text))
+                    if (!string.IsNullOrEmpty(txtStdNewPassword.Text) || !string.IsNullOrEmpty(txtStdNewConfirmPassowrd.Text))
                     {
                         if (txtStdNewPassword.Text == txtStdNewConfirmPassowrd.Text)
                         {
                             // Generate salt and salted hash
                             SaltedHash sh = new SaltedHash(txtStdNewPassword.Text);
-                            //userResult.Password = txtStdNewPassword.Text;
                             userResult.Password = sh.Hash;
                             userResult.PasswordSalt = sh.Salt;
                             userResult.ResetPassword = false;
                             context.SaveChanges();
-                            txtStdPassword.Text = "";
-                            txtStdNewPassword.Text = "";
-                            txtStdNewConfirmPassowrd.Text = "";
+                            txtStdPassword.Text = string.Empty;
+                            txtStdNewPassword.Text = string.Empty;
+                            txtStdNewConfirmPassowrd.Text = string.Empty;
                             MessageBox.Show("Your passsword has been save!");
-                            originalForm.Show();
+                            this.OriginalForm.Show();
                             this.Close();
                         }
                         else
                         {
-                            
-                            MessageBox.Show("Both passwords do not match eachother!");
+                            MessageBox.Show("Passwords do not match!");
                         }
                     }
                     else
@@ -85,22 +102,22 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Event handler to cancle the reset new password.
+        /// Event handler to cancel the reset new password.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnCancleResetPassword_Click(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnCancelResetPasswordClick(object sender, EventArgs e)
         {
-            originalForm.Show();
+            this.OriginalForm.Show();
             this.Close();
         }
 
         /// <summary>
         /// Event handler to validate current password input.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtStdPassword_Leave(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void TxtStdPasswordLeave(object sender, EventArgs e)
         {
             using (var context = new db_sft_2172Entities())
             {
@@ -108,8 +125,8 @@ namespace CoachConnect
                                 where u.UserID.Equals(Program.CurrentUser)
                                 select u;
                 var userResult = userQuery.FirstOrDefault<User>();
-                //if (userResult.Password == currentsh.Hash)
-                if(SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, txtStdPassword.Text))
+
+                if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, txtStdPassword.Text))
                 {
                     pwdCorrect.Visible = true;
                     currentPWDWrong.Visible = false;
@@ -125,11 +142,11 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to validate the new password with the confirm weither they are matched.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtStdNewConfirmPassowrd_Leave(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void TxtStdNewConfirmPasswordLeave(object sender, EventArgs e)
         {
-            if (txtStdNewPassword.Text == txtStdNewConfirmPassowrd.Text && (txtStdNewPassword.Text != "" || txtStdNewConfirmPassowrd.Text != ""))
+            if (txtStdNewPassword.Text == txtStdNewConfirmPassowrd.Text && (txtStdNewPassword.Text != string.Empty || txtStdNewConfirmPassowrd.Text != string.Empty))
             {
                 newPWD.Visible = true;
                 newPWDConfirmCorrect.Visible = true;
@@ -148,11 +165,11 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to hover the new saved password button.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnSaveNewPassword_MouseHover(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnSaveNewPasswordMouseHover(object sender, EventArgs e)
         {
-            if (txtStdPassword.Text != "" && txtStdNewPassword.Text == txtStdNewConfirmPassowrd.Text && (txtStdNewPassword.Text != "" || txtStdNewConfirmPassowrd.Text != ""))
+            if (txtStdPassword.Text != string.Empty && txtStdNewPassword.Text == txtStdNewConfirmPassowrd.Text && (txtStdNewPassword.Text != string.Empty || txtStdNewConfirmPassowrd.Text != string.Empty))
             {
                 newPWD.Visible = true;
                 newPWDConfirmCorrect.Visible = true;
@@ -168,15 +185,6 @@ namespace CoachConnect
                 newPWD.Visible = false;
                 newPWDConfirmCorrect.Visible = false;
             }
-        }
-
-        /// <summary>
-        /// Override method event handler to perform when the form is closed.
-        /// </summary>
-        /// <param name="e"></param>
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            originalForm.Show();
         }
     }
 }

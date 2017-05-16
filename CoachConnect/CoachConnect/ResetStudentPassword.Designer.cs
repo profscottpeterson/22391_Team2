@@ -1,7 +1,88 @@
-﻿namespace CoachConnect
+﻿// <copyright file="ResetStudentPassword.Designer.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
+namespace CoachConnect
 {
-    partial class ResetStudentPassword
+    /// <summary>
+    /// A form that allows a user to reset his/her password
+    /// </summary>
+    public partial class ResetStudentPassword
     {
+        /// <summary>
+        /// An icon that will allow users to step away from 
+        /// </summary>
+        private System.Windows.Forms.PictureBox currentPWDWrong;
+
+        /// <summary>
+        /// A picture box to validate matching passwords
+        /// </summary>
+        private System.Windows.Forms.PictureBox newPWD;
+
+        /// <summary>
+        /// A picture box to confirm that the passwords were correct.
+        /// </summary>
+        private System.Windows.Forms.PictureBox newPWDConfirmCorrect;
+
+        /// <summary>
+        /// Icon for "correct"
+        /// </summary>
+        private System.Windows.Forms.PictureBox pwdCorrect;
+
+        /// <summary>
+        /// Text box to store and update password
+        /// </summary>
+        private System.Windows.Forms.TextBox txtStdPassword;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label1;
+
+        /// <summary>
+        /// Text box to enter the confirmation password
+        /// </summary>
+        private System.Windows.Forms.TextBox txtStdNewConfirmPassowrd;
+
+        /// <summary>
+        /// A text box to enter the password function.
+        /// </summary>
+        private System.Windows.Forms.TextBox txtStdNewPassword;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label36;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label35;
+
+        /// <summary>
+        /// Button to save new password
+        /// </summary>
+        private System.Windows.Forms.Button btnSaveNewPassword;
+
+        /// <summary>
+        /// Button to cancel the password reset
+        /// </summary>
+        private System.Windows.Forms.Button btnCancleResetPassword;
+
+        /// <summary>
+        /// A group box
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox1;
+
+        /// <summary>
+        /// An icon to show when password entries do not match
+        /// </summary>
+        private System.Windows.Forms.PictureBox newPWDNotMatch;
+
+        /// <summary>
+        /// An icon that will appear when signing passwords that were "confirmed" but the password does not match the current string.
+        /// </summary>
+        private System.Windows.Forms.PictureBox newPWDConfirmWrong;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -13,10 +94,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -28,7 +110,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResetStudentPassword));
+            System.ComponentModel.ComponentResourceManager resources =
+                new System.ComponentModel.ComponentResourceManager(typeof(ResetStudentPassword));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.newPWDNotMatch = new System.Windows.Forms.PictureBox();
             this.newPWDConfirmWrong = new System.Windows.Forms.PictureBox();
@@ -117,7 +200,7 @@
             // 
             resources.ApplyResources(this.txtStdPassword, "txtStdPassword");
             this.txtStdPassword.Name = "txtStdPassword";
-            this.txtStdPassword.Leave += new System.EventHandler(this.txtStdPassword_Leave);
+            this.txtStdPassword.Leave += new System.EventHandler(this.TxtStdPasswordLeave);
             // 
             // label1
             // 
@@ -128,7 +211,7 @@
             // 
             resources.ApplyResources(this.txtStdNewConfirmPassowrd, "txtStdNewConfirmPassowrd");
             this.txtStdNewConfirmPassowrd.Name = "txtStdNewConfirmPassowrd";
-            this.txtStdNewConfirmPassowrd.Leave += new System.EventHandler(this.txtStdNewConfirmPassowrd_Leave);
+            this.txtStdNewConfirmPassowrd.Leave += new System.EventHandler(this.TxtStdNewConfirmPasswordLeave);
             // 
             // txtStdNewPassword
             // 
@@ -150,15 +233,15 @@
             resources.ApplyResources(this.btnSaveNewPassword, "btnSaveNewPassword");
             this.btnSaveNewPassword.Name = "btnSaveNewPassword";
             this.btnSaveNewPassword.UseVisualStyleBackColor = true;
-            this.btnSaveNewPassword.Click += new System.EventHandler(this.btnSaveNewPassword_Click);
-            this.btnSaveNewPassword.MouseHover += new System.EventHandler(this.btnSaveNewPassword_MouseHover);
+            this.btnSaveNewPassword.Click += new System.EventHandler(this.BtnSaveNewPasswordClick);
+            this.btnSaveNewPassword.MouseHover += new System.EventHandler(this.BtnSaveNewPasswordMouseHover);
             // 
             // btnCancleResetPassword
             // 
             resources.ApplyResources(this.btnCancleResetPassword, "btnCancleResetPassword");
             this.btnCancleResetPassword.Name = "btnCancleResetPassword";
             this.btnCancleResetPassword.UseVisualStyleBackColor = true;
-            this.btnCancleResetPassword.Click += new System.EventHandler(this.btnCancleResetPassword_Click);
+            this.btnCancleResetPassword.Click += new System.EventHandler(this.BtnCancelResetPasswordClick);
             // 
             // ResetStudentPassword
             // 
@@ -183,21 +266,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.PictureBox newPWDNotMatch;
-        private System.Windows.Forms.PictureBox newPWDConfirmWrong;
-        private System.Windows.Forms.PictureBox currentPWDWrong;
-        private System.Windows.Forms.PictureBox newPWD;
-        private System.Windows.Forms.PictureBox newPWDConfirmCorrect;
-        private System.Windows.Forms.PictureBox pwdCorrect;
-        private System.Windows.Forms.TextBox txtStdPassword;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtStdNewConfirmPassowrd;
-        private System.Windows.Forms.TextBox txtStdNewPassword;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Button btnSaveNewPassword;
-        private System.Windows.Forms.Button btnCancleResetPassword;
     }
 }

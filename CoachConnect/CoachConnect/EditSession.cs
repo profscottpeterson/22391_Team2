@@ -93,7 +93,7 @@ namespace CoachConnect
             this.CurrentSession.TimePeriodID = this.cbxTime.SelectedValue.ToString();
             this.CurrentSession.CoachID = this.cbxCoach.SelectedValue.ToString();
 
-            if (cbxActive.SelectedIndex == 0)
+            if (this.cbxActive.SelectedIndex == 0)
             {
                 this.CurrentSession.Active = true;
             }
@@ -375,7 +375,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CbxCourse_Leave(object sender, EventArgs e)
         {
-            this.lblInvalidCourse.Visible = !this.validator.ValidateComboBox(cbxCourse.SelectedIndex);
+            this.lblInvalidCourse.Visible = !this.validator.ValidateComboBox(this.cbxCourse.SelectedIndex);
 
             if (this.lblInvalidCourse.Visible)
             {
@@ -390,7 +390,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CbxRoom_Leave(object sender, EventArgs e)
         {
-            lblInvalidRoom.Visible = !this.validator.ValidateComboBox(this.cbxRoom.SelectedIndex);
+            this.lblInvalidRoom.Visible = !this.validator.ValidateComboBox(this.cbxRoom.SelectedIndex);
 
             if (this.lblInvalidRoom.Visible)
             {
@@ -405,7 +405,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CbxDay_Leave(object sender, EventArgs e)
         {
-            lblInvalidDay.Visible = !this.validator.ValidateComboBox(this.cbxDay.SelectedIndex);
+            this.lblInvalidDay.Visible = !this.validator.ValidateComboBox(this.cbxDay.SelectedIndex);
 
             if (this.lblInvalidDay.Visible)
             {
@@ -450,11 +450,11 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CbxActive_Leave(object sender, EventArgs e)
         {
-            lblInvalidActive.Visible = !this.validator.ValidateComboBox(cbxActive.SelectedIndex);
+            this.lblInvalidActive.Visible = !this.validator.ValidateComboBox(cbxActive.SelectedIndex);
 
-            if (lblInvalidActive.Visible)
+            if (this.lblInvalidActive.Visible)
             {
-                cbxActive.Focus();
+                this.cbxActive.Focus();
             }
         }
 

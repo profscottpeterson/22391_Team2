@@ -3,8 +3,141 @@
 // </copyright>
 namespace CoachConnect
 {
-    partial class EditSession
+    /// <summary>
+    /// EditSession: A form which allows users to create and edit session data, then save the data to the database.
+    /// </summary>
+    public partial class EditSession
     {
+        /// <summary>
+        /// Label for the Course combo box
+        /// </summary>
+        private System.Windows.Forms.Label lblCourse;
+
+        /// <summary>
+        /// Combo box containing active courses
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxCourse;
+
+        /// <summary>
+        /// Lable for the Room combo box
+        /// </summary>
+        private System.Windows.Forms.Label lblRoom;
+
+        /// <summary>
+        /// Combo box containing active rooms
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxRoom;
+
+        /// <summary>
+        /// Label for the Day combo box
+        /// </summary>
+        private System.Windows.Forms.Label lblDay;
+
+        /// <summary>
+        /// Combo box containing active Days
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxDay;
+
+        /// <summary>
+        /// Label for the Time combo box
+        /// </summary>
+        private System.Windows.Forms.Label lblTime;
+
+        /// <summary>
+        /// Combo box containing active Times
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxTime;
+
+        /// <summary>
+        /// Label for the Coach combo box
+        /// </summary>
+        private System.Windows.Forms.Label lblCoach;
+
+        /// <summary>
+        /// Combo box containing active coaches
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxCoach;
+
+        /// <summary>
+        /// Label for the form title
+        /// </summary>
+        private System.Windows.Forms.Label lblEditSessionHeader;
+
+        /// <summary>
+        /// Button allowing users to save changes
+        /// </summary>
+        private System.Windows.Forms.Button btnSave;
+
+        /// <summary>
+        /// Button allowing users to cancel changes
+        /// </summary>
+        private System.Windows.Forms.Button btnCancel;
+
+        /// <summary>
+        /// Label for the Active combo box
+        /// </summary>
+        private System.Windows.Forms.Label lblActive;
+
+        /// <summary>
+        /// Combo box allowing users to select an active value (Yes or No)
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxActive;
+
+        /// <summary>
+        /// Validation label indicating a course was not selected
+        /// </summary>
+        private System.Windows.Forms.Label lblInvalidCourse;
+
+        /// <summary>
+        /// Validation label indicating a room was not selected
+        /// </summary>
+        private System.Windows.Forms.Label lblInvalidRoom;
+
+        /// <summary>
+        /// Validation label indicating a day was not selected
+        /// </summary>
+        private System.Windows.Forms.Label lblInvalidDay;
+
+        /// <summary>
+        /// Validation label indicating a time was not selected
+        /// </summary>
+        private System.Windows.Forms.Label lblInvalidTime;
+
+        /// <summary>
+        /// Validation label indicating a coach was not selected
+        /// </summary>
+        private System.Windows.Forms.Label lblInvalidCoach;
+
+        /// <summary>
+        /// Validation label indicating an inactive value was not selected
+        /// </summary>
+        private System.Windows.Forms.Label lblInvalidActive;
+
+        /// <summary>
+        /// A data grid to show the session roster
+        /// </summary>
+        private System.Windows.Forms.DataGridView dataGridViewRoster;
+
+        /// <summary>
+        /// A group box
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox1;
+
+        /// <summary>
+        /// Another group box
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox2;
+
+        /// <summary>
+        /// A button to remove a student from the roster
+        /// </summary>
+        private System.Windows.Forms.Button btnRemove;
+
+        /// <summary>
+        /// A button to open a new form and select a student to add
+        /// </summary>
+        private System.Windows.Forms.Button btnAddToRoster;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -46,7 +179,7 @@ namespace CoachConnect
             this.lblEditSessionHeader = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblActive = new System.Windows.Forms.Label();
             this.cbxActive = new System.Windows.Forms.ComboBox();
             this.lblInvalidCourse = new System.Windows.Forms.Label();
             this.lblInvalidRoom = new System.Windows.Forms.Label();
@@ -189,14 +322,14 @@ namespace CoachConnect
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
-            // label1
+            // lblActive
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 168);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Active";
+            this.lblActive.AutoSize = true;
+            this.lblActive.Location = new System.Drawing.Point(18, 168);
+            this.lblActive.Name = "lblActive";
+            this.lblActive.Size = new System.Drawing.Size(37, 13);
+            this.lblActive.TabIndex = 16;
+            this.lblActive.Text = "Active";
             // 
             // cbxActive
             // 
@@ -334,7 +467,7 @@ namespace CoachConnect
             this.groupBox2.Controls.Add(this.lblInvalidDay);
             this.groupBox2.Controls.Add(this.lblInvalidRoom);
             this.groupBox2.Controls.Add(this.lblInvalidCourse);
-            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.lblActive);
             this.groupBox2.Controls.Add(this.cbxActive);
             this.groupBox2.Controls.Add(this.lblCoach);
             this.groupBox2.Controls.Add(this.cbxCoach);
@@ -377,32 +510,5 @@ namespace CoachConnect
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblCourse;
-        private System.Windows.Forms.ComboBox cbxCourse;
-        private System.Windows.Forms.Label lblRoom;
-        private System.Windows.Forms.ComboBox cbxRoom;
-        private System.Windows.Forms.Label lblDay;
-        private System.Windows.Forms.ComboBox cbxDay;
-        private System.Windows.Forms.Label lblTime;
-        private System.Windows.Forms.ComboBox cbxTime;
-        private System.Windows.Forms.Label lblCoach;
-        private System.Windows.Forms.ComboBox cbxCoach;
-        private System.Windows.Forms.Label lblEditSessionHeader;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbxActive;
-        private System.Windows.Forms.Label lblInvalidCourse;
-        private System.Windows.Forms.Label lblInvalidRoom;
-        private System.Windows.Forms.Label lblInvalidDay;
-        private System.Windows.Forms.Label lblInvalidTime;
-        private System.Windows.Forms.Label lblInvalidCoach;
-        private System.Windows.Forms.Label lblInvalidActive;
-        private System.Windows.Forms.DataGridView dataGridViewRoster;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.Button btnAddToRoster;
     }
 }

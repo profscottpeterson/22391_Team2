@@ -1,7 +1,49 @@
-﻿namespace CoachConnect
+﻿// <copyright file="ResetUserPasswordAdmin.designer.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
+
+namespace CoachConnect
 {
-    partial class ResetUserPasswordAdmin
+    /// <summary>
+    /// Initializes a new 
+    /// </summary>
+    public partial class ResetUserPasswordAdmin
     {
+        /// <summary>
+        /// Text box for the new password
+        /// </summary>
+        private System.Windows.Forms.TextBox txtPassword;
+
+        /// <summary>
+        /// Text box for the password confirmation.
+        /// </summary>
+        private System.Windows.Forms.TextBox txtConfirmPassword;
+
+        /// <summary>
+        /// Label for the new password
+        /// </summary>
+        private System.Windows.Forms.Label lblPassword;
+
+        /// <summary>
+        /// Label for confirmimng the second bucket
+        /// </summary>
+        private System.Windows.Forms.Label lblConfirmPassword;
+
+        /// <summary>
+        /// A label admin for the form header.
+        /// </summary>
+        private System.Windows.Forms.Label lblAdminForm;
+
+        /// <summary>
+        /// A label noting the header of the form.
+        /// </summary>
+        private System.Windows.Forms.Button btnUpdate;
+
+        /// <summary>
+        /// Button allowing users to cancel and ignore all changes.
+        /// </summary>
+        private System.Windows.Forms.Button btnCancel;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -13,10 +55,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -91,7 +134,7 @@
             this.btnUpdate.TabIndex = 10;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            this.btnUpdate.Click += new System.EventHandler(this.BtnUpdateClick);
             // 
             // btnCancel
             // 
@@ -101,7 +144,7 @@
             this.btnCancel.TabIndex = 11;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
             // ChangePasswordForm
             // 
@@ -124,13 +167,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.TextBox txtConfirmPassword;
-        private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Label lblConfirmPassword;
-        private System.Windows.Forms.Label lblAdminForm;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnCancel;
     }
 }

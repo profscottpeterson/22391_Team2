@@ -140,7 +140,6 @@ C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\bin\Debug\Enti
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AddSessionStudent.resources
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AdminForm.resources
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.FrmCoachView.resources
-C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ChangePasswordForm.resources
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditSession.resources
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditStudentProfileForm.resources
 C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ResetStudentPassword.resources
@@ -179,3 +178,5 @@ C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.exe
 C:\Users\Smithbucks\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
+C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
+C:\Users\radar\Source\Repos\22393_Team2\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ResetUserPasswordAdmin.resources

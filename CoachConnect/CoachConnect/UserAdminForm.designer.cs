@@ -1,7 +1,118 @@
-﻿namespace CoachConnect
+﻿// <copyright file="UserAdminForm.designer.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
+namespace CoachConnect
 {
-    partial class UserAdminForm
+    /// <summary>
+    /// A form to allow admins to edit user information
+    /// </summary>
+    public partial class UserAdminForm
     {
+        /// <summary>
+        /// A label for the User admin form header.
+        /// </summary>
+        private System.Windows.Forms.Label lblAdminForm;
+
+        /// <summary>
+        /// A label for the password text box
+        /// </summary>
+        private System.Windows.Forms.Label lblPassword;
+
+        /// <summary>
+        /// A text box to hold the userID
+        /// </summary>
+        private System.Windows.Forms.TextBox txtBoxUserID;
+
+        /// <summary>
+        /// A lable for the user ID text box
+        /// </summary>
+        private System.Windows.Forms.Label lblUserID;
+
+        /// <summary>
+        /// A label for the middle name text box
+        /// </summary>
+        private System.Windows.Forms.Label lblMiddleName;
+
+        /// <summary>
+        /// A label for the last name text box
+        /// </summary>
+        private System.Windows.Forms.Label lblLastName;
+
+        /// <summary>
+        /// A label for the first name text box
+        /// </summary>
+        private System.Windows.Forms.Label lblFirstName;
+
+        /// <summary>
+        /// A text box to hold the middle name
+        /// </summary>
+        private System.Windows.Forms.TextBox txtBoxMiddleName;
+
+        /// <summary>
+        /// A text box to hold the password
+        /// </summary>
+        private System.Windows.Forms.TextBox txtBoxPassword;
+
+        /// <summary>
+        /// A text box to hold the last name
+        /// </summary>
+        private System.Windows.Forms.TextBox txtBoxLastName;
+
+        /// <summary>
+        /// A text box to hold the first name
+        /// </summary>
+        private System.Windows.Forms.TextBox txtBoxFirstName;
+
+        /// <summary>
+        /// A list box to hold the list of users
+        /// </summary>
+        private System.Windows.Forms.ListBox lstBoxUsers;
+
+        /// <summary>
+        /// A label to act as the User List header
+        /// </summary>
+        private System.Windows.Forms.Label lblUsers;
+
+        /// <summary>
+        /// A check box to give the current user Student permissions
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkBoxStudent;
+
+        /// <summary>
+        /// A check box to give the current user Coach permissions
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkBoxCoach;
+
+        /// <summary>
+        /// A check box to give the current user Admin permissions
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkBoxAdmin;
+
+        /// <summary>
+        /// A button to make the current user active
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkBoxActive;
+
+        /// <summary>
+        /// A button to add a new user
+        /// </summary>
+        private System.Windows.Forms.Button btnAdd;
+
+        /// <summary>
+        /// A button to set the current selected user as Inactive
+        /// </summary>
+        private System.Windows.Forms.Button btnMinus;
+
+        /// <summary>
+        /// A button to submit user profile changes
+        /// </summary>
+        private System.Windows.Forms.Button btnSubmit;
+
+        /// <summary>
+        /// A button to reset the current user's password
+        /// </summary>
+        private System.Windows.Forms.Button btnResetUserPassword;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -13,10 +124,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -49,7 +161,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnResetUserPassword = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblAdminForm
@@ -163,7 +275,7 @@
             this.lstBoxUsers.Name = "lstBoxUsers";
             this.lstBoxUsers.Size = new System.Drawing.Size(288, 316);
             this.lstBoxUsers.TabIndex = 0;
-            this.lstBoxUsers.SelectedIndexChanged += new System.EventHandler(this.lstBoxUsers_SelectedIndexChanged);
+            this.lstBoxUsers.SelectedIndexChanged += new System.EventHandler(this.LstBoxUsersSelectedIndexChanged);
             // 
             // lblUsers
             // 
@@ -228,7 +340,7 @@
             this.btnAdd.TabIndex = 1;
             this.btnAdd.Text = "Add User";
             this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAdd.Click += new System.EventHandler(this.BtnAddClick);
             // 
             // btnMinus
             // 
@@ -239,7 +351,7 @@
             this.btnMinus.TabIndex = 2;
             this.btnMinus.Text = "Disable User";
             this.btnMinus.UseVisualStyleBackColor = true;
-            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
+            this.btnMinus.Click += new System.EventHandler(this.BtnMinusClick);
             // 
             // btnSubmit
             // 
@@ -250,24 +362,25 @@
             this.btnSubmit.TabIndex = 12;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.btnSubmit.Click += new System.EventHandler(this.BtnSubmitClick);
             // 
-            // button1
+            // btnResetUserPassword
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(336, 411);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(126, 22);
-            this.button1.TabIndex = 49;
-            this.button1.Text = "Reset User Password";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnResetUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetUserPassword.Location = new System.Drawing.Point(336, 411);
+            this.btnResetUserPassword.Name = "btnResetUserPassword";
+            this.btnResetUserPassword.Size = new System.Drawing.Size(126, 22);
+            this.btnResetUserPassword.TabIndex = 49;
+            this.btnResetUserPassword.Text = "Reset User Password";
+            this.btnResetUserPassword.UseVisualStyleBackColor = true;
+            this.btnResetUserPassword.Click += new System.EventHandler(this.BtnResetPasswordClick);
             // 
             // UserAdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(633, 444);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnResetUserPassword);
             this.Controls.Add(this.btnMinus);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.chkBoxActive);
@@ -292,34 +405,10 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UserAdminForm";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.UserAdminForm_Load);
+            this.Load += new System.EventHandler(this.UserAdminFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
-
         #endregion
-        private System.Windows.Forms.Label lblAdminForm;
-        private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox txtBoxUserID;
-        private System.Windows.Forms.Label lblUserID;
-        private System.Windows.Forms.Label lblMiddleName;
-        private System.Windows.Forms.Label lblLastName;
-        private System.Windows.Forms.Label lblFirstName;
-        private System.Windows.Forms.TextBox txtBoxMiddleName;
-        private System.Windows.Forms.TextBox txtBoxPassword;
-        private System.Windows.Forms.TextBox txtBoxLastName;
-        private System.Windows.Forms.TextBox txtBoxFirstName;
-        private System.Windows.Forms.ListBox lstBoxUsers;
-        private System.Windows.Forms.Label lblUsers;
-        private System.Windows.Forms.CheckBox chkBoxStudent;
-        private System.Windows.Forms.CheckBox chkBoxCoach;
-        private System.Windows.Forms.CheckBox chkBoxAdmin;
-        private System.Windows.Forms.CheckBox chkBoxActive;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnMinus;
-        private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.Button button1;
     }
 }
-
