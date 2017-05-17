@@ -19,12 +19,19 @@ namespace CoachConnect
     public partial class ResetUserPasswordAdmin : Form
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ResetUserPasswordAdmin" /> class.
+        /// Initializes a new instance of the <see cref="ResetUserPasswordAdmin" /> class. 
         /// </summary>
-        public ResetUserPasswordAdmin()
+        /// <param name="userID">The userID whose password needs to be updated</param>
+        public ResetUserPasswordAdmin(string userID)
         {
+            this.CurrentUserID = userID;
             this.InitializeComponent();
         }
+
+        /// <summary>
+        /// Gets or sets the current UserID whose password needs to be updated
+        /// </summary>
+        private string CurrentUserID { get; set; }
 
         /// <summary>
         /// Event handler to validate password and apply salted hash when the Update button is clicked
@@ -44,6 +51,16 @@ namespace CoachConnect
 
                 this.txtPassword.Focus();
             }
+            else if (this.txtPassword.Text.Equals(string.Empty))
+            {
+                MessageBox.Show("Please enter a new password.");
+
+                // Clear the password boxes
+                this.txtPassword.Text = string.Empty;
+                this.txtConfirmPassword.Text = string.Empty;
+
+                this.txtPassword.Focus();
+            }
             else
             {
                 // Generate salt and salted hash
@@ -56,7 +73,7 @@ namespace CoachConnect
                     {
                         // Run query to get user data
                         var userQuery = from users in context.Users
-                                        where users.UserID.Equals(Program.CurrentUser)
+                                        where users.UserID.Equals(this.CurrentUserID)
                                         select users;
 
                         User currentUser = userQuery.FirstOrDefault();
@@ -68,17 +85,16 @@ namespace CoachConnect
                         context.SaveChanges();
 
                         // Show confirmation if save is successful
-                        MessageBox.Show("Password updated successfully!  Please login again with your new password.");
-
-                        // Force user to Logout and login with new password
-                        Program.LoginForm.Logout();
-                        this.Close();
+                        MessageBox.Show("Password updated successfully!");
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.ToString());
                 }
+
+                // Close the form when finished
+                this.Close();
             }
         }
 
@@ -90,6 +106,25 @@ namespace CoachConnect
         private void BtnCancelClick(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /// <summary>
+        /// Event handler to validate the new password and confirm the entries are identical.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void TxtStdNewConfirmPasswordLeave(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == txtConfirmPassword.Text && (txtPassword.Text != string.Empty || txtConfirmPassword.Text != string.Empty))
+            {
+                imgPasswordValid.Visible = true;
+                imgPasswordNotValid.Visible = false;
+            }
+            else
+            {
+                imgPasswordNotValid.Visible = true;
+                imgPasswordValid.Visible = false;
+            }
         }
     }
 }

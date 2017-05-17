@@ -234,7 +234,7 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Disiplay student info to the home tab
+        /// Display student info to the home tab
         /// </summary>
         private void DisplayInfo()
         {
@@ -392,12 +392,12 @@ namespace CoachConnect
             this.chkSunEvening.Checked = false;
 
             // Disable buttons when search a new coach
-            btnScheduleApptName.Enabled = false;
-            btnClear.Enabled = false;
+            this.btnScheduleApptName.Enabled = false;
+            this.btnClear.Enabled = false;
         }
 
         /// <summary>
-        /// Called in the btnSearchByName to find a specific coach's sessions .
+        /// Called to find a specific coach's sessions.
         /// </summary>
         /// <param name="coach">The name of the selected coach</param>
         private void SearchForCoach(string coach)
@@ -419,7 +419,7 @@ namespace CoachConnect
                         using (var response = request.GetResponse())
                         using (var stream = response.GetResponseStream())
                         {
-                            pictureBoxCoachProfile.Image = Bitmap.FromStream(stream);
+                            this.pictureBoxCoachProfile.Image = Bitmap.FromStream(stream);
                         }
 
                         this.lblCoachName.Text = userResult.DisplayName;
@@ -444,7 +444,7 @@ namespace CoachConnect
         /// <param name="coach">The name of the current selected coach.</param>
         private void SearchCoachOnSession(string coach)
         {
-            listBoxDisplayCoachSubject.Items.Clear();
+            this.listBoxDisplayCoachSubject.Items.Clear();
             using (var context = new db_sft_2172Entities())
             {
                 var userQuery = from vs in context.ViewSessions
@@ -454,37 +454,37 @@ namespace CoachConnect
                 {
                     if (userQuery.Any())
                     {
-                        lblMessage.Text = "To assign the coach, Please select a day period bellow.";
+                        this.lblMessage.Text = "To assign the coach, Please select a day period bellow.";
                         var userR = userQuery.ToList();
 
                         foreach (var userResult in userR)
                         {
-                            listBoxDisplayCoachSubject.Items.Add(userResult.Course);
+                            this.listBoxDisplayCoachSubject.Items.Add(userResult.Course);
                             if (userResult.Day.Equals("monday"))
                             {
                                 this.monday.Enabled = true;
                                 if (userResult.Time.Equals("Morning"))
                                 {
-                                    chkMonMorning.Enabled = true;
+                                    this.chkMonMorning.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Midday"))
                                 {
-                                    chkMonMidday.Enabled = true;
+                                    this.chkMonMidday.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Afternoon"))
                                 {
-                                    chkMonAfternoon.Enabled = true;
+                                    this.chkMonAfternoon.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Evening"))
                                 {
-                                    chkMonEvening.Enabled = true;
+                                    this.chkMonEvening.Enabled = true;
                                 }
                                 else
                                 {
-                                    chkMonMorning.Enabled = false;
-                                    chkMonMidday.Enabled = false;
-                                    chkMonAfternoon.Enabled = false;
-                                    chkMonEvening.Enabled = false;
+                                    this.chkMonMorning.Enabled = false;
+                                    this.chkMonMidday.Enabled = false;
+                                    this.chkMonAfternoon.Enabled = false;
+                                    this.chkMonEvening.Enabled = false;
                                 }
                             }
                             else if (userResult.Day.Equals("tuesday"))
@@ -492,26 +492,26 @@ namespace CoachConnect
                                 this.tuesday.Enabled = true;
                                 if (userResult.Time.Equals("Morning"))
                                 {
-                                    chkTueMorning.Enabled = true;
+                                    this.chkTueMorning.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Midday"))
                                 {
-                                    chkTueMidday.Enabled = true;
+                                    this.chkTueMidday.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Afternoon"))
                                 {
-                                    chkTueAfternoon.Enabled = true;
+                                    this.chkTueAfternoon.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Evening"))
                                 {
-                                    chkTueEvening.Enabled = true;
+                                    this.chkTueEvening.Enabled = true;
                                 }
                                 else
                                 {
-                                    chkTueMorning.Enabled = false;
-                                    chkTueMidday.Enabled = false;
-                                    chkTueAfternoon.Enabled = false;
-                                    chkTueEvening.Enabled = false;
+                                    this.chkTueMorning.Enabled = false;
+                                    this.chkTueMidday.Enabled = false;
+                                    this.chkTueAfternoon.Enabled = false;
+                                    this.chkTueEvening.Enabled = false;
                                 }
                             }
                             else if (userResult.Day.Equals("wednesday"))
@@ -519,26 +519,26 @@ namespace CoachConnect
                                 this.wednesday.Enabled = true;
                                 if (userResult.Time.Equals("Morning"))
                                 {
-                                    chkWedMorning.Enabled = true;
+                                    this.chkWedMorning.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Midday"))
                                 {
-                                    chkWedMidday.Enabled = true;
+                                    this.chkWedMidday.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Afternoon"))
                                 {
-                                    chkWedAfternoon.Enabled = true;
+                                    this.chkWedAfternoon.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Evening"))
                                 {
-                                    chkWedEvening.Enabled = true;
+                                    this.chkWedEvening.Enabled = true;
                                 }
                                 else
                                 {
-                                    chkWedMorning.Enabled = false;
-                                    chkWedMidday.Enabled = false;
-                                    chkWedAfternoon.Enabled = false;
-                                    chkWedEvening.Enabled = false;
+                                    this.chkWedMorning.Enabled = false;
+                                    this.chkWedMidday.Enabled = false;
+                                    this.chkWedAfternoon.Enabled = false;
+                                    this.chkWedEvening.Enabled = false;
                                 }
                             }
                             else if (userResult.Day.Equals("thursday"))
@@ -546,26 +546,26 @@ namespace CoachConnect
                                 this.thursday.Enabled = true;
                                 if (userResult.Time.Equals("Morning"))
                                 {
-                                    chkThuMorning.Enabled = true;
+                                    this.chkThuMorning.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Midday"))
                                 {
-                                    chkThuMidday.Enabled = true;
+                                    this.chkThuMidday.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Afternoon"))
                                 {
-                                    chkThuAfternoon.Enabled = true;
+                                    this.chkThuAfternoon.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Evening"))
                                 {
-                                    chkThuEvening.Enabled = true;
+                                    this.chkThuEvening.Enabled = true;
                                 }
                                 else
                                 {
-                                    chkThuMorning.Enabled = false;
-                                    chkThuMidday.Enabled = false;
-                                    chkThuAfternoon.Enabled = false;
-                                    chkThuEvening.Enabled = false;
+                                    this.chkThuMorning.Enabled = false;
+                                    this.chkThuMidday.Enabled = false;
+                                    this.chkThuAfternoon.Enabled = false;
+                                    this.chkThuEvening.Enabled = false;
                                 }
                             }
                             else if (userResult.Day.Equals("friday"))
@@ -573,26 +573,26 @@ namespace CoachConnect
                                 this.friday.Enabled = true;
                                 if (userResult.Time.Equals("Morning"))
                                 {
-                                    chkFriMorning.Enabled = true;
+                                    this.chkFriMorning.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Midday"))
                                 {
-                                    chkFriMidday.Enabled = true;
+                                    this.chkFriMidday.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Afternoon"))
                                 {
-                                    chkFriAfternoon.Enabled = true;
+                                    this.chkFriAfternoon.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Evening"))
                                 {
-                                    chkFriEvening.Enabled = true;
+                                    this.chkFriEvening.Enabled = true;
                                 }
                                 else
                                 {
-                                    chkFriMorning.Enabled = false;
-                                    chkFriMidday.Enabled = false;
-                                    chkFriAfternoon.Enabled = false;
-                                    chkFriEvening.Enabled = false;
+                                    this.chkFriMorning.Enabled = false;
+                                    this.chkFriMidday.Enabled = false;
+                                    this.chkFriAfternoon.Enabled = false;
+                                    this.chkFriEvening.Enabled = false;
                                 }
                             }
                             else if (userResult.Day.Equals("saturday"))
@@ -600,26 +600,26 @@ namespace CoachConnect
                                 this.saturday.Enabled = true;
                                 if (userResult.Time.Equals("Morning"))
                                 {
-                                    chkSatMorning.Enabled = true;
+                                    this.chkSatMorning.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Midday"))
                                 {
-                                    chkSatMidday.Enabled = true;
+                                    this.chkSatMidday.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Afternoon"))
                                 {
-                                    chkSatAfternoon.Enabled = true;
+                                    this.chkSatAfternoon.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Evening"))
                                 {
-                                    chkSatEvening.Enabled = true;
+                                    this.chkSatEvening.Enabled = true;
                                 }
                                 else
                                 {
-                                    chkSatMorning.Enabled = false;
-                                    chkSatMidday.Enabled = false;
-                                    chkSatAfternoon.Enabled = false;
-                                    chkSatEvening.Enabled = false;
+                                    this.chkSatMorning.Enabled = false;
+                                    this.chkSatMidday.Enabled = false;
+                                    this.chkSatAfternoon.Enabled = false;
+                                    this.chkSatEvening.Enabled = false;
                                 }
                             }
                             else if (userResult.Day.Equals("sunday"))
@@ -627,26 +627,26 @@ namespace CoachConnect
                                 this.sunday.Enabled = true;
                                 if (userResult.Time.Equals("Morning"))
                                 {
-                                    chkSunMorning.Enabled = true;
+                                    this.chkSunMorning.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Midday"))
                                 {
-                                    chkSunMidday.Enabled = true;
+                                    this.chkSunMidday.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Afternoon"))
                                 {
-                                    chkSunAfternoon.Enabled = true;
+                                    this.chkSunAfternoon.Enabled = true;
                                 }
                                 else if (userResult.Time.Equals("Evening"))
                                 {
-                                    chkSunEvening.Enabled = true;
+                                    this.chkSunEvening.Enabled = true;
                                 }
                                 else
                                 {
-                                    chkSunMorning.Enabled = false;
-                                    chkSunMidday.Enabled = false;
-                                    chkSunAfternoon.Enabled = false;
-                                    chkSunEvening.Enabled = false;
+                                    this.chkSunMorning.Enabled = false;
+                                    this.chkSunMidday.Enabled = false;
+                                    this.chkSunAfternoon.Enabled = false;
+                                    this.chkSunEvening.Enabled = false;
                                 }
                             }
                             else
@@ -730,7 +730,7 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Event handler to earch by time clicked button.
+        /// Event handler to search by time clicked button.
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
@@ -740,7 +740,7 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Method to query the search after cliking the Search by Time button.
+        /// Method to query the search after clicking the Search by Time button.
         /// </summary>
         private void CoachTimeQuery()
         {
@@ -1155,7 +1155,7 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Event handler to logout clicked button on the stutend home tab.
+        /// Event handler to logout clicked button on the student home tab.
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>

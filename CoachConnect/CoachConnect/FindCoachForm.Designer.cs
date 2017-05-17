@@ -34,7 +34,7 @@ namespace CoachConnect
         private System.Windows.Forms.TabPage tabPage4;
 
         /// <summary>
-        /// Button for Agri interest
+        /// Button for Agriculture interest
         /// </summary>
         private System.Windows.Forms.Button btnAgri;
 
@@ -79,7 +79,7 @@ namespace CoachConnect
         private System.Windows.Forms.Button btnArch;
 
         /// <summary>
-        /// A label for Agri interest
+        /// A label for Agriculture interest
         /// </summary>
         private System.Windows.Forms.Label lblAgri;
 
@@ -184,12 +184,12 @@ namespace CoachConnect
         private System.Windows.Forms.Label lblStdPhone;
 
         /// <summary>
-        /// A lable for the user's email address
+        /// A label for the user's email address
         /// </summary>
         private System.Windows.Forms.Label lblStdEmail;
 
         /// <summary>
-        /// A lable for the user's name
+        /// A label for the user's name
         /// </summary>
         private System.Windows.Forms.Label lblStdName;
 

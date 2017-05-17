@@ -80,7 +80,7 @@ namespace CoachConnect
                             txtStdPassword.Text = string.Empty;
                             txtStdNewPassword.Text = string.Empty;
                             txtStdNewConfirmPassowrd.Text = string.Empty;
-                            MessageBox.Show("Your passsword has been save!");
+                            MessageBox.Show("Your passsword has been saved!");
                             this.OriginalForm.Show();
                             this.Close();
                         }
@@ -96,7 +96,7 @@ namespace CoachConnect
                 }
                 else
                 {  
-                    MessageBox.Show("Your current password is incorect!");
+                    MessageBox.Show("Your current password is incorrect!");
                 }
             }
         }
@@ -140,7 +140,7 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Event handler to validate the new password with the confirm weither they are matched.
+        /// Event handler to validate the new password and confirm whether the two entries are identical.
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>

@@ -24,7 +24,7 @@ namespace CoachConnect
         private System.Windows.Forms.TextBox txtPassword;
 
         /// <summary>
-        /// A lable for the password text box
+        /// A label for the password text box
         /// </summary>
         private System.Windows.Forms.Label lblPassword;
 

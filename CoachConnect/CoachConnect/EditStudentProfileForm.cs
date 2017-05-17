@@ -83,12 +83,12 @@ namespace CoachConnect
             using (var context = new db_sft_2172Entities())
             {
                 User user = context.Users.Single(u => u.UserID == Program.CurrentUser);
-                string url = txtStdURL.Text;
-                string firstName = txtStdFirstName.Text;
-                string midddleName = txtStdMiddleName.Text;
-                string lastName = txtStdLastName.Text;
-                string email = txtStdEmail.Text;
-                string phone = txtStdPhone.Text;
+                string url = this.txtStdURL.Text;
+                string firstName = this.txtStdFirstName.Text;
+                string midddleName = this.txtStdMiddleName.Text;
+                string lastName = this.txtStdLastName.Text;
+                string email = this.txtStdEmail.Text;
+                string phone = this.txtStdPhone.Text;
 
                 if (string.IsNullOrEmpty(url))
                 {

@@ -74,7 +74,7 @@ namespace CoachConnect
         private System.Windows.Forms.Label lblErrorEmail;
 
         /// <summary>
-        /// Validation lable indicating an invalid phone number
+        /// Validation label indicating an invalid phone number
         /// </summary>
         private System.Windows.Forms.Label lblErrorPhone;
 

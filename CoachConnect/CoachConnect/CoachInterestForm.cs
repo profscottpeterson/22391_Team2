@@ -121,7 +121,7 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Event handler to enter a row on datagridview.
+        /// Event handler to enter a row on data grid view.
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>

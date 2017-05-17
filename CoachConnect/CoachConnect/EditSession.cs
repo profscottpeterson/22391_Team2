@@ -450,7 +450,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CbxActive_Leave(object sender, EventArgs e)
         {
-            this.lblInvalidActive.Visible = !this.validator.ValidateComboBox(cbxActive.SelectedIndex);
+            this.lblInvalidActive.Visible = !this.validator.ValidateComboBox(this.cbxActive.SelectedIndex);
 
             if (this.lblInvalidActive.Visible)
             {

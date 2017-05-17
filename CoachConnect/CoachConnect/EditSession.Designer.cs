@@ -19,7 +19,7 @@ namespace CoachConnect
         private System.Windows.Forms.ComboBox cbxCourse;
 
         /// <summary>
-        /// Lable for the Room combo box
+        /// Label for the Room combo box
         /// </summary>
         private System.Windows.Forms.Label lblRoom;
 

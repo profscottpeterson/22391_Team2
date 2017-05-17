@@ -5,7 +5,7 @@
 namespace CoachConnect
 {
     /// <summary>
-    /// Initializes a new 
+    /// A form to allow admin to reset a user's password 
     /// </summary>
     public partial class ResetUserPasswordAdmin
     {
@@ -25,12 +25,22 @@ namespace CoachConnect
         private System.Windows.Forms.Label lblPassword;
 
         /// <summary>
-        /// Label for confirmimng the second bucket
+        /// Label for confirming the second bucket
         /// </summary>
         private System.Windows.Forms.Label lblConfirmPassword;
 
         /// <summary>
-        /// A label admin for the form header.
+        /// Image to show that the passwords are not valid
+        /// </summary>
+        private System.Windows.Forms.PictureBox imgPasswordNotValid;
+
+        /// <summary>
+        /// Image to show that the passwords are valid
+        /// </summary>
+        private System.Windows.Forms.PictureBox imgPasswordValid;
+
+        /// <summary>
+        /// A label for the form header.
         /// </summary>
         private System.Windows.Forms.Label lblAdminForm;
 
@@ -79,15 +89,20 @@ namespace CoachConnect
             this.lblAdminForm = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.imgPasswordNotValid = new System.Windows.Forms.PictureBox();
+            this.imgPasswordValid = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPasswordNotValid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPasswordValid)).BeginInit();
             this.SuspendLayout();
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(115, 60);
+            this.txtPassword.Location = new System.Drawing.Point(115, 56);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(133, 20);
             this.txtPassword.TabIndex = 0;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.Leave += new System.EventHandler(this.TxtStdNewConfirmPasswordLeave);
             // 
             // txtConfirmPassword
             // 
@@ -96,11 +111,12 @@ namespace CoachConnect
             this.txtConfirmPassword.Size = new System.Drawing.Size(133, 20);
             this.txtConfirmPassword.TabIndex = 1;
             this.txtConfirmPassword.UseSystemPasswordChar = true;
+            this.txtConfirmPassword.Leave += new System.EventHandler(this.TxtStdNewConfirmPasswordLeave);
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(15, 63);
+            this.lblPassword.Location = new System.Drawing.Point(15, 59);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(81, 13);
             this.lblPassword.TabIndex = 2;
@@ -146,11 +162,35 @@ namespace CoachConnect
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
             // 
-            // ChangePasswordForm
+            // imgPasswordNotValid
+            // 
+            this.imgPasswordNotValid.Image = global::CoachConnect.Properties.Resources.wrong;
+            this.imgPasswordNotValid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.imgPasswordNotValid.Location = new System.Drawing.Point(256, 69);
+            this.imgPasswordNotValid.Name = "imgPasswordNotValid";
+            this.imgPasswordNotValid.Size = new System.Drawing.Size(36, 33);
+            this.imgPasswordNotValid.TabIndex = 38;
+            this.imgPasswordNotValid.TabStop = false;
+            this.imgPasswordNotValid.Visible = false;
+            // 
+            // imgPasswordValid
+            // 
+            this.imgPasswordValid.Image = global::CoachConnect.Properties.Resources.correct1;
+            this.imgPasswordValid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.imgPasswordValid.Location = new System.Drawing.Point(256, 64);
+            this.imgPasswordValid.Name = "imgPasswordValid";
+            this.imgPasswordValid.Size = new System.Drawing.Size(36, 33);
+            this.imgPasswordValid.TabIndex = 37;
+            this.imgPasswordValid.TabStop = false;
+            this.imgPasswordValid.Visible = false;
+            // 
+            // ResetUserPasswordAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(261, 169);
+            this.ClientSize = new System.Drawing.Size(295, 169);
+            this.Controls.Add(this.imgPasswordNotValid);
+            this.Controls.Add(this.imgPasswordValid);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.lblAdminForm);
@@ -159,8 +199,11 @@ namespace CoachConnect
             this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.txtPassword);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "ChangePasswordForm";
-            this.Text = "Reset Password";
+            this.Name = "ResetUserPasswordAdmin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Reset Password (Admin)";
+            ((System.ComponentModel.ISupportInitialize)(this.imgPasswordNotValid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgPasswordValid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

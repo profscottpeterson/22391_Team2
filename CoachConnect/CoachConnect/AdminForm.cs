@@ -81,8 +81,9 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnChangePasswordClick(object sender, EventArgs e)
         {
-            ResetUserPasswordAdmin changePassword = new ResetUserPasswordAdmin();
-            changePassword.ShowDialog();
+            ResetStudentPassword changePassword = new ResetStudentPassword(this);
+            changePassword.Show();
+            this.Hide();
         }
     }
 }

@@ -58,7 +58,7 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// A method to verify the salthed hash is correct.
+        /// A method to verify the salted hash is correct.
         /// </summary>
         /// <param name="salt">The salt used by the original password</param>
         /// <param name="hash">The final password to be verified </param>

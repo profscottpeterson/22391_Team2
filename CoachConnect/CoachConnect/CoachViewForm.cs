@@ -418,7 +418,7 @@ namespace CoachConnect
         /// <param name="e">event on click</param>
         private void BtnPass_Click(object sender, EventArgs e)
         {
-            ResetUserPasswordAdmin frm = new ResetUserPasswordAdmin();
+            ResetStudentPassword frm = new ResetStudentPassword();
             frm.ShowDialog();
         }
 

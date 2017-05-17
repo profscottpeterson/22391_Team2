@@ -132,6 +132,8 @@ namespace CoachConnect
             this.chkBoxStudent.Checked = false;
             this.lstBoxUsers.Items.Add("First Name Middle Name Last Name");
             this.lstBoxUsers.SelectedIndex = this.lstBoxUsers.Items.Count - 1;
+
+            this.txtBoxUserID.ReadOnly = false;
         }
 
         /// <summary>
@@ -197,6 +199,7 @@ namespace CoachConnect
 
             this.DisplayUsers();
             this.ChkBoxClear();
+            this.txtBoxUserID.ReadOnly = true;
             MessageBox.Show("User Profile Updated");
         }
 
@@ -220,7 +223,9 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnResetPasswordClick(object sender, EventArgs e)
         {
-            ResetUserPasswordAdmin resetPasswordForm = new ResetUserPasswordAdmin();
+            string username = this.txtBoxUserID.Text;
+
+            ResetUserPasswordAdmin resetPasswordForm = new ResetUserPasswordAdmin(username);
             resetPasswordForm.ShowDialog();
         }
     }

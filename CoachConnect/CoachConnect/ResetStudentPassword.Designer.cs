@@ -110,8 +110,7 @@ namespace CoachConnect
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources =
-                new System.ComponentModel.ComponentResourceManager(typeof(ResetStudentPassword));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResetStudentPassword));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.newPWDNotMatch = new System.Windows.Forms.PictureBox();
             this.newPWDConfirmWrong = new System.Windows.Forms.PictureBox();

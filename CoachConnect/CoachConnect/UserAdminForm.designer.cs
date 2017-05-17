@@ -179,7 +179,7 @@ namespace CoachConnect
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPassword.Location = new System.Drawing.Point(333, 345);
+            this.lblPassword.Location = new System.Drawing.Point(336, 312);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(56, 13);
             this.lblPassword.TabIndex = 43;
@@ -191,6 +191,7 @@ namespace CoachConnect
             this.txtBoxUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBoxUserID.Location = new System.Drawing.Point(336, 289);
             this.txtBoxUserID.Name = "txtBoxUserID";
+            this.txtBoxUserID.ReadOnly = true;
             this.txtBoxUserID.Size = new System.Drawing.Size(188, 20);
             this.txtBoxUserID.TabIndex = 6;
             // 
@@ -245,7 +246,7 @@ namespace CoachConnect
             // txtBoxPassword
             // 
             this.txtBoxPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxPassword.Location = new System.Drawing.Point(336, 361);
+            this.txtBoxPassword.Location = new System.Drawing.Point(336, 328);
             this.txtBoxPassword.Name = "txtBoxPassword";
             this.txtBoxPassword.Size = new System.Drawing.Size(188, 20);
             this.txtBoxPassword.TabIndex = 7;
@@ -273,7 +274,7 @@ namespace CoachConnect
             this.lstBoxUsers.FormattingEnabled = true;
             this.lstBoxUsers.Location = new System.Drawing.Point(12, 84);
             this.lstBoxUsers.Name = "lstBoxUsers";
-            this.lstBoxUsers.Size = new System.Drawing.Size(288, 316);
+            this.lstBoxUsers.Size = new System.Drawing.Size(288, 264);
             this.lstBoxUsers.TabIndex = 0;
             this.lstBoxUsers.SelectedIndexChanged += new System.EventHandler(this.LstBoxUsersSelectedIndexChanged);
             // 
@@ -334,7 +335,7 @@ namespace CoachConnect
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(12, 411);
+            this.btnAdd.Location = new System.Drawing.Point(12, 354);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(145, 22);
             this.btnAdd.TabIndex = 1;
@@ -345,7 +346,7 @@ namespace CoachConnect
             // btnMinus
             // 
             this.btnMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMinus.Location = new System.Drawing.Point(156, 411);
+            this.btnMinus.Location = new System.Drawing.Point(156, 354);
             this.btnMinus.Name = "btnMinus";
             this.btnMinus.Size = new System.Drawing.Size(144, 22);
             this.btnMinus.TabIndex = 2;
@@ -356,7 +357,7 @@ namespace CoachConnect
             // btnSubmit
             // 
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(538, 411);
+            this.btnSubmit.Location = new System.Drawing.Point(538, 354);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(81, 22);
             this.btnSubmit.TabIndex = 12;
@@ -367,7 +368,7 @@ namespace CoachConnect
             // btnResetUserPassword
             // 
             this.btnResetUserPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetUserPassword.Location = new System.Drawing.Point(336, 411);
+            this.btnResetUserPassword.Location = new System.Drawing.Point(336, 354);
             this.btnResetUserPassword.Name = "btnResetUserPassword";
             this.btnResetUserPassword.Size = new System.Drawing.Size(126, 22);
             this.btnResetUserPassword.TabIndex = 49;
@@ -379,7 +380,7 @@ namespace CoachConnect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 444);
+            this.ClientSize = new System.Drawing.Size(633, 389);
             this.Controls.Add(this.btnResetUserPassword);
             this.Controls.Add(this.btnMinus);
             this.Controls.Add(this.btnAdd);
@@ -404,10 +405,11 @@ namespace CoachConnect
             this.Font = new System.Drawing.Font("MV Boli", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UserAdminForm";
-            this.Text = "Form1";
+            this.Text = "User Admin";
             this.Load += new System.EventHandler(this.UserAdminFormLoad);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
         #endregion
     }
