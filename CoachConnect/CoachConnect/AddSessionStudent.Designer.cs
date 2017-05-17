@@ -98,6 +98,7 @@ namespace CoachConnect
             this.dataGridViewEligibleStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataGridViewEligibleStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEligibleStudents.Location = new System.Drawing.Point(12, 50);
+            this.dataGridViewEligibleStudents.MultiSelect = false;
             this.dataGridViewEligibleStudents.Name = "dataGridViewEligibleStudents";
             this.dataGridViewEligibleStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEligibleStudents.Size = new System.Drawing.Size(259, 150);

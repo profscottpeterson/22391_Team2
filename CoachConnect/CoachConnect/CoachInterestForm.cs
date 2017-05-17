@@ -1,9 +1,6 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="CoachInterestForm.cs" company="PABT,Inc">
-//     Copyright (c) Pabt, Inc. All rights reserved
+﻿// <copyright file="CoachInterestForm.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
 // </copyright>
-//-----------------------------------------------------------------------
-
 namespace CoachConnect
 {
     using System;
@@ -16,26 +13,26 @@ namespace CoachConnect
     using System.Threading.Tasks;
     using System.Windows.Forms;
 
-    /// <content>
-    /// Contains functionalities and features for the frmCoachInterest class.
-    /// </content>
-    public partial class frmCoachInterest : Form
+    /// <summary>
+    /// A form that shows coach search results based on a selected interest
+    /// </summary>
+    public partial class FrmCoachInterest : Form
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="frmCoachInterest"/> class
+        /// Initializes a new instance of the <see cref="FrmCoachInterest" /> class.
         /// </summary>
-        public frmCoachInterest()
+        public FrmCoachInterest()
         {
             this.InitializeComponent();
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="frmCoachInterest"/> class
+        /// Initializes a new instance of the <see cref="FrmCoachInterest" /> class using provided inputs.
         /// </summary>
-        /// <param name="original">The original to join.</param>
-        /// <param name="interest">The interest to join.</param>
-        /// <param name="title">The title to join.</param>
-        public frmCoachInterest(Form original, Image interest, string title)
+        /// <param name="original">The original form where this class was called</param>
+        /// <param name="interest">The image representing the current selected interest</param>
+        /// <param name="title">The name of the current selected interest</param>
+        public FrmCoachInterest(Form original, Image interest, string title)
         {
             this.InitializeComponent();
             this.OriginalForm = original;
@@ -44,54 +41,54 @@ namespace CoachConnect
             this.SetForm();
         }
 
-        /// /// <summary>
-        /// Gets or sets the Original form.
+        /// <summary>
+        /// Gets or sets a form object
         /// </summary>
         private Form OriginalForm { get; set; }
 
-        /// /// <summary>
-        /// Gets or sets the interested picture.
+        /// <summary>
+        /// Gets or sets an image object that corresponds with the current selected interest
         /// </summary>
         private Image PicInterest { get; set; }
 
-        /// /// <summary>
-        /// Gets or sets the title.
+        /// <summary>
+        /// Gets or sets a string that holds the current selected interest
         /// </summary>
         private string TitleInterest { get; set; }
 
         /// <summary>
-        /// Override method event handler to perform when the form is closed.
+        /// Event handler to show the original form when this form is closed.
         /// </summary>
-        /// <param name="e">The event e to join</param>
+        /// <param name="e">The parameter is not used.</param>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             this.OriginalForm.Show();
         }
 
         /// <summary>
-        /// Event handler to click to exit the current form.
+        /// An event handler to close this form and show the "original form" when the Back button is clicked.
         /// </summary>
-        /// <param name="sender">The object sender to join</param>
-        /// <param name="e">The event e to join</param>
-        private void btnInterestExit_Click(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnInterestExit_Click(object sender, EventArgs e)
         {
             this.OriginalForm.Show();
             this.Close();
         }
 
         /// <summary>
-        /// Sets Form according to button clicked.
+        /// Updates the form title and image, then calls a method to get all session results based on the selected interest.
         /// </summary>
         private void SetForm()
         {
-            lblTitle.Text = this.TitleInterest;
-            pbInterest.Image = this.PicInterest;
+            this.lblTitle.Text = this.TitleInterest;
+            this.picBoxInterest.Image = this.PicInterest;
 
             this.GetCoachesByInterest();
         }
 
         /// <summary>
-        /// Addition by Adam Smith: Query to pull coaches by interest
+        /// Runs a query to pull available sessions based on the selected interest
         /// </summary>
         private void GetCoachesByInterest()
         {
@@ -114,7 +111,7 @@ namespace CoachConnect
                         };
 
                     // Add results to data grid view
-                    dataGridAvailableCoaches.DataSource = coachInterestQuery.ToList();
+                    this.dataGridAvailableSessions.DataSource = coachInterestQuery.ToList();
                 }
             }
             catch (Exception ex)
@@ -124,42 +121,38 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Event handler to enter a row on datagridview.
+        /// Event handler to enter a row on data grid view.
         /// </summary>
-        /// <param name="sender">The object sender to join</param>
-        /// <param name="e">The event e to join</param>
-        private void dataGridAvailableCoaches_RowEnter(object sender, DataGridViewCellEventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void DataGridAvailableCoaches_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
-            btnSelectCoach.Enabled = true;
+            this.btnSelectSession.Enabled = true;
         }
 
         /// <summary>
         /// Event handler to select a coach.
         /// </summary>
-        /// <param name="sender">The object sender to join</param>
-        /// <param name="e">The event e to join</param>
-        private void btnSelectCoach_Click(object sender, EventArgs e)
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnSelectCoachClick(object sender, EventArgs e)
         {
-            string selectedCoachID;
-            string selectedCoachName;
-            string selectedTime;
-            string selectedDay;
-            string selectedCourseID;
-            string selectedCourse;
-            if (dataGridAvailableCoaches.SelectedRows == null)
+            // If a session is not selected, display a message.
+            // Otherwise, get data from that row.
+            if (this.dataGridAvailableSessions.SelectedRows.Count <= 0)
             {
                 MessageBox.Show("Please select a row before continuing");
                 return;
             }
             else
             {
-                DataGridViewRow selectedRow = dataGridAvailableCoaches.SelectedRows[0];
-                selectedCoachID = selectedRow.Cells[0].Value.ToString();
-                selectedCoachName = selectedRow.Cells[1].Value.ToString();
-                selectedDay = selectedRow.Cells[2].Value.ToString();
-                selectedTime = selectedRow.Cells[3].Value.ToString();
-                selectedCourseID = selectedRow.Cells[4].Value.ToString();
-                selectedCourse = selectedRow.Cells[5].Value.ToString();
+                DataGridViewRow selectedRow = this.dataGridAvailableSessions.SelectedRows[0];
+                string selectedCoachID = selectedRow.Cells[0].Value.ToString();
+                string selectedCoachName = selectedRow.Cells[1].Value.ToString();
+                string selectedDay = selectedRow.Cells[2].Value.ToString();
+                string selectedTime = selectedRow.Cells[3].Value.ToString();
+                string selectedCourseID = selectedRow.Cells[4].Value.ToString();
+                string selectedCourse = selectedRow.Cells[5].Value.ToString();
 
                 DialogResult result = MessageBox.Show(
                     "Are you sure you want to create this appointment?\n"
@@ -168,7 +161,9 @@ namespace CoachConnect
                         + "Day: " + selectedDay + "\n"
                         + "Course ID: " + selectedCourseID + "\n"
                         + "Selected Course: " + selectedCourse,
-                    "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    "Confirmation", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Question);
 
                 if (result == DialogResult.No)
                 {
@@ -176,9 +171,9 @@ namespace CoachConnect
                 }
                 else
                 {
+                    // Check whether user is enrollled in the current session
                     using (db_sft_2172Entities context = new db_sft_2172Entities())
                     {
-
                         var userQuery = from s in context.ViewSessions
                                         where s.UserID.Equals(selectedCoachID) && s.Day.Equals(selectedDay) && s.Time.Equals(selectedTime)
                                         select s;
@@ -190,9 +185,12 @@ namespace CoachConnect
                                 var checkSessionRoster = from sessionRoster in context.SessionRosters
                                                          where sessionRoster.UserID.Equals(Program.CurrentUser) && sessionRoster.SessionID.Equals(userResult.SessionID)
                                                          select sessionRoster;
+
+                                // If user is enrolled already, display a messge.
+                                // Otherwise, add student to the session's roster
                                 if (checkSessionRoster.Any())
                                 {
-                                    MessageBox.Show("This sessional coach has been assigned already.");
+                                    MessageBox.Show("Soory, you are already enrolled in this session.");
                                 }
                                 else
                                 {
@@ -210,7 +208,7 @@ namespace CoachConnect
                             }
                             catch (Exception ex)
                             {
-                                ex.ToString();
+                                MessageBox.Show(ex.Message);
                             }
                         }
                         else

@@ -1,16 +1,43 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="CoachInterestForm.Designer.cs" company="PABT,Inc">
-//     Copyright (c) Pabt, Inc. All rights reserved
+﻿// <copyright file="CoachInterestForm.Designer.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
 // </copyright>
-//-----------------------------------------------------------------------
-
 namespace CoachConnect
 {
-    /// <content>
-    /// Contains functionalities and features for the frmCoachInterest class.
-    /// </content>
-    public partial class frmCoachInterest
+    /// <summary>
+    /// A form that shows coach search results based on a selected interest
+    /// </summary>
+    public partial class FrmCoachInterest
     {
+        /// <summary>
+        /// Picture box to store an image representing the selected interest
+        /// </summary>
+        private System.Windows.Forms.PictureBox picBoxInterest;
+
+        /// <summary>
+        /// A title to show the selected interest
+        /// </summary>
+        private System.Windows.Forms.Label lblTitle;
+
+        /// <summary>
+        /// A group box for the Available Sessions section
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox4;
+
+        /// <summary>
+        /// Button that allows user to return to previous window
+        /// </summary>
+        private System.Windows.Forms.Button btnInterestExit;
+
+        /// <summary>
+        /// Data grid to show available sessions
+        /// </summary>
+        private System.Windows.Forms.DataGridView dataGridAvailableSessions;
+
+        /// <summary>
+        /// Button that allows the user to enroll in the selected session
+        /// </summary>
+        private System.Windows.Forms.Button btnSelectSession;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -38,16 +65,16 @@ namespace CoachConnect
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCoachInterest));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCoachInterest));
             this.lblTitle = new System.Windows.Forms.Label();
-            this.pbInterest = new System.Windows.Forms.PictureBox();
+            this.picBoxInterest = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataGridAvailableCoaches = new System.Windows.Forms.DataGridView();
+            this.dataGridAvailableSessions = new System.Windows.Forms.DataGridView();
             this.btnInterestExit = new System.Windows.Forms.Button();
-            this.btnSelectCoach = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pbInterest)).BeginInit();
+            this.btnSelectSession = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxInterest)).BeginInit();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridAvailableCoaches)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridAvailableSessions)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -60,92 +87,85 @@ namespace CoachConnect
             this.lblTitle.Text = "Interest Title";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pbInterest
+            // picBoxInterest
             // 
-            this.pbInterest.Image = global::CoachConnect.Properties.Resources.transportation_icon;
-            this.pbInterest.Location = new System.Drawing.Point(28, 12);
-            this.pbInterest.Name = "pbInterest";
-            this.pbInterest.Size = new System.Drawing.Size(150, 150);
-            this.pbInterest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbInterest.TabIndex = 0;
-            this.pbInterest.TabStop = false;
+            this.picBoxInterest.Image = global::CoachConnect.Properties.Resources.transportation_icon;
+            this.picBoxInterest.Location = new System.Drawing.Point(28, 12);
+            this.picBoxInterest.Name = "picBoxInterest";
+            this.picBoxInterest.Size = new System.Drawing.Size(150, 150);
+            this.picBoxInterest.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBoxInterest.TabIndex = 0;
+            this.picBoxInterest.TabStop = false;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.dataGridAvailableCoaches);
+            this.groupBox4.Controls.Add(this.dataGridAvailableSessions);
             this.groupBox4.Location = new System.Drawing.Point(12, 167);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(536, 268);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Available Coaches";
+            this.groupBox4.Text = "Available Sessions";
             // 
-            // dataGridAvailableCoaches
+            // dataGridAvailableSessions
             // 
-            this.dataGridAvailableCoaches.AllowUserToAddRows = false;
-            this.dataGridAvailableCoaches.AllowUserToDeleteRows = false;
-            this.dataGridAvailableCoaches.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataGridAvailableCoaches.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridAvailableCoaches.Location = new System.Drawing.Point(7, 20);
-            this.dataGridAvailableCoaches.Name = "dataGridAvailableCoaches";
-            this.dataGridAvailableCoaches.ReadOnly = true;
-            this.dataGridAvailableCoaches.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridAvailableCoaches.Size = new System.Drawing.Size(523, 242);
-            this.dataGridAvailableCoaches.TabIndex = 1;
-            this.dataGridAvailableCoaches.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridAvailableCoaches_RowEnter);
+            this.dataGridAvailableSessions.AllowUserToAddRows = false;
+            this.dataGridAvailableSessions.AllowUserToDeleteRows = false;
+            this.dataGridAvailableSessions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridAvailableSessions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridAvailableSessions.Location = new System.Drawing.Point(7, 20);
+            this.dataGridAvailableSessions.MultiSelect = false;
+            this.dataGridAvailableSessions.Name = "dataGridAvailableSessions";
+            this.dataGridAvailableSessions.ReadOnly = true;
+            this.dataGridAvailableSessions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridAvailableSessions.Size = new System.Drawing.Size(523, 242);
+            this.dataGridAvailableSessions.TabIndex = 1;
+            this.dataGridAvailableSessions.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridAvailableCoaches_RowEnter);
             // 
             // btnInterestExit
             // 
-            this.btnInterestExit.Location = new System.Drawing.Point(339, 446);
+            this.btnInterestExit.Location = new System.Drawing.Point(296, 446);
             this.btnInterestExit.Name = "btnInterestExit";
-            this.btnInterestExit.Size = new System.Drawing.Size(105, 23);
+            this.btnInterestExit.Size = new System.Drawing.Size(147, 23);
             this.btnInterestExit.TabIndex = 5;
-            this.btnInterestExit.Text = "Back To Coaches";
+            this.btnInterestExit.Text = "Back To Previous Window";
             this.btnInterestExit.UseVisualStyleBackColor = true;
-            this.btnInterestExit.Click += new System.EventHandler(this.btnInterestExit_Click);
+            this.btnInterestExit.Click += new System.EventHandler(this.BtnInterestExit_Click);
             // 
-            // btnSelectCoach
+            // btnSelectSession
             // 
-            this.btnSelectCoach.Enabled = false;
-            this.btnSelectCoach.Location = new System.Drawing.Point(460, 446);
-            this.btnSelectCoach.Name = "btnSelectCoach";
-            this.btnSelectCoach.Size = new System.Drawing.Size(88, 23);
-            this.btnSelectCoach.TabIndex = 6;
-            this.btnSelectCoach.Text = "Assign Coach";
-            this.btnSelectCoach.UseVisualStyleBackColor = true;
-            this.btnSelectCoach.Click += new System.EventHandler(this.btnSelectCoach_Click);
+            this.btnSelectSession.Enabled = false;
+            this.btnSelectSession.Location = new System.Drawing.Point(449, 446);
+            this.btnSelectSession.Name = "btnSelectSession";
+            this.btnSelectSession.Size = new System.Drawing.Size(99, 23);
+            this.btnSelectSession.TabIndex = 6;
+            this.btnSelectSession.Text = "Enroll in Session";
+            this.btnSelectSession.UseVisualStyleBackColor = true;
+            this.btnSelectSession.Click += new System.EventHandler(this.BtnSelectCoachClick);
             // 
-            // frmCoachInterest
+            // FrmCoachInterest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 481);
-            this.Controls.Add(this.btnSelectCoach);
+            this.Controls.Add(this.btnSelectSession);
             this.Controls.Add(this.btnInterestExit);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.pbInterest);
+            this.Controls.Add(this.picBoxInterest);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmCoachInterest";
+            this.Name = "FrmCoachInterest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Find Coach By Interest";
-            ((System.ComponentModel.ISupportInitialize)(this.pbInterest)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxInterest)).EndInit();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridAvailableCoaches)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridAvailableSessions)).EndInit();
             this.ResumeLayout(false);
 
         }
-
         #endregion
-
-        private System.Windows.Forms.PictureBox pbInterest;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button btnInterestExit;
-        private System.Windows.Forms.DataGridView dataGridAvailableCoaches;
-        private System.Windows.Forms.Button btnSelectCoach;
     }
 }

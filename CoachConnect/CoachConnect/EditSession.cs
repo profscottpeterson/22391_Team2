@@ -93,7 +93,7 @@ namespace CoachConnect
             this.CurrentSession.TimePeriodID = this.cbxTime.SelectedValue.ToString();
             this.CurrentSession.CoachID = this.cbxCoach.SelectedValue.ToString();
 
-            if (cbxActive.SelectedIndex == 0)
+            if (this.cbxActive.SelectedIndex == 0)
             {
                 this.CurrentSession.Active = true;
             }
@@ -375,7 +375,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CbxCourse_Leave(object sender, EventArgs e)
         {
-            this.lblInvalidCourse.Visible = !this.validator.ValidateComboBox(cbxCourse.SelectedIndex);
+            this.lblInvalidCourse.Visible = !this.validator.ValidateComboBox(this.cbxCourse.SelectedIndex);
 
             if (this.lblInvalidCourse.Visible)
             {
@@ -390,7 +390,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CbxRoom_Leave(object sender, EventArgs e)
         {
-            lblInvalidRoom.Visible = !this.validator.ValidateComboBox(this.cbxRoom.SelectedIndex);
+            this.lblInvalidRoom.Visible = !this.validator.ValidateComboBox(this.cbxRoom.SelectedIndex);
 
             if (this.lblInvalidRoom.Visible)
             {
@@ -405,7 +405,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CbxDay_Leave(object sender, EventArgs e)
         {
-            lblInvalidDay.Visible = !this.validator.ValidateComboBox(this.cbxDay.SelectedIndex);
+            this.lblInvalidDay.Visible = !this.validator.ValidateComboBox(this.cbxDay.SelectedIndex);
 
             if (this.lblInvalidDay.Visible)
             {
@@ -450,11 +450,11 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CbxActive_Leave(object sender, EventArgs e)
         {
-            lblInvalidActive.Visible = !this.validator.ValidateComboBox(cbxActive.SelectedIndex);
+            this.lblInvalidActive.Visible = !this.validator.ValidateComboBox(this.cbxActive.SelectedIndex);
 
-            if (lblInvalidActive.Visible)
+            if (this.lblInvalidActive.Visible)
             {
-                cbxActive.Focus();
+                this.cbxActive.Focus();
             }
         }
 
@@ -465,9 +465,32 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnAddToRoster_Click(object sender, EventArgs e)
         {
-            AddSessionStudent addStudentForm = new AddSessionStudent(this.CurrentSession);
-            addStudentForm.ShowDialog();
-            this.PopulateRoster();
+            try
+            {
+                using (var context = new db_sft_2172Entities())
+                {
+                    // Determine if any students are enrolled in the selected course.
+                    // If yes, display the Add Session Student form.
+                    // If no, display a message.
+                    var enrolledStudentQuery = from students in context.StudentByCourses
+                                               where students.CourseID.Equals(this.CurrentSession.CourseID)
+                                               select students;
+
+                    if (enrolledStudentQuery.ToList().Count == 0)
+                    {
+                        MessageBox.Show("Sorry, no students are enrolled in this course.  Please update your session with a different course.");
+                        return;
+                    }
+
+                    AddSessionStudent addStudentForm = new AddSessionStudent(this.CurrentSession);
+                    addStudentForm.ShowDialog();
+                    this.PopulateRoster();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         /// <summary>
@@ -477,6 +500,14 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnRemove_Click(object sender, EventArgs e)
         {
+            // Check if anything is selected.  If not, display a message.
+            if (this.dataGridViewRoster.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("Sorry, no row is selected.");
+                return;
+            }
+
+            // Get the selected row 
             string selectedStudentId = this.dataGridViewRoster.SelectedRows[0].Cells["UserID"].Value.ToString();
 
             // Confirm action

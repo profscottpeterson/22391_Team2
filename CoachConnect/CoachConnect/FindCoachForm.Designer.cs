@@ -1,16 +1,673 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="FindCoachForm.designer.cs" company="PABT,Inc">
-//     Copyright (c) Pabt, Inc. All rights reserved
+﻿// <copyright file="FindCoachForm.Designer.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
 // </copyright>
-//-----------------------------------------------------------------------
-
 namespace CoachConnect
 {
-    /// <content>
-    /// Contains functionalities and features for the FindCoachForm class.
-    /// </content>
+    /// <summary>
+    /// A form that allows student users to search for coaching sessions and enroll in them.
+    /// </summary>
     public partial class FindCoachForm
     {
+        /// <summary>
+        /// Tab control for different search and user options
+        /// </summary>
+        private System.Windows.Forms.TabControl tabControl1;
+
+        /// <summary>
+        /// Tab page for Home
+        /// </summary>
+        private System.Windows.Forms.TabPage tabPage1;
+
+        /// <summary>
+        /// Tab page for Find Coach by Name
+        /// </summary>
+        private System.Windows.Forms.TabPage tabPage2;
+
+        /// <summary>
+        /// Tab page for Find Coach by Interest
+        /// </summary>
+        private System.Windows.Forms.TabPage tabPage3;
+
+        /// <summary>
+        /// Tab page for Find Coach by Time
+        /// </summary>
+        private System.Windows.Forms.TabPage tabPage4;
+
+        /// <summary>
+        /// Button for Agriculture interest
+        /// </summary>
+        private System.Windows.Forms.Button btnAgri;
+
+        /// <summary>
+        /// A label for Energy interest
+        /// </summary>
+        private System.Windows.Forms.Label lblEnergy;
+
+        /// <summary>
+        /// Button for Energy interest
+        /// </summary>
+        private System.Windows.Forms.Button btnEnergy;
+
+        /// <summary>
+        /// A label for Digital interest
+        /// </summary>
+        private System.Windows.Forms.Label lblDigital;
+
+        /// <summary>
+        /// Button for Digital interest
+        /// </summary>
+        private System.Windows.Forms.Button btnDigital;
+
+        /// <summary>
+        /// A label for Business interest
+        /// </summary>
+        private System.Windows.Forms.Label lblBusiness;
+
+        /// <summary>
+        /// Button for Business interest
+        /// </summary>
+        private System.Windows.Forms.Button btnBusiness;
+
+        /// <summary>
+        /// A label for Arch interest
+        /// </summary>
+        private System.Windows.Forms.Label lblArch;
+
+        /// <summary>
+        /// Button for Arch interest
+        /// </summary>
+        private System.Windows.Forms.Button btnArch;
+
+        /// <summary>
+        /// A label for Agriculture interest
+        /// </summary>
+        private System.Windows.Forms.Label lblAgri;
+
+        /// <summary>
+        /// Button for Law interest
+        /// </summary>
+        private System.Windows.Forms.Label lblLaw;
+
+        /// <summary>
+        /// A label for Manu interest
+        /// </summary>
+        private System.Windows.Forms.Button btnLaw;
+
+        /// <summary>
+        /// A label for IT interest
+        /// </summary>
+        private System.Windows.Forms.Label lblIT;
+
+        /// <summary>
+        /// A button for IT interest
+        /// </summary>
+        private System.Windows.Forms.Button btnIT;
+
+        /// <summary>
+        /// A label for Human interest
+        /// </summary>
+        private System.Windows.Forms.Label lblHuman;
+
+        /// <summary>
+        /// Button for Human interest
+        /// </summary>
+        private System.Windows.Forms.Button btnHuman;
+
+        /// <summary>
+        /// A label for Health interest
+        /// </summary>
+        private System.Windows.Forms.Label lblHealth;
+
+        /// <summary>
+        /// Button for Health interest
+        /// </summary>
+        private System.Windows.Forms.Button btnHealth;
+
+        /// <summary>
+        /// A label for General interest
+        /// </summary>
+        private System.Windows.Forms.Label lblGeneral;
+
+        /// <summary>
+        /// Button for General interest
+        /// </summary>
+        private System.Windows.Forms.Button btnGeneral;
+
+        /// <summary>
+        /// A label for Transport interest
+        /// </summary>
+        private System.Windows.Forms.Label lblTransport;
+
+        /// <summary>
+        /// Button for Transport interest
+        /// </summary>
+        private System.Windows.Forms.Button btnTransport;
+
+        /// <summary>
+        /// A label for Science interest
+        /// </summary>
+        private System.Windows.Forms.Label lblScience;
+
+        /// <summary>
+        /// Button for Science interest
+        /// </summary>
+        private System.Windows.Forms.Button btnScience;
+
+        /// <summary>
+        /// A label for Manu interest
+        /// </summary>
+        private System.Windows.Forms.Label lblManu;
+
+        /// <summary>
+        /// Button for Manu interest
+        /// </summary>
+        private System.Windows.Forms.Button btnManu;
+
+        /// <summary>
+        /// A panel
+        /// </summary>
+        private System.Windows.Forms.Panel panel1;
+
+        /// <summary>
+        /// Button allowing user to edit his/her profile
+        /// </summary>
+        private System.Windows.Forms.Button btnEditProfile;
+
+        /// <summary>
+        /// A group box
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox5;
+
+        /// <summary>
+        /// A label for the user's phone number
+        /// </summary>
+        private System.Windows.Forms.Label lblStdPhone;
+
+        /// <summary>
+        /// A label for the user's email address
+        /// </summary>
+        private System.Windows.Forms.Label lblStdEmail;
+
+        /// <summary>
+        /// A label for the user's name
+        /// </summary>
+        private System.Windows.Forms.Label lblStdName;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label37;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label36;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label35;
+
+        /// <summary>
+        /// A picture box for the user's profile pic
+        /// </summary>
+        private System.Windows.Forms.PictureBox pictureBoxStdProfile;
+
+        /// <summary>
+        /// A group box
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox6;
+
+        /// <summary>
+        /// A data grid view to show the student's current appointments
+        /// </summary>
+        private System.Windows.Forms.DataGridView dgrShowAppointments;
+
+        /// <summary>
+        /// A button to remove the selected session from the student's list
+        /// </summary>
+        private System.Windows.Forms.Button btnCancelSession;
+
+        /// <summary>
+        /// A panel
+        /// </summary>
+        private System.Windows.Forms.Panel panelCoach;
+
+        /// <summary>
+        /// A group box
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox7;
+
+        /// <summary>
+        /// A label for the coach's name
+        /// </summary>
+        private System.Windows.Forms.Label lblCoachName;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label27;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label26;
+
+        /// <summary>
+        /// A label for the active coach
+        /// </summary>
+        private System.Windows.Forms.Label lblActiveCoach;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label20;
+
+        /// <summary>
+        /// A picture box for the coach's profile pic
+        /// </summary>
+        private System.Windows.Forms.PictureBox pictureBoxCoachProfile;
+
+        /// <summary>
+        /// A button to clear choices in the Find Coach by Name tab
+        /// </summary>
+        private System.Windows.Forms.Button btnClear;
+
+        /// <summary>
+        /// A button to join a session in the Find Session by Time tab
+        /// </summary>
+        private System.Windows.Forms.Button btnScheduleApptName;
+
+        /// <summary>
+        /// A message in the Find Session by Coach tab
+        /// </summary>
+        private System.Windows.Forms.Label lblMessage;
+
+        /// <summary>
+        /// A group box for sunday time periods in Find Session by Time
+        /// </summary>
+        private System.Windows.Forms.GroupBox sunday;
+
+        /// <summary>
+        /// A check box for Sunday evening
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkSunEvening;
+
+        /// <summary>
+        /// A check box for Sunday afternoon
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkSunAfternoon;
+
+        /// <summary>
+        /// A check box for Sunday midday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkSunMidday;
+
+        /// <summary>
+        /// A check box for Sunday morning
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkSunMorning;
+
+        /// <summary>
+        /// A group box for saturday time periods in Find Session by Time
+        /// </summary>
+        private System.Windows.Forms.GroupBox saturday;
+
+        /// <summary>
+        /// A check box for saturday evening
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkSatEvening;
+
+        /// <summary>
+        /// A check box for saturday afternoon
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkSatAfternoon;
+
+        /// <summary>
+        /// A check box for saturday midday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkSatMidday;
+
+        /// <summary>
+        /// A check box for saturday morning
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkSatMorning;
+
+        /// <summary>
+        /// A group box for friday time periods in Find Session by Time
+        /// </summary>
+        private System.Windows.Forms.GroupBox friday;
+
+        /// <summary>
+        /// A check box for friday evening
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkFriEvening;
+
+        /// <summary>
+        /// A check box for friday afternoon
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkFriAfternoon;
+
+        /// <summary>
+        /// A check box for friday midday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkFriMidday;
+
+        /// <summary>
+        /// A check box for friday morning
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkFriMorning;
+
+        /// <summary>
+        /// A group box for thursday time periods in Find Session by Time
+        /// </summary>
+        private System.Windows.Forms.GroupBox thursday;
+
+        /// <summary>
+        /// A check box for thursday evening
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkThuEvening;
+
+        /// <summary>
+        /// A check box for thursday afternoon
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkThuAfternoon;
+
+        /// <summary>
+        /// A check box for thursday midday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkThuMidday;
+
+        /// <summary>
+        /// A check box for thursday morning
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkThuMorning;
+
+        /// <summary>
+        /// A group box for wednesday time periods in Find Session by Time
+        /// </summary>
+        private System.Windows.Forms.GroupBox wednesday;
+
+        /// <summary>
+        /// A check box for wednesday evening
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkWedEvening;
+
+        /// <summary>
+        /// A check box for wednesday afternoon
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkWedAfternoon;
+
+        /// <summary>
+        /// A check box for wednesday midday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkWedMidday;
+
+        /// <summary>
+        /// A check box for wednesday morning
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkWedMorning;
+
+        /// <summary>
+        /// A group box for tuesday time periods in Find Session by Time
+        /// </summary>
+        private System.Windows.Forms.GroupBox tuesday;
+
+        /// <summary>
+        /// A check box for tuesday evening
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkTueEvening;
+
+        /// <summary>
+        /// A check box for tuesday afternoon
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkTueAfternoon;
+
+        /// <summary>
+        /// A check box for tuesday midday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkTueMidday;
+
+        /// <summary>
+        /// A check box for tuesday morning
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkTueMorning;
+
+        /// <summary>
+        /// A group box for monday time periods in Find Session by Time
+        /// </summary>
+        private System.Windows.Forms.GroupBox monday;
+
+        /// <summary>
+        /// A check box for monday evening
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkMonEvening;
+
+        /// <summary>
+        /// A check box for monday afternoon
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkMonAfternoon;
+
+        /// <summary>
+        /// A check box for monday midday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkMonMidday;
+
+        /// <summary>
+        /// A check box for monday morning
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkMonMorning;
+
+        /// <summary>
+        /// Button to search for sessions based on selected times
+        /// </summary>
+        private System.Windows.Forms.Button btnSearchByTime;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label49;
+
+        /// <summary>
+        /// A group box
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox4;
+
+        /// <summary>
+        /// A group box
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox3;
+
+        /// <summary>
+        /// A check box to select Evening
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkEvening;
+
+        /// <summary>
+        /// A check box to select Midday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkMidday;
+
+        /// <summary>
+        /// A check box to select Afternoon
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkAfternoon;
+
+        /// <summary>
+        /// A check box to select Morning
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkMorning;
+
+        /// <summary>
+        /// A group box
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox1;
+
+        /// <summary>
+        /// A check box to select sunday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkSun;
+
+        /// <summary>
+        /// A check box to select saturday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkSat;
+
+        /// <summary>
+        /// A check box to select friday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkFri;
+
+        /// <summary>
+        /// A check box to select thursday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkThu;
+
+        /// <summary>
+        /// A check box to select wednesday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkWed;
+
+        /// <summary>
+        /// A check box to select tuesday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkTue;
+
+        /// <summary>
+        /// A check box to select monday
+        /// </summary>
+        private System.Windows.Forms.CheckBox chkMon;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label34;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label33;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label32;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label31;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label30;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label29;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label14;
+
+        /// <summary>
+        /// A button to schedule the selected appointment
+        /// </summary>
+        private System.Windows.Forms.Button btnScheduleAppointment;
+
+        /// <summary>
+        /// A button for a user to reset his/her password
+        /// </summary>
+        private System.Windows.Forms.Button btnResetPassword;
+
+        /// <summary>
+        /// A label for the student ID field
+        /// </summary>
+        private System.Windows.Forms.Label lblStdID;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label2;
+
+        /// <summary>
+        /// A button to search by name
+        /// </summary>
+        private System.Windows.Forms.Button btnSearchByName;
+
+        /// <summary>
+        /// Button to clear the Find Session by Time area
+        /// </summary>
+        private System.Windows.Forms.Button btnClearByTime;
+
+        /// <summary>
+        /// Combo box containing a list of active coaches
+        /// </summary>
+        private System.Windows.Forms.ComboBox comboBoxCoaches;
+
+        /// <summary>
+        /// Message to display when an appointment is being made
+        /// </summary>
+        private System.Windows.Forms.Label appointmentMessage;
+
+        /// <summary>
+        /// A label for the email address text box.
+        /// </summary>
+        private System.Windows.Forms.Label lblEmail;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label3;
+
+        /// <summary>
+        /// A label for the user's phone number
+        /// </summary>
+        private System.Windows.Forms.Label lblPhone;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label4;
+
+        /// <summary>
+        /// A data grid to show found coaches by time
+        /// </summary>
+        private System.Windows.Forms.DataGridView dataGridSessionsByTime;
+
+        /// <summary>
+        /// A button for users to logout of the form
+        /// </summary>
+        private System.Windows.Forms.Button btnStdLogout;
+
+        /// <summary>
+        /// A status message
+        /// </summary>
+        private System.Windows.Forms.Label lblRegisterStatusMessage;
+
+        /// <summary>
+        /// A list box showing active courses
+        /// </summary>
+        private System.Windows.Forms.ListBox listBoxCourse;
+
+        /// <summary>
+        /// A list box to show subjects for the current coach
+        /// </summary>
+        private System.Windows.Forms.ListBox listBoxDisplayCoachSubject;
+
+        /// <summary>
+        /// A label
+        /// </summary>
+        private System.Windows.Forms.Label label1;
+
+        /// <summary>
+        /// A button allowing users to exit the program
+        /// </summary>
+        private System.Windows.Forms.Button btnExit;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -45,7 +702,7 @@ namespace CoachConnect
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindCoachForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnCancelCoach = new System.Windows.Forms.Button();
+            this.btnCancelSession = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.appointmentMessage = new System.Windows.Forms.Label();
             this.dgrShowAppointments = new System.Windows.Forms.DataGridView();
@@ -54,8 +711,7 @@ namespace CoachConnect
             this.label1 = new System.Windows.Forms.Label();
             this.listBoxCourse = new System.Windows.Forms.ListBox();
             this.lblRegisterStatusMessage = new System.Windows.Forms.Label();
-            this.btnStdLogout = new System.Windows.Forms.Button();
-            this.btnResetPassowrd = new System.Windows.Forms.Button();
+            this.btnResetPassword = new System.Windows.Forms.Button();
             this.btnEditProfile = new System.Windows.Forms.Button();
             this.lblStdID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,7 +724,7 @@ namespace CoachConnect
             this.pictureBoxStdProfile = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.comboBoxCoaches = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnSearchByName = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnScheduleApptName = new System.Windows.Forms.Button();
             this.panelCoach = new System.Windows.Forms.Panel();
@@ -85,37 +741,37 @@ namespace CoachConnect
             this.lblActiveCoach = new System.Windows.Forms.Label();
             this.pictureBoxCoachProfile = new System.Windows.Forms.PictureBox();
             this.lblMessage = new System.Windows.Forms.Label();
-            this.Monday = new System.Windows.Forms.GroupBox();
+            this.monday = new System.Windows.Forms.GroupBox();
             this.chkMonEvening = new System.Windows.Forms.CheckBox();
             this.chkMonAfternoon = new System.Windows.Forms.CheckBox();
             this.chkMonMidday = new System.Windows.Forms.CheckBox();
             this.chkMonMorning = new System.Windows.Forms.CheckBox();
-            this.Sunday = new System.Windows.Forms.GroupBox();
+            this.sunday = new System.Windows.Forms.GroupBox();
             this.chkSunEvening = new System.Windows.Forms.CheckBox();
             this.chkSunAfternoon = new System.Windows.Forms.CheckBox();
             this.chkSunMidday = new System.Windows.Forms.CheckBox();
             this.chkSunMorning = new System.Windows.Forms.CheckBox();
-            this.Tuesday = new System.Windows.Forms.GroupBox();
+            this.tuesday = new System.Windows.Forms.GroupBox();
             this.chkTueEvening = new System.Windows.Forms.CheckBox();
             this.chkTueAfternoon = new System.Windows.Forms.CheckBox();
             this.chkTueMidday = new System.Windows.Forms.CheckBox();
             this.chkTueMorning = new System.Windows.Forms.CheckBox();
-            this.Saturday = new System.Windows.Forms.GroupBox();
+            this.saturday = new System.Windows.Forms.GroupBox();
             this.chkSatEvening = new System.Windows.Forms.CheckBox();
             this.chkSatAfternoon = new System.Windows.Forms.CheckBox();
             this.chkSatMidday = new System.Windows.Forms.CheckBox();
             this.chkSatMorning = new System.Windows.Forms.CheckBox();
-            this.Wednesday = new System.Windows.Forms.GroupBox();
+            this.wednesday = new System.Windows.Forms.GroupBox();
             this.chkWedEvening = new System.Windows.Forms.CheckBox();
             this.chkWedAfternoon = new System.Windows.Forms.CheckBox();
             this.chkWedMidday = new System.Windows.Forms.CheckBox();
             this.chkWedMorning = new System.Windows.Forms.CheckBox();
-            this.Friday = new System.Windows.Forms.GroupBox();
+            this.friday = new System.Windows.Forms.GroupBox();
             this.chkFriEvening = new System.Windows.Forms.CheckBox();
             this.chkFriAfternoon = new System.Windows.Forms.CheckBox();
             this.chkFriMidday = new System.Windows.Forms.CheckBox();
             this.chkFriMorning = new System.Windows.Forms.CheckBox();
-            this.Thursday = new System.Windows.Forms.GroupBox();
+            this.thursday = new System.Windows.Forms.GroupBox();
             this.chkThuEvening = new System.Windows.Forms.CheckBox();
             this.chkThuAfternoon = new System.Windows.Forms.CheckBox();
             this.chkThuMidday = new System.Windows.Forms.CheckBox();
@@ -153,7 +809,7 @@ namespace CoachConnect
             this.btnSearchByTime = new System.Windows.Forms.Button();
             this.label49 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataGridCoachesByTime = new System.Windows.Forms.DataGridView();
+            this.dataGridSessionsByTime = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.chkEvening = new System.Windows.Forms.CheckBox();
             this.chkMidday = new System.Windows.Forms.CheckBox();
@@ -174,6 +830,7 @@ namespace CoachConnect
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.btnStdLogout = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             label28 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
@@ -187,17 +844,17 @@ namespace CoachConnect
             this.panelCoach.SuspendLayout();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoachProfile)).BeginInit();
-            this.Monday.SuspendLayout();
-            this.Sunday.SuspendLayout();
-            this.Tuesday.SuspendLayout();
-            this.Saturday.SuspendLayout();
-            this.Wednesday.SuspendLayout();
-            this.Friday.SuspendLayout();
-            this.Thursday.SuspendLayout();
+            this.monday.SuspendLayout();
+            this.sunday.SuspendLayout();
+            this.tuesday.SuspendLayout();
+            this.saturday.SuspendLayout();
+            this.wednesday.SuspendLayout();
+            this.friday.SuspendLayout();
+            this.thursday.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridCoachesByTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSessionsByTime)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -208,9 +865,9 @@ namespace CoachConnect
             label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label28.Location = new System.Drawing.Point(308, 25);
             label28.Name = "label28";
-            label28.Size = new System.Drawing.Size(82, 13);
+            label28.Size = new System.Drawing.Size(99, 13);
             label28.TabIndex = 7;
-            label28.Text = "Select a coach:";
+            label28.Text = "Select Your Coach:";
             // 
             // tabControl1
             // 
@@ -222,46 +879,46 @@ namespace CoachConnect
             this.tabControl1.Location = new System.Drawing.Point(12, 32);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(876, 567);
+            this.tabControl1.Size = new System.Drawing.Size(876, 538);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.tabPage1.Controls.Add(this.btnCancelCoach);
             this.tabPage1.Controls.Add(this.groupBox6);
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(868, 541);
+            this.tabPage1.Size = new System.Drawing.Size(868, 512);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Home";
             // 
-            // btnCancelCoach
+            // btnCancelSession
             // 
-            this.btnCancelCoach.Enabled = false;
-            this.btnCancelCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelCoach.Location = new System.Drawing.Point(767, 497);
-            this.btnCancelCoach.Name = "btnCancelCoach";
-            this.btnCancelCoach.Padding = new System.Windows.Forms.Padding(1);
-            this.btnCancelCoach.Size = new System.Drawing.Size(87, 28);
-            this.btnCancelCoach.TabIndex = 5;
-            this.btnCancelCoach.Text = "Cancel Coach";
-            this.btnCancelCoach.UseVisualStyleBackColor = true;
-            this.btnCancelCoach.Click += new System.EventHandler(this.btnCancelCoach_Click);
+            this.btnCancelSession.Enabled = false;
+            this.btnCancelSession.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelSession.Location = new System.Drawing.Point(749, 226);
+            this.btnCancelSession.Name = "btnCancelSession";
+            this.btnCancelSession.Padding = new System.Windows.Forms.Padding(1);
+            this.btnCancelSession.Size = new System.Drawing.Size(99, 28);
+            this.btnCancelSession.TabIndex = 5;
+            this.btnCancelSession.Text = "Leave Session";
+            this.btnCancelSession.UseVisualStyleBackColor = true;
+            this.btnCancelSession.Click += new System.EventHandler(this.BtnCancelCoachClick);
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.btnCancelSession);
             this.groupBox6.Controls.Add(this.appointmentMessage);
             this.groupBox6.Controls.Add(this.dgrShowAppointments);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(6, 233);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(856, 238);
+            this.groupBox6.Size = new System.Drawing.Size(856, 259);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Your Sessional Coach(s)";
+            this.groupBox6.Text = "Your Enrolled Sessions";
             // 
             // appointmentMessage
             // 
@@ -299,8 +956,7 @@ namespace CoachConnect
             this.groupBox5.Controls.Add(this.label1);
             this.groupBox5.Controls.Add(this.listBoxCourse);
             this.groupBox5.Controls.Add(this.lblRegisterStatusMessage);
-            this.groupBox5.Controls.Add(this.btnStdLogout);
-            this.groupBox5.Controls.Add(this.btnResetPassowrd);
+            this.groupBox5.Controls.Add(this.btnResetPassword);
             this.groupBox5.Controls.Add(this.btnEditProfile);
             this.groupBox5.Controls.Add(this.lblStdID);
             this.groupBox5.Controls.Add(this.label2);
@@ -324,9 +980,9 @@ namespace CoachConnect
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(366, 62);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 13);
+            this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Registered Course(s)";
+            this.label1.Text = "Registered Courses";
             // 
             // listBoxCourse
             // 
@@ -348,27 +1004,17 @@ namespace CoachConnect
             this.lblRegisterStatusMessage.Text = "No course register.ed";
             this.lblRegisterStatusMessage.Visible = false;
             // 
-            // btnStdLogout
+            // btnResetPassword
             // 
-            this.btnStdLogout.Location = new System.Drawing.Point(601, 20);
-            this.btnStdLogout.Name = "btnStdLogout";
-            this.btnStdLogout.Size = new System.Drawing.Size(75, 28);
-            this.btnStdLogout.TabIndex = 10;
-            this.btnStdLogout.Text = "Logout";
-            this.btnStdLogout.UseVisualStyleBackColor = true;
-            this.btnStdLogout.Click += new System.EventHandler(this.btnStdLogout_Click);
-            // 
-            // btnResetPassowrd
-            // 
-            this.btnResetPassowrd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetPassowrd.Location = new System.Drawing.Point(474, 20);
-            this.btnResetPassowrd.Name = "btnResetPassowrd";
-            this.btnResetPassowrd.Padding = new System.Windows.Forms.Padding(1);
-            this.btnResetPassowrd.Size = new System.Drawing.Size(112, 28);
-            this.btnResetPassowrd.TabIndex = 6;
-            this.btnResetPassowrd.Text = "Reset Password";
-            this.btnResetPassowrd.UseVisualStyleBackColor = true;
-            this.btnResetPassowrd.Click += new System.EventHandler(this.btnResetPassowrd_Click);
+            this.btnResetPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetPassword.Location = new System.Drawing.Point(474, 20);
+            this.btnResetPassword.Name = "btnResetPassword";
+            this.btnResetPassword.Padding = new System.Windows.Forms.Padding(1);
+            this.btnResetPassword.Size = new System.Drawing.Size(112, 28);
+            this.btnResetPassword.TabIndex = 6;
+            this.btnResetPassword.Text = "Reset Password";
+            this.btnResetPassword.UseVisualStyleBackColor = true;
+            this.btnResetPassword.Click += new System.EventHandler(this.BtnResetPasswordClick);
             // 
             // btnEditProfile
             // 
@@ -380,7 +1026,7 @@ namespace CoachConnect
             this.btnEditProfile.TabIndex = 3;
             this.btnEditProfile.Text = "Edit Profile";
             this.btnEditProfile.UseVisualStyleBackColor = true;
-            this.btnEditProfile.Click += new System.EventHandler(this.btnEditProfile_Click);
+            this.btnEditProfile.Click += new System.EventHandler(this.BtnEditProfileClick);
             // 
             // lblStdID
             // 
@@ -480,7 +1126,7 @@ namespace CoachConnect
             // 
             this.tabPage2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tabPage2.Controls.Add(this.comboBoxCoaches);
-            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.btnSearchByName);
             this.tabPage2.Controls.Add(this.btnClear);
             this.tabPage2.Controls.Add(this.btnScheduleApptName);
             this.tabPage2.Controls.Add(this.panelCoach);
@@ -488,10 +1134,10 @@ namespace CoachConnect
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(868, 541);
+            this.tabPage2.Size = new System.Drawing.Size(868, 512);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Find Coach by Name";
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            this.tabPage2.Text = "Find Session by Coach";
+            this.tabPage2.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // comboBoxCoaches
             // 
@@ -504,57 +1150,57 @@ namespace CoachConnect
             this.comboBoxCoaches.TabIndex = 30;
             this.comboBoxCoaches.Text = "Choose a coach";
             // 
-            // button2
+            // btnSearchByName
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(663, 17);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(72, 28);
-            this.button2.TabIndex = 26;
-            this.button2.Text = "Search";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnSearchByName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchByName.Location = new System.Drawing.Point(663, 17);
+            this.btnSearchByName.Name = "btnSearchByName";
+            this.btnSearchByName.Size = new System.Drawing.Size(72, 28);
+            this.btnSearchByName.TabIndex = 26;
+            this.btnSearchByName.Text = "Search";
+            this.btnSearchByName.UseVisualStyleBackColor = true;
+            this.btnSearchByName.Click += new System.EventHandler(this.BtnSearchByNameClick);
             // 
             // btnClear
             // 
             this.btnClear.Enabled = false;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(769, 505);
+            this.btnClear.Location = new System.Drawing.Point(769, 472);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(73, 28);
             this.btnClear.TabIndex = 25;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            this.btnClear.Click += new System.EventHandler(this.BtnClearClick);
             // 
             // btnScheduleApptName
             // 
             this.btnScheduleApptName.Enabled = false;
             this.btnScheduleApptName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnScheduleApptName.Location = new System.Drawing.Point(663, 505);
+            this.btnScheduleApptName.Location = new System.Drawing.Point(663, 472);
             this.btnScheduleApptName.Name = "btnScheduleApptName";
             this.btnScheduleApptName.Size = new System.Drawing.Size(100, 28);
             this.btnScheduleApptName.TabIndex = 24;
-            this.btnScheduleApptName.Text = "Assign Coach";
+            this.btnScheduleApptName.Text = "Join Session";
             this.btnScheduleApptName.UseVisualStyleBackColor = true;
-            this.btnScheduleApptName.Click += new System.EventHandler(this.btnScheduleApptName_Click);
+            this.btnScheduleApptName.Click += new System.EventHandler(this.BtnScheduleApptNameClick);
             // 
             // panelCoach
             // 
             this.panelCoach.Controls.Add(this.groupBox7);
             this.panelCoach.Controls.Add(this.pictureBoxCoachProfile);
             this.panelCoach.Controls.Add(this.lblMessage);
-            this.panelCoach.Controls.Add(this.Monday);
-            this.panelCoach.Controls.Add(this.Sunday);
-            this.panelCoach.Controls.Add(this.Tuesday);
-            this.panelCoach.Controls.Add(this.Saturday);
-            this.panelCoach.Controls.Add(this.Wednesday);
-            this.panelCoach.Controls.Add(this.Friday);
-            this.panelCoach.Controls.Add(this.Thursday);
+            this.panelCoach.Controls.Add(this.monday);
+            this.panelCoach.Controls.Add(this.sunday);
+            this.panelCoach.Controls.Add(this.tuesday);
+            this.panelCoach.Controls.Add(this.saturday);
+            this.panelCoach.Controls.Add(this.wednesday);
+            this.panelCoach.Controls.Add(this.friday);
+            this.panelCoach.Controls.Add(this.thursday);
             this.panelCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelCoach.Location = new System.Drawing.Point(21, 55);
             this.panelCoach.Name = "panelCoach";
-            this.panelCoach.Size = new System.Drawing.Size(828, 440);
+            this.panelCoach.Size = new System.Drawing.Size(828, 411);
             this.panelCoach.TabIndex = 8;
             // 
             // groupBox7
@@ -589,11 +1235,11 @@ namespace CoachConnect
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(336, 85);
+            this.label20.Location = new System.Drawing.Point(346, 69);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(113, 13);
+            this.label20.Size = new System.Drawing.Size(102, 13);
             this.label20.TabIndex = 0;
-            this.label20.Text = "Responsible subject(s)";
+            this.label20.Text = "Responsible subject";
             // 
             // lblPhone
             // 
@@ -649,11 +1295,11 @@ namespace CoachConnect
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(51, 49);
+            this.label27.Location = new System.Drawing.Point(61, 49);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(83, 13);
+            this.label27.Size = new System.Drawing.Size(72, 13);
             this.label27.TabIndex = 1;
-            this.label27.Text = "Coaches Name:";
+            this.label27.Text = "Coach Name:";
             // 
             // label26
             // 
@@ -696,20 +1342,20 @@ namespace CoachConnect
             this.lblMessage.TabIndex = 23;
             this.lblMessage.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // Monday
+            // monday
             // 
-            this.Monday.Controls.Add(this.chkMonEvening);
-            this.Monday.Controls.Add(this.chkMonAfternoon);
-            this.Monday.Controls.Add(this.chkMonMidday);
-            this.Monday.Controls.Add(this.chkMonMorning);
-            this.Monday.Enabled = false;
-            this.Monday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Monday.Location = new System.Drawing.Point(8, 297);
-            this.Monday.Name = "Monday";
-            this.Monday.Size = new System.Drawing.Size(111, 135);
-            this.Monday.TabIndex = 16;
-            this.Monday.TabStop = false;
-            this.Monday.Text = "Moday";
+            this.monday.Controls.Add(this.chkMonEvening);
+            this.monday.Controls.Add(this.chkMonAfternoon);
+            this.monday.Controls.Add(this.chkMonMidday);
+            this.monday.Controls.Add(this.chkMonMorning);
+            this.monday.Enabled = false;
+            this.monday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monday.Location = new System.Drawing.Point(8, 270);
+            this.monday.Name = "monday";
+            this.monday.Size = new System.Drawing.Size(111, 135);
+            this.monday.TabIndex = 16;
+            this.monday.TabStop = false;
+            this.monday.Text = "Monday";
             // 
             // chkMonEvening
             // 
@@ -722,7 +1368,7 @@ namespace CoachConnect
             this.chkMonEvening.TabIndex = 10;
             this.chkMonEvening.Text = "Evening";
             this.chkMonEvening.UseVisualStyleBackColor = true;
-            this.chkMonEvening.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkMonEvening.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkMonAfternoon
             // 
@@ -735,7 +1381,7 @@ namespace CoachConnect
             this.chkMonAfternoon.TabIndex = 9;
             this.chkMonAfternoon.Text = "Afternoon";
             this.chkMonAfternoon.UseVisualStyleBackColor = true;
-            this.chkMonAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkMonAfternoon.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkMonMidday
             // 
@@ -748,7 +1394,7 @@ namespace CoachConnect
             this.chkMonMidday.TabIndex = 8;
             this.chkMonMidday.Text = "Midday";
             this.chkMonMidday.UseVisualStyleBackColor = true;
-            this.chkMonMidday.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkMonMidday.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkMonMorning
             // 
@@ -761,22 +1407,22 @@ namespace CoachConnect
             this.chkMonMorning.TabIndex = 7;
             this.chkMonMorning.Text = "Morning";
             this.chkMonMorning.UseVisualStyleBackColor = true;
-            this.chkMonMorning.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkMonMorning.Click += new System.EventHandler(this.TabPage2Click);
             // 
-            // Sunday
+            // sunday
             // 
-            this.Sunday.Controls.Add(this.chkSunEvening);
-            this.Sunday.Controls.Add(this.chkSunAfternoon);
-            this.Sunday.Controls.Add(this.chkSunMidday);
-            this.Sunday.Controls.Add(this.chkSunMorning);
-            this.Sunday.Enabled = false;
-            this.Sunday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Sunday.Location = new System.Drawing.Point(710, 297);
-            this.Sunday.Name = "Sunday";
-            this.Sunday.Size = new System.Drawing.Size(111, 135);
-            this.Sunday.TabIndex = 22;
-            this.Sunday.TabStop = false;
-            this.Sunday.Text = "Sunday";
+            this.sunday.Controls.Add(this.chkSunEvening);
+            this.sunday.Controls.Add(this.chkSunAfternoon);
+            this.sunday.Controls.Add(this.chkSunMidday);
+            this.sunday.Controls.Add(this.chkSunMorning);
+            this.sunday.Enabled = false;
+            this.sunday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sunday.Location = new System.Drawing.Point(710, 270);
+            this.sunday.Name = "sunday";
+            this.sunday.Size = new System.Drawing.Size(111, 135);
+            this.sunday.TabIndex = 22;
+            this.sunday.TabStop = false;
+            this.sunday.Text = "Sunday";
             // 
             // chkSunEvening
             // 
@@ -789,7 +1435,7 @@ namespace CoachConnect
             this.chkSunEvening.TabIndex = 10;
             this.chkSunEvening.Text = "Evening";
             this.chkSunEvening.UseVisualStyleBackColor = true;
-            this.chkSunEvening.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkSunEvening.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkSunAfternoon
             // 
@@ -802,7 +1448,7 @@ namespace CoachConnect
             this.chkSunAfternoon.TabIndex = 9;
             this.chkSunAfternoon.Text = "Afternoon";
             this.chkSunAfternoon.UseVisualStyleBackColor = true;
-            this.chkSunAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkSunAfternoon.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkSunMidday
             // 
@@ -815,7 +1461,7 @@ namespace CoachConnect
             this.chkSunMidday.TabIndex = 8;
             this.chkSunMidday.Text = "Midday";
             this.chkSunMidday.UseVisualStyleBackColor = true;
-            this.chkSunMidday.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkSunMidday.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkSunMorning
             // 
@@ -828,22 +1474,22 @@ namespace CoachConnect
             this.chkSunMorning.TabIndex = 7;
             this.chkSunMorning.Text = "Morning";
             this.chkSunMorning.UseVisualStyleBackColor = true;
-            this.chkSunMorning.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkSunMorning.Click += new System.EventHandler(this.TabPage2Click);
             // 
-            // Tuesday
+            // tuesday
             // 
-            this.Tuesday.Controls.Add(this.chkTueEvening);
-            this.Tuesday.Controls.Add(this.chkTueAfternoon);
-            this.Tuesday.Controls.Add(this.chkTueMidday);
-            this.Tuesday.Controls.Add(this.chkTueMorning);
-            this.Tuesday.Enabled = false;
-            this.Tuesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Tuesday.Location = new System.Drawing.Point(125, 297);
-            this.Tuesday.Name = "Tuesday";
-            this.Tuesday.Size = new System.Drawing.Size(111, 135);
-            this.Tuesday.TabIndex = 17;
-            this.Tuesday.TabStop = false;
-            this.Tuesday.Text = "Tuesday";
+            this.tuesday.Controls.Add(this.chkTueEvening);
+            this.tuesday.Controls.Add(this.chkTueAfternoon);
+            this.tuesday.Controls.Add(this.chkTueMidday);
+            this.tuesday.Controls.Add(this.chkTueMorning);
+            this.tuesday.Enabled = false;
+            this.tuesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tuesday.Location = new System.Drawing.Point(125, 270);
+            this.tuesday.Name = "tuesday";
+            this.tuesday.Size = new System.Drawing.Size(111, 135);
+            this.tuesday.TabIndex = 17;
+            this.tuesday.TabStop = false;
+            this.tuesday.Text = "Tuesday";
             // 
             // chkTueEvening
             // 
@@ -856,7 +1502,7 @@ namespace CoachConnect
             this.chkTueEvening.TabIndex = 10;
             this.chkTueEvening.Text = "Evening";
             this.chkTueEvening.UseVisualStyleBackColor = true;
-            this.chkTueEvening.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkTueEvening.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkTueAfternoon
             // 
@@ -869,7 +1515,7 @@ namespace CoachConnect
             this.chkTueAfternoon.TabIndex = 9;
             this.chkTueAfternoon.Text = "Afternoon";
             this.chkTueAfternoon.UseVisualStyleBackColor = true;
-            this.chkTueAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkTueAfternoon.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkTueMidday
             // 
@@ -882,7 +1528,7 @@ namespace CoachConnect
             this.chkTueMidday.TabIndex = 8;
             this.chkTueMidday.Text = "Midday";
             this.chkTueMidday.UseVisualStyleBackColor = true;
-            this.chkTueMidday.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkTueMidday.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkTueMorning
             // 
@@ -895,22 +1541,22 @@ namespace CoachConnect
             this.chkTueMorning.TabIndex = 7;
             this.chkTueMorning.Text = "Morning";
             this.chkTueMorning.UseVisualStyleBackColor = true;
-            this.chkTueMorning.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkTueMorning.Click += new System.EventHandler(this.TabPage2Click);
             // 
-            // Saturday
+            // saturday
             // 
-            this.Saturday.Controls.Add(this.chkSatEvening);
-            this.Saturday.Controls.Add(this.chkSatAfternoon);
-            this.Saturday.Controls.Add(this.chkSatMidday);
-            this.Saturday.Controls.Add(this.chkSatMorning);
-            this.Saturday.Enabled = false;
-            this.Saturday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Saturday.Location = new System.Drawing.Point(593, 297);
-            this.Saturday.Name = "Saturday";
-            this.Saturday.Size = new System.Drawing.Size(111, 135);
-            this.Saturday.TabIndex = 21;
-            this.Saturday.TabStop = false;
-            this.Saturday.Text = "Saturday";
+            this.saturday.Controls.Add(this.chkSatEvening);
+            this.saturday.Controls.Add(this.chkSatAfternoon);
+            this.saturday.Controls.Add(this.chkSatMidday);
+            this.saturday.Controls.Add(this.chkSatMorning);
+            this.saturday.Enabled = false;
+            this.saturday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.saturday.Location = new System.Drawing.Point(593, 270);
+            this.saturday.Name = "saturday";
+            this.saturday.Size = new System.Drawing.Size(111, 135);
+            this.saturday.TabIndex = 21;
+            this.saturday.TabStop = false;
+            this.saturday.Text = "Saturday";
             // 
             // chkSatEvening
             // 
@@ -923,7 +1569,7 @@ namespace CoachConnect
             this.chkSatEvening.TabIndex = 10;
             this.chkSatEvening.Text = "Evening";
             this.chkSatEvening.UseVisualStyleBackColor = true;
-            this.chkSatEvening.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkSatEvening.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkSatAfternoon
             // 
@@ -936,7 +1582,7 @@ namespace CoachConnect
             this.chkSatAfternoon.TabIndex = 9;
             this.chkSatAfternoon.Text = "Afternoon";
             this.chkSatAfternoon.UseVisualStyleBackColor = true;
-            this.chkSatAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkSatAfternoon.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkSatMidday
             // 
@@ -949,7 +1595,7 @@ namespace CoachConnect
             this.chkSatMidday.TabIndex = 8;
             this.chkSatMidday.Text = "Midday";
             this.chkSatMidday.UseVisualStyleBackColor = true;
-            this.chkSatMidday.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkSatMidday.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkSatMorning
             // 
@@ -962,22 +1608,22 @@ namespace CoachConnect
             this.chkSatMorning.TabIndex = 7;
             this.chkSatMorning.Text = "Morning";
             this.chkSatMorning.UseVisualStyleBackColor = true;
-            this.chkSatMorning.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkSatMorning.Click += new System.EventHandler(this.TabPage2Click);
             // 
-            // Wednesday
+            // wednesday
             // 
-            this.Wednesday.Controls.Add(this.chkWedEvening);
-            this.Wednesday.Controls.Add(this.chkWedAfternoon);
-            this.Wednesday.Controls.Add(this.chkWedMidday);
-            this.Wednesday.Controls.Add(this.chkWedMorning);
-            this.Wednesday.Enabled = false;
-            this.Wednesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Wednesday.Location = new System.Drawing.Point(242, 297);
-            this.Wednesday.Name = "Wednesday";
-            this.Wednesday.Size = new System.Drawing.Size(111, 135);
-            this.Wednesday.TabIndex = 18;
-            this.Wednesday.TabStop = false;
-            this.Wednesday.Text = "Wednesday";
+            this.wednesday.Controls.Add(this.chkWedEvening);
+            this.wednesday.Controls.Add(this.chkWedAfternoon);
+            this.wednesday.Controls.Add(this.chkWedMidday);
+            this.wednesday.Controls.Add(this.chkWedMorning);
+            this.wednesday.Enabled = false;
+            this.wednesday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.wednesday.Location = new System.Drawing.Point(242, 270);
+            this.wednesday.Name = "wednesday";
+            this.wednesday.Size = new System.Drawing.Size(111, 135);
+            this.wednesday.TabIndex = 18;
+            this.wednesday.TabStop = false;
+            this.wednesday.Text = "Wednesday";
             // 
             // chkWedEvening
             // 
@@ -990,7 +1636,7 @@ namespace CoachConnect
             this.chkWedEvening.TabIndex = 10;
             this.chkWedEvening.Text = "Evening";
             this.chkWedEvening.UseVisualStyleBackColor = true;
-            this.chkWedEvening.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkWedEvening.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkWedAfternoon
             // 
@@ -1003,7 +1649,7 @@ namespace CoachConnect
             this.chkWedAfternoon.TabIndex = 9;
             this.chkWedAfternoon.Text = "Afternoon";
             this.chkWedAfternoon.UseVisualStyleBackColor = true;
-            this.chkWedAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkWedAfternoon.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkWedMidday
             // 
@@ -1016,7 +1662,7 @@ namespace CoachConnect
             this.chkWedMidday.TabIndex = 8;
             this.chkWedMidday.Text = "Midday";
             this.chkWedMidday.UseVisualStyleBackColor = true;
-            this.chkWedMidday.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkWedMidday.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkWedMorning
             // 
@@ -1029,22 +1675,22 @@ namespace CoachConnect
             this.chkWedMorning.TabIndex = 7;
             this.chkWedMorning.Text = "Morning";
             this.chkWedMorning.UseVisualStyleBackColor = true;
-            this.chkWedMorning.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkWedMorning.Click += new System.EventHandler(this.TabPage2Click);
             // 
-            // Friday
+            // friday
             // 
-            this.Friday.Controls.Add(this.chkFriEvening);
-            this.Friday.Controls.Add(this.chkFriAfternoon);
-            this.Friday.Controls.Add(this.chkFriMidday);
-            this.Friday.Controls.Add(this.chkFriMorning);
-            this.Friday.Enabled = false;
-            this.Friday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Friday.Location = new System.Drawing.Point(476, 297);
-            this.Friday.Name = "Friday";
-            this.Friday.Size = new System.Drawing.Size(111, 135);
-            this.Friday.TabIndex = 20;
-            this.Friday.TabStop = false;
-            this.Friday.Text = "Friday";
+            this.friday.Controls.Add(this.chkFriEvening);
+            this.friday.Controls.Add(this.chkFriAfternoon);
+            this.friday.Controls.Add(this.chkFriMidday);
+            this.friday.Controls.Add(this.chkFriMorning);
+            this.friday.Enabled = false;
+            this.friday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.friday.Location = new System.Drawing.Point(476, 270);
+            this.friday.Name = "friday";
+            this.friday.Size = new System.Drawing.Size(111, 135);
+            this.friday.TabIndex = 20;
+            this.friday.TabStop = false;
+            this.friday.Text = "Friday";
             // 
             // chkFriEvening
             // 
@@ -1057,7 +1703,7 @@ namespace CoachConnect
             this.chkFriEvening.TabIndex = 10;
             this.chkFriEvening.Text = "Evening";
             this.chkFriEvening.UseVisualStyleBackColor = true;
-            this.chkFriEvening.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkFriEvening.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkFriAfternoon
             // 
@@ -1070,7 +1716,7 @@ namespace CoachConnect
             this.chkFriAfternoon.TabIndex = 9;
             this.chkFriAfternoon.Text = "Afternoon";
             this.chkFriAfternoon.UseVisualStyleBackColor = true;
-            this.chkFriAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkFriAfternoon.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkFriMidday
             // 
@@ -1083,7 +1729,7 @@ namespace CoachConnect
             this.chkFriMidday.TabIndex = 8;
             this.chkFriMidday.Text = "Midday";
             this.chkFriMidday.UseVisualStyleBackColor = true;
-            this.chkFriMidday.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkFriMidday.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkFriMorning
             // 
@@ -1096,22 +1742,22 @@ namespace CoachConnect
             this.chkFriMorning.TabIndex = 7;
             this.chkFriMorning.Text = "Morning";
             this.chkFriMorning.UseVisualStyleBackColor = true;
-            this.chkFriMorning.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkFriMorning.Click += new System.EventHandler(this.TabPage2Click);
             // 
-            // Thursday
+            // thursday
             // 
-            this.Thursday.Controls.Add(this.chkThuEvening);
-            this.Thursday.Controls.Add(this.chkThuAfternoon);
-            this.Thursday.Controls.Add(this.chkThuMidday);
-            this.Thursday.Controls.Add(this.chkThuMorning);
-            this.Thursday.Enabled = false;
-            this.Thursday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Thursday.Location = new System.Drawing.Point(359, 297);
-            this.Thursday.Name = "Thursday";
-            this.Thursday.Size = new System.Drawing.Size(111, 135);
-            this.Thursday.TabIndex = 19;
-            this.Thursday.TabStop = false;
-            this.Thursday.Text = "Thursday";
+            this.thursday.Controls.Add(this.chkThuEvening);
+            this.thursday.Controls.Add(this.chkThuAfternoon);
+            this.thursday.Controls.Add(this.chkThuMidday);
+            this.thursday.Controls.Add(this.chkThuMorning);
+            this.thursday.Enabled = false;
+            this.thursday.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.thursday.Location = new System.Drawing.Point(359, 270);
+            this.thursday.Name = "thursday";
+            this.thursday.Size = new System.Drawing.Size(111, 135);
+            this.thursday.TabIndex = 19;
+            this.thursday.TabStop = false;
+            this.thursday.Text = "Thursday";
             // 
             // chkThuEvening
             // 
@@ -1124,7 +1770,7 @@ namespace CoachConnect
             this.chkThuEvening.TabIndex = 10;
             this.chkThuEvening.Text = "Evening";
             this.chkThuEvening.UseVisualStyleBackColor = true;
-            this.chkThuEvening.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkThuEvening.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkThuAfternoon
             // 
@@ -1137,7 +1783,7 @@ namespace CoachConnect
             this.chkThuAfternoon.TabIndex = 9;
             this.chkThuAfternoon.Text = "Afternoon";
             this.chkThuAfternoon.UseVisualStyleBackColor = true;
-            this.chkThuAfternoon.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkThuAfternoon.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkThuMidday
             // 
@@ -1150,7 +1796,7 @@ namespace CoachConnect
             this.chkThuMidday.TabIndex = 8;
             this.chkThuMidday.Text = "Midday";
             this.chkThuMidday.UseVisualStyleBackColor = true;
-            this.chkThuMidday.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkThuMidday.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // chkThuMorning
             // 
@@ -1163,7 +1809,7 @@ namespace CoachConnect
             this.chkThuMorning.TabIndex = 7;
             this.chkThuMorning.Text = "Morning";
             this.chkThuMorning.UseVisualStyleBackColor = true;
-            this.chkThuMorning.Click += new System.EventHandler(this.tabPage2_Click);
+            this.chkThuMorning.Click += new System.EventHandler(this.TabPage2Click);
             // 
             // tabPage3
             // 
@@ -1197,9 +1843,9 @@ namespace CoachConnect
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(868, 541);
+            this.tabPage3.Size = new System.Drawing.Size(868, 512);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Find Coach By Interest";
+            this.tabPage3.Text = "Find Session By Interest";
             // 
             // lblTransport
             // 
@@ -1331,7 +1977,7 @@ namespace CoachConnect
             this.btnTransport.Size = new System.Drawing.Size(80, 80);
             this.btnTransport.TabIndex = 24;
             this.btnTransport.UseVisualStyleBackColor = true;
-            this.btnTransport.Click += new System.EventHandler(this.btnTransport_Click);
+            this.btnTransport.Click += new System.EventHandler(this.BtnTransportClick);
             // 
             // btnScience
             // 
@@ -1342,7 +1988,7 @@ namespace CoachConnect
             this.btnScience.Size = new System.Drawing.Size(80, 80);
             this.btnScience.TabIndex = 22;
             this.btnScience.UseVisualStyleBackColor = true;
-            this.btnScience.Click += new System.EventHandler(this.btnScience_Click);
+            this.btnScience.Click += new System.EventHandler(this.BtnScienceClick);
             // 
             // btnManu
             // 
@@ -1353,7 +1999,7 @@ namespace CoachConnect
             this.btnManu.Size = new System.Drawing.Size(80, 80);
             this.btnManu.TabIndex = 20;
             this.btnManu.UseVisualStyleBackColor = true;
-            this.btnManu.Click += new System.EventHandler(this.btnManu_Click);
+            this.btnManu.Click += new System.EventHandler(this.BtnManuClick);
             // 
             // btnLaw
             // 
@@ -1364,7 +2010,7 @@ namespace CoachConnect
             this.btnLaw.Size = new System.Drawing.Size(80, 80);
             this.btnLaw.TabIndex = 18;
             this.btnLaw.UseVisualStyleBackColor = true;
-            this.btnLaw.Click += new System.EventHandler(this.btnLaw_Click);
+            this.btnLaw.Click += new System.EventHandler(this.BtnLawClick);
             // 
             // btnIT
             // 
@@ -1375,7 +2021,7 @@ namespace CoachConnect
             this.btnIT.Size = new System.Drawing.Size(80, 80);
             this.btnIT.TabIndex = 16;
             this.btnIT.UseVisualStyleBackColor = true;
-            this.btnIT.Click += new System.EventHandler(this.btnIT_Click);
+            this.btnIT.Click += new System.EventHandler(this.BtnITClick);
             // 
             // btnHuman
             // 
@@ -1386,7 +2032,7 @@ namespace CoachConnect
             this.btnHuman.Size = new System.Drawing.Size(80, 80);
             this.btnHuman.TabIndex = 14;
             this.btnHuman.UseVisualStyleBackColor = true;
-            this.btnHuman.Click += new System.EventHandler(this.btnHuman_Click);
+            this.btnHuman.Click += new System.EventHandler(this.BtnHumanClick);
             // 
             // btnHealth
             // 
@@ -1397,7 +2043,7 @@ namespace CoachConnect
             this.btnHealth.Size = new System.Drawing.Size(80, 80);
             this.btnHealth.TabIndex = 12;
             this.btnHealth.UseVisualStyleBackColor = true;
-            this.btnHealth.Click += new System.EventHandler(this.bthHealth_Click);
+            this.btnHealth.Click += new System.EventHandler(this.BthHealthClick);
             // 
             // btnGeneral
             // 
@@ -1408,7 +2054,7 @@ namespace CoachConnect
             this.btnGeneral.Size = new System.Drawing.Size(80, 80);
             this.btnGeneral.TabIndex = 10;
             this.btnGeneral.UseVisualStyleBackColor = true;
-            this.btnGeneral.Click += new System.EventHandler(this.btnGeneral_Click);
+            this.btnGeneral.Click += new System.EventHandler(this.BtnGeneralClick);
             // 
             // btnEnergy
             // 
@@ -1419,7 +2065,7 @@ namespace CoachConnect
             this.btnEnergy.Size = new System.Drawing.Size(80, 80);
             this.btnEnergy.TabIndex = 8;
             this.btnEnergy.UseVisualStyleBackColor = true;
-            this.btnEnergy.Click += new System.EventHandler(this.btnEnergy_Click);
+            this.btnEnergy.Click += new System.EventHandler(this.BtnEnergyClick);
             // 
             // btnDigital
             // 
@@ -1430,7 +2076,7 @@ namespace CoachConnect
             this.btnDigital.Size = new System.Drawing.Size(80, 80);
             this.btnDigital.TabIndex = 6;
             this.btnDigital.UseVisualStyleBackColor = true;
-            this.btnDigital.Click += new System.EventHandler(this.btnDigital_Click);
+            this.btnDigital.Click += new System.EventHandler(this.BtnDigitalClick);
             // 
             // btnBusiness
             // 
@@ -1441,7 +2087,7 @@ namespace CoachConnect
             this.btnBusiness.Size = new System.Drawing.Size(80, 80);
             this.btnBusiness.TabIndex = 4;
             this.btnBusiness.UseVisualStyleBackColor = true;
-            this.btnBusiness.Click += new System.EventHandler(this.btnBusiness_Click);
+            this.btnBusiness.Click += new System.EventHandler(this.BtnBusinessClick);
             // 
             // btnArch
             // 
@@ -1452,7 +2098,7 @@ namespace CoachConnect
             this.btnArch.Size = new System.Drawing.Size(80, 80);
             this.btnArch.TabIndex = 2;
             this.btnArch.UseVisualStyleBackColor = true;
-            this.btnArch.Click += new System.EventHandler(this.btnArch_Click);
+            this.btnArch.Click += new System.EventHandler(this.BtnArchClick);
             // 
             // btnAgri
             // 
@@ -1463,7 +2109,7 @@ namespace CoachConnect
             this.btnAgri.Size = new System.Drawing.Size(80, 80);
             this.btnAgri.TabIndex = 0;
             this.btnAgri.UseVisualStyleBackColor = true;
-            this.btnAgri.Click += new System.EventHandler(this.btnAgri_Click);
+            this.btnAgri.Click += new System.EventHandler(this.BtnAgriClick);
             // 
             // tabPage4
             // 
@@ -1478,9 +2124,9 @@ namespace CoachConnect
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(868, 541);
+            this.tabPage4.Size = new System.Drawing.Size(868, 512);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Find Coach By Time";
+            this.tabPage4.Text = "Find Session By Time";
             // 
             // btnClearByTime
             // 
@@ -1491,18 +2137,18 @@ namespace CoachConnect
             this.btnClearByTime.TabIndex = 30;
             this.btnClearByTime.Text = "Clear";
             this.btnClearByTime.UseVisualStyleBackColor = true;
-            this.btnClearByTime.Click += new System.EventHandler(this.btnClearByTime_Click);
+            this.btnClearByTime.Click += new System.EventHandler(this.BtnClearByTimeClick);
             // 
             // btnScheduleAppointment
             // 
             this.btnScheduleAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnScheduleAppointment.Location = new System.Drawing.Point(742, 503);
+            this.btnScheduleAppointment.Location = new System.Drawing.Point(742, 458);
             this.btnScheduleAppointment.Name = "btnScheduleAppointment";
             this.btnScheduleAppointment.Size = new System.Drawing.Size(101, 28);
             this.btnScheduleAppointment.TabIndex = 22;
-            this.btnScheduleAppointment.Text = "Assign Coach";
+            this.btnScheduleAppointment.Text = "Join Session";
             this.btnScheduleAppointment.UseVisualStyleBackColor = true;
-            this.btnScheduleAppointment.Click += new System.EventHandler(this.btnScheduleAppointment_Click);
+            this.btnScheduleAppointment.Click += new System.EventHandler(this.BtnScheduleAppointmentClick);
             // 
             // btnSearchByTime
             // 
@@ -1513,34 +2159,33 @@ namespace CoachConnect
             this.btnSearchByTime.TabIndex = 21;
             this.btnSearchByTime.Text = "Search";
             this.btnSearchByTime.UseVisualStyleBackColor = true;
-            this.btnSearchByTime.Click += new System.EventHandler(this.btnSearchByTime_Click);
+            this.btnSearchByTime.Click += new System.EventHandler(this.BtnSearchByTimeClick);
             // 
             // label49
             // 
             this.label49.AutoSize = true;
             this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label49.Location = new System.Drawing.Point(128, 21);
+            this.label49.Location = new System.Drawing.Point(200, 21);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(598, 16);
+            this.label49.Size = new System.Drawing.Size(445, 16);
             this.label49.TabIndex = 20;
-            this.label49.Text = "To assign a coach, Please select the day and day period then click Search button " +
-    "to find your coach";
+            this.label49.Text = "To find a session, please select the day and day period, then click Search";
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.dataGridCoachesByTime);
+            this.groupBox4.Controls.Add(this.dataGridSessionsByTime);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(22, 214);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(821, 216);
             this.groupBox4.TabIndex = 19;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Available Coaches";
+            this.groupBox4.Text = "Available Sessions";
             // 
-            // dataGridCoachesByTime
+            // dataGridSessionsByTime
             // 
-            this.dataGridCoachesByTime.AllowUserToAddRows = false;
-            this.dataGridCoachesByTime.AllowUserToDeleteRows = false;
+            this.dataGridSessionsByTime.AllowUserToAddRows = false;
+            this.dataGridSessionsByTime.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1548,8 +2193,8 @@ namespace CoachConnect
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridCoachesByTime.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridCoachesByTime.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridSessionsByTime.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridSessionsByTime.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1557,10 +2202,10 @@ namespace CoachConnect
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridCoachesByTime.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridCoachesByTime.Location = new System.Drawing.Point(6, 19);
-            this.dataGridCoachesByTime.Name = "dataGridCoachesByTime";
-            this.dataGridCoachesByTime.ReadOnly = true;
+            this.dataGridSessionsByTime.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridSessionsByTime.Location = new System.Drawing.Point(6, 19);
+            this.dataGridSessionsByTime.Name = "dataGridSessionsByTime";
+            this.dataGridSessionsByTime.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1568,10 +2213,10 @@ namespace CoachConnect
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridCoachesByTime.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridCoachesByTime.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridCoachesByTime.Size = new System.Drawing.Size(809, 191);
-            this.dataGridCoachesByTime.TabIndex = 10;
+            this.dataGridSessionsByTime.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridSessionsByTime.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridSessionsByTime.Size = new System.Drawing.Size(809, 191);
+            this.dataGridSessionsByTime.TabIndex = 10;
             // 
             // groupBox3
             // 
@@ -1788,15 +2433,25 @@ namespace CoachConnect
             this.label14.TabIndex = 0;
             this.label14.Text = "Mon";
             // 
+            // btnStdLogout
+            // 
+            this.btnStdLogout.Location = new System.Drawing.Point(710, 576);
+            this.btnStdLogout.Name = "btnStdLogout";
+            this.btnStdLogout.Size = new System.Drawing.Size(75, 23);
+            this.btnStdLogout.TabIndex = 10;
+            this.btnStdLogout.Text = "Logout";
+            this.btnStdLogout.UseVisualStyleBackColor = true;
+            this.btnStdLogout.Click += new System.EventHandler(this.BtnStdLogoutClick);
+            // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(785, 12);
+            this.btnExit.Location = new System.Drawing.Point(791, 576);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(93, 23);
             this.btnExit.TabIndex = 6;
             this.btnExit.Text = "Exit Program";
             this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.btnExit.Click += new System.EventHandler(this.BtnExitClick);
             // 
             // FindCoachForm
             // 
@@ -1805,14 +2460,15 @@ namespace CoachConnect
             this.ClientSize = new System.Drawing.Size(900, 611);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.btnStdLogout);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FindCoachForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Student Main Form, Find Coach Form";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FindCoachForm_FormClosed);
+            this.Text = "Student Main Form";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FindCoachFormFormClosed);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -1828,25 +2484,25 @@ namespace CoachConnect
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCoachProfile)).EndInit();
-            this.Monday.ResumeLayout(false);
-            this.Monday.PerformLayout();
-            this.Sunday.ResumeLayout(false);
-            this.Sunday.PerformLayout();
-            this.Tuesday.ResumeLayout(false);
-            this.Tuesday.PerformLayout();
-            this.Saturday.ResumeLayout(false);
-            this.Saturday.PerformLayout();
-            this.Wednesday.ResumeLayout(false);
-            this.Wednesday.PerformLayout();
-            this.Friday.ResumeLayout(false);
-            this.Friday.PerformLayout();
-            this.Thursday.ResumeLayout(false);
-            this.Thursday.PerformLayout();
+            this.monday.ResumeLayout(false);
+            this.monday.PerformLayout();
+            this.sunday.ResumeLayout(false);
+            this.sunday.PerformLayout();
+            this.tuesday.ResumeLayout(false);
+            this.tuesday.PerformLayout();
+            this.saturday.ResumeLayout(false);
+            this.saturday.PerformLayout();
+            this.wednesday.ResumeLayout(false);
+            this.wednesday.PerformLayout();
+            this.friday.ResumeLayout(false);
+            this.friday.PerformLayout();
+            this.thursday.ResumeLayout(false);
+            this.thursday.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridCoachesByTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridSessionsByTime)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1856,138 +2512,5 @@ namespace CoachConnect
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.Button btnAgri;
-        private System.Windows.Forms.Label lblEnergy;
-        private System.Windows.Forms.Button btnEnergy;
-        private System.Windows.Forms.Label lblDigital;
-        private System.Windows.Forms.Button btnDigital;
-        private System.Windows.Forms.Label lblBusiness;
-        private System.Windows.Forms.Button btnBusiness;
-        private System.Windows.Forms.Label lblArch;
-        private System.Windows.Forms.Button btnArch;
-        private System.Windows.Forms.Label lblAgri;
-        private System.Windows.Forms.Label lblLaw;
-        private System.Windows.Forms.Button btnLaw;
-        private System.Windows.Forms.Label lblIT;
-        private System.Windows.Forms.Button btnIT;
-        private System.Windows.Forms.Label lblHuman;
-        private System.Windows.Forms.Button btnHuman;
-        private System.Windows.Forms.Label lblHealth;
-        private System.Windows.Forms.Button btnHealth;
-        private System.Windows.Forms.Label lblGeneral;
-        private System.Windows.Forms.Button btnGeneral;
-        private System.Windows.Forms.Label lblTransport;
-        private System.Windows.Forms.Button btnTransport;
-        private System.Windows.Forms.Label lblScience;
-        private System.Windows.Forms.Button btnScience;
-        private System.Windows.Forms.Label lblManu;
-        private System.Windows.Forms.Button btnManu;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnEditProfile;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label lblStdPhone;
-        private System.Windows.Forms.Label lblStdEmail;
-        private System.Windows.Forms.Label lblStdName;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.PictureBox pictureBoxStdProfile;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.DataGridView dgrShowAppointments;
-        private System.Windows.Forms.Button btnCancelCoach;
-        private System.Windows.Forms.Panel panelCoach;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Label lblCoachName;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label lblActiveCoach;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.PictureBox pictureBoxCoachProfile;
-        private System.Windows.Forms.Button btnClear;
-        private System.Windows.Forms.Button btnScheduleApptName;
-        private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.GroupBox Sunday;
-        private System.Windows.Forms.CheckBox chkSunEvening;
-        private System.Windows.Forms.CheckBox chkSunAfternoon;
-        private System.Windows.Forms.CheckBox chkSunMidday;
-        private System.Windows.Forms.CheckBox chkSunMorning;
-        private System.Windows.Forms.GroupBox Saturday;
-        private System.Windows.Forms.CheckBox chkSatEvening;
-        private System.Windows.Forms.CheckBox chkSatAfternoon;
-        private System.Windows.Forms.CheckBox chkSatMidday;
-        private System.Windows.Forms.CheckBox chkSatMorning;
-        private System.Windows.Forms.GroupBox Friday;
-        private System.Windows.Forms.CheckBox chkFriEvening;
-        private System.Windows.Forms.CheckBox chkFriAfternoon;
-        private System.Windows.Forms.CheckBox chkFriMidday;
-        private System.Windows.Forms.CheckBox chkFriMorning;
-        private System.Windows.Forms.GroupBox Thursday;
-        private System.Windows.Forms.CheckBox chkThuEvening;
-        private System.Windows.Forms.CheckBox chkThuAfternoon;
-        private System.Windows.Forms.CheckBox chkThuMidday;
-        private System.Windows.Forms.CheckBox chkThuMorning;
-        private System.Windows.Forms.GroupBox Wednesday;
-        private System.Windows.Forms.CheckBox chkWedEvening;
-        private System.Windows.Forms.CheckBox chkWedAfternoon;
-        private System.Windows.Forms.CheckBox chkWedMidday;
-        private System.Windows.Forms.CheckBox chkWedMorning;
-        private System.Windows.Forms.GroupBox Tuesday;
-        private System.Windows.Forms.CheckBox chkTueEvening;
-        private System.Windows.Forms.CheckBox chkTueAfternoon;
-        private System.Windows.Forms.CheckBox chkTueMidday;
-        private System.Windows.Forms.CheckBox chkTueMorning;
-        private System.Windows.Forms.GroupBox Monday;
-        private System.Windows.Forms.CheckBox chkMonEvening;
-        private System.Windows.Forms.CheckBox chkMonAfternoon;
-        private System.Windows.Forms.CheckBox chkMonMidday;
-        private System.Windows.Forms.CheckBox chkMonMorning;
-        private System.Windows.Forms.Button btnSearchByTime;
-        private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.CheckBox chkEvening;
-        private System.Windows.Forms.CheckBox chkMidday;
-        private System.Windows.Forms.CheckBox chkAfternoon;
-        private System.Windows.Forms.CheckBox chkMorning;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox chkSun;
-        private System.Windows.Forms.CheckBox chkSat;
-        private System.Windows.Forms.CheckBox chkFri;
-        private System.Windows.Forms.CheckBox chkThu;
-        private System.Windows.Forms.CheckBox chkWed;
-        private System.Windows.Forms.CheckBox chkTue;
-        private System.Windows.Forms.CheckBox chkMon;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button btnScheduleAppointment;
-        private System.Windows.Forms.Button btnResetPassowrd;
-        private System.Windows.Forms.Label lblStdID;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnClearByTime;
-        private System.Windows.Forms.ComboBox comboBoxCoaches;
-        private System.Windows.Forms.Label appointmentMessage;
-        private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblPhone;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridCoachesByTime;
-        private System.Windows.Forms.Button btnStdLogout;
-        private System.Windows.Forms.Label lblRegisterStatusMessage;
-        private System.Windows.Forms.ListBox listBoxCourse;
-        private System.Windows.Forms.ListBox listBoxDisplayCoachSubject;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnExit;
     }
 }

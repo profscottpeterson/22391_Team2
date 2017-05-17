@@ -14,17 +14,17 @@ namespace CoachConnect
         private System.Windows.Forms.Button btnChangePassword;
 
         /// <summary>
-        /// A tab control object to allow different admin tool subforms to be displayed
+        /// A tab control object to allow different admin tool sub-forms to be displayed
         /// </summary>
         private System.Windows.Forms.TabControl tabControl1;
 
         /// <summary>
-        /// A tab page to hold the Users admin tool as a subform
+        /// A tab page to hold the Users admin tool as a sub-form
         /// </summary>
         private System.Windows.Forms.TabPage usersTabPage;
 
         /// <summary>
-        /// A tab page to hold the Sessions admin tool as a subform
+        /// A tab page to hold the Sessions admin tool as a sub-form
         /// </summary>
         private System.Windows.Forms.TabPage sessionsTabPage;
 
@@ -77,7 +77,7 @@ namespace CoachConnect
             // 
             // btnChangePassword
             // 
-            this.btnChangePassword.Location = new System.Drawing.Point(16, 547);
+            this.btnChangePassword.Location = new System.Drawing.Point(12, 423);
             this.btnChangePassword.Name = "btnChangePassword";
             this.btnChangePassword.Size = new System.Drawing.Size(151, 23);
             this.btnChangePassword.TabIndex = 2;
@@ -92,7 +92,7 @@ namespace CoachConnect
             this.tabControl1.Location = new System.Drawing.Point(12, 10);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(769, 531);
+            this.tabControl1.Size = new System.Drawing.Size(752, 407);
             this.tabControl1.TabIndex = 3;
             // 
             // usersTabPage
@@ -100,7 +100,7 @@ namespace CoachConnect
             this.usersTabPage.Location = new System.Drawing.Point(4, 22);
             this.usersTabPage.Name = "usersTabPage";
             this.usersTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.usersTabPage.Size = new System.Drawing.Size(761, 505);
+            this.usersTabPage.Size = new System.Drawing.Size(744, 381);
             this.usersTabPage.TabIndex = 0;
             this.usersTabPage.Text = "Users";
             this.usersTabPage.UseVisualStyleBackColor = true;
@@ -110,7 +110,7 @@ namespace CoachConnect
             this.sessionsTabPage.Location = new System.Drawing.Point(4, 22);
             this.sessionsTabPage.Name = "sessionsTabPage";
             this.sessionsTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.sessionsTabPage.Size = new System.Drawing.Size(835, 505);
+            this.sessionsTabPage.Size = new System.Drawing.Size(761, 505);
             this.sessionsTabPage.TabIndex = 1;
             this.sessionsTabPage.Text = "Sessions";
             this.sessionsTabPage.UseVisualStyleBackColor = true;
@@ -118,7 +118,7 @@ namespace CoachConnect
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnExit.Location = new System.Drawing.Point(697, 547);
+            this.btnExit.Location = new System.Drawing.Point(680, 423);
             this.btnExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(80, 23);
@@ -130,7 +130,7 @@ namespace CoachConnect
             // btnLogOff
             // 
             this.btnLogOff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnLogOff.Location = new System.Drawing.Point(592, 547);
+            this.btnLogOff.Location = new System.Drawing.Point(575, 422);
             this.btnLogOff.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogOff.Name = "btnLogOff";
             this.btnLogOff.Size = new System.Drawing.Size(99, 23);
@@ -144,7 +144,7 @@ namespace CoachConnect
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(788, 580);
+            this.ClientSize = new System.Drawing.Size(773, 454);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogOff);
             this.Controls.Add(this.tabControl1);

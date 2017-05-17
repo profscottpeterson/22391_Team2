@@ -1,146 +1,165 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
+﻿// <copyright file="UserAdminForm.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
 namespace CoachConnect
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="UserAdminForm"/> class.
+    /// </summary>
     public partial class UserAdminForm : Form
     {
+        /// <summary>
+        /// Initializes a new instance of the UserAdminForm class.
+        /// </summary>
         public UserAdminForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblUsers_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UserAdminForm_Load(object sender, EventArgs e)
+  
+        /// <summary>
+        /// Maximizes Form and displays the users with load event of the form.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void UserAdminFormLoad(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-
-            displayUsers();
+            this.DisplayUsers();
         }
 
-        private void displayUsers()
+        /// <summary>
+        /// Method to display the list of users
+        /// </summary>
+        private void DisplayUsers()
         {
             using (var context = new db_sft_2172Entities())
             {
+                // Query user table in database and returns the list of the users in ascending order according to last name
                 var userQuery = from u in context.Users
+                                orderby u.LastName ascending
                                 select u;
-                lstBoxUsers.Items.Clear();
+
+                // Clearing the list box for new entries.
+                this.lstBoxUsers.Items.Clear();
                 foreach (var item in userQuery)
                 {
-                    string username = (item.UserID + " " + item.DisplayName);
-                    lstBoxUsers.Items.Add(username);
+                    // adding to the listbox
+                    string username = item.UserID + " " + item.DisplayName;
+                    this.lstBoxUsers.Items.Add(username);
                 }
             }
         }
 
-        private void chkBoxClear()
+        /// <summary>
+        /// Clear all checkboxes
+        /// </summary>
+        private void ChkBoxClear()
         {
-           
-            chkBoxAdmin.Checked = false;
-            chkBoxActive.Checked = false;
-            chkBoxCoach.Checked = false;
-            chkBoxStudent.Checked = false;
-            txtBoxFirstName.Clear();
-            txtBoxLastName.Clear();
-            txtBoxMiddleName.Clear();
-            txtBoxPassword.Clear();
-            txtBoxUserID.Clear();
+           // Clearing check boxes and text boxes.
+            this.chkBoxAdmin.Checked = false;
+            this.chkBoxActive.Checked = false;
+            this.chkBoxCoach.Checked = false;
+            this.chkBoxStudent.Checked = false;
+            this.txtBoxFirstName.Clear();
+            this.txtBoxLastName.Clear();
+            this.txtBoxMiddleName.Clear();
+            this.txtBoxPassword.Clear();
+            this.txtBoxUserID.Clear();
         }
 
-        private void lstBoxUsers_SelectedIndexChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Populates the check boxes and text boxes.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void LstBoxUsersSelectedIndexChanged(object sender, EventArgs e)
         {
             using (var context = new db_sft_2172Entities())
             {
-
-                string username = lstBoxUsers.SelectedItem.ToString();
+                // Query is getting the user num from the list box.
+                string username = this.lstBoxUsers.SelectedItem.ToString();
                 string[] userNameSplit = username.Split(' ');
                 string usernum = userNameSplit[0];
+
+                // Finds the user in the database.
                 var userQuery = from u in context.Users
                                 where u.UserID.Equals(usernum)
                                 select u;
-                if (userQuery.Count<User>() > 0)
+
+                // If the result has a user it displays the info in the check boxes and the text boxes.
+                if (userQuery.Any())
                 {
                     var userResult = userQuery.FirstOrDefault<User>();
-                    txtBoxFirstName.Text = userResult.FirstName;
-                    txtBoxLastName.Text = userResult.LastName;
-                    txtBoxMiddleName.Text = userResult.MiddleName;
-                    txtBoxUserID.Text = userResult.UserID;
-                    txtBoxPassword.Text = userResult.Password;
+                    this.txtBoxFirstName.Text = userResult.FirstName;
+                    this.txtBoxLastName.Text = userResult.LastName;
+                    this.txtBoxMiddleName.Text = userResult.MiddleName;
+                    this.txtBoxUserID.Text = userResult.UserID;
+                    this.txtBoxPassword.Text = userResult.Password;
 
-                    chkBoxAdmin.Checked = userResult.IsAdmin;
-                    chkBoxActive.Checked = userResult.IsActive;
-                    chkBoxStudent.Checked = userResult.IsStudent;
-                    chkBoxCoach.Checked = userResult.IsCoach;
+                    this.chkBoxAdmin.Checked = userResult.IsAdmin;
+                    this.chkBoxActive.Checked = userResult.IsActive;
+                    this.chkBoxStudent.Checked = userResult.IsStudent;
+                    this.chkBoxCoach.Checked = userResult.IsCoach;
                 }
             }
         }
 
-      
-       
-        private void btnAdd_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Add button clearing all text boxes and check boxes allowing user to populate.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnAddClick(object sender, EventArgs e)
         {
-            txtBoxFirstName.Text = String.Empty;
-            txtBoxLastName.Text = String.Empty;
-            txtBoxMiddleName.Text = String.Empty;
-            txtBoxUserID.Text = String.Empty;
-            txtBoxPassword.Text = String.Empty;
-            lstBoxUsers.Items.Add("First Name Middle Name Last Name");
-            lstBoxUsers.SelectedIndex = lstBoxUsers.Items.Count - 1;
+            this.txtBoxFirstName.Text = string.Empty;
+            this.txtBoxLastName.Text = string.Empty;
+            this.txtBoxMiddleName.Text = string.Empty;
+            this.txtBoxUserID.Text = string.Empty;
+            this.txtBoxPassword.Text = string.Empty;
+            this.chkBoxActive.Checked = false;
+            this.chkBoxAdmin.Checked = false;
+            this.chkBoxCoach.Checked = false;
+            this.chkBoxStudent.Checked = false;
+            this.lstBoxUsers.Items.Add("First Name Middle Name Last Name");
+            this.lstBoxUsers.SelectedIndex = this.lstBoxUsers.Items.Count - 1;
 
+            this.txtBoxUserID.ReadOnly = false;
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Submit button which submits the added or updated info to the database.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnSubmitClick(object sender, EventArgs e)
         {
-            this.Close();
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            if (lstBoxUsers.SelectedItem.Equals("First Name Middle Name Last Name"))
+            if (this.lstBoxUsers.SelectedItem.Equals("First Name Middle Name Last Name"))
             {
-                //add
+                // adding user to the database.
                 using (var context = new db_sft_2172Entities())
                 {
                     User user = new User();
-                    user.FirstName = txtBoxFirstName.Text;
-                    user.MiddleName = txtBoxMiddleName.Text;
-                    user.LastName = txtBoxLastName.Text;
-                    user.UserID = txtBoxUserID.Text;
-                    user.Password = txtBoxPassword.Text;
-                    user.IsAdmin = chkBoxAdmin.Checked;
-                    user.IsActive = chkBoxActive.Checked;
-                    user.IsCoach = chkBoxCoach.Checked;
-                    user.IsStudent = chkBoxStudent.Checked;
-                    user.DisplayName = txtBoxFirstName.Text + " " + txtBoxMiddleName.Text + " " + txtBoxLastName.Text;
+                    user.FirstName = this.txtBoxFirstName.Text;
+                    user.MiddleName = this.txtBoxMiddleName.Text;
+                    user.LastName = this.txtBoxLastName.Text;
+                    user.UserID = this.txtBoxUserID.Text;
+                    user.Password = this.txtBoxPassword.Text;
+                    user.IsAdmin = this.chkBoxAdmin.Checked;
+                    user.IsActive = this.chkBoxActive.Checked;
+                    user.IsCoach = this.chkBoxCoach.Checked;
+                    user.IsStudent = this.chkBoxStudent.Checked;
+                    user.DisplayName = this.txtBoxFirstName.Text + " " + this.txtBoxMiddleName.Text + " " + this.txtBoxLastName.Text;
                     user.ProfilePic = "http://i.imgur.com/X8XhA6M.png?1";
-
-
 
                     var userQuery = context.Users.Add(user);
                     context.SaveChanges();
@@ -148,7 +167,7 @@ namespace CoachConnect
             }
             else
             {
-                //update
+                // Query updates the user in the database
                 using (var context = new db_sft_2172Entities())
                 {
                     string username = lstBoxUsers.SelectedItem.ToString();
@@ -157,7 +176,8 @@ namespace CoachConnect
                     var userQuery = from u in context.Users
                                     where u.UserID.Equals(usernum)
                                     select u;
-                    if (userQuery.Count<User>() > 0)
+
+                    if (userQuery.Any())
                     {
                         var userResult = userQuery.FirstOrDefault<User>();
 
@@ -173,25 +193,40 @@ namespace CoachConnect
                         userResult.IsStudent = chkBoxStudent.Checked;
                         userResult.DisplayName = txtBoxFirstName.Text + " " + txtBoxMiddleName.Text + " " + txtBoxLastName.Text;
                         context.SaveChanges();
-
                     }
-
                 }
             }
-            displayUsers();
-            chkBoxClear();
+
+            this.DisplayUsers();
+            this.ChkBoxClear();
+            this.txtBoxUserID.ReadOnly = true;
             MessageBox.Show("User Profile Updated");
         }
 
-        private void btnMinus_Click(object sender, EventArgs e)
+        /// <summary>
+        /// A method to disable a selected user
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnMinusClick(object sender, EventArgs e)
         {
-            chkBoxAdmin.Checked = false;
-            chkBoxActive.Checked = false;
-            chkBoxCoach.Checked = false;
-            chkBoxStudent.Checked = false;
+            this.chkBoxAdmin.Checked = false;
+            this.chkBoxActive.Checked = false;
+            this.chkBoxCoach.Checked = false;
+            this.chkBoxStudent.Checked = false;
+        }
+
+        /// <summary>
+        /// A button to allow users to reset their password
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnResetPasswordClick(object sender, EventArgs e)
+        {
+            string username = this.txtBoxUserID.Text;
+
+            ResetUserPasswordAdmin resetPasswordForm = new ResetUserPasswordAdmin(username);
+            resetPasswordForm.ShowDialog();
         }
     }
-   
 }
-
-    

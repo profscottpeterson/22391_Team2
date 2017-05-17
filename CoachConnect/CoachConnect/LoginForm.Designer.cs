@@ -1,7 +1,48 @@
-﻿namespace CoachConnect
+﻿// <copyright file="LoginForm.Designer.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
+namespace CoachConnect
 {
-    partial class LoginForm
+    /// <summary>
+    /// A class to display a login form for the user
+    /// </summary>
+    public partial class LoginForm
     {
+        /// <summary>
+        /// A label for the username text box
+        /// </summary>
+        private System.Windows.Forms.Label lblUsername;
+
+        /// <summary>
+        /// A text box to enter the username
+        /// </summary>
+        private System.Windows.Forms.TextBox txtUsername;
+
+        /// <summary>
+        /// A text box to enter the password
+        /// </summary>
+        private System.Windows.Forms.TextBox txtPassword;
+
+        /// <summary>
+        /// A label for the password text box
+        /// </summary>
+        private System.Windows.Forms.Label lblPassword;
+
+        /// <summary>
+        /// A button to perform the login action
+        /// </summary>
+        private System.Windows.Forms.Button btnLogin;
+
+        /// <summary>
+        /// A button to exit the app
+        /// </summary>
+        private System.Windows.Forms.Button btnExit;
+
+        /// <summary>
+        /// A label to display the window header
+        /// </summary>
+        private System.Windows.Forms.Label labelHeader;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -13,10 +54,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -35,7 +77,7 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelHeader = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblUsername
@@ -91,15 +133,15 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.BtnExitClick);
             // 
-            // label1
+            // labelHeader
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(176, 20);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Login to CoachConnect";
+            this.labelHeader.AutoSize = true;
+            this.labelHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHeader.Location = new System.Drawing.Point(16, 16);
+            this.labelHeader.Name = "labelHeader";
+            this.labelHeader.Size = new System.Drawing.Size(176, 20);
+            this.labelHeader.TabIndex = 6;
+            this.labelHeader.Text = "Login to CoachConnect";
             // 
             // LoginForm
             // 
@@ -107,7 +149,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(207, 161);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelHeader);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);
@@ -124,14 +166,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblUsername;
-        private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Label label1;
     }
 }
-

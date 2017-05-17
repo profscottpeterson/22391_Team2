@@ -1,7 +1,39 @@
-﻿namespace CoachConnect
+﻿// <copyright file="RoleForm.Designer.cs" company="PABT at NWTC">
+//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+// </copyright>
+
+namespace CoachConnect
 {
-    partial class RoleForm
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RoleForm"/> class.
+    /// </summary>
+    public partial class RoleForm
     {
+        /// <summary>
+        /// A label for the window header
+        /// </summary>
+        private System.Windows.Forms.Label lblRoleHeader;
+
+        /// <summary>
+        /// A button to accept the new password
+        /// </summary>
+        private System.Windows.Forms.Button btnAccept;
+
+        /// <summary>
+        /// A button to logout from the app
+        /// </summary>
+        private System.Windows.Forms.Button btnLogout;
+
+        /// <summary>
+        /// A button to exit the app
+        /// </summary>
+        private System.Windows.Forms.Button btnExit;
+
+        /// <summary>
+        ///  A combo box used to confirm a child's 
+        /// </summary>
+        private System.Windows.Forms.ComboBox cmbRoleChoice;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -13,10 +45,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -29,22 +62,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoleForm));
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblRoleHeader = new System.Windows.Forms.Label();
             this.btnAccept = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.cmbRoleChoice = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
-            // label1
+            // lblRoleHeader
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(63, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 20);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Choose Your Role";
+            this.lblRoleHeader.AutoSize = true;
+            this.lblRoleHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRoleHeader.Location = new System.Drawing.Point(63, 9);
+            this.lblRoleHeader.Name = "lblRoleHeader";
+            this.lblRoleHeader.Size = new System.Drawing.Size(139, 20);
+            this.lblRoleHeader.TabIndex = 7;
+            this.lblRoleHeader.Text = "Choose Your Role";
             // 
             // btnAccept
             // 
@@ -94,7 +127,7 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnAccept);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblRoleHeader);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RoleForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -105,11 +138,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnAccept;
-        private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.ComboBox cmbRoleChoice;
     }
 }

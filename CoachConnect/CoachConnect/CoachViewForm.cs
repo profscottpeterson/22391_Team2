@@ -366,7 +366,7 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// disable all areas except the one being edited
+        /// Disable all areas except the one being edited
         /// </summary>
         private void DisableAreas()
         {
@@ -418,7 +418,7 @@ namespace CoachConnect
         /// <param name="e">event on click</param>
         private void BtnPass_Click(object sender, EventArgs e)
         {
-            ChangePasswordForm frm = new ChangePasswordForm();
+            ResetStudentPassword frm = new ResetStudentPassword();
             frm.ShowDialog();
         }
 
@@ -671,15 +671,17 @@ namespace CoachConnect
                                     chk.BackColor = Color.Red;
                                     validChange = false;
                                     chk.Checked = true;
-                                    
                                 }
                             }
                         }
                     }
                 }
-                if (!validChange) {
+
+                if (!validChange)
+                {
                     MessageBox.Show("You are assigned to existing Session in red. Can't change availability!");
                 }
+
                 return validChange;
             }
         }
