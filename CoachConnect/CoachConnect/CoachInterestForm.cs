@@ -1,37 +1,81 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿//-----------------------------------------------------------------------
+// <copyright file="CoachInterestForm.cs" company="PABT,Inc">
+//     Copyright (c) Pabt, Inc. All rights reserved
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace CoachConnect
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+
+    /// <content>
+    /// Contains functionalities and features for the frmCoachInterest class.
+    /// </content>
     public partial class frmCoachInterest : Form
     {
-        Form originalForm { get; set; }
-        Image picInterest { get; set; }
-        string titleInterest { get; set; }
-        
+        /// <summary>
+        /// Initializes a new instance of the <see cref="frmCoachInterest"/> class
+        /// </summary>
         public frmCoachInterest()
         {
-            InitializeComponent();
-        }
-        public frmCoachInterest(Form original, Image interest, string title)
-        {
-            InitializeComponent();
-            originalForm = original;
-            picInterest = interest;
-            titleInterest = title;
-            SetForm();
+            this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="frmCoachInterest"/> class
+        /// </summary>
+        /// <param name="original">The original to join.</param>
+        /// <param name="interest">The interest to join.</param>
+        /// <param name="title">The title to join.</param>
+        public frmCoachInterest(Form original, Image interest, string title)
+        {
+            this.InitializeComponent();
+            this.OriginalForm = original;
+            this.PicInterest = interest;
+            this.TitleInterest = title;
+            this.SetForm();
+        }
+
+        /// /// <summary>
+        /// Gets or sets the Original form.
+        /// </summary>
+        private Form OriginalForm { get; set; }
+
+        /// /// <summary>
+        /// Gets or sets the interested picture.
+        /// </summary>
+        private Image PicInterest { get; set; }
+
+        /// /// <summary>
+        /// Gets or sets the title.
+        /// </summary>
+        private string TitleInterest { get; set; }
+
+        /// <summary>
+        /// Override method event handler to perform when the form is closed.
+        /// </summary>
+        /// <param name="e">The event e to join</param>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            this.OriginalForm.Show();
+        }
+
+        /// <summary>
+        /// Event handler to click to exit the current form.
+        /// </summary>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnInterestExit_Click(object sender, EventArgs e)
         {
-            originalForm.Show();
+            this.OriginalForm.Show();
             this.Close();
         }
 
@@ -40,20 +84,16 @@ namespace CoachConnect
         /// </summary>
         private void SetForm()
         {
-            lblTitle.Text = titleInterest;
-            pbInterest.Image = picInterest;
+            lblTitle.Text = this.TitleInterest;
+            pbInterest.Image = this.PicInterest;
 
-            getCoachesByInterest();
-        }
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            originalForm.Show();
+            this.GetCoachesByInterest();
         }
 
         /// <summary>
         /// Addition by Adam Smith: Query to pull coaches by interest
         /// </summary>
-        private void getCoachesByInterest()
+        private void GetCoachesByInterest()
         {
             try
             {
@@ -61,9 +101,8 @@ namespace CoachConnect
                 {
                     // Access view and pull data
                     var coachInterestQuery =
-                        //from coachinterests in context.CoachInterests
                         from coachinterests in context.SessionsByInterests
-                        where coachinterests.Interest.Equals(this.titleInterest)
+                        where coachinterests.Interest.Equals(this.TitleInterest)
                         select new
                         {
                             CoachID = coachinterests.UserID,
@@ -87,8 +126,8 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to enter a row on datagridview.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void dataGridAvailableCoaches_RowEnter(object sender, DataGridViewCellEventArgs e)
         {
             btnSelectCoach.Enabled = true;
@@ -97,8 +136,8 @@ namespace CoachConnect
         /// <summary>
         /// Event handler to select a coach.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">The object sender to join</param>
+        /// <param name="e">The event e to join</param>
         private void btnSelectCoach_Click(object sender, EventArgs e)
         {
             string selectedCoachID;
@@ -107,8 +146,6 @@ namespace CoachConnect
             string selectedDay;
             string selectedCourseID;
             string selectedCourse;
-
-
             if (dataGridAvailableCoaches.SelectedRows == null)
             {
                 MessageBox.Show("Please select a row before continuing");
@@ -123,7 +160,6 @@ namespace CoachConnect
                 selectedTime = selectedRow.Cells[3].Value.ToString();
                 selectedCourseID = selectedRow.Cells[4].Value.ToString();
                 selectedCourse = selectedRow.Cells[5].Value.ToString();
-
 
                 DialogResult result = MessageBox.Show(
                     "Are you sure you want to create this appointment?\n"
@@ -168,7 +204,7 @@ namespace CoachConnect
                                     };
                                     context.SessionRosters.Add(sr);
                                     context.SaveChanges();
-                                    originalForm.Show();
+                                    this.OriginalForm.Show();
                                     this.Close();
                                 } 
                             }

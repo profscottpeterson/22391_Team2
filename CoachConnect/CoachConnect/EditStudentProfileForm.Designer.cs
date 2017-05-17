@@ -1,4 +1,10 @@
-﻿namespace CoachConnect
+﻿//-----------------------------------------------------------------------
+// <copyright file="EditStudentProfileForm.Designer.cs" company="PABT,Inc">
+//     Copyright (c) Pabt, Inc. All rights reserved
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace CoachConnect
 {
     partial class EditStudentProfileForm
     {
@@ -13,10 +19,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -28,6 +35,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditStudentProfileForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblLastNameError = new System.Windows.Forms.Label();
             this.lblMiddleNameError = new System.Windows.Forms.Label();
@@ -104,9 +112,9 @@
             this.lblMiddleNameError.ForeColor = System.Drawing.Color.Red;
             this.lblMiddleNameError.Location = new System.Drawing.Point(106, 127);
             this.lblMiddleNameError.Name = "lblMiddleNameError";
-            this.lblMiddleNameError.Size = new System.Drawing.Size(123, 13);
+            this.lblMiddleNameError.Size = new System.Drawing.Size(158, 13);
             this.lblMiddleNameError.TabIndex = 49;
-            this.lblMiddleNameError.Text = "Middle Name is required!";
+            this.lblMiddleNameError.Text = "Leave it None if you don\'t have!";
             this.lblMiddleNameError.Visible = false;
             // 
             // lblFirstNameError
@@ -125,11 +133,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(36, 107);
+            this.label3.Location = new System.Drawing.Point(28, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 13);
+            this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 47;
-            this.label3.Text = "Midd Name:";
+            this.label3.Text = "Middle Name:";
             // 
             // txtStdMiddleName
             // 
@@ -314,6 +322,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancleEditProfile);
             this.Controls.Add(this.btnSaveEditProfile);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditStudentProfileForm";

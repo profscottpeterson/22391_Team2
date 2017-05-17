@@ -1,6 +1,15 @@
-﻿namespace CoachConnect
+﻿//-----------------------------------------------------------------------
+// <copyright file="FindCoachForm.designer.cs" company="PABT,Inc">
+//     Copyright (c) Pabt, Inc. All rights reserved
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace CoachConnect
 {
-    partial class FindCoachForm
+    /// <content>
+    /// Contains functionalities and features for the FindCoachForm class.
+    /// </content>
+    public partial class FindCoachForm
     {
         /// <summary>
         /// Required designer variable.
@@ -13,10 +22,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -32,6 +42,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FindCoachForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnCancelCoach = new System.Windows.Forms.Button();
@@ -197,9 +208,9 @@
             label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             label28.Location = new System.Drawing.Point(308, 25);
             label28.Name = "label28";
-            label28.Size = new System.Drawing.Size(99, 13);
+            label28.Size = new System.Drawing.Size(82, 13);
             label28.TabIndex = 7;
-            label28.Text = "Select Your Coach:";
+            label28.Text = "Select a coach:";
             // 
             // tabControl1
             // 
@@ -250,7 +261,7 @@
             this.groupBox6.Size = new System.Drawing.Size(856, 238);
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Your Sessional Coach";
+            this.groupBox6.Text = "Your Sessional Coach(s)";
             // 
             // appointmentMessage
             // 
@@ -313,9 +324,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(366, 62);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 13);
+            this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 13;
-            this.label1.Text = "Registered Courses";
+            this.label1.Text = "Registered Course(s)";
             // 
             // listBoxCourse
             // 
@@ -578,11 +589,11 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(346, 69);
+            this.label20.Location = new System.Drawing.Point(336, 85);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(102, 13);
+            this.label20.Size = new System.Drawing.Size(113, 13);
             this.label20.TabIndex = 0;
-            this.label20.Text = "Responsible subject";
+            this.label20.Text = "Responsible subject(s)";
             // 
             // lblPhone
             // 
@@ -1508,12 +1519,12 @@
             // 
             this.label49.AutoSize = true;
             this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label49.Location = new System.Drawing.Point(119, 21);
+            this.label49.Location = new System.Drawing.Point(128, 21);
             this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(636, 16);
+            this.label49.Size = new System.Drawing.Size(598, 16);
             this.label49.TabIndex = 20;
-            this.label49.Text = "To make an appointment, Please select the day and day period then click Search bu" +
-    "tton to find your coach";
+            this.label49.Text = "To assign a coach, Please select the day and day period then click Search button " +
+    "to find your coach";
             // 
             // groupBox4
             // 
@@ -1795,6 +1806,7 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FindCoachForm";

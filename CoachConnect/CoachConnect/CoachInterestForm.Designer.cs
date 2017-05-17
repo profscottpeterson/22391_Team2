@@ -1,6 +1,15 @@
-﻿namespace CoachConnect
+﻿//-----------------------------------------------------------------------
+// <copyright file="CoachInterestForm.Designer.cs" company="PABT,Inc">
+//     Copyright (c) Pabt, Inc. All rights reserved
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace CoachConnect
 {
-    partial class frmCoachInterest
+    /// <content>
+    /// Contains functionalities and features for the frmCoachInterest class.
+    /// </content>
+    public partial class frmCoachInterest
     {
         /// <summary>
         /// Required designer variable.
@@ -13,10 +22,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -28,6 +38,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCoachInterest));
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbInterest = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -115,6 +126,7 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pbInterest);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmCoachInterest";

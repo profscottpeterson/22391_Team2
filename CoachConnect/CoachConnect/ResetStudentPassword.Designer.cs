@@ -1,6 +1,15 @@
-﻿namespace CoachConnect
+﻿//-----------------------------------------------------------------------
+// <copyright file="ResetStudentPassword.Designer.cs" company="PABT,Inc">
+//     Copyright (c) Pabt, Inc. All rights reserved
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace CoachConnect
 {
-    partial class ResetStudentPassword
+    /// <content>
+    /// Contains functionalities and features for the ResetStudentPassword class.
+    /// </content>
+    public partial class ResetStudentPassword
     {
         /// <summary>
         /// Required designer variable.
@@ -13,10 +22,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
