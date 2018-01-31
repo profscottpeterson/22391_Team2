@@ -6,7 +6,7 @@ namespace CoachConnect
     /// <summary>
     /// AddSessionStudent: Allows users to add a student to a session roster
     /// </summary>
-    public partial class AddSessionStudent
+    public partial class AddSessionCourse
     {
         /// <summary>
         /// A header label for the form
@@ -26,7 +26,7 @@ namespace CoachConnect
         /// <summary>
         /// A data grid view to display students that are eligible to enroll in the session
         /// </summary>
-        private System.Windows.Forms.DataGridView dataGridViewEligibleStudents;
+        private System.Windows.Forms.DataGridView dataGridViewEligibleCourses;
 
         /// <summary>
         /// Required designer variable.
@@ -55,12 +55,12 @@ namespace CoachConnect
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSessionStudent));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddSessionCourse));
             this.lblEditSessionHeader = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.dataGridViewEligibleStudents = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEligibleStudents)).BeginInit();
+            this.dataGridViewEligibleCourses = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEligibleCourses)).BeginInit();
             this.SuspendLayout();
             // 
             // lblEditSessionHeader
@@ -69,9 +69,9 @@ namespace CoachConnect
             this.lblEditSessionHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.lblEditSessionHeader.Location = new System.Drawing.Point(40, 15);
             this.lblEditSessionHeader.Name = "lblEditSessionHeader";
-            this.lblEditSessionHeader.Size = new System.Drawing.Size(206, 24);
+            this.lblEditSessionHeader.Size = new System.Drawing.Size(203, 24);
             this.lblEditSessionHeader.TabIndex = 15;
-            this.lblEditSessionHeader.Text = "Add Student to Session";
+            this.lblEditSessionHeader.Text = "Add Course to Session";
             // 
             // btnAdd
             // 
@@ -93,33 +93,33 @@ namespace CoachConnect
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCloseClick);
             // 
-            // dataGridViewEligibleStudents
+            // dataGridViewEligibleCourses
             // 
-            this.dataGridViewEligibleStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataGridViewEligibleStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEligibleStudents.Location = new System.Drawing.Point(12, 50);
-            this.dataGridViewEligibleStudents.MultiSelect = false;
-            this.dataGridViewEligibleStudents.Name = "dataGridViewEligibleStudents";
-            this.dataGridViewEligibleStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewEligibleStudents.Size = new System.Drawing.Size(259, 150);
-            this.dataGridViewEligibleStudents.TabIndex = 28;
-            this.dataGridViewEligibleStudents.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewEligibleStudentsCellContentDoubleClick);
-            this.dataGridViewEligibleStudents.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewEligibleStudentsRowHeaderMouseDoubleClick);
+            this.dataGridViewEligibleCourses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridViewEligibleCourses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEligibleCourses.Location = new System.Drawing.Point(12, 50);
+            this.dataGridViewEligibleCourses.MultiSelect = false;
+            this.dataGridViewEligibleCourses.Name = "dataGridViewEligibleCourses";
+            this.dataGridViewEligibleCourses.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewEligibleCourses.Size = new System.Drawing.Size(259, 150);
+            this.dataGridViewEligibleCourses.TabIndex = 28;
+            this.dataGridViewEligibleCourses.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewEligibleCoursesCellContentDoubleClick);
+            this.dataGridViewEligibleCourses.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewEligibleCoursesRowHeaderMouseDoubleClick);
             // 
-            // AddSessionStudent
+            // AddSessionCourse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(283, 243);
-            this.Controls.Add(this.dataGridViewEligibleStudents);
+            this.Controls.Add(this.dataGridViewEligibleCourses);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblEditSessionHeader);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "AddSessionStudent";
+            this.Name = "AddSessionCourse";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Add Student to Session";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEligibleStudents)).EndInit();
+            this.Text = "Add Course to Session";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEligibleCourses)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

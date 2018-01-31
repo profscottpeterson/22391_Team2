@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="db_sft_2172Model.Day" Width="1.5" PointX="10.25" PointY="15" />
         <EntityTypeShape EntityType="db_sft_2172Model.CoachInterest" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="db_sft_2172Model.CoachByTime" Width="1.5" PointX="9.375" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_sft_2172Model.CoachByName" Width="1.5" PointX="8.375" PointY="9.75" />
+        <EntityTypeShape EntityType="db_sft_2172Model.CoachByName" Width="1.5" PointX="15.75" PointY="2.375" />
         <EntityTypeShape EntityType="db_sft_2172Model.ViewSession" Width="1.5" PointX="11.25" PointY="0.625" />
         <EntityTypeShape EntityType="db_sft_2172Model.Availability" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="db_sft_2172Model.ViewSessionRoster" Width="1.5" PointX="13.375" PointY="0.75" />
@@ -40,7 +40,12 @@
         <AssociationConnector Association="db_sft_2172Model.FK_Session_Room1" />
         <AssociationConnector Association="db_sft_2172Model.FK_Session_User1" />
         <AssociationConnector Association="db_sft_2172Model.CoachCourseList" />
-        <AssociationConnector Association="db_sft_2172Model.SessionCourseList" />
+        <EntityTypeShape EntityType="db_sft_2172Model.CoachCourse" Width="1.5" PointX="18.75" PointY="5.875" />
+        <EntityTypeShape EntityType="db_sft_2172Model.SessionCourse" Width="1.5" PointX="17.75" PointY="11.875" />
+        <AssociationConnector Association="db_sft_2172Model.FK_CoachCourse_CoachSession" />
+        <AssociationConnector Association="db_sft_2172Model.FK_CoachCourse_Course1" />
+        <AssociationConnector Association="db_sft_2172Model.FK_SessionCourse_CoachSession" />
+        <AssociationConnector Association="db_sft_2172Model.FK_SessionCourse_Course" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

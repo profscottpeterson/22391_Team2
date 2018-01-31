@@ -16,10 +16,12 @@ namespace CoachConnect
     {
         public string LastName { get; set; }
         public string FirstName { get; set; }
-        public bool IsCoach { get; set; }
         public bool IsActive { get; set; }
-        public Nullable<System.DateTime> ActiveCoachSince { get; set; }
-        public string UserID { get; set; }
-        public string ProfilePic { get; set; }
+        public string CoachID { get; set; }
+        public string MiddleName { get; set; }
+        public string DisplayName { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string SupervisorID { get; set; }
     }
 }

@@ -57,12 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddSessionStudent.cs">
+    <Compile Include="AddSessionCourse.cs">
       <SubType>Form</SubType>
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="AddSessionStudent.Designer.cs">
-      <DependentUpon>AddSessionStudent.cs</DependentUpon>
+    <Compile Include="AddSessionCourse.Designer.cs">
+      <DependentUpon>AddSessionCourse.cs</DependentUpon>
     </Compile>
     <Compile Include="AdminForm.cs">
       <SubType>Form</SubType>
@@ -86,6 +86,9 @@
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CoachByTime.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoachCourse.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CoachInterest.cs">
@@ -148,6 +151,9 @@
     </Compile>
     <Compile Include="SessionAdminForm.designer.cs">
       <DependentUpon>SessionAdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SessionCourse.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SessionsByInterest.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
@@ -225,8 +231,8 @@
     <Compile Include="ViewSessionRoster.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddSessionStudent.resx">
-      <DependentUpon>AddSessionStudent.cs</DependentUpon>
+    <EmbeddedResource Include="AddSessionCourse.resx">
+      <DependentUpon>AddSessionCourse.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>

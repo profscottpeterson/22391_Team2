@@ -47,6 +47,8 @@ namespace CoachConnect
         public virtual DbSet<Time> Times { get; set; }
         public virtual DbSet<ViewCoachCours> ViewCoachCourses { get; set; }
         public virtual DbSet<ViewSessionCours> ViewSessionCourses { get; set; }
+        public virtual DbSet<CoachCourse> CoachCourses { get; set; }
+        public virtual DbSet<SessionCourse> SessionCourses { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

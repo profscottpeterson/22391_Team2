@@ -17,7 +17,8 @@ namespace CoachConnect
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CoachSession()
         {
-            this.Courses = new HashSet<Course>();
+            this.CoachCourses = new HashSet<CoachCourse>();
+            this.SessionCourses1 = new HashSet<SessionCourse>();
         }
     
         public int SessionID { get; set; }
@@ -35,6 +36,8 @@ namespace CoachConnect
         public virtual Room Room { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Course> Courses { get; set; }
+        public virtual ICollection<CoachCourse> CoachCourses { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SessionCourse> SessionCourses1 { get; set; }
     }
 }
