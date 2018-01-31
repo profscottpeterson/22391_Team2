@@ -71,7 +71,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void AdminFormFormClosed(object sender, FormClosedEventArgs e)
         {
-            Program.LoginForm.Logout();
+            Program.Logout();
         }
 
         /// <summary>

@@ -76,12 +76,7 @@ namespace CoachConnect
         /// <summary>
         /// A check box to give the current user Student permissions
         /// </summary>
-        private System.Windows.Forms.CheckBox chkBoxStudent;
-
-        /// <summary>
-        /// A check box to give the current user Coach permissions
-        /// </summary>
-        private System.Windows.Forms.CheckBox chkBoxCoach;
+        private System.Windows.Forms.CheckBox chkBoxSupervisor;
 
         /// <summary>
         /// A check box to give the current user Admin permissions
@@ -154,8 +149,7 @@ namespace CoachConnect
             this.txtBoxFirstName = new System.Windows.Forms.TextBox();
             this.lstBoxUsers = new System.Windows.Forms.ListBox();
             this.lblUsers = new System.Windows.Forms.Label();
-            this.chkBoxStudent = new System.Windows.Forms.CheckBox();
-            this.chkBoxCoach = new System.Windows.Forms.CheckBox();
+            this.chkBoxSupervisor = new System.Windows.Forms.CheckBox();
             this.chkBoxAdmin = new System.Windows.Forms.CheckBox();
             this.chkBoxActive = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -288,27 +282,16 @@ namespace CoachConnect
             this.lblUsers.TabIndex = 48;
             this.lblUsers.Text = "User List";
             // 
-            // chkBoxStudent
+            // chkBoxSupervisor
             // 
-            this.chkBoxStudent.AutoSize = true;
-            this.chkBoxStudent.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBoxStudent.Location = new System.Drawing.Point(556, 172);
-            this.chkBoxStudent.Name = "chkBoxStudent";
-            this.chkBoxStudent.Size = new System.Drawing.Size(63, 17);
-            this.chkBoxStudent.TabIndex = 10;
-            this.chkBoxStudent.Text = "Student";
-            this.chkBoxStudent.UseVisualStyleBackColor = true;
-            // 
-            // chkBoxCoach
-            // 
-            this.chkBoxCoach.AutoSize = true;
-            this.chkBoxCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkBoxCoach.Location = new System.Drawing.Point(556, 207);
-            this.chkBoxCoach.Name = "chkBoxCoach";
-            this.chkBoxCoach.Size = new System.Drawing.Size(57, 17);
-            this.chkBoxCoach.TabIndex = 11;
-            this.chkBoxCoach.Text = "Coach";
-            this.chkBoxCoach.UseVisualStyleBackColor = true;
+            this.chkBoxSupervisor.AutoSize = true;
+            this.chkBoxSupervisor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkBoxSupervisor.Location = new System.Drawing.Point(556, 172);
+            this.chkBoxSupervisor.Name = "chkBoxSupervisor";
+            this.chkBoxSupervisor.Size = new System.Drawing.Size(76, 17);
+            this.chkBoxSupervisor.TabIndex = 10;
+            this.chkBoxSupervisor.Text = "Supervisor";
+            this.chkBoxSupervisor.UseVisualStyleBackColor = true;
             // 
             // chkBoxAdmin
             // 
@@ -380,14 +363,13 @@ namespace CoachConnect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(633, 389);
+            this.ClientSize = new System.Drawing.Size(648, 389);
             this.Controls.Add(this.btnResetUserPassword);
             this.Controls.Add(this.btnMinus);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.chkBoxActive);
             this.Controls.Add(this.chkBoxAdmin);
-            this.Controls.Add(this.chkBoxCoach);
-            this.Controls.Add(this.chkBoxStudent);
+            this.Controls.Add(this.chkBoxSupervisor);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.lblUsers);
             this.Controls.Add(this.lstBoxUsers);

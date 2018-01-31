@@ -27,27 +27,6 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Method to handle Logout process
-        /// </summary>
-        public void Logout()
-        {
-            // Clear out text boxes and set focus to the username text box
-            this.txtUsername.Text = string.Empty;
-            this.txtPassword.Text = string.Empty;
-
-            this.txtUsername.Focus();
-
-            // Clear out all static variables related to user
-            Program.CurrentUser = null;
-            Program.IsStudent = false;
-            Program.IsCoach = false;
-            Program.IsAdmin = false;
-
-            // Show hidden login form
-            Program.LoginForm.Show();
-        }
-
-        /// <summary>
         /// Event handler to exit the application when the Exit button is clicked
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
@@ -97,7 +76,7 @@ namespace CoachConnect
                         if (!userResult.IsActive)
                         {
                             MessageBox.Show("Sorry, this user is inactive.  Please contact an administrator if you need to reactivate your account.");
-                            this.Logout();
+                            Program.Logout();
 
                             return;
                         }
@@ -125,9 +104,9 @@ namespace CoachConnect
                             else
                             {
                                 // If any of these three values are true, update static variables
-                                if (userResult.IsStudent)
+                                if (userResult.IsSupervisor)
                                 {
-                                    Program.IsStudent = true;
+                                    Program.IsSupervisor = true;
                                 }
 
                                 if (userResult.IsAdmin)
@@ -135,16 +114,11 @@ namespace CoachConnect
                                     Program.IsAdmin = true;
                                 }
 
-                                if (userResult.IsCoach)
-                                {
-                                    Program.IsCoach = true;
-                                }
+                                // Call method to update menu options
+                                Program.UpdateMenus();
 
-                                // Call method from Program class to display Role Page
-                                Program.RolePage();
-
-                                // Hide window once Role Form loads (we cannot close this window or the program will close)
-                                this.Hide();
+                                // Close window once finished
+                                this.Close();
                             }
                         }
                         else

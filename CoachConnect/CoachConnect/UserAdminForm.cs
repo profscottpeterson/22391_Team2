@@ -68,8 +68,7 @@ namespace CoachConnect
            // Clearing check boxes and text boxes.
             this.chkBoxAdmin.Checked = false;
             this.chkBoxActive.Checked = false;
-            this.chkBoxCoach.Checked = false;
-            this.chkBoxStudent.Checked = false;
+            this.chkBoxSupervisor.Checked = false;
             this.txtBoxFirstName.Clear();
             this.txtBoxLastName.Clear();
             this.txtBoxMiddleName.Clear();
@@ -108,8 +107,7 @@ namespace CoachConnect
 
                     this.chkBoxAdmin.Checked = userResult.IsAdmin;
                     this.chkBoxActive.Checked = userResult.IsActive;
-                    this.chkBoxStudent.Checked = userResult.IsStudent;
-                    this.chkBoxCoach.Checked = userResult.IsCoach;
+                    this.chkBoxSupervisor.Checked = userResult.IsSupervisor;
                 }
             }
         }
@@ -128,8 +126,7 @@ namespace CoachConnect
             this.txtBoxPassword.Text = string.Empty;
             this.chkBoxActive.Checked = false;
             this.chkBoxAdmin.Checked = false;
-            this.chkBoxCoach.Checked = false;
-            this.chkBoxStudent.Checked = false;
+            this.chkBoxSupervisor.Checked = false;
             this.lstBoxUsers.Items.Add("First Name Middle Name Last Name");
             this.lstBoxUsers.SelectedIndex = this.lstBoxUsers.Items.Count - 1;
 
@@ -156,10 +153,8 @@ namespace CoachConnect
                     user.Password = this.txtBoxPassword.Text;
                     user.IsAdmin = this.chkBoxAdmin.Checked;
                     user.IsActive = this.chkBoxActive.Checked;
-                    user.IsCoach = this.chkBoxCoach.Checked;
-                    user.IsStudent = this.chkBoxStudent.Checked;
+                    user.IsSupervisor = this.chkBoxSupervisor.Checked;
                     user.DisplayName = this.txtBoxFirstName.Text + " " + this.txtBoxMiddleName.Text + " " + this.txtBoxLastName.Text;
-                    user.ProfilePic = "http://i.imgur.com/X8XhA6M.png?1";
 
                     var userQuery = context.Users.Add(user);
                     context.SaveChanges();
@@ -189,8 +184,7 @@ namespace CoachConnect
                         userResult.Password = txtBoxPassword.Text;
                         userResult.IsAdmin = chkBoxAdmin.Checked;
                         userResult.IsActive = chkBoxActive.Checked;
-                        userResult.IsCoach = chkBoxCoach.Checked;
-                        userResult.IsStudent = chkBoxStudent.Checked;
+                        userResult.IsSupervisor = chkBoxSupervisor.Checked;
                         userResult.DisplayName = txtBoxFirstName.Text + " " + txtBoxMiddleName.Text + " " + txtBoxLastName.Text;
                         context.SaveChanges();
                     }
@@ -212,8 +206,7 @@ namespace CoachConnect
         {
             this.chkBoxAdmin.Checked = false;
             this.chkBoxActive.Checked = false;
-            this.chkBoxCoach.Checked = false;
-            this.chkBoxStudent.Checked = false;
+            this.chkBoxSupervisor.Checked = false;
         }
 
         /// <summary>

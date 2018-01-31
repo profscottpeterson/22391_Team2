@@ -69,7 +69,7 @@ C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\bi
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.pdb
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\bin\Debug\CoachConnect.exe.config
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\bin\Debug\EntityFramework.xml
-C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csproj.CoreCompileInputs.cache
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.dll
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.pdb
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect.Tests\obj\Debug\CoachConnect.Tests.csprojResolveAssemblyReference.cache

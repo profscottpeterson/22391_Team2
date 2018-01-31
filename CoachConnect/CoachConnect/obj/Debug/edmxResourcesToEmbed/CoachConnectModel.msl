@@ -104,11 +104,13 @@
     <EntitySetMapping Name="CoachByNames">
       <EntityTypeMapping TypeName="db_sft_2172Model.CoachByName">
         <MappingFragment StoreEntitySet="CoachByName">
-          <ScalarProperty Name="ProfilePic" ColumnName="ProfilePic" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="ActiveCoachSince" ColumnName="ActiveCoachSince" />
+          <ScalarProperty Name="SupervisorID" ColumnName="SupervisorID" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="CoachID" ColumnName="CoachID" />
           <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="IsCoach" ColumnName="IsCoach" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
         </MappingFragment>
@@ -240,13 +242,23 @@
         <ScalarProperty Name="CoachID" ColumnName="CoachID" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="SessionCourseList" TypeName="db_sft_2172Model.SessionCourseList" StoreEntitySet="SessionCourseList">
-      <EndProperty Name="Course">
-        <ScalarProperty Name="CourseID" ColumnName="CourseID" />
-      </EndProperty>
-      <EndProperty Name="CoachSession">
-        <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-      </EndProperty>
-    </AssociationSetMapping>
+    <EntitySetMapping Name="CoachCourses">
+      <EntityTypeMapping TypeName="db_sft_2172Model.CoachCourse">
+        <MappingFragment StoreEntitySet="CoachCourse">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SessionCourses">
+      <EntityTypeMapping TypeName="db_sft_2172Model.SessionCourse">
+        <MappingFragment StoreEntitySet="SessionCourse">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

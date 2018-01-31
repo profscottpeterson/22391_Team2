@@ -15,24 +15,9 @@ namespace CoachConnect
     public static class Program
     {
         /// <summary>
-        /// Gets or sets a public static string to store the Coach role name
+        /// Gets or sets a mainForm object that is loaded when the program starts
         /// </summary>
-        public static string CoachRoleName { get; set; }
-
-        /// <summary>
-        /// Gets or sets a public static string to store the Student role name
-        /// </summary>
-        public static string StudentRoleName { get; set; }
-
-        /// <summary>
-        /// Gets or sets a public string to store the Admin role name
-        /// </summary>
-        public static string AdminRoleName { get; set; }
-
-        /// <summary>
-        /// Gets or sets a LoginForm object that is loaded when the program starts
-        /// </summary>
-        public static LoginForm LoginForm { get; set; }
+        public static MainForm mainForm { get; set; }
 
         /// <summary>
         /// Gets or sets the username that is logged into the app.
@@ -40,14 +25,9 @@ namespace CoachConnect
         public static string CurrentUser { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the user is a student.
+        /// Gets or sets a value indicating whether the user is a supervisor.
         /// </summary>
-        public static bool IsStudent { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the user is a coach.
-        /// </summary>
-        public static bool IsCoach { get; set; }
+        public static bool IsSupervisor { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the user is an admin.
@@ -62,15 +42,13 @@ namespace CoachConnect
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            LoginForm = new LoginForm();
+            mainForm = new MainForm();
 
-            Program.StudentRoleName = "Student";
-            Program.CoachRoleName = "Coach";
-            Program.AdminRoleName = "Admin";
-            
-            Application.Run(LoginForm);
+            Application.Run(mainForm);
         }
 
+        // TODO: Remove this code once we rebuild the new MainForm
+        /*
         /// <summary>
         /// RolePage: A method to create and show a new role form once the user is logged in
         /// </summary>
@@ -79,28 +57,49 @@ namespace CoachConnect
             RoleForm roleForm = new RoleForm();
             roleForm.Show();
         }
+        */
 
+        // TODO: Rebuild this method to show/hide menu options based on user type (Admin or Supervisor)
         /// <summary>
         /// OpenUserHomepage: A method that opens the correct start page based on the selected role
         /// </summary>
         /// <param name="roleText">The role name selected in the RoleForm</param>
-        public static void OpenUserHomepage(string roleText)
+        public static void UpdateMenus()
         {
-            if (roleText == Program.StudentRoleName)
+            if (Program.IsAdmin)
             {
-                var newForm = new FindCoachForm();
-                newForm.Show();
+                // TODO: Fill in menu options that should be enabled for Admin users
             }
-            else if (roleText == Program.CoachRoleName)
+            else
             {
-                var newForm = new FrmCoachView();
-                newForm.Show();
+                // TODO: Fill in menu options that should be disabled for non-Admin users
             }
-            else if (roleText == Program.AdminRoleName)
+
+            if (Program.IsSupervisor)
             {
-                var newForm = new AdminForm();
-                newForm.Show();
+                // TODO: Fill in menu options that should be enabled for Supervisor users
             }
+            else
+            {
+                // TODO: Fill in menu options that should be enabled for non-Supervisor users
+            }
+        }
+
+        /// <summary>
+        /// Method to handle Logout process
+        /// </summary>
+        public static void Logout()
+        {
+            // Clear out all static variables related to user
+            Program.CurrentUser = null;
+            Program.IsSupervisor = false;
+            Program.IsAdmin = false;
+        }
+
+        public static void Login()
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
         }
     }
 }
