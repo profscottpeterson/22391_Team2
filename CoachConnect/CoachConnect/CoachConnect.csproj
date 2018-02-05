@@ -125,12 +125,6 @@
     <Compile Include="EditSession.Designer.cs">
       <DependentUpon>EditSession.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditCoachProfileForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditCoachProfileForm.Designer.cs">
-      <DependentUpon>EditCoachProfileForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Interest.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -168,6 +162,12 @@
     </Compile>
     <Compile Include="User.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CoachProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoachProfileForm.designer.cs">
+      <DependentUpon>CoachProfileForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserAdminForm.cs">
       <SubType>Form</SubType>
@@ -226,14 +226,14 @@
     <EmbeddedResource Include="EditSession.resx">
       <DependentUpon>EditSession.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditCoachProfileForm.resx">
-      <DependentUpon>EditCoachProfileForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ResetStudentPassword.resx">
       <DependentUpon>ResetStudentPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SessionAdminForm.resx">
       <DependentUpon>SessionAdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoachProfileForm.resx">
+      <DependentUpon>CoachProfileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserAdminForm.resx">
       <DependentUpon>UserAdminForm.cs</DependentUpon>

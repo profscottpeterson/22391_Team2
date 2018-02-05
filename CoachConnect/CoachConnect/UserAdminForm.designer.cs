@@ -183,7 +183,7 @@ namespace CoachConnect
             // txtBoxUserID
             // 
             this.txtBoxUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxUserID.Location = new System.Drawing.Point(336, 289);
+            this.txtBoxUserID.Location = new System.Drawing.Point(336, 271);
             this.txtBoxUserID.Name = "txtBoxUserID";
             this.txtBoxUserID.ReadOnly = true;
             this.txtBoxUserID.Size = new System.Drawing.Size(188, 20);
@@ -193,7 +193,7 @@ namespace CoachConnect
             // 
             this.lblUserID.AutoSize = true;
             this.lblUserID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserID.Location = new System.Drawing.Point(333, 273);
+            this.lblUserID.Location = new System.Drawing.Point(333, 255);
             this.lblUserID.Name = "lblUserID";
             this.lblUserID.Size = new System.Drawing.Size(43, 13);
             this.lblUserID.TabIndex = 40;
@@ -203,7 +203,7 @@ namespace CoachConnect
             // 
             this.lblMiddleName.AutoSize = true;
             this.lblMiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMiddleName.Location = new System.Drawing.Point(333, 208);
+            this.lblMiddleName.Location = new System.Drawing.Point(333, 194);
             this.lblMiddleName.Name = "lblMiddleName";
             this.lblMiddleName.Size = new System.Drawing.Size(69, 13);
             this.lblMiddleName.TabIndex = 39;
@@ -213,7 +213,7 @@ namespace CoachConnect
             // 
             this.lblLastName.AutoSize = true;
             this.lblLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLastName.Location = new System.Drawing.Point(335, 139);
+            this.lblLastName.Location = new System.Drawing.Point(335, 137);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(58, 13);
             this.lblLastName.TabIndex = 38;
@@ -232,7 +232,7 @@ namespace CoachConnect
             // txtBoxMiddleName
             // 
             this.txtBoxMiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxMiddleName.Location = new System.Drawing.Point(336, 224);
+            this.txtBoxMiddleName.Location = new System.Drawing.Point(336, 210);
             this.txtBoxMiddleName.Name = "txtBoxMiddleName";
             this.txtBoxMiddleName.Size = new System.Drawing.Size(188, 20);
             this.txtBoxMiddleName.TabIndex = 5;
@@ -249,7 +249,7 @@ namespace CoachConnect
             // txtBoxLastName
             // 
             this.txtBoxLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxLastName.Location = new System.Drawing.Point(336, 155);
+            this.txtBoxLastName.Location = new System.Drawing.Point(336, 153);
             this.txtBoxLastName.Name = "txtBoxLastName";
             this.txtBoxLastName.Size = new System.Drawing.Size(188, 20);
             this.txtBoxLastName.TabIndex = 4;

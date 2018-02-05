@@ -218,7 +218,6 @@ C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debu
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.pdb
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AddSessionCourse.resources
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.MainForm.resources
-C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditCoachProfileForm.resources
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe.config
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\CoachConnect.exe
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\CoachConnect.pdb
@@ -226,3 +225,5 @@ C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debu
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\EntityFramework.xml
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.CoachProfileForm.resources
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
