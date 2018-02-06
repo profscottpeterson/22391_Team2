@@ -14,7 +14,7 @@ namespace CoachConnect
     using System.Windows.Forms;
 
     /// <summary>
-    /// A form for admin's to reset a password and enter a new initial login password.
+    /// A form for admin's to reset a password and enter a new temporary access code.
     /// </summary>
     public partial class ResetUserPasswordAdmin : Form
     {
@@ -34,39 +34,36 @@ namespace CoachConnect
         private string CurrentUserID { get; set; }
 
         /// <summary>
-        /// Event handler to validate password and apply salted hash when the Update button is clicked
+        /// Event handler to set temporary access code
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
         private void BtnUpdateClick(object sender, EventArgs e)
         {
             // Verify that the two entered passwords match
-            if (!this.txtPassword.Text.Equals(this.txtConfirmPassword.Text))
+            if (!this.txtTempCode.Text.Equals(this.txtConfirmTempCode.Text))
             {
-                MessageBox.Show("Sorry, the passwords do not match.  Please try again!");
+                MessageBox.Show("Sorry, the codes do not match.  Please try again!");
 
                 // Clear the password boxes
-                this.txtPassword.Text = string.Empty;
-                this.txtConfirmPassword.Text = string.Empty;
+                this.txtTempCode.Text = string.Empty;
+                this.txtConfirmTempCode.Text = string.Empty;
 
-                this.txtPassword.Focus();
+                this.txtTempCode.Focus();
             }
-            else if (this.txtPassword.Text.Equals(string.Empty))
+            else if (this.txtTempCode.Text.Equals(string.Empty))
             {
-                MessageBox.Show("Please enter a new password.");
+                MessageBox.Show("Please enter a code (max 10 characters).");
 
                 // Clear the password boxes
-                this.txtPassword.Text = string.Empty;
-                this.txtConfirmPassword.Text = string.Empty;
+                this.txtTempCode.Text = string.Empty;
+                this.txtConfirmTempCode.Text = string.Empty;
 
-                this.txtPassword.Focus();
+                this.txtTempCode.Focus();
             }
             else
             {
-                // Generate salt and salted hash
-                SaltedHash sh = new SaltedHash(txtPassword.Text);
-
-                // Find current user, then update password hash and salt in database
+                // Find current user, then update temporary code in database
                 try
                 {
                     using (var context = new db_sft_2172Entities())
@@ -78,14 +75,14 @@ namespace CoachConnect
 
                         User currentUser = userQuery.FirstOrDefault();
 
-                        currentUser.Password = sh.Hash;
-                        currentUser.PasswordSalt = sh.Salt;
-                        currentUser.ResetPassword = false;
-
+                        if (currentUser != null)
+                        {
+                        currentUser.ResetPassword = txtTempCode.Text;
                         context.SaveChanges();
 
                         // Show confirmation if save is successful
                         MessageBox.Show("Password updated successfully!");
+                        }   
                     }
                 }
                 catch (Exception ex)
@@ -115,7 +112,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void TxtStdNewConfirmPasswordLeave(object sender, EventArgs e)
         {
-            if (txtPassword.Text == txtConfirmPassword.Text && (txtPassword.Text != string.Empty || txtConfirmPassword.Text != string.Empty))
+            if (txtTempCode.Text == txtConfirmTempCode.Text && (txtTempCode.Text != string.Empty || txtConfirmTempCode.Text != string.Empty))
             {
                 imgPasswordValid.Visible = true;
                 imgPasswordNotValid.Visible = false;

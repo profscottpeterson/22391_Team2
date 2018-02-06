@@ -46,6 +46,7 @@
         <AssociationConnector Association="db_sft_2172Model.FK_CoachCourse_Course1" />
         <AssociationConnector Association="db_sft_2172Model.FK_SessionCourse_CoachSession" />
         <AssociationConnector Association="db_sft_2172Model.FK_SessionCourse_Course" />
+        <EntityTypeShape EntityType="db_sft_2172Model.GetCoachAvailability" Width="1.5" PointX="7.375" PointY="4.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

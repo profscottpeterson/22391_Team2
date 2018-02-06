@@ -28,16 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.coachesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addUpdateUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateCourseListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.coachesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.profileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setAvailabilityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.setScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeMyPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,7 +49,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.adminToolStripMenuItem,
-            this.coachesToolStripMenuItem});
+            this.coachesToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(713, 24);
@@ -61,6 +65,13 @@
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
             // 
+            // eToolStripMenuItem
+            // 
+            this.eToolStripMenuItem.Name = "eToolStripMenuItem";
+            this.eToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.eToolStripMenuItem.Text = "Exit";
+            this.eToolStripMenuItem.Click += new System.EventHandler(this.eToolStripMenuItem_Click);
+            // 
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -69,16 +80,6 @@
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.adminToolStripMenuItem.Text = "Admin";
-            // 
-            // coachesToolStripMenuItem
-            // 
-            this.coachesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.profileToolStripMenuItem,
-            this.setAvailabilityToolStripMenuItem,
-            this.setScheduleToolStripMenuItem});
-            this.coachesToolStripMenuItem.Name = "coachesToolStripMenuItem";
-            this.coachesToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.coachesToolStripMenuItem.Text = "Coaches";
             // 
             // addUpdateUserToolStripMenuItem
             // 
@@ -93,6 +94,16 @@
             this.updateCourseListToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.updateCourseListToolStripMenuItem.Text = "Update Course List";
             // 
+            // coachesToolStripMenuItem
+            // 
+            this.coachesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.profileToolStripMenuItem,
+            this.setAvailabilityToolStripMenuItem,
+            this.setScheduleToolStripMenuItem});
+            this.coachesToolStripMenuItem.Name = "coachesToolStripMenuItem";
+            this.coachesToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.coachesToolStripMenuItem.Text = "Coaches";
+            // 
             // profileToolStripMenuItem
             // 
             this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
@@ -105,6 +116,7 @@
             this.setAvailabilityToolStripMenuItem.Name = "setAvailabilityToolStripMenuItem";
             this.setAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.setAvailabilityToolStripMenuItem.Text = "Set Availability";
+            this.setAvailabilityToolStripMenuItem.Click += new System.EventHandler(this.setAvailabilityToolStripMenuItem_Click);
             // 
             // setScheduleToolStripMenuItem
             // 
@@ -112,12 +124,20 @@
             this.setScheduleToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.setScheduleToolStripMenuItem.Text = "Set Schedule";
             // 
-            // eToolStripMenuItem
+            // helpToolStripMenuItem
             // 
-            this.eToolStripMenuItem.Name = "eToolStripMenuItem";
-            this.eToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.eToolStripMenuItem.Text = "Exit";
-            this.eToolStripMenuItem.Click += new System.EventHandler(this.eToolStripMenuItem_Click);
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.changeMyPasswordToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // changeMyPasswordToolStripMenuItem
+            // 
+            this.changeMyPasswordToolStripMenuItem.Name = "changeMyPasswordToolStripMenuItem";
+            this.changeMyPasswordToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.changeMyPasswordToolStripMenuItem.Text = "Change My Password";
+            this.changeMyPasswordToolStripMenuItem.Click += new System.EventHandler(this.changeMyPasswordToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -125,6 +145,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(713, 533);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "CoachConnect";
@@ -147,5 +168,7 @@
         private System.Windows.Forms.ToolStripMenuItem setAvailabilityToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setScheduleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeMyPasswordToolStripMenuItem;
     }
 }

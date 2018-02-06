@@ -30,7 +30,7 @@ namespace CoachConnect
 
         private void addUpdateUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserAdminForm userForm = new UserAdminForm();
+            UserProfileForm userForm = new UserProfileForm();
             userForm.Show();
         }
 
@@ -43,6 +43,18 @@ namespace CoachConnect
             {
                 this.Close();
             }
+        }
+
+        private void setAvailabilityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CoachAvailabilityForm coachAvailabilityForm = new CoachAvailabilityForm();
+            coachAvailabilityForm.Show();
+        }
+
+        private void changeMyPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResetMyPassword passwordResetForm = new ResetMyPassword();
+            passwordResetForm.Show();
         }
     }
 }

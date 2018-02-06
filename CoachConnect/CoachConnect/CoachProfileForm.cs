@@ -25,7 +25,7 @@ namespace CoachConnect
         {
             this.InitializeComponent();
         }
-  
+
         /// <summary>
         /// Maximizes Form and displays the users with load event of the form.
         /// </summary>
@@ -83,7 +83,7 @@ namespace CoachConnect
         /// </summary>
         private void ClearAllFields()
         {
-           // Clearing check boxes and text boxes.
+            // Clearing check boxes and text boxes.
             this.txtID.Clear();
             this.txtFirstName.Clear();
             this.txtLastName.Clear();
@@ -95,6 +95,8 @@ namespace CoachConnect
             this.chkActive.Checked = false;
         }
 
+        // TODO: Remove if we don't want to enable/disable fields anymore
+        /*
         /// <summary>
         /// Enable all data fields
         /// </summary>
@@ -115,7 +117,10 @@ namespace CoachConnect
 
             this.txtID.Focus();
         }
+        */
 
+        // TODO: Remove if we don't want to enable/disable fields anymore
+        /*
         /// <summary>
         /// Disable all data fields
         /// </summary>
@@ -132,9 +137,10 @@ namespace CoachConnect
             this.cbxSupervisor.Enabled = false;
             this.chkActive.Enabled = false;
         }
+        */
 
         /// <summary>
-        /// Populates the check boxes and text boxes.
+        /// Populates the combo boxes and text boxes with the selected coach's information.
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
@@ -146,15 +152,15 @@ namespace CoachConnect
             {
                 using (var context = new db_sft_2172Entities())
                 {
-                    // Query is getting the user num from the list box.
+                    // Query is getting the coach ID from the combo box.
                     string coachId = this.cbxChooseCoach.SelectedValue.ToString();
 
-                    // Finds the user in the database.
+                    // Find the coach in the database.
                     var coachQuery = from coach in context.Coaches
-                        where coach.CoachID.Equals(coachId)
-                        select coach;
+                                     where coach.CoachID.Equals(coachId)
+                                     select coach;
 
-                    // If the result has a user it displays the info in the check boxes and the text boxes.
+                    // If the query returns a a user, display the corresponding info in the form
                     if (coachQuery.Any())
                     {
                         var coachResult = coachQuery.FirstOrDefault<Coach>();
@@ -179,22 +185,22 @@ namespace CoachConnect
                 MessageBox.Show(ex.Message);
             }
 
-            EnableAllFields();
+            //EnableAllFields();
         }
 
         /// <summary>
-        /// Add button clears all text boxes and check boxes allowing new user to be added.
+        /// Add button clears all text boxes and check boxes so user can enter new information.
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
         private void BtnAddClick(object sender, EventArgs e)
         {
             ClearAllFields();
-            EnableAllFields();
+            //EnableAllFields();
         }
 
         /// <summary>
-        /// Submit button which submits the added or updated info to the database.
+        /// Submit button sends the added or updated info to the database.
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
@@ -207,8 +213,8 @@ namespace CoachConnect
                 {
                     string coachId = txtID.Text;
                     var coachQuery = from coach in context.Coaches
-                        where coach.CoachID.Equals(coachId)
-                        select coach;
+                                     where coach.CoachID.Equals(coachId)
+                                     select coach;
 
                     if (coachQuery.Any())
                     {
@@ -219,8 +225,17 @@ namespace CoachConnect
                         coachResult.DisplayName = txtDisplayName.Text;
                         coachResult.Phone = txtPhone.Text;
                         coachResult.Email = txtEmail.Text;
-                        coachResult.SupervisorID = cbxSupervisor.SelectedValue.ToString();
                         coachResult.IsActive = chkActive.Checked;
+
+                        if (cbxSupervisor.SelectedIndex == -1)
+                        {
+                            coachResult.SupervisorID = "";
+                        }
+                        else
+                        {
+                            coachResult.SupervisorID = cbxSupervisor.SelectedValue.ToString();
+                        }
+
                         context.SaveChanges();
                     }
                     else
@@ -252,11 +267,9 @@ namespace CoachConnect
                         // TODO: Need to add error handling and ensure update was completed before displaying this message
                         MessageBox.Show("Coach Profile Updated");
 
-                        // If save is successful, update the coach list and display the new coach profile.
+                        // If save is successful, update the coach list and display the new coach profile
                         this.DisplayCoaches();
                         this.cbxChooseCoach.SelectedValue = newCoach.CoachID;
-
-
                     }
                 }
             }
@@ -275,3 +288,4 @@ namespace CoachConnect
         }
     }
 }
+ 
