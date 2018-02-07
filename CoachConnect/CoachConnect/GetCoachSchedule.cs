@@ -12,7 +12,7 @@ namespace CoachConnect
     using System;
     using System.Collections.Generic;
     
-    public partial class GetCoachAvailability
+    public partial class GetCoachSchedule
     {
         public string CoachID { get; set; }
         public string Day { get; set; }

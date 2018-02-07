@@ -189,12 +189,9 @@ C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\EntityFramework.xml
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
-C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AdminForm.resources
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ResetUserPasswordAdmin.resources
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditSession.resources
-C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ResetStudentPassword.resources
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.SessionAdminForm.resources
-C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserAdminForm.resources
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.LoginForm.resources
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.Properties.Resources.resources
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.GenerateResource.Cache
@@ -224,3 +221,6 @@ C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debu
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.AddSessionCourse.resources
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.MainForm.resources
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.CoachProfileForm.resources
+C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.CoachAvailabilityForm.resources
+C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ResetMyPassword.resources
+C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserProfileForm.resources

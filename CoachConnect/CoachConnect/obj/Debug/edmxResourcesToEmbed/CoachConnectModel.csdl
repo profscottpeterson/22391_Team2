@@ -100,7 +100,6 @@
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
     <EntitySet Name="ViewSessions" EntityType="db_sft_2172Model.ViewSession" />
-    <EntitySet Name="Availabilities" EntityType="db_sft_2172Model.Availability" />
     <EntitySet Name="ViewSessionRosters" EntityType="db_sft_2172Model.ViewSessionRoster" />
     <FunctionImport Name="sp_GetEligibleStudents">
       <Parameter Name="SessionID" Mode="In" Type="Int32" />
@@ -179,6 +178,7 @@
       <End Role="Course" EntitySet="Courses" />
       <End Role="SessionCourse" EntitySet="SessionCourses" />
     </AssociationSet>
+    <EntitySet Name="GetCoachAvailabilities" EntityType="db_sft_2172Model.GetCoachAvailability" />
   </EntityContainer>
   <EntityType Name="Department">
     <Key>
@@ -236,7 +236,7 @@
     <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
     <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="ResetPassword" Type="Boolean" Nullable="false" />
+    <Property Name="ResetPassword" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
     <Property Name="PasswordSalt" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="IsSupervisor" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Coaches" Relationship="db_sft_2172Model.FK_Coach_User" FromRole="User" ToRole="Coach" />
@@ -335,23 +335,6 @@
     <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
-  <EntityType Name="Availability">
-    <Key>
-      <PropertyRef Name="LastName" />
-      <PropertyRef Name="FirstName" />
-      <PropertyRef Name="DayID" />
-      <PropertyRef Name="TimePeriodID" />
-      <PropertyRef Name="UserID" />
-      <PropertyRef Name="Expr1" />
-    </Key>
-    <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="DayID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="TimePeriodID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Expr1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="ViewSessionRoster">
     <Key>
       <PropertyRef Name="SessionID" />
@@ -398,7 +381,7 @@
     <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="SupervisorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SupervisorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="User" Relationship="db_sft_2172Model.FK_Coach_User" FromRole="Coach" ToRole="User" />
     <NavigationProperty Name="CoachAvailabilities" Relationship="db_sft_2172Model.FK_CoachAvailability_Coach" FromRole="Coach" ToRole="CoachAvailability" />
     <NavigationProperty Name="CoachSessions" Relationship="db_sft_2172Model.FK_Session_Coach" FromRole="Coach" ToRole="CoachSession" />
@@ -470,7 +453,7 @@
     <Property Name="SessionID" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK_Coach_User">
-    <End Type="db_sft_2172Model.User" Role="User" Multiplicity="0..1" />
+    <End Type="db_sft_2172Model.User" Role="User" Multiplicity="1" />
     <End Type="db_sft_2172Model.Coach" Role="Coach" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
@@ -675,4 +658,16 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="GetCoachAvailability">
+    <Key>
+      <PropertyRef Name="CoachID" />
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="Start_Time" />
+      <PropertyRef Name="End_Time" />
+    </Key>
+    <Property Name="CoachID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Start_Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="End_Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+  </EntityType>
 </Schema>

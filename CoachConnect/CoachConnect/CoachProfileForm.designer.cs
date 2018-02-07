@@ -146,7 +146,6 @@ namespace CoachConnect
             // 
             // txtDisplayName
             // 
-            this.txtDisplayName.Enabled = false;
             this.txtDisplayName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDisplayName.Location = new System.Drawing.Point(102, 165);
             this.txtDisplayName.Name = "txtDisplayName";
@@ -195,7 +194,6 @@ namespace CoachConnect
             // 
             // txtMiddleName
             // 
-            this.txtMiddleName.Enabled = false;
             this.txtMiddleName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMiddleName.Location = new System.Drawing.Point(102, 130);
             this.txtMiddleName.Name = "txtMiddleName";
@@ -204,7 +202,6 @@ namespace CoachConnect
             // 
             // txtLastName
             // 
-            this.txtLastName.Enabled = false;
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.Location = new System.Drawing.Point(102, 95);
             this.txtLastName.Name = "txtLastName";
@@ -213,7 +210,6 @@ namespace CoachConnect
             // 
             // txtFirstName
             // 
-            this.txtFirstName.Enabled = false;
             this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstName.Location = new System.Drawing.Point(102, 60);
             this.txtFirstName.Name = "txtFirstName";
@@ -223,7 +219,6 @@ namespace CoachConnect
             // chkActive
             // 
             this.chkActive.AutoSize = true;
-            this.chkActive.Enabled = false;
             this.chkActive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkActive.Location = new System.Drawing.Point(148, 315);
             this.chkActive.Name = "chkActive";
@@ -246,7 +241,6 @@ namespace CoachConnect
             // 
             // txtPhone
             // 
-            this.txtPhone.Enabled = false;
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.Location = new System.Drawing.Point(102, 200);
             this.txtPhone.Name = "txtPhone";
@@ -265,7 +259,6 @@ namespace CoachConnect
             // 
             // txtEmail
             // 
-            this.txtEmail.Enabled = false;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(102, 235);
             this.txtEmail.Name = "txtEmail";
@@ -284,7 +277,6 @@ namespace CoachConnect
             // 
             // cbxSupervisor
             // 
-            this.cbxSupervisor.Enabled = false;
             this.cbxSupervisor.FormattingEnabled = true;
             this.cbxSupervisor.Location = new System.Drawing.Point(102, 270);
             this.cbxSupervisor.Name = "cbxSupervisor";
@@ -330,7 +322,6 @@ namespace CoachConnect
             // 
             // txtID
             // 
-            this.txtID.Enabled = false;
             this.txtID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtID.Location = new System.Drawing.Point(102, 25);
             this.txtID.Name = "txtID";

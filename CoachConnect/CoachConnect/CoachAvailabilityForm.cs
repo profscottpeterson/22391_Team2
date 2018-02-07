@@ -12,12 +12,6 @@ namespace CoachConnect
 {
     public partial class CoachAvailabilityForm : Form
     {
-        /// <summary>
-        /// Gets or sets a list object that stores the current session roster
-        /// </summary>
-        private List<GetCoachAvailability> CurrentAvailability { get; set; }
-
-
         public CoachAvailabilityForm()
         {
             InitializeComponent();
@@ -32,6 +26,7 @@ namespace CoachConnect
         private void CoachAvailabilityFormLoad(object sender, EventArgs e)
         {
             this.DisplayCoaches();
+            cbxChooseCoach.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -61,26 +56,36 @@ namespace CoachConnect
         /// </summary>
         private void PopulateAvailabilityGrid()
         {
+            // Query obtains the coach ID from the combo box.
+            string coachId = this.cbxChooseCoach.SelectedValue.ToString();
+
             try
             {
                 using (var context = new db_sft_2172Entities())
                 {
+                    MessageBox.Show(coachId);
+
                     var coachAvailabilityQuery = from coachAvailability in context.GetCoachAvailabilities
-                                      where coachAvailability.CoachID.Equals(this.cbxChooseCoach.SelectedValue)
+                                      where coachAvailability.CoachID.Equals(coachId)
                                       select coachAvailability;
 
-                    this.CurrentAvailability = coachAvailabilityQuery.ToList();
+                    this.dataGridViewAvailability.DataSource = coachAvailabilityQuery.ToList();
 
-                    this.dataGridViewCourses.DataSource = this.CurrentAvailability;
-
-                    this.dataGridViewCourses.Columns["CoachID"].Visible = false;
-                    this.dataGridViewCourses.Columns["Display Name"].Visible = false;
+                    this.dataGridViewAvailability.Columns["CoachID"].Visible = false;
+                    this.dataGridViewAvailability.Columns["StartTime"].Name = "Start Time";
+                    this.dataGridViewAvailability.Columns["End Time"].Name = "End Time";
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return;
             }
+        }
+
+        private void cbxChooseCoach_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulateAvailabilityGrid();
         }
     }
 }

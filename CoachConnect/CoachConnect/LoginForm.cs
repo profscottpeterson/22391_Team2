@@ -94,7 +94,7 @@ namespace CoachConnect
                             Program.CurrentUser = userResult.UserID;
 
                             // If flag is set to reset password, load the Change Password form.
-                            if (userResult.ResetPassword)
+                            if (userResult.ResetPassword != null)
                             {
                                 MessageBox.Show("Your password is outdated and needs to be changed.  Please reset your password now.");
 
