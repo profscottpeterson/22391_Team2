@@ -78,6 +78,7 @@
             this.btnAddToCourseList.TabIndex = 33;
             this.btnAddToCourseList.Text = "Add New Listing";
             this.btnAddToCourseList.UseVisualStyleBackColor = true;
+            this.btnAddToCourseList.Click += new System.EventHandler(this.btnAddToCourseList_Click);
             // 
             // dataGridViewAvailability
             // 

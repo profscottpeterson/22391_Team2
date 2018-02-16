@@ -224,3 +224,4 @@ C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.CoachAvailabilityForm.resources
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.ResetMyPassword.resources
 C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserProfileForm.resources
+C:\Users\23724514\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.EditCoachAvailability.resources

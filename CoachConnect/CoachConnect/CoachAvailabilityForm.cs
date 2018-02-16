@@ -63,8 +63,6 @@ namespace CoachConnect
             {
                 using (var context = new db_sft_2172Entities())
                 {
-                    MessageBox.Show(coachId);
-
                     var coachAvailabilityQuery = from coachAvailability in context.GetCoachAvailabilities
                                       where coachAvailability.CoachID.Equals(coachId)
                                       select coachAvailability;
@@ -72,8 +70,6 @@ namespace CoachConnect
                     this.dataGridViewAvailability.DataSource = coachAvailabilityQuery.ToList();
 
                     this.dataGridViewAvailability.Columns["CoachID"].Visible = false;
-                    this.dataGridViewAvailability.Columns["StartTime"].Name = "Start Time";
-                    this.dataGridViewAvailability.Columns["End Time"].Name = "End Time";
                 }
             }
             catch (Exception ex)
@@ -85,6 +81,14 @@ namespace CoachConnect
 
         private void cbxChooseCoach_SelectedIndexChanged(object sender, EventArgs e)
         {
+            PopulateAvailabilityGrid();
+        }
+
+        private void btnAddToCourseList_Click(object sender, EventArgs e)
+        {
+            EditCoachAvailability editCoachAvailability = new EditCoachAvailability();
+            editCoachAvailability.ShowDialog();
+
             PopulateAvailabilityGrid();
         }
     }

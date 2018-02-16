@@ -250,8 +250,18 @@
     <EntitySetMapping Name="GetCoachAvailabilities">
       <EntityTypeMapping TypeName="db_sft_2172Model.GetCoachAvailability">
         <MappingFragment StoreEntitySet="GetCoachAvailability">
-          <ScalarProperty Name="End_Time" ColumnName="End Time" />
-          <ScalarProperty Name="Start_Time" ColumnName="Start Time" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="CoachID" ColumnName="CoachID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GetCoachSchedules">
+      <EntityTypeMapping TypeName="db_sft_2172Model.GetCoachSchedule">
+        <MappingFragment StoreEntitySet="GetCoachSchedule">
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
           <ScalarProperty Name="Day" ColumnName="Day" />
           <ScalarProperty Name="CoachID" ColumnName="CoachID" />
         </MappingFragment>

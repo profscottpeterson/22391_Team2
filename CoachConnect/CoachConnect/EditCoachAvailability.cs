@@ -195,19 +195,20 @@ namespace CoachConnect
 
                     // Convert query results to lists
                     List<Day> dayList = dayQuery.ToList();
-                    List<Time> timeList = timeQuery.ToList();
+                    List<Time> startTimeList = timeQuery.ToList();
+                    List<Time> endTimeList = timeQuery.ToList();
 
                     // Set combo box data sources and update data member settings
-                    this.cbxStartTime.DataSource = timeList;
-                    this.cbxStartTime.ValueMember = "RoomID";
-                    this.cbxStartTime.DisplayMember = "RoomID";
+                    this.cbxDay.DataSource = dayList;
+                    this.cbxDay.ValueMember = "DayID";
+                    this.cbxDay.DisplayMember = "DayID";
 
-                    this.cbxStartTime.DataSource = timeList;
-                    this.cbxStartTime.ValueMember = "Time";
+                    this.cbxStartTime.DataSource = startTimeList;
+                    this.cbxStartTime.ValueMember = "Time1";
                     this.cbxStartTime.DisplayMember = "TimeName";
 
-                    this.cbxEndTime.DataSource = timeList;
-                    this.cbxEndTime.ValueMember = "Time";
+                    this.cbxEndTime.DataSource = endTimeList;
+                    this.cbxEndTime.ValueMember = "Time1";
                     this.cbxEndTime.DisplayMember = "TimeName";
 
                     this.cbxDay.SelectedIndex = -1;
