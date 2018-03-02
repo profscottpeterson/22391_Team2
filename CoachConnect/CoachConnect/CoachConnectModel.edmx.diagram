@@ -19,7 +19,6 @@
         <EntityTypeShape EntityType="db_sft_2172Model.CoachByTime" Width="1.5" PointX="9.375" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="db_sft_2172Model.CoachByName" Width="1.5" PointX="15.75" PointY="2.375" />
         <EntityTypeShape EntityType="db_sft_2172Model.ViewSession" Width="1.5" PointX="11.25" PointY="0.625" />
-        <EntityTypeShape EntityType="db_sft_2172Model.Availability" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="db_sft_2172Model.ViewSessionRoster" Width="1.5" PointX="13.375" PointY="0.75" />
         <EntityTypeShape EntityType="db_sft_2172Model.SessionsByInterest" Width="1.5" PointX="3.625" PointY="9.5" />
         <EntityTypeShape EntityType="db_sft_2172Model.Coach" Width="1.5" PointX="8.25" PointY="19" />
@@ -30,8 +29,6 @@
         <EntityTypeShape EntityType="db_sft_2172Model.ViewSessionCours" Width="1.5" PointX="13.375" PointY="3.75" />
         <AssociationConnector Association="db_sft_2172Model.FK_Coach_User" />
         <AssociationConnector Association="db_sft_2172Model.FK_CoachAvailability_Coach" />
-        <AssociationConnector Association="db_sft_2172Model.FK_Session_Coach" />
-        <AssociationConnector Association="db_sft_2172Model.FK_CoachAvailability_Day" />
         <AssociationConnector Association="db_sft_2172Model.FK_CoachAvailability_Time" />
         <AssociationConnector Association="db_sft_2172Model.FK_CoachAvailability_Time1" />
         <AssociationConnector Association="db_sft_2172Model.FK_CoachSession_Time" />
@@ -46,6 +43,8 @@
         <AssociationConnector Association="db_sft_2172Model.FK_CoachCourse_Course1" />
         <AssociationConnector Association="db_sft_2172Model.FK_SessionCourse_CoachSession" />
         <AssociationConnector Association="db_sft_2172Model.FK_SessionCourse_Course" />
+        <AssociationConnector Association="db_sft_2172Model.FK_Session_Coach" />
+        <AssociationConnector Association="db_sft_2172Model.FK_CoachAvailability_Day" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

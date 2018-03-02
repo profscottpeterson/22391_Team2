@@ -29,7 +29,6 @@ namespace CoachConnect
         public string CoachID { get; set; }
         public bool Active { get; set; }
     
-        public virtual Coach Coach { get; set; }
         public virtual Time Time { get; set; }
         public virtual Time Time1 { get; set; }
         public virtual Day Day { get; set; }
@@ -39,5 +38,6 @@ namespace CoachConnect
         public virtual ICollection<CoachCourse> CoachCourses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SessionCourse> SessionCourses1 { get; set; }
+        public virtual Coach Coach { get; set; }
     }
 }

@@ -19,30 +19,37 @@ namespace CoachConnect
             this.Show();
 
             LoginForm loginForm = new LoginForm();
+            //loginForm.MdiParent = this;
             loginForm.ShowDialog();
         }
 
-        private void profileToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddUpdateCoachToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CoachProfileForm coachForm = new CoachProfileForm();
+            CoachProfileForm coachForm = new CoachProfileForm {MdiParent = this};
             coachForm.Show();
         }
 
-        private void addUpdateUserToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AddUpdateUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserAdminForm userForm = new UserAdminForm();
+            UserAdminForm userForm = new UserAdminForm {MdiParent = this};
             userForm.Show();
         }
 
-        private void eToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to exit?",
                 "Confirm exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (dialogResult == DialogResult.Yes)
             {
-                this.Close();
+                Close();
             }
+        }
+
+        private void ResetMyPasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ResetPassword resetForm = new ResetPassword();
+            resetForm.ShowDialog();
         }
     }
 }

@@ -64,15 +64,6 @@
     <Compile Include="AddSessionCourse.Designer.cs">
       <DependentUpon>AddSessionCourse.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminForm.Designer.cs">
-      <DependentUpon>AdminForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Availability.cs">
-      <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Building.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -97,18 +88,6 @@
     <Compile Include="CoachSession.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ResetUserPasswordAdmin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ResetUserPasswordAdmin.designer.cs">
-      <DependentUpon>ResetUserPasswordAdmin.cs</DependentUpon>
-    </Compile>
     <Compile Include="Course.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -118,6 +97,27 @@
     <Compile Include="Department.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Interest.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewUserPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewUserPassword.Designer.cs">
+      <DependentUpon>NewUserPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ResetUserPasswordAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResetUserPasswordAdmin.designer.cs">
+      <DependentUpon>ResetUserPasswordAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditSession.cs">
       <SubType>Form</SubType>
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
@@ -125,15 +125,12 @@
     <Compile Include="EditSession.Designer.cs">
       <DependentUpon>EditSession.cs</DependentUpon>
     </Compile>
-    <Compile Include="Interest.cs">
-      <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ResetStudentPassword.cs">
+    <Compile Include="ResetPassword.cs">
       <SubType>Form</SubType>
       <ExcludeFromStyleCop>False</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="ResetStudentPassword.Designer.cs">
-      <DependentUpon>ResetStudentPassword.cs</DependentUpon>
+    <Compile Include="ResetPassword.Designer.cs">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Room.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
@@ -144,6 +141,12 @@
     </Compile>
     <Compile Include="SessionAdminForm.designer.cs">
       <DependentUpon>SessionAdminForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CoachProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoachProfileForm.designer.cs">
+      <DependentUpon>CoachProfileForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SessionCourse.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
@@ -162,12 +165,6 @@
     </Compile>
     <Compile Include="User.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CoachProfileForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CoachProfileForm.designer.cs">
-      <DependentUpon>CoachProfileForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserAdminForm.cs">
       <SubType>Form</SubType>
@@ -214,11 +211,11 @@
     <EmbeddedResource Include="AddSessionCourse.resx">
       <DependentUpon>AddSessionCourse.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminForm.resx">
-      <DependentUpon>AdminForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewUserPassword.resx">
+      <DependentUpon>NewUserPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ResetUserPasswordAdmin.resx">
       <DependentUpon>ResetUserPasswordAdmin.cs</DependentUpon>
@@ -226,8 +223,8 @@
     <EmbeddedResource Include="EditSession.resx">
       <DependentUpon>EditSession.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ResetStudentPassword.resx">
-      <DependentUpon>ResetStudentPassword.cs</DependentUpon>
+    <EmbeddedResource Include="ResetPassword.resx">
+      <DependentUpon>ResetPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SessionAdminForm.resx">
       <DependentUpon>SessionAdminForm.cs</DependentUpon>

@@ -12,12 +12,12 @@ namespace CoachConnect
         /// <summary>
         /// Text box for the new password
         /// </summary>
-        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox txtAccessKey;
 
         /// <summary>
         /// Text box for the password confirmation.
         /// </summary>
-        private System.Windows.Forms.TextBox txtConfirmPassword;
+        private System.Windows.Forms.TextBox txtConfirmKey;
 
         /// <summary>
         /// Label for the new password
@@ -82,8 +82,8 @@ namespace CoachConnect
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResetUserPasswordAdmin));
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
+            this.txtAccessKey = new System.Windows.Forms.TextBox();
+            this.txtConfirmKey = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.lblAdminForm = new System.Windows.Forms.Label();
@@ -95,51 +95,51 @@ namespace CoachConnect
             ((System.ComponentModel.ISupportInitialize)(this.imgPasswordValid)).BeginInit();
             this.SuspendLayout();
             // 
-            // txtPassword
+            // txtAccessKey
             // 
-            this.txtPassword.Location = new System.Drawing.Point(115, 56);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(133, 20);
-            this.txtPassword.TabIndex = 0;
-            this.txtPassword.UseSystemPasswordChar = true;
-            this.txtPassword.Leave += new System.EventHandler(this.TxtStdNewConfirmPasswordLeave);
+            this.txtAccessKey.Location = new System.Drawing.Point(115, 56);
+            this.txtAccessKey.Name = "txtAccessKey";
+            this.txtAccessKey.Size = new System.Drawing.Size(133, 20);
+            this.txtAccessKey.TabIndex = 0;
+            this.txtAccessKey.UseSystemPasswordChar = true;
+            this.txtAccessKey.Leave += new System.EventHandler(this.TxtStdNewConfirmPasswordLeave);
             // 
-            // txtConfirmPassword
+            // txtConfirmKey
             // 
-            this.txtConfirmPassword.Location = new System.Drawing.Point(115, 86);
-            this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.Size = new System.Drawing.Size(133, 20);
-            this.txtConfirmPassword.TabIndex = 1;
-            this.txtConfirmPassword.UseSystemPasswordChar = true;
-            this.txtConfirmPassword.Leave += new System.EventHandler(this.TxtStdNewConfirmPasswordLeave);
+            this.txtConfirmKey.Location = new System.Drawing.Point(115, 86);
+            this.txtConfirmKey.Name = "txtConfirmKey";
+            this.txtConfirmKey.Size = new System.Drawing.Size(133, 20);
+            this.txtConfirmKey.TabIndex = 1;
+            this.txtConfirmKey.UseSystemPasswordChar = true;
+            this.txtConfirmKey.Leave += new System.EventHandler(this.TxtStdNewConfirmPasswordLeave);
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
             this.lblPassword.Location = new System.Drawing.Point(15, 59);
             this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(81, 13);
+            this.lblPassword.Size = new System.Drawing.Size(91, 13);
             this.lblPassword.TabIndex = 2;
-            this.lblPassword.Text = "Enter Password";
+            this.lblPassword.Text = "Enter Access Key";
             // 
             // lblConfirmPassword
             // 
             this.lblConfirmPassword.AutoSize = true;
             this.lblConfirmPassword.Location = new System.Drawing.Point(15, 89);
             this.lblConfirmPassword.Name = "lblConfirmPassword";
-            this.lblConfirmPassword.Size = new System.Drawing.Size(91, 13);
+            this.lblConfirmPassword.Size = new System.Drawing.Size(63, 13);
             this.lblConfirmPassword.TabIndex = 3;
-            this.lblConfirmPassword.Text = "Confirm Password";
+            this.lblConfirmPassword.Text = "Confirm Key";
             // 
             // lblAdminForm
             // 
             this.lblAdminForm.AutoSize = true;
             this.lblAdminForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminForm.Location = new System.Drawing.Point(74, 20);
+            this.lblAdminForm.Location = new System.Drawing.Point(68, 20);
             this.lblAdminForm.Name = "lblAdminForm";
-            this.lblAdminForm.Size = new System.Drawing.Size(125, 20);
+            this.lblAdminForm.Size = new System.Drawing.Size(158, 20);
             this.lblAdminForm.TabIndex = 8;
-            this.lblAdminForm.Text = "Reset Password";
+            this.lblAdminForm.Text = "Set User Access Key";
             this.lblAdminForm.UseWaitCursor = true;
             // 
             // btnUpdate
@@ -196,8 +196,8 @@ namespace CoachConnect
             this.Controls.Add(this.lblAdminForm);
             this.Controls.Add(this.lblConfirmPassword);
             this.Controls.Add(this.lblPassword);
-            this.Controls.Add(this.txtConfirmPassword);
-            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.txtConfirmKey);
+            this.Controls.Add(this.txtAccessKey);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ResetUserPasswordAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
