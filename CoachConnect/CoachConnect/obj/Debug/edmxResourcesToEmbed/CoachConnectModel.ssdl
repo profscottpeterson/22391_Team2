@@ -19,7 +19,7 @@
     <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
-    <Property Name="SupervisorID" Type="varchar" MaxLength="50" />
+    <Property Name="SupervisorID" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="CoachAvailability">
     <Key>
@@ -134,27 +134,8 @@
     <Property Name="IsAdmin" Type="bit" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="500" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
-    <Property Name="ResetPassword" Type="bit" Nullable="false" />
+    <Property Name="ResetPassword" Type="varchar" MaxLength="10" />
     <Property Name="PasswordSalt" Type="nvarchar" MaxLength="500" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'db_sft_2172.dbo.Availability' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="Availability">
-    <Key>
-      <PropertyRef Name="LastName" />
-      <PropertyRef Name="FirstName" />
-      <PropertyRef Name="DayID" />
-      <PropertyRef Name="TimePeriodID" />
-      <PropertyRef Name="UserID" />
-      <PropertyRef Name="Expr1" />
-    </Key>
-    <Property Name="LastName" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="DayID" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="TimePeriodID" Type="varchar" MaxLength="25" Nullable="false" />
-    <Property Name="ProfilePic" Type="nvarchar(max)" />
-    <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Expr1" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.CoachByName' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -214,6 +195,33 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
     <Property Name="CourseID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Subjects" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="Interest" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.GetCoachAvailability' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="GetCoachAvailability">
+    <Key>
+      <PropertyRef Name="CoachID" />
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="StartTime" />
+      <PropertyRef Name="EndTime" />
+    </Key>
+    <Property Name="CoachID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="StartTime" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="EndTime" Type="varchar" MaxLength="25" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.GetCoachSchedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="GetCoachSchedule">
+    <Key>
+      <PropertyRef Name="Day" />
+      <PropertyRef Name="StartTime" />
+      <PropertyRef Name="EndTime" />
+    </Key>
+    <Property Name="CoachID" Type="varchar" MaxLength="50" />
+    <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="StartTime" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="EndTime" Type="varchar" MaxLength="25" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.SessionsByInterest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -299,7 +307,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
     <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
   </EntityType>
   <Association Name="FK_Coach_User">
-    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="1" />
     <End Role="Coach" Type="Self.Coach" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
@@ -502,18 +510,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Session_User">
-    <End Role="User" Type="Self.User" Multiplicity="0..1" />
-    <End Role="CoachSession" Type="Self.CoachSession" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="CoachSession">
-        <PropertyRef Name="CoachID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_SessionCourse_CoachSession">
     <End Role="CoachSession" Type="Self.CoachSession" Multiplicity="1" />
     <End Role="SessionCourse" Type="Self.SessionCourse" Multiplicity="*" />
@@ -553,17 +549,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
     <EntitySet Name="SessionCourse" EntityType="Self.SessionCourse" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Time" EntityType="Self.Time" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Availability" EntityType="Self.Availability" store:Type="Views" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Availability].[LastName] AS [LastName], 
-    [Availability].[FirstName] AS [FirstName], 
-    [Availability].[DayID] AS [DayID], 
-    [Availability].[TimePeriodID] AS [TimePeriodID], 
-    [Availability].[ProfilePic] AS [ProfilePic], 
-    [Availability].[UserID] AS [UserID], 
-    [Availability].[Expr1] AS [Expr1]
-    FROM [dbo].[Availability] AS [Availability]</DefiningQuery>
-    </EntitySet>
     <EntitySet Name="CoachByName" EntityType="Self.CoachByName" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [CoachByName].[CoachID] AS [CoachID], 
@@ -597,6 +582,22 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
     [CoachInterest].[Subjects] AS [Subjects], 
     [CoachInterest].[Interest] AS [Interest]
     FROM [dbo].[CoachInterest] AS [CoachInterest]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="GetCoachAvailability" EntityType="Self.GetCoachAvailability" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [GetCoachAvailability].[CoachID] AS [CoachID], 
+    [GetCoachAvailability].[Day] AS [Day], 
+    [GetCoachAvailability].[StartTime] AS [StartTime], 
+    [GetCoachAvailability].[EndTime] AS [EndTime]
+    FROM [dbo].[GetCoachAvailability] AS [GetCoachAvailability]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="GetCoachSchedule" EntityType="Self.GetCoachSchedule" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [GetCoachSchedule].[CoachID] AS [CoachID], 
+    [GetCoachSchedule].[Day] AS [Day], 
+    [GetCoachSchedule].[StartTime] AS [StartTime], 
+    [GetCoachSchedule].[EndTime] AS [EndTime]
+    FROM [dbo].[GetCoachSchedule] AS [GetCoachSchedule]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="SessionsByInterest" EntityType="Self.SessionsByInterest" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
@@ -712,10 +713,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
     </AssociationSet>
     <AssociationSet Name="FK_Session_Room" Association="Self.FK_Session_Room">
       <End Role="Room" EntitySet="Room" />
-      <End Role="CoachSession" EntitySet="CoachSession" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Session_User" Association="Self.FK_Session_User">
-      <End Role="User" EntitySet="User" />
       <End Role="CoachSession" EntitySet="CoachSession" />
     </AssociationSet>
     <AssociationSet Name="FK_SessionCourse_CoachSession" Association="Self.FK_SessionCourse_CoachSession">

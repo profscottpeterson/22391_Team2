@@ -38,7 +38,6 @@ namespace CoachConnect
         public virtual DbSet<CoachByTime> CoachByTimes { get; set; }
         public virtual DbSet<CoachByName> CoachByNames { get; set; }
         public virtual DbSet<ViewSession> ViewSessions { get; set; }
-        public virtual DbSet<Availability> Availabilities { get; set; }
         public virtual DbSet<ViewSessionRoster> ViewSessionRosters { get; set; }
         public virtual DbSet<SessionsByInterest> SessionsByInterests { get; set; }
         public virtual DbSet<Coach> Coaches { get; set; }
@@ -49,6 +48,8 @@ namespace CoachConnect
         public virtual DbSet<ViewSessionCours> ViewSessionCourses { get; set; }
         public virtual DbSet<CoachCourse> CoachCourses { get; set; }
         public virtual DbSet<SessionCourse> SessionCourses { get; set; }
+        public virtual DbSet<GetCoachAvailability> GetCoachAvailabilities { get; set; }
+        public virtual DbSet<GetCoachSchedule> GetCoachSchedules { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

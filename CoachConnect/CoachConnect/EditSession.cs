@@ -59,7 +59,7 @@ namespace CoachConnect
             this.LoadSessionData();
 
             // Call method to populate session roster
-            this.PopulateCourses();
+            this.PopulateCourseGrid();
         }
 
         /// <summary>
@@ -309,7 +309,7 @@ namespace CoachConnect
         /// <summary>
         /// A method to update the student roster data grid
         /// </summary>
-        private void PopulateCourses()
+        private void PopulateCourseGrid()
         {
             try
             {
@@ -519,7 +519,7 @@ namespace CoachConnect
 
                     AddSessionCourse addCourseForm = new AddSessionCourse(this.CurrentSession);
                     addCourseForm.ShowDialog();
-                    this.PopulateCourses();
+                    this.PopulateCourseGrid();
                 }
             }
             catch (Exception ex)
@@ -580,7 +580,7 @@ namespace CoachConnect
             }
 
             // Update the data grid view
-            this.PopulateCourses();
+            this.PopulateCourseGrid();
         }
     }
 }
