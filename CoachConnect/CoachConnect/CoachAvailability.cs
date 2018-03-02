@@ -21,8 +21,8 @@ namespace CoachConnect
         public int CoachAvailabilityID { get; set; }
     
         public virtual Coach Coach { get; set; }
+        public virtual Day Day { get; set; }
         public virtual Time Time { get; set; }
         public virtual Time Time1 { get; set; }
-        public virtual Day Day { get; set; }
     }
 }

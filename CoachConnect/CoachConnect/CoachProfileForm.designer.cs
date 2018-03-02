@@ -345,7 +345,7 @@ namespace CoachConnect
             this.cbxChooseCoach.Name = "cbxChooseCoach";
             this.cbxChooseCoach.Size = new System.Drawing.Size(192, 21);
             this.cbxChooseCoach.TabIndex = 0;
-            this.cbxChooseCoach.SelectedIndexChanged += new System.EventHandler(this.CbxChooseCoach_SelectedIndexChanged);
+            this.cbxChooseCoach.SelectedIndexChanged += new System.EventHandler(this.cbxChooseCoach_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -377,7 +377,7 @@ namespace CoachConnect
             this.btnClose.TabIndex = 12;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.BtnClose_Click);
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // CoachProfileForm
             // 

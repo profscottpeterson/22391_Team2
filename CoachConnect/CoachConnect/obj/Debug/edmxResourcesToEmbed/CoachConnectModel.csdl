@@ -100,6 +100,7 @@
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
     <EntitySet Name="ViewSessions" EntityType="db_sft_2172Model.ViewSession" />
+    <EntitySet Name="Availabilities" EntityType="db_sft_2172Model.Availability" />
     <EntitySet Name="ViewSessionRosters" EntityType="db_sft_2172Model.ViewSessionRoster" />
     <FunctionImport Name="sp_GetEligibleStudents">
       <Parameter Name="SessionID" Mode="In" Type="Int32" />
@@ -118,6 +119,14 @@
     </AssociationSet>
     <AssociationSet Name="FK_CoachAvailability_Coach" Association="db_sft_2172Model.FK_CoachAvailability_Coach">
       <End Role="Coach" EntitySet="Coaches" />
+      <End Role="CoachAvailability" EntitySet="CoachAvailabilities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Session_Coach" Association="db_sft_2172Model.FK_Session_Coach">
+      <End Role="Coach" EntitySet="Coaches" />
+      <End Role="CoachSession" EntitySet="CoachSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CoachAvailability_Day" Association="db_sft_2172Model.FK_CoachAvailability_Day">
+      <End Role="Day" EntitySet="Days" />
       <End Role="CoachAvailability" EntitySet="CoachAvailabilities" />
     </AssociationSet>
     <AssociationSet Name="FK_CoachAvailability_Time" Association="db_sft_2172Model.FK_CoachAvailability_Time">
@@ -169,14 +178,6 @@
     <AssociationSet Name="FK_SessionCourse_Course" Association="db_sft_2172Model.FK_SessionCourse_Course">
       <End Role="Course" EntitySet="Courses" />
       <End Role="SessionCourse" EntitySet="SessionCourses" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Session_Coach" Association="db_sft_2172Model.FK_Session_Coach">
-      <End Role="Coach" EntitySet="Coaches" />
-      <End Role="CoachSession" EntitySet="CoachSessions" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CoachAvailability_Day" Association="db_sft_2172Model.FK_CoachAvailability_Day">
-      <End Role="Day" EntitySet="Days" />
-      <End Role="CoachAvailability" EntitySet="CoachAvailabilities" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Department">
@@ -235,7 +236,7 @@
     <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
     <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="ResetPassword" Type="String" Nullable="true" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="ResetPassword" Type="Boolean" Nullable="false" />
     <Property Name="PasswordSalt" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="IsSupervisor" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Coaches" Relationship="db_sft_2172Model.FK_Coach_User" FromRole="User" ToRole="Coach" />
@@ -248,8 +249,8 @@
     <Property Name="DayID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="DayName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="SortOrder" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="CoachSessions" Relationship="db_sft_2172Model.FK_Session_Day1" FromRole="Day" ToRole="CoachSession" />
     <NavigationProperty Name="CoachAvailabilities" Relationship="db_sft_2172Model.FK_CoachAvailability_Day" FromRole="Day" ToRole="CoachAvailability" />
+    <NavigationProperty Name="CoachSessions" Relationship="db_sft_2172Model.FK_Session_Day1" FromRole="Day" ToRole="CoachSession" />
   </EntityType>
   <EntityType Name="CoachInterest">
     <Key>
@@ -334,6 +335,23 @@
     <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityType Name="Availability">
+    <Key>
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="DayID" />
+      <PropertyRef Name="TimePeriodID" />
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="Expr1" />
+    </Key>
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DayID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TimePeriodID" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="ProfilePic" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Expr1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="ViewSessionRoster">
     <Key>
       <PropertyRef Name="SessionID" />
@@ -380,11 +398,11 @@
     <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="SupervisorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SupervisorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="User" Relationship="db_sft_2172Model.FK_Coach_User" FromRole="Coach" ToRole="User" />
     <NavigationProperty Name="CoachAvailabilities" Relationship="db_sft_2172Model.FK_CoachAvailability_Coach" FromRole="Coach" ToRole="CoachAvailability" />
-    <NavigationProperty Name="Courses" Relationship="db_sft_2172Model.CoachCourseList" FromRole="Coach" ToRole="Course" />
     <NavigationProperty Name="CoachSessions" Relationship="db_sft_2172Model.FK_Session_Coach" FromRole="Coach" ToRole="CoachSession" />
+    <NavigationProperty Name="Courses" Relationship="db_sft_2172Model.CoachCourseList" FromRole="Coach" ToRole="Course" />
   </EntityType>
   <EntityType Name="CoachAvailability">
     <Key>
@@ -396,9 +414,9 @@
     <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
     <Property Name="CoachAvailabilityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="Coach" Relationship="db_sft_2172Model.FK_CoachAvailability_Coach" FromRole="CoachAvailability" ToRole="Coach" />
+    <NavigationProperty Name="Day" Relationship="db_sft_2172Model.FK_CoachAvailability_Day" FromRole="CoachAvailability" ToRole="Day" />
     <NavigationProperty Name="Time" Relationship="db_sft_2172Model.FK_CoachAvailability_Time" FromRole="CoachAvailability" ToRole="Time" />
     <NavigationProperty Name="Time1" Relationship="db_sft_2172Model.FK_CoachAvailability_Time1" FromRole="CoachAvailability" ToRole="Time" />
-    <NavigationProperty Name="Day" Relationship="db_sft_2172Model.FK_CoachAvailability_Day" FromRole="CoachAvailability" ToRole="Day" />
   </EntityType>
   <EntityType Name="CoachSession">
     <Key>
@@ -411,6 +429,7 @@
     <Property Name="EndTime" Type="Time" Nullable="false" Precision="7" />
     <Property Name="CoachID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Coach" Relationship="db_sft_2172Model.FK_Session_Coach" FromRole="CoachSession" ToRole="Coach" />
     <NavigationProperty Name="Time" Relationship="db_sft_2172Model.FK_CoachSession_Time" FromRole="CoachSession" ToRole="Time" />
     <NavigationProperty Name="Time1" Relationship="db_sft_2172Model.FK_CoachSession_Time1" FromRole="CoachSession" ToRole="Time" />
     <NavigationProperty Name="Day" Relationship="db_sft_2172Model.FK_Session_Day1" FromRole="CoachSession" ToRole="Day" />
@@ -418,7 +437,6 @@
     <NavigationProperty Name="User" Relationship="db_sft_2172Model.FK_Session_User1" FromRole="CoachSession" ToRole="User" />
     <NavigationProperty Name="CoachCourses" Relationship="db_sft_2172Model.FK_CoachCourse_CoachSession" FromRole="CoachSession" ToRole="CoachCourse" />
     <NavigationProperty Name="SessionCourses1" Relationship="db_sft_2172Model.FK_SessionCourse_CoachSession" FromRole="CoachSession" ToRole="SessionCourse1" />
-    <NavigationProperty Name="Coach" Relationship="db_sft_2172Model.FK_Session_Coach" FromRole="CoachSession" ToRole="Coach" />
   </EntityType>
   <EntityType Name="Time">
     <Key>
@@ -452,7 +470,7 @@
     <Property Name="SessionID" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK_Coach_User">
-    <End Type="db_sft_2172Model.User" Role="User" Multiplicity="1" />
+    <End Type="db_sft_2172Model.User" Role="User" Multiplicity="0..1" />
     <End Type="db_sft_2172Model.Coach" Role="Coach" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
@@ -472,6 +490,30 @@
       </Principal>
       <Dependent Role="CoachAvailability">
         <PropertyRef Name="CoachID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Session_Coach">
+    <End Type="db_sft_2172Model.Coach" Role="Coach" Multiplicity="0..1" />
+    <End Type="db_sft_2172Model.CoachSession" Role="CoachSession" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coach">
+        <PropertyRef Name="CoachID" />
+      </Principal>
+      <Dependent Role="CoachSession">
+        <PropertyRef Name="CoachID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CoachAvailability_Day">
+    <End Type="db_sft_2172Model.Day" Role="Day" Multiplicity="1" />
+    <End Type="db_sft_2172Model.CoachAvailability" Role="CoachAvailability" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Day">
+        <PropertyRef Name="DayID" />
+      </Principal>
+      <Dependent Role="CoachAvailability">
+        <PropertyRef Name="DayID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -630,30 +672,6 @@
       </Principal>
       <Dependent Role="SessionCourse">
         <PropertyRef Name="CourseID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Session_Coach">
-    <End Type="db_sft_2172Model.Coach" Role="Coach" Multiplicity="0..1" />
-    <End Type="db_sft_2172Model.CoachSession" Role="CoachSession" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Coach">
-        <PropertyRef Name="CoachID" />
-      </Principal>
-      <Dependent Role="CoachSession">
-        <PropertyRef Name="CoachID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CoachAvailability_Day">
-    <End Type="db_sft_2172Model.Day" Role="Day" Multiplicity="1" />
-    <End Type="db_sft_2172Model.CoachAvailability" Role="CoachAvailability" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Day">
-        <PropertyRef Name="DayID" />
-      </Principal>
-      <Dependent Role="CoachAvailability">
-        <PropertyRef Name="DayID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

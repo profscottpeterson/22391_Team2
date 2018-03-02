@@ -33,6 +33,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void UserAdminFormLoad(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             this.DisplayUsers();
         }
 
@@ -144,21 +145,18 @@ namespace CoachConnect
                 // adding user to the database.
                 using (var context = new db_sft_2172Entities())
                 {
-                    User user = new User
-                    {
-                        FirstName = txtBoxFirstName.Text,
-                        MiddleName = txtBoxMiddleName.Text,
-                        LastName = txtBoxLastName.Text,
-                        UserID = txtBoxUserID.Text,
-                        Password = txtBoxPassword.Text,
-                        IsAdmin = chkBoxAdmin.Checked,
-                        IsActive = chkBoxActive.Checked,
-                        IsSupervisor = chkBoxSupervisor.Checked,
-                        DisplayName = txtBoxFirstName.Text + " " + txtBoxMiddleName.Text + " " +
-                                      txtBoxLastName.Text
-                    };
+                    User user = new User();
+                    user.FirstName = this.txtBoxFirstName.Text;
+                    user.MiddleName = this.txtBoxMiddleName.Text;
+                    user.LastName = this.txtBoxLastName.Text;
+                    user.UserID = this.txtBoxUserID.Text;
+                    user.Password = this.txtBoxPassword.Text;
+                    user.IsAdmin = this.chkBoxAdmin.Checked;
+                    user.IsActive = this.chkBoxActive.Checked;
+                    user.IsSupervisor = this.chkBoxSupervisor.Checked;
+                    user.DisplayName = this.txtBoxFirstName.Text + " " + this.txtBoxMiddleName.Text + " " + this.txtBoxLastName.Text;
 
-                    context.Users.Add(user);
+                    var userQuery = context.Users.Add(user);
                     context.SaveChanges();
                 }
             }
@@ -178,6 +176,7 @@ namespace CoachConnect
                     {
                         var userResult = userQuery.FirstOrDefault<User>();
 
+                        User user = new User();
                         userResult.FirstName = txtBoxFirstName.Text;
                         userResult.MiddleName = txtBoxMiddleName.Text;
                         userResult.LastName = txtBoxLastName.Text;

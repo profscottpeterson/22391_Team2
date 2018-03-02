@@ -41,28 +41,31 @@ namespace CoachConnect
         private void BtnUpdateClick(object sender, EventArgs e)
         {
             // Verify that the two entered passwords match
-            if (!this.txtAccessKey.Text.Equals(this.txtConfirmKey.Text))
+            if (!this.txtPassword.Text.Equals(this.txtConfirmPassword.Text))
             {
-                MessageBox.Show("Sorry, the access keys do not match.  Please try again!");
+                MessageBox.Show("Sorry, the passwords do not match.  Please try again!");
 
                 // Clear the password boxes
-                this.txtAccessKey.Text = string.Empty;
-                this.txtConfirmKey.Text = string.Empty;
+                this.txtPassword.Text = string.Empty;
+                this.txtConfirmPassword.Text = string.Empty;
 
-                this.txtAccessKey.Focus();
+                this.txtPassword.Focus();
             }
-            else if (this.txtAccessKey.Text.Equals(string.Empty))
+            else if (this.txtPassword.Text.Equals(string.Empty))
             {
-                MessageBox.Show("Please enter a new access key.");
+                MessageBox.Show("Please enter a new password.");
 
                 // Clear the password boxes
-                this.txtAccessKey.Text = string.Empty;
-                this.txtConfirmKey.Text = string.Empty;
+                this.txtPassword.Text = string.Empty;
+                this.txtConfirmPassword.Text = string.Empty;
 
-                this.txtAccessKey.Focus();
+                this.txtPassword.Focus();
             }
             else
             {
+                // Generate salt and salted hash
+                SaltedHash sh = new SaltedHash(txtPassword.Text);
+
                 // Find current user, then update password hash and salt in database
                 try
                 {
@@ -75,12 +78,14 @@ namespace CoachConnect
 
                         User currentUser = userQuery.FirstOrDefault();
 
-                        currentUser.ResetPassword = txtAccessKey.Text;
+                        currentUser.Password = sh.Hash;
+                        currentUser.PasswordSalt = sh.Salt;
+                        currentUser.ResetPassword = false;
 
                         context.SaveChanges();
 
                         // Show confirmation if save is successful
-                        MessageBox.Show("Access key updated successfully!\n Please provide this value to the user: " + txtAccessKey.Text);
+                        MessageBox.Show("Password updated successfully!");
                     }
                 }
                 catch (Exception ex)
@@ -110,7 +115,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void TxtStdNewConfirmPasswordLeave(object sender, EventArgs e)
         {
-            if (txtAccessKey.Text == txtConfirmKey.Text && (txtAccessKey.Text != string.Empty || txtConfirmKey.Text != string.Empty))
+            if (txtPassword.Text == txtConfirmPassword.Text && (txtPassword.Text != string.Empty || txtConfirmPassword.Text != string.Empty))
             {
                 imgPasswordValid.Visible = true;
                 imgPasswordNotValid.Visible = false;

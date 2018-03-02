@@ -138,7 +138,7 @@ namespace CoachConnect
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
-        private void CbxChooseCoach_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbxChooseCoach_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbxChooseCoach.SelectedIndex == -1) return;
 
@@ -194,7 +194,7 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// Submit button which submits the added or `updated info to the database.
+        /// Submit button which submits the added or updated info to the database.
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
@@ -225,19 +225,24 @@ namespace CoachConnect
                     }
                     else
                     {
-                        Coach newCoach = new Coach
-                        {
-                            CoachID = this.txtID.Text,
-                            FirstName = this.txtFirstName.Text,
-                            MiddleName = this.txtMiddleName.Text,
-                            LastName = this.txtLastName.Text,
-                            DisplayName = this.txtDisplayName.Text,
-                            Phone = this.txtPhone.Text,
-                            Email = this.txtEmail.Text,
-                            IsActive = this.chkActive.Checked
-                        };
+                        Coach newCoach = new Coach();
+                        newCoach.CoachID = this.txtID.Text;
+                        newCoach.FirstName = this.txtFirstName.Text;
+                        newCoach.MiddleName = this.txtMiddleName.Text;
+                        newCoach.LastName = this.txtLastName.Text;
+                        newCoach.DisplayName = this.txtDisplayName.Text;
+                        newCoach.Phone = this.txtPhone.Text;
+                        newCoach.Email = this.txtEmail.Text;
+                        newCoach.IsActive = this.chkActive.Checked;
 
-                        newCoach.SupervisorID = cbxSupervisor.SelectedIndex == -1 ? "" : cbxSupervisor.SelectedValue.ToString();
+                        if (cbxSupervisor.SelectedIndex == -1)
+                        {
+                            newCoach.SupervisorID = "";
+                        }
+                        else
+                        {
+                            newCoach.SupervisorID = cbxSupervisor.SelectedValue.ToString();
+                        }
 
 
 
@@ -264,7 +269,7 @@ namespace CoachConnect
 
         }
 
-        private void BtnClose_Click(object sender, EventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }

@@ -31,7 +31,7 @@ namespace CoachConnect
         public string Phone { get; set; }
         public string Email { get; set; }
         public string DisplayName { get; set; }
-        public string ResetPassword { get; set; }
+        public bool ResetPassword { get; set; }
         public string PasswordSalt { get; set; }
         public bool IsSupervisor { get; set; }
     
