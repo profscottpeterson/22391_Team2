@@ -52,7 +52,7 @@ namespace CoachConnect
         }
 
         /// <summary>
-        /// A method to update the coach availability data grid
+        /// A method to populate data in the coach availability data grid
         /// </summary>
         private void PopulateAvailabilityGrid()
         {
@@ -69,6 +69,7 @@ namespace CoachConnect
 
                     this.dataGridViewAvailability.DataSource = coachAvailabilityQuery.ToList();
 
+                    //this.dataGridViewAvailability.Columns["CoachAvailabilityID"].Visible = false;
                     this.dataGridViewAvailability.Columns["CoachID"].Visible = false;
                 }
             }
@@ -86,7 +87,18 @@ namespace CoachConnect
 
         private void btnAddToCourseList_Click(object sender, EventArgs e)
         {
-            EditCoachAvailability editCoachAvailability = new EditCoachAvailability();
+            EditCoachAvailability editCoachAvailability = new EditCoachAvailability(this.cbxChooseCoach.SelectedValue.ToString());
+            editCoachAvailability.ShowDialog();
+
+            PopulateAvailabilityGrid();
+        }
+
+        private void dataGridViewAvailability_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            // Get the AvailabilityID for the selected row
+            int selectedAvailabilityID = Convert.ToInt32(dataGridViewAvailability.SelectedRows[0].Cells["CoachAvailabilityID"].Value.ToString());
+
+            EditCoachAvailability editCoachAvailability = new EditCoachAvailability(selectedAvailabilityID);
             editCoachAvailability.ShowDialog();
 
             PopulateAvailabilityGrid();

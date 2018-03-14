@@ -109,5 +109,10 @@ namespace CoachConnect
             // When form is closed, refresh the datagrid
             this.GetSessionData();
         }
+
+        private void dataGridViewSessions_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

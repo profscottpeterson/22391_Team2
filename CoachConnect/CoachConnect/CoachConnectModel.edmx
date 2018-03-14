@@ -139,7 +139,7 @@
           <Property Name="IsAdmin" Type="bit" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="500" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
-          <Property Name="ResetPassword" Type="varchar" MaxLength="10" />
+          <Property Name="ResetPassword" Type="varchar" MaxLength="50" />
           <Property Name="PasswordSalt" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -206,11 +206,13 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
 warning 6002: The table/view 'db_sft_2172.dbo.GetCoachAvailability' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GetCoachAvailability">
           <Key>
+            <PropertyRef Name="CoachAvailabilityID" />
             <PropertyRef Name="CoachID" />
             <PropertyRef Name="Day" />
             <PropertyRef Name="StartTime" />
             <PropertyRef Name="EndTime" />
           </Key>
+          <Property Name="CoachAvailabilityID" Type="int" Nullable="false" />
           <Property Name="CoachID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
           <Property Name="StartTime" Type="varchar" MaxLength="25" Nullable="false" />
@@ -592,6 +594,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
           </EntitySet>
           <EntitySet Name="GetCoachAvailability" EntityType="Self.GetCoachAvailability" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
+    [GetCoachAvailability].[CoachAvailabilityID] AS [CoachAvailabilityID], 
     [GetCoachAvailability].[CoachID] AS [CoachID], 
     [GetCoachAvailability].[Day] AS [Day], 
     [GetCoachAvailability].[StartTime] AS [StartTime], 
@@ -972,7 +975,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
           <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="ResetPassword" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="ResetPassword" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="PasswordSalt" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="IsSupervisor" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Coaches" Relationship="db_sft_2172Model.FK_Coach_User" FromRole="User" ToRole="Coach" />
@@ -1400,11 +1403,13 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
             <PropertyRef Name="Day" />
             <PropertyRef Name="StartTime" />
             <PropertyRef Name="EndTime" />
+            <PropertyRef Name="CoachAvailabilityID" />
           </Key>
           <Property Name="CoachID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="StartTime" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="EndTime" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CoachAvailabilityID" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="GetCoachSchedule">
           <Key>
@@ -1672,6 +1677,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
           <EntitySetMapping Name="GetCoachAvailabilities">
             <EntityTypeMapping TypeName="db_sft_2172Model.GetCoachAvailability">
               <MappingFragment StoreEntitySet="GetCoachAvailability">
+                <ScalarProperty Name="CoachAvailabilityID" ColumnName="CoachAvailabilityID" />
                 <ScalarProperty Name="EndTime" ColumnName="EndTime" />
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="Day" ColumnName="Day" />

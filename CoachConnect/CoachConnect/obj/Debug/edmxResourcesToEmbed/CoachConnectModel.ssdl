@@ -134,7 +134,7 @@
     <Property Name="IsAdmin" Type="bit" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="500" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
-    <Property Name="ResetPassword" Type="varchar" MaxLength="10" />
+    <Property Name="ResetPassword" Type="varchar" MaxLength="50" />
     <Property Name="PasswordSalt" Type="nvarchar" MaxLength="500" />
   </EntityType>
   <!--Errors Found During Generation:
@@ -200,11 +200,13 @@ warning 6002: The table/view 'db_sft_2172.dbo.CoachInterest' does not have a pri
 warning 6002: The table/view 'db_sft_2172.dbo.GetCoachAvailability' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="GetCoachAvailability">
     <Key>
+      <PropertyRef Name="CoachAvailabilityID" />
       <PropertyRef Name="CoachID" />
       <PropertyRef Name="Day" />
       <PropertyRef Name="StartTime" />
       <PropertyRef Name="EndTime" />
     </Key>
+    <Property Name="CoachAvailabilityID" Type="int" Nullable="false" />
     <Property Name="CoachID" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="StartTime" Type="varchar" MaxLength="25" Nullable="false" />
@@ -585,6 +587,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
     </EntitySet>
     <EntitySet Name="GetCoachAvailability" EntityType="Self.GetCoachAvailability" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
+    [GetCoachAvailability].[CoachAvailabilityID] AS [CoachAvailabilityID], 
     [GetCoachAvailability].[CoachID] AS [CoachID], 
     [GetCoachAvailability].[Day] AS [Day], 
     [GetCoachAvailability].[StartTime] AS [StartTime], 

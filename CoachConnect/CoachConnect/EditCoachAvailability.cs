@@ -24,12 +24,15 @@ namespace CoachConnect
         private readonly Validation validator = new Validation();
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EditCoachAvailability" /> class with no inputs.
-        /// The no-input version is used to create a new session
+        /// Initializes a new instance of the <see cref="EditCoachAvailability" /> class.
+        /// In this version a coachID is provided to create a new session
         /// </summary>
-        public EditCoachAvailability()
+        public EditCoachAvailability(string coachID)
         {
             this.InitializeComponent();
+
+            this.CurrentAvailability = new CoachAvailability();
+            CurrentAvailability.CoachID = coachID;
 
             // Set session ID to a negative value (indicates a new session)
             this.CoachAvailabilityId = -1;
@@ -76,46 +79,19 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnSaveClick(object sender, EventArgs e)
         {
-            this.CurrentAvailability = new CoachAvailability();
-
             // Get data from form and insert into current Availability object
             this.CurrentAvailability.DayID = this.cbxDay.SelectedValue.ToString();
 
-            // Update start/end times based on selected values
-            try
-            {
-                using (var context = new db_sft_2172Entities())
-                {
-                    // Get selected start time
-                    var selectedStartTime = from startTimes in context.Times
-                                            where
-                                                startTimes.TimeName.Equals(this.cbxStartTime.SelectedText.ToString())
-                                            select startTimes.Time1;
+            // Get selected start time as a TimeSpan
+            Time selectedStartTime = (Time)cbxStartTime.SelectedItem;
+            CurrentAvailability.StartTime = selectedStartTime.Time1;
 
-                    if (selectedStartTime.Any())
-                    {
-                        this.CurrentAvailability.StartTime = selectedStartTime.First();
-                    }
-
-                    // Get selected end time
-                    var selectedEndTime = from endTimes in context.Times
-                                          where
-                                              endTimes.TimeName.Equals(this.cbxEndTime.SelectedText.ToString())
-                                          select endTimes.Time1;
-
-                    if (selectedEndTime.Any())
-                    {
-                        this.CurrentAvailability.EndTime = selectedEndTime.First();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            // If end time is before the start time, display an error message, then cancel the save action. 
-            if (this.CurrentAvailability.StartTime >= this.CurrentAvailability.EndTime)
+            // Get selected end time as a TimeSpan
+            Time selectedEndTime = (Time)cbxEndTime.SelectedItem;
+            CurrentAvailability.EndTime = selectedEndTime.Time1;
+            
+            // If end time is earlier or the same as the start time, display an error message, then cancel the save action. 
+            if (TimeSpan.Compare(this.CurrentAvailability.StartTime, this.CurrentAvailability.EndTime) >= 0)
             {
                 MessageBox.Show("Error: Start time must be earlier than the end time.");
                 return;
@@ -128,21 +104,24 @@ namespace CoachConnect
                 {
                     var sameDayCoachAvailability = from coachAvailability in context.CoachAvailabilities
                                                    where
-                                                       coachAvailability.CoachID.Equals(this.CurrentAvailability.CoachID)
-                                                       && coachAvailability.DayID.Equals(this.CurrentAvailability.DayID)
+                                                       coachAvailability.CoachID.Equals(CurrentAvailability.CoachID)
+                                                       && coachAvailability.DayID.Equals(CurrentAvailability.DayID)
+                                                       && !coachAvailability.CoachAvailabilityID.Equals(CurrentAvailability.CoachAvailabilityID)
                                                    select coachAvailability;
 
                     if (sameDayCoachAvailability.Any())
                     {
                         var overlappingCoachAvailability = from overlapping in sameDayCoachAvailability
-                                                           where (this.CurrentAvailability.EndTime > overlapping.StartTime || this.CurrentAvailability.StartTime < overlapping.EndTime)
+                                                           where (!(this.CurrentAvailability.StartTime < overlapping.StartTime && this.CurrentAvailability.EndTime <= overlapping.StartTime) &&
+                                                                  !(this.CurrentAvailability.StartTime >= overlapping.EndTime && this.CurrentAvailability.EndTime > overlapping.EndTime))
                                                            select overlapping;
 
 
-                        if (overlappingCoachAvailability.Any())
+                        if (overlappingCoachAvailability.Any()) {
                             MessageBox.Show(
                             "Sorry, the desired coach is already booked for part or all of this time block.\nPlease select another combination or modify an existing block!");
-                        return;
+                            return;
+                        }
                     }
                 }
             }
@@ -163,6 +142,7 @@ namespace CoachConnect
                 
             // Close form once finished
             this.Close();
+            
         }
 
         /// <summary>

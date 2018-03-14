@@ -18,5 +18,6 @@ namespace CoachConnect
         public string Day { get; set; }
         public string StartTime { get; set; }
         public string EndTime { get; set; }
+        public int CoachAvailabilityID { get; set; }
     }
 }

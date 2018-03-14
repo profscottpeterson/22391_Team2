@@ -237,7 +237,7 @@
     <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Email" Type="String" MaxLength="320" FixedLength="false" Unicode="true" />
     <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="ResetPassword" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="ResetPassword" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="PasswordSalt" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="IsSupervisor" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Coaches" Relationship="db_sft_2172Model.FK_Coach_User" FromRole="User" ToRole="Coach" />
@@ -665,11 +665,13 @@
       <PropertyRef Name="Day" />
       <PropertyRef Name="StartTime" />
       <PropertyRef Name="EndTime" />
+      <PropertyRef Name="CoachAvailabilityID" />
     </Key>
     <Property Name="CoachID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="StartTime" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="EndTime" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CoachAvailabilityID" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="GetCoachSchedule">
     <Key>

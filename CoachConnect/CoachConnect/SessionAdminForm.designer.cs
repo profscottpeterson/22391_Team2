@@ -69,6 +69,7 @@ namespace CoachConnect
             this.dataGridViewSessions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewSessions.Size = new System.Drawing.Size(720, 295);
             this.dataGridViewSessions.TabIndex = 0;
+            this.dataGridViewSessions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSessions_CellContentClick);
             this.dataGridViewSessions.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewSessionsCellContentDoubleClick);
             this.dataGridViewSessions.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewSessionsRowHeaderMouseDoubleClick);
             // 

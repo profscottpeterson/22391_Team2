@@ -90,6 +90,7 @@
             this.dataGridViewAvailability.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewAvailability.Size = new System.Drawing.Size(365, 163);
             this.dataGridViewAvailability.TabIndex = 31;
+            this.dataGridViewAvailability.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewAvailability_RowHeaderMouseDoubleClick);
             // 
             // cbxChooseCoach
             // 
