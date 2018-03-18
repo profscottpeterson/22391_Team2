@@ -73,6 +73,12 @@
     <Compile Include="CoachAvailability.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CoachScheduleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CoachScheduleForm.Designer.cs">
+      <DependentUpon>CoachScheduleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CoachAvailabilityForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,6 +228,9 @@
     </Compile>
     <EmbeddedResource Include="AddSessionCourse.resx">
       <DependentUpon>AddSessionCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CoachScheduleForm.resx">
+      <DependentUpon>CoachScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CoachAvailabilityForm.resx">
       <DependentUpon>CoachAvailabilityForm.cs</DependentUpon>

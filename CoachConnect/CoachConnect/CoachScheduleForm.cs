@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CoachConnect
 {
-    public partial class CoachAvailabilityForm : Form
+    public partial class CoachScheduleForm : Form
     {
-        public CoachAvailabilityForm()
+        public CoachScheduleForm()
         {
             InitializeComponent();
         }
@@ -54,7 +54,7 @@ namespace CoachConnect
         /// <summary>
         /// A method to populate data in the coach availability data grid
         /// </summary>
-        private void PopulateAvailabilityGrid()
+        private void PopulateScheduleGrid()
         {
             // Query obtains the coach ID from the combo box.
             string coachId = this.cbxChooseCoach.SelectedValue.ToString();
@@ -63,14 +63,14 @@ namespace CoachConnect
             {
                 using (var context = new db_sft_2172Entities())
                 {
-                    var coachAvailabilityQuery = from coachAvailability in context.GetCoachAvailabilities
-                                                 where coachAvailability.CoachID.Equals(coachId)
-                                                 select coachAvailability;
+                    var coachScheduleQuery = from coachSessions in context.CoachSessions
+                                                 where coachSessions.CoachID.Equals(coachId)
+                                                 select coachSessions;
 
-                    this.dataGridViewAvailability.DataSource = coachAvailabilityQuery.ToList();
+                    this.dataGridViewSchedule.DataSource = coachScheduleQuery.ToList();
 
                     //this.dataGridViewAvailability.Columns["CoachAvailabilityID"].Visible = false;
-                    this.dataGridViewAvailability.Columns["CoachID"].Visible = false;
+                    this.dataGridViewSchedule.Columns["CoachID"].Visible = false;
                 }
             }
             catch (Exception ex)
@@ -82,32 +82,32 @@ namespace CoachConnect
 
         private void cbxChooseCoach_SelectedIndexChanged(object sender, EventArgs e)
         {
-            PopulateAvailabilityGrid();
+            PopulateScheduleGrid();
         }
 
         private void btnAddToCourseList_Click(object sender, EventArgs e)
         {
-            EditCoachAvailability editCoachAvailability = new EditCoachAvailability(this.cbxChooseCoach.SelectedValue.ToString());
-            editCoachAvailability.ShowDialog();
+            EditSession editCoachSession = new EditSession(this.cbxChooseCoach.SelectedValue.ToString());
+            editCoachSession.ShowDialog();
 
-            PopulateAvailabilityGrid();
+            PopulateScheduleGrid();
         }
 
-        private void dataGridViewAvailability_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dataGridViewSchedule_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            // Get the AvailabilityID for the selected row
-            int selectedAvailabilityID = Convert.ToInt32(dataGridViewAvailability.SelectedRows[0].Cells["CoachAvailabilityID"].Value.ToString());
+            // Get the SessionID for the selected row
+            int selectedAvailabilityID = Convert.ToInt32(dataGridViewSchedule.SelectedRows[0].Cells["CoachAvailabilityID"].Value.ToString());
 
             EditCoachAvailability editCoachAvailability = new EditCoachAvailability(selectedAvailabilityID);
             editCoachAvailability.ShowDialog();
 
-            PopulateAvailabilityGrid();
+            PopulateScheduleGrid();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
             // Determine which row is selected
-            int selectedAvailabilityID = Convert.ToInt32(dataGridViewAvailability.SelectedRows[0].Cells["CoachAvailabilityID"].Value.ToString());
+            int selectedSessionID = Convert.ToInt32(dataGridViewSchedule.SelectedRows[0].Cells["SessionID"].Value.ToString());
 
             // Confirm whether user truly wants to remove this availability record
             DialogResult confirmRemove = MessageBox.Show("Are you sure you want to remove this record?", "Confirm delete",
@@ -116,19 +116,19 @@ namespace CoachConnect
             // If yes, remove the record
             if (confirmRemove.Equals(DialogResult.Yes))
             {
-                var availability = new CoachAvailability { CoachAvailabilityID = selectedAvailabilityID };
+                var session = new CoachSession { SessionID = selectedSessionID };
 
                 try
                 {
                     using (var context = new db_sft_2172Entities())
                     {
-                        context.CoachAvailabilities.Attach(availability);
-                        context.CoachAvailabilities.Remove(availability);
+                        context.CoachSessions.Attach(session);
+                        context.CoachSessions.Remove(session);
                         context.SaveChanges();
 
                         MessageBox.Show("Delete succesful!");
 
-                        PopulateAvailabilityGrid();
+                        PopulateScheduleGrid();
                     }
                 }
                 catch (Exception ex)

@@ -1,6 +1,6 @@
 ﻿namespace CoachConnect
 {
-    partial class CoachAvailabilityForm
+    partial class CoachScheduleForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,38 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblEditSessionHeader = new System.Windows.Forms.Label();
+            this.lblEditScheduleSessionHeader = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAddToCourseList = new System.Windows.Forms.Button();
-            this.dataGridViewAvailability = new System.Windows.Forms.DataGridView();
+            this.dataGridViewSchedule = new System.Windows.Forms.DataGridView();
             this.cbxChooseCoach = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAvailability)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSchedule)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblEditSessionHeader
+            // lblEditScheduleSessionHeader
             // 
-            this.lblEditSessionHeader.AutoSize = true;
-            this.lblEditSessionHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.lblEditSessionHeader.Location = new System.Drawing.Point(109, 16);
-            this.lblEditSessionHeader.Name = "lblEditSessionHeader";
-            this.lblEditSessionHeader.Size = new System.Drawing.Size(193, 24);
-            this.lblEditSessionHeader.TabIndex = 13;
-            this.lblEditSessionHeader.Text = "Edit Coach Availability";
+            this.lblEditScheduleSessionHeader.AutoSize = true;
+            this.lblEditScheduleSessionHeader.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.lblEditScheduleSessionHeader.Location = new System.Drawing.Point(109, 16);
+            this.lblEditScheduleSessionHeader.Name = "lblEditScheduleSessionHeader";
+            this.lblEditScheduleSessionHeader.Size = new System.Drawing.Size(188, 24);
+            this.lblEditScheduleSessionHeader.TabIndex = 13;
+            this.lblEditScheduleSessionHeader.Text = "Edit Coach Schedule";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnRemove);
             this.groupBox1.Controls.Add(this.btnAddToCourseList);
-            this.groupBox1.Controls.Add(this.dataGridViewAvailability);
+            this.groupBox1.Controls.Add(this.dataGridViewSchedule);
             this.groupBox1.Location = new System.Drawing.Point(15, 104);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(383, 231);
             this.groupBox1.TabIndex = 33;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Availability";
+            this.groupBox1.Text = "Schedule";
             // 
             // btnRemove
             // 
@@ -75,23 +75,23 @@
             // 
             this.btnAddToCourseList.Location = new System.Drawing.Point(12, 197);
             this.btnAddToCourseList.Name = "btnAddToCourseList";
-            this.btnAddToCourseList.Size = new System.Drawing.Size(95, 23);
+            this.btnAddToCourseList.Size = new System.Drawing.Size(101, 23);
             this.btnAddToCourseList.TabIndex = 33;
-            this.btnAddToCourseList.Text = "Add New Listing";
+            this.btnAddToCourseList.Text = "Add New Session";
             this.btnAddToCourseList.UseVisualStyleBackColor = true;
             this.btnAddToCourseList.Click += new System.EventHandler(this.btnAddToCourseList_Click);
             // 
-            // dataGridViewAvailability
+            // dataGridViewSchedule
             // 
-            this.dataGridViewAvailability.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewAvailability.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAvailability.Location = new System.Drawing.Point(9, 28);
-            this.dataGridViewAvailability.MultiSelect = false;
-            this.dataGridViewAvailability.Name = "dataGridViewAvailability";
-            this.dataGridViewAvailability.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewAvailability.Size = new System.Drawing.Size(365, 163);
-            this.dataGridViewAvailability.TabIndex = 31;
-            this.dataGridViewAvailability.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewAvailability_RowHeaderMouseDoubleClick);
+            this.dataGridViewSchedule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSchedule.Location = new System.Drawing.Point(9, 28);
+            this.dataGridViewSchedule.MultiSelect = false;
+            this.dataGridViewSchedule.Name = "dataGridViewSchedule";
+            this.dataGridViewSchedule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewSchedule.Size = new System.Drawing.Size(365, 163);
+            this.dataGridViewSchedule.TabIndex = 31;
+            this.dataGridViewSchedule.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewSchedule_RowHeaderMouseDoubleClick);
             // 
             // cbxChooseCoach
             // 
@@ -113,7 +113,7 @@
             this.label3.TabIndex = 56;
             this.label3.Text = "Choose a Coach:";
             // 
-            // CoachAvailabilityForm
+            // CoachScheduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -121,12 +121,12 @@
             this.Controls.Add(this.cbxChooseCoach);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.lblEditSessionHeader);
-            this.Name = "CoachAvailabilityForm";
+            this.Controls.Add(this.lblEditScheduleSessionHeader);
+            this.Name = "CoachScheduleForm";
             this.Text = "CoachAvailabilityForm";
             this.Load += new System.EventHandler(this.CoachAvailabilityFormLoad);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAvailability)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSchedule)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,11 +134,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblEditSessionHeader;
+        private System.Windows.Forms.Label lblEditScheduleSessionHeader;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnAddToCourseList;
-        private System.Windows.Forms.DataGridView dataGridViewAvailability;
+        private System.Windows.Forms.DataGridView dataGridViewSchedule;
         private System.Windows.Forms.ComboBox cbxChooseCoach;
         private System.Windows.Forms.Label label3;
     }

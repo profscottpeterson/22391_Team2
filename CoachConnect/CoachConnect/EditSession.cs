@@ -25,11 +25,32 @@ namespace CoachConnect
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EditSession" /> class with no inputs.
-        /// The no-input version is used to create a new session
+        /// The no-input version is used to create a new session and allows the user to select the coach.
         /// </summary>
         public EditSession()
         {
             this.InitializeComponent();
+
+            // Set session ID to a negative value (indicates a new session)
+            this.SessionId = -1;
+
+            // Update header text to show "Create" instead of "Edit"
+            this.lblEditSessionHeader.Text = "Create Session";
+
+            // Call method to populate combo boxes
+            this.PopulateComboBoxes();
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EditSession" /> class with a string input.
+        /// This version is used to create a new session for a specified coach.
+        /// </summary>
+        public EditSession(string coachID)
+        {
+            this.InitializeComponent();
+
+            this.CurrentSession = new CoachSession();
+            CurrentSession.CoachID = coachID;
 
             // Set session ID to a negative value (indicates a new session)
             this.SessionId = -1;
@@ -48,9 +69,10 @@ namespace CoachConnect
         /// <param name="sessionID">The ID for the session to be updated</param>
         public EditSession(int sessionID)
         {
-            this.SessionId = sessionID;
-
             this.InitializeComponent();
+
+            // Set sessionID
+            CurrentSession.SessionID = sessionID;
 
             // Call method to populate combo boxes
             this.PopulateComboBoxes();
@@ -59,7 +81,7 @@ namespace CoachConnect
             this.LoadSessionData();
 
             // Call method to populate session roster
-            this.PopulateCourseGrid();
+            //this.PopulateCourseGrid();
         }
 
         /// <summary>
@@ -133,6 +155,8 @@ namespace CoachConnect
             {
                 this.CurrentSession.Active = false;
             }
+
+            // TODO: Add check to make sure this session does not overlap with another one
 
             // Verify that the selected coach has availablility on the desired day/time
             try

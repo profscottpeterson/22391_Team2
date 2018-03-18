@@ -227,3 +227,4 @@ C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debu
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.UserProfileForm.resources
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csproj.CopyComplete
 C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.csprojResolveAssemblyReference.cache
+C:\Users\Smithbucks\Source\Repos\CoachConnect\CoachConnect\CoachConnect\obj\Debug\CoachConnect.CoachScheduleForm.resources
