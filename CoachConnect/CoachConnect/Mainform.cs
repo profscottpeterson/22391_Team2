@@ -56,5 +56,11 @@ namespace CoachConnect
             ResetMyPassword passwordResetForm = new ResetMyPassword();
             passwordResetForm.Show();
         }
+
+        private void setScheduleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CoachScheduleForm coachScheduleForm = new CoachScheduleForm();
+            coachScheduleForm.Show();
+        }
     }
 }

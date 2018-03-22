@@ -71,6 +71,7 @@ namespace CoachConnect
 
                     //this.dataGridViewAvailability.Columns["CoachAvailabilityID"].Visible = false;
                     this.dataGridViewAvailability.Columns["CoachID"].Visible = false;
+                    this.dataGridViewAvailability.Columns["CoachAvailabilityID"].Visible = false;
                 }
             }
             catch (Exception ex)

@@ -15,9 +15,6 @@
         <AssociationConnector Association="db_sft_2172Model.FK_Department_Interest" />
         <EntityTypeShape EntityType="db_sft_2172Model.User" Width="1.5" PointX="6" PointY="11" />
         <EntityTypeShape EntityType="db_sft_2172Model.Day" Width="1.5" PointX="10.25" PointY="15" />
-        <EntityTypeShape EntityType="db_sft_2172Model.CoachInterest" Width="1.5" PointX="7.375" PointY="0.75" />
-        <EntityTypeShape EntityType="db_sft_2172Model.CoachByTime" Width="1.5" PointX="9.375" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db_sft_2172Model.CoachByName" Width="1.5" PointX="15.75" PointY="2.375" />
         <EntityTypeShape EntityType="db_sft_2172Model.ViewSession" Width="1.5" PointX="11.25" PointY="0.625" />
         <EntityTypeShape EntityType="db_sft_2172Model.ViewSessionRoster" Width="1.5" PointX="13.375" PointY="0.75" />
         <EntityTypeShape EntityType="db_sft_2172Model.SessionsByInterest" Width="1.5" PointX="3.625" PointY="9.5" />

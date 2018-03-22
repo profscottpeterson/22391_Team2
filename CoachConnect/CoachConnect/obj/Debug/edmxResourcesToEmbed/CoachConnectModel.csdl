@@ -66,9 +66,6 @@
     </AssociationSet>
     <EntitySet Name="Users" EntityType="db_sft_2172Model.User" />
     <EntitySet Name="Days" EntityType="db_sft_2172Model.Day" />
-    <EntitySet Name="CoachInterests" EntityType="db_sft_2172Model.CoachInterest" />
-    <EntitySet Name="CoachByTimes" EntityType="db_sft_2172Model.CoachByTime" />
-    <EntitySet Name="CoachByNames" EntityType="db_sft_2172Model.CoachByName" />
     <FunctionImport Name="sp_alterdiagram">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -253,59 +250,6 @@
     <NavigationProperty Name="CoachAvailabilities" Relationship="db_sft_2172Model.FK_CoachAvailability_Day" FromRole="Day" ToRole="CoachAvailability" />
     <NavigationProperty Name="CoachSessions" Relationship="db_sft_2172Model.FK_Session_Day1" FromRole="Day" ToRole="CoachSession" />
   </EntityType>
-  <EntityType Name="CoachInterest">
-    <Key>
-      <PropertyRef Name="Coach" />
-      <PropertyRef Name="Day" />
-      <PropertyRef Name="Time" />
-      <PropertyRef Name="Subjects" />
-      <PropertyRef Name="Interest" />
-      <PropertyRef Name="UserID" />
-      <PropertyRef Name="CourseID" />
-    </Key>
-    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Coach" Type="String" Nullable="false" MaxLength="201" FixedLength="false" Unicode="true" />
-    <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Subjects" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Interest" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="CoachByTime">
-    <Key>
-      <PropertyRef Name="UserID" />
-      <PropertyRef Name="Coach" />
-      <PropertyRef Name="Time" />
-      <PropertyRef Name="Day" />
-      <PropertyRef Name="Subject" />
-      <PropertyRef Name="CourseID" />
-    </Key>
-    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Coach" Type="String" Nullable="false" MaxLength="201" FixedLength="false" Unicode="true" />
-    <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Subject" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="CoachByName">
-    <Key>
-      <PropertyRef Name="FirstName" />
-      <PropertyRef Name="IsActive" />
-      <PropertyRef Name="CoachID" />
-      <PropertyRef Name="DisplayName" />
-      <PropertyRef Name="Phone" />
-      <PropertyRef Name="Email" />
-    </Key>
-    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="IsActive" Type="Boolean" Nullable="false" />
-    <Property Name="CoachID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="SupervisorID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
     <Property Type="Binary" Name="definition" Nullable="true" />
@@ -418,7 +362,6 @@
     <NavigationProperty Name="Time1" Relationship="db_sft_2172Model.FK_CoachSession_Time1" FromRole="CoachSession" ToRole="Time" />
     <NavigationProperty Name="Day" Relationship="db_sft_2172Model.FK_Session_Day1" FromRole="CoachSession" ToRole="Day" />
     <NavigationProperty Name="Room" Relationship="db_sft_2172Model.FK_Session_Room1" FromRole="CoachSession" ToRole="Room" />
-    <NavigationProperty Name="User" Relationship="db_sft_2172Model.FK_Session_User1" FromRole="CoachSession" ToRole="User" />
     <NavigationProperty Name="CoachCourses" Relationship="db_sft_2172Model.FK_CoachCourse_CoachSession" FromRole="CoachSession" ToRole="CoachCourse" />
     <NavigationProperty Name="SessionCourses1" Relationship="db_sft_2172Model.FK_SessionCourse_CoachSession" FromRole="CoachSession" ToRole="SessionCourse1" />
   </EntityType>
@@ -678,10 +621,14 @@
       <PropertyRef Name="Day" />
       <PropertyRef Name="StartTime" />
       <PropertyRef Name="EndTime" />
+      <PropertyRef Name="SessionID" />
+      <PropertyRef Name="Active" />
     </Key>
     <Property Name="CoachID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="StartTime" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="EndTime" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="SessionID" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
   </EntityType>
 </Schema>

@@ -233,8 +233,6 @@ namespace CoachConnect
 
             // Populate combo boxes with current session data
             this.cbxDay.SelectedValue = this.CurrentAvailability.DayID;
-
-
             this.cbxStartTime.SelectedValue = this.CurrentAvailability.StartTime;
             this.cbxEndTime.SelectedValue = this.CurrentAvailability.EndTime;
         }

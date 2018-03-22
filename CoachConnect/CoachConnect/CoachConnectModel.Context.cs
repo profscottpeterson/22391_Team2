@@ -34,9 +34,6 @@ namespace CoachConnect
         public virtual DbSet<Interest> Interests { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Day> Days { get; set; }
-        public virtual DbSet<CoachInterest> CoachInterests { get; set; }
-        public virtual DbSet<CoachByTime> CoachByTimes { get; set; }
-        public virtual DbSet<CoachByName> CoachByNames { get; set; }
         public virtual DbSet<ViewSession> ViewSessions { get; set; }
         public virtual DbSet<ViewSessionRoster> ViewSessionRosters { get; set; }
         public virtual DbSet<SessionsByInterest> SessionsByInterests { get; set; }

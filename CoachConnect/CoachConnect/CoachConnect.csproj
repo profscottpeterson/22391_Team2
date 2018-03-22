@@ -85,16 +85,7 @@
     <Compile Include="CoachAvailabilityForm.Designer.cs">
       <DependentUpon>CoachAvailabilityForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CoachByName.cs">
-      <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CoachByTime.cs">
-      <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="CoachCourse.cs">
-      <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CoachInterest.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CoachSession.cs">

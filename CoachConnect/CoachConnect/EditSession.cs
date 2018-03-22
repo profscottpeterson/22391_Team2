@@ -72,6 +72,7 @@ namespace CoachConnect
             this.InitializeComponent();
 
             // Set sessionID
+            CurrentSession = new CoachSession();
             CurrentSession.SessionID = sessionID;
 
             // Call method to populate combo boxes
@@ -181,7 +182,7 @@ namespace CoachConnect
                         else
                         {
                             this.UpdateSession();
-                        }
+                        }Doubl
                     }
                     else
                     {
@@ -234,9 +235,13 @@ namespace CoachConnect
                                    orderby days.SortOrder
                                    select days;
 
-                    var timeQuery = from times in context.Times
-                                    orderby times.Time1
-                                    select times;
+                    var startTimeQuery = from times in context.Times
+                                         orderby times.Time1
+                                         select times;
+
+                    var endTimeQuery = from times in context.Times
+                                       orderby times.Time1
+                                       select times;
 
                     var coachQuery = from coaches in context.Coaches
                                      orderby coaches.DisplayName
@@ -246,35 +251,38 @@ namespace CoachConnect
                     List<Course> courseList = courseQuery.ToList();
                     List<Room> roomList = roomQuery.ToList();
                     List<Day> dayList = dayQuery.ToList();
-                    List<Time> timeList = timeQuery.ToList();
+                    List<Time> startTimeList = startTimeQuery.ToList();
+                    List<Time> endTimeList = endTimeQuery.ToList();
                     List<Coach> coachList = coachQuery.ToList();
 
                     // Set combo box data sources and update data member settings
-                    this.cbxCourse.DataSource = courseList;
-                    this.cbxCourse.ValueMember = "CourseID";
-                    this.cbxCourse.DisplayMember = "CourseID";
-
-                    this.cbxStartTime.DataSource = roomList;
-                    this.cbxStartTime.ValueMember = "RoomID";
-                    this.cbxStartTime.DisplayMember = "RoomID";
+                    this.cbxCoach.DataSource = coachList;
+                    this.cbxCoach.ValueMember = "CoachID";
+                    this.cbxCoach.DisplayMember = "DisplayName";
 
                     this.cbxDay.DataSource = dayList;
                     this.cbxDay.ValueMember = "DayID";
                     this.cbxDay.DisplayMember = "DayName";
 
-                    this.cbxEndTime.DataSource = timeList;
-                    this.cbxEndTime.ValueMember = "TimePeriodID";
-                    this.cbxEndTime.DisplayMember = "TimePeriodName";
+                    this.cbxStartTime.DataSource = startTimeList;
+                    this.cbxStartTime.ValueMember = "Time1";
+                    this.cbxStartTime.DisplayMember = "TimeName";
 
-                    this.cbxCoach.DataSource = coachList;
-                    this.cbxCoach.ValueMember = "UserID";
-                    this.cbxCoach.DisplayMember = "DisplayName";
+                    this.cbxEndTime.DataSource = endTimeList;
+                    this.cbxEndTime.ValueMember = "Time1";
+                    this.cbxEndTime.DisplayMember = "TimeName";
 
-                    this.cbxCourse.SelectedIndex = -1;
-                    this.cbxStartTime.SelectedIndex = -1;
-                    this.cbxDay.SelectedIndex = -1;
-                    this.cbxEndTime.SelectedIndex = -1;
+                    this.cbxRoom.DataSource = roomList;
+                    this.cbxRoom.ValueMember = "RoomID";
+                    this.cbxRoom.DisplayMember = "RoomNumber";
+
                     this.cbxCoach.SelectedIndex = -1;
+                    this.cbxDay.SelectedIndex = -1;
+                    this.cbxStartTime.SelectedIndex = -1;
+                    this.cbxEndTime.SelectedIndex = -1;
+                    this.cbxRoom.SelectedIndex = -1;
+                    this.cbxActive.SelectedIndex = -1;
+
                 }
             }
             catch (Exception ex)
@@ -293,7 +301,7 @@ namespace CoachConnect
                 using (var context = new db_sft_2172Entities())
                 {
                     var sessionQuery = from session in context.CoachSessions
-                                       where session.SessionID.Equals(this.SessionId)
+                                       where session.SessionID.Equals(this.CurrentSession.SessionID)
                                        select session;
 
                     if (sessionQuery.Any())
@@ -310,15 +318,15 @@ namespace CoachConnect
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return;
             }
 
             // Populate combo boxes with current session data
             this.cbxCoach.SelectedValue = this.CurrentSession.CoachID;
             this.cbxDay.SelectedValue = this.CurrentSession.DayID;
-
-
-            this.cbxStartTime.SelectedValue = this.CurrentSession.StartTime.ToString();
-            this.cbxEndTime.SelectedValue = this.CurrentSession.EndTime.ToString();
+            this.cbxStartTime.SelectedValue = this.CurrentSession.StartTime;
+            this.cbxEndTime.SelectedValue = this.CurrentSession.EndTime;
+            this.cbxRoom.SelectedValue = this.CurrentSession.RoomID;
 
             if (this.CurrentSession.Active)
             {
@@ -327,32 +335,6 @@ namespace CoachConnect
             else
             {
                 this.cbxActive.SelectedIndex = 1;
-            }
-        }
-
-        /// <summary>
-        /// A method to update the student roster data grid
-        /// </summary>
-        private void PopulateCourseGrid()
-        {
-            try
-            {
-                using (var context = new db_sft_2172Entities())
-                {
-                    var courseQuery = from courseRoster in context.ViewSessionRosters
-                                      where courseRoster.SessionID.Equals(this.CurrentSession.SessionID)
-                                      select courseRoster;
-
-                    this.CurrentRoster = courseQuery.ToList();
-
-                    this.dataGridViewCourses.DataSource = this.CurrentRoster;
-
-                    this.dataGridViewCourses.Columns["SessionID"].Visible = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
 
@@ -384,7 +366,7 @@ namespace CoachConnect
         /// </summary>
         private void UpdateSession()
         {
-            // Add new user to the database and save changes
+            // Add new session to the database and save changes
             try
             {
                 using (var context = new db_sft_2172Entities())
@@ -422,189 +404,6 @@ namespace CoachConnect
             }
 
             MessageBox.Show("Save completed...Session updated successfully!");
-        }
-
-        /// <summary>
-        /// Event handler to validate Course combo box when it loses focus
-        /// </summary>
-        /// <param name="sender">The parameter is not used.</param>
-        /// <param name="e">The parameter is not used.</param>
-        private void CbxCourse_Leave(object sender, EventArgs e)
-        {
-            this.lblInvalidCourse.Visible = !this.validator.ValidateComboBox(this.cbxCourse.SelectedIndex);
-
-            if (this.lblInvalidCourse.Visible)
-            {
-                this.cbxCourse.Focus();
-            }
-        }
-
-        /// <summary>
-        /// Event handler to validate Room combo box when it loses focus
-        /// </summary>
-        /// <param name="sender">The parameter is not used.</param>
-        /// <param name="e">The parameter is not used.</param>
-        private void CbxRoom_Leave(object sender, EventArgs e)
-        {
-            this.lblInvalidStartTime.Visible = !this.validator.ValidateComboBox(this.cbxStartTime.SelectedIndex);
-
-            if (this.lblInvalidStartTime.Visible)
-            {
-                this.cbxStartTime.Focus();
-            }
-        }
-
-        /// <summary>
-        /// Event handler to validate Day combo box when it loses focus
-        /// </summary>
-        /// <param name="sender">The parameter is not used.</param>
-        /// <param name="e">The parameter is not used.</param>
-        private void CbxDay_Leave(object sender, EventArgs e)
-        {
-            this.lblInvalidDay.Visible = !this.validator.ValidateComboBox(this.cbxDay.SelectedIndex);
-
-            if (this.lblInvalidDay.Visible)
-            {
-                this.cbxDay.Focus();
-            }
-        }
-
-        /// <summary>
-        /// Event handler to validate Time combo box when it loses focus
-        /// </summary>
-        /// <param name="sender">The parameter is not used.</param>
-        /// <param name="e">The parameter is not used.</param>
-        private void CbxTime_Leave(object sender, EventArgs e)
-        {
-            this.lblInvalidEndTime.Visible = !this.validator.ValidateComboBox(this.cbxEndTime.SelectedIndex);
-
-            if (this.lblInvalidEndTime.Visible)
-            {
-                this.cbxEndTime.Focus();
-            }
-        }
-
-        /// <summary>
-        /// Event handler to validate Coach combo box when it loses focus
-        /// </summary>
-        /// <param name="sender">The parameter is not used.</param>
-        /// <param name="e">The parameter is not used.</param>
-        private void CbxCoach_Leave(object sender, EventArgs e)
-        {
-            this.lblInvalidCoach.Visible = !this.validator.ValidateComboBox(this.cbxCoach.SelectedIndex);
-
-            if (this.lblInvalidCoach.Visible)
-            {
-                this.cbxCoach.Focus();
-            }
-        }
-
-        /// <summary>
-        /// Event handler to validate Active combo box when it loses focus
-        /// </summary>
-        /// <param name="sender">The parameter is not used.</param>
-        /// <param name="e">The parameter is not used.</param>
-        private void CbxActive_Leave(object sender, EventArgs e)
-        {
-            this.lblInvalidActive.Visible = !this.validator.ValidateComboBox(this.cbxActive.SelectedIndex);
-
-            if (this.lblInvalidActive.Visible)
-            {
-                this.cbxActive.Focus();
-            }
-        }
-
-        /// <summary>
-        /// Event handler to open the AddSessionStudent form when the Add to Roster button is clicked
-        /// </summary>
-        /// <param name="sender">The parameter is not used.</param>
-        /// <param name="e">The parameter is not used.</param>
-        private void BtnAddToCourseList_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (var context = new db_sft_2172Entities())
-                {
-                    // TODO: Determine whether we need this query when adding courses to a session.  If not, remove.
-                    /*
-                    // Determine if any courses are added in the selected course.
-                    // If yes, display the Add Session Student form.
-                    // If no, display a message.
-                    var enrolledStudentQuery = from courses in context.ViewSessionCourses
-                        where courses.SessionID.Equals(this.CurrentSession.SessionID)
-                        select courses;
-
-                    if (enrolledStudentQuery.ToList().Count == 0)
-                    {
-                        MessageBox.Show("Sorry, no students are enrolled in this course.  Please update your session with a different course.");
-                        return;
-                    }
-                    */
-
-                    AddSessionCourse addCourseForm = new AddSessionCourse(this.CurrentSession);
-                    addCourseForm.ShowDialog();
-                    this.PopulateCourseGrid();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        /// <summary>
-        /// Event handler to remove the selected student from the roster when the Remove button is clicked
-        /// </summary>
-        /// <param name="sender">The parameter is not used.</param>
-        /// <param name="e">The parameter is not used.</param>
-        private void BtnRemove_Click(object sender, EventArgs e)
-        {
-            // Check if anything is selected.  If not, display a message.
-            if (this.dataGridViewCourses.SelectedRows.Count <= 0)
-            {
-                MessageBox.Show("Sorry, no row is selected.");
-                return;
-            }
-
-            // Get the selected row 
-            string selectedCourseId = this.dataGridViewCourses.SelectedRows[0].Cells["CourseID"].Value.ToString();
-
-            // Confirm action
-            DialogResult removeConfirmation =
-                MessageBox.Show("Are you sure you want to remove this student from the session?", "Confirm Removal", MessageBoxButtons.YesNo, MessageBoxIcon.None, MessageBoxDefaultButton.Button1);
-
-            // If user did not click yes, leave the method without doing anything.
-            if (!removeConfirmation.Equals(DialogResult.Yes))
-            {
-                return;
-            }
-
-            try
-            {
-                // Remove the selected record from the database
-                SessionCourse selectedStudentEntry = new SessionCourse
-                {
-                    SessionID = this.CurrentSession.SessionID,
-                    CourseID = selectedCourseId,
-                };
-
-                using (var context = new db_sft_2172Entities())
-                {
-                    context.SessionCourses.Attach(selectedStudentEntry);
-                    context.SessionCourses.Remove(selectedStudentEntry);
-                    context.SaveChanges();
-                }
-
-                // Display a confirmation message
-                MessageBox.Show("Course removed sucessfully!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            // Update the data grid view
-            this.PopulateCourseGrid();
         }
     }
 }

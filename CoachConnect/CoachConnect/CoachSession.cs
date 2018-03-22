@@ -34,7 +34,6 @@ namespace CoachConnect
         public virtual Time Time1 { get; set; }
         public virtual Day Day { get; set; }
         public virtual Room Room { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CoachCourse> CoachCourses { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
