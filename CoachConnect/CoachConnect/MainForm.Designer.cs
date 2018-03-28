@@ -107,21 +107,21 @@
             // profileToolStripMenuItem
             // 
             this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.profileToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.profileToolStripMenuItem.Text = "Update Profile";
             this.profileToolStripMenuItem.Click += new System.EventHandler(this.profileToolStripMenuItem_Click);
             // 
             // setAvailabilityToolStripMenuItem
             // 
             this.setAvailabilityToolStripMenuItem.Name = "setAvailabilityToolStripMenuItem";
-            this.setAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.setAvailabilityToolStripMenuItem.Text = "Set Availability";
             this.setAvailabilityToolStripMenuItem.Click += new System.EventHandler(this.setAvailabilityToolStripMenuItem_Click);
             // 
             // setScheduleToolStripMenuItem
             // 
             this.setScheduleToolStripMenuItem.Name = "setScheduleToolStripMenuItem";
-            this.setScheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setScheduleToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.setScheduleToolStripMenuItem.Text = "Set Schedule";
             this.setScheduleToolStripMenuItem.Click += new System.EventHandler(this.setScheduleToolStripMenuItem_Click);
             // 
@@ -147,6 +147,7 @@
             this.ClientSize = new System.Drawing.Size(713, 533);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "CoachConnect";

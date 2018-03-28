@@ -119,7 +119,7 @@ namespace CoachConnect
 
                         if (overlappingCoachAvailability.Any()) {
                             MessageBox.Show(
-                            "Sorry, the desired coach is already booked for part or all of this time block.\nPlease select another combination or modify an existing block!");
+                            "Sorry, the desired coach is already available for part or all of this time block.\nPlease select another combination or modify an existing block!");
                             return;
                         }
                     }

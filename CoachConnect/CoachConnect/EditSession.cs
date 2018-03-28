@@ -107,13 +107,28 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnSaveClick(object sender, EventArgs e)
         {
-            this.CurrentSession = new CoachSession();
+            if (this.CurrentSession == null)
+            {
+                this.CurrentSession = new CoachSession();
+            }
 
             // Get data from form and insert into current Session object
-            this.CurrentSession.RoomID = this.cbxStartTime.SelectedValue.ToString();
+            this.CurrentSession.RoomID = this.cbxRoom.SelectedValue.ToString();
             this.CurrentSession.DayID = this.cbxDay.SelectedValue.ToString();
             this.CurrentSession.CoachID = this.cbxCoach.SelectedValue.ToString();
 
+            // Get data from form and insert into current Availability object
+            this.CurrentSession.DayID = this.cbxDay.SelectedValue.ToString();
+
+            // Get selected start time as a TimeSpan
+            Time selectedStartTime = (Time)cbxStartTime.SelectedItem;
+            CurrentSession.StartTime = selectedStartTime.Time1;
+
+            // Get selected end time as a TimeSpan
+            Time selectedEndTime = (Time)cbxEndTime.SelectedItem;
+            CurrentSession.EndTime = selectedEndTime.Time1;
+
+            /*
             // Update start/end times based on selected values
             try
             {
@@ -146,6 +161,7 @@ namespace CoachConnect
             {
                 MessageBox.Show(ex.Message);
             }
+            */
 
             // Update active status based on selected value
             if (this.cbxActive.SelectedIndex == 0)
@@ -373,7 +389,7 @@ namespace CoachConnect
                 {
                     // Run query and pull matching session from database
                     var sessionQuery = from session in context.CoachSessions
-                                       where session.SessionID.Equals(this.SessionId)
+                                       where session.SessionID.Equals(this.CurrentSession.SessionID)
                                        select session;
 
                     if (sessionQuery.Any())

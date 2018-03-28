@@ -126,7 +126,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblEditScheduleSessionHeader);
             this.Name = "CoachScheduleForm";
-            this.Text = "CoachAvailabilityForm";
+            this.Text = "Coach Schedule";
             this.Load += new System.EventHandler(this.CoachScheduleFormLoad);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSchedule)).EndInit();

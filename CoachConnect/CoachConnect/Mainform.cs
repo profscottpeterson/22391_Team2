@@ -25,12 +25,14 @@ namespace CoachConnect
         private void profileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CoachProfileForm coachForm = new CoachProfileForm();
+            coachForm.MdiParent = this;
             coachForm.Show();
         }
 
         private void addUpdateUserToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UserProfileForm userForm = new UserProfileForm();
+            userForm.MdiParent = this;
             userForm.Show();
         }
 
@@ -48,18 +50,21 @@ namespace CoachConnect
         private void setAvailabilityToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CoachAvailabilityForm coachAvailabilityForm = new CoachAvailabilityForm();
+            coachAvailabilityForm.MdiParent = this;
             coachAvailabilityForm.Show();
         }
 
         private void changeMyPasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ResetMyPassword passwordResetForm = new ResetMyPassword();
+            passwordResetForm.MdiParent = this;
             passwordResetForm.Show();
         }
 
         private void setScheduleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CoachScheduleForm coachScheduleForm = new CoachScheduleForm();
+            coachScheduleForm.MdiParent = this;
             coachScheduleForm.Show();
         }
     }

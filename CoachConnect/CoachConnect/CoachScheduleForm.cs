@@ -69,9 +69,8 @@ namespace CoachConnect
 
                     this.dataGridViewSchedule.DataSource = coachScheduleQuery.ToList();
 
-                    //this.dataGridViewSchedule.Columns["SessionID"].Visible = false;
+                    this.dataGridViewSchedule.Columns["SessionID"].Visible = false;
                     this.dataGridViewSchedule.Columns["CoachID"].Visible = false;
-
                 }
             }
             catch (Exception ex)
