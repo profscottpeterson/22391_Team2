@@ -19,7 +19,6 @@ namespace CoachConnect
         {
             this.Coaches = new HashSet<Coach>();
             this.CoachCourses = new HashSet<CoachCourse>();
-            this.SessionCourses = new HashSet<SessionCourse>();
         }
     
         public string CourseID { get; set; }
@@ -32,7 +31,5 @@ namespace CoachConnect
         public virtual ICollection<Coach> Coaches { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CoachCourse> CoachCourses { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SessionCourse> SessionCourses { get; set; }
     }
 }

@@ -98,7 +98,7 @@ namespace CoachConnect
         /// <summary>
         /// Gets or sets a list object that stores the current session roster
         /// </summary>
-        private List<ViewSessionRoster> CurrentRoster { get; set; }
+        //private List<ViewSessionRoster> CurrentRoster { get; set; }
 
         /// <summary>
         /// Event handler to save session data and close form when the Save button is clicked

@@ -12,10 +12,14 @@ namespace CoachConnect
     using System;
     using System.Collections.Generic;
     
-    public partial class ViewSessionCours
+    public partial class GetSchedulePivot
     {
-        public string CourseID { get; set; }
-        public string CourseName { get; set; }
-        public int SessionID { get; set; }
+        public string Course { get; set; }
+        public string Monday { get; set; }
+        public string Tuesday { get; set; }
+        public string Wednesday { get; set; }
+        public string Thursday { get; set; }
+        public string Friday { get; set; }
+        public string Saturday { get; set; }
     }
 }

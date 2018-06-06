@@ -30,7 +30,7 @@ namespace CoachConnect
 
             this.InitializeComponent();
 
-            this.GetCurrentSessionCourses();
+            //this.GetCurrentSessionCourses();
             this.GetEligibleCourses();
         }
 
@@ -112,6 +112,7 @@ namespace CoachConnect
             }
         }
 
+        /*
         /// <summary>
         /// Method to obtain the current session's roster from the database and add results to the data grid view
         /// </summary>
@@ -135,6 +136,7 @@ namespace CoachConnect
                 MessageBox.Show(ex.Message);
             }
         }
+        */
 
         /// <summary>
         /// Method to obtain a list of students that are part of the desired class (and thus eligible to enroll in the coaching session)

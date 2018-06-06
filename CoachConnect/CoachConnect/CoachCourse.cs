@@ -14,11 +14,11 @@ namespace CoachConnect
     
     public partial class CoachCourse
     {
-        public int SessionID { get; set; }
         public string CourseID { get; set; }
         public Nullable<bool> Active { get; set; }
+        public string CoachID { get; set; }
     
-        public virtual CoachSession CoachSession { get; set; }
         public virtual Course Course { get; set; }
+        public virtual Coach Coach { get; set; }
     }
 }

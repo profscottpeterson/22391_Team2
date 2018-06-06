@@ -19,7 +19,6 @@
     <NavigationProperty Name="Department" Relationship="db_sft_2172Model.FK_Course_Department" FromRole="Course" ToRole="Department" />
     <NavigationProperty Name="Coaches" Relationship="db_sft_2172Model.CoachCourseList" FromRole="Course" ToRole="Coach" />
     <NavigationProperty Name="CoachCourses" Relationship="db_sft_2172Model.FK_CoachCourse_Course1" FromRole="Course" ToRole="CoachCourse" />
-    <NavigationProperty Name="SessionCourses" Relationship="db_sft_2172Model.FK_SessionCourse_Course" FromRole="Course" ToRole="SessionCourse" />
   </EntityType>
   <EntityType Name="Room">
     <Key>
@@ -96,19 +95,15 @@
       <Parameter Name="new_diagramname" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="sp_upgraddiagrams" />
-    <EntitySet Name="ViewSessions" EntityType="db_sft_2172Model.ViewSession" />
-    <EntitySet Name="ViewSessionRosters" EntityType="db_sft_2172Model.ViewSessionRoster" />
     <FunctionImport Name="sp_GetEligibleStudents">
       <Parameter Name="SessionID" Mode="In" Type="Int32" />
       <Parameter Name="CourseID" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="SessionsByInterests" EntityType="db_sft_2172Model.SessionsByInterest" />
     <EntitySet Name="Coaches" EntityType="db_sft_2172Model.Coach" />
     <EntitySet Name="CoachAvailabilities" EntityType="db_sft_2172Model.CoachAvailability" />
     <EntitySet Name="CoachSessions" EntityType="db_sft_2172Model.CoachSession" />
     <EntitySet Name="Times" EntityType="db_sft_2172Model.Time" />
     <EntitySet Name="ViewCoachCourses" EntityType="db_sft_2172Model.ViewCoachCours" />
-    <EntitySet Name="ViewSessionCourses" EntityType="db_sft_2172Model.ViewSessionCours" />
     <AssociationSet Name="FK_Coach_User" Association="db_sft_2172Model.FK_Coach_User">
       <End Role="User" EntitySet="Users" />
       <End Role="Coach" EntitySet="Coaches" />
@@ -158,25 +153,20 @@
       <End Role="Course" EntitySet="Courses" />
     </AssociationSet>
     <EntitySet Name="CoachCourses" EntityType="db_sft_2172Model.CoachCourse" />
-    <EntitySet Name="SessionCourses" EntityType="db_sft_2172Model.SessionCourse" />
-    <AssociationSet Name="FK_CoachCourse_CoachSession" Association="db_sft_2172Model.FK_CoachCourse_CoachSession">
-      <End Role="CoachSession" EntitySet="CoachSessions" />
-      <End Role="CoachCourse" EntitySet="CoachCourses" />
-    </AssociationSet>
     <AssociationSet Name="FK_CoachCourse_Course1" Association="db_sft_2172Model.FK_CoachCourse_Course1">
       <End Role="Course" EntitySet="Courses" />
       <End Role="CoachCourse" EntitySet="CoachCourses" />
     </AssociationSet>
-    <AssociationSet Name="FK_SessionCourse_CoachSession" Association="db_sft_2172Model.FK_SessionCourse_CoachSession">
-      <End Role="CoachSession" EntitySet="CoachSessions" />
-      <End Role="SessionCourse1" EntitySet="SessionCourses" />
-    </AssociationSet>
-    <AssociationSet Name="FK_SessionCourse_Course" Association="db_sft_2172Model.FK_SessionCourse_Course">
-      <End Role="Course" EntitySet="Courses" />
-      <End Role="SessionCourse" EntitySet="SessionCourses" />
-    </AssociationSet>
     <EntitySet Name="GetCoachAvailabilities" EntityType="db_sft_2172Model.GetCoachAvailability" />
     <EntitySet Name="GetCoachSchedules" EntityType="db_sft_2172Model.GetCoachSchedule" />
+    <AssociationSet Name="FK_CoachCourse_Coach1" Association="db_sft_2172Model.FK_CoachCourse_Coach1">
+      <End Role="Coach" EntitySet="Coaches" />
+      <End Role="CoachCourse" EntitySet="CoachCourses" />
+    </AssociationSet>
+    <FunctionImport Name="GenerateSchedule" ReturnType="Collection(String)">
+      <Parameter Name="Interest" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="GetSchedulePivots" EntityType="db_sft_2172Model.GetSchedulePivot" />
   </EntityContainer>
   <EntityType Name="Department">
     <Key>
@@ -261,64 +251,11 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
-  <EntityType Name="ViewSession">
-    <Key>
-      <PropertyRef Name="Course" />
-      <PropertyRef Name="Room" />
-      <PropertyRef Name="SessionID" />
-      <PropertyRef Name="Day" />
-      <PropertyRef Name="Time" />
-      <PropertyRef Name="CourseName" />
-    </Key>
-    <Property Name="Course" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Room" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Coach" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Active" Type="Boolean" Nullable="false" />
-    <Property Name="SessionID" Type="Int32" Nullable="false" />
-    <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="ViewSessionRoster">
-    <Key>
-      <PropertyRef Name="SessionID" />
-      <PropertyRef Name="UserID" />
-      <PropertyRef Name="Name" />
-    </Key>
-    <Property Name="SessionID" Type="Int32" Nullable="false" />
-    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityType Name="SessionsByInterest">
-    <Key>
-      <PropertyRef Name="SessionID" />
-      <PropertyRef Name="Course" />
-      <PropertyRef Name="CourseName" />
-      <PropertyRef Name="Room" />
-      <PropertyRef Name="Day" />
-      <PropertyRef Name="Coach" />
-      <PropertyRef Name="Time" />
-      <PropertyRef Name="Active" />
-      <PropertyRef Name="UserID" />
-      <PropertyRef Name="Interest" />
-    </Key>
-    <Property Name="SessionID" Type="Int32" Nullable="false" />
-    <Property Name="Course" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Room" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Coach" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-    <Property Name="Active" Type="Boolean" Nullable="false" />
-    <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Interest" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-  </EntityType>
   <EntityType Name="Coach">
     <Key>
       <PropertyRef Name="CoachID" />
     </Key>
-    <Property Name="CoachID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CoachID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
     <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -331,6 +268,7 @@
     <NavigationProperty Name="CoachAvailabilities" Relationship="db_sft_2172Model.FK_CoachAvailability_Coach" FromRole="Coach" ToRole="CoachAvailability" />
     <NavigationProperty Name="CoachSessions" Relationship="db_sft_2172Model.FK_Session_Coach" FromRole="Coach" ToRole="CoachSession" />
     <NavigationProperty Name="Courses" Relationship="db_sft_2172Model.CoachCourseList" FromRole="Coach" ToRole="Course" />
+    <NavigationProperty Name="CoachCourses" Relationship="db_sft_2172Model.FK_CoachCourse_Coach1" FromRole="Coach" ToRole="CoachCourse" />
   </EntityType>
   <EntityType Name="CoachAvailability">
     <Key>
@@ -362,8 +300,6 @@
     <NavigationProperty Name="Time1" Relationship="db_sft_2172Model.FK_CoachSession_Time1" FromRole="CoachSession" ToRole="Time" />
     <NavigationProperty Name="Day" Relationship="db_sft_2172Model.FK_Session_Day1" FromRole="CoachSession" ToRole="Day" />
     <NavigationProperty Name="Room" Relationship="db_sft_2172Model.FK_Session_Room1" FromRole="CoachSession" ToRole="Room" />
-    <NavigationProperty Name="CoachCourses" Relationship="db_sft_2172Model.FK_CoachCourse_CoachSession" FromRole="CoachSession" ToRole="CoachCourse" />
-    <NavigationProperty Name="SessionCourses1" Relationship="db_sft_2172Model.FK_SessionCourse_CoachSession" FromRole="CoachSession" ToRole="SessionCourse1" />
   </EntityType>
   <EntityType Name="Time">
     <Key>
@@ -385,16 +321,6 @@
     <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CoachID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="ViewSessionCours">
-    <Key>
-      <PropertyRef Name="CourseID" />
-      <PropertyRef Name="CourseName" />
-      <PropertyRef Name="SessionID" />
-    </Key>
-    <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="SessionID" Type="Int32" Nullable="false" />
   </EntityType>
   <Association Name="FK_Coach_User">
     <End Type="db_sft_2172Model.User" Role="User" Multiplicity="1" />
@@ -534,38 +460,15 @@
   </Association>
   <EntityType Name="CoachCourse">
     <Key>
-      <PropertyRef Name="SessionID" />
       <PropertyRef Name="CourseID" />
+      <PropertyRef Name="CoachID" />
     </Key>
-    <Property Name="SessionID" Type="Int32" Nullable="false" />
     <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Active" Type="Boolean" />
-    <NavigationProperty Name="CoachSession" Relationship="db_sft_2172Model.FK_CoachCourse_CoachSession" FromRole="CoachCourse" ToRole="CoachSession" />
     <NavigationProperty Name="Course" Relationship="db_sft_2172Model.FK_CoachCourse_Course1" FromRole="CoachCourse" ToRole="Course" />
+    <Property Name="CoachID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Coach" Relationship="db_sft_2172Model.FK_CoachCourse_Coach1" FromRole="CoachCourse" ToRole="Coach" />
   </EntityType>
-  <EntityType Name="SessionCourse">
-    <Key>
-      <PropertyRef Name="SessionID" />
-      <PropertyRef Name="CourseID" />
-    </Key>
-    <Property Name="SessionID" Type="Int32" Nullable="false" />
-    <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Active" Type="Boolean" />
-    <NavigationProperty Name="CoachSession" Relationship="db_sft_2172Model.FK_SessionCourse_CoachSession" FromRole="SessionCourse1" ToRole="CoachSession" />
-    <NavigationProperty Name="Course" Relationship="db_sft_2172Model.FK_SessionCourse_Course" FromRole="SessionCourse" ToRole="Course" />
-  </EntityType>
-  <Association Name="FK_CoachCourse_CoachSession">
-    <End Type="db_sft_2172Model.CoachSession" Role="CoachSession" Multiplicity="1" />
-    <End Type="db_sft_2172Model.CoachCourse" Role="CoachCourse" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CoachSession">
-        <PropertyRef Name="SessionID" />
-      </Principal>
-      <Dependent Role="CoachCourse">
-        <PropertyRef Name="SessionID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_CoachCourse_Course1">
     <End Type="db_sft_2172Model.Course" Role="Course" Multiplicity="1" />
     <End Type="db_sft_2172Model.CoachCourse" Role="CoachCourse" Multiplicity="*" />
@@ -574,30 +477,6 @@
         <PropertyRef Name="CourseID" />
       </Principal>
       <Dependent Role="CoachCourse">
-        <PropertyRef Name="CourseID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SessionCourse_CoachSession">
-    <End Type="db_sft_2172Model.CoachSession" Role="CoachSession" Multiplicity="1" />
-    <End Type="db_sft_2172Model.SessionCourse" Role="SessionCourse1" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CoachSession">
-        <PropertyRef Name="SessionID" />
-      </Principal>
-      <Dependent Role="SessionCourse1">
-        <PropertyRef Name="SessionID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SessionCourse_Course">
-    <End Type="db_sft_2172Model.Course" Role="Course" Multiplicity="1" />
-    <End Type="db_sft_2172Model.SessionCourse" Role="SessionCourse" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Course">
-        <PropertyRef Name="CourseID" />
-      </Principal>
-      <Dependent Role="SessionCourse">
         <PropertyRef Name="CourseID" />
       </Dependent>
     </ReferentialConstraint>
@@ -630,5 +509,29 @@
     <Property Name="EndTime" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
     <Property Name="SessionID" Type="Int32" Nullable="false" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CoachCourse_Coach1">
+    <End Type="db_sft_2172Model.Coach" Role="Coach" Multiplicity="1" />
+    <End Type="db_sft_2172Model.CoachCourse" Role="CoachCourse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coach">
+        <PropertyRef Name="CoachID" />
+      </Principal>
+      <Dependent Role="CoachCourse">
+        <PropertyRef Name="CoachID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="GetSchedulePivot">
+    <Key>
+      <PropertyRef Name="Course" />
+    </Key>
+    <Property Name="Course" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Monday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Tuesday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Wednesday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Thursday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Friday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Saturday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

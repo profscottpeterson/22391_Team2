@@ -38,10 +38,10 @@
         </EntityType>
         <EntityType Name="CoachCourse">
           <Key>
-            <PropertyRef Name="SessionID" />
+            <PropertyRef Name="CoachID" />
             <PropertyRef Name="CourseID" />
           </Key>
-          <Property Name="SessionID" Type="int" Nullable="false" />
+          <Property Name="CoachID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CourseID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Active" Type="bit" />
         </EntityType>
@@ -108,14 +108,17 @@
           <Property Name="BuildingID" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="SessionCourse">
+        <EntityType Name="SchedulePivot">
           <Key>
-            <PropertyRef Name="SessionID" />
-            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="Course" />
           </Key>
-          <Property Name="SessionID" Type="int" Nullable="false" />
-          <Property Name="CourseID" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="Active" Type="bit" />
+          <Property Name="Course" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Monday" Type="nvarchar(max)" />
+          <Property Name="Tuesday" Type="nvarchar(max)" />
+          <Property Name="Wednesday" Type="nvarchar(max)" />
+          <Property Name="Thursday" Type="nvarchar(max)" />
+          <Property Name="Friday" Type="nvarchar(max)" />
+          <Property Name="Saturday" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Time">
           <Key>
@@ -176,30 +179,18 @@ warning 6002: The table/view 'db_sft_2172.dbo.GetCoachSchedule' does not have a 
           <Property Name="Active" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'db_sft_2172.dbo.SessionsByInterest' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="SessionsByInterest">
+warning 6002: The table/view 'db_sft_2172.dbo.GetSchedulePivot' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="GetSchedulePivot">
           <Key>
-            <PropertyRef Name="SessionID" />
             <PropertyRef Name="Course" />
-            <PropertyRef Name="CourseName" />
-            <PropertyRef Name="Room" />
-            <PropertyRef Name="Day" />
-            <PropertyRef Name="Coach" />
-            <PropertyRef Name="Time" />
-            <PropertyRef Name="Active" />
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="Interest" />
           </Key>
-          <Property Name="SessionID" Type="int" Nullable="false" />
-          <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CourseName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Room" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="Coach" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="Active" Type="bit" Nullable="false" />
-          <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Interest" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Course" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Monday" Type="nvarchar(max)" />
+          <Property Name="Tuesday" Type="nvarchar(max)" />
+          <Property Name="Wednesday" Type="nvarchar(max)" />
+          <Property Name="Thursday" Type="nvarchar(max)" />
+          <Property Name="Friday" Type="nvarchar(max)" />
+          <Property Name="Saturday" Type="nvarchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.ViewCoachCourses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -212,52 +203,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewCoachCourses' does not have a 
           <Property Name="CourseName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="CourseID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CoachID" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'db_sft_2172.dbo.ViewSession' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ViewSession">
-          <Key>
-            <PropertyRef Name="SessionID" />
-            <PropertyRef Name="Course" />
-            <PropertyRef Name="CourseName" />
-            <PropertyRef Name="Room" />
-            <PropertyRef Name="Day" />
-            <PropertyRef Name="Time" />
-            
-          </Key>
-          <Property Name="SessionID" Type="int" Nullable="false" />
-          <Property Name="Course" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CourseName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Room" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Day" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="Coach" Type="nvarchar" MaxLength="200" />
-          <Property Name="Time" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="Active" Type="bit" Nullable="false" />
-          <Property Name="UserID" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionCourses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ViewSessionCourses">
-          <Key>
-            <PropertyRef Name="CourseID" />
-            <PropertyRef Name="CourseName" />
-            <PropertyRef Name="SessionID" />
-          </Key>
-          <Property Name="CourseID" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="CourseName" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="SessionID" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="ViewSessionRoster">
-          <Key>
-            <PropertyRef Name="SessionID" />
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Name="SessionID" Type="int" Nullable="false" />
-          <Property Name="UserID" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <Association Name="FK_Coach_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -331,15 +276,15 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_CoachCourse_CoachSession">
-          <End Role="CoachSession" Type="Self.CoachSession" Multiplicity="1" />
+        <Association Name="FK_CoachCourse_Coach1">
+          <End Role="Coach" Type="Self.Coach" Multiplicity="1" />
           <End Role="CoachCourse" Type="Self.CoachCourse" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="CoachSession">
-              <PropertyRef Name="SessionID" />
+            <Principal Role="Coach">
+              <PropertyRef Name="CoachID" />
             </Principal>
             <Dependent Role="CoachCourse">
-              <PropertyRef Name="SessionID" />
+              <PropertyRef Name="CoachID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -463,30 +408,9 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SessionCourse_CoachSession">
-          <End Role="CoachSession" Type="Self.CoachSession" Multiplicity="1" />
-          <End Role="SessionCourse" Type="Self.SessionCourse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CoachSession">
-              <PropertyRef Name="SessionID" />
-            </Principal>
-            <Dependent Role="SessionCourse">
-              <PropertyRef Name="SessionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SessionCourse_Course">
-          <End Role="Course" Type="Self.Course" Multiplicity="1" />
-          <End Role="SessionCourse" Type="Self.SessionCourse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Course">
-              <PropertyRef Name="CourseID" />
-            </Principal>
-            <Dependent Role="SessionCourse">
-              <PropertyRef Name="CourseID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <Function Name="GenerateSchedule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Interest" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="db_sft_2172ModelStoreContainer">
           <EntitySet Name="Building" EntityType="Self.Building" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Coach" EntityType="Self.Coach" Schema="dbo" store:Type="Tables" />
@@ -499,7 +423,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Interest" EntityType="Self.Interest" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="SessionCourse" EntityType="Self.SessionCourse" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SchedulePivot" EntityType="Self.SchedulePivot" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Time" EntityType="Self.Time" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GetCoachAvailability" EntityType="Self.GetCoachAvailability" store:Type="Views" store:Schema="dbo">
@@ -521,19 +445,16 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
     [GetCoachSchedule].[Active] AS [Active]
     FROM [dbo].[GetCoachSchedule] AS [GetCoachSchedule]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="SessionsByInterest" EntityType="Self.SessionsByInterest" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="GetSchedulePivot" EntityType="Self.GetSchedulePivot" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [SessionsByInterest].[SessionID] AS [SessionID], 
-    [SessionsByInterest].[Course] AS [Course], 
-    [SessionsByInterest].[CourseName] AS [CourseName], 
-    [SessionsByInterest].[Room] AS [Room], 
-    [SessionsByInterest].[Day] AS [Day], 
-    [SessionsByInterest].[Coach] AS [Coach], 
-    [SessionsByInterest].[Time] AS [Time], 
-    [SessionsByInterest].[Active] AS [Active], 
-    [SessionsByInterest].[UserID] AS [UserID], 
-    [SessionsByInterest].[Interest] AS [Interest]
-    FROM [dbo].[SessionsByInterest] AS [SessionsByInterest]</DefiningQuery>
+    [GetSchedulePivot].[Course] AS [Course], 
+    [GetSchedulePivot].[Monday] AS [Monday], 
+    [GetSchedulePivot].[Tuesday] AS [Tuesday], 
+    [GetSchedulePivot].[Wednesday] AS [Wednesday], 
+    [GetSchedulePivot].[Thursday] AS [Thursday], 
+    [GetSchedulePivot].[Friday] AS [Friday], 
+    [GetSchedulePivot].[Saturday] AS [Saturday]
+    FROM [dbo].[GetSchedulePivot] AS [GetSchedulePivot]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="ViewCoachCourses" EntityType="Self.ViewCoachCourses" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -541,33 +462,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
     [ViewCoachCourses].[CourseID] AS [CourseID], 
     [ViewCoachCourses].[CoachID] AS [CoachID]
     FROM [dbo].[ViewCoachCourses] AS [ViewCoachCourses]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ViewSession" EntityType="Self.ViewSession" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ViewSession].[SessionID] AS [SessionID], 
-    [ViewSession].[Course] AS [Course], 
-    [ViewSession].[CourseName] AS [CourseName], 
-    [ViewSession].[Room] AS [Room], 
-    [ViewSession].[Day] AS [Day], 
-    [ViewSession].[Coach] AS [Coach], 
-    [ViewSession].[Time] AS [Time], 
-    [ViewSession].[Active] AS [Active], 
-    [ViewSession].[UserID] AS [UserID]
-    FROM [dbo].[ViewSession] AS [ViewSession]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ViewSessionCourses" EntityType="Self.ViewSessionCourses" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ViewSessionCourses].[CourseID] AS [CourseID], 
-    [ViewSessionCourses].[CourseName] AS [CourseName], 
-    [ViewSessionCourses].[SessionID] AS [SessionID]
-    FROM [dbo].[ViewSessionCourses] AS [ViewSessionCourses]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="ViewSessionRoster" EntityType="Self.ViewSessionRoster" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [ViewSessionRoster].[SessionID] AS [SessionID], 
-    [ViewSessionRoster].[UserID] AS [UserID], 
-    [ViewSessionRoster].[Name] AS [Name]
-    FROM [dbo].[ViewSessionRoster] AS [ViewSessionRoster]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Coach_User" Association="Self.FK_Coach_User">
             <End Role="User" EntitySet="User" />
@@ -593,8 +487,8 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
             <End Role="Coach" EntitySet="Coach" />
             <End Role="CoachCourseList" EntitySet="CoachCourseList" />
           </AssociationSet>
-          <AssociationSet Name="FK_CoachCourse_CoachSession" Association="Self.FK_CoachCourse_CoachSession">
-            <End Role="CoachSession" EntitySet="CoachSession" />
+          <AssociationSet Name="FK_CoachCourse_Coach1" Association="Self.FK_CoachCourse_Coach1">
+            <End Role="Coach" EntitySet="Coach" />
             <End Role="CoachCourse" EntitySet="CoachCourse" />
           </AssociationSet>
           <AssociationSet Name="FK_CoachCourse_Course" Association="Self.FK_CoachCourse_Course">
@@ -637,14 +531,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
             <End Role="Room" EntitySet="Room" />
             <End Role="CoachSession" EntitySet="CoachSession" />
           </AssociationSet>
-          <AssociationSet Name="FK_SessionCourse_CoachSession" Association="Self.FK_SessionCourse_CoachSession">
-            <End Role="CoachSession" EntitySet="CoachSession" />
-            <End Role="SessionCourse" EntitySet="SessionCourse" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SessionCourse_Course" Association="Self.FK_SessionCourse_Course">
-            <End Role="Course" EntitySet="Course" />
-            <End Role="SessionCourse" EntitySet="SessionCourse" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -669,7 +555,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
           <NavigationProperty Name="Department" Relationship="db_sft_2172Model.FK_Course_Department" FromRole="Course" ToRole="Department" />
           <NavigationProperty Name="Coaches" Relationship="db_sft_2172Model.CoachCourseList" FromRole="Course" ToRole="Coach" />
           <NavigationProperty Name="CoachCourses" Relationship="db_sft_2172Model.FK_CoachCourse_Course1" FromRole="Course" ToRole="CoachCourse" />
-          <NavigationProperty Name="SessionCourses" Relationship="db_sft_2172Model.FK_SessionCourse_Course" FromRole="Course" ToRole="SessionCourse" />
           </EntityType>
         <EntityType Name="Room">
           <Key>
@@ -746,19 +631,15 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <EntitySet Name="ViewSessions" EntityType="db_sft_2172Model.ViewSession" />
-          <EntitySet Name="ViewSessionRosters" EntityType="db_sft_2172Model.ViewSessionRoster" />
           <FunctionImport Name="sp_GetEligibleStudents">
             <Parameter Name="SessionID" Mode="In" Type="Int32" />
             <Parameter Name="CourseID" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="SessionsByInterests" EntityType="db_sft_2172Model.SessionsByInterest" />
           <EntitySet Name="Coaches" EntityType="db_sft_2172Model.Coach" />
           <EntitySet Name="CoachAvailabilities" EntityType="db_sft_2172Model.CoachAvailability" />
           <EntitySet Name="CoachSessions" EntityType="db_sft_2172Model.CoachSession" />
           <EntitySet Name="Times" EntityType="db_sft_2172Model.Time" />
           <EntitySet Name="ViewCoachCourses" EntityType="db_sft_2172Model.ViewCoachCours" />
-          <EntitySet Name="ViewSessionCourses" EntityType="db_sft_2172Model.ViewSessionCours" />
           <AssociationSet Name="FK_Coach_User" Association="db_sft_2172Model.FK_Coach_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Coach" EntitySet="Coaches" />
@@ -808,25 +689,21 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
             <End Role="Course" EntitySet="Courses" />
           </AssociationSet>
           <EntitySet Name="CoachCourses" EntityType="db_sft_2172Model.CoachCourse" />
-          <EntitySet Name="SessionCourses" EntityType="db_sft_2172Model.SessionCourse" />
-          <AssociationSet Name="FK_CoachCourse_CoachSession" Association="db_sft_2172Model.FK_CoachCourse_CoachSession">
-            <End Role="CoachSession" EntitySet="CoachSessions" />
-            <End Role="CoachCourse" EntitySet="CoachCourses" />
-          </AssociationSet>
           <AssociationSet Name="FK_CoachCourse_Course1" Association="db_sft_2172Model.FK_CoachCourse_Course1">
             <End Role="Course" EntitySet="Courses" />
             <End Role="CoachCourse" EntitySet="CoachCourses" />
           </AssociationSet>
-          <AssociationSet Name="FK_SessionCourse_CoachSession" Association="db_sft_2172Model.FK_SessionCourse_CoachSession">
-            <End Role="CoachSession" EntitySet="CoachSessions" />
-            <End Role="SessionCourse1" EntitySet="SessionCourses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SessionCourse_Course" Association="db_sft_2172Model.FK_SessionCourse_Course">
-            <End Role="Course" EntitySet="Courses" />
-            <End Role="SessionCourse" EntitySet="SessionCourses" />
-          </AssociationSet>
           <EntitySet Name="GetCoachAvailabilities" EntityType="db_sft_2172Model.GetCoachAvailability" />
           <EntitySet Name="GetCoachSchedules" EntityType="db_sft_2172Model.GetCoachSchedule" />
+          <AssociationSet Name="FK_CoachCourse_Coach1" Association="db_sft_2172Model.FK_CoachCourse_Coach1">
+            <End Role="Coach" EntitySet="Coaches" />
+            <End Role="CoachCourse" EntitySet="CoachCourses" />
+          </AssociationSet>
+          <FunctionImport Name="GenerateSchedule">
+          <Parameter Name="Interest" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="GetSchedulePivots" EntityType="db_sft_2172Model.GetSchedulePivot" />
+          <EntitySet Name="SchedulePivots" EntityType="db_sft_2172Model.SchedulePivot" />
           </EntityContainer>
         <EntityType Name="Department">
           <Key>
@@ -911,64 +788,11 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="ViewSession">
-          <Key>
-            <PropertyRef Name="Course" />
-            <PropertyRef Name="Room" />
-            <PropertyRef Name="SessionID" />
-            <PropertyRef Name="Day" />
-            <PropertyRef Name="Time" />
-            <PropertyRef Name="CourseName" />
-          </Key>
-          <Property Name="Course" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Room" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Coach" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="SessionID" Type="Int32" Nullable="false" />
-          <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="ViewSessionRoster">
-          <Key>
-            <PropertyRef Name="SessionID" />
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Name="SessionID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="SessionsByInterest">
-          <Key>
-            <PropertyRef Name="SessionID" />
-            <PropertyRef Name="Course" />
-            <PropertyRef Name="CourseName" />
-            <PropertyRef Name="Room" />
-            <PropertyRef Name="Day" />
-            <PropertyRef Name="Coach" />
-            <PropertyRef Name="Time" />
-            <PropertyRef Name="Active" />
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="Interest" />
-          </Key>
-          <Property Name="SessionID" Type="Int32" Nullable="false" />
-          <Property Name="Course" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Room" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Day" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="Coach" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Time" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
-          <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Interest" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="Coach">
           <Key>
             <PropertyRef Name="CoachID" />
           </Key>
-          <Property Name="CoachID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CoachID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" Type="String" />
           <Property Name="LastName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -981,6 +805,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
           <NavigationProperty Name="CoachAvailabilities" Relationship="db_sft_2172Model.FK_CoachAvailability_Coach" FromRole="Coach" ToRole="CoachAvailability" />
           <NavigationProperty Name="CoachSessions" Relationship="db_sft_2172Model.FK_Session_Coach" FromRole="Coach" ToRole="CoachSession" />
           <NavigationProperty Name="Courses" Relationship="db_sft_2172Model.CoachCourseList" FromRole="Coach" ToRole="Course" />
+          <NavigationProperty Name="CoachCourses" Relationship="db_sft_2172Model.FK_CoachCourse_Coach1" FromRole="Coach" ToRole="CoachCourse" />
         </EntityType>
         <EntityType Name="CoachAvailability">
           <Key>
@@ -1012,8 +837,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
           <NavigationProperty Name="Time1" Relationship="db_sft_2172Model.FK_CoachSession_Time1" FromRole="CoachSession" ToRole="Time" />
           <NavigationProperty Name="Day" Relationship="db_sft_2172Model.FK_Session_Day1" FromRole="CoachSession" ToRole="Day" />
           <NavigationProperty Name="Room" Relationship="db_sft_2172Model.FK_Session_Room1" FromRole="CoachSession" ToRole="Room" />
-          <NavigationProperty Name="CoachCourses" Relationship="db_sft_2172Model.FK_CoachCourse_CoachSession" FromRole="CoachSession" ToRole="CoachCourse" />
-          <NavigationProperty Name="SessionCourses1" Relationship="db_sft_2172Model.FK_SessionCourse_CoachSession" FromRole="CoachSession" ToRole="SessionCourse1" />
         </EntityType>
         <EntityType Name="Time">
           <Key>
@@ -1035,16 +858,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
           <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CoachID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="ViewSessionCours">
-          <Key>
-            <PropertyRef Name="CourseID" />
-            <PropertyRef Name="CourseName" />
-            <PropertyRef Name="SessionID" />
-          </Key>
-          <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SessionID" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="FK_Coach_User">
           <End Type="db_sft_2172Model.User" Role="User" Multiplicity="1" />
@@ -1184,38 +997,15 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
         </Association>
         <EntityType Name="CoachCourse">
           <Key>
-            <PropertyRef Name="SessionID" />
             <PropertyRef Name="CourseID" />
+            <PropertyRef Name="CoachID" />
           </Key>
-          <Property Name="SessionID" Type="Int32" Nullable="false" />
           <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Active" Type="Boolean" />
-          <NavigationProperty Name="CoachSession" Relationship="db_sft_2172Model.FK_CoachCourse_CoachSession" FromRole="CoachCourse" ToRole="CoachSession" />
           <NavigationProperty Name="Course" Relationship="db_sft_2172Model.FK_CoachCourse_Course1" FromRole="CoachCourse" ToRole="Course" />
+          <Property Name="CoachID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Coach" Relationship="db_sft_2172Model.FK_CoachCourse_Coach1" FromRole="CoachCourse" ToRole="Coach" />
         </EntityType>
-        <EntityType Name="SessionCourse">
-          <Key>
-            <PropertyRef Name="SessionID" />
-            <PropertyRef Name="CourseID" />
-          </Key>
-          <Property Name="SessionID" Type="Int32" Nullable="false" />
-          <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Active" Type="Boolean" />
-          <NavigationProperty Name="CoachSession" Relationship="db_sft_2172Model.FK_SessionCourse_CoachSession" FromRole="SessionCourse1" ToRole="CoachSession" />
-          <NavigationProperty Name="Course" Relationship="db_sft_2172Model.FK_SessionCourse_Course" FromRole="SessionCourse" ToRole="Course" />
-        </EntityType>
-        <Association Name="FK_CoachCourse_CoachSession">
-          <End Type="db_sft_2172Model.CoachSession" Role="CoachSession" Multiplicity="1" />
-          <End Type="db_sft_2172Model.CoachCourse" Role="CoachCourse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CoachSession">
-              <PropertyRef Name="SessionID" />
-            </Principal>
-            <Dependent Role="CoachCourse">
-              <PropertyRef Name="SessionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CoachCourse_Course1">
           <End Type="db_sft_2172Model.Course" Role="Course" Multiplicity="1" />
           <End Type="db_sft_2172Model.CoachCourse" Role="CoachCourse" Multiplicity="*" />
@@ -1224,30 +1014,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
               <PropertyRef Name="CourseID" />
             </Principal>
             <Dependent Role="CoachCourse">
-              <PropertyRef Name="CourseID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SessionCourse_CoachSession">
-          <End Type="db_sft_2172Model.CoachSession" Role="CoachSession" Multiplicity="1" />
-          <End Type="db_sft_2172Model.SessionCourse" Role="SessionCourse1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CoachSession">
-              <PropertyRef Name="SessionID" />
-            </Principal>
-            <Dependent Role="SessionCourse1">
-              <PropertyRef Name="SessionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SessionCourse_Course">
-          <End Type="db_sft_2172Model.Course" Role="Course" Multiplicity="1" />
-          <End Type="db_sft_2172Model.SessionCourse" Role="SessionCourse" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Course">
-              <PropertyRef Name="CourseID" />
-            </Principal>
-            <Dependent Role="SessionCourse">
               <PropertyRef Name="CourseID" />
             </Dependent>
           </ReferentialConstraint>
@@ -1280,6 +1046,42 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
           <Property Name="EndTime" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
           <Property Name="SessionID" Type="Int32" Nullable="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CoachCourse_Coach1">
+          <End Type="db_sft_2172Model.Coach" Role="Coach" Multiplicity="1" />
+          <End Type="db_sft_2172Model.CoachCourse" Role="CoachCourse" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Coach">
+              <PropertyRef Name="CoachID" />
+            </Principal>
+            <Dependent Role="CoachCourse">
+              <PropertyRef Name="CoachID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="GetSchedulePivot">
+          <Key>
+            <PropertyRef Name="Course" />
+          </Key>
+          <Property Name="Course" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Monday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tuesday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Wednesday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Thursday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Friday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Saturday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SchedulePivot">
+          <Key>
+            <PropertyRef Name="Course" />
+          </Key>
+          <Property Name="Course" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Monday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Tuesday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Wednesday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Thursday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Friday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Saturday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1362,46 +1164,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ViewSessions">
-            <EntityTypeMapping TypeName="db_sft_2172Model.ViewSession">
-              <MappingFragment StoreEntitySet="ViewSession">
-                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="Day" ColumnName="Day" />
-                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="Coach" ColumnName="Coach" />
-                <ScalarProperty Name="Room" ColumnName="Room" />
-                <ScalarProperty Name="Course" ColumnName="Course" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ViewSessionRosters">
-            <EntityTypeMapping TypeName="db_sft_2172Model.ViewSessionRoster">
-              <MappingFragment StoreEntitySet="ViewSessionRoster">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SessionsByInterests">
-            <EntityTypeMapping TypeName="db_sft_2172Model.SessionsByInterest">
-              <MappingFragment StoreEntitySet="SessionsByInterest">
-                <ScalarProperty Name="Interest" ColumnName="Interest" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="Coach" ColumnName="Coach" />
-                <ScalarProperty Name="Day" ColumnName="Day" />
-                <ScalarProperty Name="Room" ColumnName="Room" />
-                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-                <ScalarProperty Name="Course" ColumnName="Course" />
-                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Coaches">
             <EntityTypeMapping TypeName="db_sft_2172Model.Coach">
               <MappingFragment StoreEntitySet="Coach">
@@ -1458,15 +1220,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ViewSessionCourses">
-            <EntityTypeMapping TypeName="db_sft_2172Model.ViewSessionCours">
-              <MappingFragment StoreEntitySet="ViewSessionCourses">
-                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
-                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="CoachCourseList" TypeName="db_sft_2172Model.CoachCourseList" StoreEntitySet="CoachCourseList">
             <EndProperty Name="Course">
               <ScalarProperty Name="CourseID" ColumnName="CourseID" />
@@ -1478,18 +1231,9 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
           <EntitySetMapping Name="CoachCourses">
             <EntityTypeMapping TypeName="db_sft_2172Model.CoachCourse">
               <MappingFragment StoreEntitySet="CoachCourse">
+                <ScalarProperty Name="CoachID" ColumnName="CoachID" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="CourseID" ColumnName="CourseID" />
-                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SessionCourses">
-            <EntityTypeMapping TypeName="db_sft_2172Model.SessionCourse">
-              <MappingFragment StoreEntitySet="SessionCourse">
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
-                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1513,6 +1257,33 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewSessionRoster' does not have a
                 <ScalarProperty Name="StartTime" ColumnName="StartTime" />
                 <ScalarProperty Name="Day" ColumnName="Day" />
                 <ScalarProperty Name="CoachID" ColumnName="CoachID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GenerateSchedule" FunctionName="db_sft_2172Model.Store.GenerateSchedule" />
+          <EntitySetMapping Name="GetSchedulePivots">
+            <EntityTypeMapping TypeName="db_sft_2172Model.GetSchedulePivot">
+              <MappingFragment StoreEntitySet="GetSchedulePivot">
+                <ScalarProperty Name="Saturday" ColumnName="Saturday" />
+                <ScalarProperty Name="Friday" ColumnName="Friday" />
+                <ScalarProperty Name="Thursday" ColumnName="Thursday" />
+                <ScalarProperty Name="Wednesday" ColumnName="Wednesday" />
+                <ScalarProperty Name="Tuesday" ColumnName="Tuesday" />
+                <ScalarProperty Name="Monday" ColumnName="Monday" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SchedulePivots">
+            <EntityTypeMapping TypeName="db_sft_2172Model.SchedulePivot">
+              <MappingFragment StoreEntitySet="SchedulePivot">
+                <ScalarProperty Name="Saturday" ColumnName="Saturday" />
+                <ScalarProperty Name="Friday" ColumnName="Friday" />
+                <ScalarProperty Name="Thursday" ColumnName="Thursday" />
+                <ScalarProperty Name="Wednesday" ColumnName="Wednesday" />
+                <ScalarProperty Name="Tuesday" ColumnName="Tuesday" />
+                <ScalarProperty Name="Monday" ColumnName="Monday" />
+                <ScalarProperty Name="Course" ColumnName="Course" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
