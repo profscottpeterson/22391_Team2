@@ -12,7 +12,7 @@ namespace CoachConnect
     using System;
     using System.Collections.Generic;
     
-    public partial class GetSchedulePivot
+    public partial class SchedulePivot
     {
         public string Course { get; set; }
         public string Monday { get; set; }

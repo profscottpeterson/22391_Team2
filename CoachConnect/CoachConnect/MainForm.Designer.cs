@@ -41,6 +41,7 @@
             this.setScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeMyPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printScheduleByDepartmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +61,7 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.printScheduleByDepartmentToolStripMenuItem,
             this.eToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -68,7 +70,7 @@
             // eToolStripMenuItem
             // 
             this.eToolStripMenuItem.Name = "eToolStripMenuItem";
-            this.eToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.eToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.eToolStripMenuItem.Text = "Exit";
             this.eToolStripMenuItem.Click += new System.EventHandler(this.eToolStripMenuItem_Click);
             // 
@@ -140,6 +142,12 @@
             this.changeMyPasswordToolStripMenuItem.Text = "Change My Password";
             this.changeMyPasswordToolStripMenuItem.Click += new System.EventHandler(this.changeMyPasswordToolStripMenuItem_Click);
             // 
+            // printScheduleByDepartmentToolStripMenuItem
+            // 
+            this.printScheduleByDepartmentToolStripMenuItem.Name = "printScheduleByDepartmentToolStripMenuItem";
+            this.printScheduleByDepartmentToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.printScheduleByDepartmentToolStripMenuItem.Text = "Print Schedule by Department";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,5 +180,6 @@
         private System.Windows.Forms.ToolStripMenuItem eToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeMyPasswordToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem printScheduleByDepartmentToolStripMenuItem;
     }
 }

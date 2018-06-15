@@ -163,10 +163,10 @@
       <End Role="Coach" EntitySet="Coaches" />
       <End Role="CoachCourse" EntitySet="CoachCourses" />
     </AssociationSet>
-    <FunctionImport Name="GenerateSchedule" ReturnType="Collection(String)">
+    <FunctionImport Name="GenerateSchedule">
       <Parameter Name="Interest" Mode="In" Type="String" />
     </FunctionImport>
-    <EntitySet Name="GetSchedulePivots" EntityType="db_sft_2172Model.GetSchedulePivot" />
+    <EntitySet Name="SchedulePivots" EntityType="db_sft_2172Model.SchedulePivot" />
   </EntityContainer>
   <EntityType Name="Department">
     <Key>
@@ -522,7 +522,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="GetSchedulePivot">
+  <EntityType Name="SchedulePivot">
     <Key>
       <PropertyRef Name="Course" />
     </Key>

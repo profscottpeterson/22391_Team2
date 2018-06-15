@@ -57,13 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddSessionCourse.cs">
-      <SubType>Form</SubType>
-      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
-    </Compile>
-    <Compile Include="AddSessionCourse.Designer.cs">
-      <DependentUpon>AddSessionCourse.cs</DependentUpon>
-    </Compile>
     <Compile Include="Building.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
@@ -103,14 +96,17 @@
     <Compile Include="GetCoachSchedule.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GetSchedulePivot.cs">
-      <DependentUpon>CoachConnectModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintSchedule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintSchedule.Designer.cs">
+      <DependentUpon>PrintSchedule.cs</DependentUpon>
     </Compile>
     <Compile Include="ResetUserPasswordAdmin.cs">
       <SubType>Form</SubType>
@@ -148,11 +144,8 @@
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SaltedHash.cs" />
-    <Compile Include="SessionAdminForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SessionAdminForm.designer.cs">
-      <DependentUpon>SessionAdminForm.cs</DependentUpon>
+    <Compile Include="SchedulePivot.cs">
+      <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
@@ -205,9 +198,6 @@
     <Compile Include="ViewCoachCours.cs">
       <DependentUpon>CoachConnectModel.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddSessionCourse.resx">
-      <DependentUpon>AddSessionCourse.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="CoachScheduleForm.resx">
       <DependentUpon>CoachScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +210,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PrintSchedule.resx">
+      <DependentUpon>PrintSchedule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ResetUserPasswordAdmin.resx">
       <DependentUpon>ResetUserPasswordAdmin.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,9 +221,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ResetMyPassword.resx">
       <DependentUpon>ResetMyPassword.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="SessionAdminForm.resx">
-      <DependentUpon>SessionAdminForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CoachProfileForm.resx">
       <DependentUpon>CoachProfileForm.cs</DependentUpon>

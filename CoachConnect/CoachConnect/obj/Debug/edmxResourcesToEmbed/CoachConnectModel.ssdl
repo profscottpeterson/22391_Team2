@@ -103,6 +103,20 @@
     <Property Name="BuildingID" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.SchedulePivot' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="SchedulePivot">
+    <Key>
+      <PropertyRef Name="Course" />
+    </Key>
+    <Property Name="Course" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Monday" Type="nvarchar(max)" />
+    <Property Name="Tuesday" Type="nvarchar(max)" />
+    <Property Name="Wednesday" Type="nvarchar(max)" />
+    <Property Name="Thursday" Type="nvarchar(max)" />
+    <Property Name="Friday" Type="nvarchar(max)" />
+    <Property Name="Saturday" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="Time">
     <Key>
       <PropertyRef Name="Time" />
@@ -160,20 +174,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.GetCoachSchedule' does not have a 
     <Property Name="StartTime" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="EndTime" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'db_sft_2172.dbo.GetSchedulePivot' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="GetSchedulePivot">
-    <Key>
-      <PropertyRef Name="Course" />
-    </Key>
-    <Property Name="Course" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="Monday" Type="nvarchar(max)" />
-    <Property Name="Tuesday" Type="nvarchar(max)" />
-    <Property Name="Wednesday" Type="nvarchar(max)" />
-    <Property Name="Thursday" Type="nvarchar(max)" />
-    <Property Name="Friday" Type="nvarchar(max)" />
-    <Property Name="Saturday" Type="nvarchar(max)" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.ViewCoachCourses' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -408,6 +408,17 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewCoachCourses' does not have a 
     <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Time" EntityType="Self.Time" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SchedulePivot" EntityType="Self.SchedulePivot" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [SchedulePivot].[Course] AS [Course], 
+    [SchedulePivot].[Monday] AS [Monday], 
+    [SchedulePivot].[Tuesday] AS [Tuesday], 
+    [SchedulePivot].[Wednesday] AS [Wednesday], 
+    [SchedulePivot].[Thursday] AS [Thursday], 
+    [SchedulePivot].[Friday] AS [Friday], 
+    [SchedulePivot].[Saturday] AS [Saturday]
+    FROM [dbo].[SchedulePivot] AS [SchedulePivot]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="GetCoachAvailability" EntityType="Self.GetCoachAvailability" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [GetCoachAvailability].[CoachAvailabilityID] AS [CoachAvailabilityID], 
@@ -426,17 +437,6 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewCoachCourses' does not have a 
     [GetCoachSchedule].[EndTime] AS [EndTime], 
     [GetCoachSchedule].[Active] AS [Active]
     FROM [dbo].[GetCoachSchedule] AS [GetCoachSchedule]</DefiningQuery>
-    </EntitySet>
-    <EntitySet Name="GetSchedulePivot" EntityType="Self.GetSchedulePivot" store:Type="Views" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [GetSchedulePivot].[Course] AS [Course], 
-    [GetSchedulePivot].[Monday] AS [Monday], 
-    [GetSchedulePivot].[Tuesday] AS [Tuesday], 
-    [GetSchedulePivot].[Wednesday] AS [Wednesday], 
-    [GetSchedulePivot].[Thursday] AS [Thursday], 
-    [GetSchedulePivot].[Friday] AS [Friday], 
-    [GetSchedulePivot].[Saturday] AS [Saturday]
-    FROM [dbo].[GetSchedulePivot] AS [GetSchedulePivot]</DefiningQuery>
     </EntitySet>
     <EntitySet Name="ViewCoachCourses" EntityType="Self.ViewCoachCourses" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 

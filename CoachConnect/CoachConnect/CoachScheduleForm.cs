@@ -17,7 +17,6 @@ namespace CoachConnect
             InitializeComponent();
         }
 
-
         /// <summary>
         /// Displays the list of available coaches
         /// </summary>

@@ -173,9 +173,9 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="GenerateSchedule" FunctionName="db_sft_2172Model.Store.GenerateSchedule" />
-    <EntitySetMapping Name="GetSchedulePivots">
-      <EntityTypeMapping TypeName="db_sft_2172Model.GetSchedulePivot">
-        <MappingFragment StoreEntitySet="GetSchedulePivot">
+    <EntitySetMapping Name="SchedulePivots">
+      <EntityTypeMapping TypeName="db_sft_2172Model.SchedulePivot">
+        <MappingFragment StoreEntitySet="SchedulePivot">
           <ScalarProperty Name="Saturday" ColumnName="Saturday" />
           <ScalarProperty Name="Friday" ColumnName="Friday" />
           <ScalarProperty Name="Thursday" ColumnName="Thursday" />

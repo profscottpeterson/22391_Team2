@@ -42,7 +42,6 @@ namespace CoachConnect
         public virtual DbSet<CoachCourse> CoachCourses { get; set; }
         public virtual DbSet<GetCoachAvailability> GetCoachAvailabilities { get; set; }
         public virtual DbSet<GetCoachSchedule> GetCoachSchedules { get; set; }
-        public virtual DbSet<GetSchedulePivot> GetSchedulePivots { get; set; }
         public virtual DbSet<SchedulePivot> SchedulePivots { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
