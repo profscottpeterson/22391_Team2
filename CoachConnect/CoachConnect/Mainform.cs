@@ -67,5 +67,12 @@ namespace CoachConnect
             coachScheduleForm.MdiParent = this;
             coachScheduleForm.Show();
         }
+
+        private void printScheduleByDepartmentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PrintSchedule printScheduleForm = new PrintSchedule();
+            printScheduleForm.MdiParent = this;
+            printScheduleForm.Show();
+        }
     }
 }

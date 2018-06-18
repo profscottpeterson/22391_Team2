@@ -86,14 +86,14 @@
             // addUpdateUserToolStripMenuItem
             // 
             this.addUpdateUserToolStripMenuItem.Name = "addUpdateUserToolStripMenuItem";
-            this.addUpdateUserToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.addUpdateUserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addUpdateUserToolStripMenuItem.Text = "Add/Update User";
             this.addUpdateUserToolStripMenuItem.Click += new System.EventHandler(this.addUpdateUserToolStripMenuItem_Click);
             // 
             // updateCourseListToolStripMenuItem
             // 
             this.updateCourseListToolStripMenuItem.Name = "updateCourseListToolStripMenuItem";
-            this.updateCourseListToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.updateCourseListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateCourseListToolStripMenuItem.Text = "Update Course List";
             // 
             // coachesToolStripMenuItem
@@ -109,21 +109,21 @@
             // profileToolStripMenuItem
             // 
             this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.profileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.profileToolStripMenuItem.Text = "Update Profile";
             this.profileToolStripMenuItem.Click += new System.EventHandler(this.profileToolStripMenuItem_Click);
             // 
             // setAvailabilityToolStripMenuItem
             // 
             this.setAvailabilityToolStripMenuItem.Name = "setAvailabilityToolStripMenuItem";
-            this.setAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.setAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.setAvailabilityToolStripMenuItem.Text = "Set Availability";
             this.setAvailabilityToolStripMenuItem.Click += new System.EventHandler(this.setAvailabilityToolStripMenuItem_Click);
             // 
             // setScheduleToolStripMenuItem
             // 
             this.setScheduleToolStripMenuItem.Name = "setScheduleToolStripMenuItem";
-            this.setScheduleToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.setScheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.setScheduleToolStripMenuItem.Text = "Set Schedule";
             this.setScheduleToolStripMenuItem.Click += new System.EventHandler(this.setScheduleToolStripMenuItem_Click);
             // 
@@ -147,6 +147,7 @@
             this.printScheduleByDepartmentToolStripMenuItem.Name = "printScheduleByDepartmentToolStripMenuItem";
             this.printScheduleByDepartmentToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.printScheduleByDepartmentToolStripMenuItem.Text = "Print Schedule by Department";
+            this.printScheduleByDepartmentToolStripMenuItem.Click += new System.EventHandler(this.printScheduleByDepartmentToolStripMenuItem_Click);
             // 
             // MainForm
             // 
