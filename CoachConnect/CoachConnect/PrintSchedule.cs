@@ -48,7 +48,7 @@ namespace CoachConnect
 
                 // Set combo box data sources and update data member settings
                 this.cbxChooseDepartment.DataSource = interestList;
-                this.cbxChooseDepartment.ValueMember = "InterestID";
+                this.cbxChooseDepartment.ValueMember = "InterestName";
                 this.cbxChooseDepartment.DisplayMember = "InterestName";
             }
         }
@@ -60,7 +60,7 @@ namespace CoachConnect
         {
             // Query obtains the interest ID from the combo box.
             string interestId = this.cbxChooseDepartment.SelectedValue.ToString();
-
+            
             try
             {
                 using (var context = new db_sft_2172Entities())
@@ -90,10 +90,12 @@ namespace CoachConnect
 
         private void btnSaveScheduleToExcel_Click(object sender, EventArgs e)
         {
+            string currentUsername = Environment.UserName;
+
             // creating Excel Application  
             _Application app = new Microsoft.Office.Interop.Excel.Application();
             // creating new WorkBook within Excel application  
-            _Workbook workbook = app.Workbooks.Add(Type.Missing);
+            _Workbook workbook = app.Workbooks.Open("c:\\users\\" + currentUsername + "\\Documents\\currentCoachScheduleTEMPLATE.xlsx");
             // creating new Excelsheet in workbook  
             _Worksheet worksheet = null;
             // see the excel sheet behind the program  
@@ -102,8 +104,6 @@ namespace CoachConnect
             // store its reference to worksheet  
             worksheet = workbook.Sheets["Sheet1"];
             worksheet = workbook.ActiveSheet;
-            // changing the name of active sheet  
-            worksheet.Name = "Exported from gridview";
             // storing header part in Excel  
             for (int i = 1; i < dataGridViewSchedule.Columns.Count + 1; i++)
             {
@@ -123,14 +123,12 @@ namespace CoachConnect
                 }
             }
 
-            string currentUsername = Environment.UserName;
-
             // save the application  
             workbook.SaveAs("c:\\users\\" + currentUsername + "\\Documents\\currentCoachSchedule.xlsx", Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
 
 
             // Exit from the application  
-            //app.Quit();
+            app.Quit();
         }
     }
 }
