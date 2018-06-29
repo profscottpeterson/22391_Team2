@@ -33,7 +33,7 @@
             this.dataGridViewSchedule = new System.Windows.Forms.DataGridView();
             this.cbxChooseDepartment = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCloseWindow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSchedule)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +64,6 @@
             // 
             this.dataGridViewSchedule.AllowUserToAddRows = false;
             this.dataGridViewSchedule.AllowUserToDeleteRows = false;
-            this.dataGridViewSchedule.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewSchedule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSchedule.Location = new System.Drawing.Point(49, 112);
             this.dataGridViewSchedule.MultiSelect = false;
@@ -93,23 +92,24 @@
             this.label3.TabIndex = 58;
             this.label3.Text = "Choose a Department:";
             // 
-            // button1
+            // btnCloseWindow
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(781, 412);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 23);
-            this.button1.TabIndex = 59;
-            this.button1.Text = "Close Window";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCloseWindow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCloseWindow.Location = new System.Drawing.Point(781, 412);
+            this.btnCloseWindow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCloseWindow.Name = "btnCloseWindow";
+            this.btnCloseWindow.Size = new System.Drawing.Size(139, 23);
+            this.btnCloseWindow.TabIndex = 59;
+            this.btnCloseWindow.Text = "Close Window";
+            this.btnCloseWindow.UseVisualStyleBackColor = true;
+            this.btnCloseWindow.Click += new System.EventHandler(this.button1_Click);
             // 
             // PrintSchedule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(977, 464);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCloseWindow);
             this.Controls.Add(this.cbxChooseDepartment);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSaveScheduleToExcel);
@@ -131,6 +131,6 @@
         private System.Windows.Forms.DataGridView dataGridViewSchedule;
         private System.Windows.Forms.ComboBox cbxChooseDepartment;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCloseWindow;
     }
 }

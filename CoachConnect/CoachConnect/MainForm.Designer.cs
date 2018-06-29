@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.printScheduleByDepartmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addUpdateUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,7 +42,6 @@
             this.setScheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changeMyPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printScheduleByDepartmentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +54,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(713, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1218, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -66,6 +66,13 @@
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
+            // 
+            // printScheduleByDepartmentToolStripMenuItem
+            // 
+            this.printScheduleByDepartmentToolStripMenuItem.Name = "printScheduleByDepartmentToolStripMenuItem";
+            this.printScheduleByDepartmentToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.printScheduleByDepartmentToolStripMenuItem.Text = "Print Schedule by Department";
+            this.printScheduleByDepartmentToolStripMenuItem.Click += new System.EventHandler(this.printScheduleByDepartmentToolStripMenuItem_Click);
             // 
             // eToolStripMenuItem
             // 
@@ -86,14 +93,14 @@
             // addUpdateUserToolStripMenuItem
             // 
             this.addUpdateUserToolStripMenuItem.Name = "addUpdateUserToolStripMenuItem";
-            this.addUpdateUserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addUpdateUserToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.addUpdateUserToolStripMenuItem.Text = "Add/Update User";
             this.addUpdateUserToolStripMenuItem.Click += new System.EventHandler(this.addUpdateUserToolStripMenuItem_Click);
             // 
             // updateCourseListToolStripMenuItem
             // 
             this.updateCourseListToolStripMenuItem.Name = "updateCourseListToolStripMenuItem";
-            this.updateCourseListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.updateCourseListToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.updateCourseListToolStripMenuItem.Text = "Update Course List";
             // 
             // coachesToolStripMenuItem
@@ -109,21 +116,21 @@
             // profileToolStripMenuItem
             // 
             this.profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            this.profileToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.profileToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.profileToolStripMenuItem.Text = "Update Profile";
             this.profileToolStripMenuItem.Click += new System.EventHandler(this.profileToolStripMenuItem_Click);
             // 
             // setAvailabilityToolStripMenuItem
             // 
             this.setAvailabilityToolStripMenuItem.Name = "setAvailabilityToolStripMenuItem";
-            this.setAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setAvailabilityToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.setAvailabilityToolStripMenuItem.Text = "Set Availability";
             this.setAvailabilityToolStripMenuItem.Click += new System.EventHandler(this.setAvailabilityToolStripMenuItem_Click);
             // 
             // setScheduleToolStripMenuItem
             // 
             this.setScheduleToolStripMenuItem.Name = "setScheduleToolStripMenuItem";
-            this.setScheduleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.setScheduleToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.setScheduleToolStripMenuItem.Text = "Set Schedule";
             this.setScheduleToolStripMenuItem.Click += new System.EventHandler(this.setScheduleToolStripMenuItem_Click);
             // 
@@ -142,18 +149,11 @@
             this.changeMyPasswordToolStripMenuItem.Text = "Change My Password";
             this.changeMyPasswordToolStripMenuItem.Click += new System.EventHandler(this.changeMyPasswordToolStripMenuItem_Click);
             // 
-            // printScheduleByDepartmentToolStripMenuItem
-            // 
-            this.printScheduleByDepartmentToolStripMenuItem.Name = "printScheduleByDepartmentToolStripMenuItem";
-            this.printScheduleByDepartmentToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.printScheduleByDepartmentToolStripMenuItem.Text = "Print Schedule by Department";
-            this.printScheduleByDepartmentToolStripMenuItem.Click += new System.EventHandler(this.printScheduleByDepartmentToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(713, 533);
+            this.ClientSize = new System.Drawing.Size(1218, 691);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
