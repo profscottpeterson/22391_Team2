@@ -102,7 +102,7 @@
             this.btnCloseWindow.TabIndex = 59;
             this.btnCloseWindow.Text = "Close Window";
             this.btnCloseWindow.UseVisualStyleBackColor = true;
-            this.btnCloseWindow.Click += new System.EventHandler(this.button1_Click);
+            this.btnCloseWindow.Click += new System.EventHandler(this.btnCloseWindow_Click);
             // 
             // PrintSchedule
             // 

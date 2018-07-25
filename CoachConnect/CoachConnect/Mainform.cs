@@ -74,5 +74,12 @@ namespace CoachConnect
             printScheduleForm.MdiParent = this;
             printScheduleForm.Show();
         }
+
+        private void updateCourseListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CourseAdminForm courseAdminForm = new CourseAdminForm();
+            courseAdminForm.MdiParent = this;
+            courseAdminForm.Show();
+        }
     }
 }

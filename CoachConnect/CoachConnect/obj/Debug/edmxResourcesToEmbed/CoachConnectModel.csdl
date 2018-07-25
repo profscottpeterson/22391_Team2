@@ -167,6 +167,8 @@
       <Parameter Name="Interest" Mode="In" Type="String" />
     </FunctionImport>
     <EntitySet Name="SchedulePivots" EntityType="db_sft_2172Model.SchedulePivot" />
+    <EntitySet Name="DepartmentCourses" EntityType="db_sft_2172Model.DepartmentCourse" />
+    <EntitySet Name="CourseListings" EntityType="db_sft_2172Model.CourseListing" />
   </EntityContainer>
   <EntityType Name="Department">
     <Key>
@@ -533,5 +535,29 @@
     <Property Name="Thursday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Friday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Saturday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="DepartmentCourse">
+    <Key>
+      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="IsActive" />
+      <PropertyRef Name="DepartmentID" />
+      <PropertyRef Name="DepartmentName" />
+    </Key>
+    <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="DepartmentID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DepartmentName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CourseListing">
+    <Key>
+      <PropertyRef Name="CourseID" />
+      <PropertyRef Name="CourseName" />
+      <PropertyRef Name="CourseListID" />
+    </Key>
+    <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CourseListID" Type="String" Nullable="false" MaxLength="154" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

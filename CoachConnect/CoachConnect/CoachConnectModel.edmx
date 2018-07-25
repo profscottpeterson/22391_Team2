@@ -148,6 +148,20 @@ warning 6002: The table/view 'db_sft_2172.dbo.SchedulePivot' does not have a pri
           <Property Name="PasswordSalt" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.CourseListing' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CourseListing">
+          <Key>
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="CourseListID" />
+          </Key>
+          <Property Name="CourseID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CourseListID" Type="nvarchar" MaxLength="154" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'db_sft_2172.dbo.DepartmentCourse' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'db_sft_2172.dbo.GetCoachAvailability' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="GetCoachAvailability">
           <Key>
@@ -424,6 +438,13 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewCoachCourses' does not have a 
     [SchedulePivot].[Saturday] AS [Saturday]
     FROM [dbo].[SchedulePivot] AS [SchedulePivot]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="CourseListing" EntityType="Self.CourseListing" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CourseListing].[CourseID] AS [CourseID], 
+    [CourseListing].[CourseName] AS [CourseName], 
+    [CourseListing].[CourseListID] AS [CourseListID]
+    FROM [dbo].[CourseListing] AS [CourseListing]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="GetCoachAvailability" EntityType="Self.GetCoachAvailability" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [GetCoachAvailability].[CoachAvailabilityID] AS [CoachAvailabilityID], 
@@ -690,6 +711,7 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewCoachCourses' does not have a 
           <Parameter Name="Interest" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="SchedulePivots" EntityType="db_sft_2172Model.SchedulePivot" />
+          <EntitySet Name="CourseListings" EntityType="db_sft_2172Model.CourseListing" />
           </EntityContainer>
         <EntityType Name="Department">
           <Key>
@@ -1057,6 +1079,16 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewCoachCourses' does not have a 
           <Property Name="Friday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Saturday" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="CourseListing">
+          <Key>
+            <PropertyRef Name="CourseID" />
+            <PropertyRef Name="CourseName" />
+            <PropertyRef Name="CourseListID" />
+          </Key>
+          <Property Name="CourseID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CourseName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CourseListID" Type="String" Nullable="false" MaxLength="154" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1245,6 +1277,15 @@ warning 6002: The table/view 'db_sft_2172.dbo.ViewCoachCourses' does not have a 
                 <ScalarProperty Name="Tuesday" ColumnName="Tuesday" />
                 <ScalarProperty Name="Monday" ColumnName="Monday" />
                 <ScalarProperty Name="Course" ColumnName="Course" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseListings">
+            <EntityTypeMapping TypeName="db_sft_2172Model.CourseListing">
+              <MappingFragment StoreEntitySet="CourseListing">
+                <ScalarProperty Name="CourseListID" ColumnName="CourseListID" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="CourseID" ColumnName="CourseID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

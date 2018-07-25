@@ -38,6 +38,7 @@
         <EntityTypeShape EntityType="db_sft_2172Model.GetCoachSchedule" Width="1.5" PointX="13.75" PointY="6.375" />
         <AssociationConnector Association="db_sft_2172Model.FK_CoachCourse_Coach1" />
         <EntityTypeShape EntityType="db_sft_2172Model.GetSchedulePivot" Width="1.5" PointX="11.375" PointY="6.375" />
+        <EntityTypeShape EntityType="db_sft_2172Model.CourseListing" Width="1.5" PointX="5.375" PointY="3.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

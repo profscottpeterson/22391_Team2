@@ -93,15 +93,16 @@
             // addUpdateUserToolStripMenuItem
             // 
             this.addUpdateUserToolStripMenuItem.Name = "addUpdateUserToolStripMenuItem";
-            this.addUpdateUserToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.addUpdateUserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addUpdateUserToolStripMenuItem.Text = "Add/Update User";
             this.addUpdateUserToolStripMenuItem.Click += new System.EventHandler(this.addUpdateUserToolStripMenuItem_Click);
             // 
             // updateCourseListToolStripMenuItem
             // 
             this.updateCourseListToolStripMenuItem.Name = "updateCourseListToolStripMenuItem";
-            this.updateCourseListToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.updateCourseListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.updateCourseListToolStripMenuItem.Text = "Update Course List";
+            this.updateCourseListToolStripMenuItem.Click += new System.EventHandler(this.updateCourseListToolStripMenuItem_Click);
             // 
             // coachesToolStripMenuItem
             // 

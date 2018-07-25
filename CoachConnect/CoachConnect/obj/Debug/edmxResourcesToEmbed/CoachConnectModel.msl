@@ -186,5 +186,25 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="DepartmentCourses">
+      <EntityTypeMapping TypeName="db_sft_2172Model.DepartmentCourse">
+        <MappingFragment StoreEntitySet="DepartmentCourse">
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseListings">
+      <EntityTypeMapping TypeName="db_sft_2172Model.CourseListing">
+        <MappingFragment StoreEntitySet="CourseListing">
+          <ScalarProperty Name="CourseListID" ColumnName="CourseListID" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
