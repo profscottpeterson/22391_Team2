@@ -5,14 +5,8 @@
 namespace CoachConnect
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
+    using System.Data.SqlClient;
     using System.Linq;
-    using System.Security;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     /// <summary>
@@ -25,7 +19,7 @@ namespace CoachConnect
         /// </summary>
         public ResetMyPassword()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         /// <summary>
@@ -34,14 +28,14 @@ namespace CoachConnect
         /// <param name="original">The original form</param>
         public ResetMyPassword(Form original)
         {
-            this.InitializeComponent();
-            this.OriginalForm = original;
+            InitializeComponent();
+            OriginalForm = original;
         }
 
         /// <summary>
         /// Gets or sets a form object that stores the previous room
         /// </summary>
-        private Form OriginalForm { get; set; }
+        private Form OriginalForm { get; }
 
         /// <summary>
         /// Override method event handler to perform when the form is closed.
@@ -49,7 +43,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            this.OriginalForm.Show();
+            OriginalForm.Show();
         }
 
         /// <summary>
@@ -59,47 +53,63 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnSaveNewPasswordClick(object sender, EventArgs e)
         {
-            using (var context = new db_sft_2172Entities())
+            try
             {
-                var userQuery = from u in context.Users
-                                where u.UserID.Equals(Program.CurrentUser)
-                                select u;
-                var userResult = userQuery.FirstOrDefault<User>();
-                if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, txtStdPassword.Text))
+                using (var context = new db_sft_2172Entities())
                 {
-                    if (!string.IsNullOrEmpty(txtStdNewPassword.Text) || !string.IsNullOrEmpty(txtStdNewConfirmPassword.Text))
+                    var userQuery = from u in context.Users
+                        where u.UserID.Equals(Program.CurrentUser)
+                        select u;
+
+                    var userResult = userQuery.FirstOrDefault();
+
+                    if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, txtStdPassword.Text))
                     {
-                        if (txtStdNewPassword.Text == txtStdNewConfirmPassword.Text)
+                        if (!string.IsNullOrEmpty(txtStdNewPassword.Text) ||
+                            !string.IsNullOrEmpty(txtStdNewConfirmPassword.Text))
                         {
-                            // Generate salt and salted hash
-                            SaltedHash sh = new SaltedHash(txtStdNewPassword.Text);
-                            userResult.Password = sh.Hash;
-                            userResult.PasswordSalt = sh.Salt;
-                            userResult.ResetPassword = null;
-                            context.SaveChanges();
-                            txtStdPassword.Text = string.Empty;
-                            txtStdNewPassword.Text = string.Empty;
-                            txtStdNewConfirmPassword.Text = string.Empty;
-                            MessageBox.Show("Your passsword has been saved!");
-                            this.OriginalForm.Show();
-                            this.Close();
+                            if (txtStdNewPassword.Text == txtStdNewConfirmPassword.Text)
+                            {
+                                // Generate salt and salted hash
+                                SaltedHash sh = new SaltedHash(txtStdNewPassword.Text);
+                                userResult.Password = sh.Hash;
+                                userResult.PasswordSalt = sh.Salt;
+                                userResult.ResetPassword = null;
+                                context.SaveChanges();
+                                txtStdPassword.Text = string.Empty;
+                                txtStdNewPassword.Text = string.Empty;
+                                txtStdNewConfirmPassword.Text = string.Empty;
+                                MessageBox.Show(@"Your passsword has been saved!");
+
+                                OriginalForm.Show();
+                                Close();
+                            }
+                            else
+                            {
+                                MessageBox.Show(@"Passwords do not match!");
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("Passwords do not match!");
+                            MessageBox.Show(@"New password or confirm password is empty!");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("New password or confirm password is empty!");
+                        MessageBox.Show(@"Your current password is incorrect!");
                     }
                 }
-                else
-                {  
-                    MessageBox.Show("Your current password is incorrect!");
-                }
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
+
 
         /// <summary>
         /// Event handler to cancel the reset new password.
@@ -108,8 +118,8 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnCancelResetPasswordClick(object sender, EventArgs e)
         {
-            this.OriginalForm.Show();
-            this.Close();
+            OriginalForm.Show();
+            Close();
         }
 
         /// <summary>
@@ -119,23 +129,34 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void TxtStdPasswordLeave(object sender, EventArgs e)
         {
-            using (var context = new db_sft_2172Entities())
+            try
             {
-                var userQuery = from u in context.Users
-                                where u.UserID.Equals(Program.CurrentUser)
-                                select u;
-                var userResult = userQuery.FirstOrDefault<User>();
+                using (var context = new db_sft_2172Entities())
+                {
+                    var userQuery = from u in context.Users
+                        where u.UserID.Equals(Program.CurrentUser)
+                        select u;
+                    var userResult = userQuery.FirstOrDefault();
 
-                if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, txtStdPassword.Text))
-                {
-                    pwdCorrect.Visible = true;
-                    currentPWDWrong.Visible = false;
+                    if (SaltedHash.Verify(userResult.PasswordSalt, userResult.Password, txtStdPassword.Text))
+                    {
+                        pwdCorrect.Visible = true;
+                        currentPWDWrong.Visible = false;
+                    }
+                    else
+                    {
+                        currentPWDWrong.Visible = true;
+                        pwdCorrect.Visible = false;
+                    }
                 }
-                else
-                {
-                    currentPWDWrong.Visible = true;
-                    pwdCorrect.Visible = false;
-                }
+            }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

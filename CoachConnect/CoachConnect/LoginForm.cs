@@ -7,13 +7,7 @@ using System.Data.SqlClient;
 namespace CoachConnect
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     /// <summary>
@@ -26,7 +20,7 @@ namespace CoachConnect
         /// </summary>
         public LoginForm()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         /// <summary>
@@ -46,14 +40,14 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnLoginClick(object sender, EventArgs e)
         {
-            string usernameText = this.txtUsername.Text;
-            string passwordText = this.txtPassword.Text;
+            string usernameText = txtUsername.Text;
+            string passwordText = txtPassword.Text;
 
-            this.btnLogin.Enabled = false;
+            btnLogin.Enabled = false;
 
-            this.Login(usernameText, passwordText);
+            Login(usernameText, passwordText);
 
-            this.btnLogin.Enabled = true;
+            btnLogin.Enabled = true;
         }
 
         /// <summary>
@@ -73,13 +67,13 @@ namespace CoachConnect
 
                     if (userQuery.Any())
                     {
-                        var userResult = userQuery.FirstOrDefault<User>();
+                        var userResult = userQuery.FirstOrDefault();
 
                         // Determine whether user is active.  If not, display a message and Logout.
                         if (!userResult.IsActive)
                         {
                             MessageBox.Show(
-                                "Sorry, this user is inactive.  Please contact an administrator if you need to reactivate your account.");
+                                @"Sorry, this user is inactive.  Please contact an administrator if you need to reactivate your account.");
                             Program.Logout();
 
                             return;
@@ -101,7 +95,7 @@ namespace CoachConnect
                             if (userResult.ResetPassword != null)
                             {
                                 MessageBox.Show(
-                                    "Your password is outdated and needs to be changed.  Please reset your password now.");
+                                    @"Your password is outdated and needs to be changed.  Please reset your password now.");
 
                                 ResetMyPassword changePassword = new ResetMyPassword();
                                 changePassword.ShowDialog();
@@ -123,29 +117,29 @@ namespace CoachConnect
                                 Program.UpdateMenus();
 
                                 // Close window once finished
-                                this.Close();
+                                Close();
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Sorry, invalid username or password.  Please try again!");
-                            this.txtUsername.Text = string.Empty;
-                            this.txtPassword.Text = string.Empty;
-                            this.txtUsername.Focus();
+                            MessageBox.Show(@"Sorry, invalid username or password.  Please try again!");
+                            txtUsername.Text = string.Empty;
+                            txtPassword.Text = string.Empty;
+                            txtUsername.Focus();
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Sorry, invalid username or password.  Please try again!");
-                        this.txtUsername.Text = string.Empty;
-                        this.txtPassword.Text = string.Empty;
-                        this.txtUsername.Focus();
+                        MessageBox.Show(@"Sorry, invalid username or password.  Please try again!");
+                        txtUsername.Text = string.Empty;
+                        txtPassword.Text = string.Empty;
+                        txtUsername.Focus();
                     }
                 }
             }
             catch (SqlException sqlEx)
             {
-                MessageBox.Show(sqlEx.InnerException.Message);
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
             }
             catch (Exception ex)
             {

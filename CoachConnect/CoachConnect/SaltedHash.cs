@@ -4,11 +4,7 @@
 namespace CoachConnect
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Security.Cryptography;
-    using System.Text;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// An object used to generate an encrypted password.
@@ -28,19 +24,19 @@ namespace CoachConnect
                 provider.GetNonZeroBytes(saltBytes);
             }
 
-            this.Salt = Convert.ToBase64String(saltBytes);
-            this.Hash = ComputeHash(this.Salt, password);
+            Salt = Convert.ToBase64String(saltBytes);
+            Hash = ComputeHash(Salt, password);
         }
 
         /// <summary>
         /// Gets the final encrypted version of the password
         /// </summary>
-        public string Hash { get; private set; }
+        public string Hash { get; }
 
         /// <summary>
         /// Gets a random string to be appended in front of the password
         /// </summary>
-        public string Salt { get; private set; }
+        public string Salt { get;}
 
         /// <summary>
         /// A method to calculate the hash based on the salt and entered password.

@@ -4,13 +4,8 @@
 namespace CoachConnect
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
-    using System.Drawing;
+    using System.Data.SqlClient;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     /// <summary>
@@ -21,17 +16,17 @@ namespace CoachConnect
         /// <summary>
         /// Initializes a new instance of the <see cref="ResetUserPasswordAdmin" /> class. 
         /// </summary>
-        /// <param name="userID">The userID whose password needs to be updated</param>
-        public ResetUserPasswordAdmin(string userID)
+        /// <param name="userId">The userID whose password needs to be updated</param>
+        public ResetUserPasswordAdmin(string userId)
         {
-            this.CurrentUserID = userID;
-            this.InitializeComponent();
+            CurrentUserId = userId;
+            InitializeComponent();
         }
 
         /// <summary>
         /// Gets or sets the current UserID whose password needs to be updated
         /// </summary>
-        private string CurrentUserID { get; set; }
+        private string CurrentUserId { get; }
 
         /// <summary>
         /// Event handler to set temporary access code
@@ -41,25 +36,25 @@ namespace CoachConnect
         private void BtnUpdateClick(object sender, EventArgs e)
         {
             // Verify that the two entered passwords match
-            if (!this.txtTempCode.Text.Equals(this.txtConfirmTempCode.Text))
+            if (!txtTempCode.Text.Equals(txtConfirmTempCode.Text))
             {
-                MessageBox.Show("Sorry, the codes do not match.  Please try again!");
+                MessageBox.Show(@"Sorry, the codes do not match.  Please try again!");
 
                 // Clear the password boxes
-                this.txtTempCode.Text = string.Empty;
-                this.txtConfirmTempCode.Text = string.Empty;
+                txtTempCode.Text = string.Empty;
+                txtConfirmTempCode.Text = string.Empty;
 
-                this.txtTempCode.Focus();
+                txtTempCode.Focus();
             }
-            else if (this.txtTempCode.Text.Equals(string.Empty))
+            else if (txtTempCode.Text.Equals(string.Empty))
             {
-                MessageBox.Show("Please enter a code (max 10 characters).");
+                MessageBox.Show(@"Please enter a code (max 10 characters).");
 
                 // Clear the password boxes
-                this.txtTempCode.Text = string.Empty;
-                this.txtConfirmTempCode.Text = string.Empty;
+                txtTempCode.Text = string.Empty;
+                txtConfirmTempCode.Text = string.Empty;
 
-                this.txtTempCode.Focus();
+                txtTempCode.Focus();
             }
             else
             {
@@ -70,7 +65,7 @@ namespace CoachConnect
                     {
                         // Run query to get user data
                         var userQuery = from users in context.Users
-                                        where users.UserID.Equals(this.CurrentUserID)
+                                        where users.UserID.Equals(CurrentUserId)
                                         select users;
 
                         User currentUser = userQuery.FirstOrDefault();
@@ -81,17 +76,21 @@ namespace CoachConnect
                         context.SaveChanges();
 
                         // Show confirmation if save is successful
-                        MessageBox.Show("Password updated successfully!");
+                        MessageBox.Show(@"Temporary code updated successfully!");
                         }   
                     }
                 }
+                catch (SqlException sqlEx)
+                {
+                    MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+                }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show(ex.Message);
                 }
 
                 // Close the form when finished
-                this.Close();
+                Close();
             }
         }
 
@@ -102,7 +101,7 @@ namespace CoachConnect
         /// <param name="e">     The parameter is not used.</param>
         private void BtnCancelClick(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /// <summary>

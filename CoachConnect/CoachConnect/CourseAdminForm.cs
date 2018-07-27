@@ -5,14 +5,9 @@ namespace CoachConnect
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
     using System.Data.Entity.Infrastructure;
     using System.Data.SqlClient;
-    using System.Drawing;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     /// <summary>
@@ -25,7 +20,7 @@ namespace CoachConnect
         /// </summary>
         public CourseAdminForm()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
   
         /// <summary>
@@ -35,8 +30,8 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CourseAdminFormLoad(object sender, EventArgs e)
         {
-            this.DisplayDepartments();
-            this.DisplayCourses();
+            DisplayDepartments();
+            DisplayCourses();
         }
 
         /// <summary>
@@ -50,26 +45,21 @@ namespace CoachConnect
                 {
                     // Query user table in database and returns the list of the users in ascending order according to last name
                     var departmentQuery = from departments in context.Departments
-                        orderby departments.DepartmentName ascending
+                        orderby departments.DepartmentName
                         select departments;
 
                     // Convert query results to list
                     List<Department> departmentList = departmentQuery.ToList();
 
                     // Set combo box data source and update data member settings
-                    this.cbxDepartment.DataSource = departmentList;
-                    this.cbxDepartment.ValueMember = "DepartmentID";
-                    this.cbxDepartment.DisplayMember = "DepartmentName";
+                    cbxDepartment.DataSource = departmentList;
+                    cbxDepartment.ValueMember = "DepartmentID";
+                    cbxDepartment.DisplayMember = "DepartmentName";
                 }
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
             }
             catch (Exception ex)
             {
@@ -95,19 +85,14 @@ namespace CoachConnect
                     List<CourseListing> courseList = courseQuery.ToList();
 
                     // Set combo box data source and update data member settings
-                    this.cbxChooseCourse.DataSource = courseList;
-                    this.cbxChooseCourse.ValueMember = "CourseID";
-                    this.cbxChooseCourse.DisplayMember = "CourseListID";
+                    cbxChooseCourse.DataSource = courseList;
+                    cbxChooseCourse.ValueMember = "CourseID";
+                    cbxChooseCourse.DisplayMember = "CourseListID";
                 }
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
             }
             catch (Exception ex)
             {
@@ -121,11 +106,11 @@ namespace CoachConnect
         private void ClearAllFields()
         {
             // Clearing check boxes and text boxes.
-            this.txtCourseID.Clear();
-            this.txtCourseName.Clear();
-            this.chkActive.Checked = false;
-            this.cbxDepartment.SelectedIndex = -1;
-            this.cbxChooseCourse.SelectedIndex = -1;
+            txtCourseID.Clear();
+            txtCourseName.Clear();
+            chkActive.Checked = false;
+            cbxDepartment.SelectedIndex = -1;
+            cbxChooseCourse.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -142,7 +127,7 @@ namespace CoachConnect
                 using (var context = new db_sft_2172Entities())
                 {
                     // Query obtains the user ID from the combo box
-                    string courseId = this.cbxChooseCourse.SelectedValue.ToString();
+                    string courseId = cbxChooseCourse.SelectedValue.ToString();
 
                     // Find the user in the database
                     var courseQuery = from course in context.Courses
@@ -152,26 +137,21 @@ namespace CoachConnect
                     // If the query returns a user, display the corresponding info in the form
                     if (courseQuery.Any())
                     {
-                        var courseResult = courseQuery.FirstOrDefault<Course>();
+                        var courseResult = courseQuery.FirstOrDefault();
 
                         if (courseResult != null)
                         {
-                            this.txtCourseID.Text = courseResult.CourseID;
-                            this.txtCourseName.Text = courseResult.CourseName;
-                            this.chkActive.Checked = courseResult.IsActive;
-                            this.cbxDepartment.SelectedValue = courseResult.DepartmentID;
+                            txtCourseID.Text = courseResult.CourseID;
+                            txtCourseName.Text = courseResult.CourseName;
+                            chkActive.Checked = courseResult.IsActive;
+                            cbxDepartment.SelectedValue = courseResult.DepartmentID;
                         }
                     }
                 }
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
             }
             catch (Exception ex)
             {
@@ -209,61 +189,52 @@ namespace CoachConnect
 
                     if (courseQuery.Any())
                     {
-                        var courseResult = courseQuery.FirstOrDefault<Course>();
-                        courseResult.CourseID = txtCourseID.Text;
-                        courseResult.CourseName = txtCourseName.Text;
-                        courseResult.Department = (Department)cbxDepartment.SelectedItem;
-                        courseResult.IsActive = chkActive.Checked;
+                        var courseResult = courseQuery.FirstOrDefault();
 
+                        if (courseResult != null)
+                        {
+                            courseResult.CourseID = txtCourseID.Text;
+                            courseResult.CourseName = txtCourseName.Text;
+                            courseResult.Department = (Department) cbxDepartment.SelectedItem;
+                            courseResult.IsActive = chkActive.Checked;
+                        }
+
+                        context.SaveChanges();
+                        DisplayCourses();
+                        MessageBox.Show(@"Course Updated");
                     }
                     else
                     {
-                        Course newCourse = new Course();
-                        newCourse.CourseID = this.txtCourseID.Text;
-                        newCourse.CourseName = this.txtCourseName.Text;
-                        newCourse.Department = (Department)this.cbxDepartment.SelectedItem;
-                        newCourse.IsActive = true;
+                        Course newCourse = new Course
+                        {
+                            CourseID = txtCourseID.Text,
+                            CourseName = txtCourseName.Text,
+                            Department = (Department)cbxDepartment.SelectedItem,
+                            IsActive = true
+                        };
 
                         context.Courses.Add(newCourse);
                         context.SaveChanges();
-
-                        // TODO: Need to add error handling and ensure update was completed correctly
-                        MessageBox.Show("Course Added");
+                        MessageBox.Show(@"Course Added");
 
                         // If save is successful, update the user list and display the new user profile
-                        this.DisplayCourses();
-                        this.cbxChooseCourse.SelectedValue = newCourse.CourseID;
+                        DisplayCourses();
+                        cbxChooseCourse.SelectedValue = newCourse.CourseID;
                     }
                 }
             }
             catch (DbUpdateException dbUEx)
             {
-                if (dbUEx.InnerException != null)
-                {
-                    MessageBox.Show(dbUEx.InnerException.Message);
-                }
-                else
-                {
-                    MessageBox.Show(dbUEx.Message);
-                }
+                MessageBox.Show(dbUEx.InnerException != null ? dbUEx.InnerException.Message : dbUEx.Message);
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-
-            this.DisplayCourses();
-            MessageBox.Show("Course Updated");
         }
 
         /// <summary>
@@ -273,7 +244,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnMinusClick(object sender, EventArgs e)
         {
-            this.chkActive.Checked = false;
+            chkActive.Checked = false;
         }
     }
 }

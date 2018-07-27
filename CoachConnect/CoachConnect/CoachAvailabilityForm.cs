@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CoachConnect
@@ -27,7 +22,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CoachAvailabilityFormLoad(object sender, EventArgs e)
         {
-            this.DisplayCoaches();
+            DisplayCoaches();
             cbxChooseCoach.SelectedIndex = 0;
         }
 
@@ -49,19 +44,14 @@ namespace CoachConnect
                     List<Coach> coachList = coachQuery.ToList();
 
                     // Set combo box data sources and update data member settings
-                    this.cbxChooseCoach.DataSource = coachList;
-                    this.cbxChooseCoach.ValueMember = "CoachID";
-                    this.cbxChooseCoach.DisplayMember = "DisplayName";
+                    cbxChooseCoach.DataSource = coachList;
+                    cbxChooseCoach.ValueMember = "CoachID";
+                    cbxChooseCoach.DisplayMember = "DisplayName";
                 }
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
             }
             catch (Exception ex)
             {
@@ -75,7 +65,7 @@ namespace CoachConnect
         private void PopulateAvailabilityGrid()
         {
             // Query obtains the coach ID from the combo box.
-            string coachId = this.cbxChooseCoach.SelectedValue.ToString();
+            string coachId = cbxChooseCoach.SelectedValue.ToString();
 
             try
             {
@@ -85,21 +75,16 @@ namespace CoachConnect
                                                  where coachAvailability.CoachID.Equals(coachId)
                                                  select coachAvailability;
 
-                    this.dataGridViewAvailability.DataSource = coachAvailabilityQuery.ToList();
+                    dataGridViewAvailability.DataSource = coachAvailabilityQuery.ToList();
 
                     //this.dataGridViewAvailability.Columns["CoachAvailabilityID"].Visible = false;
-                    this.dataGridViewAvailability.Columns["CoachID"].Visible = false;
-                    this.dataGridViewAvailability.Columns["CoachAvailabilityID"].Visible = false;
+                    dataGridViewAvailability.Columns["CoachID"].Visible = false;
+                    dataGridViewAvailability.Columns["CoachAvailabilityID"].Visible = false;
                 }
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
             }
             catch (Exception ex)
             {
@@ -114,7 +99,7 @@ namespace CoachConnect
 
         private void btnAddToCourseList_Click(object sender, EventArgs e)
         {
-            EditCoachAvailability editCoachAvailability = new EditCoachAvailability(this.cbxChooseCoach.SelectedValue.ToString());
+            EditCoachAvailability editCoachAvailability = new EditCoachAvailability(cbxChooseCoach.SelectedValue.ToString());
             editCoachAvailability.ShowDialog();
 
             PopulateAvailabilityGrid();
@@ -123,9 +108,9 @@ namespace CoachConnect
         private void dataGridViewAvailability_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             // Get the AvailabilityID for the selected row
-            int selectedAvailabilityID = Convert.ToInt32(dataGridViewAvailability.SelectedRows[0].Cells["CoachAvailabilityID"].Value.ToString());
+            int selectedAvailabilityId = Convert.ToInt32(dataGridViewAvailability.SelectedRows[0].Cells["CoachAvailabilityID"].Value.ToString());
 
-            EditCoachAvailability editCoachAvailability = new EditCoachAvailability(selectedAvailabilityID);
+            EditCoachAvailability editCoachAvailability = new EditCoachAvailability(selectedAvailabilityId);
             editCoachAvailability.ShowDialog();
 
             PopulateAvailabilityGrid();
@@ -134,16 +119,16 @@ namespace CoachConnect
         private void btnRemove_Click(object sender, EventArgs e)
         {
             // Determine which row is selected
-            int selectedAvailabilityID = Convert.ToInt32(dataGridViewAvailability.SelectedRows[0].Cells["CoachAvailabilityID"].Value.ToString());
+            int selectedAvailabilityId = Convert.ToInt32(dataGridViewAvailability.SelectedRows[0].Cells["CoachAvailabilityID"].Value.ToString());
 
             // Confirm whether user truly wants to remove this availability record
-            DialogResult confirmRemove = MessageBox.Show("Are you sure you want to remove this record?", "Confirm delete",
+            DialogResult confirmRemove = MessageBox.Show(@"Are you sure you want to remove this record?", @"Confirm delete",
                                                                      MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             // If yes, remove the record
             if (confirmRemove.Equals(DialogResult.Yes))
             {
-                var availability = new CoachAvailability {CoachAvailabilityID = selectedAvailabilityID};
+                var availability = new CoachAvailability {CoachAvailabilityID = selectedAvailabilityId};
 
                 try
                 {
@@ -153,30 +138,18 @@ namespace CoachConnect
                         context.CoachAvailabilities.Remove(availability);
                         context.SaveChanges();
 
-                        MessageBox.Show("Delete succesful!");
+                        MessageBox.Show(@"Delete successful!");
 
                         PopulateAvailabilityGrid();
                     }
                 }
                 catch (DbUpdateException dbUEx)
                 {
-                    if (dbUEx.InnerException != null)
-                    {
-                        MessageBox.Show(dbUEx.InnerException.Message);
-                    }
-                    else
-                    {
-                        MessageBox.Show(dbUEx.Message);
-                    }
+                    MessageBox.Show(dbUEx.InnerException != null ? dbUEx.InnerException.Message : dbUEx.Message);
                 }
                 catch (SqlException sqlEx)
                 {
-                    if (sqlEx.InnerException != null)
-                        MessageBox.Show(sqlEx.InnerException.Message);
-                    else
-                    {
-                        MessageBox.Show(sqlEx.Message);
-                    }
+                    MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
                 }
                 catch (Exception ex)
                 {

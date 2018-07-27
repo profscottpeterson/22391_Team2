@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CoachConnect
@@ -26,7 +21,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CoachScheduleFormLoad(object sender, EventArgs e)
         {
-            this.DisplayCoaches();
+            DisplayCoaches();
             cbxChooseCoach.SelectedIndex = 0;
         }
 
@@ -48,19 +43,14 @@ namespace CoachConnect
                     List<Coach> coachList = coachQuery.ToList();
 
                     // Set combo box data sources and update data member settings
-                    this.cbxChooseCoach.DataSource = coachList;
-                    this.cbxChooseCoach.ValueMember = "CoachID";
-                    this.cbxChooseCoach.DisplayMember = "DisplayName";
+                    cbxChooseCoach.DataSource = coachList;
+                    cbxChooseCoach.ValueMember = "CoachID";
+                    cbxChooseCoach.DisplayMember = "DisplayName";
                 }
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
             }
             catch (Exception ex)
             {
@@ -74,7 +64,7 @@ namespace CoachConnect
         private void PopulateScheduleGrid()
         {
             // Query obtains the coach ID from the combo box.
-            string coachId = this.cbxChooseCoach.SelectedValue.ToString();
+            string coachId = cbxChooseCoach.SelectedValue.ToString();
 
             try
             {
@@ -84,25 +74,19 @@ namespace CoachConnect
                                                  where coachSchedules.CoachID.Equals(coachId)
                                                  select coachSchedules;
 
-                    this.dataGridViewSchedule.DataSource = coachScheduleQuery.ToList();
-
-                    this.dataGridViewSchedule.Columns["SessionID"].Visible = false;
-                    this.dataGridViewSchedule.Columns["CoachID"].Visible = false;
+                    dataGridViewSchedule.DataSource = coachScheduleQuery.ToList();
+                    // ReSharper disable once PossibleNullReferenceException
+                    dataGridViewSchedule.Columns["SessionID"].Visible = false;
+                    dataGridViewSchedule.Columns["CoachID"].Visible = false;
                 }
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
             }
         }
 
@@ -113,7 +97,7 @@ namespace CoachConnect
 
         private void btnAddToSchedule_Click(object sender, EventArgs e)
         {
-            EditSession editCoachSession = new EditSession(this.cbxChooseCoach.SelectedValue.ToString());
+            EditSession editCoachSession = new EditSession(cbxChooseCoach.SelectedValue.ToString());
             editCoachSession.ShowDialog();
 
             PopulateScheduleGrid();
@@ -133,16 +117,16 @@ namespace CoachConnect
         private void btnRemove_Click(object sender, EventArgs e)
         {
             // Determine which row is selected
-            int selectedSessionID = Convert.ToInt32(dataGridViewSchedule.SelectedRows[0].Cells["SessionID"].Value.ToString());
+            int selectedSessionId = Convert.ToInt32(dataGridViewSchedule.SelectedRows[0].Cells["SessionID"].Value.ToString());
 
             // Confirm whether user truly wants to remove this scheduled block
-            DialogResult confirmRemove = MessageBox.Show("Are you sure you want to remove this scheduled time?", "Confirm delete",
+            DialogResult confirmRemove = MessageBox.Show(@"Are you sure you want to remove this scheduled time?", @"Confirm delete",
                                                                      MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             // If yes, remove the record
             if (confirmRemove.Equals(DialogResult.Yes))
             {
-                var session = new CoachSession { SessionID = selectedSessionID };
+                var session = new CoachSession { SessionID = selectedSessionId };
 
                 try
                 {
@@ -152,30 +136,18 @@ namespace CoachConnect
                         context.CoachSessions.Remove(session);
                         context.SaveChanges();
 
-                        MessageBox.Show("Delete succesful!");
+                        MessageBox.Show(@"Delete successful!");
 
                         PopulateScheduleGrid();
                     }
                 }
                 catch (DbUpdateException dbUEx)
                 {
-                    if (dbUEx.InnerException != null)
-                    {
-                        MessageBox.Show(dbUEx.InnerException.Message);
-                    }
-                    else
-                    {
-                        MessageBox.Show(dbUEx.Message);
-                    }
+                    MessageBox.Show(dbUEx.InnerException != null ? dbUEx.InnerException.Message : dbUEx.Message);
                 }
                 catch (SqlException sqlEx)
                 {
-                    if (sqlEx.InnerException != null)
-                        MessageBox.Show(sqlEx.InnerException.Message);
-                    else
-                    {
-                        MessageBox.Show(sqlEx.Message);
-                    }
+                    MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
                 }
                 catch (Exception ex)
                 {

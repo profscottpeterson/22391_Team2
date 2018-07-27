@@ -5,14 +5,9 @@ namespace CoachConnect
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
     using System.Data.Entity.Infrastructure;
     using System.Data.SqlClient;
-    using System.Drawing;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     /// <summary>
@@ -23,12 +18,12 @@ namespace CoachConnect
         /// <summary>
         /// Validator: An object to handle data form validation
         /// </summary>
-        private readonly Validation validator = new Validation();
+        private readonly Validation _validator = new Validation();
 
         /// <summary>
         /// Gets or sets the current session to be edited
         /// </summary>
-        private int CoachAvailabilityId { get; set; }
+        private int CoachAvailabilityId { get; }
 
         /// <summary>
         /// Gets or sets an object to hold the current session data
@@ -39,32 +34,29 @@ namespace CoachConnect
         /// Initializes a new instance of the <see cref="EditCoachAvailability" /> class.
         /// In this version a coachID is provided to create a new session
         /// </summary>
-        public EditCoachAvailability(string coachID)
+        public EditCoachAvailability(string coachId)
         {
             try
             {
-                this.InitializeComponent();
+                InitializeComponent();
 
-                this.CurrentAvailability = new CoachAvailability();
-                CurrentAvailability.CoachID = coachID;
+                CurrentAvailability = new CoachAvailability
+                {
+                    CoachID = coachId
+                };
 
                 // Set session ID to a negative value (indicates a new session)
-                this.CoachAvailabilityId = -1;
+                CoachAvailabilityId = -1;
 
                 // Update header text to show "Add" instead of "Edit"
-                this.lblEditSessionHeader.Text = "Add Coach Availability";
+                lblEditSessionHeader.Text = @"Add Coach Availability";
 
                 // Call method to populate combo boxes
-                this.PopulateComboBoxes();
+                PopulateComboBoxes();
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
             }
             catch (Exception ex)
             {
@@ -76,29 +68,24 @@ namespace CoachConnect
         /// Initializes a new instance of the <see cref="EditCoachAvailability" /> class.
         /// A sessionID is provided to show which session should be updated
         /// </summary>
-        /// <param name="sessionID">The ID for the session to be updated</param>
-        public EditCoachAvailability(int coachAvailabilityID)
+        /// <param name="coachAvailabilityId">The ID for the session to be updated</param>
+        public EditCoachAvailability(int coachAvailabilityId)
         {
             try
             {
-                this.CoachAvailabilityId = coachAvailabilityID;
+                CoachAvailabilityId = coachAvailabilityId;
 
-                this.InitializeComponent();
+                InitializeComponent();
 
                 // Call method to populate combo boxes
-                this.PopulateComboBoxes();
+                PopulateComboBoxes();
 
                 // Call method to pull current availability data from the database
-                this.LoadSessionData();
+                LoadSessionData();
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show((sqlEx.InnerException != null)?sqlEx.InnerException.Message:sqlEx.Message);
             }
             catch (Exception ex)
             {
@@ -114,7 +101,7 @@ namespace CoachConnect
         private void BtnSaveClick(object sender, EventArgs e)
         {
             // Get data from form and insert into current Availability object
-            this.CurrentAvailability.DayID = this.cbxDay.SelectedValue.ToString();
+            CurrentAvailability.DayID = cbxDay.SelectedValue.ToString();
 
             // Get selected start time as a TimeSpan
             Time selectedStartTime = (Time)cbxStartTime.SelectedItem;
@@ -125,9 +112,9 @@ namespace CoachConnect
             CurrentAvailability.EndTime = selectedEndTime.Time1;
             
             // If end time is earlier or the same as the start time, display an error message, then cancel the save action. 
-            if (TimeSpan.Compare(this.CurrentAvailability.StartTime, this.CurrentAvailability.EndTime) >= 0)
+            if (TimeSpan.Compare(CurrentAvailability.StartTime, CurrentAvailability.EndTime) >= 0)
             {
-                MessageBox.Show("Error: Start time must be earlier than the end time.");
+                MessageBox.Show(@"Error: Start time must be earlier than the end time.");
                 return;
             }
 
@@ -146,14 +133,14 @@ namespace CoachConnect
                     if (sameDayCoachAvailability.Any())
                     {
                         var overlappingCoachAvailability = from overlapping in sameDayCoachAvailability
-                                                           where (!(this.CurrentAvailability.StartTime < overlapping.StartTime && this.CurrentAvailability.EndTime <= overlapping.StartTime) &&
-                                                                  !(this.CurrentAvailability.StartTime >= overlapping.EndTime && this.CurrentAvailability.EndTime > overlapping.EndTime))
+                                                           where (!(CurrentAvailability.StartTime < overlapping.StartTime && CurrentAvailability.EndTime <= overlapping.StartTime) &&
+                                                                  !(CurrentAvailability.StartTime >= overlapping.EndTime && CurrentAvailability.EndTime > overlapping.EndTime))
                                                            select overlapping;
 
 
                         if (overlappingCoachAvailability.Any()) {
                             MessageBox.Show(
-                            "Sorry, the desired coach is already available for part or all of this time block.\nPlease select another combination or modify an existing block!");
+                            @"Sorry, the desired coach is already available for part or all of this time block.\nPlease select another combination or modify an existing block!");
                             return;
                         }
                     }
@@ -161,30 +148,27 @@ namespace CoachConnect
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+                return;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return;
             }
 
             // Call appropriate method to add or update session data
-            if (this.CoachAvailabilityId == -1)
+            if (CoachAvailabilityId == -1)
             {
-                this.AddNewAvailability();
+                AddNewAvailability();
             }
             else
             {
-                this.UpdateAvailability();
+                UpdateAvailability();
             }
                 
             // Close form once finished
-            this.Close();
+            Close();
             
         }
 
@@ -195,7 +179,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnCancelClick(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -222,31 +206,26 @@ namespace CoachConnect
                     List<Time> endTimeList = timeQuery.ToList();
 
                     // Set combo box data sources and update data member settings
-                    this.cbxDay.DataSource = dayList;
-                    this.cbxDay.ValueMember = "DayID";
-                    this.cbxDay.DisplayMember = "DayID";
+                    cbxDay.DataSource = dayList;
+                    cbxDay.ValueMember = "DayID";
+                    cbxDay.DisplayMember = "DayID";
 
-                    this.cbxStartTime.DataSource = startTimeList;
-                    this.cbxStartTime.ValueMember = "Time1";
-                    this.cbxStartTime.DisplayMember = "TimeName";
+                    cbxStartTime.DataSource = startTimeList;
+                    cbxStartTime.ValueMember = "Time1";
+                    cbxStartTime.DisplayMember = "TimeName";
 
-                    this.cbxEndTime.DataSource = endTimeList;
-                    this.cbxEndTime.ValueMember = "Time1";
-                    this.cbxEndTime.DisplayMember = "TimeName";
+                    cbxEndTime.DataSource = endTimeList;
+                    cbxEndTime.ValueMember = "Time1";
+                    cbxEndTime.DisplayMember = "TimeName";
 
-                    this.cbxDay.SelectedIndex = -1;
-                    this.cbxStartTime.SelectedIndex = -1;
-                    this.cbxEndTime.SelectedIndex = -1;
+                    cbxDay.SelectedIndex = -1;
+                    cbxStartTime.SelectedIndex = -1;
+                    cbxEndTime.SelectedIndex = -1;
                 }
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
             }
             catch (Exception ex)
             {
@@ -264,38 +243,38 @@ namespace CoachConnect
                 using (var context = new db_sft_2172Entities())
                 {
                     var availabilityQuery = from availability in context.CoachAvailabilities
-                                       where availability.CoachAvailabilityID.Equals(this.CoachAvailabilityId)
+                                       where availability.CoachAvailabilityID.Equals(CoachAvailabilityId)
                                        select availability;
 
                     if (availabilityQuery.Any())
                     {
-                        this.CurrentAvailability = availabilityQuery.FirstOrDefault();
+                        CurrentAvailability = availabilityQuery.FirstOrDefault();
                     }
                     else
                     {
-                        MessageBox.Show("Sorry, could not load availability data from the database.  Please try again later.");
+                        MessageBox.Show(@"Sorry, could not load availability data from the database.  Please try again later.");
                         return;
                     }
                 }
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+                return;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return;
             }
 
             // Populate combo boxes with current session data
-            this.cbxDay.SelectedValue = this.CurrentAvailability.DayID;
-            this.cbxStartTime.SelectedValue = this.CurrentAvailability.StartTime;
-            this.cbxEndTime.SelectedValue = this.CurrentAvailability.EndTime;
+            if (CurrentAvailability != null)
+            {
+                cbxDay.SelectedValue = CurrentAvailability.DayID;
+                cbxStartTime.SelectedValue = CurrentAvailability.StartTime;
+                cbxEndTime.SelectedValue = CurrentAvailability.EndTime;
+            }
         }
 
         /// <summary>
@@ -309,30 +288,18 @@ namespace CoachConnect
                 using (var context = new db_sft_2172Entities())
                 {
                     // Run query and save new user data to database
-                    context.CoachAvailabilities.Add(this.CurrentAvailability);
+                    context.CoachAvailabilities.Add(CurrentAvailability);
                     context.SaveChanges();
                 }
             }
             catch (DbUpdateException dbUEx)
             {
-                if (dbUEx.InnerException != null)
-                {
-                    MessageBox.Show(dbUEx.InnerException.Message);
-                }
-                else
-                {
-                    MessageBox.Show(dbUEx.Message);
-                }
+                MessageBox.Show(dbUEx.InnerException != null ? dbUEx.InnerException.Message : dbUEx.Message);
                 return;
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
                 return;
             }
             catch (Exception ex)
@@ -341,7 +308,7 @@ namespace CoachConnect
                 return;
             }
 
-            MessageBox.Show("Save completed...new session created successfully!");
+            MessageBox.Show(@"Save completed...new session created successfully!");
         }
 
 
@@ -357,7 +324,7 @@ namespace CoachConnect
                 {
                     // Run query and pull matching session from database
                     var availabilityQuery = from availability in context.CoachAvailabilities
-                                       where availability.CoachAvailabilityID.Equals(this.CoachAvailabilityId)
+                                       where availability.CoachAvailabilityID.Equals(CoachAvailabilityId)
                                        select availability;
 
                     if (availabilityQuery.Any())
@@ -365,10 +332,13 @@ namespace CoachConnect
                         CoachAvailability foundAvailability= availabilityQuery.FirstOrDefault();
 
                         // Update database records
-                        foundAvailability.CoachID = this.CurrentAvailability.CoachID;
-                        foundAvailability.DayID = this.CurrentAvailability.DayID;
-                        foundAvailability.StartTime = this.CurrentAvailability.StartTime;
-                        foundAvailability.EndTime = this.CurrentAvailability.EndTime;
+                        if (foundAvailability != null)
+                        {
+                            foundAvailability.CoachID = CurrentAvailability.CoachID;
+                            foundAvailability.DayID = CurrentAvailability.DayID;
+                            foundAvailability.StartTime = CurrentAvailability.StartTime;
+                            foundAvailability.EndTime = CurrentAvailability.EndTime;
+                        }
 
                         // Save changes to database
                         context.SaveChanges();
@@ -376,30 +346,18 @@ namespace CoachConnect
                     else
                     {
                         MessageBox.Show(
-                            "Sorry, a matching session was not found in the database.\nPlease try again or contact an administrator for assistance.");
+                            @"Sorry, a matching session was not found in the database.\nPlease try again or contact an administrator for assistance.");
                     }
                 }
             }
             catch (DbUpdateException dbUEx)
             {
-                if (dbUEx.InnerException != null)
-                {
-                    MessageBox.Show(dbUEx.InnerException.Message);
-                }
-                else
-                {
-                    MessageBox.Show(dbUEx.Message);
-                }
+                MessageBox.Show(dbUEx.InnerException != null ? dbUEx.InnerException.Message : dbUEx.Message);
                 return;
             }
             catch (SqlException sqlEx)
             {
-                if (sqlEx.InnerException != null)
-                    MessageBox.Show(sqlEx.InnerException.Message);
-                else
-                {
-                    MessageBox.Show(sqlEx.Message);
-                }
+                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
                 return;
             }
             catch (Exception ex)
@@ -408,22 +366,7 @@ namespace CoachConnect
                 return;
             }
 
-            MessageBox.Show("Save completed...Session updated successfully!");
-        }
-
-        /// <summary>
-        /// Event handler to validate Room combo box when it loses focus
-        /// </summary>
-        /// <param name="sender">The parameter is not used.</param>
-        /// <param name="e">The parameter is not used.</param>
-        private void CbxRoom_Leave(object sender, EventArgs e)
-        {
-            this.lblInvalidStartTime.Visible = !this.validator.ValidateComboBox(this.cbxStartTime.SelectedIndex);
-
-            if (this.lblInvalidStartTime.Visible)
-            {
-                this.cbxStartTime.Focus();
-            }
+            MessageBox.Show(@"Save completed...Session updated successfully!");
         }
 
         /// <summary>
@@ -433,11 +376,11 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CbxDay_Leave(object sender, EventArgs e)
         {
-            this.lblInvalidDay.Visible = !this.validator.ValidateComboBox(this.cbxDay.SelectedIndex);
+            lblInvalidDay.Visible = !_validator.ValidateComboBox(cbxDay.SelectedIndex);
 
-            if (this.lblInvalidDay.Visible)
+            if (lblInvalidDay.Visible)
             {
-                this.cbxDay.Focus();
+                cbxDay.Focus();
             }
         }
 
@@ -448,11 +391,11 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CbxStartTime_Leave(object sender, EventArgs e)
         {
-            this.lblInvalidStartTime.Visible = !this.validator.ValidateComboBox(this.cbxStartTime.SelectedIndex);
+            lblInvalidStartTime.Visible = !_validator.ValidateComboBox(cbxStartTime.SelectedIndex);
 
-            if (this.lblInvalidStartTime.Visible)
+            if (lblInvalidStartTime.Visible)
             {
-                this.cbxStartTime.Focus();
+                cbxStartTime.Focus();
             }
         }
 
@@ -463,11 +406,11 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CbxEndTime_Leave(object sender, EventArgs e)
         {
-            this.lblInvalidEndTime.Visible = !this.validator.ValidateComboBox(this.cbxEndTime.SelectedIndex);
+            lblInvalidEndTime.Visible = !_validator.ValidateComboBox(cbxEndTime.SelectedIndex);
 
-            if (this.lblInvalidEndTime.Visible)
+            if (lblInvalidEndTime.Visible)
             {
-                this.cbxEndTime.Focus();
+                cbxEndTime.Focus();
             }
         }
     }
