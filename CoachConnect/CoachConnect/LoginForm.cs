@@ -1,6 +1,9 @@
-﻿// <copyright file="LoginForm.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="LoginForm.cs" company="Adam Smith at NWTC">
+//     Copyright 2017 Smithbucks Computing (Adam Smith)
 // </copyright>
+
+using System.Data.SqlClient;
+
 namespace CoachConnect
 {
     using System;
@@ -65,8 +68,8 @@ namespace CoachConnect
                 using (var context = new db_sft_2172Entities())
                 {
                     var userQuery = from u in context.Users
-                                    where u.UserID.Equals(username)
-                                    select u;
+                        where u.UserID.Equals(username)
+                        select u;
 
                     if (userQuery.Any())
                     {
@@ -75,7 +78,8 @@ namespace CoachConnect
                         // Determine whether user is active.  If not, display a message and Logout.
                         if (!userResult.IsActive)
                         {
-                            MessageBox.Show("Sorry, this user is inactive.  Please contact an administrator if you need to reactivate your account.");
+                            MessageBox.Show(
+                                "Sorry, this user is inactive.  Please contact an administrator if you need to reactivate your account.");
                             Program.Logout();
 
                             return;
@@ -96,7 +100,8 @@ namespace CoachConnect
                             // If flag is set to reset password, load the Change Password form.
                             if (userResult.ResetPassword != null)
                             {
-                                MessageBox.Show("Your password is outdated and needs to be changed.  Please reset your password now.");
+                                MessageBox.Show(
+                                    "Your password is outdated and needs to be changed.  Please reset your password now.");
 
                                 ResetMyPassword changePassword = new ResetMyPassword();
                                 changePassword.ShowDialog();
@@ -138,9 +143,13 @@ namespace CoachConnect
                     }
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                MessageBox.Show(sqlEx.InnerException.Message);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message);
             }
         }
     }

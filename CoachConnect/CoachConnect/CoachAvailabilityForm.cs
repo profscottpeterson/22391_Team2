@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -34,20 +36,36 @@ namespace CoachConnect
         /// </summary>
         private void DisplayCoaches()
         {
-            using (var context = new db_sft_2172Entities())
+            try
             {
-                // Query coach table in database and returns the list of the users in ascending order according to last name
-                var coachQuery = from coaches in context.Coaches
-                                 orderby coaches.LastName ascending
-                                 select coaches;
+                using (var context = new db_sft_2172Entities())
+                {
+                    // Query coach table in database and returns the list of the users in ascending order according to last name
+                    var coachQuery = from coaches in context.Coaches
+                        orderby coaches.LastName ascending
+                        select coaches;
 
-                // Convert query results to list
-                List<Coach> coachList = coachQuery.ToList();
+                    // Convert query results to list
+                    List<Coach> coachList = coachQuery.ToList();
 
-                // Set combo box data sources and update data member settings
-                this.cbxChooseCoach.DataSource = coachList;
-                this.cbxChooseCoach.ValueMember = "CoachID";
-                this.cbxChooseCoach.DisplayMember = "DisplayName";
+                    // Set combo box data sources and update data member settings
+                    this.cbxChooseCoach.DataSource = coachList;
+                    this.cbxChooseCoach.ValueMember = "CoachID";
+                    this.cbxChooseCoach.DisplayMember = "DisplayName";
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -74,10 +92,18 @@ namespace CoachConnect
                     this.dataGridViewAvailability.Columns["CoachAvailabilityID"].Visible = false;
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
             }
         }
 
@@ -117,7 +143,7 @@ namespace CoachConnect
             // If yes, remove the record
             if (confirmRemove.Equals(DialogResult.Yes))
             {
-                var availability = new CoachAvailability { CoachAvailabilityID = selectedAvailabilityID };
+                var availability = new CoachAvailability {CoachAvailabilityID = selectedAvailabilityID};
 
                 try
                 {
@@ -132,10 +158,29 @@ namespace CoachConnect
                         PopulateAvailabilityGrid();
                     }
                 }
+                catch (DbUpdateException dbUEx)
+                {
+                    if (dbUEx.InnerException != null)
+                    {
+                        MessageBox.Show(dbUEx.InnerException.Message);
+                    }
+                    else
+                    {
+                        MessageBox.Show(dbUEx.Message);
+                    }
+                }
+                catch (SqlException sqlEx)
+                {
+                    if (sqlEx.InnerException != null)
+                        MessageBox.Show(sqlEx.InnerException.Message);
+                    else
+                    {
+                        MessageBox.Show(sqlEx.Message);
+                    }
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                    return;
                 }
             }
         }

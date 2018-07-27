@@ -1,5 +1,5 @@
-﻿// <copyright file="UserAdminForm.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="UserAdminForm.cs" company="Adam Smith at NWTC">
+//     Copyright 2017 Smithbucks Computing (Adam J. Smith)
 // </copyright>
 namespace CoachConnect
 {
@@ -7,6 +7,8 @@ namespace CoachConnect
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Data;
+    using System.Data.Entity.Infrastructure;
+    using System.Data.SqlClient;
     using System.Drawing;
     using System.Linq;
     using System.Text;
@@ -42,20 +44,36 @@ namespace CoachConnect
         /// </summary>
         private void DisplayDepartments()
         {
-            using (var context = new db_sft_2172Entities())
+            try
             {
-                // Query user table in database and returns the list of the users in ascending order according to last name
-                var departmentQuery = from departments in context.Departments
-                    orderby departments.DepartmentName ascending
-                    select departments;
+                using (var context = new db_sft_2172Entities())
+                {
+                    // Query user table in database and returns the list of the users in ascending order according to last name
+                    var departmentQuery = from departments in context.Departments
+                        orderby departments.DepartmentName ascending
+                        select departments;
 
-                // Convert query results to list
-                List<Department> departmentList = departmentQuery.ToList();
+                    // Convert query results to list
+                    List<Department> departmentList = departmentQuery.ToList();
 
-                // Set combo box data source and update data member settings
-                this.cbxDepartment.DataSource = departmentList;
-                this.cbxDepartment.ValueMember = "DepartmentID";
-                this.cbxDepartment.DisplayMember = "DepartmentName";
+                    // Set combo box data source and update data member settings
+                    this.cbxDepartment.DataSource = departmentList;
+                    this.cbxDepartment.ValueMember = "DepartmentID";
+                    this.cbxDepartment.DisplayMember = "DepartmentName";
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -64,20 +82,36 @@ namespace CoachConnect
         /// </summary>
         private void DisplayCourses()
         {
-            using (var context = new db_sft_2172Entities())
+            try
             {
-                // Query user table in database and returns the list of the users in ascending order according to last name
-                var courseQuery = from courses in context.CourseListings
-                                orderby courses.CourseID ascending
-                                select courses;
+                using (var context = new db_sft_2172Entities())
+                {
+                    // Query user table in database and returns the list of the users in ascending order according to last name
+                    var courseQuery = from courses in context.CourseListings
+                        orderby courses.CourseID ascending
+                        select courses;
 
-                // Convert query results to list
-                List<CourseListing> courseList = courseQuery.ToList();
+                    // Convert query results to list
+                    List<CourseListing> courseList = courseQuery.ToList();
 
-                // Set combo box data source and update data member settings
-                this.cbxChooseCourse.DataSource = courseList;
-                this.cbxChooseCourse.ValueMember = "CourseID";
-                this.cbxChooseCourse.DisplayMember = "CourseListID";
+                    // Set combo box data source and update data member settings
+                    this.cbxChooseCourse.DataSource = courseList;
+                    this.cbxChooseCourse.ValueMember = "CourseID";
+                    this.cbxChooseCourse.DisplayMember = "CourseListID";
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -112,8 +146,8 @@ namespace CoachConnect
 
                     // Find the user in the database
                     var courseQuery = from course in context.Courses
-                                    where course.CourseID.Equals(courseId)
-                                    select course;
+                        where course.CourseID.Equals(courseId)
+                        select course;
 
                     // If the query returns a user, display the corresponding info in the form
                     if (courseQuery.Any())
@@ -128,6 +162,15 @@ namespace CoachConnect
                             this.cbxDepartment.SelectedValue = courseResult.DepartmentID;
                         }
                     }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
                 }
             }
             catch (Exception ex)
@@ -193,12 +236,31 @@ namespace CoachConnect
                     }
                 }
             }
+            catch (DbUpdateException dbUEx)
+            {
+                if (dbUEx.InnerException != null)
+                {
+                    MessageBox.Show(dbUEx.InnerException.Message);
+                }
+                else
+                {
+                    MessageBox.Show(dbUEx.Message);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
             }
-            
+
 
             this.DisplayCourses();
             MessageBox.Show("Course Updated");

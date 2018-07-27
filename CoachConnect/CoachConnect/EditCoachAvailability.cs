@@ -7,6 +7,8 @@ namespace CoachConnect
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Data;
+    using System.Data.Entity.Infrastructure;
+    using System.Data.SqlClient;
     using System.Drawing;
     using System.Linq;
     using System.Text;
@@ -24,24 +26,50 @@ namespace CoachConnect
         private readonly Validation validator = new Validation();
 
         /// <summary>
+        /// Gets or sets the current session to be edited
+        /// </summary>
+        private int CoachAvailabilityId { get; set; }
+
+        /// <summary>
+        /// Gets or sets an object to hold the current session data
+        /// </summary>
+        private CoachAvailability CurrentAvailability { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="EditCoachAvailability" /> class.
         /// In this version a coachID is provided to create a new session
         /// </summary>
         public EditCoachAvailability(string coachID)
         {
-            this.InitializeComponent();
+            try
+            {
+                this.InitializeComponent();
 
-            this.CurrentAvailability = new CoachAvailability();
-            CurrentAvailability.CoachID = coachID;
+                this.CurrentAvailability = new CoachAvailability();
+                CurrentAvailability.CoachID = coachID;
 
-            // Set session ID to a negative value (indicates a new session)
-            this.CoachAvailabilityId = -1;
+                // Set session ID to a negative value (indicates a new session)
+                this.CoachAvailabilityId = -1;
 
-            // Update header text to show "Add" instead of "Edit"
-            this.lblEditSessionHeader.Text = "Add Coach Availability";
+                // Update header text to show "Add" instead of "Edit"
+                this.lblEditSessionHeader.Text = "Add Coach Availability";
 
-            // Call method to populate combo boxes
-            this.PopulateComboBoxes();
+                // Call method to populate combo boxes
+                this.PopulateComboBoxes();
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         /// <summary>
@@ -51,26 +79,32 @@ namespace CoachConnect
         /// <param name="sessionID">The ID for the session to be updated</param>
         public EditCoachAvailability(int coachAvailabilityID)
         {
-            this.CoachAvailabilityId = coachAvailabilityID;
+            try
+            {
+                this.CoachAvailabilityId = coachAvailabilityID;
 
-            this.InitializeComponent();
+                this.InitializeComponent();
 
-            // Call method to populate combo boxes
-            this.PopulateComboBoxes();
+                // Call method to populate combo boxes
+                this.PopulateComboBoxes();
 
-            // Call method to pull current availability data from the database
-            this.LoadSessionData();
+                // Call method to pull current availability data from the database
+                this.LoadSessionData();
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
-
-        /// <summary>
-        /// Gets or sets the current session to be edited
-        /// </summary>
-        private int CoachAvailabilityId { get; set; }
-
-        /// <summary>
-        /// Gets or sets an object to hold the current session data
-        /// </summary>
-        private CoachAvailability CurrentAvailability { get; set; }
 
         /// <summary>
         /// Event handler to save session data and close form when the Save button is clicked
@@ -123,6 +157,15 @@ namespace CoachConnect
                             return;
                         }
                     }
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
                 }
             }
             catch (Exception ex)
@@ -196,6 +239,15 @@ namespace CoachConnect
                     this.cbxEndTime.SelectedIndex = -1;
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -226,6 +278,15 @@ namespace CoachConnect
                     }
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
@@ -252,13 +313,37 @@ namespace CoachConnect
                     context.SaveChanges();
                 }
             }
+            catch (DbUpdateException dbUEx)
+            {
+                if (dbUEx.InnerException != null)
+                {
+                    MessageBox.Show(dbUEx.InnerException.Message);
+                }
+                else
+                {
+                    MessageBox.Show(dbUEx.Message);
+                }
+                return;
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+                return;
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return;
             }
 
             MessageBox.Show("Save completed...new session created successfully!");
         }
+
 
         /// <summary>
         /// Method to update an existing session in the database
@@ -295,9 +380,32 @@ namespace CoachConnect
                     }
                 }
             }
+            catch (DbUpdateException dbUEx)
+            {
+                if (dbUEx.InnerException != null)
+                {
+                    MessageBox.Show(dbUEx.InnerException.Message);
+                }
+                else
+                {
+                    MessageBox.Show(dbUEx.Message);
+                }
+                return;
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+                return;
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return;
             }
 
             MessageBox.Show("Save completed...Session updated successfully!");

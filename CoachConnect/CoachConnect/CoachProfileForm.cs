@@ -7,6 +7,8 @@ namespace CoachConnect
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Data;
+    using System.Data.SqlClient;
+    using System.Data.Entity.Infrastructure;
     using System.Drawing;
     using System.Linq;
     using System.Text;
@@ -42,39 +44,71 @@ namespace CoachConnect
         /// </summary>
         private void DisplayCoaches()
         {
-            using (var context = new db_sft_2172Entities())
+            try
             {
-                // Query coach table in database and returns the list of the users in ascending order according to last name
-                var coachQuery = from coaches in context.Coaches
-                                 orderby coaches.LastName ascending
-                                 select coaches;
+                using (var context = new db_sft_2172Entities())
+                {
+                    // Query coach table in database and returns the list of the users in ascending order according to last name
+                    var coachQuery = from coaches in context.Coaches
+                        orderby coaches.LastName ascending
+                        select coaches;
 
-                // Convert query results to list
-                List<Coach> coachList = coachQuery.ToList();
+                    // Convert query results to list
+                    List<Coach> coachList = coachQuery.ToList();
 
-                // Set combo box data sources and update data member settings
-                this.cbxChooseCoach.DataSource = coachList;
-                this.cbxChooseCoach.ValueMember = "CoachID";
-                this.cbxChooseCoach.DisplayMember = "DisplayName";
+                    // Set combo box data sources and update data member settings
+                    this.cbxChooseCoach.DataSource = coachList;
+                    this.cbxChooseCoach.ValueMember = "CoachID";
+                    this.cbxChooseCoach.DisplayMember = "DisplayName";
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void DisplaySupervisors()
         {
-            using (var context = new db_sft_2172Entities())
+            try
             {
-                // Query user table in database and return the list of supervisors in ascending order according to last name
-                var supervisorQuery = from users in context.Users
-                                      where users.IsSupervisor
-                                      orderby users.LastName ascending
-                                      select users;
+                using (var context = new db_sft_2172Entities())
+                {
+                    // Query user table in database and return the list of supervisors in ascending order according to last name
+                    var supervisorQuery = from users in context.Users
+                        where users.IsSupervisor
+                        orderby users.LastName ascending
+                        select users;
 
-                List<User> supervisorList = supervisorQuery.ToList();
+                    List<User> supervisorList = supervisorQuery.ToList();
 
-                // Set combo box data source and update data member listings
-                this.cbxSupervisor.DataSource = supervisorList;
-                this.cbxSupervisor.ValueMember = "UserID";
-                this.cbxSupervisor.DisplayMember = "DisplayName";
+                    // Set combo box data source and update data member listings
+                    this.cbxSupervisor.DataSource = supervisorList;
+                    this.cbxSupervisor.ValueMember = "UserID";
+                    this.cbxSupervisor.DisplayMember = "DisplayName";
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -94,50 +128,6 @@ namespace CoachConnect
             this.cbxSupervisor.SelectedValue = -1;
             this.chkActive.Checked = false;
         }
-
-        // TODO: Remove if we don't want to enable/disable fields anymore
-        /*
-        /// <summary>
-        /// Enable all data fields
-        /// </summary>
-        private void EnableAllFields()
-        {
-            // Clearing check boxes and text boxes.
-            this.txtID.Enabled = true;
-            this.txtFirstName.Enabled = true;
-            this.txtLastName.Enabled = true;
-            this.txtMiddleName.Enabled = true;
-            this.txtDisplayName.Enabled = true;
-            this.txtEmail.Enabled = true;
-            this.txtPhone.Enabled = true;
-            this.cbxSupervisor.Enabled = true;
-            this.chkActive.Enabled = true;
-
-            this.btnApply.Enabled = true;
-
-            this.txtID.Focus();
-        }
-        */
-
-        // TODO: Remove if we don't want to enable/disable fields anymore
-        /*
-        /// <summary>
-        /// Disable all data fields
-        /// </summary>
-        private void DisableAllFields()
-        {
-            // Clearing check boxes and text boxes.
-            this.txtID.Enabled = false;
-            this.txtFirstName.Enabled = false;
-            this.txtLastName.Enabled = false;
-            this.txtMiddleName.Enabled = false;
-            this.txtDisplayName.Enabled = false;
-            this.txtEmail.Enabled = false;
-            this.txtPhone.Enabled = false;
-            this.cbxSupervisor.Enabled = false;
-            this.chkActive.Enabled = false;
-        }
-        */
 
         /// <summary>
         /// Populates the combo boxes and text boxes with the selected coach's information.
@@ -180,12 +170,19 @@ namespace CoachConnect
                     }
                 }
             }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-            //EnableAllFields();
         }
 
         /// <summary>
@@ -196,7 +193,6 @@ namespace CoachConnect
         private void BtnAddClick(object sender, EventArgs e)
         {
             ClearAllFields();
-            //EnableAllFields();
         }
 
         /// <summary>
@@ -259,8 +255,6 @@ namespace CoachConnect
                             newCoach.SupervisorID = cbxSupervisor.SelectedValue.ToString();
                         }
 
-
-
                         context.Coaches.Add(newCoach);
                         context.SaveChanges();
 
@@ -273,13 +267,30 @@ namespace CoachConnect
                     }
                 }
             }
+            catch (DbUpdateException dbUEx)
+            {
+                if (dbUEx.InnerException != null)
+                {
+                    MessageBox.Show(dbUEx.InnerException.Message);
+                }
+                else
+                {
+                    MessageBox.Show(dbUEx.Message);
+                }
+            }
+            catch (SqlException sqlEx)
+            {
+                if (sqlEx.InnerException != null)
+                    MessageBox.Show(sqlEx.InnerException.Message);
+                else
+                {
+                    MessageBox.Show(sqlEx.Message);
+                }
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                return;
             }
-
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)
