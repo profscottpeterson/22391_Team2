@@ -1,26 +1,26 @@
-﻿// <copyright file="UserAdminForm.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="CoachProfileForm.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 namespace CoachConnect
 {
     using System;
     using System.Collections.Generic;
-    using System.Data.SqlClient;
     using System.Data.Entity.Infrastructure;
+    using System.Data.SqlClient;
     using System.Linq;
     using System.Windows.Forms;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CoachProfileForm"/> class.
+    /// Definition of the <see cref="CoachProfileForm"/> class.
     /// </summary>
     public partial class CoachProfileForm : Form
     {
         /// <summary>
-        /// Initializes a new instance of the UserAdminForm class.
+        /// Initializes a new instance of the <see cref="CoachProfileForm"/> class.
         /// </summary>
         public CoachProfileForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         /// <summary>
@@ -30,8 +30,8 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CoachAdminFormLoad(object sender, EventArgs e)
         {
-            DisplaySupervisors();
-            DisplayCoaches();
+            this.DisplaySupervisors();
+            this.DisplayCoaches();
         }
 
         /// <summary>
@@ -52,9 +52,9 @@ namespace CoachConnect
                     List<Coach> coachList = coachQuery.ToList();
 
                     // Set combo box data sources and update data member settings
-                    cbxChooseCoach.DataSource = coachList;
-                    cbxChooseCoach.ValueMember = "CoachID";
-                    cbxChooseCoach.DisplayMember = "DisplayName";
+                    this.cbxChooseCoach.DataSource = coachList;
+                    this.cbxChooseCoach.ValueMember = "CoachID";
+                    this.cbxChooseCoach.DisplayMember = "DisplayName";
                 }
             }
             catch (SqlException sqlEx)
@@ -67,6 +67,9 @@ namespace CoachConnect
             }
         }
 
+        /// <summary>
+        /// Method to display the list of supervisors in a combo box
+        /// </summary>
         private void DisplaySupervisors()
         {
             try
@@ -82,9 +85,9 @@ namespace CoachConnect
                     List<User> supervisorList = supervisorQuery.ToList();
 
                     // Set combo box data source and update data member listings
-                    cbxSupervisor.DataSource = supervisorList;
-                    cbxSupervisor.ValueMember = "UserID";
-                    cbxSupervisor.DisplayMember = "DisplayName";
+                    this.cbxSupervisor.DataSource = supervisorList;
+                    this.cbxSupervisor.ValueMember = "UserID";
+                    this.cbxSupervisor.DisplayMember = "DisplayName";
                 }
             }
             catch (SqlException sqlEx)
@@ -103,15 +106,15 @@ namespace CoachConnect
         private void ClearAllFields()
         {
             // Clearing check boxes and text boxes.
-            txtID.Clear();
-            txtFirstName.Clear();
-            txtLastName.Clear();
-            txtMiddleName.Clear();
-            txtDisplayName.Clear();
-            txtEmail.Clear();
-            txtPhone.Clear();
-            cbxSupervisor.SelectedValue = -1;
-            chkActive.Checked = false;
+            this.txtID.Clear();
+            this.txtFirstName.Clear();
+            this.txtLastName.Clear();
+            this.txtMiddleName.Clear();
+            this.txtDisplayName.Clear();
+            this.txtEmail.Clear();
+            this.txtPhone.Clear();
+            this.cbxSupervisor.SelectedValue = -1;
+            this.chkActive.Checked = false;
         }
 
         /// <summary>
@@ -119,16 +122,19 @@ namespace CoachConnect
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
-        private void cbxChooseCoach_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbxChooseCoach_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbxChooseCoach.SelectedIndex == -1) return;
+            if (this.cbxChooseCoach.SelectedIndex == -1)
+            {
+                return;
+            }
 
             try
             {
                 using (var context = new db_sft_2172Entities())
                 {
                     // Query is getting the coach ID from the combo box.
-                    string coachId = cbxChooseCoach.SelectedValue.ToString();
+                    string coachId = this.cbxChooseCoach.SelectedValue.ToString();
 
                     // Find the coach in the database.
                     var coachQuery = from coach in context.Coaches
@@ -142,15 +148,15 @@ namespace CoachConnect
 
                         if (coachResult != null)
                         {
-                            txtID.Text = coachResult.CoachID;
-                            txtFirstName.Text = coachResult.FirstName;
-                            txtLastName.Text = coachResult.LastName;
-                            txtMiddleName.Text = coachResult.MiddleName;
-                            txtDisplayName.Text = coachResult.DisplayName;
-                            txtEmail.Text = coachResult.Email;
-                            txtPhone.Text = coachResult.Phone;
-                            cbxSupervisor.SelectedValue = coachResult.SupervisorID;
-                            chkActive.Checked = coachResult.IsActive;
+                            this.txtID.Text = coachResult.CoachID;
+                            this.txtFirstName.Text = coachResult.FirstName;
+                            this.txtLastName.Text = coachResult.LastName;
+                            this.txtMiddleName.Text = coachResult.MiddleName;
+                            this.txtDisplayName.Text = coachResult.DisplayName;
+                            this.txtEmail.Text = coachResult.Email;
+                            this.txtPhone.Text = coachResult.Phone;
+                            this.cbxSupervisor.SelectedValue = coachResult.SupervisorID;
+                            this.chkActive.Checked = coachResult.IsActive;
                         }
                     }
                 }
@@ -172,7 +178,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnAddClick(object sender, EventArgs e)
         {
-            ClearAllFields();
+            this.ClearAllFields();
         }
 
         /// <summary>
@@ -187,7 +193,7 @@ namespace CoachConnect
                 // Query updates the user in the database
                 using (var context = new db_sft_2172Entities())
                 {
-                    string coachId = txtID.Text;
+                    string coachId = this.txtID.Text;
                     var coachQuery = from coach in context.Coaches
                                      where coach.CoachID.Equals(coachId)
                                      select coach;
@@ -195,15 +201,15 @@ namespace CoachConnect
                     if (coachQuery.Any())
                     {
                         var coachResult = coachQuery.FirstOrDefault();
-                        coachResult.FirstName = txtFirstName.Text;
-                        coachResult.MiddleName = txtMiddleName.Text;
-                        coachResult.LastName = txtLastName.Text;
-                        coachResult.DisplayName = txtDisplayName.Text;
-                        coachResult.Phone = txtPhone.Text;
-                        coachResult.Email = txtEmail.Text;
-                        coachResult.IsActive = chkActive.Checked;
+                        coachResult.FirstName = this.txtFirstName.Text;
+                        coachResult.MiddleName = this.txtMiddleName.Text;
+                        coachResult.LastName = this.txtLastName.Text;
+                        coachResult.DisplayName = this.txtDisplayName.Text;
+                        coachResult.Phone = this.txtPhone.Text;
+                        coachResult.Email = this.txtEmail.Text;
+                        coachResult.IsActive = this.chkActive.Checked;
 
-                        coachResult.SupervisorID = cbxSupervisor.SelectedIndex == -1 ? "" : cbxSupervisor.SelectedValue.ToString();
+                        coachResult.SupervisorID = this.cbxSupervisor.SelectedIndex == -1 ? string.Empty : this.cbxSupervisor.SelectedValue.ToString();
 
                         context.SaveChanges();
                         MessageBox.Show(@"Coach Profile Updated");
@@ -212,18 +218,17 @@ namespace CoachConnect
                     {
                         Coach newCoach = new Coach
                         {
-                            CoachID = txtID.Text,
-                            FirstName = txtFirstName.Text,
-                            MiddleName = txtMiddleName.Text,
-                            LastName = txtLastName.Text,
-                            DisplayName = txtDisplayName.Text,
-                            Phone = txtPhone.Text,
-                            Email = txtEmail.Text,
-                            IsActive = chkActive.Checked,
+                            CoachID = this.txtID.Text,
+                            FirstName = this.txtFirstName.Text,
+                            MiddleName = this.txtMiddleName.Text,
+                            LastName = this.txtLastName.Text,
+                            DisplayName = this.txtDisplayName.Text,
+                            Phone = this.txtPhone.Text,
+                            Email = this.txtEmail.Text,
+                            IsActive = this.chkActive.Checked,
                             SupervisorID =
-                                cbxSupervisor.SelectedIndex == -1 ? "" : cbxSupervisor.SelectedValue.ToString()
+                                this.cbxSupervisor.SelectedIndex == -1 ? string.Empty : this.cbxSupervisor.SelectedValue.ToString()
                         };
-
 
                         context.Coaches.Add(newCoach);
                         context.SaveChanges();
@@ -231,8 +236,8 @@ namespace CoachConnect
                         MessageBox.Show(@"Coach Profile Added");
 
                         // If save is successful, update the coach list and display the new coach profile
-                        DisplayCoaches();
-                        cbxChooseCoach.SelectedValue = newCoach.CoachID;
+                        this.DisplayCoaches();
+                        this.cbxChooseCoach.SelectedValue = newCoach.CoachID;
                     }
                 }
             }
@@ -250,10 +255,14 @@ namespace CoachConnect
             }
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Close button closes the current window.
+        /// </summary>
+        /// <param name="sender">The parameter is not used.</param>
+        /// <param name="e">The parameter is not used.</param>
+        private void BtnClose_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
     }
 }
- 

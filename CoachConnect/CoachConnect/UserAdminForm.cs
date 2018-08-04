@@ -1,5 +1,5 @@
-﻿// <copyright file="UserAdminForm.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="UserAdminForm.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 namespace CoachConnect
 {
@@ -16,11 +16,11 @@ namespace CoachConnect
     public partial class UserProfileForm : Form
     {
         /// <summary>
-        /// Initializes a new instance of the UserAdminForm class.
+        /// Initializes a new instance of the <see cref="UserProfileForm"/> class.
         /// </summary>
         public UserProfileForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
   
         /// <summary>
@@ -30,7 +30,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void UserAdminFormLoad(object sender, EventArgs e)
         {
-            DisplayUsers();
+            this.DisplayUsers();
         }
 
         /// <summary>
@@ -51,9 +51,9 @@ namespace CoachConnect
                     List<User> userList = userQuery.ToList();
 
                     // Set combo box data source and update data member settings
-                    cbxChooseUser.DataSource = userList;
-                    cbxChooseUser.ValueMember = "UserID";
-                    cbxChooseUser.DisplayMember = "DisplayName";
+                    this.cbxChooseUser.DataSource = userList;
+                    this.cbxChooseUser.ValueMember = "UserID";
+                    this.cbxChooseUser.DisplayMember = "DisplayName";
                 }
             }
             catch (SqlException sqlEx)
@@ -72,16 +72,16 @@ namespace CoachConnect
         private void ClearAllFields()
         {
             // Clearing check boxes and text boxes.
-            txtID.Clear();
-            txtFirstName.Clear();
-            txtLastName.Clear();
-            txtMiddleName.Clear();
-            txtDisplayName.Clear();
-            txtEmail.Clear();
-            txtPhone.Clear();
-            chkActive.Checked = false;
-            chkAdmin.Checked = false;
-            chkSupervisor.Checked = false;
+            this.txtID.Clear();
+            this.txtFirstName.Clear();
+            this.txtLastName.Clear();
+            this.txtMiddleName.Clear();
+            this.txtDisplayName.Clear();
+            this.txtEmail.Clear();
+            this.txtPhone.Clear();
+            this.chkActive.Checked = false;
+            this.chkAdmin.Checked = false;
+            this.chkSupervisor.Checked = false;
         }
 
         /// <summary>
@@ -89,16 +89,19 @@ namespace CoachConnect
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
-        private void cbxChooseUser_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbxChooseUser_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbxChooseUser.SelectedIndex == -1) return;
+            if (this.cbxChooseUser.SelectedIndex == -1)
+            {
+                return;
+            }
 
             try
             {
                 using (var context = new db_sft_2172Entities())
                 {
                     // Query obtains the user ID from the combo box
-                    string userId = cbxChooseUser.SelectedValue.ToString();
+                    string userId = this.cbxChooseUser.SelectedValue.ToString();
 
                     // Find the user in the database
                     var userQuery = from user in context.Users
@@ -112,17 +115,16 @@ namespace CoachConnect
 
                         if (userResult != null)
                         {
-                            txtID.Text = userResult.UserID;
-                            txtFirstName.Text = userResult.FirstName;
-                            txtLastName.Text = userResult.LastName;
-                            txtMiddleName.Text = userResult.MiddleName;
-                            txtDisplayName.Text = userResult.DisplayName;
-                            txtEmail.Text = userResult.Email;
-                            txtPhone.Text = userResult.Phone;
-                            chkActive.Checked = userResult.IsActive;
-                            chkAdmin.Checked = userResult.IsAdmin;
-                            chkSupervisor.Checked = userResult.IsSupervisor;
-                            
+                            this.txtID.Text = userResult.UserID;
+                            this.txtFirstName.Text = userResult.FirstName;
+                            this.txtLastName.Text = userResult.LastName;
+                            this.txtMiddleName.Text = userResult.MiddleName;
+                            this.txtDisplayName.Text = userResult.DisplayName;
+                            this.txtEmail.Text = userResult.Email;
+                            this.txtPhone.Text = userResult.Phone;
+                            this.chkActive.Checked = userResult.IsActive;
+                            this.chkAdmin.Checked = userResult.IsAdmin;
+                            this.chkSupervisor.Checked = userResult.IsSupervisor;   
                         }
                     }
                 }
@@ -133,7 +135,6 @@ namespace CoachConnect
             }
         }
 
-
         /// <summary>
         /// Add button clears all text boxes and check boxes so user can enter new information.
         /// </summary>
@@ -141,7 +142,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnAddClick(object sender, EventArgs e)
         {
-            ClearAllFields();
+            this.ClearAllFields();
         }
 
         /// <summary>
@@ -156,7 +157,7 @@ namespace CoachConnect
                 // Run query to check for a corresponding user in the database
                 using (var context = new db_sft_2172Entities())
                 {
-                    string userId = txtID.Text;
+                    string userId = this.txtID.Text;
                     var userQuery = from user in context.Users
                                     where user.UserID.Equals(userId)
                                     select user;
@@ -164,15 +165,15 @@ namespace CoachConnect
                     if (userQuery.Any())
                     {
                         var userResult = userQuery.FirstOrDefault();
-                        userResult.FirstName = txtFirstName.Text;
-                        userResult.MiddleName = txtMiddleName.Text;
-                        userResult.LastName = txtLastName.Text;
-                        userResult.DisplayName = txtDisplayName.Text;
-                        userResult.Phone = txtPhone.Text;
-                        userResult.Email = txtEmail.Text;
-                        userResult.IsActive = chkActive.Checked;
-                        userResult.IsAdmin = chkAdmin.Checked;
-                        userResult.IsSupervisor = chkSupervisor.Checked;
+                        userResult.FirstName = this.txtFirstName.Text;
+                        userResult.MiddleName = this.txtMiddleName.Text;
+                        userResult.LastName = this.txtLastName.Text;
+                        userResult.DisplayName = this.txtDisplayName.Text;
+                        userResult.Phone = this.txtPhone.Text;
+                        userResult.Email = this.txtEmail.Text;
+                        userResult.IsActive = this.chkActive.Checked;
+                        userResult.IsAdmin = this.chkAdmin.Checked;
+                        userResult.IsSupervisor = this.chkSupervisor.Checked;
                         
                         context.SaveChanges();
 
@@ -182,16 +183,16 @@ namespace CoachConnect
                     {
                         User newUser = new User
                         {
-                            UserID = txtID.Text,
-                            FirstName = txtFirstName.Text,
-                            MiddleName = txtMiddleName.Text,
-                            LastName = txtLastName.Text,
-                            DisplayName = txtDisplayName.Text,
-                            Phone = txtPhone.Text,
-                            Email = txtEmail.Text,
-                            IsActive = chkActive.Checked,
-                            IsAdmin = chkAdmin.Checked,
-                            IsSupervisor = chkSupervisor.Checked
+                            UserID = this.txtID.Text,
+                            FirstName = this.txtFirstName.Text,
+                            MiddleName = this.txtMiddleName.Text,
+                            LastName = this.txtLastName.Text,
+                            DisplayName = this.txtDisplayName.Text,
+                            Phone = this.txtPhone.Text,
+                            Email = this.txtEmail.Text,
+                            IsActive = this.chkActive.Checked,
+                            IsAdmin = this.chkAdmin.Checked,
+                            IsSupervisor = this.chkSupervisor.Checked
                         };
 
                         context.Users.Add(newUser);
@@ -200,8 +201,8 @@ namespace CoachConnect
                         MessageBox.Show(@"User Profile Created");
 
                         // If save is successful, update the user list and display the new user profile
-                        DisplayUsers();
-                        cbxChooseUser.SelectedValue = newUser.UserID;
+                        this.DisplayUsers();
+                        this.cbxChooseUser.SelectedValue = newUser.UserID;
                     }
                 }
             }
@@ -221,8 +222,8 @@ namespace CoachConnect
                 return;
             }
 
-            DisplayUsers();
-            ClearAllFields();
+            this.DisplayUsers();
+            this.ClearAllFields();
             MessageBox.Show(@"User Profile Updated");
         }
 
@@ -233,9 +234,9 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnMinusClick(object sender, EventArgs e)
         {
-            chkAdmin.Checked = false;
-            chkActive.Checked = false;
-            chkSupervisor.Checked = false;
+            this.chkAdmin.Checked = false;
+            this.chkActive.Checked = false;
+            this.chkSupervisor.Checked = false;
         }
 
         /// <summary>
@@ -245,7 +246,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnResetPasswordClick(object sender, EventArgs e)
         {
-            string username = txtID.Text;
+            string username = this.txtID.Text;
 
             ResetUserPasswordAdmin resetPasswordForm = new ResetUserPasswordAdmin(username);
             resetPasswordForm.ShowDialog();

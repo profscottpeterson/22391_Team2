@@ -1,5 +1,5 @@
-﻿// <copyright file="UserAdminForm.designer.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="UserAdminForm.designer.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 namespace CoachConnect
 {
@@ -79,6 +79,71 @@ namespace CoachConnect
         private System.Windows.Forms.Button btnResetUserPassword;
 
         /// <summary>
+        /// Combo box to choose a desired user
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxChooseUser;
+
+        /// <summary>
+        /// Label for the Choose User combo box
+        /// </summary>
+        private System.Windows.Forms.Label lblChooseUser;
+
+        /// <summary>
+        /// Group Box to display user profile information
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox1;
+
+        /// <summary>
+        /// Button to add a new user
+        /// </summary>
+        private System.Windows.Forms.Button btnAdd;
+
+        /// <summary>
+        /// Label for the User ID text box
+        /// </summary>
+        private System.Windows.Forms.Label lblID;
+
+        /// <summary>
+        /// Text box to store the User ID
+        /// </summary>
+        private System.Windows.Forms.TextBox txtID;
+
+        /// <summary>
+        /// Text box for the user's "display" name
+        /// </summary>
+        private System.Windows.Forms.TextBox txtDisplayName;
+
+        /// <summary>
+        /// Label for the Display Name text box
+        /// </summary>
+        private System.Windows.Forms.Label lblDisplayName;
+
+        /// <summary>
+        /// Text box for the user's email address
+        /// </summary>
+        private System.Windows.Forms.TextBox txtEmail;
+
+        /// <summary>
+        /// Label for the Email text box
+        /// </summary>
+        private System.Windows.Forms.Label lblEmail;
+
+        /// <summary>
+        /// Text box for the user's phone number
+        /// </summary>
+        private System.Windows.Forms.TextBox txtPhone;
+
+        /// <summary>
+        /// Label for the Phone text box
+        /// </summary>
+        private System.Windows.Forms.Label lblPhone;
+
+        /// <summary>
+        /// Button to apply changes to the database
+        /// </summary>
+        private System.Windows.Forms.Button btnApply;
+
+        /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
@@ -121,15 +186,15 @@ namespace CoachConnect
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnResetUserPassword = new System.Windows.Forms.Button();
             this.cbxChooseUser = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblChooseUser = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblPhone = new System.Windows.Forms.Label();
             this.txtDisplayName = new System.Windows.Forms.TextBox();
             this.lblDisplayName = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblID = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnApply = new System.Windows.Forms.Button();
@@ -146,6 +211,7 @@ namespace CoachConnect
             this.lblAdminForm.TabIndex = 7;
             this.lblAdminForm.Text = "Update User Info";
             this.lblAdminForm.UseWaitCursor = true;
+            // 
             // lblUserID
             // 
             this.lblUserID.AutoSize = true;
@@ -284,29 +350,29 @@ namespace CoachConnect
             this.cbxChooseUser.Name = "cbxChooseUser";
             this.cbxChooseUser.Size = new System.Drawing.Size(207, 21);
             this.cbxChooseUser.TabIndex = 55;
-            this.cbxChooseUser.SelectedIndexChanged += new System.EventHandler(this.cbxChooseUser_SelectedIndexChanged);
+            this.cbxChooseUser.SelectedIndexChanged += new System.EventHandler(this.CbxChooseUser_SelectedIndexChanged);
             // 
-            // label3
+            // lblChooseUser
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(16, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 13);
-            this.label3.TabIndex = 56;
-            this.label3.Text = "Choose a User:";
+            this.lblChooseUser.AutoSize = true;
+            this.lblChooseUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChooseUser.Location = new System.Drawing.Point(16, 73);
+            this.lblChooseUser.Name = "lblChooseUser";
+            this.lblChooseUser.Size = new System.Drawing.Size(94, 13);
+            this.lblChooseUser.TabIndex = 56;
+            this.lblChooseUser.Text = "Choose a User:";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.txtEmail);
-            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.lblEmail);
             this.groupBox1.Controls.Add(this.txtPhone);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblPhone);
             this.groupBox1.Controls.Add(this.txtDisplayName);
             this.groupBox1.Controls.Add(this.lblDisplayName);
             this.groupBox1.Controls.Add(this.chkActive);
             this.groupBox1.Controls.Add(this.chkAdmin);
-            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.lblID);
             this.groupBox1.Controls.Add(this.chkSupervisor);
             this.groupBox1.Controls.Add(this.txtID);
             this.groupBox1.Controls.Add(this.lblFirstName);
@@ -332,15 +398,15 @@ namespace CoachConnect
             this.txtEmail.Size = new System.Drawing.Size(188, 20);
             this.txtEmail.TabIndex = 61;
             // 
-            // label2
+            // lblEmail
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(61, 238);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
-            this.label2.TabIndex = 63;
-            this.label2.Text = "Email";
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(61, 238);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(32, 13);
+            this.lblEmail.TabIndex = 63;
+            this.lblEmail.Text = "Email";
             // 
             // txtPhone
             // 
@@ -351,15 +417,15 @@ namespace CoachConnect
             this.txtPhone.Size = new System.Drawing.Size(188, 20);
             this.txtPhone.TabIndex = 60;
             // 
-            // label1
+            // lblPhone
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(55, 203);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 62;
-            this.label1.Text = "Phone";
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhone.Location = new System.Drawing.Point(55, 203);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(38, 13);
+            this.lblPhone.TabIndex = 62;
+            this.lblPhone.Text = "Phone";
             // 
             // txtDisplayName
             // 
@@ -380,15 +446,15 @@ namespace CoachConnect
             this.lblDisplayName.TabIndex = 59;
             this.lblDisplayName.Text = "Display Name";
             // 
-            // label4
+            // lblID
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(39, 30);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
-            this.label4.TabIndex = 57;
-            this.label4.Text = "NWTC ID";
+            this.lblID.AutoSize = true;
+            this.lblID.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblID.Location = new System.Drawing.Point(39, 30);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(54, 13);
+            this.lblID.TabIndex = 57;
+            this.lblID.Text = "NWTC ID";
             // 
             // txtID
             // 
@@ -429,7 +495,7 @@ namespace CoachConnect
             this.Controls.Add(this.btnApply);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cbxChooseUser);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblChooseUser);
             this.Controls.Add(this.btnResetUserPassword);
             this.Controls.Add(this.btnMinus);
             this.Controls.Add(this.btnAdd);
@@ -448,19 +514,5 @@ namespace CoachConnect
 
         }
         #endregion
-
-        private System.Windows.Forms.ComboBox cbxChooseUser;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtID;
-        private System.Windows.Forms.TextBox txtDisplayName;
-        private System.Windows.Forms.Label lblDisplayName;
-        private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnApply;
     }
 }

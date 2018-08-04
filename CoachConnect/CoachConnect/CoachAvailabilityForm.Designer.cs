@@ -1,7 +1,48 @@
-﻿namespace CoachConnect
+﻿// <copyright file="CoachAvailabilityForm.Designer.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
+// </copyright>
+namespace CoachConnect
 {
-    partial class CoachAvailabilityForm
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CoachAvailabilityForm"/> class.
+    /// </summary>
+    public partial class CoachAvailabilityForm
     {
+        /// <summary>
+        /// A label for the Edit Session window header
+        /// </summary>
+        private System.Windows.Forms.Label lblEditSessionHeader;
+
+        /// <summary>
+        /// A GroupBox to hold the Coach Availability data grid view
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox1;
+        
+        /// <summary>
+        /// A button to perform the Remove action for the selected Availability record
+        /// </summary>
+        private System.Windows.Forms.Button btnRemove;
+
+        /// <summary>
+        /// A button to perform the Add action and create a new Availability record
+        /// </summary>
+        private System.Windows.Forms.Button btnAddToCourseList;
+
+        /// <summary>
+        /// A data grid view to display the current coach's availability
+        /// </summary>
+        private System.Windows.Forms.DataGridView dataGridViewAvailability;
+
+        /// <summary>
+        /// A combo box to allow users to choose an existing coach
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxChooseCoach;
+
+        /// <summary>
+        /// A label for the Choose Coach combo box
+        /// </summary>
+        private System.Windows.Forms.Label lblChooseCoach;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -13,10 +54,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -34,7 +76,7 @@
             this.btnAddToCourseList = new System.Windows.Forms.Button();
             this.dataGridViewAvailability = new System.Windows.Forms.DataGridView();
             this.cbxChooseCoach = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblChooseCoach = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAvailability)).BeginInit();
             this.SuspendLayout();
@@ -69,7 +111,7 @@
             this.btnRemove.TabIndex = 34;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = true;
-            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            this.btnRemove.Click += new System.EventHandler(this.BtnRemove_Click);
             // 
             // btnAddToCourseList
             // 
@@ -79,7 +121,7 @@
             this.btnAddToCourseList.TabIndex = 33;
             this.btnAddToCourseList.Text = "Add New Listing";
             this.btnAddToCourseList.UseVisualStyleBackColor = true;
-            this.btnAddToCourseList.Click += new System.EventHandler(this.btnAddToCourseList_Click);
+            this.btnAddToCourseList.Click += new System.EventHandler(this.BtnAddToCourseList_Click);
             // 
             // dataGridViewAvailability
             // 
@@ -94,7 +136,7 @@
             this.dataGridViewAvailability.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewAvailability.Size = new System.Drawing.Size(365, 163);
             this.dataGridViewAvailability.TabIndex = 31;
-            this.dataGridViewAvailability.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewAvailability_RowHeaderMouseDoubleClick);
+            this.dataGridViewAvailability.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewAvailability_RowHeaderMouseDoubleClick);
             // 
             // cbxChooseCoach
             // 
@@ -104,17 +146,17 @@
             this.cbxChooseCoach.Name = "cbxChooseCoach";
             this.cbxChooseCoach.Size = new System.Drawing.Size(192, 21);
             this.cbxChooseCoach.TabIndex = 55;
-            this.cbxChooseCoach.SelectedIndexChanged += new System.EventHandler(this.cbxChooseCoach_SelectedIndexChanged);
+            this.cbxChooseCoach.SelectedIndexChanged += new System.EventHandler(this.CbxChooseCoach_SelectedIndexChanged);
             // 
-            // label3
+            // lblChooseCoach
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(48, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 13);
-            this.label3.TabIndex = 56;
-            this.label3.Text = "Choose a Coach:";
+            this.lblChooseCoach.AutoSize = true;
+            this.lblChooseCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChooseCoach.Location = new System.Drawing.Point(48, 65);
+            this.lblChooseCoach.Name = "lblChooseCoach";
+            this.lblChooseCoach.Size = new System.Drawing.Size(104, 13);
+            this.lblChooseCoach.TabIndex = 56;
+            this.lblChooseCoach.Text = "Choose a Coach:";
             // 
             // CoachAvailabilityForm
             // 
@@ -122,7 +164,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(414, 349);
             this.Controls.Add(this.cbxChooseCoach);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblChooseCoach);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblEditSessionHeader);
             this.Name = "CoachAvailabilityForm";
@@ -136,13 +178,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblEditSessionHeader;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnRemove;
-        private System.Windows.Forms.Button btnAddToCourseList;
-        private System.Windows.Forms.DataGridView dataGridViewAvailability;
-        private System.Windows.Forms.ComboBox cbxChooseCoach;
-        private System.Windows.Forms.Label label3;
     }
 }

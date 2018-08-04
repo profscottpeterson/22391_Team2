@@ -1,5 +1,5 @@
-﻿// <copyright file="UserAdminForm.cs" company="Adam Smith at NWTC">
-//     Copyright 2017 Smithbucks Computing (Adam J. Smith)
+﻿// <copyright file="CourseAdminForm.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 namespace CoachConnect
 {
@@ -11,16 +11,16 @@ namespace CoachConnect
     using System.Windows.Forms;
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="CourseAdminForm"/> class.
-    /// </summary>
+    /// Declaration for the <see cref="CourseAdminForm"/> class.
+    /// </summary>|
     public partial class CourseAdminForm : Form
     {
         /// <summary>
-        /// Initializes a new instance of the UserAdminForm class.
+        /// Initializes a new instance of the <see cref="CourseAdminForm"/> class.
         /// </summary>
         public CourseAdminForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
   
         /// <summary>
@@ -30,8 +30,8 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void CourseAdminFormLoad(object sender, EventArgs e)
         {
-            DisplayDepartments();
-            DisplayCourses();
+            this.DisplayDepartments();
+            this.DisplayCourses();
         }
 
         /// <summary>
@@ -52,9 +52,9 @@ namespace CoachConnect
                     List<Department> departmentList = departmentQuery.ToList();
 
                     // Set combo box data source and update data member settings
-                    cbxDepartment.DataSource = departmentList;
-                    cbxDepartment.ValueMember = "DepartmentID";
-                    cbxDepartment.DisplayMember = "DepartmentName";
+                    this.cbxDepartment.DataSource = departmentList;
+                    this.cbxDepartment.ValueMember = "DepartmentID";
+                    this.cbxDepartment.DisplayMember = "DepartmentName";
                 }
             }
             catch (SqlException sqlEx)
@@ -85,9 +85,9 @@ namespace CoachConnect
                     List<CourseListing> courseList = courseQuery.ToList();
 
                     // Set combo box data source and update data member settings
-                    cbxChooseCourse.DataSource = courseList;
-                    cbxChooseCourse.ValueMember = "CourseID";
-                    cbxChooseCourse.DisplayMember = "CourseListID";
+                    this.cbxChooseCourse.DataSource = courseList;
+                    this.cbxChooseCourse.ValueMember = "CourseID";
+                    this.cbxChooseCourse.DisplayMember = "CourseListID";
                 }
             }
             catch (SqlException sqlEx)
@@ -106,11 +106,11 @@ namespace CoachConnect
         private void ClearAllFields()
         {
             // Clearing check boxes and text boxes.
-            txtCourseID.Clear();
-            txtCourseName.Clear();
-            chkActive.Checked = false;
-            cbxDepartment.SelectedIndex = -1;
-            cbxChooseCourse.SelectedIndex = -1;
+            this.txtCourseID.Clear();
+            this.txtCourseName.Clear();
+            this.chkActive.Checked = false;
+            this.cbxDepartment.SelectedIndex = -1;
+            this.cbxChooseCourse.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -118,16 +118,19 @@ namespace CoachConnect
         /// </summary>
         /// <param name="sender">The parameter is not used.</param>
         /// <param name="e">The parameter is not used.</param>
-        private void cbxChooseCourse_SelectedIndexChanged(object sender, EventArgs e)
+        private void CbxChooseCourse_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbxChooseCourse.SelectedIndex == -1) return;
+            if (this.cbxChooseCourse.SelectedIndex == -1)
+            {
+                return;
+            }
 
             try
             {
                 using (var context = new db_sft_2172Entities())
                 {
                     // Query obtains the user ID from the combo box
-                    string courseId = cbxChooseCourse.SelectedValue.ToString();
+                    string courseId = this.cbxChooseCourse.SelectedValue.ToString();
 
                     // Find the user in the database
                     var courseQuery = from course in context.Courses
@@ -141,10 +144,10 @@ namespace CoachConnect
 
                         if (courseResult != null)
                         {
-                            txtCourseID.Text = courseResult.CourseID;
-                            txtCourseName.Text = courseResult.CourseName;
-                            chkActive.Checked = courseResult.IsActive;
-                            cbxDepartment.SelectedValue = courseResult.DepartmentID;
+                            this.txtCourseID.Text = courseResult.CourseID;
+                            this.txtCourseName.Text = courseResult.CourseName;
+                            this.chkActive.Checked = courseResult.IsActive;
+                            this.cbxDepartment.SelectedValue = courseResult.DepartmentID;
                         }
                     }
                 }
@@ -159,7 +162,6 @@ namespace CoachConnect
             }
         }
 
-
         /// <summary>
         /// Add button clears all text boxes and check boxes so user can enter new information.
         /// </summary>
@@ -167,7 +169,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnAddClick(object sender, EventArgs e)
         {
-            ClearAllFields();
+            this.ClearAllFields();
         }
 
         /// <summary>
@@ -182,7 +184,7 @@ namespace CoachConnect
                 // Run query to check for a corresponding user in the database
                 using (var context = new db_sft_2172Entities())
                 {
-                    string courseId = txtCourseID.Text;
+                    string courseId = this.txtCourseID.Text;
                     var courseQuery = from course in context.Courses
                                     where course.CourseID.Equals(courseId)
                                     select course;
@@ -193,23 +195,23 @@ namespace CoachConnect
 
                         if (courseResult != null)
                         {
-                            courseResult.CourseID = txtCourseID.Text;
-                            courseResult.CourseName = txtCourseName.Text;
-                            courseResult.Department = (Department) cbxDepartment.SelectedItem;
-                            courseResult.IsActive = chkActive.Checked;
+                            courseResult.CourseID = this.txtCourseID.Text;
+                            courseResult.CourseName = this.txtCourseName.Text;
+                            courseResult.Department = (Department)this.cbxDepartment.SelectedItem;
+                            courseResult.IsActive = this.chkActive.Checked;
                         }
 
                         context.SaveChanges();
-                        DisplayCourses();
+                        this.DisplayCourses();
                         MessageBox.Show(@"Course Updated");
                     }
                     else
                     {
                         Course newCourse = new Course
                         {
-                            CourseID = txtCourseID.Text,
-                            CourseName = txtCourseName.Text,
-                            Department = (Department)cbxDepartment.SelectedItem,
+                            CourseID = this.txtCourseID.Text,
+                            CourseName = this.txtCourseName.Text,
+                            Department = (Department)this.cbxDepartment.SelectedItem,
                             IsActive = true
                         };
 
@@ -218,8 +220,8 @@ namespace CoachConnect
                         MessageBox.Show(@"Course Added");
 
                         // If save is successful, update the user list and display the new user profile
-                        DisplayCourses();
-                        cbxChooseCourse.SelectedValue = newCourse.CourseID;
+                        this.DisplayCourses();
+                        this.cbxChooseCourse.SelectedValue = newCourse.CourseID;
                     }
                 }
             }
@@ -244,7 +246,7 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnMinusClick(object sender, EventArgs e)
         {
-            chkActive.Checked = false;
+            this.chkActive.Checked = false;
         }
     }
 }

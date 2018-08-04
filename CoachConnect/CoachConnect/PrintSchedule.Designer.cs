@@ -1,7 +1,43 @@
-﻿namespace CoachConnect
+﻿// <copyright file="PrintSchedule.Designer.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
+// </copyright>
+namespace CoachConnect
 {
-    partial class PrintSchedule
+    /// <summary>
+    /// Defines design elements for the PrintSchedule class
+    /// </summary>
+    public partial class PrintSchedule
     {
+        /// <summary>
+        /// Button to save the displayed schedule to an Excel file
+        /// </summary>
+        private System.Windows.Forms.Button btnSaveScheduleToExcel;
+
+        /// <summary>
+        /// Label for the Session Admin form header
+        /// </summary>
+        private System.Windows.Forms.Label lblSessionAdminForm;
+
+        /// <summary>
+        /// Data grid view to display the current department's schedule
+        /// </summary>
+        private System.Windows.Forms.DataGridView dataGridViewSchedule;
+
+        /// <summary>
+        /// Combo box to choose the desired department
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxChooseDepartment;
+
+        /// <summary>
+        /// Label for the Choose Department combo box
+        /// </summary>
+        private System.Windows.Forms.Label lblChooseDepartment;
+
+        /// <summary>
+        /// Button to close the current window
+        /// </summary>
+        private System.Windows.Forms.Button btnCloseWindow;
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -13,10 +49,11 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 
@@ -32,7 +69,7 @@
             this.lblSessionAdminForm = new System.Windows.Forms.Label();
             this.dataGridViewSchedule = new System.Windows.Forms.DataGridView();
             this.cbxChooseDepartment = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblChooseDepartment = new System.Windows.Forms.Label();
             this.btnCloseWindow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSchedule)).BeginInit();
             this.SuspendLayout();
@@ -47,7 +84,7 @@
             this.btnSaveScheduleToExcel.TabIndex = 23;
             this.btnSaveScheduleToExcel.Text = "Save Schedule to Excel";
             this.btnSaveScheduleToExcel.UseVisualStyleBackColor = true;
-            this.btnSaveScheduleToExcel.Click += new System.EventHandler(this.btnSaveScheduleToExcel_Click);
+            this.btnSaveScheduleToExcel.Click += new System.EventHandler(this.BtnSaveScheduleToExcel_Click);
             // 
             // lblSessionAdminForm
             // 
@@ -80,17 +117,17 @@
             this.cbxChooseDepartment.Name = "cbxChooseDepartment";
             this.cbxChooseDepartment.Size = new System.Drawing.Size(192, 21);
             this.cbxChooseDepartment.TabIndex = 57;
-            this.cbxChooseDepartment.SelectedIndexChanged += new System.EventHandler(this.cbxChooseDepartment_SelectedIndexChanged);
+            this.cbxChooseDepartment.SelectedIndexChanged += new System.EventHandler(this.CbxChooseDepartment_SelectedIndexChanged);
             // 
-            // label3
+            // lblChooseDepartment
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(317, 77);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 13);
-            this.label3.TabIndex = 58;
-            this.label3.Text = "Choose a Department:";
+            this.lblChooseDepartment.AutoSize = true;
+            this.lblChooseDepartment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChooseDepartment.Location = new System.Drawing.Point(317, 77);
+            this.lblChooseDepartment.Name = "label3";
+            this.lblChooseDepartment.Size = new System.Drawing.Size(133, 13);
+            this.lblChooseDepartment.TabIndex = 58;
+            this.lblChooseDepartment.Text = "Choose a Department:";
             // 
             // btnCloseWindow
             // 
@@ -102,7 +139,7 @@
             this.btnCloseWindow.TabIndex = 59;
             this.btnCloseWindow.Text = "Close Window";
             this.btnCloseWindow.UseVisualStyleBackColor = true;
-            this.btnCloseWindow.Click += new System.EventHandler(this.btnCloseWindow_Click);
+            this.btnCloseWindow.Click += new System.EventHandler(this.BtnCloseWindow_Click);
             // 
             // PrintSchedule
             // 
@@ -111,7 +148,7 @@
             this.ClientSize = new System.Drawing.Size(977, 464);
             this.Controls.Add(this.btnCloseWindow);
             this.Controls.Add(this.cbxChooseDepartment);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblChooseDepartment);
             this.Controls.Add(this.btnSaveScheduleToExcel);
             this.Controls.Add(this.lblSessionAdminForm);
             this.Controls.Add(this.dataGridViewSchedule);
@@ -125,12 +162,5 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnSaveScheduleToExcel;
-        private System.Windows.Forms.Label lblSessionAdminForm;
-        private System.Windows.Forms.DataGridView dataGridViewSchedule;
-        private System.Windows.Forms.ComboBox cbxChooseDepartment;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnCloseWindow;
     }
 }

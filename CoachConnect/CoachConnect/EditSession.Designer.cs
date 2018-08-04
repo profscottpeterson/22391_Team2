@@ -1,5 +1,5 @@
-﻿// <copyright file="EditSession.Designer.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="EditSession.Designer.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 namespace CoachConnect
 {
@@ -8,7 +8,6 @@ namespace CoachConnect
     /// </summary>
     public partial class EditSession
     {
-
         /// <summary>
         /// Label for the Room combo box
         /// </summary>
@@ -98,6 +97,26 @@ namespace CoachConnect
         /// Another group box
         /// </summary>
         private System.Windows.Forms.GroupBox groupBox2;
+
+        /// <summary>
+        /// A validation label to indicate an invalid or non-selected coach
+        /// </summary>
+        private System.Windows.Forms.Label lblInvalidCoach;
+
+        /// <summary>
+        /// A validation label to indicate an invalid or non-selected room
+        /// </summary>
+        private System.Windows.Forms.Label lblInvalidRoom;
+
+        /// <summary>
+        /// A label to mark the Room combo box
+        /// </summary>
+        private System.Windows.Forms.Label lblRoom;
+
+        /// <summary>
+        /// A label to select the room location
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxRoom;
 
         /// <summary>
         /// Required designer variable.
@@ -416,9 +435,5 @@ namespace CoachConnect
         }
 
         #endregion
-        private System.Windows.Forms.Label lblInvalidCoach;
-        private System.Windows.Forms.Label lblInvalidRoom;
-        private System.Windows.Forms.Label lblRoom;
-        private System.Windows.Forms.ComboBox cbxRoom;
     }
 }

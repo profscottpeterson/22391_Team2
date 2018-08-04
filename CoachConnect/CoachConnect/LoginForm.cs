@@ -1,12 +1,10 @@
-﻿// <copyright file="LoginForm.cs" company="Adam Smith at NWTC">
-//     Copyright 2017 Smithbucks Computing (Adam Smith)
+﻿// <copyright file="LoginForm.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
-
-using System.Data.SqlClient;
-
 namespace CoachConnect
 {
     using System;
+    using System.Data.SqlClient;
     using System.Linq;
     using System.Windows.Forms;
 
@@ -20,7 +18,7 @@ namespace CoachConnect
         /// </summary>
         public LoginForm()
         {
-            InitializeComponent();
+            this.InitializeComponent();
         }
 
         /// <summary>
@@ -40,14 +38,14 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void BtnLoginClick(object sender, EventArgs e)
         {
-            string usernameText = txtUsername.Text;
-            string passwordText = txtPassword.Text;
+            string usernameText = this.txtUsername.Text;
+            string passwordText = this.txtPassword.Text;
 
-            btnLogin.Enabled = false;
+            this.btnLogin.Enabled = false;
 
-            Login(usernameText, passwordText);
+            this.Login(usernameText, passwordText);
 
-            btnLogin.Enabled = true;
+            this.btnLogin.Enabled = true;
         }
 
         /// <summary>
@@ -113,27 +111,24 @@ namespace CoachConnect
                                     Program.IsAdmin = true;
                                 }
 
-                                // Call method to update menu options
-                                Program.UpdateMenus();
-
                                 // Close window once finished
-                                Close();
+                                this.Close();
                             }
                         }
                         else
                         {
                             MessageBox.Show(@"Sorry, invalid username or password.  Please try again!");
-                            txtUsername.Text = string.Empty;
-                            txtPassword.Text = string.Empty;
-                            txtUsername.Focus();
+                            this.txtUsername.Text = string.Empty;
+                            this.txtPassword.Text = string.Empty;
+                            this.txtUsername.Focus();
                         }
                     }
                     else
                     {
                         MessageBox.Show(@"Sorry, invalid username or password.  Please try again!");
-                        txtUsername.Text = string.Empty;
-                        txtPassword.Text = string.Empty;
-                        txtUsername.Focus();
+                        this.txtUsername.Text = string.Empty;
+                        this.txtPassword.Text = string.Empty;
+                        this.txtUsername.Focus();
                     }
                 }
             }

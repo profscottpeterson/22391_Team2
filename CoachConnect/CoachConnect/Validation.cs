@@ -1,8 +1,6 @@
-﻿//-----------------------------------------------------------------------
-// <copyright file="Validation.cs" company="PABT,Inc">
-//     Copyright (c) Pabt, Inc. All rights reserved
+﻿// <copyright file="Validation.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
-//-----------------------------------------------------------------------
 namespace CoachConnect
 {
     using System.Linq;
@@ -40,7 +38,7 @@ namespace CoachConnect
         {
             try
             {
-                var mailAddress = new System.Net.Mail.MailAddress(tb);
+                var emailAddress = new System.Net.Mail.MailAddress(tb);
                 return true;
             }
             catch

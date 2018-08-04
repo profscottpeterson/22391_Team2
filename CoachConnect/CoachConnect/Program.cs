@@ -1,12 +1,9 @@
-﻿// <copyright file="Program.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="Program.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 namespace CoachConnect
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
 
     /// <summary>
@@ -17,7 +14,7 @@ namespace CoachConnect
         /// <summary>
         /// Gets or sets a mainForm object that is loaded when the program starts
         /// </summary>
-        public static MainForm mainForm { get; set; }
+        public static MainForm MainForm { get; set; }
 
         /// <summary>
         /// Gets or sets the username that is logged into the app.
@@ -42,47 +39,9 @@ namespace CoachConnect
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            mainForm = new MainForm();
+            MainForm = new MainForm();
 
-            Application.Run(mainForm);
-        }
-
-        // TODO: Remove this code once we rebuild the new MainForm
-        /*
-        /// <summary>
-        /// RolePage: A method to create and show a new role form once the user is logged in
-        /// </summary>
-        public static void RolePage()
-        {
-            RoleForm roleForm = new RoleForm();
-            roleForm.Show();
-        }
-        */
-
-        // TODO: Rebuild this method to show/hide menu options based on user type (Admin or Supervisor)
-        /// <summary>
-        /// OpenUserHomepage: A method that opens the correct start page based on the selected role
-        /// </summary>
-        /// <param name="roleText">The role name selected in the RoleForm</param>
-        public static void UpdateMenus()
-        {
-            if (Program.IsAdmin)
-            {
-                // TODO: Fill in menu options that should be enabled for Admin users
-            }
-            else
-            {
-                // TODO: Fill in menu options that should be disabled for non-Admin users
-            }
-
-            if (Program.IsSupervisor)
-            {
-                // TODO: Fill in menu options that should be enabled for Supervisor users
-            }
-            else
-            {
-                // TODO: Fill in menu options that should be enabled for non-Supervisor users
-            }
+            Application.Run(MainForm);
         }
 
         /// <summary>
@@ -96,6 +55,9 @@ namespace CoachConnect
             Program.IsAdmin = false;
         }
 
+        /// <summary>
+        /// A method to open a new LoginForm and display it as a dialog.
+        /// </summary>
         public static void Login()
         {
             LoginForm loginForm = new LoginForm();

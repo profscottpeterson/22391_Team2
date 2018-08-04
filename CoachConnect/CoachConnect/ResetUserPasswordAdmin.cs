@@ -1,5 +1,5 @@
-﻿// <copyright file="ResetUserPasswordAdmin.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="ResetUserPasswordAdmin.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 namespace CoachConnect
 {
@@ -19,12 +19,12 @@ namespace CoachConnect
         /// <param name="userId">The userID whose password needs to be updated</param>
         public ResetUserPasswordAdmin(string userId)
         {
-            CurrentUserId = userId;
-            InitializeComponent();
+            this.CurrentUserId = userId;
+            this.InitializeComponent();
         }
 
         /// <summary>
-        /// Gets or sets the current UserID whose password needs to be updated
+        /// Gets the current UserID whose password needs to be updated
         /// </summary>
         private string CurrentUserId { get; }
 
@@ -36,25 +36,25 @@ namespace CoachConnect
         private void BtnUpdateClick(object sender, EventArgs e)
         {
             // Verify that the two entered passwords match
-            if (!txtTempCode.Text.Equals(txtConfirmTempCode.Text))
+            if (!this.txtTempCode.Text.Equals(this.txtConfirmTempCode.Text))
             {
                 MessageBox.Show(@"Sorry, the codes do not match.  Please try again!");
 
                 // Clear the password boxes
-                txtTempCode.Text = string.Empty;
-                txtConfirmTempCode.Text = string.Empty;
+                this.txtTempCode.Text = string.Empty;
+                this.txtConfirmTempCode.Text = string.Empty;
 
-                txtTempCode.Focus();
+                this.txtTempCode.Focus();
             }
-            else if (txtTempCode.Text.Equals(string.Empty))
+            else if (this.txtTempCode.Text.Equals(string.Empty))
             {
                 MessageBox.Show(@"Please enter a code (max 10 characters).");
 
                 // Clear the password boxes
-                txtTempCode.Text = string.Empty;
-                txtConfirmTempCode.Text = string.Empty;
+                this.txtTempCode.Text = string.Empty;
+                this.txtConfirmTempCode.Text = string.Empty;
 
-                txtTempCode.Focus();
+                this.txtTempCode.Focus();
             }
             else
             {
@@ -65,14 +65,14 @@ namespace CoachConnect
                     {
                         // Run query to get user data
                         var userQuery = from users in context.Users
-                                        where users.UserID.Equals(CurrentUserId)
+                                        where users.UserID.Equals(this.CurrentUserId)
                                         select users;
 
                         User currentUser = userQuery.FirstOrDefault();
 
                         if (currentUser != null)
                         {
-                        currentUser.ResetPassword = txtTempCode.Text;
+                        currentUser.ResetPassword = this.txtTempCode.Text;
                         context.SaveChanges();
 
                         // Show confirmation if save is successful
@@ -90,7 +90,7 @@ namespace CoachConnect
                 }
 
                 // Close the form when finished
-                Close();
+                this.Close();
             }
         }
 
@@ -101,7 +101,7 @@ namespace CoachConnect
         /// <param name="e">     The parameter is not used.</param>
         private void BtnCancelClick(object sender, EventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         /// <summary>
@@ -111,15 +111,15 @@ namespace CoachConnect
         /// <param name="e">The parameter is not used.</param>
         private void TxtStdNewConfirmPasswordLeave(object sender, EventArgs e)
         {
-            if (txtTempCode.Text == txtConfirmTempCode.Text && (txtTempCode.Text != string.Empty || txtConfirmTempCode.Text != string.Empty))
+            if (this.txtTempCode.Text == this.txtConfirmTempCode.Text && (this.txtTempCode.Text != string.Empty || this.txtConfirmTempCode.Text != string.Empty))
             {
-                imgPasswordValid.Visible = true;
-                imgPasswordNotValid.Visible = false;
+                this.imgPasswordValid.Visible = true;
+                this.imgPasswordNotValid.Visible = false;
             }
             else
             {
-                imgPasswordNotValid.Visible = true;
-                imgPasswordValid.Visible = false;
+                this.imgPasswordNotValid.Visible = true;
+                this.imgPasswordValid.Visible = false;
             }
         }
     }

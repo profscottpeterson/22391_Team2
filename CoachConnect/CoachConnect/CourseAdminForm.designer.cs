@@ -1,5 +1,5 @@
-﻿// <copyright file="UserAdminForm.designer.cs" company="PABT at NWTC">
-//     Copyright 2017 PABT (Pao Xiong, Adam Smith, Brian Lueskow, Tim Durkee)
+﻿// <copyright file="CourseAdminForm.designer.cs" company="Adam J. Smith at NWTC">
+//     Copyright 2018 Smithbucks Computing (Adam J. Smith, radarsmith83@gmail.com)
 // </copyright>
 namespace CoachConnect
 {
@@ -34,14 +34,44 @@ namespace CoachConnect
         private System.Windows.Forms.CheckBox chkActive;
 
         /// <summary>
-        /// A button to set the current selected user as Inactive
-        /// </summary>
-        private System.Windows.Forms.Button btnDisableCourse;
-
-        /// <summary>
         /// A button to submit user profile changes
         /// </summary>
         private System.Windows.Forms.Button btnSubmit;
+
+        /// <summary>
+        /// A combo box to choose a course
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxChooseCourse;
+
+        /// <summary>
+        /// A label to mark the Choose Course combo box
+        /// </summary>
+        private System.Windows.Forms.Label lblChooseCourse;
+
+        /// <summary>
+        /// A group box to display course information
+        /// </summary>
+        private System.Windows.Forms.GroupBox groupBox1;
+
+        /// <summary>
+        /// A button to create a new Course when the button is clicked
+        /// </summary>
+        private System.Windows.Forms.Button btnAddCourse;
+
+        /// <summary>
+        /// A label to mark the CourseID text box
+        /// </summary>
+        private System.Windows.Forms.Label lblCourseID;
+
+        /// <summary>
+        /// A text box to store the Course ID
+        /// </summary>
+        private System.Windows.Forms.TextBox txtCourseID;
+
+        /// <summary>
+        /// A combo box for selecting the course's Department
+        /// </summary>
+        private System.Windows.Forms.ComboBox cbxDepartment;
 
         /// <summary>
         /// Required designer variable.
@@ -76,16 +106,14 @@ namespace CoachConnect
             this.lblFirstName = new System.Windows.Forms.Label();
             this.txtCourseName = new System.Windows.Forms.TextBox();
             this.chkActive = new System.Windows.Forms.CheckBox();
-            this.btnDisableCourse = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.cbxChooseCourse = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblChooseCourse = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbxDepartment = new System.Windows.Forms.ComboBox();
             this.lblCourseID = new System.Windows.Forms.Label();
             this.txtCourseID = new System.Windows.Forms.TextBox();
             this.btnAddCourse = new System.Windows.Forms.Button();
-            this.btnApply = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,21 +167,10 @@ namespace CoachConnect
             this.chkActive.Text = "Active";
             this.chkActive.UseVisualStyleBackColor = true;
             // 
-            // btnDisableCourse
-            // 
-            this.btnDisableCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDisableCourse.Location = new System.Drawing.Point(227, 281);
-            this.btnDisableCourse.Name = "btnDisableCourse";
-            this.btnDisableCourse.Size = new System.Drawing.Size(108, 22);
-            this.btnDisableCourse.TabIndex = 2;
-            this.btnDisableCourse.Text = "Disable Course";
-            this.btnDisableCourse.UseVisualStyleBackColor = true;
-            this.btnDisableCourse.Click += new System.EventHandler(this.BtnMinusClick);
-            // 
             // btnSubmit
             // 
             this.btnSubmit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmit.Location = new System.Drawing.Point(227, 309);
+            this.btnSubmit.Location = new System.Drawing.Point(227, 281);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(108, 22);
             this.btnSubmit.TabIndex = 12;
@@ -169,17 +186,17 @@ namespace CoachConnect
             this.cbxChooseCourse.Name = "cbxChooseCourse";
             this.cbxChooseCourse.Size = new System.Drawing.Size(207, 21);
             this.cbxChooseCourse.TabIndex = 55;
-            this.cbxChooseCourse.SelectedIndexChanged += new System.EventHandler(this.cbxChooseCourse_SelectedIndexChanged);
+            this.cbxChooseCourse.SelectedIndexChanged += new System.EventHandler(this.CbxChooseCourse_SelectedIndexChanged);
             // 
-            // label3
+            // lblChooseCourse
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(11, 74);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 13);
-            this.label3.TabIndex = 56;
-            this.label3.Text = "Choose a Course:";
+            this.lblChooseCourse.AutoSize = true;
+            this.lblChooseCourse.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblChooseCourse.Location = new System.Drawing.Point(11, 74);
+            this.lblChooseCourse.Name = "lblChooseCourse";
+            this.lblChooseCourse.Size = new System.Drawing.Size(107, 13);
+            this.lblChooseCourse.TabIndex = 56;
+            this.lblChooseCourse.Text = "Choose a Course:";
             // 
             // groupBox1
             // 
@@ -235,27 +252,14 @@ namespace CoachConnect
             this.btnAddCourse.UseVisualStyleBackColor = true;
             this.btnAddCourse.Click += new System.EventHandler(this.BtnAddClick);
             // 
-            // btnApply
-            // 
-            this.btnApply.Enabled = false;
-            this.btnApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnApply.Location = new System.Drawing.Point(19, 309);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(108, 22);
-            this.btnApply.TabIndex = 58;
-            this.btnApply.Text = "Apply Changes";
-            this.btnApply.UseVisualStyleBackColor = true;
-            // 
             // CourseAdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 364);
-            this.Controls.Add(this.btnApply);
+            this.ClientSize = new System.Drawing.Size(354, 319);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cbxChooseCourse);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnDisableCourse);
+            this.Controls.Add(this.lblChooseCourse);
             this.Controls.Add(this.btnAddCourse);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.lblAdminForm);
@@ -271,14 +275,5 @@ namespace CoachConnect
 
         }
         #endregion
-
-        private System.Windows.Forms.ComboBox cbxChooseCourse;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnAddCourse;
-        private System.Windows.Forms.Label lblCourseID;
-        private System.Windows.Forms.Button btnApply;
-        private System.Windows.Forms.TextBox txtCourseID;
-        private System.Windows.Forms.ComboBox cbxDepartment;
     }
 }
