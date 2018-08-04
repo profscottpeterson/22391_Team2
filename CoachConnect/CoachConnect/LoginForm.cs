@@ -4,6 +4,7 @@
 namespace CoachConnect
 {
     using System;
+    using System.Data.Entity;
     using System.Data.SqlClient;
     using System.Linq;
     using System.Windows.Forms;
@@ -57,7 +58,7 @@ namespace CoachConnect
         {
             try
             {
-                using (var context = new db_sft_2172Entities())
+                using (db_sft_2172Entities context = new db_sft_2172Entities())
                 {
                     var userQuery = from u in context.Users
                         where u.UserID.Equals(username)
@@ -134,7 +135,8 @@ namespace CoachConnect
             }
             catch (SqlException sqlEx)
             {
-                MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
+                MessageBox.Show(sqlEx.Message);
+                //MessageBox.Show(sqlEx.InnerException != null ? sqlEx.InnerException.Message : sqlEx.Message);
             }
             catch (Exception ex)
             {
